@@ -245,6 +245,67 @@
   </url>
 
   <url>
+    <loc>https://jianfan.app/japanese-kanji-converter/</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-kanji-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/japanese-kanji-converter/</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-kanji-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/japanese-kanji-converter/</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-kanji-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/japanese-kanji-converter/</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-kanji-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/japanese-kanji-converter/</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-kanji-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-kanji-converter/" />
+  </url>
+
+  <url>
     <loc>https://jianfan.app/privacy/</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
@@ -304,4 +365,5 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/privacy/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/privacy/" />
   </url>
+
 </urlset>
