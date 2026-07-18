@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="HanShift는 OpenCC 기반 온라인 중국어 변환 도구로 간체, 번체, 대만 번체, 홍콩 번체, 지역 표현 변환을 지원합니다."
+      content="JianFan.app는 OpenCC 기반 온라인 중국어 변환 도구로 간체, 번체, 대만 번체, 홍콩 번체, 지역 표현 변환을 지원합니다."
     />
-    <title>간체 번체 변환기 | HanShift</title>
+    <title>간체 번체 변환기 | JianFan.app</title>
     <link rel="canonical" href="/ko/" />
     <link rel="alternate" hreflang="zh-CN" href="/" />
     <link rel="alternate" hreflang="zh-Hant" href="/zh-tw/" />
@@ -16,45 +16,7 @@
     <link rel="alternate" hreflang="ko" href="/ko/" />
     <link rel="alternate" hreflang="x-default" href="/" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-    <script>
-      (() => {
-        try {
-          const path = window.location.pathname.replace(/\/+$/, "/");
-          const hasManualLocale = localStorage.getItem("hanshift-locale-manual") === "1";
-          if (hasManualLocale || /^\/(zh-tw|en|ja|ko)\//.test(path)) return;
-
-          const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
-          const firstSupported = languages.map((item) => item.toLowerCase()).find((item) => {
-            return (
-              item.startsWith("en") ||
-              item.startsWith("ja") ||
-              item.startsWith("ko") ||
-              item === "zh-tw" ||
-              item === "zh-hk" ||
-              item.startsWith("zh-hant")
-            );
-          });
-
-          const pathByLocale = {
-            en: "/en/",
-            ja: "/ja/",
-            ko: "/ko/",
-            "zh-tw": "/zh-tw/",
-            "zh-hk": "/zh-tw/",
-            "zh-hant": "/zh-tw/"
-          };
-
-          const target = firstSupported && Object.keys(pathByLocale).find((key) => firstSupported.startsWith(key));
-          if (target) {
-            const localePath = pathByLocale[target];
-            const suffix = path === "/" ? "" : path.slice(1);
-            window.location.replace(`${localePath}${suffix}${window.location.search}${window.location.hash}`);
-          }
-        } catch (error) {
-          console.warn(error);
-        }
-      })();
-    </script>
+    <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.css?v=20260718-compact4" />
     <script type="module" src="/app.js?v=20260718-compact4"></script>
   </head>
@@ -62,9 +24,9 @@
     <a class="skip-nav" href="#main" data-i18n="skip">跳到主要内容</a>
 
     <header class="site-header" aria-label="Site header">
-      <a class="brand" id="homeBrand" href="/" aria-label="HanShift">
+      <a class="brand" id="homeBrand" href="/" aria-label="JianFan.app">
         <span class="brand-mark" aria-hidden="true">漢</span>
-        <span class="brand-text">HanShift</span>
+        <span class="brand-text">JianFan.app</span>
       </a>
 
       <nav class="top-actions" aria-label="Primary">
@@ -239,7 +201,7 @@
           <p class="section-kicker" data-i18n="seoKicker">常见转换需求</p>
           <h2 id="seoTitle" data-i18n="seoTitle">覆盖日常中文简繁体转换场景</h2>
           <p class="seo-intro" data-i18n="seoIntro">
-            HanShift 可作为在线繁体字转换、在线简体字转换和中文简繁转换工具使用。常用方向直接显示在工作台，高级选项中保留台湾正体、香港繁体和地区用词转换。
+            JianFan.app 可作为在线繁体字转换、在线简体字转换和中文简繁转换工具使用。常用方向直接显示在工作台，高级选项中保留台湾正体、香港繁体和地区用词转换。
           </p>
         </div>
 
@@ -267,7 +229,10 @@
     </main>
 
     <footer class="site-footer">
-      <p data-i18n="footerText">HanShift 是一个浏览器本地运行的中文简繁转换工具。</p>
+      <p data-i18n="footerText">JianFan.app 是一个浏览器本地运行的中文简繁转换工具。</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a id="privacyLink" href="/privacy/" data-i18n="privacyLink">隐私声明</a>
+      </nav>
     </footer>
   </body>
 </html>

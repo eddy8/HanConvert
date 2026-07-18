@@ -2,9 +2,9 @@ import OpenCC from "https://cdn.jsdelivr.net/npm/opencc-wasm@0.12.0/dist/esm/ind
 
 const translations = {
   "zh-CN": {
-    pageTitle: "简繁转换 - 简体转繁体 / 繁体转简体在线工具 | HanShift",
+    pageTitle: "简繁转换 - 简体转繁体 / 繁体转简体在线工具 | JianFan.app",
     pageDescription:
-      "HanShift 是一个基于 OpenCC 实现的在线简繁转换工具，支持简体转繁体、繁体转简体、台湾正体、香港繁体和常用地区词转换。",
+      "JianFan.app 是一个基于 OpenCC 实现的在线简繁转换工具，支持简体转繁体、繁体转简体、台湾正体、香港繁体和常用地区词转换。",
     skip: "跳到主要内容",
     homeLink: "网站首页",
     languageLabel: "界面语言",
@@ -68,7 +68,7 @@ const translations = {
     seoKicker: "常见转换需求",
     seoTitle: "覆盖日常中文简繁体转换场景",
     seoIntro:
-      "HanShift 可作为在线繁体字转换、在线简体字转换和中文简繁转换工具使用。常用方向直接显示在工作台，高级选项中保留台湾正体、香港繁体和地区用词转换。",
+      "JianFan.app 可作为在线繁体字转换、在线简体字转换和中文简繁转换工具使用。常用方向直接显示在工作台，高级选项中保留台湾正体、香港繁体和地区用词转换。",
     seoCoreTitle: "核心转换",
     seoCoreBody: "适合简体转繁体、繁体转简体、简繁体转换和繁体字转换器等高频需求。",
     seoRegionTitle: "地区版本",
@@ -78,13 +78,14 @@ const translations = {
     linkTaiwan: "台湾繁体转换",
     linkHongKong: "香港繁体转换",
     linkFiles: "文件文本简繁转换",
-    footerText: "HanShift 是一个浏览器本地运行的中文简繁转换工具。",
+    footerText: "JianFan.app 是一个浏览器本地运行的中文简繁转换工具。",
+    privacyLink: "隐私声明",
     sampleText: "在线工具可以帮助用户快速转换简体中文和繁体中文，适合处理软件说明、网页内容和社交媒体文案。"
   },
   "zh-TW": {
-    pageTitle: "簡繁轉換 - 簡體轉繁體 / 繁體轉簡體線上工具 | HanShift",
+    pageTitle: "簡繁轉換 - 簡體轉繁體 / 繁體轉簡體線上工具 | JianFan.app",
     pageDescription:
-      "HanShift 是基於 OpenCC 實現的線上簡繁轉換工具，支援簡體轉繁體、繁體轉簡體、台灣正體、香港繁體與常用地區詞轉換。",
+      "JianFan.app 是基於 OpenCC 實現的線上簡繁轉換工具，支援簡體轉繁體、繁體轉簡體、台灣正體、香港繁體與常用地區詞轉換。",
     skip: "跳到主要內容",
     homeLink: "網站首頁",
     languageLabel: "介面語言",
@@ -148,7 +149,7 @@ const translations = {
     seoKicker: "常見轉換需求",
     seoTitle: "覆蓋日常中文簡繁體轉換場景",
     seoIntro:
-      "HanShift 可處理簡體轉繁體、繁體轉簡體和正體中文轉換。常用方向直接顯示在工作台，進階選項保留台灣正體、香港繁體和地區用詞轉換。",
+      "JianFan.app 可處理簡體轉繁體、繁體轉簡體和正體中文轉換。常用方向直接顯示在工作台，進階選項保留台灣正體、香港繁體和地區用詞轉換。",
     seoCoreTitle: "核心轉換",
     seoCoreBody: "適合簡體轉繁體、繁體轉簡體、簡繁體轉換和繁體字轉換器等高頻需求。",
     seoRegionTitle: "地區版本",
@@ -158,19 +159,20 @@ const translations = {
     linkTaiwan: "台灣繁體轉換",
     linkHongKong: "香港繁體轉換",
     linkFiles: "文件文字簡繁轉換",
-    footerText: "HanShift 是一個瀏覽器本地運行的中文簡繁轉換工具。",
+    footerText: "JianFan.app 是一個瀏覽器本地運行的中文簡繁轉換工具。",
+    privacyLink: "隱私聲明",
     sampleText: "線上工具可以幫助使用者快速轉換簡體中文和繁體中文，適合處理軟體說明、網頁內容和社群文案。"
   },
   en: {
-    pageTitle: "Simplified to Traditional Chinese Converter | HanShift",
+    pageTitle: "Simplified to Traditional Chinese Converter | JianFan.app",
     pageDescription:
-      "HanShift is an online Chinese converter built with OpenCC for Simplified Chinese, Traditional Chinese, Taiwan Traditional, Hong Kong Traditional, and regional wording.",
+      "JianFan.app is an online Chinese converter built with OpenCC for Simplified Chinese, Traditional Chinese, Taiwan Traditional, Hong Kong Traditional, and regional wording.",
     skip: "Skip to main content",
     homeLink: "Home",
     languageLabel: "Language",
     eyebrow: "Local browser conversion",
     title: "Simplified to Traditional Chinese Converter",
-    lede: "Paste text and convert instantly. Use HanShift as a traditional to simplified Chinese converter, Chinese character converter, and regional wording tool without exposing technical settings.",
+    lede: "Paste text and convert instantly. Use JianFan.app as a traditional to simplified Chinese converter, Chinese character converter, and regional wording tool without exposing technical settings.",
     workspaceKicker: "Conversion workspace",
     workspaceTitle: "Input, choose a direction, copy the result",
     statusIdle: "Ready to load converter",
@@ -228,7 +230,7 @@ const translations = {
     seoKicker: "Common conversion needs",
     seoTitle: "Built for everyday Chinese character conversion",
     seoIntro:
-      "HanShift covers simplified to traditional Chinese converter, traditional to simplified Chinese converter, Chinese character converter, and convert Chinese traditional to simplified online search intent in one focused workspace.",
+      "JianFan.app covers simplified to traditional Chinese converter, traditional to simplified Chinese converter, Chinese character converter, and convert Chinese traditional to simplified online search intent in one focused workspace.",
     seoCoreTitle: "Core conversion",
     seoCoreBody: "Convert Simplified Chinese to Traditional Chinese, Traditional Chinese to Simplified Chinese, or handle two-way Chinese character conversion.",
     seoRegionTitle: "Regional variants",
@@ -238,13 +240,14 @@ const translations = {
     linkTaiwan: "Taiwan Traditional converter",
     linkHongKong: "Hong Kong Traditional converter",
     linkFiles: "Document text converter",
-    footerText: "HanShift is a browser-local Chinese Simplified and Traditional conversion tool.",
+    footerText: "JianFan.app is a browser-local Chinese Simplified and Traditional conversion tool.",
+    privacyLink: "Privacy Statement",
     sampleText: "Online tools help users convert Simplified and Traditional Chinese quickly for software guides, web pages, and social media copy."
   },
   ja: {
-    pageTitle: "簡体字 繁体字 変換ツール | HanShift",
+    pageTitle: "簡体字 繁体字 変換ツール | JianFan.app",
     pageDescription:
-      "HanShift は OpenCC を基にした中国語変換ツールです。簡体字、繁体字、台湾繁体字、香港繁体字、地域別表現に対応します。",
+      "JianFan.app は OpenCC を基にした中国語変換ツールです。簡体字、繁体字、台湾繁体字、香港繁体字、地域別表現に対応します。",
     skip: "メインコンテンツへ移動",
     homeLink: "ホーム",
     languageLabel: "表示言語",
@@ -308,7 +311,7 @@ const translations = {
     seoKicker: "よく使う変換",
     seoTitle: "中国語の簡体字・繁体字変換に対応",
     seoIntro:
-      "HanShift は「簡体字 繁体字 変換」「繁体字 簡体字 変換」「中国語 簡体字 繁体字 変換」「簡体字 繁体字 変換 ツール」の用途に対応します。",
+      "JianFan.app は「簡体字 繁体字 変換」「繁体字 簡体字 変換」「中国語 簡体字 繁体字 変換」「簡体字 繁体字 変換 ツール」の用途に対応します。",
     seoCoreTitle: "基本変換",
     seoCoreBody: "簡体字から繁体字、繁体字から簡体字への相互変換をすばやく処理できます。",
     seoRegionTitle: "地域別表記",
@@ -318,13 +321,14 @@ const translations = {
     linkTaiwan: "台湾 繁体字 変換",
     linkHongKong: "香港 繁体字 変換",
     linkFiles: "文書テキスト変換",
-    footerText: "HanShift はブラウザー内で動作する中国語簡繁変換ツールです。",
+    footerText: "JianFan.app はブラウザー内で動作する中国語簡繁変換ツールです。",
+    privacyLink: "プライバシー声明",
     sampleText: "オンラインツールは、ソフトウェア説明、Web コンテンツ、SNS 投稿用の簡体字と繁体字の変換に役立ちます。"
   },
   ko: {
-    pageTitle: "간체 번체 변환기 | HanShift",
+    pageTitle: "간체 번체 변환기 | JianFan.app",
     pageDescription:
-      "HanShift는 OpenCC 기반 온라인 중국어 변환 도구로 간체, 번체, 대만 번체, 홍콩 번체, 지역 표현 변환을 지원합니다.",
+      "JianFan.app는 OpenCC 기반 온라인 중국어 변환 도구로 간체, 번체, 대만 번체, 홍콩 번체, 지역 표현 변환을 지원합니다.",
     skip: "본문으로 건너뛰기",
     homeLink: "홈",
     languageLabel: "인터페이스 언어",
@@ -388,7 +392,7 @@ const translations = {
     seoKicker: "자주 쓰는 변환",
     seoTitle: "중국어 간체·번체 변환에 최적화",
     seoIntro:
-      "HanShift는 간체 번체 변환기, 중국어 간체 번체 변환, 번체 간체 변환, 중국어 간체자 번체자 변환 검색 의도를 한 작업 화면에서 처리합니다.",
+      "JianFan.app는 간체 번체 변환기, 중국어 간체 번체 변환, 번체 간체 변환, 중국어 간체자 번체자 변환 검색 의도를 한 작업 화면에서 처리합니다.",
     seoCoreTitle: "기본 변환",
     seoCoreBody: "간체를 번체로, 번체를 간체로 빠르게 바꾸고 중국어 글자 변환 작업을 반복 처리할 수 있습니다.",
     seoRegionTitle: "지역별 번체",
@@ -398,7 +402,8 @@ const translations = {
     linkTaiwan: "대만 번체 변환",
     linkHongKong: "홍콩 번체 변환",
     linkFiles: "문서 텍스트 변환",
-    footerText: "HanShift는 브라우저에서 로컬로 실행되는 중국어 간체·번체 변환 도구입니다.",
+    footerText: "JianFan.app는 브라우저에서 로컬로 실행되는 중국어 간체·번체 변환 도구입니다.",
+    privacyLink: "개인정보 보호 안내",
     sampleText: "온라인 도구는 소프트웨어 설명, 웹 콘텐츠, 소셜 미디어 문구에 쓰이는 간체와 번체 변환을 빠르게 도와줍니다."
   }
 };
@@ -408,7 +413,7 @@ const landingPages = {
     defaultConfig: "s2twp",
     content: {
       "zh-CN": {
-        pageTitle: "台湾繁体转换 - 简体转台湾正体 / 大陆用词转台湾用词 | HanShift",
+        pageTitle: "台湾繁体转换 - 简体转台湾正体 / 大陆用词转台湾用词 | JianFan.app",
         pageDescription:
           "基于 OpenCC 实现的在线台湾繁体转换工具，支持简体转台湾正体、正体中文转换和大陆用词转台湾用词。",
         eyebrow: "台湾正体转换",
@@ -429,7 +434,7 @@ const landingPages = {
         seoUseCaseBody: "转换结果仍建议人工校对，尤其是品牌名、专有名词和语境相关词。"
       },
       "zh-TW": {
-        pageTitle: "台灣繁體轉換 - 簡體轉台灣正體 | HanShift",
+        pageTitle: "台灣繁體轉換 - 簡體轉台灣正體 | JianFan.app",
         pageDescription: "基於 OpenCC 實現的線上台灣繁體轉換工具，支援簡體轉台灣正體與地區用詞轉換。",
         eyebrow: "台灣正體轉換",
         title: "台灣繁體轉換：簡體轉台灣正體",
@@ -448,7 +453,7 @@ const landingPages = {
         seoUseCaseBody: "轉換結果仍建議人工校對，尤其是品牌名、專有名詞和語境相關詞。"
       },
       en: {
-        pageTitle: "Taiwan Traditional Chinese Converter | HanShift",
+        pageTitle: "Taiwan Traditional Chinese Converter | JianFan.app",
         pageDescription: "Convert Simplified Chinese to Taiwan Traditional Chinese with regional wording support. Built with OpenCC.",
         eyebrow: "Taiwan Traditional conversion",
         title: "Taiwan Traditional Chinese Converter",
@@ -467,7 +472,7 @@ const landingPages = {
         seoUseCaseBody: "Keep reviewing brand names, product terms, and context-sensitive wording after conversion."
       },
       ja: {
-        pageTitle: "台湾 繁体字 変換 | HanShift",
+        pageTitle: "台湾 繁体字 変換 | JianFan.app",
         pageDescription: "OpenCC を基に、簡体字を台湾向け繁体字に変換。中国語の台湾繁体字表記や地域別表現の確認に使えます。",
         eyebrow: "台湾繁体字変換",
         title: "台湾 繁体字 変換",
@@ -486,7 +491,7 @@ const landingPages = {
         seoUseCaseBody: "固有名詞やブランド名は変換後も人の目で確認してください。"
       },
       ko: {
-        pageTitle: "대만 번체 변환 | HanShift",
+        pageTitle: "대만 번체 변환 | JianFan.app",
         pageDescription: "OpenCC 기반 도구로 중국어 간체를 대만 번체로 변환하고 지역 표현 차이를 확인할 수 있습니다.",
         eyebrow: "대만 번체 변환",
         title: "대만 번체 변환",
@@ -510,7 +515,7 @@ const landingPages = {
     defaultConfig: "s2hkp",
     content: {
       "zh-CN": {
-        pageTitle: "香港繁体转换 - 简体转香港繁体 / 港澳繁体在线工具 | HanShift",
+        pageTitle: "香港繁体转换 - 简体转香港繁体 / 港澳繁体在线工具 | JianFan.app",
         pageDescription: "基于 OpenCC 实现的在线香港繁体转换工具，支持简体转香港繁体、港澳繁体和地区用词转换。",
         eyebrow: "香港繁体转换",
         title: "香港繁体转换：简体转港澳繁体",
@@ -529,7 +534,7 @@ const landingPages = {
         seoUseCaseBody: "金融、法律、医疗等高风险文本仍应由专业人员复核。"
       },
       "zh-TW": {
-        pageTitle: "香港繁體轉換 - 簡體轉香港繁體 | HanShift",
+        pageTitle: "香港繁體轉換 - 簡體轉香港繁體 | JianFan.app",
         pageDescription: "基於 OpenCC 實現的線上香港繁體轉換工具，支援簡體轉香港繁體、港澳繁體和地區用詞轉換。",
         eyebrow: "香港繁體轉換",
         title: "香港繁體轉換：簡體轉港澳繁體",
@@ -548,7 +553,7 @@ const landingPages = {
         seoUseCaseBody: "金融、法律、醫療等高風險文字仍應由專業人員複核。"
       },
       en: {
-        pageTitle: "Hong Kong Traditional Chinese Converter | HanShift",
+        pageTitle: "Hong Kong Traditional Chinese Converter | JianFan.app",
         pageDescription: "Convert Simplified Chinese to Hong Kong Traditional Chinese with phrase-level regional wording support. Built with OpenCC.",
         eyebrow: "Hong Kong Traditional conversion",
         title: "Hong Kong Traditional Chinese Converter",
@@ -567,7 +572,7 @@ const landingPages = {
         seoUseCaseBody: "Legal, financial, medical, and official text should still receive specialist review."
       },
       ja: {
-        pageTitle: "香港 繁体字 変換 | HanShift",
+        pageTitle: "香港 繁体字 変換 | JianFan.app",
         pageDescription: "OpenCC を基に、簡体字を香港向け繁体字に変換。中国語の香港繁体字表記や地域別表現に対応します。",
         eyebrow: "香港繁体字変換",
         title: "香港 繁体字 変換",
@@ -586,7 +591,7 @@ const landingPages = {
         seoUseCaseBody: "法務、金融、医療などの文章は専門家の確認を前提にしてください。"
       },
       ko: {
-        pageTitle: "홍콩 번체 변환 | HanShift",
+        pageTitle: "홍콩 번체 변환 | JianFan.app",
         pageDescription: "OpenCC 기반 도구로 중국어 간체를 홍콩 번체로 변환하고 지역 표현 차이를 확인할 수 있습니다.",
         eyebrow: "홍콩 번체 변환",
         title: "홍콩 번체 변환",
@@ -610,11 +615,11 @@ const landingPages = {
     defaultConfig: "s2t",
     content: {
       "zh-CN": {
-        pageTitle: "Word/PDF/TXT/Excel 简繁转换 - 文件文本在线转换 | HanShift",
-        pageDescription: "把 Word、PDF、TXT、Excel 文件上传到 HanShift，在浏览器端提取文本并基于 OpenCC 进行简繁转换。",
+        pageTitle: "Word/PDF/TXT/Excel 简繁转换 - 文件文本在线转换 | JianFan.app",
+        pageDescription: "把 Word、PDF、TXT、Excel 文件上传到 JianFan.app，在浏览器端提取文本并基于 OpenCC 进行简繁转换。",
         eyebrow: "文件文本转换",
         title: "Word、PDF、TXT、Excel 文本简繁转换",
-        lede: "上传 Word、PDF、TXT 或 Excel 文件后，HanShift 会在浏览器端提取文本，并进行简体转繁体、繁体转简体和地区版本转换。",
+        lede: "上传 Word、PDF、TXT 或 Excel 文件后，JianFan.app 会在浏览器端提取文本，并进行简体转繁体、繁体转简体和地区版本转换。",
         featureTitle: "适合文件内容的轻量转换流程",
         featureFlowTitle: "复制粘贴即可处理",
         featureFlowBody: "文件在浏览器端读取文本，不需要后端处理，适合快速转换文档片段。",
@@ -630,11 +635,11 @@ const landingPages = {
         seoUseCaseBody: "支持多选文件并合并提取文本；复杂排版仍建议转换后人工复核格式。"
       },
       "zh-TW": {
-        pageTitle: "Word/PDF/TXT/Excel 簡繁轉換 - 文件文字線上轉換 | HanShift",
-        pageDescription: "把 Word、PDF、TXT、Excel 文件上傳到 HanShift，在瀏覽器端提取文字並基於 OpenCC 進行簡繁轉換。",
+        pageTitle: "Word/PDF/TXT/Excel 簡繁轉換 - 文件文字線上轉換 | JianFan.app",
+        pageDescription: "把 Word、PDF、TXT、Excel 文件上傳到 JianFan.app，在瀏覽器端提取文字並基於 OpenCC 進行簡繁轉換。",
         eyebrow: "文件文字轉換",
         title: "Word、PDF、TXT、Excel 文字簡繁轉換",
-        lede: "上傳 Word、PDF、TXT 或 Excel 文件後，HanShift 會在瀏覽器端提取文字，並進行簡繁轉換和地區版本轉換。",
+        lede: "上傳 Word、PDF、TXT 或 Excel 文件後，JianFan.app 會在瀏覽器端提取文字，並進行簡繁轉換和地區版本轉換。",
         featureTitle: "適合文件內容的輕量轉換流程",
         featureFlowTitle: "複製貼上即可處理",
         featureFlowBody: "文件在瀏覽器端讀取文字，不需要後端處理，適合快速轉換文件片段。",
@@ -649,7 +654,7 @@ const landingPages = {
         seoUseCaseBody: "支援多選文件並合併提取文字；複雜排版仍建議轉換後人工複核格式。"
       },
       en: {
-        pageTitle: "Chinese Document Text Converter for Word, PDF, TXT and Excel | HanShift",
+        pageTitle: "Chinese Document Text Converter for Word, PDF, TXT and Excel | JianFan.app",
         pageDescription: "Upload Word, PDF, TXT, or Excel files, extract text in the browser, and convert Simplified and Traditional Chinese with OpenCC.",
         eyebrow: "Document text conversion",
         title: "Chinese text converter for Word, PDF, TXT, and Excel",
@@ -668,7 +673,7 @@ const landingPages = {
         seoUseCaseBody: "Multiple files can be selected and merged into the input area; review formatting manually after conversion."
       },
       ja: {
-        pageTitle: "Word・PDF・TXT・Excel の中国語簡繁変換 | HanShift",
+        pageTitle: "Word・PDF・TXT・Excel の中国語簡繁変換 | JianFan.app",
         pageDescription: "Word、PDF、TXT、Excel ファイルからブラウザー内でテキストを抽出し、OpenCC を基に簡繁変換できます。",
         eyebrow: "文書テキスト変換",
         title: "Word・PDF・TXT・Excel の簡体字 繁体字 変換",
@@ -687,7 +692,7 @@ const landingPages = {
         seoUseCaseBody: "複数ファイルを選択して入力欄にまとめられます。複雑なレイアウトは変換後に確認してください。"
       },
       ko: {
-        pageTitle: "Word, PDF, TXT, Excel 중국어 간체 번체 변환 | HanShift",
+        pageTitle: "Word, PDF, TXT, Excel 중국어 간체 번체 변환 | JianFan.app",
         pageDescription: "Word, PDF, TXT, Excel 파일에서 브라우저 안에서 텍스트를 추출하고 OpenCC 기반으로 간체와 번체를 변환합니다.",
         eyebrow: "문서 텍스트 변환",
         title: "Word, PDF, TXT, Excel 텍스트 간체 번체 변환",
@@ -722,6 +727,7 @@ const supportedPageSlugs = Object.keys(landingPages);
 const elements = {
   homeBrand: document.querySelector("#homeBrand"),
   homeLink: document.querySelector("#homeLink"),
+  privacyLink: document.querySelector("#privacyLink"),
   localeSelect: document.querySelector("#localeSelect"),
   engineStatus: document.querySelector("#engineStatus"),
   configSelect: document.querySelector("#configSelect"),
@@ -761,8 +767,8 @@ scheduleConvert();
 
 elements.localeSelect.addEventListener("change", () => {
   const nextLocale = elements.localeSelect.value;
-  localStorage.setItem("hanshift-locale", nextLocale);
-  localStorage.setItem("hanshift-locale-manual", "1");
+  localStorage.setItem("jianfan-locale", nextLocale);
+  localStorage.setItem("jianfan-locale-manual", "1");
   navigateToLocale(nextLocale);
 });
 
@@ -847,7 +853,7 @@ elements.downloadButton.addEventListener("click", () => {
   const url = URL.createObjectURL(blob);
   const anchor = document.createElement("a");
   anchor.href = url;
-  anchor.download = `hanshift-${activeConfig}.txt`;
+  anchor.download = `jianfan-${activeConfig}.txt`;
   anchor.click();
   URL.revokeObjectURL(url);
   setStatus("statusDownloaded", "ready");
@@ -864,6 +870,7 @@ function applyLocale(locale) {
   document.documentElement.lang = locale;
   elements.localeSelect.value = locale;
   updateHomeLinks(locale);
+  updatePrivacyLink(locale);
   applyMeta(locale);
   updateLandingLinks(locale);
 
@@ -968,6 +975,11 @@ function updateHomeLinks(locale) {
   const homePath = getLocalizedPath(locale);
   elements.homeBrand.setAttribute("href", homePath);
   elements.homeLink.setAttribute("href", homePath);
+}
+
+function updatePrivacyLink(locale) {
+  if (!elements.privacyLink) return;
+  elements.privacyLink.setAttribute("href", getLocalizedPath(locale, "privacy"));
 }
 
 function getLocalizedPath(locale, pageSlug = "") {

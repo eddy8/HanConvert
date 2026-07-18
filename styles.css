@@ -612,6 +612,11 @@ textarea::placeholder {
   padding: clamp(18px, 3vw, 30px);
 }
 
+.privacy-band {
+  margin-top: 16px;
+  padding: clamp(22px, 3.4vw, 42px);
+}
+
 .section-heading {
   display: grid;
   gap: 4px;
@@ -688,10 +693,64 @@ textarea::placeholder {
   text-align: center;
 }
 
+.site-footer p {
+  margin-bottom: 6px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
 .site-footer a {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
+  color: var(--ink);
+  text-decoration-color: rgba(64, 242, 176, 0.45);
+  text-underline-offset: 4px;
+}
+
+.privacy-content {
+  display: grid;
+  gap: 22px;
+  max-width: 980px;
+}
+
+.privacy-content article {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.privacy-content h2 {
+  margin-bottom: 8px;
+  font-size: clamp(1.18rem, 2vw, 1.55rem);
+}
+
+.privacy-content p,
+.privacy-content li {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.privacy-content ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.privacy-language-links {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.privacy-language-links a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.privacy-language-links a[aria-current] {
+  color: var(--accent);
 }
 
 @keyframes scan {
