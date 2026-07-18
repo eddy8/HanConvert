@@ -2,6 +2,8 @@ import OpenCC from "https://cdn.jsdelivr.net/npm/opencc-wasm@0.12.0/dist/esm/ind
 
 const CONVERSION_CHUNK_SIZE = 16000;
 const CHUNK_BREAKPOINTS = ["\n", "。", "！", "？", "；", ";", ".", "!", "?"];
+const MAX_INPUT_CHARACTERS = 3000000;
+const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024;
 
 const translations = {
   "zh-CN": {
@@ -19,6 +21,7 @@ const translations = {
     statusIdle: "准备加载转换引擎",
     statusLoading: "正在加载转换引擎",
     statusConverting: "正在分段转换大文本",
+    statusTextTooLong: "文本太长，请分批处理",
     statusReady: "转换引擎已就绪",
     statusError: "引擎加载失败，请检查网络",
     statusCopied: "已复制结果",
@@ -49,6 +52,8 @@ const translations = {
     fileDropBody: "可多选，提取后会自动填入原文区并转换",
     fileReading: "正在读取文件...",
     fileImported: "已读取 {count} 个文件，并填入原文区。",
+    fileTooLarge: "{name} 超过 {limit}，请拆分后再上传。",
+    textTooLong: "待转换文本超过 {limit} 个字符，请分批处理。",
     fileUnsupported: "暂不支持该文件类型：{name}",
     fileFailed: "文件读取失败：{name}",
     inputTitle: "原文",
@@ -102,6 +107,7 @@ const translations = {
     statusIdle: "準備載入轉換引擎",
     statusLoading: "正在載入轉換引擎",
     statusConverting: "正在分段轉換大型文字",
+    statusTextTooLong: "文字太長，請分批處理",
     statusReady: "轉換引擎已就緒",
     statusError: "引擎載入失敗，請檢查網路",
     statusCopied: "已複製結果",
@@ -132,6 +138,8 @@ const translations = {
     fileDropBody: "可多選，提取後會自動填入原文區並轉換",
     fileReading: "正在讀取文件...",
     fileImported: "已讀取 {count} 個文件，並填入原文區。",
+    fileTooLarge: "{name} 超過 {limit}，請拆分後再上傳。",
+    textTooLong: "待轉換文字超過 {limit} 個字元，請分批處理。",
     fileUnsupported: "暫不支援此文件類型：{name}",
     fileFailed: "文件讀取失敗：{name}",
     inputTitle: "原文",
@@ -185,6 +193,7 @@ const translations = {
     statusIdle: "Ready to load converter",
     statusLoading: "Loading converter",
     statusConverting: "Converting large text in chunks",
+    statusTextTooLong: "Text is too long. Please split it into batches.",
     statusReady: "Converter ready",
     statusError: "Could not load the engine. Check your network.",
     statusCopied: "Result copied",
@@ -215,6 +224,8 @@ const translations = {
     fileDropBody: "Multiple files are supported and will be converted after text extraction",
     fileReading: "Reading files...",
     fileImported: "Read {count} file(s) and placed the text in the original field.",
+    fileTooLarge: "{name} is larger than {limit}. Please split it before uploading.",
+    textTooLong: "The text exceeds {limit} characters. Please split it into batches.",
     fileUnsupported: "Unsupported file type: {name}",
     fileFailed: "Could not read file: {name}",
     inputTitle: "Original",
@@ -268,6 +279,7 @@ const translations = {
     statusIdle: "変換エンジンを読み込む準備ができました",
     statusLoading: "変換エンジンを読み込み中",
     statusConverting: "大きなテキストを分割して変換中",
+    statusTextTooLong: "テキストが長すぎます。分割して処理してください。",
     statusReady: "変換エンジンの準備ができました",
     statusError: "エンジンを読み込めません。ネットワークを確認してください。",
     statusCopied: "結果をコピーしました",
@@ -298,6 +310,8 @@ const translations = {
     fileDropBody: "複数選択できます。抽出後、自動で原文欄に入り変換されます",
     fileReading: "ファイルを読み込み中...",
     fileImported: "{count} 個のファイルを読み込み、原文欄に入力しました。",
+    fileTooLarge: "{name} は {limit} を超えています。分割してからアップロードしてください。",
+    textTooLong: "変換対象のテキストが {limit} 文字を超えています。分割して処理してください。",
     fileUnsupported: "未対応のファイル形式です：{name}",
     fileFailed: "ファイルを読み込めません：{name}",
     inputTitle: "原文",
@@ -351,6 +365,7 @@ const translations = {
     statusIdle: "변환 엔진을 불러올 준비가 되었습니다",
     statusLoading: "변환 엔진을 불러오는 중",
     statusConverting: "큰 텍스트를 나누어 변환하는 중",
+    statusTextTooLong: "텍스트가 너무 깁니다. 나누어 처리하세요.",
     statusReady: "변환 엔진 준비 완료",
     statusError: "엔진을 불러오지 못했습니다. 네트워크를 확인하세요.",
     statusCopied: "결과를 복사했습니다",
@@ -381,6 +396,8 @@ const translations = {
     fileDropBody: "여러 파일을 선택할 수 있으며 추출 후 자동으로 원문 영역에 입력됩니다",
     fileReading: "파일을 읽는 중...",
     fileImported: "{count}개 파일을 읽고 원문 영역에 입력했습니다.",
+    fileTooLarge: "{name} 파일이 {limit}보다 큽니다. 나누어 업로드하세요.",
+    textTooLong: "변환할 텍스트가 {limit}자를 초과합니다. 나누어 처리하세요.",
     fileUnsupported: "지원하지 않는 파일 형식: {name}",
     fileFailed: "파일을 읽지 못했습니다: {name}",
     inputTitle: "원문",
@@ -1031,6 +1048,16 @@ function formatMessage(key, values = {}) {
   return t(key).replace(/\{(\w+)\}/g, (_, name) => values[name] ?? "");
 }
 
+function formatNumber(number) {
+  return new Intl.NumberFormat(activeLocale).format(number);
+}
+
+function formatBytes(bytes) {
+  if (bytes >= 1024 * 1024) return `${Math.floor(bytes / 1024 / 1024)} MB`;
+  if (bytes >= 1024) return `${Math.floor(bytes / 1024)} KB`;
+  return `${bytes} B`;
+}
+
 function getDictionary(locale) {
   return {
     ...(translations[locale] || translations["zh-CN"]),
@@ -1158,6 +1185,13 @@ async function convertText() {
     return;
   }
 
+  if (input.length > MAX_INPUT_CHARACTERS) {
+    elements.outputText.value = "";
+    updateCounts();
+    setStatus("statusTextTooLong", "error");
+    return;
+  }
+
   setStatus("statusLoading");
 
   try {
@@ -1252,12 +1286,25 @@ async function handleFiles(fileList) {
 
   const imported = [];
   const errors = [];
+  let importedLength = 0;
 
   for (const file of files) {
     try {
+      if (file.size > MAX_FILE_SIZE_BYTES) {
+        throw new Error(formatMessage("fileTooLarge", { name: file.name, limit: formatBytes(MAX_FILE_SIZE_BYTES) }));
+      }
+
       const text = await extractTextFromFile(file);
       if (text.trim()) {
-        imported.push({ name: file.name, text: text.trim() });
+        const trimmedText = text.trim();
+        const entryLength = `===== ${file.name} =====\n${trimmedText}`.length + (imported.length ? 2 : 0);
+
+        if (importedLength + entryLength > MAX_INPUT_CHARACTERS) {
+          throw new Error(formatMessage("textTooLong", { limit: formatNumber(MAX_INPUT_CHARACTERS) }));
+        }
+
+        imported.push({ name: file.name, text: trimmedText });
+        importedLength += entryLength;
       } else {
         errors.push(formatMessage("fileFailed", { name: file.name }));
       }
