@@ -1,5 +1,8 @@
 import OpenCC from "https://cdn.jsdelivr.net/npm/opencc-wasm@0.12.0/dist/esm/index.js";
 
+const CONVERSION_CHUNK_SIZE = 16000;
+const CHUNK_BREAKPOINTS = ["\n", "。", "！", "？", "；", ";", ".", "!", "?"];
+
 const translations = {
   "zh-CN": {
     pageTitle: "简繁转换 - 简体转繁体 / 繁体转简体在线工具 | JianFan.app",
@@ -15,6 +18,7 @@ const translations = {
     workspaceTitle: "输入、选择方向、复制结果",
     statusIdle: "准备加载转换引擎",
     statusLoading: "正在加载转换引擎",
+    statusConverting: "正在分段转换大文本",
     statusReady: "转换引擎已就绪",
     statusError: "引擎加载失败，请检查网络",
     statusCopied: "已复制结果",
@@ -97,6 +101,7 @@ const translations = {
     workspaceTitle: "輸入、選擇方向、複製結果",
     statusIdle: "準備載入轉換引擎",
     statusLoading: "正在載入轉換引擎",
+    statusConverting: "正在分段轉換大型文字",
     statusReady: "轉換引擎已就緒",
     statusError: "引擎載入失敗，請檢查網路",
     statusCopied: "已複製結果",
@@ -179,6 +184,7 @@ const translations = {
     workspaceTitle: "Input, choose a direction, copy the result",
     statusIdle: "Ready to load converter",
     statusLoading: "Loading converter",
+    statusConverting: "Converting large text in chunks",
     statusReady: "Converter ready",
     statusError: "Could not load the engine. Check your network.",
     statusCopied: "Result copied",
@@ -261,6 +267,7 @@ const translations = {
     workspaceTitle: "入力、方向選択、結果コピー",
     statusIdle: "変換エンジンを読み込む準備ができました",
     statusLoading: "変換エンジンを読み込み中",
+    statusConverting: "大きなテキストを分割して変換中",
     statusReady: "変換エンジンの準備ができました",
     statusError: "エンジンを読み込めません。ネットワークを確認してください。",
     statusCopied: "結果をコピーしました",
@@ -343,6 +350,7 @@ const translations = {
     workspaceTitle: "입력, 방향 선택, 결과 복사",
     statusIdle: "변환 엔진을 불러올 준비가 되었습니다",
     statusLoading: "변환 엔진을 불러오는 중",
+    statusConverting: "큰 텍스트를 나누어 변환하는 중",
     statusReady: "변환 엔진 준비 완료",
     statusError: "엔진을 불러오지 못했습니다. 네트워크를 확인하세요.",
     statusCopied: "결과를 복사했습니다",
@@ -1154,7 +1162,7 @@ async function convertText() {
 
   try {
     const converter = await getConverter(activeConfig);
-    const result = await converter(input);
+    const result = await convertWithChunks(converter, input, token);
     if (token !== conversionToken) return;
     elements.outputText.value = result;
     updateCounts();
@@ -1168,6 +1176,64 @@ async function convertText() {
 function updateCounts() {
   elements.inputCount.textContent = elements.inputText.value.length;
   elements.outputCount.textContent = elements.outputText.value.length;
+}
+
+async function convertWithChunks(converter, input, token) {
+  const chunks = splitTextForConversion(input);
+
+  if (chunks.length === 1) {
+    return converter(input);
+  }
+
+  setStatus("statusConverting");
+
+  const output = [];
+  for (const chunk of chunks) {
+    if (token !== conversionToken) return "";
+    output.push(await converter(chunk));
+    await yieldToBrowser();
+  }
+
+  return output.join("");
+}
+
+function splitTextForConversion(text) {
+  const chunks = [];
+  let start = 0;
+
+  while (start < text.length) {
+    let end = Math.min(start + CONVERSION_CHUNK_SIZE, text.length);
+
+    if (end < text.length) {
+      end = findChunkBoundary(text, start, end);
+    }
+
+    chunks.push(text.slice(start, end));
+    start = end;
+  }
+
+  return chunks;
+}
+
+function findChunkBoundary(text, start, hardEnd) {
+  const minEnd = start + Math.floor(CONVERSION_CHUNK_SIZE * 0.65);
+  const searchArea = text.slice(minEnd, hardEnd);
+  const relativeBoundary = Math.max(...CHUNK_BREAKPOINTS.map((breakpoint) => searchArea.lastIndexOf(breakpoint)));
+
+  if (relativeBoundary >= 0) {
+    return minEnd + relativeBoundary + 1;
+  }
+
+  const previousCode = text.charCodeAt(hardEnd - 1);
+  if (previousCode >= 0xd800 && previousCode <= 0xdbff) {
+    return hardEnd - 1;
+  }
+
+  return hardEnd;
+}
+
+function yieldToBrowser() {
+  return new Promise((resolve) => window.setTimeout(resolve, 0));
 }
 
 function setStatus(key, type = "idle") {
