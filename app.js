@@ -1,4 +1,4 @@
-import OpenCC from "https://cdn.jsdelivr.net/npm/opencc-wasm@0.12.0/dist/esm/index.js";
+import OpenCC from "https://cdn.jsdmirror.cn/npm/opencc-wasm@0.12.0/dist/esm/index.js";
 
 const CONVERSION_CHUNK_SIZE = 16000;
 const CHUNK_BREAKPOINTS = ["\n", "。", "！", "？", "；", ";", ".", "!", "?"];
@@ -1352,13 +1352,13 @@ async function extractTextFromFile(file) {
 }
 
 async function extractDocxText(file) {
-  await loadScript("https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js", "mammoth");
+  await loadScript("https://cdn.jsdmirror.cn/npm/mammoth@1.8.0/mammoth.browser.min.js", "mammoth");
   const result = await window.mammoth.extractRawText({ arrayBuffer: await file.arrayBuffer() });
   return result.value || "";
 }
 
 async function extractSpreadsheetText(file) {
-  await loadScript("https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js", "XLSX");
+  await loadScript("https://cdn.jsdmirror.cn/npm/xlsx@0.18.5/dist/xlsx.full.min.js", "XLSX");
   const workbook = window.XLSX.read(await file.arrayBuffer(), { type: "array" });
   return workbook.SheetNames.map((sheetName) => {
     const sheet = workbook.Sheets[sheetName];
@@ -1370,15 +1370,15 @@ async function extractSpreadsheetText(file) {
 }
 
 async function extractPdfText(file) {
-  const pdfjsLib = await import("https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.mjs");
+  const pdfjsLib = await import("https://cdn.jsdmirror.cn/npm/pdfjs-dist@4.10.38/build/pdf.mjs");
   pdfjsLib.GlobalWorkerOptions.workerSrc =
-    "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.mjs";
+    "https://cdn.jsdmirror.cn/npm/pdfjs-dist@4.10.38/build/pdf.worker.mjs";
 
   const pdf = await pdfjsLib.getDocument({
     data: new Uint8Array(await file.arrayBuffer()),
-    cMapUrl: "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/cmaps/",
+    cMapUrl: "https://cdn.jsdmirror.cn/npm/pdfjs-dist@4.10.38/cmaps/",
     cMapPacked: true,
-    standardFontDataUrl: "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/standard_fonts/"
+    standardFontDataUrl: "https://cdn.jsdmirror.cn/npm/pdfjs-dist@4.10.38/standard_fonts/"
   }).promise;
   const pages = [];
 
