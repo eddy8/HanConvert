@@ -1,0 +1,72 @@
+import { readFile, readdir } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const siteOrigin = "https://jianfan.app";
+
+async function findHtmlFiles(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const files = [];
+  for (const entry of entries) {
+    if ([".git", "node_modules"].includes(entry.name)) continue;
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) files.push(...(await findHtmlFiles(entryPath)));
+    if (entry.isFile() && entry.name === "index.html") files.push(entryPath);
+  }
+  return files;
+}
+
+function requireMatch(html, pattern, label, file) {
+  const value = html.match(pattern)?.[1];
+  if (!value) throw new Error(`${file}: missing ${label}`);
+  return value;
+}
+
+const sitemap = await readFile(path.join(projectRoot, "sitemap.xml"), "utf8");
+const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+const uniqueSitemapUrls = new Set(sitemapUrls);
+if (uniqueSitemapUrls.size !== sitemapUrls.length) throw new Error("sitemap.xml contains duplicate URLs");
+
+let converterPages = 0;
+const canonicalUrls = new Set();
+
+for (const htmlPath of await findHtmlFiles(projectRoot)) {
+  const relativePath = path.relative(projectRoot, htmlPath);
+  const html = await readFile(htmlPath, "utf8");
+  const canonical = requireMatch(html, /<link rel="canonical" href="([^"]+)" \/>/, "canonical", relativePath);
+
+  if (!canonical.startsWith(`${siteOrigin}/`)) throw new Error(`${relativePath}: canonical is not absolute`);
+  if (canonicalUrls.has(canonical)) throw new Error(`${relativePath}: duplicate canonical ${canonical}`);
+  canonicalUrls.add(canonical);
+  if (!uniqueSitemapUrls.has(canonical)) throw new Error(`${relativePath}: canonical is missing from sitemap.xml`);
+
+  if (!html.includes('id="converterTitle"')) continue;
+  converterPages += 1;
+
+  const alternates = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)" \/>/g)];
+  if (alternates.length !== 6) throw new Error(`${relativePath}: expected 6 hreflang links`);
+  if (alternates.some(([, , href]) => !href.startsWith(`${siteOrigin}/`))) {
+    throw new Error(`${relativePath}: hreflang URL is not absolute`);
+  }
+
+  const schemaText = requireMatch(
+    html,
+    /<!-- seo-schema:start -->[\s\S]*?<script type="application\/ld\+json">([\s\S]*?)<\/script>/,
+    "JSON-LD",
+    relativePath
+  );
+  const schema = JSON.parse(schemaText);
+  const webApplication = schema["@graph"]?.find((item) => item["@type"] === "WebApplication");
+  if (!webApplication || webApplication.url !== canonical) {
+    throw new Error(`${relativePath}: invalid WebApplication schema`);
+  }
+  if (!html.includes('data-route="simplified-to-traditional"') || !html.includes('data-route="traditional-to-simplified"')) {
+    throw new Error(`${relativePath}: missing direction-page links`);
+  }
+}
+
+if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
+if (sitemapUrls.length !== 40) throw new Error(`expected 40 sitemap URLs, found ${sitemapUrls.length}`);
+
+console.log(`Validated ${converterPages} converter pages and ${sitemapUrls.length} sitemap URLs.`);

@@ -62,6 +62,128 @@
   </url>
 
   <url>
+    <loc>https://jianfan.app/simplified-to-traditional/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/simplified-to-traditional/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/simplified-to-traditional/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/simplified-to-traditional/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/simplified-to-traditional/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/simplified-to-traditional/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/simplified-to-traditional/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/simplified-to-traditional/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/simplified-to-traditional/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/simplified-to-traditional/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/simplified-to-traditional/" />
+  </url>
+
+  <url>
+    <loc>https://jianfan.app/traditional-to-simplified/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/traditional-to-simplified/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/traditional-to-simplified/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/traditional-to-simplified/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/traditional-to-simplified/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/traditional-to-simplified/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/traditional-to-simplified/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/traditional-to-simplified/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/traditional-to-simplified/</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/traditional-to-simplified/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/traditional-to-simplified/" />
+  </url>
+
+  <url>
     <loc>https://jianfan.app/taiwan-traditional/</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>weekly</changefreq>

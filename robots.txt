@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /*?config=
+Disallow: /*&config=
+
+Sitemap: https://jianfan.app/sitemap.xml
