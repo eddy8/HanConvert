@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteOrigin = "https://jianfan.app";
-const appAsset = "/app.js?v=20260719-seo1";
+const appAsset = "/app.js";
 const schemaStart = "    <!-- seo-schema:start -->";
 const schemaEnd = "    <!-- seo-schema:end -->";
 
