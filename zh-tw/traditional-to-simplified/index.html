@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja">
+<html lang="zh-Hant">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,16 +8,16 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta
       name="description"
-      content="JianFan.app は OpenCC を基にした中国語変換ツールです。簡体字、繁体字、台湾繁体字、香港繁体字、地域別表現に対応します。"
+      content="線上將繁體中文轉換為簡體中文，支援台灣正體和香港繁體轉簡體，文字在瀏覽器本機處理。"
     />
-    <title>簡体字 繁体字 変換ツール | JianFan.app</title>
-    <link rel="canonical" href="https://jianfan.app/ja/" />
-    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/" />
-    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/" />
-    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/" />
-    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/" />
-    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/" />
-    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/" />
+    <title>繁體轉簡體 - 線上繁體字轉簡體字轉換器 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/zh-tw/traditional-to-simplified/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/traditional-to-simplified/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/traditional-to-simplified/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/traditional-to-simplified/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/traditional-to-simplified/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/traditional-to-simplified/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/traditional-to-simplified/" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <script src="/locale-redirect.js?v=20260718-locale2"></script>
     <link rel="stylesheet" href="/styles.css?v=20260718-compact4" />
@@ -29,14 +29,14 @@
         "@graph": [
           {
             "@type": "WebApplication",
-            "@id": "https://jianfan.app/ja/#webapp",
-            "name": "簡体字 繁体字 変換ツール",
-            "url": "https://jianfan.app/ja/",
-            "description": "JianFan.app は OpenCC を基にした中国語変換ツールです。簡体字、繁体字、台湾繁体字、香港繁体字、地域別表現に対応します。",
+            "@id": "https://jianfan.app/zh-tw/traditional-to-simplified/#webapp",
+            "name": "繁體轉簡體 - 線上繁體字轉簡體字轉換器",
+            "url": "https://jianfan.app/zh-tw/traditional-to-simplified/",
+            "description": "線上將繁體中文轉換為簡體中文，支援台灣正體和香港繁體轉簡體，文字在瀏覽器本機處理。",
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript",
-            "inLanguage": "ja",
+            "inLanguage": "zh-Hant",
             "isAccessibleForFree": true,
             "offers": {
               "@type": "Offer",
@@ -49,6 +49,24 @@
               "name": "JianFan.app",
               "url": "https://jianfan.app/"
             }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/zh-tw/traditional-to-simplified/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "網站首頁",
+                "item": "https://jianfan.app/zh-tw/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "繁體轉簡體 - 線上繁體字轉簡體字轉換器",
+                "item": "https://jianfan.app/zh-tw/traditional-to-simplified/"
+              }
+            ]
           }
         ]
       }
@@ -82,11 +100,9 @@
     <main id="main">
       <section class="hero-shell" aria-labelledby="pageTitle">
         <div class="hero-copy">
-          <p class="eyebrow" data-i18n="eyebrow">浏览器本地转换</p>
-          <h1 id="pageTitle" data-i18n="title">简繁转换：简体转繁体 / 繁体转简体</h1>
-          <p class="lede" data-i18n="lede">
-            粘贴文本即可转换。适合文章、社媒、字幕、产品文案和日常沟通，不需要理解任何技术配置。
-          </p>
+          <p class="eyebrow" data-i18n="eyebrow">繁體字轉簡體字</p>
+          <h1 id="pageTitle" data-i18n="title">繁體轉簡體線上轉換</h1>
+          <p class="lede" data-i18n="lede">貼上繁體中文即可轉換為簡體中文。本頁預設選擇繁體轉簡體，也可處理台灣正體、香港繁體與地區用詞。</p>
         </div>
 
         <div class="signal-panel" aria-hidden="true">
@@ -111,10 +127,10 @@
         </div>
 
         <div class="mode-strip" role="radiogroup" aria-label="Conversion direction">
-          <button class="mode-card is-active" type="button" data-config="s2t" role="radio" aria-checked="true">
+          <button class="mode-card" type="button" data-config="s2t" role="radio" aria-checked="false">
             <span data-i18n="modeS2T">简体 → 繁体</span>
           </button>
-          <button class="mode-card" type="button" data-config="t2s" role="radio" aria-checked="false">
+          <button class="mode-card is-active" type="button" data-config="t2s" role="radio" aria-checked="true">
             <span data-i18n="modeT2S">繁体 → 简体</span>
           </button>
           <button class="mode-card" type="button" data-config="s2tw" role="radio" aria-checked="false">
@@ -132,7 +148,7 @@
               <span data-i18n="configLabel">转换模式</span>
               <select id="configSelect">
                 <option value="s2t" data-i18n="modeS2T">简体 → 繁体</option>
-                <option value="t2s" data-i18n="modeT2S">繁体 → 简体</option>
+                <option value="t2s" data-i18n="modeT2S" selected>繁体 → 简体</option>
                 <option value="s2tw" data-i18n="modeS2TW">简体 → 台湾正体</option>
                 <option value="s2twp" data-i18n="modeS2TWP">简体 → 台湾正体（含用词）</option>
                 <option value="s2hk" data-i18n="modeS2HK">简体 → 香港繁体</option>
@@ -233,25 +249,23 @@
 
       <section class="seo-band" aria-labelledby="seoTitle">
         <div class="section-heading">
-          <p class="section-kicker" data-i18n="seoKicker">常见转换需求</p>
-          <h2 id="seoTitle" data-i18n="seoTitle">覆盖日常中文简繁体转换场景</h2>
-          <p class="seo-intro" data-i18n="seoIntro">
-            JianFan.app 可作为在线繁体字转换、在线简体字转换和中文简繁转换工具使用。常用方向直接显示在工作台，高级选项中保留台湾正体、香港繁体和地区用词转换。
-          </p>
+          <p class="section-kicker" data-i18n="seoKicker">繁體轉簡體</p>
+          <h2 id="seoTitle" data-i18n="seoTitle">線上繁體字轉簡體字轉換器</h2>
+          <p class="seo-intro" data-i18n="seoIntro">適合繁體轉簡體、繁體字轉簡體字與繁體中文內容轉換，可用於閱讀資料、字幕、文案和網頁內容。</p>
         </div>
 
         <div class="seo-grid">
           <article>
-            <h3 data-i18n="seoCoreTitle">核心转换</h3>
-            <p data-i18n="seoCoreBody">适合简体转繁体、繁体转简体、简繁体转换和繁体字转换器等高频需求。</p>
+            <h3 data-i18n="seoCoreTitle">預設繁體轉簡體</h3>
+            <p data-i18n="seoCoreBody">開啟頁面即選擇通用繁體轉簡體模式，貼上內容後可直接取得簡體結果。</p>
           </article>
           <article>
-            <h3 data-i18n="seoRegionTitle">地区版本</h3>
-            <p data-i18n="seoRegionBody">需要台湾繁体、简体转台湾正体、港澳繁体或地区词转换时，可在高级选项中选择对应模式。</p>
+            <h3 data-i18n="seoRegionTitle">台灣與香港來源</h3>
+            <p data-i18n="seoRegionBody">來源明確時，可選擇台灣正體或香港繁體轉簡體，並處理部分地區詞彙。</p>
           </article>
           <article>
-            <h3 data-i18n="seoUseCaseTitle">文本场景</h3>
-            <p data-i18n="seoUseCaseBody">可用于网页内容、社媒文案、字幕、TXT 文本，以及从 Word、PDF、Excel 复制出来的文字。</p>
+            <h3 data-i18n="seoUseCaseTitle">瀏覽器本機處理</h3>
+            <p data-i18n="seoUseCaseBody">文字不需上傳至伺服器；正式文件、專有名詞和語境相關內容仍建議人工複核。</p>
           </article>
         </div>
 

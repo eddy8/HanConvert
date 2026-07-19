@@ -138,6 +138,7 @@
       const link = document.createElement("a");
       link.href = "https://jf.soushula.com";
       link.textContent = "访问国内镜像";
+      link.target = "_blank";
 
       const closeButton = document.createElement("button");
       closeButton.type = "button";
