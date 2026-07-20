@@ -35,24 +35,24 @@
     if (window.location.hostname === "jf.soushula.com") return false;
     if (localStorage.getItem("jianfan-mirror-banner-dismissed") === "1") return false;
 
-    const firstChineseLanguage = languages.find((language) => language.startsWith("zh"));
-    if (!firstChineseLanguage) return false;
+    const primaryLanguage = languages[0];
+    if (!primaryLanguage?.startsWith("zh")) return false;
 
     if (
-      firstChineseLanguage.startsWith("zh-hant") ||
-      firstChineseLanguage === "zh-tw" ||
-      firstChineseLanguage === "zh-hk" ||
-      firstChineseLanguage === "zh-mo"
+      primaryLanguage.startsWith("zh-hant") ||
+      primaryLanguage === "zh-tw" ||
+      primaryLanguage === "zh-hk" ||
+      primaryLanguage === "zh-mo"
     ) {
       return false;
     }
 
     return (
-      firstChineseLanguage === "zh" ||
-      firstChineseLanguage.startsWith("zh-hans") ||
-      firstChineseLanguage === "zh-cn" ||
-      firstChineseLanguage === "zh-sg" ||
-      firstChineseLanguage === "zh-my"
+      primaryLanguage === "zh" ||
+      primaryLanguage.startsWith("zh-hans") ||
+      primaryLanguage === "zh-cn" ||
+      primaryLanguage === "zh-sg" ||
+      primaryLanguage === "zh-my"
     );
   }
 
@@ -130,19 +130,19 @@
       banner.id = "mirrorSpeedBanner";
       banner.className = "mirror-speed-banner";
       banner.setAttribute("role", "region");
-      banner.setAttribute("aria-label", "国内镜像访问提示");
+      banner.setAttribute("aria-label", "中国大陆镜像访问提示");
 
       const message = document.createElement("span");
-      message.innerHTML = "<strong>网站访问慢？</strong> 可以使用国内镜像地址，加载速度更快。";
+      message.innerHTML = "<strong>网站访问慢？</strong> 可以使用中国大陆镜像地址，加载速度更快。";
 
       const link = document.createElement("a");
       link.href = "https://jf.soushula.com";
-      link.textContent = "访问国内镜像";
+      link.textContent = "访问中国大陆镜像";
       link.target = "_blank";
 
       const closeButton = document.createElement("button");
       closeButton.type = "button";
-      closeButton.setAttribute("aria-label", "关闭国内镜像访问提示");
+      closeButton.setAttribute("aria-label", "关闭中国大陆镜像访问提示");
       closeButton.textContent = "×";
       closeButton.addEventListener("click", () => {
         localStorage.setItem("jianfan-mirror-banner-dismissed", "1");

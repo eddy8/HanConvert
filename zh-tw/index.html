@@ -125,36 +125,96 @@
           </button>
         </div>
 
-        <details class="advanced-options">
-          <summary data-i18n="advancedSummary">更多地区和专业选项</summary>
-          <div class="advanced-grid">
-            <label>
-              <span data-i18n="configLabel">转换模式</span>
-              <select id="configSelect">
-                <option value="s2t" data-i18n="modeS2T">简体 → 繁体</option>
-                <option value="t2s" data-i18n="modeT2S">繁体 → 简体</option>
-                <option value="s2tw" data-i18n="modeS2TW">简体 → 台湾正体</option>
-                <option value="s2twp" data-i18n="modeS2TWP">简体 → 台湾正体（含用词）</option>
-                <option value="s2hk" data-i18n="modeS2HK">简体 → 香港繁体</option>
-                <option value="s2hkp" data-i18n="modeS2HKP">简体 → 香港繁体（含用词）</option>
-                <option value="tw2s" data-i18n="modeTW2S">台湾正体 → 简体</option>
-                <option value="tw2sp" data-i18n="modeTW2SP">台湾正体 → 简体（含用词）</option>
-                <option value="hk2s" data-i18n="modeHK2S">香港繁体 → 简体</option>
-                <option value="hk2sp" data-i18n="modeHK2SP">香港繁体 → 简体（含用词）</option>
-                <option value="t2tw" data-i18n="modeT2TW">繁体 → 台湾正体</option>
-                <option value="tw2t" data-i18n="modeTW2T">台湾正体 → 繁体</option>
-                <option value="t2hk" data-i18n="modeT2HK">繁体 → 香港繁体</option>
-                <option value="hk2t" data-i18n="modeHK2T">香港繁体 → 繁体</option>
-                <option value="jp2t" data-i18n="modeJP2T">日文新字体 → 旧字体</option>
-                <option value="t2jp" data-i18n="modeT2JP">旧字体 → 日文新字体</option>
-              </select>
-            </label>
-            <label class="toggle-row">
-              <input id="autoConvert" type="checkbox" checked />
-              <span data-i18n="autoConvert">输入时自动转换</span>
-            </label>
-          </div>
-        </details>
+        <div class="converter-option-grid">
+          <details class="advanced-options">
+            <summary data-i18n="advancedSummary">更多地区和专业选项</summary>
+            <div class="advanced-grid">
+              <label>
+                <span data-i18n="configLabel">转换模式</span>
+                <select id="configSelect">
+                  <option value="s2t" data-i18n="modeS2T">简体 → 繁体</option>
+                  <option value="t2s" data-i18n="modeT2S">繁体 → 简体</option>
+                  <option value="s2tw" data-i18n="modeS2TW">简体 → 台湾正体</option>
+                  <option value="s2twp" data-i18n="modeS2TWP">简体 → 台湾正体（含用词）</option>
+                  <option value="s2hk" data-i18n="modeS2HK">简体 → 香港繁体</option>
+                  <option value="s2hkp" data-i18n="modeS2HKP">简体 → 香港繁体（含用词）</option>
+                  <option value="tw2s" data-i18n="modeTW2S">台湾正体 → 简体</option>
+                  <option value="tw2sp" data-i18n="modeTW2SP">台湾正体 → 简体（含用词）</option>
+                  <option value="hk2s" data-i18n="modeHK2S">香港繁体 → 简体</option>
+                  <option value="hk2sp" data-i18n="modeHK2SP">香港繁体 → 简体（含用词）</option>
+                  <option value="t2tw" data-i18n="modeT2TW">繁体 → 台湾正体</option>
+                  <option value="tw2t" data-i18n="modeTW2T">台湾正体 → 繁体</option>
+                  <option value="t2hk" data-i18n="modeT2HK">繁体 → 香港繁体</option>
+                  <option value="hk2t" data-i18n="modeHK2T">香港繁体 → 繁体</option>
+                  <option value="jp2t" data-i18n="modeJP2T">日文新字体 → 旧字体</option>
+                  <option value="t2jp" data-i18n="modeT2JP">旧字体 → 日文新字体</option>
+                </select>
+              </label>
+              <label class="toggle-row">
+                <input id="autoConvert" type="checkbox" checked />
+                <span data-i18n="autoConvert">输入时自动转换</span>
+              </label>
+            </div>
+          </details>
+
+          <!-- custom-dictionary:start -->
+          <details class="custom-dictionary" id="customDictionary">
+            <summary>
+              <span data-i18n="customDictionarySummary">自定义词库</span>
+              <span class="custom-dictionary-count" id="customDictionaryCount" aria-live="polite">0/0 条启用</span>
+            </summary>
+            <div class="custom-dictionary-body">
+              <p class="custom-dictionary-note" data-i18n="customDictionaryLocalNote">
+                词条只保存在当前浏览器。填写相同内容可保护品牌名和专有名词。
+              </p>
+              <form class="custom-dictionary-form" id="customDictionaryForm" novalidate>
+                <label>
+                  <span data-i18n="customDictionarySourceLabel">转换前</span>
+                  <input
+                    id="customDictionarySource"
+                    type="text"
+                    maxlength="200"
+                    autocomplete="off"
+                    data-i18n-attr="placeholder:customDictionarySourcePlaceholder"
+                    placeholder="例如：人工智能"
+                  />
+                </label>
+                <span class="custom-dictionary-arrow" aria-hidden="true">→</span>
+                <label>
+                  <span data-i18n="customDictionaryTargetLabel">转换后</span>
+                  <input
+                    id="customDictionaryTarget"
+                    type="text"
+                    maxlength="200"
+                    autocomplete="off"
+                    data-i18n-attr="placeholder:customDictionaryTargetPlaceholder"
+                    placeholder="例如：人工智慧"
+                  />
+                </label>
+                <button class="text-button custom-dictionary-add" type="submit" data-i18n="customDictionaryAdd">
+                  添加词条
+                </button>
+              </form>
+              <p class="custom-dictionary-empty" id="customDictionaryEmpty" data-i18n="customDictionaryEmpty">
+                还没有自定义词条
+              </p>
+              <ul class="custom-dictionary-list" id="customDictionaryList"></ul>
+              <div class="custom-dictionary-footer">
+                <p id="customDictionaryStatus" role="status" aria-live="polite"></p>
+                <button
+                  class="text-button custom-dictionary-clear"
+                  id="customDictionaryClear"
+                  type="button"
+                  data-i18n="customDictionaryClear"
+                  hidden
+                >
+                  清空词库
+                </button>
+              </div>
+            </div>
+          </details>
+          <!-- custom-dictionary:end -->
+        </div>
 
         <section class="file-import" aria-labelledby="fileImportTitle">
           <div>
