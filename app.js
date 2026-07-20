@@ -1,4 +1,11 @@
 import OpenCC from "https://cdn.jsdmirror.cn/npm/opencc-wasm@0.12.0/dist/esm/index.js";
+import {
+  CUSTOM_DICTIONARY_STORAGE_KEY,
+  MAX_CUSTOM_DICTIONARY_ENTRIES,
+  MAX_CUSTOM_DICTIONARY_TERM_LENGTH,
+  normalizeCustomDictionaryEntries,
+  prepareCustomDictionaryConversion
+} from "/custom-dictionary.mjs";
 
 const CONVERSION_CHUNK_SIZE = 16000;
 const CHUNK_BREAKPOINTS = ["\n", "。", "！", "？", "；", ";", ".", "!", "?"];
@@ -45,6 +52,27 @@ const translations = {
     advancedSummary: "更多地区和专业选项",
     configLabel: "转换模式",
     autoConvert: "输入时自动转换",
+    customDictionarySummary: "自定义词库",
+    customDictionaryCount: "{enabled}/{total} 条启用",
+    customDictionaryLocalNote: "词条只保存在当前浏览器。填写相同内容可保护品牌名和专有名词。",
+    customDictionarySourceLabel: "转换前",
+    customDictionaryTargetLabel: "转换后",
+    customDictionarySourcePlaceholder: "例如：人工智能",
+    customDictionaryTargetPlaceholder: "例如：人工智慧",
+    customDictionaryAdd: "添加词条",
+    customDictionaryEmpty: "还没有自定义词条",
+    customDictionaryClear: "清空词库",
+    customDictionaryClearConfirm: "确定清空全部自定义词条吗？",
+    customDictionaryEntryEnabledLabel: "启用词条：{source}",
+    customDictionaryDeleteLabel: "删除词条：{source}",
+    customDictionaryRequired: "请同时填写转换前和转换后内容。",
+    customDictionaryTooLong: "每项最多 {limit} 个字符。",
+    customDictionaryLimit: "最多可以保存 {limit} 条词条。",
+    customDictionaryAdded: "已添加词条。",
+    customDictionaryUpdated: "已更新同名词条。",
+    customDictionaryRemoved: "已删除词条。",
+    customDictionaryCleared: "已清空词库。",
+    customDictionaryStorageError: "当前浏览器无法保存词库，本次会话仍可使用。",
     fileKicker: "文件转换",
     fileTitle: "上传文件并在浏览器本地提取文本",
     fileBody: "支持 TXT、CSV、DOCX、PDF、Excel 文件。内容只在当前浏览器中读取，不会上传到服务器。",
@@ -133,6 +161,27 @@ const translations = {
     advancedSummary: "更多地區和專業選項",
     configLabel: "轉換模式",
     autoConvert: "輸入時自動轉換",
+    customDictionarySummary: "自訂詞庫",
+    customDictionaryCount: "{enabled}/{total} 條啟用",
+    customDictionaryLocalNote: "詞條只會保存在目前瀏覽器。填寫相同內容可保護品牌名和專有名詞。",
+    customDictionarySourceLabel: "轉換前",
+    customDictionaryTargetLabel: "轉換後",
+    customDictionarySourcePlaceholder: "例如：人工智能",
+    customDictionaryTargetPlaceholder: "例如：人工智慧",
+    customDictionaryAdd: "新增詞條",
+    customDictionaryEmpty: "還沒有自訂詞條",
+    customDictionaryClear: "清空詞庫",
+    customDictionaryClearConfirm: "確定清空全部自訂詞條嗎？",
+    customDictionaryEntryEnabledLabel: "啟用詞條：{source}",
+    customDictionaryDeleteLabel: "刪除詞條：{source}",
+    customDictionaryRequired: "請同時填寫轉換前和轉換後內容。",
+    customDictionaryTooLong: "每項最多 {limit} 個字元。",
+    customDictionaryLimit: "最多可以儲存 {limit} 條詞條。",
+    customDictionaryAdded: "已新增詞條。",
+    customDictionaryUpdated: "已更新同名詞條。",
+    customDictionaryRemoved: "已刪除詞條。",
+    customDictionaryCleared: "已清空詞庫。",
+    customDictionaryStorageError: "目前瀏覽器無法儲存詞庫，本次工作階段仍可使用。",
     fileKicker: "文件轉換",
     fileTitle: "上傳文件並在瀏覽器本地提取文字",
     fileBody: "支援 TXT、CSV、DOCX、PDF、Excel 文件。內容只在目前瀏覽器中讀取，不會上傳到伺服器。",
@@ -221,6 +270,27 @@ const translations = {
     advancedSummary: "More regional and specialist options",
     configLabel: "Conversion mode",
     autoConvert: "Convert while typing",
+    customDictionarySummary: "Custom dictionary",
+    customDictionaryCount: "{enabled}/{total} enabled",
+    customDictionaryLocalNote: "Entries stay in this browser. Use identical text to protect brand names and proper nouns.",
+    customDictionarySourceLabel: "Before conversion",
+    customDictionaryTargetLabel: "After conversion",
+    customDictionarySourcePlaceholder: "Example: 软件",
+    customDictionaryTargetPlaceholder: "Example: 軟體",
+    customDictionaryAdd: "Add entry",
+    customDictionaryEmpty: "No custom entries yet",
+    customDictionaryClear: "Clear dictionary",
+    customDictionaryClearConfirm: "Clear all custom dictionary entries?",
+    customDictionaryEntryEnabledLabel: "Enable entry: {source}",
+    customDictionaryDeleteLabel: "Delete entry: {source}",
+    customDictionaryRequired: "Enter both the before and after text.",
+    customDictionaryTooLong: "Each term can contain up to {limit} characters.",
+    customDictionaryLimit: "You can save up to {limit} entries.",
+    customDictionaryAdded: "Entry added.",
+    customDictionaryUpdated: "Matching entry updated.",
+    customDictionaryRemoved: "Entry deleted.",
+    customDictionaryCleared: "Dictionary cleared.",
+    customDictionaryStorageError: "This browser cannot save the dictionary. It remains available for this session.",
     fileKicker: "File conversion",
     fileTitle: "Upload files and extract text locally in your browser",
     fileBody: "Supports TXT, CSV, DOCX, PDF, and Excel files. Content is read only in this browser and is not uploaded.",
@@ -309,6 +379,27 @@ const translations = {
     advancedSummary: "地域別・専門オプション",
     configLabel: "変換モード",
     autoConvert: "入力中に自動変換",
+    customDictionarySummary: "カスタム辞書",
+    customDictionaryCount: "{enabled}/{total} 件有効",
+    customDictionaryLocalNote: "登録内容はこのブラウザーだけに保存されます。同じ文字を指定すると固有名詞を保護できます。",
+    customDictionarySourceLabel: "変換前",
+    customDictionaryTargetLabel: "変換後",
+    customDictionarySourcePlaceholder: "例：软件",
+    customDictionaryTargetPlaceholder: "例：軟體",
+    customDictionaryAdd: "語句を追加",
+    customDictionaryEmpty: "カスタム語句はまだありません",
+    customDictionaryClear: "辞書を消去",
+    customDictionaryClearConfirm: "カスタム辞書をすべて消去しますか？",
+    customDictionaryEntryEnabledLabel: "語句を有効化：{source}",
+    customDictionaryDeleteLabel: "語句を削除：{source}",
+    customDictionaryRequired: "変換前と変換後の両方を入力してください。",
+    customDictionaryTooLong: "各項目は最大 {limit} 文字です。",
+    customDictionaryLimit: "最大 {limit} 件まで保存できます。",
+    customDictionaryAdded: "語句を追加しました。",
+    customDictionaryUpdated: "同じ語句を更新しました。",
+    customDictionaryRemoved: "語句を削除しました。",
+    customDictionaryCleared: "辞書を消去しました。",
+    customDictionaryStorageError: "このブラウザーでは辞書を保存できません。このセッションでは引き続き利用できます。",
     fileKicker: "ファイル変換",
     fileTitle: "ブラウザー内でファイルからテキストを抽出",
     fileBody: "TXT、CSV、DOCX、PDF、Excel ファイルに対応します。内容はこのブラウザー内でのみ読み取られ、サーバーへ送信されません。",
@@ -397,6 +488,27 @@ const translations = {
     advancedSummary: "지역 및 전문 옵션 더 보기",
     configLabel: "변환 모드",
     autoConvert: "입력 중 자동 변환",
+    customDictionarySummary: "사용자 사전",
+    customDictionaryCount: "{enabled}/{total}개 사용",
+    customDictionaryLocalNote: "항목은 이 브라우저에만 저장됩니다. 같은 내용을 입력하면 브랜드명과 고유명사를 보호할 수 있습니다.",
+    customDictionarySourceLabel: "변환 전",
+    customDictionaryTargetLabel: "변환 후",
+    customDictionarySourcePlaceholder: "예: 软件",
+    customDictionaryTargetPlaceholder: "예: 軟體",
+    customDictionaryAdd: "항목 추가",
+    customDictionaryEmpty: "사용자 사전 항목이 없습니다",
+    customDictionaryClear: "사전 비우기",
+    customDictionaryClearConfirm: "사용자 사전의 모든 항목을 삭제할까요?",
+    customDictionaryEntryEnabledLabel: "항목 사용: {source}",
+    customDictionaryDeleteLabel: "항목 삭제: {source}",
+    customDictionaryRequired: "변환 전과 변환 후 내용을 모두 입력하세요.",
+    customDictionaryTooLong: "각 항목은 최대 {limit}자까지 입력할 수 있습니다.",
+    customDictionaryLimit: "최대 {limit}개 항목을 저장할 수 있습니다.",
+    customDictionaryAdded: "항목을 추가했습니다.",
+    customDictionaryUpdated: "같은 항목을 업데이트했습니다.",
+    customDictionaryRemoved: "항목을 삭제했습니다.",
+    customDictionaryCleared: "사전을 비웠습니다.",
+    customDictionaryStorageError: "이 브라우저에는 사전을 저장할 수 없습니다. 현재 세션에서는 계속 사용할 수 있습니다.",
     fileKicker: "파일 변환",
     fileTitle: "브라우저에서 파일 텍스트 추출",
     fileBody: "TXT, CSV, DOCX, PDF, Excel 파일을 지원합니다. 내용은 이 브라우저 안에서만 읽고 서버로 업로드하지 않습니다.",
@@ -1095,6 +1207,14 @@ const elements = {
   engineStatus: document.querySelector("#engineStatus"),
   configSelect: document.querySelector("#configSelect"),
   autoConvert: document.querySelector("#autoConvert"),
+  customDictionaryForm: document.querySelector("#customDictionaryForm"),
+  customDictionarySource: document.querySelector("#customDictionarySource"),
+  customDictionaryTarget: document.querySelector("#customDictionaryTarget"),
+  customDictionaryCount: document.querySelector("#customDictionaryCount"),
+  customDictionaryEmpty: document.querySelector("#customDictionaryEmpty"),
+  customDictionaryList: document.querySelector("#customDictionaryList"),
+  customDictionaryStatus: document.querySelector("#customDictionaryStatus"),
+  customDictionaryClear: document.querySelector("#customDictionaryClear"),
   fileDrop: document.querySelector("#fileDrop"),
   fileInput: document.querySelector("#fileInput"),
   fileImportStatus: document.querySelector("#fileImportStatus"),
@@ -1122,6 +1242,8 @@ let conversionToken = 0;
 let convertTimer;
 let currentStatusKey = "statusIdle";
 let currentStatusType = "idle";
+let customDictionaryEntries = loadCustomDictionaryEntries();
+let currentCustomDictionaryStatus = { key: "", values: {} };
 
 applyLocale(activeLocale);
 setConfig(activeConfig);
@@ -1158,6 +1280,25 @@ elements.autoConvert.addEventListener("change", () => {
   if (elements.autoConvert.checked) {
     scheduleConvert(0);
   }
+});
+
+elements.customDictionaryForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  addOrUpdateCustomDictionaryEntry();
+});
+
+elements.customDictionaryClear.addEventListener("click", () => {
+  if (!customDictionaryEntries.length || !window.confirm(t("customDictionaryClearConfirm"))) return;
+  customDictionaryEntries = [];
+  commitCustomDictionaryChange("customDictionaryCleared");
+});
+
+window.addEventListener("storage", (event) => {
+  if (event.key !== CUSTOM_DICTIONARY_STORAGE_KEY) return;
+  customDictionaryEntries = loadCustomDictionaryEntries();
+  currentCustomDictionaryStatus = { key: "", values: {} };
+  renderCustomDictionary();
+  scheduleConvert(0);
 });
 
 elements.fileInput.addEventListener("change", () => {
@@ -1250,6 +1391,7 @@ function applyLocale(locale) {
   });
 
   setStatus(currentStatusKey, currentStatusType);
+  renderCustomDictionary();
 }
 
 function t(key) {
@@ -1268,6 +1410,154 @@ function formatBytes(bytes) {
   if (bytes >= 1024 * 1024) return `${Math.floor(bytes / 1024 / 1024)} MB`;
   if (bytes >= 1024) return `${Math.floor(bytes / 1024)} KB`;
   return `${bytes} B`;
+}
+
+function loadCustomDictionaryEntries() {
+  try {
+    const storedValue = localStorage.getItem(CUSTOM_DICTIONARY_STORAGE_KEY);
+    return normalizeCustomDictionaryEntries(storedValue ? JSON.parse(storedValue) : []);
+  } catch (error) {
+    console.warn(error);
+    return [];
+  }
+}
+
+function saveCustomDictionaryEntries() {
+  try {
+    localStorage.setItem(CUSTOM_DICTIONARY_STORAGE_KEY, JSON.stringify(customDictionaryEntries));
+    return true;
+  } catch (error) {
+    console.warn(error);
+    return false;
+  }
+}
+
+function addOrUpdateCustomDictionaryEntry() {
+  const source = elements.customDictionarySource.value.trim();
+  const target = elements.customDictionaryTarget.value.trim();
+
+  if (!source || !target) {
+    setCustomDictionaryStatus("customDictionaryRequired");
+    (source ? elements.customDictionaryTarget : elements.customDictionarySource).focus();
+    return;
+  }
+
+  if (source.length > MAX_CUSTOM_DICTIONARY_TERM_LENGTH || target.length > MAX_CUSTOM_DICTIONARY_TERM_LENGTH) {
+    setCustomDictionaryStatus("customDictionaryTooLong", { limit: MAX_CUSTOM_DICTIONARY_TERM_LENGTH });
+    return;
+  }
+
+  const existingIndex = customDictionaryEntries.findIndex((entry) => entry.source === source);
+  let statusKey = "customDictionaryAdded";
+
+  if (existingIndex >= 0) {
+    customDictionaryEntries[existingIndex] = {
+      ...customDictionaryEntries[existingIndex],
+      target,
+      enabled: true
+    };
+    statusKey = "customDictionaryUpdated";
+  } else {
+    if (customDictionaryEntries.length >= MAX_CUSTOM_DICTIONARY_ENTRIES) {
+      setCustomDictionaryStatus("customDictionaryLimit", { limit: MAX_CUSTOM_DICTIONARY_ENTRIES });
+      return;
+    }
+
+    customDictionaryEntries.unshift({
+      id: createCustomDictionaryId(),
+      source,
+      target,
+      enabled: true
+    });
+  }
+
+  elements.customDictionarySource.value = "";
+  elements.customDictionaryTarget.value = "";
+  commitCustomDictionaryChange(statusKey);
+  elements.customDictionarySource.focus();
+}
+
+function createCustomDictionaryId() {
+  if (window.crypto?.randomUUID) return window.crypto.randomUUID();
+  return `dictionary-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+}
+
+function commitCustomDictionaryChange(statusKey) {
+  const saved = saveCustomDictionaryEntries();
+  setCustomDictionaryStatus(saved ? statusKey : "customDictionaryStorageError");
+  renderCustomDictionary();
+  if (elements.inputText.value) scheduleConvert(0);
+}
+
+function setCustomDictionaryStatus(key, values = {}) {
+  currentCustomDictionaryStatus = { key, values };
+  elements.customDictionaryStatus.textContent = key ? formatMessage(key, values) : "";
+}
+
+function renderCustomDictionary() {
+  if (!elements.customDictionaryList) return;
+
+  const enabledCount = customDictionaryEntries.filter((entry) => entry.enabled).length;
+  elements.customDictionaryCount.textContent = formatMessage("customDictionaryCount", {
+    enabled: formatNumber(enabledCount),
+    total: formatNumber(customDictionaryEntries.length)
+  });
+  elements.customDictionaryEmpty.hidden = customDictionaryEntries.length > 0;
+  elements.customDictionaryClear.hidden = customDictionaryEntries.length === 0;
+  elements.customDictionaryList.replaceChildren();
+
+  for (const entry of customDictionaryEntries) {
+    const listItem = document.createElement("li");
+
+    const enabledInput = document.createElement("input");
+    enabledInput.type = "checkbox";
+    enabledInput.checked = entry.enabled;
+    enabledInput.setAttribute("aria-label", formatMessage("customDictionaryEntryEnabledLabel", { source: entry.source }));
+    enabledInput.addEventListener("change", () => {
+      entry.enabled = enabledInput.checked;
+      commitCustomDictionaryChange("customDictionaryUpdated");
+    });
+
+    const enabledLabel = document.createElement("label");
+    enabledLabel.className = "custom-dictionary-toggle";
+    enabledLabel.dataset.dictionarySource = entry.source;
+    enabledLabel.title = formatMessage("customDictionaryEntryEnabledLabel", { source: entry.source });
+    enabledLabel.append(enabledInput);
+
+    const pair = document.createElement("div");
+    pair.className = "custom-dictionary-entry-pair";
+
+    const source = document.createElement("span");
+    source.className = "custom-dictionary-term";
+    source.textContent = entry.source;
+
+    const arrow = document.createElement("span");
+    arrow.className = "custom-dictionary-entry-arrow";
+    arrow.setAttribute("aria-hidden", "true");
+    arrow.textContent = "→";
+
+    const target = document.createElement("span");
+    target.className = "custom-dictionary-term";
+    target.textContent = entry.target;
+
+    const removeButton = document.createElement("button");
+    removeButton.className = "custom-dictionary-remove";
+    removeButton.type = "button";
+    removeButton.textContent = "×";
+    removeButton.setAttribute("aria-label", formatMessage("customDictionaryDeleteLabel", { source: entry.source }));
+    removeButton.title = formatMessage("customDictionaryDeleteLabel", { source: entry.source });
+    removeButton.addEventListener("click", () => {
+      customDictionaryEntries = customDictionaryEntries.filter((candidate) => candidate.id !== entry.id);
+      commitCustomDictionaryChange("customDictionaryRemoved");
+    });
+
+    pair.append(source, arrow, target);
+    listItem.append(enabledLabel, pair, removeButton);
+    elements.customDictionaryList.append(listItem);
+  }
+
+  const { key, values } = currentCustomDictionaryStatus;
+  elements.customDictionaryStatus.textContent = key ? formatMessage(key, values) : "";
 }
 
 function getDictionary(locale) {
@@ -1408,9 +1698,10 @@ async function convertText() {
 
   try {
     const converter = await getConverter(activeConfig);
-    const result = await convertWithChunks(converter, input, token);
+    const customConversion = prepareCustomDictionaryConversion(OpenCC, customDictionaryEntries, input);
+    const result = await convertWithChunks(converter, customConversion.text, token);
     if (token !== conversionToken) return;
-    elements.outputText.value = result;
+    elements.outputText.value = await customConversion.restore(result);
     updateCounts();
     setStatus("statusReady", "ready");
   } catch (error) {
