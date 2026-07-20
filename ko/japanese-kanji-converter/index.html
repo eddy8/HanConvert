@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta
       name="description"
-      content="일본어 신자체와 구자체를 온라인으로 변환합니다. Shinjitai to Kyujitai, Kyujitai converter 용도에 맞춘 브라우저 로컬 도구입니다."
+      content="일본 신자체와 구자체를 양방향으로 변환하고 변경 한자를 강조 표시하며 중복 없는 대조표를 제공합니다. 텍스트는 브라우저에서 처리됩니다."
     />
     <title>일본 신자체 구자체 변환 | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/ko/japanese-kanji-converter/" />
@@ -32,7 +32,7 @@
             "@id": "https://jianfan.app/ko/japanese-kanji-converter/#webapp",
             "name": "일본 신자체 구자체 변환",
             "url": "https://jianfan.app/ko/japanese-kanji-converter/",
-            "description": "일본어 신자체와 구자체를 온라인으로 변환합니다. Shinjitai to Kyujitai, Kyujitai converter 용도에 맞춘 브라우저 로컬 도구입니다.",
+            "description": "일본 신자체와 구자체를 양방향으로 변환하고 변경 한자를 강조 표시하며 중복 없는 대조표를 제공합니다. 텍스트는 브라우저에서 처리됩니다.",
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript",
@@ -282,6 +282,55 @@
             </div>
           </section>
         </div>
+
+          <!-- japanese-comparison:start -->
+          <section class="japanese-comparison" id="japaneseComparison" aria-labelledby="japaneseComparisonTitle">
+            <div class="japanese-comparison-head">
+              <div>
+                <p class="section-kicker" data-i18n="japaneseComparisonKicker">글자 모양 변경</p>
+                <h3 id="japaneseComparisonTitle" data-i18n="japaneseComparisonTitle">구자체 강조 표시와 신구자체 대조</h3>
+                <p id="japaneseComparisonSummary" class="japanese-comparison-summary" aria-live="polite"></p>
+              </div>
+              <div class="japanese-comparison-legend">
+                <span aria-hidden="true"></span>
+                <span data-i18n="japaneseComparisonLegend">변환으로 달라진 일본 한자를 강조 표시</span>
+              </div>
+            </div>
+
+            <p class="japanese-comparison-empty" id="japaneseComparisonEmpty" data-i18n="japaneseComparisonEmpty">
+              일본 신자체와 구자체를 변환하면 변경 부분 강조 결과와 중복을 제거한 글자 대조표가 표시됩니다.
+            </p>
+
+            <div class="japanese-comparison-results" id="japaneseComparisonResults" hidden>
+              <div class="japanese-highlight-panel">
+                <p class="japanese-comparison-label" data-i18n="japaneseHighlightTitle">강조 결과</p>
+                <div class="japanese-highlight-preview" id="japaneseHighlightPreview" tabindex="0"></div>
+                <p class="japanese-comparison-note" id="japanesePreviewNote" hidden></p>
+              </div>
+
+              <div class="japanese-table-panel">
+                <p class="japanese-comparison-label" data-i18n="japaneseTableTitle">신자체·구자체 대조표</p>
+                <div class="japanese-table-scroll">
+                  <table
+                    class="japanese-comparison-table"
+                    data-i18n-attr="aria-label:japaneseTableLabel"
+                    aria-label="일본 신자체와 구자체 변환 대조표"
+                  >
+                    <thead>
+                      <tr>
+                        <th id="japaneseSourceHeading" scope="col">신자체</th>
+                        <th id="japaneseTargetHeading" scope="col">구자체</th>
+                        <th scope="col" data-i18n="japaneseCountHeading">등장 횟수</th>
+                      </tr>
+                    </thead>
+                    <tbody id="japaneseComparisonBody"></tbody>
+                  </table>
+                </div>
+                <p class="japanese-comparison-note" id="japanesePairsNote" hidden></p>
+              </div>
+            </div>
+          </section>
+          <!-- japanese-comparison:end -->
       </section>
 
       <section class="feature-band" aria-labelledby="featureTitle">
@@ -303,8 +352,8 @@
           </article>
           <article>
             <span class="feature-index">03</span>
-            <h3 data-i18n="featureFlowTitle">处理流程更顺手</h3>
-            <p data-i18n="featureFlowBody">支持自动转换、方向切换、复制和下载，适合非技术人员连续处理文本。</p>
+            <h3 data-i18n="featureFlowTitle">변경 한자 강조와 대조</h3>
+            <p data-i18n="featureFlowBody">변환된 신자체 또는 구자체를 본문에서 강조하고 등장 횟수와 함께 중복 없는 대조표로 정리합니다.</p>
           </article>
         </div>
       </section>
@@ -324,8 +373,8 @@
             <p data-i18n="seoCoreBody">适合简体转繁体、繁体转简体、简繁体转换和繁体字转换器等高频需求。</p>
           </article>
           <article>
-            <h3 data-i18n="seoRegionTitle">地区版本</h3>
-            <p data-i18n="seoRegionBody">需要台湾繁体、简体转台湾正体、港澳繁体或地区词转换时，可在高级选项中选择对应模式。</p>
+            <h3 data-i18n="seoRegionTitle">신구자체 강조 대조표</h3>
+            <p data-i18n="seoRegionBody">변환 후 달라진 한자를 강조 결과와 신자체·구자체 대조표에서 글자별로 확인할 수 있습니다.</p>
           </article>
           <article>
             <h3 data-i18n="seoUseCaseTitle">文本场景</h3>

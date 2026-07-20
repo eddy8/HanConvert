@@ -778,6 +778,163 @@ textarea::placeholder {
   gap: 10px;
 }
 
+.japanese-comparison {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.japanese-comparison-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+
+.japanese-comparison-head h3 {
+  margin-bottom: 3px;
+  font-size: 1.05rem;
+}
+
+.japanese-comparison-summary,
+.japanese-comparison-empty,
+.japanese-comparison-note {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.japanese-comparison-summary {
+  min-height: 20px;
+  margin: 0;
+}
+
+.japanese-comparison-legend {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.japanese-comparison-legend > span:first-child {
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(255, 204, 102, 0.72);
+  border-radius: 3px;
+  background: rgba(255, 204, 102, 0.2);
+  box-shadow: inset 0 -2px 0 rgba(64, 242, 176, 0.62);
+}
+
+.japanese-comparison-empty {
+  margin: 0;
+  padding: 18px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.025);
+  text-align: center;
+}
+
+.japanese-comparison-results {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(330px, 0.75fr);
+  gap: 10px;
+}
+
+.japanese-highlight-panel,
+.japanese-table-panel {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(4, 12, 10, 0.48);
+  overflow: hidden;
+}
+
+.japanese-comparison-label {
+  min-height: 38px;
+  margin: 0;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.japanese-highlight-preview {
+  min-height: 146px;
+  max-height: 320px;
+  padding: 14px;
+  overflow: auto;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.japanese-highlight-preview:focus-visible {
+  outline: 3px solid rgba(64, 242, 176, 0.78);
+  outline-offset: -3px;
+}
+
+.japanese-highlight-preview mark {
+  padding: 1px 2px;
+  border-radius: 3px;
+  background: rgba(255, 204, 102, 0.2);
+  color: #fff3ce;
+  box-shadow: inset 0 -2px 0 rgba(64, 242, 176, 0.68);
+}
+
+.japanese-table-scroll {
+  max-height: 320px;
+  overflow: auto;
+}
+
+.japanese-comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.japanese-comparison-table th,
+.japanese-comparison-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.japanese-comparison-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #0a1713;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.japanese-comparison-table td:last-child,
+.japanese-comparison-table th:last-child {
+  width: 1%;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.japanese-comparison-glyph {
+  font-size: 1.08rem;
+}
+
+.japanese-comparison-glyph.is-target {
+  color: var(--accent-2);
+  font-weight: 800;
+}
+
+.japanese-comparison-note {
+  margin: 0;
+  padding: 9px 12px;
+  border-top: 1px solid var(--line);
+}
+
 @media (min-width: 1280px) {
   .converter {
     padding: 18px;
@@ -956,6 +1113,7 @@ textarea::placeholder {
   .hero-shell,
   .editor-grid,
   .file-import,
+  .japanese-comparison-results,
   .feature-grid,
   .seo-grid {
     grid-template-columns: 1fr;
@@ -988,6 +1146,7 @@ textarea::placeholder {
 
   .site-header,
   .converter-head,
+  .japanese-comparison-head,
   .top-actions {
     align-items: stretch;
     flex-direction: column;
@@ -1034,6 +1193,10 @@ textarea::placeholder {
 
   .panel-actions .text-button {
     flex: 1 1 130px;
+  }
+
+  .japanese-comparison-legend {
+    align-items: flex-start;
   }
 }
 

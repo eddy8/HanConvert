@@ -6,6 +6,11 @@ import {
   normalizeCustomDictionaryEntries,
   prepareCustomDictionaryConversion
 } from "/custom-dictionary.mjs";
+import {
+  DEFAULT_JAPANESE_PAIR_LIMIT,
+  DEFAULT_JAPANESE_PREVIEW_LIMIT,
+  analyzeCharacterChanges
+} from "/japanese-comparison.mjs";
 
 const CONVERSION_CHUNK_SIZE = 16000;
 const CHUNK_BREAKPOINTS = ["\n", "。", "！", "？", "；", ";", ".", "!", "?"];
@@ -16,7 +21,7 @@ const translations = {
   "zh-CN": {
     pageTitle: "简繁转换 - 简体转繁体 / 繁体转简体在线工具 | JianFan.app",
     pageDescription:
-      "JianFan.app 是一个基于 OpenCC 实现的在线简繁转换工具，支持简体转繁体、繁体转简体、台湾正体、香港繁体和常用地区词转换。",
+      "JianFan.app 是基于 OpenCC 的在线简繁转换工具，支持简体转繁体、繁体转简体、台湾正体、香港繁体、地区用词和自定义词库，文本仅在浏览器本地处理。",
     skip: "跳到主要内容",
     homeLink: "网站首页",
     languageLabel: "界面语言",
@@ -73,6 +78,22 @@ const translations = {
     customDictionaryRemoved: "已删除词条。",
     customDictionaryCleared: "已清空词库。",
     customDictionaryStorageError: "当前浏览器无法保存词库，本次会话仍可使用。",
+    japaneseComparisonKicker: "字形变化",
+    japaneseComparisonTitle: "旧字体高亮与新旧字体对照",
+    japaneseComparisonLegend: "高亮表示转换后发生变化的日文汉字",
+    japaneseComparisonEmpty: "完成日文新字体与旧字体转换后，这里会显示高亮结果和去重后的字体对照表。",
+    japaneseComparisonUnsupported: "请选择“日文新字体 → 旧字体”或“旧字体 → 日文新字体”模式查看字形变化。",
+    japaneseComparisonNoChanges: "没有检测到日文新旧字体变化。",
+    japaneseComparisonSummary: "共高亮 {changes} 处变化，整理出 {pairs} 组字形。",
+    japaneseComparisonAlignmentLimited: "文本存在较大的长度变化，无法可靠生成逐字高亮。",
+    japaneseHighlightTitle: "高亮结果",
+    japaneseTableTitle: "新旧字体对照表",
+    japaneseTableLabel: "日文新字体与旧字体转换对照表",
+    japaneseShinjitaiHeading: "新字体",
+    japaneseKyujitaiHeading: "旧字体",
+    japaneseCountHeading: "出现次数",
+    japanesePreviewTruncated: "高亮预览仅显示前 {limit} 个字符，完整结果仍保留在上方结果框。",
+    japanesePairsTruncated: "对照表仅显示前 {limit} 组字形。",
     fileKicker: "文件转换",
     fileTitle: "上传文件并在浏览器本地提取文本",
     fileBody: "支持 TXT、CSV、DOCX、PDF、Excel 文件。内容只在当前浏览器中读取，不会上传到服务器。",
@@ -125,7 +146,7 @@ const translations = {
   "zh-TW": {
     pageTitle: "簡繁轉換 - 簡體轉繁體 / 繁體轉簡體線上工具 | JianFan.app",
     pageDescription:
-      "JianFan.app 是基於 OpenCC 實現的線上簡繁轉換工具，支援簡體轉繁體、繁體轉簡體、台灣正體、香港繁體與常用地區詞轉換。",
+      "JianFan.app 是基於 OpenCC 的線上簡繁轉換工具，支援簡體轉繁體、繁體轉簡體、台灣正體、香港繁體、地區用詞與自訂詞庫，文字僅在瀏覽器本機處理。",
     skip: "跳到主要內容",
     homeLink: "網站首頁",
     languageLabel: "介面語言",
@@ -182,6 +203,22 @@ const translations = {
     customDictionaryRemoved: "已刪除詞條。",
     customDictionaryCleared: "已清空詞庫。",
     customDictionaryStorageError: "目前瀏覽器無法儲存詞庫，本次工作階段仍可使用。",
+    japaneseComparisonKicker: "字形變化",
+    japaneseComparisonTitle: "舊字體高亮與新舊字體對照",
+    japaneseComparisonLegend: "高亮表示轉換後發生變化的日文漢字",
+    japaneseComparisonEmpty: "完成日文新字體與舊字體轉換後，這裡會顯示高亮結果和去重後的字體對照表。",
+    japaneseComparisonUnsupported: "請選擇「日文新字體 → 舊字體」或「舊字體 → 日文新字體」模式查看字形變化。",
+    japaneseComparisonNoChanges: "沒有偵測到日文新舊字體變化。",
+    japaneseComparisonSummary: "共高亮 {changes} 處變化，整理出 {pairs} 組字形。",
+    japaneseComparisonAlignmentLimited: "文字存在較大的長度變化，無法可靠產生逐字高亮。",
+    japaneseHighlightTitle: "高亮結果",
+    japaneseTableTitle: "新舊字體對照表",
+    japaneseTableLabel: "日文新字體與舊字體轉換對照表",
+    japaneseShinjitaiHeading: "新字體",
+    japaneseKyujitaiHeading: "舊字體",
+    japaneseCountHeading: "出現次數",
+    japanesePreviewTruncated: "高亮預覽僅顯示前 {limit} 個字元，完整結果仍保留在上方結果框。",
+    japanesePairsTruncated: "對照表僅顯示前 {limit} 組字形。",
     fileKicker: "文件轉換",
     fileTitle: "上傳文件並在瀏覽器本地提取文字",
     fileBody: "支援 TXT、CSV、DOCX、PDF、Excel 文件。內容只在目前瀏覽器中讀取，不會上傳到伺服器。",
@@ -234,7 +271,7 @@ const translations = {
   en: {
     pageTitle: "Simplified to Traditional Chinese Converter | JianFan.app",
     pageDescription:
-      "JianFan.app is an online Chinese converter built with OpenCC for Simplified Chinese, Traditional Chinese, Taiwan Traditional, Hong Kong Traditional, and regional wording.",
+      "JianFan.app is an OpenCC-powered Chinese converter for Simplified and Traditional Chinese, Taiwan and Hong Kong variants, regional wording, and custom dictionaries. Text is processed locally in your browser.",
     skip: "Skip to main content",
     homeLink: "Home",
     languageLabel: "Language",
@@ -291,6 +328,22 @@ const translations = {
     customDictionaryRemoved: "Entry deleted.",
     customDictionaryCleared: "Dictionary cleared.",
     customDictionaryStorageError: "This browser cannot save the dictionary. It remains available for this session.",
+    japaneseComparisonKicker: "Glyph changes",
+    japaneseComparisonTitle: "Highlighted Kyujitai changes and comparison",
+    japaneseComparisonLegend: "Highlight marks Japanese kanji changed by the conversion",
+    japaneseComparisonEmpty: "Convert between Shinjitai and Kyujitai to see a highlighted result and a deduplicated glyph comparison table.",
+    japaneseComparisonUnsupported: "Choose Japanese Shinjitai → Kyujitai or Kyujitai → Japanese Shinjitai to inspect glyph changes.",
+    japaneseComparisonNoChanges: "No Shinjitai or Kyujitai changes were detected.",
+    japaneseComparisonSummary: "Highlighted {changes} changed characters across {pairs} unique glyph pairs.",
+    japaneseComparisonAlignmentLimited: "Large length changes prevent reliable character-by-character highlighting.",
+    japaneseHighlightTitle: "Highlighted result",
+    japaneseTableTitle: "Shinjitai and Kyujitai comparison",
+    japaneseTableLabel: "Japanese Shinjitai and Kyujitai conversion comparison",
+    japaneseShinjitaiHeading: "Shinjitai",
+    japaneseKyujitaiHeading: "Kyujitai",
+    japaneseCountHeading: "Occurrences",
+    japanesePreviewTruncated: "The highlight preview shows the first {limit} characters. The complete result remains in the result field above.",
+    japanesePairsTruncated: "The comparison table shows the first {limit} glyph pairs.",
     fileKicker: "File conversion",
     fileTitle: "Upload files and extract text locally in your browser",
     fileBody: "Supports TXT, CSV, DOCX, PDF, and Excel files. Content is read only in this browser and is not uploaded.",
@@ -343,7 +396,7 @@ const translations = {
   ja: {
     pageTitle: "簡体字 繁体字 変換ツール | JianFan.app",
     pageDescription:
-      "JianFan.app は OpenCC を基にした中国語変換ツールです。簡体字、繁体字、台湾繁体字、香港繁体字、地域別表現に対応します。",
+      "JianFan.app は OpenCC ベースの中国語変換ツールです。簡体字・繁体字、台湾・香港字体、地域別表現、カスタム辞書に対応し、テキストはブラウザ内で処理されます。",
     skip: "メインコンテンツへ移動",
     homeLink: "ホーム",
     languageLabel: "表示言語",
@@ -400,6 +453,22 @@ const translations = {
     customDictionaryRemoved: "語句を削除しました。",
     customDictionaryCleared: "辞書を消去しました。",
     customDictionaryStorageError: "このブラウザーでは辞書を保存できません。このセッションでは引き続き利用できます。",
+    japaneseComparisonKicker: "字形の変更",
+    japaneseComparisonTitle: "旧字体のハイライトと新旧字体の比較",
+    japaneseComparisonLegend: "変換された日本語の漢字をハイライト表示",
+    japaneseComparisonEmpty: "新字体と旧字体を変換すると、変更箇所のハイライトと重複を除いた字形比較表が表示されます。",
+    japaneseComparisonUnsupported: "「日本語新字体 → 旧字体」または「旧字体 → 日本語新字体」を選択すると字形の変更を確認できます。",
+    japaneseComparisonNoChanges: "新字体と旧字体の変更は検出されませんでした。",
+    japaneseComparisonSummary: "{changes} 箇所をハイライトし、{pairs} 組の字形を比較します。",
+    japaneseComparisonAlignmentLimited: "文字数が大きく変化したため、文字単位のハイライトを正確に生成できません。",
+    japaneseHighlightTitle: "ハイライト結果",
+    japaneseTableTitle: "新字体・旧字体の比較表",
+    japaneseTableLabel: "日本語の新字体と旧字体の変換比較表",
+    japaneseShinjitaiHeading: "新字体",
+    japaneseKyujitaiHeading: "旧字体",
+    japaneseCountHeading: "出現回数",
+    japanesePreviewTruncated: "ハイライトは先頭 {limit} 文字まで表示します。完全な結果は上の結果欄に保持されています。",
+    japanesePairsTruncated: "比較表は先頭 {limit} 組まで表示します。",
     fileKicker: "ファイル変換",
     fileTitle: "ブラウザー内でファイルからテキストを抽出",
     fileBody: "TXT、CSV、DOCX、PDF、Excel ファイルに対応します。内容はこのブラウザー内でのみ読み取られ、サーバーへ送信されません。",
@@ -452,7 +521,7 @@ const translations = {
   ko: {
     pageTitle: "간체 번체 변환기 | JianFan.app",
     pageDescription:
-      "JianFan.app는 OpenCC 기반 온라인 중국어 변환 도구로 간체, 번체, 대만 번체, 홍콩 번체, 지역 표현 변환을 지원합니다.",
+      "JianFan.app는 OpenCC 기반 온라인 중국어 변환기로 간체·번체, 대만·홍콩 번체, 지역별 표현과 사용자 사전을 지원하며 텍스트를 브라우저에서만 처리합니다.",
     skip: "본문으로 건너뛰기",
     homeLink: "홈",
     languageLabel: "인터페이스 언어",
@@ -509,6 +578,22 @@ const translations = {
     customDictionaryRemoved: "항목을 삭제했습니다.",
     customDictionaryCleared: "사전을 비웠습니다.",
     customDictionaryStorageError: "이 브라우저에는 사전을 저장할 수 없습니다. 현재 세션에서는 계속 사용할 수 있습니다.",
+    japaneseComparisonKicker: "글자 모양 변경",
+    japaneseComparisonTitle: "구자체 강조 표시와 신구자체 대조",
+    japaneseComparisonLegend: "변환으로 달라진 일본 한자를 강조 표시",
+    japaneseComparisonEmpty: "일본 신자체와 구자체를 변환하면 변경 부분 강조 결과와 중복을 제거한 글자 대조표가 표시됩니다.",
+    japaneseComparisonUnsupported: "일본 신자체 → 구자체 또는 구자체 → 일본 신자체 모드를 선택해 글자 변화를 확인하세요.",
+    japaneseComparisonNoChanges: "일본 신자체와 구자체의 변화가 감지되지 않았습니다.",
+    japaneseComparisonSummary: "{changes}곳을 강조하고 {pairs}개 글자 쌍을 정리했습니다.",
+    japaneseComparisonAlignmentLimited: "텍스트 길이가 크게 달라져 글자별 강조 표시를 정확하게 만들 수 없습니다.",
+    japaneseHighlightTitle: "강조 결과",
+    japaneseTableTitle: "신자체·구자체 대조표",
+    japaneseTableLabel: "일본 신자체와 구자체 변환 대조표",
+    japaneseShinjitaiHeading: "신자체",
+    japaneseKyujitaiHeading: "구자체",
+    japaneseCountHeading: "등장 횟수",
+    japanesePreviewTruncated: "강조 미리보기는 처음 {limit}자만 표시합니다. 전체 결과는 위 결과 영역에 유지됩니다.",
+    japanesePairsTruncated: "대조표는 처음 {limit}개 글자 쌍만 표시합니다.",
     fileKicker: "파일 변환",
     fileTitle: "브라우저에서 파일 텍스트 추출",
     fileBody: "TXT, CSV, DOCX, PDF, Excel 파일을 지원합니다. 내용은 이 브라우저 안에서만 읽고 서버로 업로드하지 않습니다.",
@@ -1070,45 +1155,45 @@ const landingPages = {
       "zh-CN": {
         pageTitle: "日文新字体旧字体转换 - 旧汉字/新汉字在线转换 | JianFan.app",
         pageDescription:
-          "在线日文新字体旧字体转换工具，支持日本新字体转旧字体、旧字体转新字体、旧汉字转换和日文汉字表记校对。",
+          "在线日文新字体旧字体转换工具，支持新字体转旧字体、旧字体转新字体、变化字高亮和新旧字体对照表，文本在浏览器本地处理。",
         eyebrow: "日文新旧字体转换",
         title: "日文新字体旧字体转换",
         lede: "输入日文汉字文本，即可在新字体和旧字体之间转换。适合旧汉字转换、书法印刷表记、历史资料整理和人名地名校对辅助。",
         featureTitle: "面向日文汉字表记转换",
         featureRegionTitle: "新字体与旧字体",
         featureRegionBody: "默认使用“日文新字体 → 旧字体”，也可在高级选项中切换为“旧字体 → 日文新字体”。",
-        featureFlowTitle: "复制后继续校对",
-        featureFlowBody: "转换结果可直接复制或下载，适合作为正式排版、文献整理和资料录入前的初稿。",
+        featureFlowTitle: "变化字高亮与对照",
+        featureFlowBody: "转换后自动高亮发生变化的旧汉字或新字体，并按出现次数生成去重对照表。",
         seoKicker: "日文新旧字体关键词",
         seoTitle: "承接旧字体 新字体 変換、旧漢字変換和 Kyujitai 转换需求",
         seoIntro:
           "这个页面面向日文新字体旧字体转换、旧汉字转换、旧字体新字体转换、Shinjitai to Kyujitai、Kyujitai converter 等搜索需求。转换在浏览器端执行，能力基于 OpenCC 实现。",
         seoCoreTitle: "新字体转旧字体",
         seoCoreBody: "适合把现代日文常见新字体转换为旧字体，用于旧汉字表记草稿、书法印刷和历史风格文本。",
-        seoRegionTitle: "旧字体转新字体",
-        seoRegionBody: "需要把旧字体文本整理为现代新字体时，可在转换模式中选择“旧字体 → 日文新字体”。",
+        seoRegionTitle: "旧字体高亮和对照表",
+        seoRegionBody: "转换完成后可查看变化字高亮与新旧字体对照表，适合逐字校对旧汉字和现代字形。",
         seoUseCaseTitle: "正式文本需复核",
         seoUseCaseBody: "姓名、户籍、登记录入、古文书引用等场景存在异体字和上下文差异，转换后仍应依据原件或权威资料人工确认。",
         sampleText: "日本語の新字体と旧字体を変換します。国、学、会、広、読、気、体、戦などの漢字表記を確認できます。"
       },
       "zh-TW": {
         pageTitle: "日文新字體舊字體轉換 - 舊漢字/新漢字線上轉換 | JianFan.app",
-        pageDescription: "線上日文新字體舊字體轉換工具，支援日本新字體轉舊字體、舊字體轉新字體和日文漢字表記校對。",
+        pageDescription: "線上日文新字體舊字體轉換工具，支援新字體轉舊字體、舊字體轉新字體、變化字高亮與新舊字體對照表，文字在瀏覽器本機處理。",
         eyebrow: "日文新舊字體轉換",
         title: "日文新字體舊字體轉換",
         lede: "輸入日文漢字文字，即可在新字體和舊字體之間轉換，適合舊漢字表記、歷史資料整理和人名地名校對輔助。",
         featureTitle: "面向日文漢字表記轉換",
         featureRegionTitle: "新字體與舊字體",
         featureRegionBody: "預設使用「日文新字體 → 舊字體」，也可在進階選項中切換為「舊字體 → 日文新字體」。",
-        featureFlowTitle: "複製後繼續校對",
-        featureFlowBody: "轉換結果可直接複製或下載，適合作為正式排版、文獻整理和資料輸入前的初稿。",
+        featureFlowTitle: "變化字高亮與對照",
+        featureFlowBody: "轉換後自動高亮發生變化的舊漢字或新字體，並依出現次數產生去重對照表。",
         seoKicker: "日文新舊字體關鍵詞",
         seoTitle: "承接旧字体 新字体 変換、旧漢字変換和 Kyujitai 轉換需求",
         seoIntro: "這個頁面面向日文新字體舊字體轉換、舊漢字轉換、Shinjitai to Kyujitai 和 Kyujitai converter 等搜尋需求。轉換在瀏覽器端執行，能力基於 OpenCC 實現。",
         seoCoreTitle: "新字體轉舊字體",
         seoCoreBody: "適合把現代日文常見新字體轉換為舊字體，用於舊漢字表記草稿、書法印刷和歷史風格文字。",
-        seoRegionTitle: "舊字體轉新字體",
-        seoRegionBody: "需要把舊字體文字整理為現代新字體時，可在轉換模式中選擇「舊字體 → 日文新字體」。",
+        seoRegionTitle: "舊字體高亮和對照表",
+        seoRegionBody: "轉換完成後可查看變化字高亮與新舊字體對照表，適合逐字校對舊漢字和現代字形。",
         seoUseCaseTitle: "正式文字需複核",
         seoUseCaseBody: "姓名、戶籍、登記、古文書引用等場景存在異體字和上下文差異，轉換後仍應依據原件或權威資料人工確認。",
         sampleText: "日本語の新字体と旧字体を変換します。国、学、会、広、読、気、体、戦などの漢字表記を確認できます。"
@@ -1116,23 +1201,23 @@ const landingPages = {
       en: {
         pageTitle: "Japanese Shinjitai Kyujitai Converter | JianFan.app",
         pageDescription:
-          "Convert Japanese Shinjitai to Kyujitai and Kyujitai to Shinjitai online. A browser-local old and new Japanese kanji converter built with OpenCC.",
+          "Convert Japanese Shinjitai and Kyujitai both ways, highlight changed kanji, and review a deduplicated comparison table. Processing stays in your browser.",
         eyebrow: "Japanese kanji conversion",
         title: "Japanese Shinjitai and Kyujitai Converter",
         lede: "Convert Japanese kanji text between modern Shinjitai and old Kyujitai forms for draft review, historical materials, design copy, and name-place checking.",
         featureTitle: "For Japanese old and new kanji forms",
         featureRegionTitle: "Shinjitai and Kyujitai",
         featureRegionBody: "This page opens with Japanese Shinjitai to Kyujitai selected. You can switch to Kyujitai to Shinjitai in the advanced options.",
-        featureFlowTitle: "Copy, download, review",
-        featureFlowBody: "Use the result as a working draft before publication, database cleanup, print design, or document review.",
+        featureFlowTitle: "Highlight and compare changes",
+        featureFlowBody: "Changed Shinjitai or Kyujitai are highlighted automatically and collected in a deduplicated table with occurrence counts.",
         seoKicker: "Japanese kanji search intent",
         seoTitle: "Built for Kyujitai converter, Shinjitai to Kyujitai, and old kanji conversion",
         seoIntro:
           "Use this page for Japanese old kanji conversion, Shinjitai to Kyujitai, Kyujitai to Shinjitai, old Japanese kanji converter, and Japanese character variant checking. Conversion runs locally in the browser and is built with OpenCC.",
         seoCoreTitle: "Shinjitai to Kyujitai",
         seoCoreBody: "Convert common modern Japanese kanji forms into older Kyujitai forms for drafts, typography checks, and historical-style text.",
-        seoRegionTitle: "Kyujitai to Shinjitai",
-        seoRegionBody: "Switch the conversion mode when you need to normalize older forms into modern Japanese kanji.",
+        seoRegionTitle: "Highlighted kanji comparison",
+        seoRegionBody: "Review changed kanji in context and use the Shinjitai–Kyujitai comparison table for character-by-character checking.",
         seoUseCaseTitle: "Review official text",
         seoUseCaseBody: "Names, registers, legal text, historical quotations, and rare variants still need human review against original or authoritative sources.",
         sampleText: "日本語の新字体と旧字体を変換します。国、学、会、広、読、気、体、戦などの漢字表記を確認できます。"
@@ -1140,45 +1225,45 @@ const landingPages = {
       ja: {
         pageTitle: "旧字体 新字体 変換 - 旧漢字変換ツール | JianFan.app",
         pageDescription:
-          "旧字体 新字体 変換、旧漢字変換、新字体から旧字体、旧字体から新字体に対応するオンライン変換ツール。ブラウザー内で処理します。",
+          "旧字体 新字体 変換と旧漢字変換に対応。変更箇所をハイライトし、新旧字体対照表を自動作成。テキストはブラウザー内で処理します。",
         eyebrow: "旧字体 新字体 変換",
         title: "旧字体 新字体 変換ツール",
         lede: "日本語テキストを貼り付けるだけで、新字体から旧字体、旧字体から新字体へ変換できます。旧漢字の表記確認、古い資料の整理、書道・印刷物の下書きに使えます。",
         featureTitle: "旧漢字と新字体の確認に対応",
         featureRegionTitle: "双方向変換",
         featureRegionBody: "初期設定は「日本語新字体 → 旧字体」です。詳細オプションから「旧字体 → 日本語新字体」に切り替えられます。",
-        featureFlowTitle: "すぐにコピーして確認",
-        featureFlowBody: "変換結果はコピーや TXT 保存に対応。公開前の表記確認や資料整理の作業を短くできます。",
+        featureFlowTitle: "変更箇所をハイライト",
+        featureFlowBody: "変換された旧字体・新字体を本文中で強調し、出現回数付きの新旧字体対照表にまとめます。",
         seoKicker: "旧字体 新字体 キーワード",
         seoTitle: "旧字体 新字体 変換、旧漢字変換、新字体 旧字体 変換に対応",
         seoIntro:
           "このページは「旧字体 新字体 変換」「旧漢字 変換」「新字体 旧字体 変換」「旧漢字 新漢字 変換」「Kyujitai converter」などの用途に対応します。変換はブラウザー内で実行され、OpenCC を基にしています。",
         seoCoreTitle: "新字体から旧字体へ",
         seoCoreBody: "現代日本語の新字体を旧字体へ変換し、旧漢字表記の下書きやデザイン確認に使えます。",
-        seoRegionTitle: "旧字体から新字体へ",
-        seoRegionBody: "古い資料や名簿に含まれる旧字体を、現代の新字体へ整理したい場合にも利用できます。",
+        seoRegionTitle: "新旧字体対照表",
+        seoRegionBody: "変換後の変更箇所をハイライト表示し、新字体と旧字体の対応を重複なしの比較表で一文字ずつ確認できます。",
         seoUseCaseTitle: "正式表記は確認が必要",
         seoUseCaseBody: "戸籍、登記、氏名、地名、古文書引用などは異体字や文脈差があるため、変換後も原本や公式資料で確認してください。",
         sampleText: "日本語の新字体と旧字体を変換します。国、学、会、広、読、気、体、戦などの漢字表記を確認できます。"
       },
       ko: {
         pageTitle: "일본 신자체 구자체 변환 | JianFan.app",
-        pageDescription: "일본어 신자체와 구자체를 온라인으로 변환합니다. Shinjitai to Kyujitai, Kyujitai converter 용도에 맞춘 브라우저 로컬 도구입니다.",
+        pageDescription: "일본 신자체와 구자체를 양방향으로 변환하고 변경 한자를 강조 표시하며 중복 없는 대조표를 제공합니다. 텍스트는 브라우저에서 처리됩니다.",
         eyebrow: "일본 한자 신구자체 변환",
         title: "일본 신자체 구자체 변환",
         lede: "일본어 한자 텍스트를 신자체와 구자체 사이에서 변환합니다. 옛 한자 표기 확인, 역사 자료 정리, 인명·지명 검토 보조에 사용할 수 있습니다.",
         featureTitle: "일본어 한자 표기 변환",
         featureRegionTitle: "신자체와 구자체",
         featureRegionBody: "기본값은 일본 신자체에서 구자체로 변환입니다. 고급 옵션에서 구자체에서 신자체로 바꿀 수 있습니다.",
-        featureFlowTitle: "복사 후 검토",
-        featureFlowBody: "결과를 복사하거나 TXT로 저장해 출판, 자료 정리, 데이터 입력 전 초안으로 사용할 수 있습니다.",
+        featureFlowTitle: "변경 한자 강조와 대조",
+        featureFlowBody: "변환된 신자체 또는 구자체를 본문에서 강조하고 등장 횟수와 함께 중복 없는 대조표로 정리합니다.",
         seoKicker: "일본어 한자 변환 검색 의도",
         seoTitle: "Shinjitai to Kyujitai, Kyujitai converter, 일본 구자체 변환",
         seoIntro: "이 페이지는 일본 신자체 구자체 변환, 옛 한자 변환, Shinjitai to Kyujitai, Kyujitai converter 검색 의도에 맞춰 구성했습니다. 변환은 브라우저 안에서 실행되며 OpenCC를 기반으로 합니다.",
         seoCoreTitle: "신자체에서 구자체로",
         seoCoreBody: "현대 일본어 한자 표기를 구자체로 바꾸어 역사풍 텍스트, 디자인 시안, 문서 검토에 활용할 수 있습니다.",
-        seoRegionTitle: "구자체에서 신자체로",
-        seoRegionBody: "오래된 자료의 구자체를 현대 일본어 신자체로 정리해야 할 때 변환 모드를 바꿔 사용할 수 있습니다.",
+        seoRegionTitle: "신구자체 강조 대조표",
+        seoRegionBody: "변환 후 달라진 한자를 강조 결과와 신자체·구자체 대조표에서 글자별로 확인할 수 있습니다.",
         seoUseCaseTitle: "공식 표기는 확인 필요",
         seoUseCaseBody: "이름, 호적, 등기, 지명, 고문서 인용에는 이체자와 문맥 차이가 있으므로 원본이나 공식 자료로 다시 확인하세요.",
         sampleText: "日本語の新字体と旧字体を変換します。国、学、会、広、読、気、体、戦などの漢字表記を確認できます。"
@@ -1222,6 +1307,16 @@ const elements = {
   outputText: document.querySelector("#outputText"),
   inputCount: document.querySelector("#inputCount"),
   outputCount: document.querySelector("#outputCount"),
+  japaneseComparison: document.querySelector("#japaneseComparison"),
+  japaneseComparisonSummary: document.querySelector("#japaneseComparisonSummary"),
+  japaneseComparisonEmpty: document.querySelector("#japaneseComparisonEmpty"),
+  japaneseComparisonResults: document.querySelector("#japaneseComparisonResults"),
+  japaneseHighlightPreview: document.querySelector("#japaneseHighlightPreview"),
+  japanesePreviewNote: document.querySelector("#japanesePreviewNote"),
+  japaneseSourceHeading: document.querySelector("#japaneseSourceHeading"),
+  japaneseTargetHeading: document.querySelector("#japaneseTargetHeading"),
+  japaneseComparisonBody: document.querySelector("#japaneseComparisonBody"),
+  japanesePairsNote: document.querySelector("#japanesePairsNote"),
   convertButton: document.querySelector("#convertButton"),
   copyButton: document.querySelector("#copyButton"),
   downloadButton: document.querySelector("#downloadButton"),
@@ -1244,6 +1339,8 @@ let currentStatusKey = "statusIdle";
 let currentStatusType = "idle";
 let customDictionaryEntries = loadCustomDictionaryEntries();
 let currentCustomDictionaryStatus = { key: "", values: {} };
+let currentJapaneseComparison = null;
+let currentJapaneseRestore = (value) => value;
 
 applyLocale(activeLocale);
 setConfig(activeConfig);
@@ -1326,6 +1423,7 @@ elements.convertButton.addEventListener("click", () => scheduleConvert(0));
 elements.clearButton.addEventListener("click", () => {
   elements.inputText.value = "";
   elements.outputText.value = "";
+  clearJapaneseComparison();
   updateCounts();
   elements.inputText.focus();
 });
@@ -1392,6 +1490,7 @@ function applyLocale(locale) {
 
   setStatus(currentStatusKey, currentStatusType);
   renderCustomDictionary();
+  renderJapaneseComparison(currentJapaneseComparison, currentJapaneseRestore);
 }
 
 function t(key) {
@@ -1662,6 +1761,7 @@ function setConfig(config) {
   const url = new URL(window.location.href);
   url.searchParams.set("config", config);
   window.history.replaceState({}, "", url);
+  clearJapaneseComparison();
 }
 
 function scheduleConvert(delay = 260) {
@@ -1682,6 +1782,7 @@ async function convertText() {
 
   if (!input.trim()) {
     elements.outputText.value = "";
+    clearJapaneseComparison();
     updateCounts();
     setStatus("statusIdle");
     return;
@@ -1689,6 +1790,7 @@ async function convertText() {
 
   if (input.length > MAX_INPUT_CHARACTERS) {
     elements.outputText.value = "";
+    clearJapaneseComparison();
     updateCounts();
     setStatus("statusTextTooLong", "error");
     return;
@@ -1702,11 +1804,103 @@ async function convertText() {
     const result = await convertWithChunks(converter, customConversion.text, token);
     if (token !== conversionToken) return;
     elements.outputText.value = await customConversion.restore(result);
+    if (isJapaneseComparisonMode()) {
+      currentJapaneseComparison = analyzeCharacterChanges(customConversion.text, result);
+      currentJapaneseRestore = customConversion.restore;
+      renderJapaneseComparison(currentJapaneseComparison, currentJapaneseRestore);
+    } else {
+      clearJapaneseComparison();
+    }
     updateCounts();
     setStatus("statusReady", "ready");
   } catch (error) {
     console.error(error);
+    clearJapaneseComparison();
     setStatus("statusError", "error");
+  }
+}
+
+function isJapaneseComparisonMode() {
+  return activePageSlug === "japanese-kanji-converter" && ["jp2t", "t2jp"].includes(activeConfig);
+}
+
+function clearJapaneseComparison() {
+  currentJapaneseComparison = null;
+  currentJapaneseRestore = (value) => value;
+  renderJapaneseComparison();
+}
+
+function renderJapaneseComparison(analysis = null, restore = (value) => value) {
+  if (!elements.japaneseComparison) return;
+
+  const isJapaneseMode = isJapaneseComparisonMode();
+  const isReverse = activeConfig === "t2jp";
+  elements.japaneseSourceHeading.textContent = t(isReverse ? "japaneseKyujitaiHeading" : "japaneseShinjitaiHeading");
+  elements.japaneseTargetHeading.textContent = t(isReverse ? "japaneseShinjitaiHeading" : "japaneseKyujitaiHeading");
+  elements.japaneseComparisonSummary.textContent = "";
+  elements.japaneseHighlightPreview.replaceChildren();
+  elements.japaneseComparisonBody.replaceChildren();
+  elements.japanesePreviewNote.hidden = true;
+  elements.japanesePairsNote.hidden = true;
+
+  if (!isJapaneseMode || !analysis || analysis.totalChanges === 0 || analysis.alignmentLimited) {
+    elements.japaneseComparisonEmpty.textContent = !isJapaneseMode
+      ? t("japaneseComparisonUnsupported")
+      : analysis?.alignmentLimited
+        ? t("japaneseComparisonAlignmentLimited")
+        : analysis
+          ? t("japaneseComparisonNoChanges")
+          : t("japaneseComparisonEmpty");
+    elements.japaneseComparisonEmpty.hidden = false;
+    elements.japaneseComparisonResults.hidden = true;
+    return;
+  }
+
+  elements.japaneseComparisonEmpty.hidden = true;
+  elements.japaneseComparisonResults.hidden = false;
+  elements.japaneseComparisonSummary.textContent = formatMessage("japaneseComparisonSummary", {
+    changes: formatNumber(analysis.totalChanges),
+    pairs: formatNumber(analysis.uniqueChanges)
+  });
+
+  for (const segment of analysis.segments) {
+    const restoredText = restore(segment.text);
+    if (!restoredText) continue;
+    if (segment.changed) {
+      const mark = document.createElement("mark");
+      mark.textContent = restoredText;
+      elements.japaneseHighlightPreview.append(mark);
+    } else {
+      elements.japaneseHighlightPreview.append(document.createTextNode(restoredText));
+    }
+  }
+
+  for (const pair of analysis.pairs) {
+    const row = document.createElement("tr");
+    const source = document.createElement("td");
+    const target = document.createElement("td");
+    const count = document.createElement("td");
+    source.className = "japanese-comparison-glyph";
+    target.className = "japanese-comparison-glyph is-target";
+    source.textContent = pair.source || "–";
+    target.textContent = pair.target || "–";
+    count.textContent = formatNumber(pair.count);
+    row.append(source, target, count);
+    elements.japaneseComparisonBody.append(row);
+  }
+
+  if (analysis.previewTruncated) {
+    elements.japanesePreviewNote.textContent = formatMessage("japanesePreviewTruncated", {
+      limit: formatNumber(DEFAULT_JAPANESE_PREVIEW_LIMIT)
+    });
+    elements.japanesePreviewNote.hidden = false;
+  }
+
+  if (analysis.pairsTruncated) {
+    elements.japanesePairsNote.textContent = formatMessage("japanesePairsTruncated", {
+      limit: formatNumber(DEFAULT_JAPANESE_PAIR_LIMIT)
+    });
+    elements.japanesePairsNote.hidden = false;
   }
 }
 

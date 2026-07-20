@@ -67,7 +67,12 @@ export function prepareCustomDictionaryConversion(OpenCC, entries, input) {
   }
 
   const protect = OpenCC.CustomConverter(protectionPairs);
-  const restore = OpenCC.CustomConverter(restorationPairs);
+  const restorationMap = new Map(restorationPairs);
+  const restore = (value) => {
+    let output = "";
+    for (const character of value) output += restorationMap.get(character) ?? character;
+    return output;
+  };
   return { text: protect(input), restore };
 }
 
@@ -79,4 +84,3 @@ function* createTokenIterator(usedTokens) {
     }
   }
 }
-
