@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta
       name="description"
-      content="旧字体 新字体 変換、旧漢字変換、新字体から旧字体、旧字体から新字体に対応するオンライン変換ツール。ブラウザー内で処理します。"
+      content="旧字体 新字体 変換と旧漢字変換に対応。変更箇所をハイライトし、新旧字体対照表を自動作成。テキストはブラウザー内で処理します。"
     />
     <title>旧字体 新字体 変換 - 旧漢字変換ツール | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/ja/japanese-kanji-converter/" />
@@ -32,7 +32,7 @@
             "@id": "https://jianfan.app/ja/japanese-kanji-converter/#webapp",
             "name": "旧字体 新字体 変換 - 旧漢字変換ツール",
             "url": "https://jianfan.app/ja/japanese-kanji-converter/",
-            "description": "旧字体 新字体 変換、旧漢字変換、新字体から旧字体、旧字体から新字体に対応するオンライン変換ツール。ブラウザー内で処理します。",
+            "description": "旧字体 新字体 変換と旧漢字変換に対応。変更箇所をハイライトし、新旧字体対照表を自動作成。テキストはブラウザー内で処理します。",
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript",
@@ -282,6 +282,55 @@
             </div>
           </section>
         </div>
+
+          <!-- japanese-comparison:start -->
+          <section class="japanese-comparison" id="japaneseComparison" aria-labelledby="japaneseComparisonTitle">
+            <div class="japanese-comparison-head">
+              <div>
+                <p class="section-kicker" data-i18n="japaneseComparisonKicker">字形の変更</p>
+                <h3 id="japaneseComparisonTitle" data-i18n="japaneseComparisonTitle">旧字体のハイライトと新旧字体の比較</h3>
+                <p id="japaneseComparisonSummary" class="japanese-comparison-summary" aria-live="polite"></p>
+              </div>
+              <div class="japanese-comparison-legend">
+                <span aria-hidden="true"></span>
+                <span data-i18n="japaneseComparisonLegend">変換された日本語の漢字をハイライト表示</span>
+              </div>
+            </div>
+
+            <p class="japanese-comparison-empty" id="japaneseComparisonEmpty" data-i18n="japaneseComparisonEmpty">
+              新字体と旧字体を変換すると、変更箇所のハイライトと重複を除いた字形比較表が表示されます。
+            </p>
+
+            <div class="japanese-comparison-results" id="japaneseComparisonResults" hidden>
+              <div class="japanese-highlight-panel">
+                <p class="japanese-comparison-label" data-i18n="japaneseHighlightTitle">ハイライト結果</p>
+                <div class="japanese-highlight-preview" id="japaneseHighlightPreview" tabindex="0"></div>
+                <p class="japanese-comparison-note" id="japanesePreviewNote" hidden></p>
+              </div>
+
+              <div class="japanese-table-panel">
+                <p class="japanese-comparison-label" data-i18n="japaneseTableTitle">新字体・旧字体の比較表</p>
+                <div class="japanese-table-scroll">
+                  <table
+                    class="japanese-comparison-table"
+                    data-i18n-attr="aria-label:japaneseTableLabel"
+                    aria-label="日本語の新字体と旧字体の変換比較表"
+                  >
+                    <thead>
+                      <tr>
+                        <th id="japaneseSourceHeading" scope="col">新字体</th>
+                        <th id="japaneseTargetHeading" scope="col">旧字体</th>
+                        <th scope="col" data-i18n="japaneseCountHeading">出現回数</th>
+                      </tr>
+                    </thead>
+                    <tbody id="japaneseComparisonBody"></tbody>
+                  </table>
+                </div>
+                <p class="japanese-comparison-note" id="japanesePairsNote" hidden></p>
+              </div>
+            </div>
+          </section>
+          <!-- japanese-comparison:end -->
       </section>
 
       <section class="feature-band" aria-labelledby="featureTitle">
@@ -303,8 +352,8 @@
           </article>
           <article>
             <span class="feature-index">03</span>
-            <h3 data-i18n="featureFlowTitle">处理流程更顺手</h3>
-            <p data-i18n="featureFlowBody">支持自动转换、方向切换、复制和下载，适合非技术人员连续处理文本。</p>
+            <h3 data-i18n="featureFlowTitle">変更箇所をハイライト</h3>
+            <p data-i18n="featureFlowBody">変換された旧字体・新字体を本文中で強調し、出現回数付きの新旧字体対照表にまとめます。</p>
           </article>
         </div>
       </section>
@@ -324,8 +373,8 @@
             <p data-i18n="seoCoreBody">适合简体转繁体、繁体转简体、简繁体转换和繁体字转换器等高频需求。</p>
           </article>
           <article>
-            <h3 data-i18n="seoRegionTitle">地区版本</h3>
-            <p data-i18n="seoRegionBody">需要台湾繁体、简体转台湾正体、港澳繁体或地区词转换时，可在高级选项中选择对应模式。</p>
+            <h3 data-i18n="seoRegionTitle">新旧字体対照表</h3>
+            <p data-i18n="seoRegionBody">変換後の変更箇所をハイライト表示し、新字体と旧字体の対応を重複なしの比較表で一文字ずつ確認できます。</p>
           </article>
           <article>
             <h3 data-i18n="seoUseCaseTitle">文本场景</h3>

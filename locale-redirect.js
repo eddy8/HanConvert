@@ -2,11 +2,14 @@
   try {
     const path = window.location.pathname.replace(/\/+$/, "/");
     const hasManualLocale = localStorage.getItem("jianfan-locale-manual") === "1";
-
-    if (hasManualLocale || /^\/(zh-tw|en|ja|ko)(\/|$)/.test(path)) return;
-
     const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
     const normalizedLanguages = languages.filter(Boolean).map((language) => language.toLowerCase().replace("_", "-"));
+
+    if (shouldShowMirrorBanner(normalizedLanguages)) {
+      showMirrorBanner();
+    }
+
+    if (hasManualLocale || /^\/(zh-tw|en|ja|ko)(\/|$)/.test(path)) return;
 
     const localePath = normalizedLanguages.reduce((matchedPath, language) => {
       if (matchedPath) return matchedPath;

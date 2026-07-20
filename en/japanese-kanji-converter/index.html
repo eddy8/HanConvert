@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta
       name="description"
-      content="Convert Japanese Shinjitai to Kyujitai and Kyujitai to Shinjitai online. A browser-local old and new Japanese kanji converter built with OpenCC."
+      content="Convert Japanese Shinjitai and Kyujitai both ways, highlight changed kanji, and review a deduplicated comparison table. Processing stays in your browser."
     />
     <title>Japanese Shinjitai Kyujitai Converter | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/en/japanese-kanji-converter/" />
@@ -32,7 +32,7 @@
             "@id": "https://jianfan.app/en/japanese-kanji-converter/#webapp",
             "name": "Japanese Shinjitai Kyujitai Converter",
             "url": "https://jianfan.app/en/japanese-kanji-converter/",
-            "description": "Convert Japanese Shinjitai to Kyujitai and Kyujitai to Shinjitai online. A browser-local old and new Japanese kanji converter built with OpenCC.",
+            "description": "Convert Japanese Shinjitai and Kyujitai both ways, highlight changed kanji, and review a deduplicated comparison table. Processing stays in your browser.",
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript",
@@ -282,6 +282,55 @@
             </div>
           </section>
         </div>
+
+          <!-- japanese-comparison:start -->
+          <section class="japanese-comparison" id="japaneseComparison" aria-labelledby="japaneseComparisonTitle">
+            <div class="japanese-comparison-head">
+              <div>
+                <p class="section-kicker" data-i18n="japaneseComparisonKicker">Glyph changes</p>
+                <h3 id="japaneseComparisonTitle" data-i18n="japaneseComparisonTitle">Highlighted Kyujitai changes and comparison</h3>
+                <p id="japaneseComparisonSummary" class="japanese-comparison-summary" aria-live="polite"></p>
+              </div>
+              <div class="japanese-comparison-legend">
+                <span aria-hidden="true"></span>
+                <span data-i18n="japaneseComparisonLegend">Highlight marks Japanese kanji changed by the conversion</span>
+              </div>
+            </div>
+
+            <p class="japanese-comparison-empty" id="japaneseComparisonEmpty" data-i18n="japaneseComparisonEmpty">
+              Convert between Shinjitai and Kyujitai to see a highlighted result and a deduplicated glyph comparison table.
+            </p>
+
+            <div class="japanese-comparison-results" id="japaneseComparisonResults" hidden>
+              <div class="japanese-highlight-panel">
+                <p class="japanese-comparison-label" data-i18n="japaneseHighlightTitle">Highlighted result</p>
+                <div class="japanese-highlight-preview" id="japaneseHighlightPreview" tabindex="0"></div>
+                <p class="japanese-comparison-note" id="japanesePreviewNote" hidden></p>
+              </div>
+
+              <div class="japanese-table-panel">
+                <p class="japanese-comparison-label" data-i18n="japaneseTableTitle">Shinjitai and Kyujitai comparison</p>
+                <div class="japanese-table-scroll">
+                  <table
+                    class="japanese-comparison-table"
+                    data-i18n-attr="aria-label:japaneseTableLabel"
+                    aria-label="Japanese Shinjitai and Kyujitai conversion comparison"
+                  >
+                    <thead>
+                      <tr>
+                        <th id="japaneseSourceHeading" scope="col">Shinjitai</th>
+                        <th id="japaneseTargetHeading" scope="col">Kyujitai</th>
+                        <th scope="col" data-i18n="japaneseCountHeading">Occurrences</th>
+                      </tr>
+                    </thead>
+                    <tbody id="japaneseComparisonBody"></tbody>
+                  </table>
+                </div>
+                <p class="japanese-comparison-note" id="japanesePairsNote" hidden></p>
+              </div>
+            </div>
+          </section>
+          <!-- japanese-comparison:end -->
       </section>
 
       <section class="feature-band" aria-labelledby="featureTitle">
@@ -303,8 +352,8 @@
           </article>
           <article>
             <span class="feature-index">03</span>
-            <h3 data-i18n="featureFlowTitle">处理流程更顺手</h3>
-            <p data-i18n="featureFlowBody">支持自动转换、方向切换、复制和下载，适合非技术人员连续处理文本。</p>
+            <h3 data-i18n="featureFlowTitle">Highlight and compare changes</h3>
+            <p data-i18n="featureFlowBody">Changed Shinjitai or Kyujitai are highlighted automatically and collected in a deduplicated table with occurrence counts.</p>
           </article>
         </div>
       </section>
@@ -324,8 +373,8 @@
             <p data-i18n="seoCoreBody">适合简体转繁体、繁体转简体、简繁体转换和繁体字转换器等高频需求。</p>
           </article>
           <article>
-            <h3 data-i18n="seoRegionTitle">地区版本</h3>
-            <p data-i18n="seoRegionBody">需要台湾繁体、简体转台湾正体、港澳繁体或地区词转换时，可在高级选项中选择对应模式。</p>
+            <h3 data-i18n="seoRegionTitle">Highlighted kanji comparison</h3>
+            <p data-i18n="seoRegionBody">Review changed kanji in context and use the Shinjitai–Kyujitai comparison table for character-by-character checking.</p>
           </article>
           <article>
             <h3 data-i18n="seoUseCaseTitle">文本场景</h3>
