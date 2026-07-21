@@ -29,6 +29,7 @@ const uniqueSitemapUrls = new Set(sitemapUrls);
 if (uniqueSitemapUrls.size !== sitemapUrls.length) throw new Error("sitemap.xml contains duplicate URLs");
 
 let converterPages = 0;
+let standaloneToolPages = 0;
 const canonicalUrls = new Set();
 
 for (const htmlPath of await findHtmlFiles(projectRoot)) {
@@ -40,9 +41,15 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (canonicalUrls.has(canonical)) throw new Error(`${relativePath}: duplicate canonical ${canonical}`);
   canonicalUrls.add(canonical);
   if (!uniqueSitemapUrls.has(canonical)) throw new Error(`${relativePath}: canonical is missing from sitemap.xml`);
+  if (/(?:src|href)="\/[^"]+\?(?:v|version)=/i.test(html)) {
+    throw new Error(`${relativePath}: static asset URL contains a version query`);
+  }
 
-  if (!html.includes('id="converterTitle"')) continue;
-  converterPages += 1;
+  const isConverterPage = html.includes('id="converterTitle"');
+  const isStandaloneToolPage = html.includes('data-tool-page=');
+  if (!isConverterPage && !isStandaloneToolPage) continue;
+  if (isConverterPage) converterPages += 1;
+  if (isStandaloneToolPage) standaloneToolPages += 1;
 
   const alternates = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)" \/>/g)];
   if (alternates.length !== 6) throw new Error(`${relativePath}: expected 6 hreflang links`);
@@ -61,12 +68,19 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (!webApplication || webApplication.url !== canonical) {
     throw new Error(`${relativePath}: invalid WebApplication schema`);
   }
-  if (!html.includes('data-route="simplified-to-traditional"') || !html.includes('data-route="traditional-to-simplified"')) {
+  if (isConverterPage && (!html.includes('data-route="simplified-to-traditional"') || !html.includes('data-route="traditional-to-simplified"'))) {
     throw new Error(`${relativePath}: missing direction-page links`);
+  }
+  if (isConverterPage && (!html.includes('data-route="japanese-chinese-kanji-converter"') || !html.includes('data-route="japanese-characters"'))) {
+    throw new Error(`${relativePath}: missing Japanese tool links`);
+  }
+  if (isStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/"))) {
+    throw new Error(`${relativePath}: missing related Japanese tool links`);
   }
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
-if (sitemapUrls.length !== 40) throw new Error(`expected 40 sitemap URLs, found ${sitemapUrls.length}`);
+if (standaloneToolPages !== 10) throw new Error(`expected 10 standalone tool pages, found ${standaloneToolPages}`);
+if (sitemapUrls.length !== 50) throw new Error(`expected 50 sitemap URLs, found ${sitemapUrls.length}`);
 
-console.log(`Validated ${converterPages} converter pages and ${sitemapUrls.length} sitemap URLs.`);
+console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, and ${sitemapUrls.length} sitemap URLs.`);

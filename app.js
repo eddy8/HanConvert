@@ -139,6 +139,8 @@ const translations = {
     linkHongKong: "香港繁体转换",
     linkFiles: "文件文本简繁转换",
     linkJapanese: "日文新旧字体转换",
+    linkJapaneseChinese: "日中汉字三体转换",
+    linkJapaneseCharacters: "日文字符复制",
     footerText: "JianFan.app 是一个浏览器本地运行的中文简繁转换工具。",
     privacyLink: "隐私声明",
     sampleText: "在线工具可以帮助用户快速转换简体中文和繁体中文，适合处理软件说明、网页内容和社交媒体文案。"
@@ -264,6 +266,8 @@ const translations = {
     linkHongKong: "香港繁體轉換",
     linkFiles: "文件文字簡繁轉換",
     linkJapanese: "日文新舊字體轉換",
+    linkJapaneseChinese: "日中漢字三體轉換",
+    linkJapaneseCharacters: "日文字元複製",
     footerText: "JianFan.app 是一個瀏覽器本地運行的中文簡繁轉換工具。",
     privacyLink: "隱私聲明",
     sampleText: "線上工具可以幫助使用者快速轉換簡體中文和繁體中文，適合處理軟體說明、網頁內容和社群文案。"
@@ -389,6 +393,8 @@ const translations = {
     linkHongKong: "Hong Kong Traditional converter",
     linkFiles: "Document text converter",
     linkJapanese: "Japanese kanji converter",
+    linkJapaneseChinese: "Japanese and Chinese Kanji",
+    linkJapaneseCharacters: "Japanese character copy",
     footerText: "JianFan.app is a browser-local Chinese Simplified and Traditional conversion tool.",
     privacyLink: "Privacy Statement",
     sampleText: "Online tools help users convert Simplified and Traditional Chinese quickly for software guides, web pages, and social media copy."
@@ -514,6 +520,8 @@ const translations = {
     linkHongKong: "香港 繁体字 変換",
     linkFiles: "文書テキスト変換",
     linkJapanese: "旧字体 新字体 変換",
+    linkJapaneseChinese: "日本語漢字・簡体字・繁体字変換",
+    linkJapaneseCharacters: "日本語文字コピー",
     footerText: "JianFan.app はブラウザー内で動作する中国語簡繁変換ツールです。",
     privacyLink: "プライバシー声明",
     sampleText: "オンラインツールは、ソフトウェア説明、Web コンテンツ、SNS 投稿用の簡体字と繁体字の変換に役立ちます。"
@@ -639,6 +647,8 @@ const translations = {
     linkHongKong: "홍콩 번체 변환",
     linkFiles: "문서 텍스트 변환",
     linkJapanese: "일본 신자체 구자체 변환",
+    linkJapaneseChinese: "일본·중국 한자 변환",
+    linkJapaneseCharacters: "일본어 문자 복사",
     footerText: "JianFan.app는 브라우저에서 로컬로 실행되는 중국어 간체·번체 변환 도구입니다.",
     privacyLink: "개인정보 보호 안내",
     sampleText: "온라인 도구는 소프트웨어 설명, 웹 콘텐츠, 소셜 미디어 문구에 쓰이는 간체와 번체 변환을 빠르게 도와줍니다."

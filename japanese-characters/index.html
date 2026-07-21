@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="在线查找并复制平假名、片假名、半角片假名、小写假名、浊音和常用日文符号，支持分类筛选、搜索与整组复制。" />
+    <title>日文字符复制 - 平假名、片假名与日文符号 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/japanese-characters/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/japanese-characters/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-characters/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-characters/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-characters/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-characters/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-characters/" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/japanese-tools.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/japanese-characters/#webapp",
+            "name": "日文字符复制 - 平假名、片假名与日文符号",
+            "url": "https://jianfan.app/japanese-characters/",
+            "description": "在线查找并复制平假名、片假名、半角片假名、小写假名、浊音和常用日文符号，支持分类筛选、搜索与整组复制。",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "zh-CN",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/japanese-characters/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "网站首页",
+                "item": "https://jianfan.app/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "日文字符查找与复制",
+                "item": "https://jianfan.app/japanese-characters/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="character-copy" data-page-slug="japanese-characters" data-locale="zh-CN">
+    <a class="skip-nav" href="#main">跳到主要内容</a>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" id="homeBrand" href="/">
+        <span class="brand-mark" aria-hidden="true">漢</span>
+        <span>JianFan.app</span>
+      </a>
+      <nav class="top-actions" aria-label="Primary">
+        <a class="nav-link" href="/">网站首页</a>
+        <label class="language-picker">
+          <span>界面语言</span>
+          <select id="localeSelect" aria-label="界面语言">
+              <option value="zh-CN" selected>简体中文</option>
+              <option value="zh-TW">繁體中文</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ko">한국어</option>
+          </select>
+        </label>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="tool-hero" aria-labelledby="pageTitle">
+        <div>
+          <p class="section-kicker">平假名 · 片假名 · 日文符号</p>
+          <h1 id="pageTitle">日文字符查找与复制</h1>
+          <p class="lede">按分类浏览完整日文字符，点击单字即可复制，也可以搜索罗马音或一次复制当前分类。</p>
+        </div>
+        <div class="tool-hero-glyphs" aria-hidden="true"><span>あ</span><span>ア</span><span>㋿</span></div>
+      </section>
+      <section class="standalone-tool character-copy-tool" aria-labelledby="characterToolTitle">
+        <div class="standalone-tool-head">
+          <div><p class="section-kicker">FIND / COPY</p><h2 id="characterToolTitle">搜索日文字符</h2></div>
+          <div class="status-pill" id="toolStatus" role="status" aria-live="polite"><span class="status-dot"></span><span></span></div>
+        </div>
+        <div class="character-search-row">
+          <label><span>搜索日文字符</span><input id="characterSearch" type="search" autocomplete="off" placeholder="输入字符或罗马音，例如：あ、ka、shi" /></label>
+          <button class="text-button" id="copyVisibleCharacters" type="button">复制当前结果</button>
+        </div>
+        <div class="character-category-tabs" role="tablist" aria-label="搜索日文字符">
+          <button type="button" role="tab" data-category-filter="all" aria-selected="true" class="is-active">全部</button>
+          <button type="button" role="tab" data-category-filter="hiragana" aria-selected="false">平假名</button>
+          <button type="button" role="tab" data-category-filter="katakana" aria-selected="false">片假名</button>
+          <button type="button" role="tab" data-category-filter="halfwidth" aria-selected="false">半角片假名</button>
+          <button type="button" role="tab" data-category-filter="symbols" aria-selected="false">日文符号</button>
+        </div>
+        <div class="character-results-meta"><span id="characterResultCount" data-template="显示 {count} 个字符"></span></div>
+        <section class="recent-characters" aria-labelledby="recentCharactersTitle">
+          <h3 id="recentCharactersTitle">最近复制</h3>
+          <p id="recentCharactersEmpty">本次访问还没有复制字符</p>
+          <div id="recentCharacterList"></div>
+        </section>
+        <div class="japanese-character-grid" id="japaneseCharacterGrid">
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぁ" data-reading="xa" aria-label="复制 ぁ xa"><span>ぁ</span><small>xa</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="あ" data-reading="a" aria-label="复制 あ a"><span>あ</span><small>a</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぃ" data-reading="xi" aria-label="复制 ぃ xi"><span>ぃ</span><small>xi</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="い" data-reading="i" aria-label="复制 い i"><span>い</span><small>i</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぅ" data-reading="xu" aria-label="复制 ぅ xu"><span>ぅ</span><small>xu</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="う" data-reading="u" aria-label="复制 う u"><span>う</span><small>u</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぇ" data-reading="xe" aria-label="复制 ぇ xe"><span>ぇ</span><small>xe</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="え" data-reading="e" aria-label="复制 え e"><span>え</span><small>e</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぉ" data-reading="xo" aria-label="复制 ぉ xo"><span>ぉ</span><small>xo</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="お" data-reading="o" aria-label="复制 お o"><span>お</span><small>o</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="か" data-reading="ka" aria-label="复制 か ka"><span>か</span><small>ka</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="が" data-reading="ga" aria-label="复制 が ga"><span>が</span><small>ga</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="き" data-reading="ki" aria-label="复制 き ki"><span>き</span><small>ki</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぎ" data-reading="gi" aria-label="复制 ぎ gi"><span>ぎ</span><small>gi</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="く" data-reading="ku" aria-label="复制 く ku"><span>く</span><small>ku</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぐ" data-reading="gu" aria-label="复制 ぐ gu"><span>ぐ</span><small>gu</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="け" data-reading="ke" aria-label="复制 け ke"><span>け</span><small>ke</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="げ" data-reading="ge" aria-label="复制 げ ge"><span>げ</span><small>ge</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="こ" data-reading="ko" aria-label="复制 こ ko"><span>こ</span><small>ko</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ご" data-reading="go" aria-label="复制 ご go"><span>ご</span><small>go</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="さ" data-reading="sa" aria-label="复制 さ sa"><span>さ</span><small>sa</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ざ" data-reading="za" aria-label="复制 ざ za"><span>ざ</span><small>za</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="し" data-reading="shi" aria-label="复制 し shi"><span>し</span><small>shi</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="じ" data-reading="ji" aria-label="复制 じ ji"><span>じ</span><small>ji</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="す" data-reading="su" aria-label="复制 す su"><span>す</span><small>su</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ず" data-reading="zu" aria-label="复制 ず zu"><span>ず</span><small>zu</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="せ" data-reading="se" aria-label="复制 せ se"><span>せ</span><small>se</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぜ" data-reading="ze" aria-label="复制 ぜ ze"><span>ぜ</span><small>ze</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="そ" data-reading="so" aria-label="复制 そ so"><span>そ</span><small>so</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぞ" data-reading="zo" aria-label="复制 ぞ zo"><span>ぞ</span><small>zo</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="た" data-reading="ta" aria-label="复制 た ta"><span>た</span><small>ta</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="だ" data-reading="da" aria-label="复制 だ da"><span>だ</span><small>da</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ち" data-reading="chi" aria-label="复制 ち chi"><span>ち</span><small>chi</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぢ" data-reading="ji" aria-label="复制 ぢ ji"><span>ぢ</span><small>ji</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="っ" data-reading="xtsu" aria-label="复制 っ xtsu"><span>っ</span><small>xtsu</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="つ" data-reading="tsu" aria-label="复制 つ tsu"><span>つ</span><small>tsu</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="づ" data-reading="zu" aria-label="复制 づ zu"><span>づ</span><small>zu</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="て" data-reading="te" aria-label="复制 て te"><span>て</span><small>te</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="で" data-reading="de" aria-label="复制 で de"><span>で</span><small>de</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="と" data-reading="to" aria-label="复制 と to"><span>と</span><small>to</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ど" data-reading="do" aria-label="复制 ど do"><span>ど</span><small>do</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="な" data-reading="na" aria-label="复制 な na"><span>な</span><small>na</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="に" data-reading="ni" aria-label="复制 に ni"><span>に</span><small>ni</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぬ" data-reading="nu" aria-label="复制 ぬ nu"><span>ぬ</span><small>nu</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ね" data-reading="ne" aria-label="复制 ね ne"><span>ね</span><small>ne</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="の" data-reading="no" aria-label="复制 の no"><span>の</span><small>no</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="は" data-reading="ha" aria-label="复制 は ha"><span>は</span><small>ha</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ば" data-reading="ba" aria-label="复制 ば ba"><span>ば</span><small>ba</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぱ" data-reading="pa" aria-label="复制 ぱ pa"><span>ぱ</span><small>pa</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ひ" data-reading="hi" aria-label="复制 ひ hi"><span>ひ</span><small>hi</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="び" data-reading="bi" aria-label="复制 び bi"><span>び</span><small>bi</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぴ" data-reading="pi" aria-label="复制 ぴ pi"><span>ぴ</span><small>pi</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ふ" data-reading="fu" aria-label="复制 ふ fu"><span>ふ</span><small>fu</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぶ" data-reading="bu" aria-label="复制 ぶ bu"><span>ぶ</span><small>bu</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぷ" data-reading="pu" aria-label="复制 ぷ pu"><span>ぷ</span><small>pu</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="へ" data-reading="he" aria-label="复制 へ he"><span>へ</span><small>he</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="べ" data-reading="be" aria-label="复制 べ be"><span>べ</span><small>be</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぺ" data-reading="pe" aria-label="复制 ぺ pe"><span>ぺ</span><small>pe</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ほ" data-reading="ho" aria-label="复制 ほ ho"><span>ほ</span><small>ho</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぼ" data-reading="bo" aria-label="复制 ぼ bo"><span>ぼ</span><small>bo</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ぽ" data-reading="po" aria-label="复制 ぽ po"><span>ぽ</span><small>po</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ま" data-reading="ma" aria-label="复制 ま ma"><span>ま</span><small>ma</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="み" data-reading="mi" aria-label="复制 み mi"><span>み</span><small>mi</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="む" data-reading="mu" aria-label="复制 む mu"><span>む</span><small>mu</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="め" data-reading="me" aria-label="复制 め me"><span>め</span><small>me</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="も" data-reading="mo" aria-label="复制 も mo"><span>も</span><small>mo</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ゃ" data-reading="xya" aria-label="复制 ゃ xya"><span>ゃ</span><small>xya</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="や" data-reading="ya" aria-label="复制 や ya"><span>や</span><small>ya</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ゅ" data-reading="xyu" aria-label="复制 ゅ xyu"><span>ゅ</span><small>xyu</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ゆ" data-reading="yu" aria-label="复制 ゆ yu"><span>ゆ</span><small>yu</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ょ" data-reading="xyo" aria-label="复制 ょ xyo"><span>ょ</span><small>xyo</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="よ" data-reading="yo" aria-label="复制 よ yo"><span>よ</span><small>yo</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ら" data-reading="ra" aria-label="复制 ら ra"><span>ら</span><small>ra</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="り" data-reading="ri" aria-label="复制 り ri"><span>り</span><small>ri</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="る" data-reading="ru" aria-label="复制 る ru"><span>る</span><small>ru</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="れ" data-reading="re" aria-label="复制 れ re"><span>れ</span><small>re</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ろ" data-reading="ro" aria-label="复制 ろ ro"><span>ろ</span><small>ro</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ゎ" data-reading="xwa" aria-label="复制 ゎ xwa"><span>ゎ</span><small>xwa</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="わ" data-reading="wa" aria-label="复制 わ wa"><span>わ</span><small>wa</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ゐ" data-reading="wi" aria-label="复制 ゐ wi"><span>ゐ</span><small>wi</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ゑ" data-reading="we" aria-label="复制 ゑ we"><span>ゑ</span><small>we</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="を" data-reading="wo" aria-label="复制 を wo"><span>を</span><small>wo</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ん" data-reading="n" aria-label="复制 ん n"><span>ん</span><small>n</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ゔ" data-reading="vu" aria-label="复制 ゔ vu"><span>ゔ</span><small>vu</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ゕ" data-reading="xka" aria-label="复制 ゕ xka"><span>ゕ</span><small>xka</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ゖ" data-reading="xke" aria-label="复制 ゖ xke"><span>ゖ</span><small>xke</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ゝ" data-reading="iteration" aria-label="复制 ゝ iteration"><span>ゝ</span><small>iteration</small></button>
+            <button class="japanese-character-button" type="button" data-category="hiragana" data-character="ゞ" data-reading="voiced-iteration" aria-label="复制 ゞ voiced-iteration"><span>ゞ</span><small>voiced-iteration</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ァ" data-reading="xa" aria-label="复制 ァ xa"><span>ァ</span><small>xa</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ア" data-reading="a" aria-label="复制 ア a"><span>ア</span><small>a</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ィ" data-reading="xi" aria-label="复制 ィ xi"><span>ィ</span><small>xi</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="イ" data-reading="i" aria-label="复制 イ i"><span>イ</span><small>i</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ゥ" data-reading="xu" aria-label="复制 ゥ xu"><span>ゥ</span><small>xu</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ウ" data-reading="u" aria-label="复制 ウ u"><span>ウ</span><small>u</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ェ" data-reading="xe" aria-label="复制 ェ xe"><span>ェ</span><small>xe</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="エ" data-reading="e" aria-label="复制 エ e"><span>エ</span><small>e</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ォ" data-reading="xo" aria-label="复制 ォ xo"><span>ォ</span><small>xo</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="オ" data-reading="o" aria-label="复制 オ o"><span>オ</span><small>o</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="カ" data-reading="ka" aria-label="复制 カ ka"><span>カ</span><small>ka</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ガ" data-reading="ga" aria-label="复制 ガ ga"><span>ガ</span><small>ga</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="キ" data-reading="ki" aria-label="复制 キ ki"><span>キ</span><small>ki</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ギ" data-reading="gi" aria-label="复制 ギ gi"><span>ギ</span><small>gi</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ク" data-reading="ku" aria-label="复制 ク ku"><span>ク</span><small>ku</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="グ" data-reading="gu" aria-label="复制 グ gu"><span>グ</span><small>gu</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ケ" data-reading="ke" aria-label="复制 ケ ke"><span>ケ</span><small>ke</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ゲ" data-reading="ge" aria-label="复制 ゲ ge"><span>ゲ</span><small>ge</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="コ" data-reading="ko" aria-label="复制 コ ko"><span>コ</span><small>ko</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ゴ" data-reading="go" aria-label="复制 ゴ go"><span>ゴ</span><small>go</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="サ" data-reading="sa" aria-label="复制 サ sa"><span>サ</span><small>sa</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ザ" data-reading="za" aria-label="复制 ザ za"><span>ザ</span><small>za</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="シ" data-reading="shi" aria-label="复制 シ shi"><span>シ</span><small>shi</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ジ" data-reading="ji" aria-label="复制 ジ ji"><span>ジ</span><small>ji</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ス" data-reading="su" aria-label="复制 ス su"><span>ス</span><small>su</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ズ" data-reading="zu" aria-label="复制 ズ zu"><span>ズ</span><small>zu</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="セ" data-reading="se" aria-label="复制 セ se"><span>セ</span><small>se</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ゼ" data-reading="ze" aria-label="复制 ゼ ze"><span>ゼ</span><small>ze</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ソ" data-reading="so" aria-label="复制 ソ so"><span>ソ</span><small>so</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ゾ" data-reading="zo" aria-label="复制 ゾ zo"><span>ゾ</span><small>zo</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="タ" data-reading="ta" aria-label="复制 タ ta"><span>タ</span><small>ta</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ダ" data-reading="da" aria-label="复制 ダ da"><span>ダ</span><small>da</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="チ" data-reading="chi" aria-label="复制 チ chi"><span>チ</span><small>chi</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ヂ" data-reading="ji" aria-label="复制 ヂ ji"><span>ヂ</span><small>ji</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ッ" data-reading="xtsu" aria-label="复制 ッ xtsu"><span>ッ</span><small>xtsu</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ツ" data-reading="tsu" aria-label="复制 ツ tsu"><span>ツ</span><small>tsu</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ヅ" data-reading="zu" aria-label="复制 ヅ zu"><span>ヅ</span><small>zu</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="テ" data-reading="te" aria-label="复制 テ te"><span>テ</span><small>te</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="デ" data-reading="de" aria-label="复制 デ de"><span>デ</span><small>de</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ト" data-reading="to" aria-label="复制 ト to"><span>ト</span><small>to</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ド" data-reading="do" aria-label="复制 ド do"><span>ド</span><small>do</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ナ" data-reading="na" aria-label="复制 ナ na"><span>ナ</span><small>na</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ニ" data-reading="ni" aria-label="复制 ニ ni"><span>ニ</span><small>ni</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ヌ" data-reading="nu" aria-label="复制 ヌ nu"><span>ヌ</span><small>nu</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ネ" data-reading="ne" aria-label="复制 ネ ne"><span>ネ</span><small>ne</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ノ" data-reading="no" aria-label="复制 ノ no"><span>ノ</span><small>no</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ハ" data-reading="ha" aria-label="复制 ハ ha"><span>ハ</span><small>ha</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="バ" data-reading="ba" aria-label="复制 バ ba"><span>バ</span><small>ba</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="パ" data-reading="pa" aria-label="复制 パ pa"><span>パ</span><small>pa</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ヒ" data-reading="hi" aria-label="复制 ヒ hi"><span>ヒ</span><small>hi</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ビ" data-reading="bi" aria-label="复制 ビ bi"><span>ビ</span><small>bi</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ピ" data-reading="pi" aria-label="复制 ピ pi"><span>ピ</span><small>pi</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="フ" data-reading="fu" aria-label="复制 フ fu"><span>フ</span><small>fu</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ブ" data-reading="bu" aria-label="复制 ブ bu"><span>ブ</span><small>bu</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="プ" data-reading="pu" aria-label="复制 プ pu"><span>プ</span><small>pu</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ヘ" data-reading="he" aria-label="复制 ヘ he"><span>ヘ</span><small>he</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ベ" data-reading="be" aria-label="复制 ベ be"><span>ベ</span><small>be</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ペ" data-reading="pe" aria-label="复制 ペ pe"><span>ペ</span><small>pe</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ホ" data-reading="ho" aria-label="复制 ホ ho"><span>ホ</span><small>ho</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ボ" data-reading="bo" aria-label="复制 ボ bo"><span>ボ</span><small>bo</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ポ" data-reading="po" aria-label="复制 ポ po"><span>ポ</span><small>po</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="マ" data-reading="ma" aria-label="复制 マ ma"><span>マ</span><small>ma</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ミ" data-reading="mi" aria-label="复制 ミ mi"><span>ミ</span><small>mi</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ム" data-reading="mu" aria-label="复制 ム mu"><span>ム</span><small>mu</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="メ" data-reading="me" aria-label="复制 メ me"><span>メ</span><small>me</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="モ" data-reading="mo" aria-label="复制 モ mo"><span>モ</span><small>mo</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ャ" data-reading="xya" aria-label="复制 ャ xya"><span>ャ</span><small>xya</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ヤ" data-reading="ya" aria-label="复制 ヤ ya"><span>ヤ</span><small>ya</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ュ" data-reading="xyu" aria-label="复制 ュ xyu"><span>ュ</span><small>xyu</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ユ" data-reading="yu" aria-label="复制 ユ yu"><span>ユ</span><small>yu</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ョ" data-reading="xyo" aria-label="复制 ョ xyo"><span>ョ</span><small>xyo</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ヨ" data-reading="yo" aria-label="复制 ヨ yo"><span>ヨ</span><small>yo</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ラ" data-reading="ra" aria-label="复制 ラ ra"><span>ラ</span><small>ra</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="リ" data-reading="ri" aria-label="复制 リ ri"><span>リ</span><small>ri</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ル" data-reading="ru" aria-label="复制 ル ru"><span>ル</span><small>ru</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="レ" data-reading="re" aria-label="复制 レ re"><span>レ</span><small>re</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ロ" data-reading="ro" aria-label="复制 ロ ro"><span>ロ</span><small>ro</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ヮ" data-reading="xwa" aria-label="复制 ヮ xwa"><span>ヮ</span><small>xwa</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ワ" data-reading="wa" aria-label="复制 ワ wa"><span>ワ</span><small>wa</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ヰ" data-reading="wi" aria-label="复制 ヰ wi"><span>ヰ</span><small>wi</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ヱ" data-reading="we" aria-label="复制 ヱ we"><span>ヱ</span><small>we</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ヲ" data-reading="wo" aria-label="复制 ヲ wo"><span>ヲ</span><small>wo</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ン" data-reading="n" aria-label="复制 ン n"><span>ン</span><small>n</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ヴ" data-reading="vu" aria-label="复制 ヴ vu"><span>ヴ</span><small>vu</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ヵ" data-reading="xka" aria-label="复制 ヵ xka"><span>ヵ</span><small>xka</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ヶ" data-reading="xke" aria-label="复制 ヶ xke"><span>ヶ</span><small>xke</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ゝ" data-reading="iteration" aria-label="复制 ゝ iteration"><span>ゝ</span><small>iteration</small></button>
+            <button class="japanese-character-button" type="button" data-category="katakana" data-character="ゞ" data-reading="voiced-iteration" aria-label="复制 ゞ voiced-iteration"><span>ゞ</span><small>voiced-iteration</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="｡" data-reading="period" aria-label="复制 ｡ period"><span>｡</span><small>period</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="｢" data-reading="open-bracket" aria-label="复制 ｢ open-bracket"><span>｢</span><small>open-bracket</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="｣" data-reading="close-bracket" aria-label="复制 ｣ close-bracket"><span>｣</span><small>close-bracket</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="､" data-reading="comma" aria-label="复制 ､ comma"><span>､</span><small>comma</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="･" data-reading="middle-dot" aria-label="复制 ･ middle-dot"><span>･</span><small>middle-dot</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｰ" data-reading="long-vowel" aria-label="复制 ｰ long-vowel"><span>ｰ</span><small>long-vowel</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｦ" data-reading="wo" aria-label="复制 ｦ wo"><span>ｦ</span><small>wo</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｧ" data-reading="xa" aria-label="复制 ｧ xa"><span>ｧ</span><small>xa</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｨ" data-reading="xi" aria-label="复制 ｨ xi"><span>ｨ</span><small>xi</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｩ" data-reading="xu" aria-label="复制 ｩ xu"><span>ｩ</span><small>xu</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｪ" data-reading="xe" aria-label="复制 ｪ xe"><span>ｪ</span><small>xe</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｫ" data-reading="xo" aria-label="复制 ｫ xo"><span>ｫ</span><small>xo</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｬ" data-reading="xya" aria-label="复制 ｬ xya"><span>ｬ</span><small>xya</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｭ" data-reading="xyu" aria-label="复制 ｭ xyu"><span>ｭ</span><small>xyu</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｮ" data-reading="xyo" aria-label="复制 ｮ xyo"><span>ｮ</span><small>xyo</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｯ" data-reading="xtsu" aria-label="复制 ｯ xtsu"><span>ｯ</span><small>xtsu</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｱ" data-reading="a" aria-label="复制 ｱ a"><span>ｱ</span><small>a</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｲ" data-reading="i" aria-label="复制 ｲ i"><span>ｲ</span><small>i</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｳ" data-reading="u" aria-label="复制 ｳ u"><span>ｳ</span><small>u</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｴ" data-reading="e" aria-label="复制 ｴ e"><span>ｴ</span><small>e</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｵ" data-reading="o" aria-label="复制 ｵ o"><span>ｵ</span><small>o</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｶ" data-reading="ka" aria-label="复制 ｶ ka"><span>ｶ</span><small>ka</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｷ" data-reading="ki" aria-label="复制 ｷ ki"><span>ｷ</span><small>ki</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｸ" data-reading="ku" aria-label="复制 ｸ ku"><span>ｸ</span><small>ku</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｹ" data-reading="ke" aria-label="复制 ｹ ke"><span>ｹ</span><small>ke</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｺ" data-reading="ko" aria-label="复制 ｺ ko"><span>ｺ</span><small>ko</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｻ" data-reading="sa" aria-label="复制 ｻ sa"><span>ｻ</span><small>sa</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｼ" data-reading="shi" aria-label="复制 ｼ shi"><span>ｼ</span><small>shi</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｽ" data-reading="su" aria-label="复制 ｽ su"><span>ｽ</span><small>su</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｾ" data-reading="se" aria-label="复制 ｾ se"><span>ｾ</span><small>se</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ｿ" data-reading="so" aria-label="复制 ｿ so"><span>ｿ</span><small>so</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾀ" data-reading="ta" aria-label="复制 ﾀ ta"><span>ﾀ</span><small>ta</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾁ" data-reading="chi" aria-label="复制 ﾁ chi"><span>ﾁ</span><small>chi</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾂ" data-reading="tsu" aria-label="复制 ﾂ tsu"><span>ﾂ</span><small>tsu</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾃ" data-reading="te" aria-label="复制 ﾃ te"><span>ﾃ</span><small>te</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾄ" data-reading="to" aria-label="复制 ﾄ to"><span>ﾄ</span><small>to</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾅ" data-reading="na" aria-label="复制 ﾅ na"><span>ﾅ</span><small>na</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾆ" data-reading="ni" aria-label="复制 ﾆ ni"><span>ﾆ</span><small>ni</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾇ" data-reading="nu" aria-label="复制 ﾇ nu"><span>ﾇ</span><small>nu</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾈ" data-reading="ne" aria-label="复制 ﾈ ne"><span>ﾈ</span><small>ne</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾉ" data-reading="no" aria-label="复制 ﾉ no"><span>ﾉ</span><small>no</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾊ" data-reading="ha" aria-label="复制 ﾊ ha"><span>ﾊ</span><small>ha</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾋ" data-reading="hi" aria-label="复制 ﾋ hi"><span>ﾋ</span><small>hi</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾌ" data-reading="fu" aria-label="复制 ﾌ fu"><span>ﾌ</span><small>fu</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾍ" data-reading="he" aria-label="复制 ﾍ he"><span>ﾍ</span><small>he</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾎ" data-reading="ho" aria-label="复制 ﾎ ho"><span>ﾎ</span><small>ho</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾏ" data-reading="ma" aria-label="复制 ﾏ ma"><span>ﾏ</span><small>ma</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾐ" data-reading="mi" aria-label="复制 ﾐ mi"><span>ﾐ</span><small>mi</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾑ" data-reading="mu" aria-label="复制 ﾑ mu"><span>ﾑ</span><small>mu</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾒ" data-reading="me" aria-label="复制 ﾒ me"><span>ﾒ</span><small>me</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾓ" data-reading="mo" aria-label="复制 ﾓ mo"><span>ﾓ</span><small>mo</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾔ" data-reading="ya" aria-label="复制 ﾔ ya"><span>ﾔ</span><small>ya</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾕ" data-reading="yu" aria-label="复制 ﾕ yu"><span>ﾕ</span><small>yu</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾖ" data-reading="yo" aria-label="复制 ﾖ yo"><span>ﾖ</span><small>yo</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾗ" data-reading="ra" aria-label="复制 ﾗ ra"><span>ﾗ</span><small>ra</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾘ" data-reading="ri" aria-label="复制 ﾘ ri"><span>ﾘ</span><small>ri</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾙ" data-reading="ru" aria-label="复制 ﾙ ru"><span>ﾙ</span><small>ru</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾚ" data-reading="re" aria-label="复制 ﾚ re"><span>ﾚ</span><small>re</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾛ" data-reading="ro" aria-label="复制 ﾛ ro"><span>ﾛ</span><small>ro</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾜ" data-reading="wa" aria-label="复制 ﾜ wa"><span>ﾜ</span><small>wa</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾝ" data-reading="n" aria-label="复制 ﾝ n"><span>ﾝ</span><small>n</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾞ" data-reading="voiced-mark" aria-label="复制 ﾞ voiced-mark"><span>ﾞ</span><small>voiced-mark</small></button>
+            <button class="japanese-character-button" type="button" data-category="halfwidth" data-character="ﾟ" data-reading="semi-voiced-mark" aria-label="复制 ﾟ semi-voiced-mark"><span>ﾟ</span><small>semi-voiced-mark</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="々" data-reading="iteration-mark" aria-label="复制 々 iteration-mark"><span>々</span><small>iteration-mark</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="〆" data-reading="shime" aria-label="复制 〆 shime"><span>〆</span><small>shime</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="〇" data-reading="zero" aria-label="复制 〇 zero"><span>〇</span><small>zero</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="ヽ" data-reading="katakana-iteration" aria-label="复制 ヽ katakana-iteration"><span>ヽ</span><small>katakana-iteration</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="ヾ" data-reading="voiced-katakana-iteration" aria-label="复制 ヾ voiced-katakana-iteration"><span>ヾ</span><small>voiced-katakana-iteration</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="・" data-reading="middle-dot" aria-label="复制 ・ middle-dot"><span>・</span><small>middle-dot</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="ー" data-reading="long-vowel" aria-label="复制 ー long-vowel"><span>ー</span><small>long-vowel</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="〜" data-reading="wave-dash" aria-label="复制 〜 wave-dash"><span>〜</span><small>wave-dash</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="゛" data-reading="voiced-mark" aria-label="复制 ゛ voiced-mark"><span>゛</span><small>voiced-mark</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="゜" data-reading="semi-voiced-mark" aria-label="复制 ゜ semi-voiced-mark"><span>゜</span><small>semi-voiced-mark</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="「" data-reading="corner-open" aria-label="复制 「 corner-open"><span>「</span><small>corner-open</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="」" data-reading="corner-close" aria-label="复制 」 corner-close"><span>」</span><small>corner-close</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="『" data-reading="double-corner-open" aria-label="复制 『 double-corner-open"><span>『</span><small>double-corner-open</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="』" data-reading="double-corner-close" aria-label="复制 』 double-corner-close"><span>』</span><small>double-corner-close</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="【" data-reading="lenticular-open" aria-label="复制 【 lenticular-open"><span>【</span><small>lenticular-open</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="】" data-reading="lenticular-close" aria-label="复制 】 lenticular-close"><span>】</span><small>lenticular-close</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="〒" data-reading="postal-mark" aria-label="复制 〒 postal-mark"><span>〒</span><small>postal-mark</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="※" data-reading="reference-mark" aria-label="复制 ※ reference-mark"><span>※</span><small>reference-mark</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="〃" data-reading="ditto-mark" aria-label="复制 〃 ditto-mark"><span>〃</span><small>ditto-mark</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="㊗" data-reading="congratulations" aria-label="复制 ㊗ congratulations"><span>㊗</span><small>congratulations</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="㊙" data-reading="secret" aria-label="复制 ㊙ secret"><span>㊙</span><small>secret</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="㋿" data-reading="reiwa" aria-label="复制 ㋿ reiwa"><span>㋿</span><small>reiwa</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="㍻" data-reading="heisei" aria-label="复制 ㍻ heisei"><span>㍻</span><small>heisei</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="㍼" data-reading="showa" aria-label="复制 ㍼ showa"><span>㍼</span><small>showa</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="㍽" data-reading="taisho" aria-label="复制 ㍽ taisho"><span>㍽</span><small>taisho</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="㍾" data-reading="meiji" aria-label="复制 ㍾ meiji"><span>㍾</span><small>meiji</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="♨" data-reading="hot-spring" aria-label="复制 ♨ hot-spring"><span>♨</span><small>hot-spring</small></button>
+            <button class="japanese-character-button" type="button" data-category="symbols" data-character="⛩" data-reading="shrine" aria-label="复制 ⛩ shrine"><span>⛩</span><small>shrine</small></button>
+        </div>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="featureTitle">
+        <div class="section-heading">
+          <p class="section-kicker">相关工具</p>
+          <h2 id="featureTitle">常用日文字元集中查找和复制</h2>
+          <p class="seo-intro">覆盖标准与小写假名、浊音、半浊音、半角片假名、重复符号和日本年代符号。</p>
+        </div>
+        <div class="seo-grid">
+          <article><h3>点击即复制</h3><p>每个字符都是独立按钮，复制后可直接粘贴到文档、社交平台或设计工具。</p></article>
+          <article><h3>分类与罗马音搜索</h3><p>可按平假名、片假名、半角和符号筛选，也能用字符或罗马音查找。</p></article>
+          <article><h3>无需上传内容</h3><p>字符表和复制操作完全在浏览器中运行，不会向服务器发送输入内容。</p></article>
+        </div>
+        <nav class="landing-links" aria-label="Related tools">
+          <a href="/japanese-chinese-kanji-converter/">日中汉字三体转换</a>
+          <a href="/japanese-kanji-converter/">日文新旧字体转换</a>
+          <a href="/japanese-characters/" aria-current="page">日文字符复制</a>
+          <a href="/simplified-to-traditional/">简体转繁体</a>
+          <a href="/traditional-to-simplified/">繁体转简体</a>
+        </nav>
+      </section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app 提供浏览器本地运行的中文与日文字符工具。</p><nav class="footer-links"><a href="/privacy/">隐私声明</a></nav></footer>
+  </body>
+</html>
