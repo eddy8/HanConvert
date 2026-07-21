@@ -1290,14 +1290,9 @@ const localePaths = {
   ko: "/ko/"
 };
 
-const SITE_ORIGIN = "https://jianfan.app";
-
 const supportedPageSlugs = Object.keys(landingPages);
 
 const elements = {
-  homeBrand: document.querySelector("#homeBrand"),
-  homeLink: document.querySelector("#homeLink"),
-  privacyLink: document.querySelector("#privacyLink"),
   localeSelect: document.querySelector("#localeSelect"),
   engineStatus: document.querySelector("#engineStatus"),
   configSelect: document.querySelector("#configSelect"),
@@ -1352,7 +1347,7 @@ let currentCustomDictionaryStatus = { key: "", values: {} };
 let currentJapaneseComparison = null;
 let currentJapaneseRestore = (value) => value;
 
-applyLocale(activeLocale);
+refreshDynamicLocaleContent();
 setConfig(activeConfig);
 updateCounts();
 scheduleConvert();
@@ -1477,27 +1472,7 @@ function getInitialLocale() {
   return "zh-CN";
 }
 
-function applyLocale(locale) {
-  const dictionary = getDictionary(locale);
-  document.documentElement.lang = locale;
-  elements.localeSelect.value = locale;
-  updateHomeLinks(locale);
-  updatePrivacyLink(locale);
-  applyMeta(locale);
-  updateLandingLinks(locale);
-
-  document.querySelectorAll("[data-i18n]").forEach((node) => {
-    const key = node.dataset.i18n;
-    if (dictionary[key]) node.textContent = dictionary[key];
-  });
-
-  document.querySelectorAll("[data-i18n-attr]").forEach((node) => {
-    node.dataset.i18nAttr.split(",").forEach((pair) => {
-      const [attr, key] = pair.split(":");
-      if (dictionary[key]) node.setAttribute(attr, dictionary[key]);
-    });
-  });
-
+function refreshDynamicLocaleContent() {
   setStatus(currentStatusKey, currentStatusType);
   renderCustomDictionary();
   renderJapaneseComparison(currentJapaneseComparison, currentJapaneseRestore);
@@ -1699,59 +1674,11 @@ function navigateToLocale(locale) {
 
   if (window.location.pathname === targetPath) {
     activeLocale = locale;
-    applyLocale(locale);
+    refreshDynamicLocaleContent();
     return;
   }
 
   window.location.assign(targetUrl);
-}
-
-function applyMeta(locale) {
-  const dictionary = getDictionary(locale);
-  document.title = dictionary.pageTitle;
-
-  const description = document.querySelector('meta[name="description"]');
-  if (description) {
-    description.setAttribute("content", dictionary.pageDescription);
-  }
-
-  const canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) {
-    canonical.setAttribute("href", `${SITE_ORIGIN}${getLocalizedPath(locale, activePageSlug)}`);
-  }
-
-  const hreflangPaths = {
-    "zh-CN": getLocalizedPath("zh-CN", activePageSlug),
-    "zh-Hant": getLocalizedPath("zh-TW", activePageSlug),
-    en: getLocalizedPath("en", activePageSlug),
-    ja: getLocalizedPath("ja", activePageSlug),
-    ko: getLocalizedPath("ko", activePageSlug),
-    "x-default": getLocalizedPath("zh-CN", activePageSlug)
-  };
-
-  Object.entries(hreflangPaths).forEach(([hreflang, href]) => {
-    const link = document.querySelector(`link[rel="alternate"][hreflang="${hreflang}"]`);
-    if (link) link.setAttribute("href", `${SITE_ORIGIN}${href}`);
-  });
-}
-
-function updateLandingLinks(locale) {
-  document.querySelectorAll("[data-route]").forEach((link) => {
-    const route = link.dataset.route;
-    link.setAttribute("href", getLocalizedPath(locale, route));
-    link.toggleAttribute("aria-current", route === activePageSlug);
-  });
-}
-
-function updateHomeLinks(locale) {
-  const homePath = getLocalizedPath(locale);
-  elements.homeBrand.setAttribute("href", homePath);
-  elements.homeLink.setAttribute("href", homePath);
-}
-
-function updatePrivacyLink(locale) {
-  if (!elements.privacyLink) return;
-  elements.privacyLink.setAttribute("href", getLocalizedPath(locale, "privacy"));
 }
 
 function getLocalizedPath(locale, pageSlug = "") {

@@ -74,22 +74,22 @@
     <!-- seo-schema:end -->
   </head>
   <body>
-    <a class="skip-nav" href="#main" data-i18n="skip">跳到主要内容</a>
+    <a class="skip-nav" href="#main" data-i18n="skip">Skip to main content</a>
 
     <header class="site-header" aria-label="Site header">
-      <a class="brand" id="homeBrand" href="/" aria-label="JianFan.app">
+      <a class="brand" id="homeBrand" href="/en/" aria-label="JianFan.app">
         <span class="brand-mark" aria-hidden="true">漢</span>
         <span class="brand-text">JianFan.app</span>
       </a>
 
-      <nav class="top-actions" aria-label="Primary">
-        <a class="nav-link" id="homeLink" href="/" data-i18n="homeLink">网站首页</a>
+      <nav class="top-actions" aria-label="Primary navigation">
+        <a class="nav-link" id="homeLink" href="/en/" data-i18n="homeLink">Home</a>
         <label class="language-picker">
-          <span data-i18n="languageLabel">界面语言</span>
+          <span data-i18n="languageLabel">Language</span>
           <select id="localeSelect" aria-label="Interface language">
             <option value="zh-CN">简体中文</option>
             <option value="zh-TW">繁體中文</option>
-            <option value="en">English</option>
+            <option value="en" selected="selected">English</option>
             <option value="ja">日本語</option>
             <option value="ko">한국어</option>
           </select>
@@ -102,7 +102,7 @@
         <div class="hero-copy">
           <p class="eyebrow" data-i18n="eyebrow">Simplified to Traditional Chinese</p>
           <h1 id="pageTitle" data-i18n="title">Simplified to Traditional Chinese Converter</h1>
-          <p class="lede" data-i18n="lede">Paste Simplified Chinese and convert it instantly. Standard Traditional is selected by default, with Taiwan and Hong Kong options available.</p>
+          <p class="lede" data-i18n="lede">Paste Simplified Chinese and convert it instantly. The standard Traditional mode is selected by default, with Taiwan and Hong Kong options available.</p>
         </div>
 
         <div class="signal-panel" aria-hidden="true">
@@ -117,58 +117,58 @@
       <section class="converter" aria-labelledby="converterTitle">
         <div class="converter-head">
           <div>
-            <p class="section-kicker" data-i18n="workspaceKicker">转换工作台</p>
-            <h2 id="converterTitle" data-i18n="workspaceTitle">输入、选择方向、复制结果</h2>
+            <p class="section-kicker" data-i18n="workspaceKicker">Conversion workspace</p>
+            <h2 id="converterTitle" data-i18n="workspaceTitle">Input, choose a direction, copy the result</h2>
           </div>
           <div class="status-pill" id="engineStatus" role="status" aria-live="polite">
             <span class="status-dot"></span>
-            <span data-i18n="statusIdle">准备加载转换引擎</span>
+            <span data-i18n="statusIdle">Ready to load converter</span>
           </div>
         </div>
 
         <div class="mode-strip" role="radiogroup" aria-label="Conversion direction">
           <button class="mode-card is-active" type="button" data-config="s2t" role="radio" aria-checked="true">
-            <span data-i18n="modeS2T">简体 → 繁体</span>
+            <span data-i18n="modeS2T">Simplified → Traditional</span>
           </button>
           <button class="mode-card" type="button" data-config="t2s" role="radio" aria-checked="false">
-            <span data-i18n="modeT2S">繁体 → 简体</span>
+            <span data-i18n="modeT2S">Traditional → Simplified</span>
           </button>
           <button class="mode-card" type="button" data-config="s2tw" role="radio" aria-checked="false">
-            <span data-i18n="modeS2TW">简体 → 台湾正体</span>
+            <span data-i18n="modeS2TW">Simplified → Taiwan</span>
           </button>
           <button class="mode-card" type="button" data-config="s2hk" role="radio" aria-checked="false">
-            <span data-i18n="modeS2HK">简体 → 香港繁体</span>
+            <span data-i18n="modeS2HK">Simplified → Hong Kong</span>
           </button>
         </div>
 
         <div class="converter-option-grid">
           <details class="advanced-options">
-            <summary data-i18n="advancedSummary">更多地区和专业选项</summary>
+            <summary data-i18n="advancedSummary">More regional and specialist options</summary>
             <div class="advanced-grid">
               <label>
-                <span data-i18n="configLabel">转换模式</span>
+                <span data-i18n="configLabel">Conversion mode</span>
                 <select id="configSelect">
-                  <option value="s2t" data-i18n="modeS2T">简体 → 繁体</option>
-                  <option value="t2s" data-i18n="modeT2S">繁体 → 简体</option>
-                  <option value="s2tw" data-i18n="modeS2TW">简体 → 台湾正体</option>
-                  <option value="s2twp" data-i18n="modeS2TWP">简体 → 台湾正体（含用词）</option>
-                  <option value="s2hk" data-i18n="modeS2HK">简体 → 香港繁体</option>
-                  <option value="s2hkp" data-i18n="modeS2HKP">简体 → 香港繁体（含用词）</option>
-                  <option value="tw2s" data-i18n="modeTW2S">台湾正体 → 简体</option>
-                  <option value="tw2sp" data-i18n="modeTW2SP">台湾正体 → 简体（含用词）</option>
-                  <option value="hk2s" data-i18n="modeHK2S">香港繁体 → 简体</option>
-                  <option value="hk2sp" data-i18n="modeHK2SP">香港繁体 → 简体（含用词）</option>
-                  <option value="t2tw" data-i18n="modeT2TW">繁体 → 台湾正体</option>
-                  <option value="tw2t" data-i18n="modeTW2T">台湾正体 → 繁体</option>
-                  <option value="t2hk" data-i18n="modeT2HK">繁体 → 香港繁体</option>
-                  <option value="hk2t" data-i18n="modeHK2T">香港繁体 → 繁体</option>
-                  <option value="jp2t" data-i18n="modeJP2T">日文新字体 → 旧字体</option>
-                  <option value="t2jp" data-i18n="modeT2JP">旧字体 → 日文新字体</option>
+                  <option value="s2t" data-i18n="modeS2T" selected="selected">Simplified → Traditional</option>
+                  <option value="t2s" data-i18n="modeT2S">Traditional → Simplified</option>
+                  <option value="s2tw" data-i18n="modeS2TW">Simplified → Taiwan</option>
+                  <option value="s2twp" data-i18n="modeS2TWP">Simplified → Taiwan phrases</option>
+                  <option value="s2hk" data-i18n="modeS2HK">Simplified → Hong Kong</option>
+                  <option value="s2hkp" data-i18n="modeS2HKP">Simplified → Hong Kong phrases</option>
+                  <option value="tw2s" data-i18n="modeTW2S">Taiwan → Simplified</option>
+                  <option value="tw2sp" data-i18n="modeTW2SP">Taiwan → Simplified phrases</option>
+                  <option value="hk2s" data-i18n="modeHK2S">Hong Kong → Simplified</option>
+                  <option value="hk2sp" data-i18n="modeHK2SP">Hong Kong → Simplified phrases</option>
+                  <option value="t2tw" data-i18n="modeT2TW">Traditional → Taiwan</option>
+                  <option value="tw2t" data-i18n="modeTW2T">Taiwan → Traditional</option>
+                  <option value="t2hk" data-i18n="modeT2HK">Traditional → Hong Kong</option>
+                  <option value="hk2t" data-i18n="modeHK2T">Hong Kong → Traditional</option>
+                  <option value="jp2t" data-i18n="modeJP2T">Japanese Shinjitai → Kyujitai</option>
+                  <option value="t2jp" data-i18n="modeT2JP">Kyujitai → Japanese Shinjitai</option>
                 </select>
               </label>
               <label class="toggle-row">
                 <input id="autoConvert" type="checkbox" checked />
-                <span data-i18n="autoConvert">输入时自动转换</span>
+                <span data-i18n="autoConvert">Convert while typing</span>
               </label>
             </div>
           </details>
@@ -176,44 +176,38 @@
           <!-- custom-dictionary:start -->
           <details class="custom-dictionary" id="customDictionary">
             <summary>
-              <span data-i18n="customDictionarySummary">自定义词库</span>
-              <span class="custom-dictionary-count" id="customDictionaryCount" aria-live="polite">0/0 条启用</span>
+              <span data-i18n="customDictionarySummary">Custom dictionary</span>
+              <span class="custom-dictionary-count" id="customDictionaryCount" aria-live="polite">0/0 enabled</span>
             </summary>
             <div class="custom-dictionary-body">
-              <p class="custom-dictionary-note" data-i18n="customDictionaryLocalNote">
-                词条只保存在当前浏览器。填写相同内容可保护品牌名和专有名词。
-              </p>
+              <p class="custom-dictionary-note" data-i18n="customDictionaryLocalNote">Entries stay in this browser. Use identical text to protect brand names and proper nouns.</p>
               <form class="custom-dictionary-form" id="customDictionaryForm" novalidate>
                 <label>
-                  <span data-i18n="customDictionarySourceLabel">转换前</span>
+                  <span data-i18n="customDictionarySourceLabel">Before conversion</span>
                   <input
                     id="customDictionarySource"
                     type="text"
                     maxlength="200"
                     autocomplete="off"
                     data-i18n-attr="placeholder:customDictionarySourcePlaceholder"
-                    placeholder="例如：人工智能"
+                    placeholder="Example: 软件"
                   />
                 </label>
                 <span class="custom-dictionary-arrow" aria-hidden="true">→</span>
                 <label>
-                  <span data-i18n="customDictionaryTargetLabel">转换后</span>
+                  <span data-i18n="customDictionaryTargetLabel">After conversion</span>
                   <input
                     id="customDictionaryTarget"
                     type="text"
                     maxlength="200"
                     autocomplete="off"
                     data-i18n-attr="placeholder:customDictionaryTargetPlaceholder"
-                    placeholder="例如：人工智慧"
+                    placeholder="Example: 軟體"
                   />
                 </label>
-                <button class="text-button custom-dictionary-add" type="submit" data-i18n="customDictionaryAdd">
-                  添加词条
-                </button>
+                <button class="text-button custom-dictionary-add" type="submit" data-i18n="customDictionaryAdd">Add entry</button>
               </form>
-              <p class="custom-dictionary-empty" id="customDictionaryEmpty" data-i18n="customDictionaryEmpty">
-                还没有自定义词条
-              </p>
+              <p class="custom-dictionary-empty" id="customDictionaryEmpty" data-i18n="customDictionaryEmpty">No custom entries yet</p>
               <ul class="custom-dictionary-list" id="customDictionaryList"></ul>
               <div class="custom-dictionary-footer">
                 <p id="customDictionaryStatus" role="status" aria-live="polite"></p>
@@ -223,9 +217,7 @@
                   type="button"
                   data-i18n="customDictionaryClear"
                   hidden
-                >
-                  清空词库
-                </button>
+                >Clear dictionary</button>
               </div>
             </div>
           </details>
@@ -234,15 +226,13 @@
 
         <section class="file-import" aria-labelledby="fileImportTitle">
           <div>
-            <p class="section-kicker" data-i18n="fileKicker">文件转换</p>
-            <h3 id="fileImportTitle" data-i18n="fileTitle">上传文件并在浏览器本地提取文本</h3>
-            <p data-i18n="fileBody">
-              支持 TXT、CSV、DOCX、PDF、Excel 文件。内容只在当前浏览器中读取，不会上传到服务器。
-            </p>
+            <p class="section-kicker" data-i18n="fileKicker">File conversion</p>
+            <h3 id="fileImportTitle" data-i18n="fileTitle">Upload files and extract text locally in your browser</h3>
+            <p data-i18n="fileBody">Supports TXT, CSV, DOCX, PDF, and Excel files. Content is read only in this browser and is not uploaded.</p>
           </div>
           <label class="file-drop" id="fileDrop" for="fileInput">
-            <span data-i18n="fileDropTitle">选择或拖入文件</span>
-            <small data-i18n="fileDropBody">可多选，提取后会自动填入原文区并转换</small>
+            <span data-i18n="fileDropTitle">Choose or drop files</span>
+            <small data-i18n="fileDropBody">Multiple files are supported and will be converted after text extraction</small>
             <input id="fileInput" type="file" multiple accept=".txt,.md,.csv,.docx,.pdf,.xlsx,.xls" />
           </label>
           <p class="file-status" id="fileImportStatus" role="status" aria-live="polite"></p>
@@ -251,32 +241,32 @@
         <div class="editor-grid">
           <section class="text-panel" aria-labelledby="inputTitle">
             <div class="panel-topline">
-              <h3 id="inputTitle" data-i18n="inputTitle">原文</h3>
+              <h3 id="inputTitle" data-i18n="inputTitle">Original</h3>
               <span id="inputCount">0</span>
             </div>
-            <textarea id="inputText" spellcheck="false" data-i18n-attr="placeholder:inputPlaceholder"></textarea>
+            <textarea id="inputText" spellcheck="false" data-i18n-attr="placeholder:inputPlaceholder" placeholder="Paste or type Chinese text here..."></textarea>
             <div class="panel-actions">
-              <button class="text-button" id="sampleButton" type="button" data-i18n="sample">示例</button>
-              <button class="text-button" id="clearButton" type="button" data-i18n="clear">清空</button>
+              <button class="text-button" id="sampleButton" type="button" data-i18n="sample">Sample</button>
+              <button class="text-button" id="clearButton" type="button" data-i18n="clear">Clear</button>
             </div>
           </section>
 
           <div class="center-controls" aria-label="Conversion actions">
-            <button class="icon-button" id="swapButton" type="button" data-i18n-attr="aria-label:swapLabel" title="Swap">
+            <button class="icon-button" id="swapButton" type="button" data-i18n-attr="aria-label:swapLabel" title="Swap" aria-label="Swap input and result">
               ⇄
             </button>
-            <button class="primary-action" id="convertButton" type="button" data-i18n="convert">转换</button>
+            <button class="primary-action" id="convertButton" type="button" data-i18n="convert">Convert</button>
           </div>
 
           <section class="text-panel result-panel" aria-labelledby="outputTitle">
             <div class="panel-topline">
-              <h3 id="outputTitle" data-i18n="outputTitle">结果</h3>
+              <h3 id="outputTitle" data-i18n="outputTitle">Result</h3>
               <span id="outputCount">0</span>
             </div>
-            <textarea id="outputText" readonly spellcheck="false" data-i18n-attr="placeholder:outputPlaceholder"></textarea>
+            <textarea id="outputText" readonly spellcheck="false" data-i18n-attr="placeholder:outputPlaceholder" placeholder="Converted text appears here"></textarea>
             <div class="panel-actions">
-              <button class="text-button" id="copyButton" type="button" data-i18n="copy">复制</button>
-              <button class="text-button" id="downloadButton" type="button" data-i18n="download">下载 TXT</button>
+              <button class="text-button" id="copyButton" type="button" data-i18n="copy">Copy</button>
+              <button class="text-button" id="downloadButton" type="button" data-i18n="download">Download TXT</button>
             </div>
           </section>
         </div>
@@ -284,25 +274,25 @@
 
       <section class="feature-band" aria-labelledby="featureTitle">
         <div class="section-heading">
-          <p class="section-kicker" data-i18n="featureKicker">功能特色</p>
-          <h2 id="featureTitle" data-i18n="featureTitle">为高频文本转换设计</h2>
+          <p class="section-kicker" data-i18n="featureKicker">Features</p>
+          <h2 id="featureTitle" data-i18n="featureTitle">A direct Simplified to Traditional workflow</h2>
         </div>
 
         <div class="feature-grid">
           <article>
             <span class="feature-index">01</span>
-            <h3 data-i18n="featurePrivacyTitle">隐私更安心</h3>
-            <p data-i18n="featurePrivacyBody">文本在浏览器里完成转换，不需要上传到服务器；转换能力基于 OpenCC 实现。</p>
+            <h3 data-i18n="featurePrivacyTitle">More privacy by default</h3>
+            <p data-i18n="featurePrivacyBody">Text is converted in the browser without uploading it to a server; the conversion engine is built with OpenCC.</p>
           </article>
           <article>
             <span class="feature-index">02</span>
-            <h3 data-i18n="featureRegionTitle">地区表达更准确</h3>
-            <p data-i18n="featureRegionBody">常用模式放在外层，台湾、香港和日文相关选项收纳在高级区。</p>
+            <h3 data-i18n="featureRegionTitle">Regional Traditional variants</h3>
+            <p data-i18n="featureRegionBody">Switch between standard Traditional Chinese, Taiwan Traditional, Hong Kong Traditional, and regional phrase modes.</p>
           </article>
           <article>
             <span class="feature-index">03</span>
-            <h3 data-i18n="featureFlowTitle">处理流程更顺手</h3>
-            <p data-i18n="featureFlowBody">支持自动转换、方向切换、复制和下载，适合非技术人员连续处理文本。</p>
+            <h3 data-i18n="featureFlowTitle">Smoother text workflow</h3>
+            <p data-i18n="featureFlowBody">Auto conversion, swapping, copy, and download support repeated text work for non-technical users.</p>
           </article>
         </div>
       </section>
@@ -330,12 +320,12 @@
         </div>
 
         <nav class="landing-links" aria-label="Related conversion pages">
-          <a href="/simplified-to-traditional/" data-route="simplified-to-traditional" data-i18n="linkS2T">简体转繁体</a>
-          <a href="/traditional-to-simplified/" data-route="traditional-to-simplified" data-i18n="linkT2S">繁体转简体</a>
-          <a href="/taiwan-traditional/" data-route="taiwan-traditional" data-i18n="linkTaiwan">台湾繁体转换</a>
-          <a href="/hong-kong-traditional/" data-route="hong-kong-traditional" data-i18n="linkHongKong">香港繁体转换</a>
-          <a href="/file-text-converter/" data-route="file-text-converter" data-i18n="linkFiles">文件文本简繁转换</a>
-          <a href="/japanese-kanji-converter/" data-route="japanese-kanji-converter" data-i18n="linkJapanese">日文新旧字体转换</a>
+          <a href="/en/simplified-to-traditional/" data-route="simplified-to-traditional" data-i18n="linkS2T" aria-current="page">Simplified to Traditional</a>
+          <a href="/en/traditional-to-simplified/" data-route="traditional-to-simplified" data-i18n="linkT2S">Traditional to Simplified</a>
+          <a href="/en/taiwan-traditional/" data-route="taiwan-traditional" data-i18n="linkTaiwan">Taiwan Traditional converter</a>
+          <a href="/en/hong-kong-traditional/" data-route="hong-kong-traditional" data-i18n="linkHongKong">Hong Kong Traditional converter</a>
+          <a href="/en/file-text-converter/" data-route="file-text-converter" data-i18n="linkFiles">Document text converter</a>
+          <a href="/en/japanese-kanji-converter/" data-route="japanese-kanji-converter" data-i18n="linkJapanese">Japanese kanji converter</a>
           <!-- japanese-tool-links:start -->
           <a href="/en/japanese-chinese-kanji-converter/" data-route="japanese-chinese-kanji-converter" data-i18n="linkJapaneseChinese">Japanese and Chinese Kanji</a>
           <a href="/en/japanese-characters/" data-route="japanese-characters" data-i18n="linkJapaneseCharacters">Japanese character copy</a>
@@ -345,7 +335,7 @@
     </main>
 
     <footer class="site-footer">
-      <p data-i18n="footerText">JianFan.app 是一个浏览器本地运行的中文简繁转换工具。</p>
+      <p data-i18n="footerText">JianFan.app is a browser-local Chinese Simplified and Traditional conversion tool.</p>
       <nav class="footer-links" aria-label="Footer">
         <a href="/en/about/">About</a>
         <a href="/en/contact/">Contact</a>

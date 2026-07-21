@@ -58,18 +58,18 @@
   <body>
     <a class="skip-nav" href="#main" data-i18n="skip">跳到主要内容</a>
 
-    <header class="site-header" aria-label="Site header">
+    <header class="site-header" aria-label="网站页眉">
       <a class="brand" id="homeBrand" href="/" aria-label="JianFan.app">
         <span class="brand-mark" aria-hidden="true">漢</span>
         <span class="brand-text">JianFan.app</span>
       </a>
 
-      <nav class="top-actions" aria-label="Primary">
+      <nav class="top-actions" aria-label="主要导航">
         <a class="nav-link" id="homeLink" href="/" data-i18n="homeLink">网站首页</a>
         <label class="language-picker">
           <span data-i18n="languageLabel">界面语言</span>
-          <select id="localeSelect" aria-label="Interface language">
-            <option value="zh-CN">简体中文</option>
+          <select id="localeSelect" aria-label="界面语言">
+            <option value="zh-CN" selected="selected">简体中文</option>
             <option value="zh-TW">繁體中文</option>
             <option value="en">English</option>
             <option value="ja">日本語</option>
@@ -84,9 +84,7 @@
         <div class="hero-copy">
           <p class="eyebrow" data-i18n="eyebrow">浏览器本地转换</p>
           <h1 id="pageTitle" data-i18n="title">简繁转换：简体转繁体 / 繁体转简体</h1>
-          <p class="lede" data-i18n="lede">
-            粘贴文本即可转换。适合文章、社媒、字幕、产品文案和日常沟通，不需要理解任何技术配置。
-          </p>
+          <p class="lede" data-i18n="lede">粘贴文本即可转换。适合文章、社媒、字幕、产品文案和日常沟通，也适合作为在线繁体字转换、在线简体字转换和中文简繁转换工具。</p>
         </div>
 
         <div class="signal-panel" aria-hidden="true">
@@ -110,7 +108,7 @@
           </div>
         </div>
 
-        <div class="mode-strip" role="radiogroup" aria-label="Conversion direction">
+        <div class="mode-strip" role="radiogroup" aria-label="转换方向">
           <button class="mode-card is-active" type="button" data-config="s2t" role="radio" aria-checked="true">
             <span data-i18n="modeS2T">简体 → 繁体</span>
           </button>
@@ -132,7 +130,7 @@
               <label>
                 <span data-i18n="configLabel">转换模式</span>
                 <select id="configSelect">
-                  <option value="s2t" data-i18n="modeS2T">简体 → 繁体</option>
+                  <option value="s2t" data-i18n="modeS2T" selected="selected">简体 → 繁体</option>
                   <option value="t2s" data-i18n="modeT2S">繁体 → 简体</option>
                   <option value="s2tw" data-i18n="modeS2TW">简体 → 台湾正体</option>
                   <option value="s2twp" data-i18n="modeS2TWP">简体 → 台湾正体（含用词）</option>
@@ -164,9 +162,7 @@
               <span class="custom-dictionary-count" id="customDictionaryCount" aria-live="polite">0/0 条启用</span>
             </summary>
             <div class="custom-dictionary-body">
-              <p class="custom-dictionary-note" data-i18n="customDictionaryLocalNote">
-                词条只保存在当前浏览器。填写相同内容可保护品牌名和专有名词。
-              </p>
+              <p class="custom-dictionary-note" data-i18n="customDictionaryLocalNote">词条只保存在当前浏览器。填写相同内容可保护品牌名和专有名词。</p>
               <form class="custom-dictionary-form" id="customDictionaryForm" novalidate>
                 <label>
                   <span data-i18n="customDictionarySourceLabel">转换前</span>
@@ -191,13 +187,9 @@
                     placeholder="例如：人工智慧"
                   />
                 </label>
-                <button class="text-button custom-dictionary-add" type="submit" data-i18n="customDictionaryAdd">
-                  添加词条
-                </button>
+                <button class="text-button custom-dictionary-add" type="submit" data-i18n="customDictionaryAdd">添加词条</button>
               </form>
-              <p class="custom-dictionary-empty" id="customDictionaryEmpty" data-i18n="customDictionaryEmpty">
-                还没有自定义词条
-              </p>
+              <p class="custom-dictionary-empty" id="customDictionaryEmpty" data-i18n="customDictionaryEmpty">还没有自定义词条</p>
               <ul class="custom-dictionary-list" id="customDictionaryList"></ul>
               <div class="custom-dictionary-footer">
                 <p id="customDictionaryStatus" role="status" aria-live="polite"></p>
@@ -207,9 +199,7 @@
                   type="button"
                   data-i18n="customDictionaryClear"
                   hidden
-                >
-                  清空词库
-                </button>
+                >清空词库</button>
               </div>
             </div>
           </details>
@@ -220,9 +210,7 @@
           <div>
             <p class="section-kicker" data-i18n="fileKicker">文件转换</p>
             <h3 id="fileImportTitle" data-i18n="fileTitle">上传文件并在浏览器本地提取文本</h3>
-            <p data-i18n="fileBody">
-              支持 TXT、CSV、DOCX、PDF、Excel 文件。内容只在当前浏览器中读取，不会上传到服务器。
-            </p>
+            <p data-i18n="fileBody">支持 TXT、CSV、DOCX、PDF、Excel 文件。内容只在当前浏览器中读取，不会上传到服务器。</p>
           </div>
           <label class="file-drop" id="fileDrop" for="fileInput">
             <span data-i18n="fileDropTitle">选择或拖入文件</span>
@@ -238,15 +226,15 @@
               <h3 id="inputTitle" data-i18n="inputTitle">原文</h3>
               <span id="inputCount">0</span>
             </div>
-            <textarea id="inputText" spellcheck="false" data-i18n-attr="placeholder:inputPlaceholder"></textarea>
+            <textarea id="inputText" spellcheck="false" data-i18n-attr="placeholder:inputPlaceholder" placeholder="在这里粘贴或输入需要转换的中文..."></textarea>
             <div class="panel-actions">
               <button class="text-button" id="sampleButton" type="button" data-i18n="sample">示例</button>
               <button class="text-button" id="clearButton" type="button" data-i18n="clear">清空</button>
             </div>
           </section>
 
-          <div class="center-controls" aria-label="Conversion actions">
-            <button class="icon-button" id="swapButton" type="button" data-i18n-attr="aria-label:swapLabel" title="Swap">
+          <div class="center-controls" aria-label="转换操作">
+            <button class="icon-button" id="swapButton" type="button" data-i18n-attr="aria-label:swapLabel" title="Swap" aria-label="交换输入和结果">
               ⇄
             </button>
             <button class="primary-action" id="convertButton" type="button" data-i18n="convert">转换</button>
@@ -257,7 +245,7 @@
               <h3 id="outputTitle" data-i18n="outputTitle">结果</h3>
               <span id="outputCount">0</span>
             </div>
-            <textarea id="outputText" readonly spellcheck="false" data-i18n-attr="placeholder:outputPlaceholder"></textarea>
+            <textarea id="outputText" readonly spellcheck="false" data-i18n-attr="placeholder:outputPlaceholder" placeholder="转换后的文本会显示在这里"></textarea>
             <div class="panel-actions">
               <button class="text-button" id="copyButton" type="button" data-i18n="copy">复制</button>
               <button class="text-button" id="downloadButton" type="button" data-i18n="download">下载 TXT</button>
@@ -295,9 +283,7 @@
         <div class="section-heading">
           <p class="section-kicker" data-i18n="seoKicker">常见转换需求</p>
           <h2 id="seoTitle" data-i18n="seoTitle">覆盖日常中文简繁体转换场景</h2>
-          <p class="seo-intro" data-i18n="seoIntro">
-            JianFan.app 可作为在线繁体字转换、在线简体字转换和中文简繁转换工具使用。常用方向直接显示在工作台，高级选项中保留台湾正体、香港繁体和地区用词转换。
-          </p>
+          <p class="seo-intro" data-i18n="seoIntro">JianFan.app 可作为在线繁体字转换、在线简体字转换和中文简繁转换工具使用。常用方向直接显示在工作台，高级选项中保留台湾正体、香港繁体和地区用词转换。</p>
         </div>
 
         <div class="seo-grid">
@@ -315,7 +301,7 @@
           </article>
         </div>
 
-        <nav class="landing-links" aria-label="Related conversion pages">
+        <nav class="landing-links" aria-label="相关转换页面">
           <a href="/simplified-to-traditional/" data-route="simplified-to-traditional" data-i18n="linkS2T">简体转繁体</a>
           <a href="/traditional-to-simplified/" data-route="traditional-to-simplified" data-i18n="linkT2S">繁体转简体</a>
           <a href="/taiwan-traditional/" data-route="taiwan-traditional" data-i18n="linkTaiwan">台湾繁体转换</a>
@@ -332,7 +318,7 @@
 
     <footer class="site-footer">
       <p data-i18n="footerText">JianFan.app 是一个浏览器本地运行的中文简繁转换工具。</p>
-      <nav class="footer-links" aria-label="Footer">
+      <nav class="footer-links" aria-label="页脚">
         <a href="/about/">关于我们</a>
         <a href="/contact/">联系我们</a>
         <a href="/privacy/">隐私声明</a>
