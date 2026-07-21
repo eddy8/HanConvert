@@ -4,7 +4,7 @@ import test from "node:test";
 import {
   buildThreeWayComparison,
   convertJapaneseChineseText
-} from "../japanese-chinese-converter.mjs";
+} from "../japanese-chinese-converter.js";
 
 const characterMaps = {
   jp2t: { 国: "國", 学: "學", 会: "會" },

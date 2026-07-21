@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { analyzeCharacterChanges } from "../japanese-comparison.mjs";
+import { analyzeCharacterChanges } from "../japanese-comparison.js";
 
 test("finds changed Japanese glyphs and counts repeated pairs", () => {
   const result = analyzeCharacterChanges("国学会国", "國學會國");

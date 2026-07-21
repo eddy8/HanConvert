@@ -1,11 +1,11 @@
 import OpenCC from "https://cdn.jsdelivr.net/npm/opencc-wasm@0.12.0/dist/esm/index.js";
 
-import { filterJapaneseCharacters } from "/japanese-character-data.mjs";
+import { filterJapaneseCharacters } from "/japanese-character-data.js";
 import {
   buildThreeWayComparison,
   convertJapaneseChineseText,
   DEFAULT_THREE_WAY_COMPARISON_LIMIT
-} from "/japanese-chinese-converter.mjs";
+} from "/japanese-chinese-converter.js";
 
 const localePaths = {
   "zh-CN": "/",

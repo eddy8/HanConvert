@@ -5,12 +5,12 @@ import {
   MAX_CUSTOM_DICTIONARY_TERM_LENGTH,
   normalizeCustomDictionaryEntries,
   prepareCustomDictionaryConversion
-} from "/custom-dictionary.mjs";
+} from "/custom-dictionary.js";
 import {
   DEFAULT_JAPANESE_PAIR_LIMIT,
   DEFAULT_JAPANESE_PREVIEW_LIMIT,
   analyzeCharacterChanges
-} from "/japanese-comparison.mjs";
+} from "/japanese-comparison.js";
 
 const CONVERSION_CHUNK_SIZE = 16000;
 const CHUNK_BREAKPOINTS = ["\n", "。", "！", "？", "；", ";", ".", "!", "?"];

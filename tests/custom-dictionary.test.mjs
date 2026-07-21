@@ -5,7 +5,7 @@ import {
   MAX_CUSTOM_DICTIONARY_ENTRIES,
   normalizeCustomDictionaryEntries,
   prepareCustomDictionaryConversion
-} from "../custom-dictionary.mjs";
+} from "../custom-dictionary.js";
 
 const OpenCCMock = {
   CustomConverter(pairs) {

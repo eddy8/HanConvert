@@ -2,7 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { JAPANESE_CHARACTER_CATEGORIES } from "../japanese-character-data.mjs";
+import { JAPANESE_CHARACTER_CATEGORIES } from "../japanese-character-data.js";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteOrigin = "https://jianfan.app";
