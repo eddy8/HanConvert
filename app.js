@@ -11,6 +11,7 @@ import {
   DEFAULT_JAPANESE_PREVIEW_LIMIT,
   analyzeCharacterChanges
 } from "/japanese-comparison.js";
+import { getConversionSample } from "/conversion-samples.js";
 
 const CONVERSION_CHUNK_SIZE = 16000;
 const CHUNK_BREAKPOINTS = ["\n", "。", "！", "？", "；", ";", ".", "!", "?"];
@@ -142,8 +143,7 @@ const translations = {
     linkJapaneseChinese: "日中汉字三体转换",
     linkJapaneseCharacters: "日文字符复制",
     footerText: "JianFan.app 是一个浏览器本地运行的中文简繁转换工具。",
-    privacyLink: "隐私声明",
-    sampleText: "在线工具可以帮助用户快速转换简体中文和繁体中文，适合处理软件说明、网页内容和社交媒体文案。"
+    privacyLink: "隐私声明"
   },
   "zh-TW": {
     pageTitle: "簡繁轉換 - 簡體轉繁體 / 繁體轉簡體線上工具 | JianFan.app",
@@ -269,8 +269,7 @@ const translations = {
     linkJapaneseChinese: "日中漢字三體轉換",
     linkJapaneseCharacters: "日文字元複製",
     footerText: "JianFan.app 是一個瀏覽器本地運行的中文簡繁轉換工具。",
-    privacyLink: "隱私聲明",
-    sampleText: "線上工具可以幫助使用者快速轉換簡體中文和繁體中文，適合處理軟體說明、網頁內容和社群文案。"
+    privacyLink: "隱私聲明"
   },
   en: {
     pageTitle: "Simplified to Traditional Chinese Converter | JianFan.app",
@@ -396,8 +395,7 @@ const translations = {
     linkJapaneseChinese: "Japanese and Chinese Kanji",
     linkJapaneseCharacters: "Japanese character copy",
     footerText: "JianFan.app is a browser-local Chinese Simplified and Traditional conversion tool.",
-    privacyLink: "Privacy Statement",
-    sampleText: "Online tools help users convert Simplified and Traditional Chinese quickly for software guides, web pages, and social media copy."
+    privacyLink: "Privacy Statement"
   },
   ja: {
     pageTitle: "簡体字 繁体字 変換ツール | JianFan.app",
@@ -523,8 +521,7 @@ const translations = {
     linkJapaneseChinese: "日本語漢字・簡体字・繁体字変換",
     linkJapaneseCharacters: "日本語文字コピー",
     footerText: "JianFan.app はブラウザー内で動作する中国語簡繁変換ツールです。",
-    privacyLink: "プライバシー声明",
-    sampleText: "オンラインツールは、ソフトウェア説明、Web コンテンツ、SNS 投稿用の簡体字と繁体字の変換に役立ちます。"
+    privacyLink: "プライバシー声明"
   },
   ko: {
     pageTitle: "간체 번체 변환기 | JianFan.app",
@@ -650,8 +647,7 @@ const translations = {
     linkJapaneseChinese: "일본·중국 한자 변환",
     linkJapaneseCharacters: "일본어 문자 복사",
     footerText: "JianFan.app는 브라우저에서 로컬로 실행되는 중국어 간체·번체 변환 도구입니다.",
-    privacyLink: "개인정보 보호 안내",
-    sampleText: "온라인 도구는 소프트웨어 설명, 웹 콘텐츠, 소셜 미디어 문구에 쓰이는 간체와 번체 변환을 빠르게 도와줍니다."
+    privacyLink: "개인정보 보호 안내"
   }
 };
 
@@ -1183,8 +1179,7 @@ const landingPages = {
         seoRegionTitle: "旧字体高亮和对照表",
         seoRegionBody: "转换完成后可查看变化字高亮与新旧字体对照表，适合逐字校对旧汉字和现代字形。",
         seoUseCaseTitle: "正式文本需复核",
-        seoUseCaseBody: "姓名、户籍、登记录入、古文书引用等场景存在异体字和上下文差异，转换后仍应依据原件或权威资料人工确认。",
-        sampleText: "日本語の新字体と旧字体を変換します。国、学、会、広、読、気、体、戦などの漢字表記を確認できます。"
+        seoUseCaseBody: "姓名、户籍、登记录入、古文书引用等场景存在异体字和上下文差异，转换后仍应依据原件或权威资料人工确认。"
       },
       "zh-TW": {
         pageTitle: "日文新字體舊字體轉換 - 舊漢字/新漢字線上轉換 | JianFan.app",
@@ -1205,8 +1200,7 @@ const landingPages = {
         seoRegionTitle: "舊字體高亮和對照表",
         seoRegionBody: "轉換完成後可查看變化字高亮與新舊字體對照表，適合逐字校對舊漢字和現代字形。",
         seoUseCaseTitle: "正式文字需複核",
-        seoUseCaseBody: "姓名、戶籍、登記、古文書引用等場景存在異體字和上下文差異，轉換後仍應依據原件或權威資料人工確認。",
-        sampleText: "日本語の新字体と旧字体を変換します。国、学、会、広、読、気、体、戦などの漢字表記を確認できます。"
+        seoUseCaseBody: "姓名、戶籍、登記、古文書引用等場景存在異體字和上下文差異，轉換後仍應依據原件或權威資料人工確認。"
       },
       en: {
         pageTitle: "Japanese Shinjitai Kyujitai Converter | JianFan.app",
@@ -1229,8 +1223,7 @@ const landingPages = {
         seoRegionTitle: "Highlighted kanji comparison",
         seoRegionBody: "Review changed kanji in context and use the Shinjitai–Kyujitai comparison table for character-by-character checking.",
         seoUseCaseTitle: "Review official text",
-        seoUseCaseBody: "Names, registers, legal text, historical quotations, and rare variants still need human review against original or authoritative sources.",
-        sampleText: "日本語の新字体と旧字体を変換します。国、学、会、広、読、気、体、戦などの漢字表記を確認できます。"
+        seoUseCaseBody: "Names, registers, legal text, historical quotations, and rare variants still need human review against original or authoritative sources."
       },
       ja: {
         pageTitle: "旧字体 新字体 変換 - 旧漢字変換ツール | JianFan.app",
@@ -1253,8 +1246,7 @@ const landingPages = {
         seoRegionTitle: "新旧字体対照表",
         seoRegionBody: "変換後の変更箇所をハイライト表示し、新字体と旧字体の対応を重複なしの比較表で一文字ずつ確認できます。",
         seoUseCaseTitle: "正式表記は確認が必要",
-        seoUseCaseBody: "戸籍、登記、氏名、地名、古文書引用などは異体字や文脈差があるため、変換後も原本や公式資料で確認してください。",
-        sampleText: "日本語の新字体と旧字体を変換します。国、学、会、広、読、気、体、戦などの漢字表記を確認できます。"
+        seoUseCaseBody: "戸籍、登記、氏名、地名、古文書引用などは異体字や文脈差があるため、変換後も原本や公式資料で確認してください。"
       },
       ko: {
         pageTitle: "일본 신자체 구자체 변환 | JianFan.app",
@@ -1275,8 +1267,7 @@ const landingPages = {
         seoRegionTitle: "신구자체 강조 대조표",
         seoRegionBody: "변환 후 달라진 한자를 강조 결과와 신자체·구자체 대조표에서 글자별로 확인할 수 있습니다.",
         seoUseCaseTitle: "공식 표기는 확인 필요",
-        seoUseCaseBody: "이름, 호적, 등기, 지명, 고문서 인용에는 이체자와 문맥 차이가 있으므로 원본이나 공식 자료로 다시 확인하세요.",
-        sampleText: "日本語の新字体と旧字体を変換します。国、学、会、広、読、気、体、戦などの漢字表記を確認できます。"
+        seoUseCaseBody: "이름, 호적, 등기, 지명, 고문서 인용에는 이체자와 문맥 차이가 있으므로 원본이나 공식 자료로 다시 확인하세요."
       }
     }
   }
@@ -1434,7 +1425,7 @@ elements.clearButton.addEventListener("click", () => {
 });
 
 elements.sampleButton.addEventListener("click", () => {
-  elements.inputText.value = t("sampleText");
+  elements.inputText.value = getConversionSample(activeConfig);
   updateCounts();
   scheduleConvert(0);
 });
