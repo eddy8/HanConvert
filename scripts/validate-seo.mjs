@@ -2,8 +2,12 @@ import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { getPageContext, loadLocalizationData, localizeConverterHtml } from "./static-localization-lib.mjs";
+
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteOrigin = "https://jianfan.app";
+const localizationData = await loadLocalizationData(projectRoot);
+const documentLanguages = { "zh-CN": "zh-CN", "zh-TW": "zh-Hant", en: "en", ja: "ja", ko: "ko" };
 
 async function findHtmlFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -33,6 +37,9 @@ for (const entryFile of ["app.js", "japanese-tools.js"]) {
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
   }
+  if (entryFile === "app.js" && /querySelectorAll\([^\n]*data-i18n|document\.title\s*=|document\.documentElement\.lang\s*=/.test(source)) {
+    throw new Error(`${entryFile}: static localization must not be rendered by JavaScript`);
+  }
 }
 
 let converterPages = 0;
@@ -43,7 +50,13 @@ const canonicalUrls = new Set();
 for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const relativePath = path.relative(projectRoot, htmlPath);
   const html = await readFile(htmlPath, "utf8");
+  const { locale } = getPageContext(relativePath);
+  const documentLanguage = requireMatch(html, /<html lang="([^"]+)">/, "document language", relativePath);
   const canonical = requireMatch(html, /<link rel="canonical" href="([^"]+)" \/>/, "canonical", relativePath);
+
+  if (documentLanguage !== documentLanguages[locale]) {
+    throw new Error(`${relativePath}: expected document language ${documentLanguages[locale]}, found ${documentLanguage}`);
+  }
 
   if (!canonical.startsWith(`${siteOrigin}/`)) throw new Error(`${relativePath}: canonical is not absolute`);
   if (canonicalUrls.has(canonical)) throw new Error(`${relativePath}: duplicate canonical ${canonical}`);
@@ -62,7 +75,12 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isStandaloneToolPage = html.includes('data-tool-page=');
   const isInfoPage = html.includes('data-info-page=');
   if (!isConverterPage && !isStandaloneToolPage && !isInfoPage) continue;
-  if (isConverterPage) converterPages += 1;
+  if (isConverterPage) {
+    converterPages += 1;
+    if (localizeConverterHtml(html, relativePath, localizationData) !== html) {
+      throw new Error(`${relativePath}: static localized content is out of sync with app.js`);
+    }
+  }
   if (isStandaloneToolPage) standaloneToolPages += 1;
   if (isInfoPage) infoPages += 1;
 
