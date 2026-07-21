@@ -8,11 +8,11 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 const siteOrigin = "https://jianfan.app";
 
 const locales = {
-  "zh-CN": { prefix: "", lang: "zh-CN", label: "简体中文", home: "网站首页", skip: "跳到主要内容", language: "界面语言", privacy: "隐私声明", copyWord: "复制" },
-  "zh-TW": { prefix: "zh-tw/", lang: "zh-Hant", label: "繁體中文", home: "網站首頁", skip: "跳到主要內容", language: "介面語言", privacy: "隱私聲明", copyWord: "複製" },
-  en: { prefix: "en/", lang: "en", label: "English", home: "Home", skip: "Skip to main content", language: "Language", privacy: "Privacy Statement", copyWord: "Copy" },
-  ja: { prefix: "ja/", lang: "ja", label: "日本語", home: "ホーム", skip: "メインコンテンツへ移動", language: "表示言語", privacy: "プライバシー声明", copyWord: "コピー" },
-  ko: { prefix: "ko/", lang: "ko", label: "한국어", home: "홈", skip: "주요 내용으로 이동", language: "인터페이스 언어", privacy: "개인정보 보호 안내", copyWord: "복사" }
+  "zh-CN": { prefix: "", lang: "zh-CN", label: "简体中文", home: "网站首页", skip: "跳到主要内容", language: "界面语言", about: "关于我们", contact: "联系我们", privacy: "隐私声明", copyWord: "复制" },
+  "zh-TW": { prefix: "zh-tw/", lang: "zh-Hant", label: "繁體中文", home: "網站首頁", skip: "跳到主要內容", language: "介面語言", about: "關於我們", contact: "聯絡我們", privacy: "隱私聲明", copyWord: "複製" },
+  en: { prefix: "en/", lang: "en", label: "English", home: "Home", skip: "Skip to main content", language: "Language", about: "About", contact: "Contact", privacy: "Privacy Statement", copyWord: "Copy" },
+  ja: { prefix: "ja/", lang: "ja", label: "日本語", home: "ホーム", skip: "メインコンテンツへ移動", language: "表示言語", about: "JianFan.app について", contact: "お問い合わせ", privacy: "プライバシー声明", copyWord: "コピー" },
+  ko: { prefix: "ko/", lang: "ko", label: "한국어", home: "홈", skip: "주요 내용으로 이동", language: "인터페이스 언어", about: "소개", contact: "문의", privacy: "개인정보 보호 안내", copyWord: "복사" }
 };
 
 const relatedToolLabels = {
@@ -442,6 +442,11 @@ function buildHero(content, glyphs) {
       </section>`;
 }
 
+function buildFooter(locale, content) {
+  const meta = locales[locale];
+  return `    <footer class="site-footer"><p>${content.footer}</p><nav class="footer-links" aria-label="Footer"><a href="${localizedPath(locale, "about")}">${meta.about}</a><a href="${localizedPath(locale, "contact")}">${meta.contact}</a><a href="${localizedPath(locale, "privacy")}">${meta.privacy}</a></nav></footer>`;
+}
+
 function buildFeatureBand(locale, content, activeSlug) {
   const labels = relatedToolLabels[locale];
   const links = Object.entries(labels).filter(([slug]) => slug !== "kicker");
@@ -516,7 +521,7 @@ ${[["japanese", content.outputJapanese], ["simplified", content.outputSimplified
       </section>
 ${buildFeatureBand(locale, content, slug)}
     </main>
-    <footer class="site-footer"><p>${content.footer}</p><nav class="footer-links"><a href="${localizedPath(locale, "privacy")}">${meta.privacy}</a></nav></footer>
+${buildFooter(locale, content)}
   </body>
 </html>`;
 }
@@ -564,7 +569,7 @@ ${buildCharacterButtons(locale)}
       </section>
 ${buildFeatureBand(locale, content, slug)}
     </main>
-    <footer class="site-footer"><p>${content.footer}</p><nav class="footer-links"><a href="${localizedPath(locale, "privacy")}">${meta.privacy}</a></nav></footer>
+${buildFooter(locale, content)}
   </body>
 </html>`;
 }
