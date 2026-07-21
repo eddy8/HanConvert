@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="Convert and compare Japanese kanji, Simplified Chinese, and Traditional Chinese in three columns with a changed-glyph table. Processing stays in your browser." />
+    <title>Japanese, Simplified and Traditional Chinese Kanji Converter | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/en/japanese-chinese-kanji-converter/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/japanese-chinese-kanji-converter/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-chinese-kanji-converter/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-chinese-kanji-converter/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-chinese-kanji-converter/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-chinese-kanji-converter/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-chinese-kanji-converter/" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/japanese-tools.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/en/japanese-chinese-kanji-converter/#webapp",
+            "name": "Japanese, Simplified and Traditional Chinese Kanji Converter",
+            "url": "https://jianfan.app/en/japanese-chinese-kanji-converter/",
+            "description": "Convert and compare Japanese kanji, Simplified Chinese, and Traditional Chinese in three columns with a changed-glyph table. Processing stays in your browser.",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "en",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/en/japanese-chinese-kanji-converter/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://jianfan.app/en/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Japanese and Chinese Kanji Converter",
+                "item": "https://jianfan.app/en/japanese-chinese-kanji-converter/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="kanji-converter" data-page-slug="japanese-chinese-kanji-converter" data-locale="en">
+    <a class="skip-nav" href="#main">Skip to main content</a>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" id="homeBrand" href="/en/">
+        <span class="brand-mark" aria-hidden="true">漢</span>
+        <span>JianFan.app</span>
+      </a>
+      <nav class="top-actions" aria-label="Primary">
+        <a class="nav-link" href="/en/">Home</a>
+        <label class="language-picker">
+          <span>Language</span>
+          <select id="localeSelect" aria-label="Language">
+              <option value="zh-CN">简体中文</option>
+              <option value="zh-TW">繁體中文</option>
+              <option value="en" selected>English</option>
+              <option value="ja">日本語</option>
+              <option value="ko">한국어</option>
+          </select>
+        </label>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="tool-hero" aria-labelledby="pageTitle">
+        <div>
+          <p class="section-kicker">Japanese · Simplified · Traditional</p>
+          <h1 id="pageTitle">Japanese and Chinese Kanji Converter</h1>
+          <p class="lede">Enter one form and compare Japanese kanji, Simplified Chinese, and Traditional Chinese side by side for review and character-level checking.</p>
+        </div>
+        <div class="tool-hero-glyphs" aria-hidden="true"><span>日</span><span>简</span><span>繁</span></div>
+      </section>
+      <section class="standalone-tool kanji-triple-tool" aria-labelledby="toolTitle">
+        <div class="standalone-tool-head">
+          <div>
+            <p class="section-kicker">CONVERT / COMPARE</p>
+            <h2 id="toolTitle">Input character type</h2>
+          </div>
+          <div class="status-pill" id="toolStatus" role="status" aria-live="polite"><span class="status-dot"></span><span></span></div>
+        </div>
+        <div class="source-type-control" role="radiogroup" aria-label="Input character type">
+          <button type="button" data-source-type="japanese" role="radio" aria-checked="true" class="is-active">Japanese kanji</button>
+          <button type="button" data-source-type="simplified" role="radio" aria-checked="false">Simplified Chinese</button>
+          <button type="button" data-source-type="traditional" role="radio" aria-checked="false">Traditional Chinese</button>
+        </div>
+        <div class="triple-converter-grid">
+          <section class="triple-text-panel input-variant" aria-labelledby="tripleInputTitle">
+            <div class="panel-topline"><h3 id="tripleInputTitle">Input text</h3><span id="tripleInputCount">0</span></div>
+            <textarea id="tripleInput" spellcheck="false" placeholder="Paste Japanese kanji, Simplified Chinese, or Traditional Chinese..."></textarea>
+            <div class="panel-actions">
+              <button class="text-button" id="tripleSample" type="button" data-sample="日本語の国と学、芸術と図書館の漢字表記を比較します。">Sample</button>
+              <button class="text-button" id="tripleClear" type="button">Clear</button>
+              <button class="primary-action" id="tripleConvert" type="button">Convert and compare</button>
+            </div>
+          </section>
+          <section class="triple-text-panel output-variant japanese" aria-labelledby="japaneseOutputTitle">
+            <div class="panel-topline"><h3 id="japaneseOutputTitle">Japanese kanji</h3><span id="japaneseOutputCount">0</span></div>
+            <textarea id="japaneseOutput" readonly spellcheck="false"></textarea>
+            <div class="panel-actions"><button class="text-button" type="button" data-copy-output="japanese">Copy</button></div>
+          </section>
+          <section class="triple-text-panel output-variant simplified" aria-labelledby="simplifiedOutputTitle">
+            <div class="panel-topline"><h3 id="simplifiedOutputTitle">Simplified Chinese</h3><span id="simplifiedOutputCount">0</span></div>
+            <textarea id="simplifiedOutput" readonly spellcheck="false"></textarea>
+            <div class="panel-actions"><button class="text-button" type="button" data-copy-output="simplified">Copy</button></div>
+          </section>
+          <section class="triple-text-panel output-variant traditional" aria-labelledby="traditionalOutputTitle">
+            <div class="panel-topline"><h3 id="traditionalOutputTitle">Traditional Chinese</h3><span id="traditionalOutputCount">0</span></div>
+            <textarea id="traditionalOutput" readonly spellcheck="false"></textarea>
+            <div class="panel-actions"><button class="text-button" type="button" data-copy-output="traditional">Copy</button></div>
+          </section>
+        </div>
+        <p class="tool-disclaimer">This tool converts kanji glyph forms; it does not translate Japanese sentences into Chinese. Review official names, places, and specialist text manually.</p>
+        <section class="triple-comparison" aria-labelledby="tripleComparisonTitle">
+          <div class="japanese-comparison-head">
+            <div><p class="section-kicker">Three-way differences</p><h3 id="tripleComparisonTitle">Japanese, Simplified, and Traditional comparison</h3><p id="tripleComparisonSummary" class="japanese-comparison-summary" aria-live="polite"></p></div>
+          </div>
+          <p class="japanese-comparison-empty" id="tripleComparisonEmpty">Changed glyphs and occurrence counts will appear here after conversion.</p>
+          <div class="japanese-table-scroll" id="tripleComparisonTableWrap" hidden>
+            <table class="japanese-comparison-table triple-comparison-table">
+              <thead><tr><th>Japanese kanji</th><th>Simplified Chinese</th><th>Traditional Chinese</th><th>Occurrences</th></tr></thead>
+              <tbody id="tripleComparisonBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="featureTitle">
+        <div class="section-heading">
+          <p class="section-kicker">Related tools</p>
+          <h2 id="featureTitle">Compare three kanji forms from one input</h2>
+          <p class="seo-intro">Built for Japanese-to-Simplified conversion, Japanese-Chinese kanji comparison, and three-way glyph review.</p>
+        </div>
+        <div class="seo-grid">
+          <article><h3>Source-aware conversion</h3><p>Select the input form first so Japanese, Simplified, and Traditional text follows the correct conversion path.</p></article>
+          <article><h3>Deduplicated differences</h3><p>Only differing glyphs are listed, with repeated character combinations merged and counted.</p></article>
+          <article><h3>Local browser processing</h3><p>Text is not uploaded. Copy each result independently; conversion is powered by OpenCC.</p></article>
+        </div>
+        <nav class="landing-links" aria-label="Related tools">
+          <a href="/en/japanese-chinese-kanji-converter/" aria-current="page">Japanese and Chinese Kanji</a>
+          <a href="/en/japanese-kanji-converter/">Shinjitai and Kyujitai</a>
+          <a href="/en/japanese-characters/">Japanese Characters</a>
+          <a href="/en/simplified-to-traditional/">Simplified to Traditional</a>
+          <a href="/en/traditional-to-simplified/">Traditional to Simplified</a>
+        </nav>
+      </section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app provides browser-local Chinese and Japanese kanji conversion tools.</p><nav class="footer-links"><a href="/en/privacy/">Privacy Statement</a></nav></footer>
+  </body>
+</html>

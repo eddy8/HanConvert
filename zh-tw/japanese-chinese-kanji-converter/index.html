@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="線上轉換和對照日本漢字、中國簡體字與繁體字，支援三欄結果、差異字對照和一鍵複製，文字僅在瀏覽器本機處理。" />
+    <title>日中漢字轉換 - 日本漢字/簡體字/繁體字線上對照 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/zh-tw/japanese-chinese-kanji-converter/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/japanese-chinese-kanji-converter/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-chinese-kanji-converter/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-chinese-kanji-converter/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-chinese-kanji-converter/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-chinese-kanji-converter/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-chinese-kanji-converter/" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/japanese-tools.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/zh-tw/japanese-chinese-kanji-converter/#webapp",
+            "name": "日中漢字轉換 - 日本漢字/簡體字/繁體字線上對照",
+            "url": "https://jianfan.app/zh-tw/japanese-chinese-kanji-converter/",
+            "description": "線上轉換和對照日本漢字、中國簡體字與繁體字，支援三欄結果、差異字對照和一鍵複製，文字僅在瀏覽器本機處理。",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "zh-Hant",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/zh-tw/japanese-chinese-kanji-converter/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "網站首頁",
+                "item": "https://jianfan.app/zh-tw/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "日中漢字三體轉換與對照",
+                "item": "https://jianfan.app/zh-tw/japanese-chinese-kanji-converter/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="kanji-converter" data-page-slug="japanese-chinese-kanji-converter" data-locale="zh-TW">
+    <a class="skip-nav" href="#main">跳到主要內容</a>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" id="homeBrand" href="/zh-tw/">
+        <span class="brand-mark" aria-hidden="true">漢</span>
+        <span>JianFan.app</span>
+      </a>
+      <nav class="top-actions" aria-label="Primary">
+        <a class="nav-link" href="/zh-tw/">網站首頁</a>
+        <label class="language-picker">
+          <span>介面語言</span>
+          <select id="localeSelect" aria-label="介面語言">
+              <option value="zh-CN">简体中文</option>
+              <option value="zh-TW" selected>繁體中文</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ko">한국어</option>
+          </select>
+        </label>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="tool-hero" aria-labelledby="pageTitle">
+        <div>
+          <p class="section-kicker">日本漢字 · 簡體字 · 繁體字</p>
+          <h1 id="pageTitle">日中漢字三體轉換與對照</h1>
+          <p class="lede">輸入一種漢字文字，同時取得日本漢字、中國簡體字和繁體字結果，適合字形比較、資料整理和日中內容校對。</p>
+        </div>
+        <div class="tool-hero-glyphs" aria-hidden="true"><span>日</span><span>简</span><span>繁</span></div>
+      </section>
+      <section class="standalone-tool kanji-triple-tool" aria-labelledby="toolTitle">
+        <div class="standalone-tool-head">
+          <div>
+            <p class="section-kicker">CONVERT / COMPARE</p>
+            <h2 id="toolTitle">輸入文字類型</h2>
+          </div>
+          <div class="status-pill" id="toolStatus" role="status" aria-live="polite"><span class="status-dot"></span><span></span></div>
+        </div>
+        <div class="source-type-control" role="radiogroup" aria-label="輸入文字類型">
+          <button type="button" data-source-type="japanese" role="radio" aria-checked="true" class="is-active">日本漢字</button>
+          <button type="button" data-source-type="simplified" role="radio" aria-checked="false">中國簡體字</button>
+          <button type="button" data-source-type="traditional" role="radio" aria-checked="false">中國繁體字</button>
+        </div>
+        <div class="triple-converter-grid">
+          <section class="triple-text-panel input-variant" aria-labelledby="tripleInputTitle">
+            <div class="panel-topline"><h3 id="tripleInputTitle">輸入文字</h3><span id="tripleInputCount">0</span></div>
+            <textarea id="tripleInput" spellcheck="false" placeholder="貼上日本漢字、簡體字或繁體字文字..."></textarea>
+            <div class="panel-actions">
+              <button class="text-button" id="tripleSample" type="button" data-sample="日本語の国と学、芸術と図書館の漢字表記を比較します。">範例</button>
+              <button class="text-button" id="tripleClear" type="button">清空</button>
+              <button class="primary-action" id="tripleConvert" type="button">轉換並對照</button>
+            </div>
+          </section>
+          <section class="triple-text-panel output-variant japanese" aria-labelledby="japaneseOutputTitle">
+            <div class="panel-topline"><h3 id="japaneseOutputTitle">日本漢字</h3><span id="japaneseOutputCount">0</span></div>
+            <textarea id="japaneseOutput" readonly spellcheck="false"></textarea>
+            <div class="panel-actions"><button class="text-button" type="button" data-copy-output="japanese">複製</button></div>
+          </section>
+          <section class="triple-text-panel output-variant simplified" aria-labelledby="simplifiedOutputTitle">
+            <div class="panel-topline"><h3 id="simplifiedOutputTitle">中國簡體字</h3><span id="simplifiedOutputCount">0</span></div>
+            <textarea id="simplifiedOutput" readonly spellcheck="false"></textarea>
+            <div class="panel-actions"><button class="text-button" type="button" data-copy-output="simplified">複製</button></div>
+          </section>
+          <section class="triple-text-panel output-variant traditional" aria-labelledby="traditionalOutputTitle">
+            <div class="panel-topline"><h3 id="traditionalOutputTitle">中國繁體字</h3><span id="traditionalOutputCount">0</span></div>
+            <textarea id="traditionalOutput" readonly spellcheck="false"></textarea>
+            <div class="panel-actions"><button class="text-button" type="button" data-copy-output="traditional">複製</button></div>
+          </section>
+        </div>
+        <p class="tool-disclaimer">本工具轉換漢字字形，不會把日語句子翻譯成中文；正式姓名、地名和專業文字仍需人工確認。</p>
+        <section class="triple-comparison" aria-labelledby="tripleComparisonTitle">
+          <div class="japanese-comparison-head">
+            <div><p class="section-kicker">三體差異</p><h3 id="tripleComparisonTitle">日本漢字、簡體字、繁體字對照表</h3><p id="tripleComparisonSummary" class="japanese-comparison-summary" aria-live="polite"></p></div>
+          </div>
+          <p class="japanese-comparison-empty" id="tripleComparisonEmpty">轉換後會在這裡列出不同字形及出現次數。</p>
+          <div class="japanese-table-scroll" id="tripleComparisonTableWrap" hidden>
+            <table class="japanese-comparison-table triple-comparison-table">
+              <thead><tr><th>日本漢字</th><th>中國簡體字</th><th>中國繁體字</th><th>出現次數</th></tr></thead>
+              <tbody id="tripleComparisonBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="featureTitle">
+        <div class="section-heading">
+          <p class="section-kicker">相關工具</p>
+          <h2 id="featureTitle">一次輸入，完成三種漢字字形比較</h2>
+          <p class="seo-intro">面向日中漢字轉換、日本漢字轉簡體字以及簡繁日三體對照需求。</p>
+        </div>
+        <div class="seo-grid">
+          <article><h3>正確處理轉換來源</h3><p>先選擇輸入文字類型，再依日本、簡體或繁體對應鏈路轉換，避免使用錯誤方向。</p></article>
+          <article><h3>差異字自動彙整</h3><p>只列出三種結果中存在差異的漢字，並合併重複字形、統計出現次數。</p></article>
+          <article><h3>瀏覽器本機處理</h3><p>文字不會上傳伺服器，可分別複製三種結果；轉換能力基於 OpenCC。</p></article>
+        </div>
+        <nav class="landing-links" aria-label="Related tools">
+          <a href="/zh-tw/japanese-chinese-kanji-converter/" aria-current="page">日中漢字三體轉換</a>
+          <a href="/zh-tw/japanese-kanji-converter/">日文新舊字體轉換</a>
+          <a href="/zh-tw/japanese-characters/">日文字元複製</a>
+          <a href="/zh-tw/simplified-to-traditional/">簡體轉繁體</a>
+          <a href="/zh-tw/traditional-to-simplified/">繁體轉簡體</a>
+        </nav>
+      </section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app 提供在瀏覽器本機運行的中文與日文漢字轉換工具。</p><nav class="footer-links"><a href="/zh-tw/privacy/">隱私聲明</a></nav></footer>
+  </body>
+</html>
