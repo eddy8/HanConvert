@@ -610,4 +610,126 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-characters/" />
   </url>
   <!-- japanese-tools:end -->
+  <!-- trust-pages:start -->
+  <url>
+    <loc>https://jianfan.app/about/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/about/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/about/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/about/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/about/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/about/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/about/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/about/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/about/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/about/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/about/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/about/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/about/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/about/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/about/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/about/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/about/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/contact/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/contact/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/contact/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/contact/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/contact/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/contact/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/contact/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/contact/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/contact/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/contact/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/contact/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/contact/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/contact/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/contact/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/contact/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/contact/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/contact/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/contact/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/contact/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/contact/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/contact/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/contact/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/contact/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/contact/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/contact/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/contact/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/contact/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/contact/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/contact/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/contact/" />
+  </url>
+  <!-- trust-pages:end -->
 </urlset>

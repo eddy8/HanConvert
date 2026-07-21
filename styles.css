@@ -1096,6 +1096,51 @@ textarea::placeholder {
   color: var(--accent);
 }
 
+.trust-hero {
+  grid-template-columns: minmax(0, 1100px);
+  min-height: 138px;
+}
+
+.trust-band {
+  border-radius: var(--radius-sm);
+}
+
+.trust-content {
+  max-width: 1100px;
+}
+
+.trust-content a {
+  color: var(--ink);
+  text-decoration-color: rgba(64, 242, 176, 0.55);
+  text-underline-offset: 4px;
+}
+
+.contact-address {
+  display: grid;
+  gap: 7px;
+  margin: 0 0 4px;
+  padding: 4px 0 4px 18px;
+  border-left: 3px solid var(--accent);
+  font-style: normal;
+}
+
+.contact-address span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.contact-address a {
+  width: fit-content;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.contact-address p {
+  margin-bottom: 0;
+}
+
 .tool-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -1516,6 +1561,10 @@ textarea::placeholder {
 
   .japanese-character-grid {
     grid-template-columns: repeat(auto-fill, minmax(58px, 1fr));
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
   }
 }
 

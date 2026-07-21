@@ -37,6 +37,7 @@ for (const entryFile of ["app.js", "japanese-tools.js"]) {
 
 let converterPages = 0;
 let standaloneToolPages = 0;
+let infoPages = 0;
 const canonicalUrls = new Set();
 
 for (const htmlPath of await findHtmlFiles(projectRoot)) {
@@ -51,12 +52,19 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (/(?:src|href)="\/[^"]+\?(?:v|version)=/i.test(html)) {
     throw new Error(`${relativePath}: static asset URL contains a version query`);
   }
+  for (const slug of ["about", "contact", "privacy"]) {
+    if (!new RegExp(`href="/[^"]*${slug}/"`).test(html)) {
+      throw new Error(`${relativePath}: missing ${slug} footer link`);
+    }
+  }
 
   const isConverterPage = html.includes('id="converterTitle"');
   const isStandaloneToolPage = html.includes('data-tool-page=');
-  if (!isConverterPage && !isStandaloneToolPage) continue;
+  const isInfoPage = html.includes('data-info-page=');
+  if (!isConverterPage && !isStandaloneToolPage && !isInfoPage) continue;
   if (isConverterPage) converterPages += 1;
   if (isStandaloneToolPage) standaloneToolPages += 1;
+  if (isInfoPage) infoPages += 1;
 
   const alternates = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)" \/>/g)];
   if (alternates.length !== 6) throw new Error(`${relativePath}: expected 6 hreflang links`);
@@ -71,9 +79,18 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     relativePath
   );
   const schema = JSON.parse(schemaText);
-  const webApplication = schema["@graph"]?.find((item) => item["@type"] === "WebApplication");
-  if (!webApplication || webApplication.url !== canonical) {
-    throw new Error(`${relativePath}: invalid WebApplication schema`);
+  if (isInfoPage) {
+    const expectedType = html.includes('data-info-page="about"') ? "AboutPage" : "ContactPage";
+    const infoPage = schema["@graph"]?.find((item) => item["@type"] === expectedType);
+    const organization = schema["@graph"]?.find((item) => item["@type"] === "Organization");
+    if (!infoPage || infoPage.url !== canonical || organization?.email !== "admin@jianfan.app") {
+      throw new Error(`${relativePath}: invalid ${expectedType} or Organization schema`);
+    }
+  } else {
+    const webApplication = schema["@graph"]?.find((item) => item["@type"] === "WebApplication");
+    if (!webApplication || webApplication.url !== canonical) {
+      throw new Error(`${relativePath}: invalid WebApplication schema`);
+    }
   }
   if (isConverterPage && (!html.includes('data-route="simplified-to-traditional"') || !html.includes('data-route="traditional-to-simplified"'))) {
     throw new Error(`${relativePath}: missing direction-page links`);
@@ -88,6 +105,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
 if (standaloneToolPages !== 10) throw new Error(`expected 10 standalone tool pages, found ${standaloneToolPages}`);
-if (sitemapUrls.length !== 50) throw new Error(`expected 50 sitemap URLs, found ${sitemapUrls.length}`);
+if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
+if (sitemapUrls.length !== 60) throw new Error(`expected 60 sitemap URLs, found ${sitemapUrls.length}`);
 
-console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, and ${sitemapUrls.length} sitemap URLs.`);
+console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, and ${sitemapUrls.length} sitemap URLs.`);
