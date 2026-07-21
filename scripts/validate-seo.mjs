@@ -28,6 +28,13 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
 const uniqueSitemapUrls = new Set(sitemapUrls);
 if (uniqueSitemapUrls.size !== sitemapUrls.length) throw new Error("sitemap.xml contains duplicate URLs");
 
+for (const entryFile of ["app.js", "japanese-tools.js"]) {
+  const source = await readFile(path.join(projectRoot, entryFile), "utf8");
+  if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
+    throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
+  }
+}
+
 let converterPages = 0;
 let standaloneToolPages = 0;
 const canonicalUrls = new Set();

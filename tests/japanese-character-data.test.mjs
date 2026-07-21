@@ -4,7 +4,7 @@ import test from "node:test";
 import {
   JAPANESE_CHARACTER_CATEGORIES,
   filterJapaneseCharacters
-} from "../japanese-character-data.mjs";
+} from "../japanese-character-data.js";
 
 test("provides comprehensive, unique character lists for every category", () => {
   const categoryIds = JAPANESE_CHARACTER_CATEGORIES.map((category) => category.id);
