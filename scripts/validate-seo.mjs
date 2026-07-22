@@ -141,7 +141,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     }
   }
   if (isStrokeOrderPage) {
-    if (!html.includes("cdn.jsdelivr.net/npm/hanzi-writer/dist/hanzi-writer.min.js") || !html.includes('src="/stroke-order-tool.js"')) {
+    if (!html.includes("cdn.jsdmirror.cn/npm/hanzi-writer/dist/hanzi-writer.min.js") || !html.includes('src="/stroke-order-tool.js"')) {
       throw new Error(`${relativePath}: missing Hanzi Writer CDN or stroke-order script`);
     }
   }

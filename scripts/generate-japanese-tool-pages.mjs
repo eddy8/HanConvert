@@ -407,7 +407,7 @@ function buildHead(locale, slug, content) {
     <title>${escapeHtml(content.title)}</title>
     <link rel="canonical" href="${canonical}" />
 ${alternates}
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://cdn.jsdmirror.cn" />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.css" />
     <script type="module" src="/japanese-tools.js"></script>

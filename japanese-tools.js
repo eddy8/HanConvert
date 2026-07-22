@@ -1,4 +1,4 @@
-import OpenCC from "https://cdn.jsdelivr.net/npm/opencc-wasm@0.12.0/dist/esm/index.js";
+import OpenCC from "https://cdn.jsdmirror.cn/npm/opencc-wasm@0.12.0/dist/esm/index.js";
 
 import { filterJapaneseCharacters } from "/japanese-character-data.js";
 import {

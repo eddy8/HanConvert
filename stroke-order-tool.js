@@ -19,7 +19,7 @@
   if (typeof document === "undefined") return;
 
   const MAX_CHARACTERS = 8;
-  const DATA_ORIGIN = "https://cdn.jsdelivr.net/npm/hanzi-writer-data";
+  const DATA_ORIGIN = "https://cdn.jsdmirror.cn/npm/hanzi-writer-data";
   const localePaths = {
     "zh-CN": "/",
     "zh-TW": "/zh-tw/",
