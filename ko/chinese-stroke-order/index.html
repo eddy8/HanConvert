@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="중국어 한자 필순과 획순을 애니메이션으로 조회하고 간체·번체 획수, 한 획씩 보기와 온라인 쓰기 연습을 이용하세요." />
+    <title>중국어 한자 필순 조회 - 획순 애니메이션과 쓰기 연습 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/ko/chinese-stroke-order/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-stroke-order/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-stroke-order/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-stroke-order/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-stroke-order/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-stroke-order/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-stroke-order/" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer/dist/hanzi-writer.min.js"></script>
+    <script defer src="/vendor/pinyin-pro.js"></script>
+    <script defer src="/stroke-order-tool.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/ko/chinese-stroke-order/#webapp",
+            "name": "중국어 한자 필순·획순 조회",
+            "url": "https://jianfan.app/ko/chinese-stroke-order/",
+            "description": "중국어 한자 필순과 획순을 애니메이션으로 조회하고 간체·번체 획수, 한 획씩 보기와 온라인 쓰기 연습을 이용하세요.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "ko",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/ko/chinese-stroke-order/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "홈",
+                "item": "https://jianfan.app/ko/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "중국어 한자 필순·획순 조회",
+                "item": "https://jianfan.app/ko/chinese-stroke-order/"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/ko/chinese-stroke-order/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "번체 한자도 지원하나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "네. 9,000자 이상의 일반 간체와 번체를 지원하지만 일부 희귀 한자는 없을 수 있습니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "한 획씩 볼 수 있나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "“다음 획”을 누르면 올바른 순서대로 한 획씩 재생됩니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "온라인 쓰기 연습이 가능한가요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "네. “쓰기 연습”을 시작하고 격자 안에 올바른 필순으로 쓰세요."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "지역마다 한자 필순이 모두 같나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "항상 같지는 않습니다. 중국 대륙, 대만, 홍콩, 일본의 일부 자형과 필순 규정은 다를 수 있으므로 정규 교육에서는 현지 기준을 확인하세요."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="stroke-order" data-page-slug="chinese-stroke-order" data-locale="ko" data-initial-character="永" data-label-pause="일시 정지" data-label-resume="계속" data-message-idle="중국어 한자 입력 대기" data-message-loading="필순 데이터 불러오는 중" data-message-ready="{character} 필순을 표시합니다" data-message-playing="필순 애니메이션 재생 중" data-message-paused="애니메이션 일시 정지" data-message-step="{current} / {total}번째 획 표시 중" data-message-quiz="격자 안에 올바른 순서로 써 보세요" data-message-quiz-complete="연습 완료, 오류 {mistakes}회" data-message-missing="{character} 필순 데이터가 없습니다" data-message-invalid="중국어 한자를 한 글자 이상 입력하세요" data-message-component-error="필순 기능을 불러오지 못했습니다. 새로 고쳐 주세요.">
+    <a class="skip-nav" href="#main">주요 내용으로 이동</a>
+    <header class="site-header" aria-label="사이트 헤더"><a class="brand" href="/ko/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">漢</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="주요 탐색"><a class="nav-link" href="/ko/">홈</a><label class="language-picker"><span>인터페이스 언어</span><select id="localeSelect" aria-label="인터페이스 언어">
+              <option value="zh-CN">简体中文</option>
+              <option value="zh-TW">繁體中文</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ko" selected>한국어</option>
+          </select></label></nav></header>
+    <main id="main">
+      <section class="tool-hero stroke-tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">중국어 한자 · 필순 · 쓰기 연습</p><h1 id="pageTitle">중국어 한자 필순·획순 조회</h1><p class="lede">중국어 한자를 입력하면 필순 애니메이션, 획수와 한 획씩 쓰는 순서를 확인하고 간체·번체 쓰기를 연습할 수 있습니다.</p></div><div class="tool-hero-glyphs" aria-hidden="true"><span>永</span><span>1→5</span><span>✎</span></div></section>
+      <section class="standalone-tool stroke-order-tool" aria-labelledby="strokeToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">STROKE / PRACTICE</p><h2 id="strokeToolTitle">중국어 한자를 입력해 쓰는 순서 확인</h2></div><div class="status-pill" id="strokeStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>중국어 한자 입력 대기</span></div></div>
+        <form class="stroke-search" id="strokeSearchForm"><label for="strokeInput">조회할 중국어 한자</label><div><input id="strokeInput" type="text" maxlength="24" autocomplete="off" spellcheck="false" placeholder="한자를 최대 8자 입력" /><button class="primary-action" type="submit">필순 조회</button></div></form>
+        <div class="stroke-quick-row"><span>자주 쓰는 한자</span><button type="button" data-stroke-sample="永">永</button><button type="button" data-stroke-sample="汉">汉</button><button type="button" data-stroke-sample="字">字</button><button type="button" data-stroke-sample="学">学</button><button type="button" data-stroke-sample="爱">爱</button><button type="button" data-stroke-sample="龙">龙</button><button type="button" data-stroke-sample="書">書</button><button type="button" data-stroke-sample="漢">漢</button></div>
+        <div class="stroke-workspace">
+          <section class="stroke-stage" aria-labelledby="strokeStageTitle"><div class="panel-topline"><h3 id="strokeStageTitle">조회할 한자</h3><div class="stroke-character-tabs" id="strokeCharacterTabs"></div></div><div class="stroke-board-shell"><div class="stroke-grid-line vertical" aria-hidden="true"></div><div class="stroke-grid-line horizontal" aria-hidden="true"></div><div id="strokeWriterTarget"></div></div></section>
+          <aside class="stroke-sidebar">
+            <div class="stroke-character-summary"><strong id="strokeCurrentCharacter">永</strong><dl><div><dt>병음</dt><dd id="strokePinyin">yǒng</dd></div><div><dt>총 획수</dt><dd id="strokeCount">5</dd></div><div><dt>현재 위치</dt><dd id="strokePosition">1 / 1</dd></div><div><dt>Unicode</dt><dd id="strokeUnicode">U+6C38</dd></div></dl></div>
+            <div class="stroke-navigation"><button id="strokePrevious" type="button">‹ 이전 글자</button><button id="strokeNext" type="button">다음 글자 ›</button></div>
+            <div class="stroke-actions"><button id="strokeAnimate" type="button" class="primary-action"><span aria-hidden="true">▶</span><span>애니메이션</span></button><button id="strokePause" type="button" aria-pressed="false" disabled><span aria-hidden="true">Ⅱ</span><span id="strokePauseLabel">일시 정지</span></button><button id="strokeStep" type="button"><span aria-hidden="true">+1</span><span>다음 획</span></button><button id="strokeQuiz" type="button"><span aria-hidden="true">✎</span><span>쓰기 연습</span></button><button id="strokeReset" type="button"><span aria-hidden="true">↺</span><span>초기화</span></button></div>
+            <label class="stroke-outline-toggle"><input id="strokeOutline" type="checkbox" checked /><span>글자 윤곽 표시</span></label>
+            <p class="stroke-data-note">쓰기 연습은 획의 위치, 방향과 순서를 확인합니다. 공개 필순 데이터는 필요한 글자만 원격으로 불러옵니다.</p>
+          </aside>
+        </div>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="strokeFeatureTitle"><div class="section-heading"><p class="section-kicker">중국어 한자 획순</p><h2 id="strokeFeatureTitle">중국어 필순을 애니메이션으로 한 획씩 학습</h2><p class="seo-intro">중국어 학습자, 교사와 보호자를 위한 필순 조회 도구로 앱 설치 없이 브라우저에서 사용할 수 있습니다.</p></div><div class="seo-grid">
+          <article><h3>필순 애니메이션</h3><p>올바른 순서로 한 획씩 재생하고 일시 정지, 계속 또는 다음 획 보기를 사용할 수 있습니다.</p></article>
+          <article><h3>간체·번체와 여러 글자</h3><p>최대 8자를 입력해 전환하고 획수, 병음과 Unicode를 확인합니다.</p></article>
+          <article><h3>대화형 쓰기 연습</h3><p>격자 안에 직접 쓰면 잘못된 획을 알려 주고 완료 후 오류 횟수를 표시합니다.</p></article>
+        </div><section class="pinyin-faq" aria-labelledby="strokeFaqTitle"><h2 id="strokeFaqTitle">중국어 한자 필순 자주 묻는 질문</h2>
+          <details><summary>번체 한자도 지원하나요?</summary><p>네. 9,000자 이상의 일반 간체와 번체를 지원하지만 일부 희귀 한자는 없을 수 있습니다.</p></details>
+          <details><summary>한 획씩 볼 수 있나요?</summary><p>“다음 획”을 누르면 올바른 순서대로 한 획씩 재생됩니다.</p></details>
+          <details><summary>온라인 쓰기 연습이 가능한가요?</summary><p>네. “쓰기 연습”을 시작하고 격자 안에 올바른 필순으로 쓰세요.</p></details>
+          <details><summary>지역마다 한자 필순이 모두 같나요?</summary><p>항상 같지는 않습니다. 중국 대륙, 대만, 홍콩, 일본의 일부 자형과 필순 규정은 다를 수 있으므로 정규 교육에서는 현지 기준을 확인하세요.</p></details>
+        </section><p class="section-kicker pinyin-related-kicker">관련 도구</p><nav class="landing-links" aria-label="관련 문자 도구">
+          <a href="/ko/chinese-stroke-order/" aria-current="page">중국어 한자 필순</a>
+          <a href="/ko/chinese-to-pinyin/">중국어 병음 변환</a>
+          <a href="/ko/simplified-to-traditional/">간체를 번체로</a>
+          <a href="/ko/traditional-to-simplified/">번체를 간체로</a>
+          <a href="/ko/japanese-chinese-kanji-converter/">일본·중국 한자 변환</a>
+          <a href="/ko/japanese-characters/">일본어 문자 복사</a>
+        </nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app는 중국어 변환, 병음과 한자 필순 학습 도구를 제공합니다.</p><nav class="footer-links" aria-label="바닥글"><a href="/ko/about/">소개</a><a href="/ko/contact/">문의</a><a href="/ko/privacy/">개인정보 보호 안내</a></nav></footer>
+  </body>
+</html>
