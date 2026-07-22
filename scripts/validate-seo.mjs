@@ -32,7 +32,7 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
 const uniqueSitemapUrls = new Set(sitemapUrls);
 if (uniqueSitemapUrls.size !== sitemapUrls.length) throw new Error("sitemap.xml contains duplicate URLs");
 
-for (const entryFile of ["app.js", "japanese-tools.js"]) {
+for (const entryFile of ["app.js", "japanese-tools.js", "pinyin-tool.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
@@ -74,6 +74,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isConverterPage = html.includes('id="converterTitle"');
   const isStandaloneToolPage = html.includes('data-tool-page=');
   const isInfoPage = html.includes('data-info-page=');
+  const isPinyinPage = html.includes('data-tool-page="pinyin-converter"');
   if (!isConverterPage && !isStandaloneToolPage && !isInfoPage) continue;
   if (isConverterPage) {
     converterPages += 1;
@@ -109,6 +110,9 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     if (!webApplication || webApplication.url !== canonical) {
       throw new Error(`${relativePath}: invalid WebApplication schema`);
     }
+    if (isPinyinPage && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
+      throw new Error(`${relativePath}: missing Pinyin FAQPage schema`);
+    }
   }
   if (isConverterPage && (!html.includes('data-route="simplified-to-traditional"') || !html.includes('data-route="traditional-to-simplified"'))) {
     throw new Error(`${relativePath}: missing direction-page links`);
@@ -116,14 +120,27 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (isConverterPage && (!html.includes('data-route="japanese-chinese-kanji-converter"') || !html.includes('data-route="japanese-characters"'))) {
     throw new Error(`${relativePath}: missing Japanese tool links`);
   }
-  if (isStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/"))) {
+  if (isConverterPage && !html.includes('data-route="chinese-to-pinyin"')) {
+    throw new Error(`${relativePath}: missing Chinese-to-Pinyin link`);
+  }
+  if (isStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/") || !html.includes("chinese-to-pinyin/"))) {
     throw new Error(`${relativePath}: missing related Japanese tool links`);
+  }
+  if (isPinyinPage) {
+    if (!html.includes('src="/vendor/pinyin-pro.js"') || !html.includes('src="/pinyin-tool.js"')) {
+      throw new Error(`${relativePath}: Pinyin assets must be served locally`);
+    }
+  }
+  if (relativePath === path.join("chinese-to-pinyin", "index.html")) {
+    for (const keyword of ["汉字转拼音", "汉字拼音在线转换", "汉字拼音查询"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
   }
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
-if (standaloneToolPages !== 10) throw new Error(`expected 10 standalone tool pages, found ${standaloneToolPages}`);
+if (standaloneToolPages !== 15) throw new Error(`expected 15 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
-if (sitemapUrls.length !== 60) throw new Error(`expected 60 sitemap URLs, found ${sitemapUrls.length}`);
+if (sitemapUrls.length !== 65) throw new Error(`expected 65 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, and ${sitemapUrls.length} sitemap URLs.`);

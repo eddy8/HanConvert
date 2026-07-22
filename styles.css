@@ -1423,6 +1423,275 @@ textarea::placeholder {
   border-radius: var(--radius-sm);
 }
 
+.pinyin-options {
+  display: grid;
+  grid-template-columns: minmax(420px, 1.5fr) minmax(280px, 0.8fr) auto;
+  align-items: end;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.pinyin-options fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.pinyin-options legend {
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.pinyin-format-control,
+.pinyin-case-control {
+  display: grid;
+  gap: 6px;
+}
+
+.pinyin-format-control {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.pinyin-case-control {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pinyin-format-control button,
+.pinyin-case-control button {
+  min-width: 0;
+  min-height: 42px;
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.pinyin-format-control button {
+  display: grid;
+  place-items: center;
+  gap: 1px;
+}
+
+.pinyin-format-control small {
+  color: var(--accent-2);
+  font-size: 0.67rem;
+}
+
+.pinyin-format-control button.is-active,
+.pinyin-case-control button.is-active {
+  border-color: rgba(64, 242, 176, 0.72);
+  background: rgba(64, 242, 176, 0.13);
+  color: var(--ink);
+}
+
+.pinyin-switches {
+  display: grid;
+  gap: 5px;
+  padding-bottom: 2px;
+}
+
+.pinyin-switches label {
+  display: flex;
+  min-height: 30px;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.pinyin-switches input {
+  accent-color: var(--accent);
+}
+
+.pinyin-converter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.pinyin-text-panel {
+  display: flex;
+  min-width: 0;
+  min-height: 302px;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(4, 12, 10, 0.48);
+}
+
+.pinyin-text-panel.input-variant {
+  border-color: rgba(255, 204, 102, 0.3);
+}
+
+.pinyin-text-panel.output-variant {
+  border-color: rgba(64, 242, 176, 0.32);
+}
+
+.pinyin-text-panel textarea {
+  min-height: 224px;
+  padding: 13px;
+  resize: vertical;
+  font-size: 0.97rem;
+  line-height: 1.72;
+}
+
+.pinyin-text-panel .panel-topline {
+  min-height: 42px;
+  padding-inline: 12px;
+}
+
+.pinyin-text-panel .panel-actions {
+  min-height: 48px;
+  padding: 6px 8px;
+  gap: 5px;
+}
+
+.pinyin-text-panel.input-variant .panel-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pinyin-text-panel .panel-actions button {
+  min-height: 36px;
+  padding-inline: 9px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.pinyin-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 0.72fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.pinyin-annotation-panel,
+.pinyin-lookup-panel {
+  min-width: 0;
+  min-height: 150px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.pinyin-annotation-panel h3,
+.pinyin-lookup-panel h3 {
+  margin-bottom: 8px;
+  font-size: 0.96rem;
+}
+
+.pinyin-empty,
+.pinyin-preview-note {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.pinyin-preview-note {
+  margin: 9px 0 0;
+}
+
+.pinyin-annotation {
+  display: flex;
+  max-height: 280px;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 10px 5px;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+.pinyin-ruby-item {
+  display: inline-grid;
+  min-width: 28px;
+  place-items: center;
+}
+
+.pinyin-ruby-item ruby {
+  font-size: 1.16rem;
+  line-height: 1.45;
+}
+
+.pinyin-ruby-item rt {
+  color: var(--accent-2);
+  font-size: 0.58rem;
+  font-weight: 700;
+}
+
+.pinyin-lookup-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+#pinyinLookupCharacter {
+  margin: auto 0 8px;
+  color: var(--ink);
+  font-size: 2.8rem;
+  line-height: 1;
+}
+
+#pinyinLookupReadings {
+  display: flex;
+  min-height: 34px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+#pinyinLookupReadings[hidden],
+#pinyinLookupCharacter[hidden] {
+  display: none;
+}
+
+#pinyinLookupReadings span {
+  padding: 5px 9px;
+  border: 1px solid rgba(64, 242, 176, 0.36);
+  border-radius: var(--radius-sm);
+  background: rgba(64, 242, 176, 0.09);
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.pinyin-faq {
+  max-width: 1100px;
+  margin-top: 22px;
+}
+
+.pinyin-faq h2 {
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+}
+
+.pinyin-faq details {
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+.pinyin-faq details:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.pinyin-faq summary {
+  color: var(--ink);
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.pinyin-faq p {
+  margin: 7px 0 0;
+  color: var(--muted);
+}
+
+.pinyin-related-kicker {
+  margin-top: 20px;
+}
+
 @keyframes scan {
   to {
     transform: rotate(360deg);
@@ -1464,6 +1733,15 @@ textarea::placeholder {
   }
 
   .triple-converter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pinyin-options {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pinyin-switches {
+    grid-column: 1 / -1;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -1549,6 +1827,33 @@ textarea::placeholder {
 
   .triple-converter-grid {
     grid-template-columns: 1fr;
+  }
+
+  .pinyin-options,
+  .pinyin-converter-grid,
+  .pinyin-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pinyin-switches {
+    grid-column: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .pinyin-format-control {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pinyin-case-control {
+    grid-template-columns: 1fr;
+  }
+
+  .pinyin-text-panel {
+    min-height: 280px;
+  }
+
+  .pinyin-text-panel textarea {
+    min-height: 178px;
   }
 
   .triple-text-panel {

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="免費漢字轉拼音工具，支援漢字拼音線上轉換與漢字拼音查詢，可輸出聲調符號、數字聲調、無聲調、首字母及逐字注音，簡繁體皆在瀏覽器本機處理。" />
+    <title>漢字轉拼音 - 漢字拼音線上轉換與查詢 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/zh-tw/chinese-to-pinyin/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-to-pinyin/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-to-pinyin/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-to-pinyin/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-to-pinyin/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-to-pinyin/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-to-pinyin/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="/vendor/pinyin-pro.js"></script>
+    <script defer src="/pinyin-tool.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/zh-tw/chinese-to-pinyin/#webapp",
+            "name": "漢字轉拼音線上轉換",
+            "url": "https://jianfan.app/zh-tw/chinese-to-pinyin/",
+            "description": "免費漢字轉拼音工具，支援漢字拼音線上轉換與漢字拼音查詢，可輸出聲調符號、數字聲調、無聲調、首字母及逐字注音，簡繁體皆在瀏覽器本機處理。",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "zh-Hant",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/zh-tw/chinese-to-pinyin/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "網站首頁",
+                "item": "https://jianfan.app/zh-tw/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "漢字轉拼音線上轉換",
+                "item": "https://jianfan.app/zh-tw/chinese-to-pinyin/"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/zh-tw/chinese-to-pinyin/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "漢字轉拼音可以顯示聲調嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以。可選擇聲調符號、數字聲調或無聲調三種完整拼音格式。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "可以查詢多音字嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "輸入單一漢字時會列出常見讀音；輸入詞語或句子時會優先依上下文選擇讀音。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "簡體字可以轉換拼音嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以。簡體字與繁體字都可直接輸入，不需要先進行簡繁轉換。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="pinyin-converter" data-page-slug="chinese-to-pinyin" data-locale="zh-TW" data-message-idle="等待輸入漢字" data-message-converting="正在轉換拼音" data-message-ready="拼音轉換完成" data-message-copied="已複製拼音結果" data-message-copy-failed="無法自動複製，請手動複製" data-message-error="拼音元件載入失敗，請重新整理頁面" data-message-too-long="文字不能超過 {limit} 個字元">
+    <a class="skip-nav" href="#main">跳到主要內容</a>
+    <header class="site-header" aria-label="網站頁首">
+      <a class="brand" href="/zh-tw/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">漢</span><span>JianFan.app</span></a>
+      <nav class="top-actions" aria-label="主要導覽"><a class="nav-link" href="/zh-tw/">網站首頁</a><label class="language-picker"><span>介面語言</span><select id="localeSelect" aria-label="介面語言">
+              <option value="zh-CN">简体中文</option>
+              <option value="zh-TW" selected>繁體中文</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ko">한국어</option>
+          </select></label></nav>
+    </header>
+    <main id="main">
+      <section class="tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">漢語拼音 · 聲調 · 多音字</p><h1 id="pageTitle">漢字轉拼音線上轉換</h1><p class="lede">輸入漢字、詞語或段落，即時產生帶聲調或無聲調拼音，也可查詢單一漢字的常見讀音。支援簡體中文與繁體中文。</p></div><div class="tool-hero-glyphs" aria-hidden="true"><span>汉</span><span>hàn</span><span>4</span></div></section>
+      <section class="standalone-tool pinyin-tool" aria-labelledby="pinyinToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">PINYIN / LOOKUP</p><h2 id="pinyinToolTitle">輸入漢字，選擇拼音格式</h2></div><div class="status-pill" id="pinyinStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>等待輸入漢字</span></div></div>
+        <div class="pinyin-options">
+          <fieldset><legend>輸出格式</legend><div class="pinyin-format-control" role="radiogroup" aria-label="輸出格式">
+            <button type="button" data-pinyin-format="symbol" role="radio" aria-checked="true" class="is-active"><span>帶聲調</span><small>nǐ hǎo</small></button>
+            <button type="button" data-pinyin-format="number" role="radio" aria-checked="false"><span>數字聲調</span><small>ni3 hao3</small></button>
+            <button type="button" data-pinyin-format="none" role="radio" aria-checked="false"><span>無聲調</span><small>ni hao</small></button>
+            <button type="button" data-pinyin-format="initials" role="radio" aria-checked="false"><span>首字母</span><small>nh</small></button>
+          </div></fieldset>
+          <fieldset><legend>字母格式</legend><div class="pinyin-case-control" role="radiogroup" aria-label="字母格式">
+            <button type="button" data-pinyin-case="lower" role="radio" aria-checked="true" class="is-active">小寫</button>
+            <button type="button" data-pinyin-case="title" role="radio" aria-checked="false">首字母大寫</button>
+            <button type="button" data-pinyin-case="upper" role="radio" aria-checked="false">全大寫</button>
+          </div></fieldset>
+          <div class="pinyin-switches"><label><input id="preserveNonChinese" type="checkbox" checked /><span>保留標點與字母</span></label><label><input id="surnameMode" type="checkbox" /><span>姓名讀音模式</span></label></div>
+        </div>
+        <div class="pinyin-converter-grid">
+          <section class="pinyin-text-panel input-variant" aria-labelledby="pinyinInputTitle"><div class="panel-topline"><h3 id="pinyinInputTitle">漢字文字</h3><span id="pinyinInputCount">0</span></div><textarea id="pinyinInput" spellcheck="false" placeholder="輸入或貼上需要轉換的簡體或繁體中文..."></textarea><div class="panel-actions"><button class="text-button" id="pinyinSample" type="button" data-sample="重庆银行的音乐会在长安举行，行人走过快乐的街道。">範例</button><button class="text-button" id="pinyinClear" type="button">清空</button><button class="primary-action" id="pinyinConvert" type="button">轉換拼音</button></div></section>
+          <section class="pinyin-text-panel output-variant" aria-labelledby="pinyinOutputTitle"><div class="panel-topline"><h3 id="pinyinOutputTitle">拼音結果</h3><span id="pinyinOutputCount">0</span></div><textarea id="pinyinOutput" readonly spellcheck="false" placeholder="轉換後的拼音會顯示在這裡"></textarea><div class="panel-actions"><button class="text-button" id="pinyinCopy" type="button">複製結果</button></div></section>
+        </div>
+        <div class="pinyin-detail-grid">
+          <section class="pinyin-annotation-panel" aria-labelledby="pinyinAnnotationTitle"><div><p class="section-kicker">RUBY</p><h3 id="pinyinAnnotationTitle">逐字拼音標註</h3></div><p id="pinyinAnnotationEmpty" class="pinyin-empty">輸入漢字後，這裡會顯示逐字注音預覽。</p><div id="pinyinAnnotation" class="pinyin-annotation" hidden></div><p class="pinyin-preview-note">長文字只預覽前 500 個字元，完整拼音結果不受影響。</p></section>
+          <section class="pinyin-lookup-panel" aria-labelledby="pinyinLookupTitle"><div><p class="section-kicker">LOOKUP</p><h3 id="pinyinLookupTitle">單字拼音查詢</h3></div><p id="pinyinLookupEmpty" class="pinyin-empty">只輸入一個漢字，可查看該字的全部常見讀音。</p><strong id="pinyinLookupCharacter" hidden></strong><div id="pinyinLookupReadings" hidden></div></section>
+        </div>
+        <p class="tool-disclaimer">自動轉換會依常見詞語與上下文處理多音字，但人名、地名、生僻字與專業詞仍可能有其他讀音，正式使用前請人工複核。</p>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="pinyinFeatureTitle"><div class="section-heading"><p class="section-kicker">漢字拼音線上轉換</p><h2 id="pinyinFeatureTitle">漢字轉拼音、拼音查詢與注音整理</h2><p class="seo-intro">適合中文學習、姓名拼音、內容注音、字幕整理與資料處理等場景，所有輸入只在目前瀏覽器中轉換。</p></div><div class="seo-grid">
+          <article><h3>四種拼音輸出</h3><p>可切換帶聲調拼音、數字聲調、無聲調拼音與拼音首字母，並調整字母大小寫。</p></article>
+          <article><h3>簡繁體與多音字</h3><p>支援簡體與繁體漢字，依常見詞語上下文辨識多音字，並提供單字全部讀音查詢。</p></article>
+          <article><h3>瀏覽器本機處理</h3><p>漢字與轉換結果不會上傳伺服器，適合文章、姓名清單、學習材料與內部文字。</p></article>
+        </div><section class="pinyin-faq" aria-labelledby="pinyinFaqTitle"><h2 id="pinyinFaqTitle">漢字拼音查詢常見問題</h2>
+          <details><summary>漢字轉拼音可以顯示聲調嗎？</summary><p>可以。可選擇聲調符號、數字聲調或無聲調三種完整拼音格式。</p></details>
+          <details><summary>可以查詢多音字嗎？</summary><p>輸入單一漢字時會列出常見讀音；輸入詞語或句子時會優先依上下文選擇讀音。</p></details>
+          <details><summary>簡體字可以轉換拼音嗎？</summary><p>可以。簡體字與繁體字都可直接輸入，不需要先進行簡繁轉換。</p></details>
+        </section><p class="section-kicker pinyin-related-kicker">相關工具</p><nav class="landing-links" aria-label="相關轉換頁面">
+          <a href="/zh-tw/chinese-to-pinyin/" aria-current="page">漢字轉拼音</a>
+          <a href="/zh-tw/simplified-to-traditional/">簡體轉繁體</a>
+          <a href="/zh-tw/traditional-to-simplified/">繁體轉簡體</a>
+          <a href="/zh-tw/file-text-converter/">文件文字簡繁轉換</a>
+          <a href="/zh-tw/japanese-chinese-kanji-converter/">日中漢字三體轉換</a>
+          <a href="/zh-tw/japanese-characters/">日文字元複製</a>
+        </nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app 提供在瀏覽器本機運行的中文文字轉換與拼音工具。</p><nav class="footer-links" aria-label="頁尾"><a href="/zh-tw/about/">關於我們</a><a href="/zh-tw/contact/">聯絡我們</a><a href="/zh-tw/privacy/">隱私聲明</a></nav></footer>
+  </body>
+</html>
