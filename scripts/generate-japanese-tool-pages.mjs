@@ -21,6 +21,7 @@ const relatedToolLabels = {
     "japanese-chinese-kanji-converter": "日中汉字三体转换",
     "japanese-kanji-converter": "日文新旧字体转换",
     "japanese-characters": "日文字符复制",
+    "chinese-to-pinyin": "汉字转拼音",
     "simplified-to-traditional": "简体转繁体",
     "traditional-to-simplified": "繁体转简体"
   },
@@ -29,6 +30,7 @@ const relatedToolLabels = {
     "japanese-chinese-kanji-converter": "日中漢字三體轉換",
     "japanese-kanji-converter": "日文新舊字體轉換",
     "japanese-characters": "日文字元複製",
+    "chinese-to-pinyin": "漢字轉拼音",
     "simplified-to-traditional": "簡體轉繁體",
     "traditional-to-simplified": "繁體轉簡體"
   },
@@ -37,6 +39,7 @@ const relatedToolLabels = {
     "japanese-chinese-kanji-converter": "Japanese and Chinese Kanji",
     "japanese-kanji-converter": "Shinjitai and Kyujitai",
     "japanese-characters": "Japanese Characters",
+    "chinese-to-pinyin": "Chinese to Pinyin",
     "simplified-to-traditional": "Simplified to Traditional",
     "traditional-to-simplified": "Traditional to Simplified"
   },
@@ -45,6 +48,7 @@ const relatedToolLabels = {
     "japanese-chinese-kanji-converter": "日中漢字3種類変換",
     "japanese-kanji-converter": "旧字体・新字体変換",
     "japanese-characters": "日本語文字コピー",
+    "chinese-to-pinyin": "中国語ピンイン変換",
     "simplified-to-traditional": "簡体字から繁体字",
     "traditional-to-simplified": "繁体字を簡体字に変換"
   },
@@ -53,6 +57,7 @@ const relatedToolLabels = {
     "japanese-chinese-kanji-converter": "일본·중국 한자 변환",
     "japanese-kanji-converter": "일본 신자체·구자체 변환",
     "japanese-characters": "일본어 문자 복사",
+    "chinese-to-pinyin": "중국어 병음 변환",
     "simplified-to-traditional": "간체를 번체로",
     "traditional-to-simplified": "번체를 간체로"
   }
@@ -444,7 +449,11 @@ function buildHero(content, glyphs) {
 
 function buildFooter(locale, content) {
   const meta = locales[locale];
-  return `    <footer class="site-footer"><p>${content.footer}</p><nav class="footer-links" aria-label="Footer"><a href="${localizedPath(locale, "about")}">${meta.about}</a><a href="${localizedPath(locale, "contact")}">${meta.contact}</a><a href="${localizedPath(locale, "privacy")}">${meta.privacy}</a></nav></footer>`;
+  return `    <footer class="site-footer"><p>${content.footer}</p><nav class="footer-links" aria-label="Footer">
+        <a href="${localizedPath(locale, "about")}">${meta.about}</a>
+        <a href="${localizedPath(locale, "contact")}">${meta.contact}</a>
+        <a href="${localizedPath(locale, "privacy")}">${meta.privacy}</a>
+      </nav></footer>`;
 }
 
 function buildFeatureBand(locale, content, activeSlug) {

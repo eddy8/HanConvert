@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="중국어 간체와 번체를 성조 기호, 숫자 성조, 무성조 병음과 첫 글자로 변환하고 글자별 발음 및 단일 한자 다독음 조회를 제공합니다." />
+    <title>중국어 한자 병음 변환기 - 성조 포함 Pinyin | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/ko/chinese-to-pinyin/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-to-pinyin/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-to-pinyin/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-to-pinyin/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-to-pinyin/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-to-pinyin/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-to-pinyin/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="/vendor/pinyin-pro.js"></script>
+    <script defer src="/pinyin-tool.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/ko/chinese-to-pinyin/#webapp",
+            "name": "중국어 한자 병음 변환기",
+            "url": "https://jianfan.app/ko/chinese-to-pinyin/",
+            "description": "중국어 간체와 번체를 성조 기호, 숫자 성조, 무성조 병음과 첫 글자로 변환하고 글자별 발음 및 단일 한자 다독음 조회를 제공합니다.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "ko",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/ko/chinese-to-pinyin/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "홈",
+                "item": "https://jianfan.app/ko/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "중국어 한자 병음 변환기",
+                "item": "https://jianfan.app/ko/chinese-to-pinyin/"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/ko/chinese-to-pinyin/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "성조가 있는 병음을 표시할 수 있나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "네. 성조 기호, 숫자 성조 또는 무성조 형식을 선택할 수 있습니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "다독음 한자를 조회할 수 있나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "한 글자를 입력하면 대표 발음을 표시하고 단어나 문장에서는 문맥에 맞는 발음을 우선 선택합니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "번체 중국어도 지원하나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "네. 간체와 번체를 모두 직접 입력할 수 있습니다."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="pinyin-converter" data-page-slug="chinese-to-pinyin" data-locale="ko" data-message-idle="중국어 입력 대기" data-message-converting="병음으로 변환 중" data-message-ready="병음 변환 완료" data-message-copied="병음 결과를 복사했습니다" data-message-copy-failed="자동 복사에 실패했습니다. 직접 복사해 주세요." data-message-error="병음 기능을 불러오지 못했습니다. 페이지를 새로 고쳐 주세요." data-message-too-long="텍스트는 {limit}자까지 입력할 수 있습니다">
+    <a class="skip-nav" href="#main">주요 내용으로 이동</a>
+    <header class="site-header" aria-label="사이트 헤더">
+      <a class="brand" href="/ko/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">漢</span><span>JianFan.app</span></a>
+      <nav class="top-actions" aria-label="주요 탐색"><a class="nav-link" href="/ko/">홈</a><label class="language-picker"><span>인터페이스 언어</span><select id="localeSelect" aria-label="인터페이스 언어">
+              <option value="zh-CN">简体中文</option>
+              <option value="zh-TW">繁體中文</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ko" selected>한국어</option>
+          </select></label></nav>
+    </header>
+    <main id="main">
+      <section class="tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">중국어 병음 · 성조 · 다독음 한자</p><h1 id="pageTitle">중국어 한자 병음 변환기</h1><p class="lede">중국어 한자, 단어, 문장을 병음으로 즉시 변환합니다. 성조 기호, 숫자 성조, 무성조, 첫 글자를 선택하고 한 글자의 대표 발음도 조회할 수 있습니다.</p></div><div class="tool-hero-glyphs" aria-hidden="true"><span>汉</span><span>hàn</span><span>4</span></div></section>
+      <section class="standalone-tool pinyin-tool" aria-labelledby="pinyinToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">PINYIN / LOOKUP</p><h2 id="pinyinToolTitle">중국어를 입력하고 병음 형식 선택</h2></div><div class="status-pill" id="pinyinStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>중국어 입력 대기</span></div></div>
+        <div class="pinyin-options">
+          <fieldset><legend>출력 형식</legend><div class="pinyin-format-control" role="radiogroup" aria-label="출력 형식">
+            <button type="button" data-pinyin-format="symbol" role="radio" aria-checked="true" class="is-active"><span>성조 기호</span><small>nǐ hǎo</small></button>
+            <button type="button" data-pinyin-format="number" role="radio" aria-checked="false"><span>숫자 성조</span><small>ni3 hao3</small></button>
+            <button type="button" data-pinyin-format="none" role="radio" aria-checked="false"><span>성조 없음</span><small>ni hao</small></button>
+            <button type="button" data-pinyin-format="initials" role="radio" aria-checked="false"><span>첫 글자</span><small>nh</small></button>
+          </div></fieldset>
+          <fieldset><legend>영문 대소문자</legend><div class="pinyin-case-control" role="radiogroup" aria-label="영문 대소문자">
+            <button type="button" data-pinyin-case="lower" role="radio" aria-checked="true" class="is-active">소문자</button>
+            <button type="button" data-pinyin-case="title" role="radio" aria-checked="false">단어 첫 글자 대문자</button>
+            <button type="button" data-pinyin-case="upper" role="radio" aria-checked="false">대문자</button>
+          </div></fieldset>
+          <div class="pinyin-switches"><label><input id="preserveNonChinese" type="checkbox" checked /><span>문장부호와 영문 유지</span></label><label><input id="surnameMode" type="checkbox" /><span>이름 발음 모드</span></label></div>
+        </div>
+        <div class="pinyin-converter-grid">
+          <section class="pinyin-text-panel input-variant" aria-labelledby="pinyinInputTitle"><div class="panel-topline"><h3 id="pinyinInputTitle">중국어 텍스트</h3><span id="pinyinInputCount">0</span></div><textarea id="pinyinInput" spellcheck="false" placeholder="중국어 간체 또는 번체를 입력하거나 붙여 넣으세요..."></textarea><div class="panel-actions"><button class="text-button" id="pinyinSample" type="button" data-sample="重庆银行的音乐会在长安举行，行人走过快乐的街道。">예시</button><button class="text-button" id="pinyinClear" type="button">지우기</button><button class="primary-action" id="pinyinConvert" type="button">병음 변환</button></div></section>
+          <section class="pinyin-text-panel output-variant" aria-labelledby="pinyinOutputTitle"><div class="panel-topline"><h3 id="pinyinOutputTitle">병음 결과</h3><span id="pinyinOutputCount">0</span></div><textarea id="pinyinOutput" readonly spellcheck="false" placeholder="변환된 병음이 여기에 표시됩니다"></textarea><div class="panel-actions"><button class="text-button" id="pinyinCopy" type="button">결과 복사</button></div></section>
+        </div>
+        <div class="pinyin-detail-grid">
+          <section class="pinyin-annotation-panel" aria-labelledby="pinyinAnnotationTitle"><div><p class="section-kicker">RUBY</p><h3 id="pinyinAnnotationTitle">글자별 병음 표기</h3></div><p id="pinyinAnnotationEmpty" class="pinyin-empty">중국어를 입력하면 글자별 발음 미리보기가 표시됩니다.</p><div id="pinyinAnnotation" class="pinyin-annotation" hidden></div><p class="pinyin-preview-note">긴 텍스트는 처음 500자만 미리 보며 위의 전체 결과에는 영향을 주지 않습니다.</p></section>
+          <section class="pinyin-lookup-panel" aria-labelledby="pinyinLookupTitle"><div><p class="section-kicker">LOOKUP</p><h3 id="pinyinLookupTitle">한 글자 병음 조회</h3></div><p id="pinyinLookupEmpty" class="pinyin-empty">한자를 한 글자만 입력하면 대표 발음을 모두 볼 수 있습니다.</p><strong id="pinyinLookupCharacter" hidden></strong><div id="pinyinLookupReadings" hidden></div></section>
+        </div>
+        <p class="tool-disclaimer">다독음 한자는 일반 단어와 문맥으로 판단하지만 인명, 지명, 희귀 한자와 전문 용어에는 다른 발음이 있을 수 있으므로 중요한 결과는 직접 확인하세요.</p>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="pinyinFeatureTitle"><div class="section-heading"><p class="section-kicker">중국어 한자 병음 변환</p><h2 id="pinyinFeatureTitle">한자 병음 변환, 발음 조회와 글자별 표기</h2><p class="seo-intro">중국어 학습, 이름 로마자 표기, 읽기 보조, 자막과 텍스트 데이터 정리에 사용할 수 있으며 입력은 브라우저에서만 처리됩니다.</p></div><div class="seo-grid">
+          <article><h3>네 가지 출력 형식</h3><p>성조 기호, 숫자 성조, 무성조 병음과 첫 글자를 전환하고 영문 대소문자도 조정할 수 있습니다.</p></article>
+          <article><h3>간체·번체와 다독음</h3><p>두 문자 체계를 모두 지원하고 문맥으로 발음을 선택하며 한 글자의 대표 발음을 조회합니다.</p></article>
+          <article><h3>브라우저 로컬 처리</h3><p>중국어 텍스트와 병음 결과를 서버로 보내지 않아 학습 자료와 업무 문서에 사용할 수 있습니다.</p></article>
+        </div><section class="pinyin-faq" aria-labelledby="pinyinFaqTitle"><h2 id="pinyinFaqTitle">중국어 병음 변환 자주 묻는 질문</h2>
+          <details><summary>성조가 있는 병음을 표시할 수 있나요?</summary><p>네. 성조 기호, 숫자 성조 또는 무성조 형식을 선택할 수 있습니다.</p></details>
+          <details><summary>다독음 한자를 조회할 수 있나요?</summary><p>한 글자를 입력하면 대표 발음을 표시하고 단어나 문장에서는 문맥에 맞는 발음을 우선 선택합니다.</p></details>
+          <details><summary>번체 중국어도 지원하나요?</summary><p>네. 간체와 번체를 모두 직접 입력할 수 있습니다.</p></details>
+        </section><p class="section-kicker pinyin-related-kicker">관련 도구</p><nav class="landing-links" aria-label="관련 변환 페이지">
+          <a href="/ko/chinese-to-pinyin/" aria-current="page">중국어 병음 변환</a>
+          <a href="/ko/simplified-to-traditional/">간체를 번체로</a>
+          <a href="/ko/traditional-to-simplified/">번체를 간체로</a>
+          <a href="/ko/file-text-converter/">문서 텍스트 변환</a>
+          <a href="/ko/japanese-chinese-kanji-converter/">일본·중국 한자 변환</a>
+          <a href="/ko/japanese-characters/">일본어 문자 복사</a>
+        </nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app는 브라우저에서 실행되는 중국어 문자 변환 및 병음 도구를 제공합니다.</p><nav class="footer-links" aria-label="바닥글"><a href="/ko/about/">소개</a><a href="/ko/contact/">문의</a><a href="/ko/privacy/">개인정보 보호 안내</a></nav></footer>
+  </body>
+</html>

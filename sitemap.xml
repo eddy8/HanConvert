@@ -732,4 +732,66 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/contact/" />
   </url>
   <!-- trust-pages:end -->
+  <!-- pinyin-tool:start -->
+  <url>
+    <loc>https://jianfan.app/chinese-to-pinyin/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-to-pinyin/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/chinese-to-pinyin/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-to-pinyin/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/chinese-to-pinyin/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-to-pinyin/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/chinese-to-pinyin/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-to-pinyin/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/chinese-to-pinyin/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-to-pinyin/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-to-pinyin/" />
+  </url>
+  <!-- pinyin-tool:end -->
 </urlset>
