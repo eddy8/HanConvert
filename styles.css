@@ -1981,6 +1981,348 @@ textarea::placeholder {
   line-height: 1.55;
 }
 
+.word-format-flow {
+  display: grid;
+  grid-template-columns: 76px 26px 76px;
+  align-items: center;
+  gap: 8px;
+}
+
+.word-format-flow span {
+  display: grid;
+  min-height: 62px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(13, 28, 25, 0.78);
+  color: var(--accent-2);
+  font-size: 1rem;
+  font-weight: 850;
+}
+
+.word-format-flow span:last-child {
+  border-color: rgba(64, 242, 176, 0.46);
+  color: var(--accent);
+}
+
+.word-format-flow b {
+  color: var(--muted);
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.word-txt-workspace {
+  display: grid;
+  grid-template-columns: minmax(330px, 0.82fr) minmax(520px, 1.18fr);
+  min-height: 438px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(4, 12, 10, 0.48);
+}
+
+.word-import-pane,
+.word-preview-pane {
+  min-width: 0;
+  padding: 12px;
+}
+
+.word-import-pane {
+  border-right: 1px solid var(--line);
+}
+
+.word-file-drop {
+  display: grid;
+  min-height: 174px;
+  place-items: center;
+  align-content: center;
+  gap: 7px;
+  padding: 18px;
+  border: 1px dashed rgba(64, 242, 176, 0.42);
+  border-radius: var(--radius-sm);
+  background: rgba(64, 242, 176, 0.045);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color 180ms var(--ease),
+    background 180ms var(--ease);
+}
+
+.word-file-drop:hover,
+.word-file-drop.is-dragging {
+  border-color: var(--accent);
+  background: rgba(64, 242, 176, 0.1);
+}
+
+.word-file-drop:focus-within {
+  outline: 3px solid rgba(64, 242, 176, 0.72);
+  outline-offset: 3px;
+}
+
+.word-file-drop input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.word-drop-mark {
+  color: var(--accent);
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.word-file-drop strong {
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.word-file-drop > span:not(.word-drop-mark, .word-browse-action) {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.word-browse-action {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  margin-top: 3px;
+  padding: 7px 14px;
+}
+
+.word-limit-note,
+.word-privacy-note {
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
+.word-limit-note {
+  margin: 8px 0 10px;
+}
+
+.word-privacy-note {
+  margin: 10px 2px 0;
+}
+
+.word-queue-head,
+.word-selected-file,
+.word-preview-pane .panel-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.word-queue-head {
+  min-height: 38px;
+  margin-bottom: 6px;
+}
+
+.word-queue-head h3,
+.word-preview-pane h3 {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.word-queue-head > div {
+  display: flex;
+  gap: 6px;
+}
+
+.word-queue-head button {
+  min-height: 32px;
+  padding: 5px 9px;
+  font-size: 0.72rem;
+}
+
+.word-queue-head button:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.word-file-list {
+  display: grid;
+  max-height: 168px;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.word-file-item button {
+  display: grid;
+  width: 100%;
+  min-height: 48px;
+  gap: 2px;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--ink);
+  text-align: left;
+}
+
+.word-file-item button:hover:not(:disabled) {
+  border-color: rgba(64, 242, 176, 0.48);
+}
+
+.word-file-item.is-active button {
+  border-color: rgba(64, 242, 176, 0.72);
+  background: rgba(64, 242, 176, 0.1);
+}
+
+.word-file-item.is-error button {
+  border-color: rgba(255, 116, 116, 0.28);
+  color: var(--danger);
+}
+
+.word-file-item strong,
+.word-file-item span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.word-file-item strong {
+  font-size: 0.78rem;
+}
+
+.word-file-item span {
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.word-preview-pane {
+  display: flex;
+  flex-direction: column;
+}
+
+.word-preview-pane .panel-topline {
+  min-height: 42px;
+  margin-bottom: 8px;
+}
+
+.word-preview-pane .panel-topline > div {
+  min-width: 0;
+}
+
+.word-preview-pane .panel-topline .section-kicker {
+  margin-bottom: 2px;
+}
+
+#wordCharacterCount {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.word-preview-empty {
+  display: grid;
+  min-height: 348px;
+  place-items: center;
+  align-content: center;
+  gap: 7px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  text-align: center;
+}
+
+.word-preview-empty strong {
+  color: var(--ink);
+}
+
+.word-preview-empty p {
+  max-width: 430px;
+  margin: 0;
+  font-size: 0.78rem;
+}
+
+.word-editor-pane {
+  display: flex;
+  min-height: 348px;
+  flex: 1;
+  flex-direction: column;
+}
+
+.word-editor-pane[hidden],
+.word-preview-empty[hidden] {
+  display: none;
+}
+
+.word-selected-file {
+  min-height: 34px;
+  margin-bottom: 6px;
+}
+
+.word-selected-file strong {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 0.8rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.word-selected-file span {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+#wordTextEditor {
+  width: 100%;
+  min-height: 252px;
+  flex: 1;
+  resize: vertical;
+}
+
+.word-editor-pane .panel-actions {
+  margin-top: 7px;
+}
+
+.word-howto {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.word-howto h2 {
+  font-size: 1.2rem;
+}
+
+.word-howto ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  counter-reset: word-step;
+  list-style: none;
+}
+
+.word-howto li {
+  position: relative;
+  min-height: 78px;
+  padding: 12px 12px 12px 46px;
+  border-left: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  counter-increment: word-step;
+}
+
+.word-howto li::before {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  color: var(--accent);
+  font-size: 1.05rem;
+  font-weight: 900;
+  content: "0" counter(word-step);
+}
+
 @keyframes scan {
   to {
     transform: rotate(360deg);
@@ -2027,6 +2369,10 @@ textarea::placeholder {
 
   .pinyin-options {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .word-txt-workspace {
+    grid-template-columns: minmax(290px, 0.75fr) minmax(390px, 1.25fr);
   }
 
   .stroke-workspace {
@@ -2110,6 +2456,10 @@ textarea::placeholder {
     display: none;
   }
 
+  .word-format-flow {
+    display: none;
+  }
+
   .standalone-tool-head,
   .character-search-row,
   .recent-characters {
@@ -2126,8 +2476,24 @@ textarea::placeholder {
   .pinyin-converter-grid,
   .pinyin-detail-grid,
   .stroke-search,
-  .stroke-workspace {
+  .stroke-workspace,
+  .word-txt-workspace,
+  .word-howto ol {
     grid-template-columns: 1fr;
+  }
+
+  .word-import-pane {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .word-txt-workspace {
+    min-height: 0;
+  }
+
+  .word-preview-empty,
+  .word-editor-pane {
+    min-height: 300px;
   }
 
   .stroke-search > div {

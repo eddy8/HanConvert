@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="Convert Word to text online. Extract plain text from DOCX files locally in your browser, then preview, edit, copy, or batch-download UTF-8 TXT files." />
+    <title>Word to Text Converter - DOCX to TXT Online | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/en/word-to-txt/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/word-to-txt/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/word-to-txt/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/word-to-txt/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/word-to-txt/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/word-to-txt/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/word-to-txt/" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/mammoth/mammoth.browser.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/jszip/dist/jszip.min.js"></script>
+    <script defer src="/word-to-txt-tool.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/en/word-to-txt/#webapp",
+            "name": "Word to Text Converter",
+            "url": "https://jianfan.app/en/word-to-txt/",
+            "description": "Convert Word to text online. Extract plain text from DOCX files locally in your browser, then preview, edit, copy, or batch-download UTF-8 TXT files.",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "en",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/en/word-to-txt/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://jianfan.app/en/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Word to Text Converter",
+                "item": "https://jianfan.app/en/word-to-txt/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/en/word-to-txt/#howto",
+            "name": "How to convert Word to TXT",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "Choose or drop one or more DOCX files."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "Review and edit the extracted plain text in the preview."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "Download the current TXT file or package all results in a ZIP."
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/en/word-to-txt/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Does this converter support .doc files?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Legacy binary .doc files are not supported. Save the file as .docx in Word, WPS, or LibreOffice first."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Will Word formatting be preserved?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. TXT contains plain text and basic line breaks only. Fonts, colors, images, and complex layouts are removed."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are Word files uploaded?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Document content is parsed locally in your browser and is not sent to JianFan.app or a third-party conversion server."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I batch-convert DOCX to TXT?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Select up to 20 DOCX files and download each TXT separately or package all successful results in a ZIP."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="word-to-txt" data-page-slug="word-to-txt" data-locale="en" data-message-idle="Waiting for DOCX files" data-message-reading="Reading {count} files" data-message-ready="Finished {ready} of {total} files" data-message-characters="characters" data-message-unsupported="Only .docx files are supported" data-message-too-large="File exceeds {limit}" data-message-empty-file="No usable text was found" data-message-failed="This DOCX file could not be read" data-message-library-error="The document parser failed to load. Refresh the page." data-message-none-ready="No files are ready to download" data-message-downloaded="Downloaded {name}" data-message-packing="Packaging TXT files" data-message-all-downloaded="Downloaded {count} TXT files in a ZIP" data-message-zip-error="Could not create the ZIP. Download files separately." data-message-copied="Text copied">
+    <a class="skip-nav" href="#main">Skip to main content</a>
+    <header class="site-header" aria-label="Site header"><a class="brand" href="/en/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">文</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="Primary navigation"><a class="nav-link" href="/en/">Home</a><label class="language-picker"><span>Language</span><select id="localeSelect" aria-label="Language">
+              <option value="zh-CN">简体中文</option>
+              <option value="zh-TW">繁體中文</option>
+              <option value="en" selected>English</option>
+              <option value="ja">日本語</option>
+              <option value="ko">한국어</option>
+          </select></label></nav></header>
+    <main id="main">
+      <section class="tool-hero word-txt-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">WORD TO PLAIN TEXT · LOCAL PROCESSING</p><h1 id="pageTitle">Word to Text Converter</h1><p class="lede">Turn Word DOCX documents into editable plain text and download UTF-8 TXT files. Formatting and images are removed, and your documents stay in your browser.</p></div><div class="word-format-flow" aria-hidden="true"><span>DOCX</span><b>→</b><span>TXT</span></div></section>
+      <section class="standalone-tool word-to-txt-tool" aria-labelledby="wordToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">DOCX / TXT</p><h2 id="wordToolTitle">Choose DOCX files and extract text</h2></div><div class="status-pill" id="wordToolStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>Waiting for DOCX files</span></div></div>
+        <div class="word-txt-workspace">
+          <section class="word-import-pane" aria-labelledby="wordImportTitle">
+            <label class="word-file-drop" id="wordFileDrop" for="wordFileInput"><span class="word-drop-mark" aria-hidden="true">DOCX</span><strong id="wordImportTitle">Drop Word documents here</strong><span>or choose one or more .docx files</span><span class="primary-action word-browse-action">Choose DOCX files</span><input id="wordFileInput" type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" multiple /></label>
+            <p class="word-limit-note">Up to 20 files at once, 10 MB each. Legacy .doc files are not supported.</p>
+            <div class="word-queue-head"><h3>Converted files</h3><div><button class="text-button" id="wordDownloadAllButton" type="button" disabled>Download all</button><button class="text-button" id="wordClearButton" type="button" disabled>Clear</button></div></div>
+            <ol class="word-file-list" id="wordFileList"></ol>
+          </section>
+          <section class="word-preview-pane" aria-labelledby="wordPreviewTitle">
+            <div class="panel-topline"><div><p class="section-kicker">PLAIN TEXT</p><h3 id="wordPreviewTitle">TXT preview</h3></div><span id="wordCharacterCount">0 characters</span></div>
+            <div class="word-preview-empty" id="wordPreviewEmpty"><strong>Your extracted text will appear here</strong><p>Choose a DOCX file to preview and edit its plain-text content.</p></div>
+            <div class="word-editor-pane" id="wordEditorPane" hidden><div class="word-selected-file"><strong id="wordSelectedName"></strong><span id="wordSelectedMeta"></span></div><textarea id="wordTextEditor" spellcheck="false"></textarea><div class="panel-actions"><button class="text-button" id="wordCopyButton" type="button">Copy text</button><button class="primary-action" id="wordDownloadButton" type="button">Download TXT</button></div></div>
+          </section>
+        </div>
+        <p class="word-privacy-note">DOCX content is read only in this browser. The page loads public document-parsing code, but your files are not sent to a remote server.</p>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="wordFeatureTitle"><div class="section-heading"><p class="section-kicker">WORD DOCUMENT TO PLAIN TEXT</p><h2 id="wordFeatureTitle">Convert DOCX to TXT without installing Word</h2><p class="seo-intro">A focused Word to text and DOCX to TXT converter for extracting clean, editable content without an account or software installation.</p></div><div class="seo-grid">
+          <article><h3>Local browser conversion</h3><p>Word documents are parsed in your browser, so private text does not need to be uploaded to a third-party conversion server.</p></article>
+          <article><h3>Batch DOCX to TXT</h3><p>Choose several DOCX files, preview and edit each result, then download individual TXT files or one ZIP.</p></article>
+          <article><h3>Clean plain-text output</h3><p>UTF-8 TXT keeps text and basic paragraph breaks while removing fonts, colors, images, and page layout.</p></article>
+        </div><section class="word-howto" aria-labelledby="wordHowTitle"><h2 id="wordHowTitle">How to convert Word to TXT</h2><ol>
+          <li>Choose or drop one or more DOCX files.</li>
+          <li>Review and edit the extracted plain text in the preview.</li>
+          <li>Download the current TXT file or package all results in a ZIP.</li>
+        </ol></section><section class="pinyin-faq" aria-labelledby="wordFaqTitle"><h2 id="wordFaqTitle">Word to text questions</h2>
+          <details><summary>Does this converter support .doc files?</summary><p>No. Legacy binary .doc files are not supported. Save the file as .docx in Word, WPS, or LibreOffice first.</p></details>
+          <details><summary>Will Word formatting be preserved?</summary><p>No. TXT contains plain text and basic line breaks only. Fonts, colors, images, and complex layouts are removed.</p></details>
+          <details><summary>Are Word files uploaded?</summary><p>No. Document content is parsed locally in your browser and is not sent to JianFan.app or a third-party conversion server.</p></details>
+          <details><summary>Can I batch-convert DOCX to TXT?</summary><p>Yes. Select up to 20 DOCX files and download each TXT separately or package all successful results in a ZIP.</p></details>
+        </section><p class="section-kicker pinyin-related-kicker">Related tools</p><nav class="landing-links" aria-label="Related document and text tools">
+          <a href="/en/word-to-txt/" aria-current="page">Word to text</a>
+          <a href="/en/file-text-converter/">Document Chinese converter</a>
+          <a href="/en/simplified-to-traditional/">Simplified to Traditional</a>
+          <a href="/en/traditional-to-simplified/">Traditional to Simplified</a>
+          <a href="/en/chinese-to-pinyin/">Chinese to Pinyin</a>
+          <a href="/en/chinese-stroke-order/">Chinese stroke order</a>
+          <a href="/en/japanese-chinese-kanji-converter/">Japanese and Chinese Kanji</a>
+          <a href="/en/japanese-characters/">Japanese character copy</a>
+        </nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app provides browser-local document text and Chinese conversion tools.</p><nav class="footer-links" aria-label="Footer"><a href="/en/about/">About</a><a href="/en/contact/">Contact</a><a href="/en/privacy/">Privacy Statement</a></nav></footer>
+  </body>
+</html>

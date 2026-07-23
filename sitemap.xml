@@ -856,4 +856,66 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-stroke-order/" />
   </url>
   <!-- stroke-order-tool:end -->
+  <!-- word-to-txt-tool:start -->
+  <url>
+    <loc>https://jianfan.app/word-to-txt/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/word-to-txt/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/word-to-txt/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/word-to-txt/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/word-to-txt/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/word-to-txt/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/word-to-txt/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/word-to-txt/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/word-to-txt/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/word-to-txt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/word-to-txt/" />
+  </url>
+  <!-- word-to-txt-tool:end -->
 </urlset>

@@ -144,6 +144,7 @@ const translations = {
     linkJapaneseCharacters: "日文字符复制",
     linkPinyin: "汉字转拼音",
     linkStrokeOrder: "汉字笔顺查询",
+    linkWordToTxt: "Word 转 TXT",
     footerText: "JianFan.app 是一个浏览器本地运行的中文简繁转换工具。",
     privacyLink: "隐私声明"
   },
@@ -272,6 +273,7 @@ const translations = {
     linkJapaneseCharacters: "日文字元複製",
     linkPinyin: "漢字轉拼音",
     linkStrokeOrder: "漢字筆順查詢",
+    linkWordToTxt: "DOCX 轉 TXT",
     footerText: "JianFan.app 是一個瀏覽器本地運行的中文簡繁轉換工具。",
     privacyLink: "隱私聲明"
   },
@@ -400,6 +402,7 @@ const translations = {
     linkJapaneseCharacters: "Japanese character copy",
     linkPinyin: "Chinese to Pinyin",
     linkStrokeOrder: "Chinese stroke order",
+    linkWordToTxt: "Word to text",
     footerText: "JianFan.app is a browser-local Chinese Simplified and Traditional conversion tool.",
     privacyLink: "Privacy Statement"
   },
@@ -528,6 +531,7 @@ const translations = {
     linkJapaneseCharacters: "日本語文字コピー",
     linkPinyin: "中国語ピンイン変換",
     linkStrokeOrder: "中国語漢字の筆順",
+    linkWordToTxt: "Word TXT 変換",
     footerText: "JianFan.app はブラウザー内で動作する中国語簡繁変換ツールです。",
     privacyLink: "プライバシー声明"
   },
@@ -656,6 +660,7 @@ const translations = {
     linkJapaneseCharacters: "일본어 문자 복사",
     linkPinyin: "중국어 병음 변환",
     linkStrokeOrder: "중국어 한자 필순",
+    linkWordToTxt: "DOCX TXT 변환",
     footerText: "JianFan.app는 브라우저에서 로컬로 실행되는 중국어 간체·번체 변환 도구입니다.",
     privacyLink: "개인정보 보호 안내"
   }
