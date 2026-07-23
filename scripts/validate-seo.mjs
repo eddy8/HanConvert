@@ -32,7 +32,7 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
 const uniqueSitemapUrls = new Set(sitemapUrls);
 if (uniqueSitemapUrls.size !== sitemapUrls.length) throw new Error("sitemap.xml contains duplicate URLs");
 
-for (const entryFile of ["app.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js"]) {
+for (const entryFile of ["app.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
@@ -76,6 +76,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isInfoPage = html.includes('data-info-page=');
   const isPinyinPage = html.includes('data-tool-page="pinyin-converter"');
   const isStrokeOrderPage = html.includes('data-tool-page="stroke-order"');
+  const isWordToTxtPage = html.includes('data-tool-page="word-to-txt"');
   if (!isConverterPage && !isStandaloneToolPage && !isInfoPage) continue;
   if (isConverterPage) {
     converterPages += 1;
@@ -111,8 +112,11 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     if (!webApplication || webApplication.url !== canonical) {
       throw new Error(`${relativePath}: invalid WebApplication schema`);
     }
-    if ((isPinyinPage || isStrokeOrderPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
+    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
       throw new Error(`${relativePath}: missing tool FAQPage schema`);
+    }
+    if (isWordToTxtPage && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
+      throw new Error(`${relativePath}: missing Word-to-TXT HowTo schema`);
     }
   }
   if (isConverterPage && (!html.includes('data-route="simplified-to-traditional"') || !html.includes('data-route="traditional-to-simplified"'))) {
@@ -127,7 +131,10 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (isConverterPage && !html.includes('data-route="chinese-stroke-order"')) {
     throw new Error(`${relativePath}: missing Chinese stroke-order link`);
   }
-  if (isStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/") || !html.includes("chinese-to-pinyin/") || !html.includes("chinese-stroke-order/"))) {
+  if (isConverterPage && !html.includes('data-route="word-to-txt"')) {
+    throw new Error(`${relativePath}: missing Word-to-TXT link`);
+  }
+  if (isStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/") || !html.includes("chinese-to-pinyin/") || !html.includes("chinese-stroke-order/") || !html.includes("word-to-txt/"))) {
     throw new Error(`${relativePath}: missing related tool links`);
   }
   if (isPinyinPage) {
@@ -150,11 +157,26 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
       if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
     }
   }
+  if (isWordToTxtPage) {
+    if (!html.includes("cdn.jsdelivr.net/npm/mammoth/mammoth.browser.min.js") || !html.includes("cdn.jsdelivr.net/npm/jszip/dist/jszip.min.js") || !html.includes('src="/word-to-txt-tool.js"')) {
+      throw new Error(`${relativePath}: missing Word-to-TXT browser assets`);
+    }
+  }
+  if (relativePath === path.join("word-to-txt", "index.html")) {
+    for (const keyword of ["Word转TXT", "Word文档转TXT", "DOCX转TXT"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("ja", "word-to-txt", "index.html")) {
+    for (const keyword of ["Word TXT 変換", "Word テキスト変換", "DOCX TXT 変換"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
-if (standaloneToolPages !== 20) throw new Error(`expected 20 standalone tool pages, found ${standaloneToolPages}`);
+if (standaloneToolPages !== 25) throw new Error(`expected 25 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
-if (sitemapUrls.length !== 70) throw new Error(`expected 70 sitemap URLs, found ${sitemapUrls.length}`);
+if (sitemapUrls.length !== 75) throw new Error(`expected 75 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, and ${sitemapUrls.length} sitemap URLs.`);

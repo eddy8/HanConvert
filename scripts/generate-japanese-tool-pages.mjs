@@ -23,6 +23,7 @@ const relatedToolLabels = {
     "japanese-characters": "日文字符复制",
     "chinese-to-pinyin": "汉字转拼音",
     "chinese-stroke-order": "汉字笔顺查询",
+    "word-to-txt": "Word 转 TXT",
     "simplified-to-traditional": "简体转繁体",
     "traditional-to-simplified": "繁体转简体"
   },
@@ -33,6 +34,7 @@ const relatedToolLabels = {
     "japanese-characters": "日文字元複製",
     "chinese-to-pinyin": "漢字轉拼音",
     "chinese-stroke-order": "漢字筆順查詢",
+    "word-to-txt": "DOCX 轉 TXT",
     "simplified-to-traditional": "簡體轉繁體",
     "traditional-to-simplified": "繁體轉簡體"
   },
@@ -43,6 +45,7 @@ const relatedToolLabels = {
     "japanese-characters": "Japanese Characters",
     "chinese-to-pinyin": "Chinese to Pinyin",
     "chinese-stroke-order": "Chinese stroke order",
+    "word-to-txt": "Word to text",
     "simplified-to-traditional": "Simplified to Traditional",
     "traditional-to-simplified": "Traditional to Simplified"
   },
@@ -53,6 +56,7 @@ const relatedToolLabels = {
     "japanese-characters": "日本語文字コピー",
     "chinese-to-pinyin": "中国語ピンイン変換",
     "chinese-stroke-order": "中国語漢字の筆順",
+    "word-to-txt": "Word TXT 変換",
     "simplified-to-traditional": "簡体字から繁体字",
     "traditional-to-simplified": "繁体字を簡体字に変換"
   },
@@ -63,6 +67,7 @@ const relatedToolLabels = {
     "japanese-characters": "일본어 문자 복사",
     "chinese-to-pinyin": "중국어 병음 변환",
     "chinese-stroke-order": "중국어 한자 필순",
+    "word-to-txt": "DOCX TXT 변환",
     "simplified-to-traditional": "간체를 번체로",
     "traditional-to-simplified": "번체를 간체로"
   }

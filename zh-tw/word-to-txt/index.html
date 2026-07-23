@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="免費 DOCX轉TXT、Word轉文字檔線上工具。在瀏覽器本機提取 Word 純文字，支援批次預覽、編輯、複製與下載 UTF-8 TXT。" />
+    <title>DOCX轉TXT - Word轉文字檔線上工具 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/zh-tw/word-to-txt/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/word-to-txt/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/word-to-txt/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/word-to-txt/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/word-to-txt/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/word-to-txt/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/word-to-txt/" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/mammoth/mammoth.browser.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/jszip/dist/jszip.min.js"></script>
+    <script defer src="/word-to-txt-tool.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/zh-tw/word-to-txt/#webapp",
+            "name": "DOCX 轉 TXT、Word 轉文字檔",
+            "url": "https://jianfan.app/zh-tw/word-to-txt/",
+            "description": "免費 DOCX轉TXT、Word轉文字檔線上工具。在瀏覽器本機提取 Word 純文字，支援批次預覽、編輯、複製與下載 UTF-8 TXT。",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "zh-Hant",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/zh-tw/word-to-txt/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "網站首頁",
+                "item": "https://jianfan.app/zh-tw/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "DOCX 轉 TXT、Word 轉文字檔",
+                "item": "https://jianfan.app/zh-tw/word-to-txt/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/zh-tw/word-to-txt/#howto",
+            "name": "如何將 Word 文件轉成 TXT",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "選擇或拖入一個或多個 DOCX 文件。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "在右側檢查並視需要編輯提取的純文字。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "下載目前 TXT，或將全部結果打包下載。"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/zh-tw/word-to-txt/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "支援 .doc 文件嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "暫不支援舊版 Word .doc 二進位格式。請先在 Word、WPS 或 LibreOffice 另存為 .docx。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "轉換後會保留 Word 格式嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不會。TXT 只保留文字與基本換行，字型、顏色、圖片和複雜版面都會移除。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Word 文件會上傳嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不會。文件內容在瀏覽器本機解析，不會傳送至 JianFan.app 或第三方轉檔伺服器。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "可以批次將 DOCX 轉 TXT 嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以。一次最多選擇 20 個 DOCX，可分別下載 TXT，也可打包下載全部結果。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="word-to-txt" data-page-slug="word-to-txt" data-locale="zh-TW" data-message-idle="等待選擇 DOCX 文件" data-message-reading="正在讀取 {count} 個文件" data-message-ready="已完成 {ready} / {total} 個文件" data-message-characters="個字元" data-message-unsupported="僅支援 .docx 文件" data-message-too-large="文件超過 {limit}" data-message-empty-file="沒有提取到可用文字" data-message-failed="無法讀取這個 DOCX 文件" data-message-library-error="文件解析元件載入失敗，請重新整理頁面" data-message-none-ready="沒有可下載的文件" data-message-downloaded="已下載 {name}" data-message-packing="正在打包 TXT 文件" data-message-all-downloaded="已打包下載 {count} 個 TXT 文件" data-message-zip-error="無法打包文件，請分別下載" data-message-copied="已複製文字">
+    <a class="skip-nav" href="#main">跳到主要內容</a>
+    <header class="site-header" aria-label="網站頁首"><a class="brand" href="/zh-tw/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">文</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="主要導覽"><a class="nav-link" href="/zh-tw/">網站首頁</a><label class="language-picker"><span>介面語言</span><select id="localeSelect" aria-label="介面語言">
+              <option value="zh-CN">简体中文</option>
+              <option value="zh-TW" selected>繁體中文</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ko">한국어</option>
+          </select></label></nav></header>
+    <main id="main">
+      <section class="tool-hero word-txt-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">WORD 轉純文字 · 瀏覽器本機處理</p><h1 id="pageTitle">DOCX 轉 TXT、Word 轉文字檔</h1><p class="lede">上傳 Word（DOCX）文件，移除字型、圖片與版面配置，提取可編輯的純文字並下載為 UTF-8 TXT。文件不會上傳到伺服器。</p></div><div class="word-format-flow" aria-hidden="true"><span>DOCX</span><b>→</b><span>TXT</span></div></section>
+      <section class="standalone-tool word-to-txt-tool" aria-labelledby="wordToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">DOCX / TXT</p><h2 id="wordToolTitle">選擇 DOCX，立即提取純文字</h2></div><div class="status-pill" id="wordToolStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>等待選擇 DOCX 文件</span></div></div>
+        <div class="word-txt-workspace">
+          <section class="word-import-pane" aria-labelledby="wordImportTitle">
+            <label class="word-file-drop" id="wordFileDrop" for="wordFileInput"><span class="word-drop-mark" aria-hidden="true">DOCX</span><strong id="wordImportTitle">將 Word 文件拖放到這裡</strong><span>或點選一個或多個 .docx 文件</span><span class="primary-action word-browse-action">選擇 DOCX 文件</span><input id="wordFileInput" type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" multiple /></label>
+            <p class="word-limit-note">一次最多 20 個文件，每個不超過 10 MB。暫不支援舊版 .doc。</p>
+            <div class="word-queue-head"><h3>轉換文件</h3><div><button class="text-button" id="wordDownloadAllButton" type="button" disabled>下載全部</button><button class="text-button" id="wordClearButton" type="button" disabled>清空</button></div></div>
+            <ol class="word-file-list" id="wordFileList"></ol>
+          </section>
+          <section class="word-preview-pane" aria-labelledby="wordPreviewTitle">
+            <div class="panel-topline"><div><p class="section-kicker">PLAIN TEXT</p><h3 id="wordPreviewTitle">TXT 預覽</h3></div><span id="wordCharacterCount">0 個字元</span></div>
+            <div class="word-preview-empty" id="wordPreviewEmpty"><strong>轉換結果會顯示在這裡</strong><p>選擇 DOCX 後，可逐一預覽與編輯提取的文字。</p></div>
+            <div class="word-editor-pane" id="wordEditorPane" hidden><div class="word-selected-file"><strong id="wordSelectedName"></strong><span id="wordSelectedMeta"></span></div><textarea id="wordTextEditor" spellcheck="false"></textarea><div class="panel-actions"><button class="text-button" id="wordCopyButton" type="button">複製文字</button><button class="primary-action" id="wordDownloadButton" type="button">下載 TXT</button></div></div>
+          </section>
+        </div>
+        <p class="word-privacy-note">DOCX 內容只在目前瀏覽器中讀取。頁面會載入公開的文件解析元件，但不會將你的文件傳送至遠端伺服器。</p>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="wordFeatureTitle"><div class="section-heading"><p class="section-kicker">WORD 文件轉純文字</p><h2 id="wordFeatureTitle">DOCX 轉 TXT，不需安裝 Word</h2><p class="seo-intro">適合 DOCX轉TXT、Word轉TXT、Word轉文字檔與 Word轉純文字等需求，開啟頁面即可使用，不需註冊。</p></div><div class="seo-grid">
+          <article><h3>瀏覽器本機轉換</h3><p>Word 文件直接在瀏覽器內解析，適合不希望上傳到第三方伺服器的文字內容。</p></article>
+          <article><h3>批次 DOCX 轉 TXT</h3><p>一次選擇多個 DOCX，分別預覽、編輯與下載，也可將多個結果打包為 ZIP。</p></article>
+          <article><h3>純文字輸出</h3><p>TXT 使用 UTF-8 編碼，保留文字與基本段落換行，不保留字型、顏色、圖片和頁面版面。</p></article>
+        </div><section class="word-howto" aria-labelledby="wordHowTitle"><h2 id="wordHowTitle">如何將 Word 文件轉成 TXT</h2><ol>
+          <li>選擇或拖入一個或多個 DOCX 文件。</li>
+          <li>在右側檢查並視需要編輯提取的純文字。</li>
+          <li>下載目前 TXT，或將全部結果打包下載。</li>
+        </ol></section><section class="pinyin-faq" aria-labelledby="wordFaqTitle"><h2 id="wordFaqTitle">DOCX 轉 TXT 常見問題</h2>
+          <details><summary>支援 .doc 文件嗎？</summary><p>暫不支援舊版 Word .doc 二進位格式。請先在 Word、WPS 或 LibreOffice 另存為 .docx。</p></details>
+          <details><summary>轉換後會保留 Word 格式嗎？</summary><p>不會。TXT 只保留文字與基本換行，字型、顏色、圖片和複雜版面都會移除。</p></details>
+          <details><summary>Word 文件會上傳嗎？</summary><p>不會。文件內容在瀏覽器本機解析，不會傳送至 JianFan.app 或第三方轉檔伺服器。</p></details>
+          <details><summary>可以批次將 DOCX 轉 TXT 嗎？</summary><p>可以。一次最多選擇 20 個 DOCX，可分別下載 TXT，也可打包下載全部結果。</p></details>
+        </section><p class="section-kicker pinyin-related-kicker">相關工具</p><nav class="landing-links" aria-label="相關文件與文字工具">
+          <a href="/zh-tw/word-to-txt/" aria-current="page">DOCX 轉 TXT</a>
+          <a href="/zh-tw/file-text-converter/">文件文字簡繁轉換</a>
+          <a href="/zh-tw/simplified-to-traditional/">簡體轉繁體</a>
+          <a href="/zh-tw/traditional-to-simplified/">繁體轉簡體</a>
+          <a href="/zh-tw/chinese-to-pinyin/">漢字轉拼音</a>
+          <a href="/zh-tw/chinese-stroke-order/">漢字筆順查詢</a>
+          <a href="/zh-tw/japanese-chinese-kanji-converter/">日中漢字三體轉換</a>
+          <a href="/zh-tw/japanese-characters/">日文字元複製</a>
+        </nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app 提供在瀏覽器本機執行的文件文字與中文轉換工具。</p><nav class="footer-links" aria-label="頁尾"><a href="/zh-tw/about/">關於我們</a><a href="/zh-tw/contact/">聯絡我們</a><a href="/zh-tw/privacy/">隱私聲明</a></nav></footer>
+  </body>
+</html>
