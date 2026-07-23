@@ -158,7 +158,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     }
   }
   if (isWordToTxtPage) {
-    if (!html.includes("cdn.jsdelivr.net/npm/mammoth/mammoth.browser.min.js") || !html.includes("cdn.jsdelivr.net/npm/jszip/dist/jszip.min.js") || !html.includes('src="/word-to-txt-tool.js"')) {
+    if (!html.includes("cdn.jsdmirror.cn/npm/mammoth/mammoth.browser.min.js") || !html.includes("cdn.jsdmirror.cn/npm/jszip/dist/jszip.min.js") || !html.includes('src="/word-to-txt-tool.js"')) {
       throw new Error(`${relativePath}: missing Word-to-TXT browser assets`);
     }
   }

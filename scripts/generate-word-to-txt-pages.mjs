@@ -384,11 +384,11 @@ function buildHead(locale, page) {
     <link rel="canonical" href="${canonical}" />
 ${alternates}
     <link rel="alternate" hreflang="x-default" href="${origin}${localizedPath("zh-CN", slug)}" />
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdmirror.cn" crossorigin />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.css" />
-    <script defer src="https://cdn.jsdelivr.net/npm/mammoth/mammoth.browser.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/jszip/dist/jszip.min.js"></script>
+    <script defer src="https://cdn.jsdmirror.cn/npm/mammoth/mammoth.browser.min.js"></script>
+    <script defer src="https://cdn.jsdmirror.cn/npm/jszip/dist/jszip.min.js"></script>
     <script defer src="/word-to-txt-tool.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
