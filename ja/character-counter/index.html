@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="無料の文字数カウント・文字数カウンター。空白あり・空白なしの文字数、単語数、行数、段落数、UTF-8バイト数に加え、漢字・ひらがな・カタカナの内訳も確認できます。" />
+    <title>文字数カウント - 空白なし・漢字・かな・バイト数 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/ja/character-counter/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/character-counter/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/character-counter/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/character-counter/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/character-counter/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/character-counter/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/character-counter/" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="/character-counter.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/ja/character-counter/#webapp",
+            "name": "文字数カウント",
+            "url": "https://jianfan.app/ja/character-counter/",
+            "description": "無料の文字数カウント・文字数カウンター。空白あり・空白なしの文字数、単語数、行数、段落数、UTF-8バイト数に加え、漢字・ひらがな・カタカナの内訳も確認できます。",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "ja",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/ja/character-counter/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "ホーム",
+                "item": "https://jianfan.app/ja/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "文字数カウント",
+                "item": "https://jianfan.app/ja/character-counter/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/ja/character-counter/#howto",
+            "name": "文字数をカウントする方法",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "文章を入力・貼り付けるか、TXTやDOCXなどのファイルを読み込みます。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "空白あり・空白なしの文字数、単語、文、段落、行、バイト数を確認します。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "必要に応じて文字種、使用頻度、目標文字数まで確認します。"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/ja/character-counter/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "空白ありと空白なしの違いは何ですか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "空白ありはスペースや改行も1文字として含めます。空白なしはスペース、タブ、改行を除いた文字数です。応募フォームなどでは指定された数え方を確認してください。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "日本語の単語数はどのように数えますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "ブラウザーの言語別単語分割機能を使います。形態素解析とは異なるため、用途によって他サービスと結果が少し異なる場合があります。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Wordファイルはアップロードされますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "アップロードされません。DOCXからの文字抽出はブラウザー内で行い、JianFan.appや外部の変換サーバーへ送りません。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "長い文章にも対応していますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "最大300万文字まで対応します。長文はバックグラウンドで集計し、それを超える場合は分割してご利用ください。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="character-counter" data-page-slug="character-counter" data-locale="ja" data-message-idle="文章を入力してください" data-message-analyzing="文字数を集計中" data-message-ready="集計結果を更新しました" data-message-error="集計できませんでした。ページを再読み込みしてください。" data-message-too-long="{limit}文字を超えています。分割して集計してください。" data-message-reading="ファイルを読み込み中" data-message-unsupported="TXT・MD・CSV・JSON・DOCXファイルを選択してください" data-message-file-too-large="ファイルが{limit}を超えています" data-message-file-error="このテキストファイルを読み込めませんでした" data-message-library-error="DOCX解析機能を読み込めません。再読み込みしてお試しください。">
+    <a class="skip-nav" href="#main">メインコンテンツへ移動</a>
+    <header class="site-header" aria-label="サイトヘッダー"><a class="brand" href="/ja/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">字</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="メインナビゲーション"><a class="nav-link" href="/ja/">ホーム</a><label class="language-picker"><span>表示言語</span><select id="localeSelect" aria-label="表示言語">
+              <option value="zh-CN">简体中文</option>
+              <option value="zh-TW">繁體中文</option>
+              <option value="en">English</option>
+              <option value="ja" selected>日本語</option>
+              <option value="ko">한국어</option>
+          </select></label></nav></header>
+    <main id="main">
+      <section class="tool-hero counter-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">リアルタイム集計 · 日本語文字分析 · ブラウザー内処理</p><h1 id="pageTitle">文字数カウント</h1><p class="lede">文章を入力するだけで、空白あり・空白なしの文字数、単語数、行数、段落数、バイト数を自動集計。漢字・ひらがな・カタカナの割合や文字の使用頻度も確認できます。</p></div><div class="counter-hero-readout" aria-hidden="true"><span><b>字</b>1,024</span><span><b>A</b>512</span><span><b>8</b>KB</span></div></section>
+      <section class="standalone-tool character-counter-tool" aria-labelledby="counterToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">COUNT / SCRIPT / FREQUENCY</p><h2 id="counterToolTitle">文章を入力して文字数をリアルタイム集計</h2></div><div class="status-pill" id="counterStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>文章を入力してください</span></div></div>
+        <div class="counter-workspace">
+          <section class="counter-input-panel" aria-labelledby="counterInputTitle">
+            <div class="panel-topline"><h3 id="counterInputTitle">カウントする文章</h3><span id="counterInputCount">0 / 3,000,000</span></div>
+            <textarea id="counterInput" spellcheck="false" placeholder="ここに文章を入力または貼り付けてください..."></textarea>
+            <div class="counter-input-actions">
+              <div><button class="text-button" id="counterSample" type="button" data-sample="中文字符统计与汉字词频
+日本語の文字数カウントと漢字分析
+한국어 글자수 세기와 한자 분석
+CJK text analysis 2026.">サンプル</button><button class="text-button" id="counterClear" type="button">クリア</button></div>
+              <label class="counter-file-action" id="counterFileLabel" for="counterFileInput"><span>ファイルを読み込む</span><input id="counterFileInput" type="file" accept=".txt,.md,.csv,.json,.docx,text/plain,text/markdown,text/csv,application/json,application/vnd.openxmlformats-officedocument.wordprocessingml.document" /></label>
+            </div>
+            <div class="counter-file-meta"><span>TXT・MD・CSV・JSON・DOCX、1ファイル10 MBまで</span><strong id="counterFileName"></strong></div>
+          </section>
+          <section class="counter-summary-panel" aria-labelledby="counterStatsTitle">
+            <div class="panel-topline"><h3 id="counterStatsTitle">文字数の集計結果</h3><span>UNICODE</span></div>
+            <div class="counter-metric-grid">
+              <article class="counter-metric"><span>文字数（空白込み）</span><strong data-counter-metric="characters">0</strong><small>スペース・改行を含む</small></article>
+              <article class="counter-metric"><span>文字数（空白なし）</span><strong data-counter-metric="charactersNoWhitespace">0</strong><small>スペース・改行を除く</small></article>
+              <article class="counter-metric"><span>単語数</span><strong data-counter-metric="words">0</strong><small>言語別の区切りで判定</small></article>
+              <article class="counter-metric"><span>文の数</span><strong data-counter-metric="sentences">0</strong><small>文末を基準に判定</small></article>
+              <article class="counter-metric"><span>段落数</span><strong data-counter-metric="paragraphs">0</strong><small>空行で区切る</small></article>
+              <article class="counter-metric"><span>行数</span><strong data-counter-metric="lines">0</strong><small>空行を含む</small></article>
+              <article class="counter-metric"><span>UTF-8バイト数</span><strong data-counter-metric="bytes">0</strong><small>文字コード上の容量</small></article>
+              <article class="counter-metric"><span>使用文字の種類</span><strong data-counter-metric="uniqueCharacters">0</strong><small>空白を除く</small></article>
+            </div>
+            <div class="counter-target">
+              <label for="counterTarget"><span>目標文字数</span><input id="counterTarget" type="number" min="1" max="3000000" step="100" value="400" /></label>
+              <div><span>空白なしの進捗</span><strong><span id="counterTargetValue">400</span> 文字 · <span id="counterTargetPercent">0%</span></strong></div>
+              <span class="counter-target-track"><span id="counterTargetBar"></span></span>
+            </div>
+          </section>
+        </div>
+        <div class="counter-detail-grid">
+          <section class="counter-breakdown-panel" aria-labelledby="counterBreakdownTitle"><div class="counter-detail-head"><div><p class="section-kicker">SCRIPT</p><h3 id="counterBreakdownTitle">文字種の内訳</h3></div><p>Unicodeの文字体系で判定し、共通する漢字は漢字として集計します。</p></div><ul class="counter-category-list">
+              <li data-counter-category="han"><span class="counter-category-name">漢字</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="hiragana"><span class="counter-category-name">ひらがな</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="katakana"><span class="counter-category-name">カタカナ</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="hangul"><span class="counter-category-name">ハングル</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="latin"><span class="counter-category-name">英字</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="number"><span class="counter-category-name">数字</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="punctuationSymbol"><span class="counter-category-name">記号・句読点</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="other"><span class="counter-category-name">その他</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+            </ul></section>
+          <section class="counter-frequency-panel" aria-labelledby="counterFrequencyTitle"><div class="counter-detail-head"><div><p class="section-kicker">FREQUENCY</p><h3 id="counterFrequencyTitle">文字の使用頻度</h3></div><p>よく使われている文字を上位12件まで表示します。</p></div><label class="counter-frequency-toggle"><input id="counterExcludePunctuation" type="checkbox" checked /><span>記号・句読点を除く</span></label><p class="counter-frequency-empty" id="counterFrequencyEmpty">文章を入力すると文字の使用頻度が表示されます。</p><ol class="counter-frequency-list" id="counterFrequency"></ol></section>
+        </div>
+        <p class="counter-privacy-note">文章は現在のブラウザー内だけで集計します。DOCXを読み込む場合のみ公開の文書解析機能を取得しますが、ファイル自体は送信しません。</p>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="counterFeatureTitle"><div class="section-heading"><p class="section-kicker">文字数カウンター・空白なし文字数</p><h2 id="counterFeatureTitle">日本語の文章を詳しく確認できる文字数カウンター</h2><p class="seo-intro">文字数カウント、空白なし文字数、行数、バイト数をすぐに確認できます。原稿、レポート、志望動機、SNS投稿、フォーム入力など、文字数制限がある文章のチェックに便利です。</p></div><div class="seo-grid">
+          <article><h3>見た目どおりの文字数</h3><p>絵文字や結合文字をUnicodeの文字単位で扱い、画面上では1文字のものを不自然に分割しません。</p></article>
+          <article><h3>漢字・かなの割合</h3><p>漢字、ひらがな、カタカナ、英字、数字、記号を分けて、日本語文章の文字種を確認できます。</p></article>
+          <article><h3>目標文字数と使用頻度</h3><p>400字など任意の目標を設定し、進捗とよく使う文字を同時にチェックできます。</p></article>
+        </div><section class="word-howto" aria-labelledby="counterHowTitle"><h2 id="counterHowTitle">文字数をカウントする方法</h2><ol>
+          <li>文章を入力・貼り付けるか、TXTやDOCXなどのファイルを読み込みます。</li>
+          <li>空白あり・空白なしの文字数、単語、文、段落、行、バイト数を確認します。</li>
+          <li>必要に応じて文字種、使用頻度、目標文字数まで確認します。</li>
+        </ol></section><section class="pinyin-faq" aria-labelledby="counterFaqTitle"><h2 id="counterFaqTitle">文字数カウントのよくある質問</h2>
+          <details><summary>空白ありと空白なしの違いは何ですか？</summary><p>空白ありはスペースや改行も1文字として含めます。空白なしはスペース、タブ、改行を除いた文字数です。応募フォームなどでは指定された数え方を確認してください。</p></details>
+          <details><summary>日本語の単語数はどのように数えますか？</summary><p>ブラウザーの言語別単語分割機能を使います。形態素解析とは異なるため、用途によって他サービスと結果が少し異なる場合があります。</p></details>
+          <details><summary>Wordファイルはアップロードされますか？</summary><p>アップロードされません。DOCXからの文字抽出はブラウザー内で行い、JianFan.appや外部の変換サーバーへ送りません。</p></details>
+          <details><summary>長い文章にも対応していますか？</summary><p>最大300万文字まで対応します。長文はバックグラウンドで集計し、それを超える場合は分割してご利用ください。</p></details>
+        </section><p class="section-kicker pinyin-related-kicker">関連ツール</p><nav class="landing-links" aria-label="関連する文字・文書ツール">
+          <a href="/ja/character-counter/" aria-current="page">文字数カウント</a>
+          <a href="/ja/word-to-txt/">Word TXT 変換</a>
+          <a href="/ja/file-text-converter/">文書の中国語簡繁変換</a>
+          <a href="/ja/japanese-characters/">日本語文字コピー</a>
+          <a href="/ja/japanese-kanji-converter/">旧字体 新字体 変換</a>
+          <a href="/ja/chinese-to-pinyin/">中国語ピンイン変換</a>
+          <a href="/ja/chinese-stroke-order/">中国語漢字の筆順</a>
+          <a href="/ja/japanese-chinese-kanji-converter/">日中漢字3種類変換</a>
+        </nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app はブラウザー内で使える文字数カウント、中国語変換、文書テキストツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
+  </body>
+</html>

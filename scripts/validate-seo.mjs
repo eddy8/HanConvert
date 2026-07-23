@@ -32,7 +32,7 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
 const uniqueSitemapUrls = new Set(sitemapUrls);
 if (uniqueSitemapUrls.size !== sitemapUrls.length) throw new Error("sitemap.xml contains duplicate URLs");
 
-for (const entryFile of ["app.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js"]) {
+for (const entryFile of ["app.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
@@ -77,6 +77,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isPinyinPage = html.includes('data-tool-page="pinyin-converter"');
   const isStrokeOrderPage = html.includes('data-tool-page="stroke-order"');
   const isWordToTxtPage = html.includes('data-tool-page="word-to-txt"');
+  const isCharacterCounterPage = html.includes('data-tool-page="character-counter"');
   if (!isConverterPage && !isStandaloneToolPage && !isInfoPage) continue;
   if (isConverterPage) {
     converterPages += 1;
@@ -112,11 +113,11 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     if (!webApplication || webApplication.url !== canonical) {
       throw new Error(`${relativePath}: invalid WebApplication schema`);
     }
-    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
+    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
       throw new Error(`${relativePath}: missing tool FAQPage schema`);
     }
-    if (isWordToTxtPage && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
-      throw new Error(`${relativePath}: missing Word-to-TXT HowTo schema`);
+    if ((isWordToTxtPage || isCharacterCounterPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
+      throw new Error(`${relativePath}: missing tool HowTo schema`);
     }
   }
   if (isConverterPage && (!html.includes('data-route="simplified-to-traditional"') || !html.includes('data-route="traditional-to-simplified"'))) {
@@ -133,6 +134,9 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   }
   if (isConverterPage && !html.includes('data-route="word-to-txt"')) {
     throw new Error(`${relativePath}: missing Word-to-TXT link`);
+  }
+  if (isConverterPage && !html.includes('data-route="character-counter"')) {
+    throw new Error(`${relativePath}: missing character-counter link`);
   }
   if (isStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/") || !html.includes("chinese-to-pinyin/") || !html.includes("chinese-stroke-order/") || !html.includes("word-to-txt/"))) {
     throw new Error(`${relativePath}: missing related tool links`);
@@ -172,11 +176,29 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
       if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
     }
   }
+  if (isCharacterCounterPage && (!html.includes('src="/character-counter.js"') || !html.includes('id="counterInput"'))) {
+    throw new Error(`${relativePath}: missing character-counter assets or input`);
+  }
+  if (relativePath === path.join("character-counter", "index.html")) {
+    for (const keyword of ["在线字数统计", "汉字字数统计", "字符数统计"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("ja", "character-counter", "index.html")) {
+    for (const keyword of ["文字数カウント", "文字数カウンター", "空白なし"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("ko", "character-counter", "index.html")) {
+    for (const keyword of ["글자수 세기", "글자수 계산기", "공백 제외"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
-if (standaloneToolPages !== 25) throw new Error(`expected 25 standalone tool pages, found ${standaloneToolPages}`);
+if (standaloneToolPages !== 30) throw new Error(`expected 30 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
-if (sitemapUrls.length !== 75) throw new Error(`expected 75 sitemap URLs, found ${sitemapUrls.length}`);
+if (sitemapUrls.length !== 80) throw new Error(`expected 80 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, and ${sitemapUrls.length} sitemap URLs.`);

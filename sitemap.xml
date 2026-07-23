@@ -918,4 +918,66 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/word-to-txt/" />
   </url>
   <!-- word-to-txt-tool:end -->
+  <!-- character-counter-tool:start -->
+  <url>
+    <loc>https://jianfan.app/character-counter/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/character-counter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/character-counter/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/character-counter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/character-counter/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/character-counter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/character-counter/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/character-counter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/character-counter/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/character-counter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/character-counter/" />
+  </url>
+  <!-- character-counter-tool:end -->
 </urlset>
