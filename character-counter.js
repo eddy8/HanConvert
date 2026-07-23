@@ -304,7 +304,7 @@
     if (mammothPromise) return mammothPromise;
     mammothPromise = new Promise((resolve, reject) => {
       const script = document.createElement("script");
-      script.src = "https://cdn.jsdelivr.net/npm/mammoth/mammoth.browser.min.js";
+      script.src = "https://cdn.jsdmirror.cn/npm/mammoth/mammoth.browser.min.js";
       script.onload = () => resolve(globalThis.mammoth);
       script.onerror = reject;
       document.head.append(script);
