@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="免費線上字數統計與中文字數統計工具，即時計算字元數、漢字數、UTF-8 位元組、段落、句子與字元頻率，並分析日文、韓文及英文。" />
+    <title>線上字數統計 - 中文字數、字元與詞頻計算 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/zh-tw/character-counter/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/character-counter/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/character-counter/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/character-counter/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/character-counter/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/character-counter/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/character-counter/" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="/character-counter.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/zh-tw/character-counter/#webapp",
+            "name": "線上字數統計",
+            "url": "https://jianfan.app/zh-tw/character-counter/",
+            "description": "免費線上字數統計與中文字數統計工具，即時計算字元數、漢字數、UTF-8 位元組、段落、句子與字元頻率，並分析日文、韓文及英文。",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "zh-Hant",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/zh-tw/character-counter/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "網站首頁",
+                "item": "https://jianfan.app/zh-tw/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "線上字數統計",
+                "item": "https://jianfan.app/zh-tw/character-counter/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/zh-tw/character-counter/#howto",
+            "name": "如何在線上統計字數",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "輸入或貼上要統計的文字，也可以匯入 TXT、DOCX 等檔案。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "即時查看字元數、詞語、句子、段落、行數與 UTF-8 位元組。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "依需要檢查文字組成、字元頻率及目標字數進度。"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/zh-tw/character-counter/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "字元數和漢字數有什麼不同？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "字元數包含漢字、字母、數字、標點、空白與換行；漢字數只計算 Unicode 漢字。正體、簡體、日文漢字與韓文漢字可能共用碼位，因此統一列入漢字。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "為什麼字元數和位元組數不同？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "字元是畫面上看到的文字單位，位元組是編碼後的儲存大小。UTF-8 中英文字母通常為 1 位元組，常見漢字通常為 3 位元組。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Word 文件會上傳嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不會。DOCX 文件只在瀏覽器內提取文字，不會傳送到 JianFan.app 或第三方轉檔伺服器。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "可以統計很長的文字嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "最多可統計 300 萬個字元。較長內容會在背景執行緒處理，超過限制時建議分段統計。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="character-counter" data-page-slug="character-counter" data-locale="zh-TW" data-message-idle="等待輸入文字" data-message-analyzing="正在統計" data-message-ready="統計已更新" data-message-error="目前無法統計，請重新整理頁面" data-message-too-long="文字超過 {limit} 個字元，請分段統計" data-message-reading="正在讀取檔案" data-message-unsupported="僅支援 TXT、MD、CSV、JSON 與 DOCX 檔案" data-message-file-too-large="檔案超過 {limit}" data-message-file-error="無法讀取這個文字檔" data-message-library-error="DOCX 解析元件載入失敗，請重新整理後再試">
+    <a class="skip-nav" href="#main">跳到主要內容</a>
+    <header class="site-header" aria-label="網站頁首"><a class="brand" href="/zh-tw/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">字</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="主要導覽"><a class="nav-link" href="/zh-tw/">網站首頁</a><label class="language-picker"><span>介面語言</span><select id="localeSelect" aria-label="介面語言">
+              <option value="zh-CN">简体中文</option>
+              <option value="zh-TW" selected>繁體中文</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ko">한국어</option>
+          </select></label></nav></header>
+    <main id="main">
+      <section class="tool-hero counter-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">即時統計 · CJK 文字分析 · 瀏覽器本機處理</p><h1 id="pageTitle">線上字數統計</h1><p class="lede">貼上或輸入文字，即時查看字數、字元數、位元組、單字、句子與段落，並分析中日韓文字組成及常用字元。內容只在瀏覽器本機處理。</p></div><div class="counter-hero-readout" aria-hidden="true"><span><b>字</b>1,024</span><span><b>A</b>512</span><span><b>8</b>KB</span></div></section>
+      <section class="standalone-tool character-counter-tool" aria-labelledby="counterToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">COUNT / SCRIPT / FREQUENCY</p><h2 id="counterToolTitle">輸入文字，即時查看字數與字元組成</h2></div><div class="status-pill" id="counterStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>等待輸入文字</span></div></div>
+        <div class="counter-workspace">
+          <section class="counter-input-panel" aria-labelledby="counterInputTitle">
+            <div class="panel-topline"><h3 id="counterInputTitle">要統計的文字</h3><span id="counterInputCount">0 / 3,000,000</span></div>
+            <textarea id="counterInput" spellcheck="false" placeholder="在這裡輸入或貼上中文、日文、韓文或英文內容..."></textarea>
+            <div class="counter-input-actions">
+              <div><button class="text-button" id="counterSample" type="button" data-sample="中文字符统计与汉字词频
+日本語の文字数カウントと漢字分析
+한국어 글자수 세기와 한자 분석
+CJK text analysis 2026.">載入範例</button><button class="text-button" id="counterClear" type="button">清除</button></div>
+              <label class="counter-file-action" id="counterFileLabel" for="counterFileInput"><span>匯入檔案</span><input id="counterFileInput" type="file" accept=".txt,.md,.csv,.json,.docx,text/plain,text/markdown,text/csv,application/json,application/vnd.openxmlformats-officedocument.wordprocessingml.document" /></label>
+            </div>
+            <div class="counter-file-meta"><span>支援 TXT、MD、CSV、JSON 與 DOCX，單一檔案上限 10 MB</span><strong id="counterFileName"></strong></div>
+          </section>
+          <section class="counter-summary-panel" aria-labelledby="counterStatsTitle">
+            <div class="panel-topline"><h3 id="counterStatsTitle">統計結果</h3><span>UNICODE</span></div>
+            <div class="counter-metric-grid">
+              <article class="counter-metric"><span>字元數</span><strong data-counter-metric="characters">0</strong><small>包含空白與換行</small></article>
+              <article class="counter-metric"><span>不含空白</span><strong data-counter-metric="charactersNoWhitespace">0</strong><small>排除空格與換行</small></article>
+              <article class="counter-metric"><span>詞語 / 單字</span><strong data-counter-metric="words">0</strong><small>依語言邊界辨識</small></article>
+              <article class="counter-metric"><span>句子</span><strong data-counter-metric="sentences">0</strong><small>依常見句末標點</small></article>
+              <article class="counter-metric"><span>段落</span><strong data-counter-metric="paragraphs">0</strong><small>以空白行分隔</small></article>
+              <article class="counter-metric"><span>行數</span><strong data-counter-metric="lines">0</strong><small>包含空白行</small></article>
+              <article class="counter-metric"><span>UTF-8 位元組</span><strong data-counter-metric="bytes">0</strong><small>實際編碼大小</small></article>
+              <article class="counter-metric"><span>相異字元</span><strong data-counter-metric="uniqueCharacters">0</strong><small>排除空白字元</small></article>
+            </div>
+            <div class="counter-target">
+              <label for="counterTarget"><span>目標字數</span><input id="counterTarget" type="number" min="1" max="3000000" step="100" value="1000" /></label>
+              <div><span>不含空白字元進度</span><strong><span id="counterTargetValue">1000</span> 字 · <span id="counterTargetPercent">0%</span></strong></div>
+              <span class="counter-target-track"><span id="counterTargetBar"></span></span>
+            </div>
+          </section>
+        </div>
+        <div class="counter-detail-grid">
+          <section class="counter-breakdown-panel" aria-labelledby="counterBreakdownTitle"><div class="counter-detail-head"><div><p class="section-kicker">SCRIPT</p><h3 id="counterBreakdownTitle">文字組成</h3></div><p>依 Unicode 文字系統辨識，共用漢字統一列入漢字。</p></div><ul class="counter-category-list">
+              <li data-counter-category="han"><span class="counter-category-name">漢字</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="hiragana"><span class="counter-category-name">平假名</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="katakana"><span class="counter-category-name">片假名</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="hangul"><span class="counter-category-name">韓文</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="latin"><span class="counter-category-name">英文字母</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="number"><span class="counter-category-name">數字</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="punctuationSymbol"><span class="counter-category-name">標點與符號</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="other"><span class="counter-category-name">其他字元</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+            </ul></section>
+          <section class="counter-frequency-panel" aria-labelledby="counterFrequencyTitle"><div class="counter-detail-head"><div><p class="section-kicker">FREQUENCY</p><h3 id="counterFrequencyTitle">常用字元</h3></div><p>顯示出現次數最多的 12 個非空白字元。</p></div><label class="counter-frequency-toggle"><input id="counterExcludePunctuation" type="checkbox" checked /><span>排除標點與符號</span></label><p class="counter-frequency-empty" id="counterFrequencyEmpty">輸入文字後會顯示字元頻率。</p><ol class="counter-frequency-list" id="counterFrequency"></ol></section>
+        </div>
+        <p class="counter-privacy-note">文字統計在目前的瀏覽器中完成。只有匯入 DOCX 時才會視需要載入公開的文件解析元件，檔案內容不會上傳。</p>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="counterFeatureTitle"><div class="section-heading"><p class="section-kicker">中文字數與字元統計</p><h2 id="counterFeatureTitle">適合中日韓文字的線上字數統計工具</h2><p class="seo-intro">除了常見的字數統計、中文字數統計與字元數計算，也能分辨漢字、日文假名、韓文、英文字母與標點，適合文案、論文、字幕及表單內容。</p></div><div class="seo-grid">
+          <article><h3>正確計算 Unicode 字元</h3><p>依畫面上看到的完整字元計算，家庭表情符號、組合音標等不會被拆成多個字元。</p></article>
+          <article><h3>中日韓文字組成</h3><p>分別統計漢字、平假名、片假名、韓文、英文、數字與標點，快速掌握文字內容。</p></article>
+          <article><h3>字元頻率與目標進度</h3><p>查看常用字元並設定目標字數，方便控制標題、摘要、投稿與表單長度。</p></article>
+        </div><section class="word-howto" aria-labelledby="counterHowTitle"><h2 id="counterHowTitle">如何在線上統計字數</h2><ol>
+          <li>輸入或貼上要統計的文字，也可以匯入 TXT、DOCX 等檔案。</li>
+          <li>即時查看字元數、詞語、句子、段落、行數與 UTF-8 位元組。</li>
+          <li>依需要檢查文字組成、字元頻率及目標字數進度。</li>
+        </ol></section><section class="pinyin-faq" aria-labelledby="counterFaqTitle"><h2 id="counterFaqTitle">字數統計常見問題</h2>
+          <details><summary>字元數和漢字數有什麼不同？</summary><p>字元數包含漢字、字母、數字、標點、空白與換行；漢字數只計算 Unicode 漢字。正體、簡體、日文漢字與韓文漢字可能共用碼位，因此統一列入漢字。</p></details>
+          <details><summary>為什麼字元數和位元組數不同？</summary><p>字元是畫面上看到的文字單位，位元組是編碼後的儲存大小。UTF-8 中英文字母通常為 1 位元組，常見漢字通常為 3 位元組。</p></details>
+          <details><summary>Word 文件會上傳嗎？</summary><p>不會。DOCX 文件只在瀏覽器內提取文字，不會傳送到 JianFan.app 或第三方轉檔伺服器。</p></details>
+          <details><summary>可以統計很長的文字嗎？</summary><p>最多可統計 300 萬個字元。較長內容會在背景執行緒處理，超過限制時建議分段統計。</p></details>
+        </section><p class="section-kicker pinyin-related-kicker">相關文字工具</p><nav class="landing-links" aria-label="相關文字與檔案工具">
+          <a href="/zh-tw/character-counter/" aria-current="page">線上字數統計</a>
+          <a href="/zh-tw/word-to-txt/">DOCX 轉 TXT</a>
+          <a href="/zh-tw/file-text-converter/">文件文字簡繁轉換</a>
+          <a href="/zh-tw/chinese-to-pinyin/">漢字轉拼音</a>
+          <a href="/zh-tw/chinese-stroke-order/">漢字筆順查詢</a>
+          <a href="/zh-tw/simplified-to-traditional/">簡體轉繁體</a>
+          <a href="/zh-tw/japanese-chinese-kanji-converter/">日中漢字三體轉換</a>
+          <a href="/zh-tw/japanese-characters/">日文字元複製</a>
+        </nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app 提供在瀏覽器本機執行的中文轉換、字數統計與文件文字工具。</p><nav class="footer-links" aria-label="頁尾"><a href="/zh-tw/about/">關於我們</a><a href="/zh-tw/contact/">聯絡我們</a><a href="/zh-tw/privacy/">隱私聲明</a></nav></footer>
+  </body>
+</html>

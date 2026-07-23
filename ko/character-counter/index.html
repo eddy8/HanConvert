@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="무료 글자수 세기와 글자수 계산기. 공백 포함·제외 글자수, 단어, 문장, 줄 수, UTF-8 바이트를 실시간 계산하고 한글·한자·영문 비율과 글자 빈도를 확인하세요." />
+    <title>글자수 세기 - 공백 제외·바이트 계산기 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/ko/character-counter/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/character-counter/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/character-counter/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/character-counter/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/character-counter/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/character-counter/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/character-counter/" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="/character-counter.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/ko/character-counter/#webapp",
+            "name": "글자수 세기",
+            "url": "https://jianfan.app/ko/character-counter/",
+            "description": "무료 글자수 세기와 글자수 계산기. 공백 포함·제외 글자수, 단어, 문장, 줄 수, UTF-8 바이트를 실시간 계산하고 한글·한자·영문 비율과 글자 빈도를 확인하세요.",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "ko",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/ko/character-counter/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "홈",
+                "item": "https://jianfan.app/ko/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "글자수 세기",
+                "item": "https://jianfan.app/ko/character-counter/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/ko/character-counter/#howto",
+            "name": "온라인에서 글자수 세는 방법",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "텍스트를 입력하거나 붙여 넣고, 필요하면 TXT나 DOCX 파일을 불러옵니다."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "공백 포함·제외 글자수, 단어, 문장, 문단, 줄 수와 UTF-8 바이트를 확인합니다."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "문자 구성, 자주 쓴 글자와 목표 글자수 진행률을 함께 점검합니다."
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/ko/character-counter/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "공백 포함과 공백 제외는 어떻게 다른가요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "공백 포함은 띄어쓰기, 탭과 줄바꿈도 글자수에 넣습니다. 공백 제외는 이 항목을 빼고 계산합니다. 지원서나 입력 폼이 요구하는 기준을 확인하세요."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "바이트 수가 사이트마다 다른 이유는 무엇인가요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "이 도구는 UTF-8 기준입니다. 채용 사이트나 공공기관 시스템이 EUC-KR 또는 자체 계산 규칙을 사용하면 결과가 다를 수 있습니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Word 파일이 서버로 전송되나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "아니요. DOCX 텍스트는 브라우저에서 추출하며 JianFan.app이나 외부 변환 서버로 전송하지 않습니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "긴 글도 계산할 수 있나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "최대 300만 자까지 지원합니다. 긴 내용은 백그라운드에서 계산하며 제한을 넘으면 나눠서 사용해 주세요."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="character-counter" data-page-slug="character-counter" data-locale="ko" data-message-idle="텍스트를 입력하세요" data-message-analyzing="글자수 계산 중" data-message-ready="계산 결과를 업데이트했습니다" data-message-error="계산하지 못했습니다. 페이지를 새로 고쳐 주세요." data-message-too-long="{limit}자를 초과했습니다. 내용을 나눠서 계산해 주세요." data-message-reading="파일 읽는 중" data-message-unsupported="TXT, MD, CSV, JSON 또는 DOCX 파일을 선택하세요" data-message-file-too-large="파일이 {limit}를 초과했습니다" data-message-file-error="이 텍스트 파일을 읽을 수 없습니다" data-message-library-error="DOCX 분석 기능을 불러오지 못했습니다. 새로 고친 후 다시 시도해 주세요.">
+    <a class="skip-nav" href="#main">주요 내용으로 이동</a>
+    <header class="site-header" aria-label="사이트 헤더"><a class="brand" href="/ko/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">字</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="주요 탐색"><a class="nav-link" href="/ko/">홈</a><label class="language-picker"><span>언어</span><select id="localeSelect" aria-label="언어">
+              <option value="zh-CN">简体中文</option>
+              <option value="zh-TW">繁體中文</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ko" selected>한국어</option>
+          </select></label></nav></header>
+    <main id="main">
+      <section class="tool-hero counter-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">실시간 계산 · 한글·한자 분석 · 브라우저 로컬 처리</p><h1 id="pageTitle">글자수 세기</h1><p class="lede">텍스트를 입력하면 공백 포함·제외 글자수, 단어, 문장, 문단, 줄 수와 UTF-8 바이트를 바로 계산합니다. 한글·한자·영문 구성과 자주 쓴 글자도 확인할 수 있습니다.</p></div><div class="counter-hero-readout" aria-hidden="true"><span><b>字</b>1,024</span><span><b>A</b>512</span><span><b>8</b>KB</span></div></section>
+      <section class="standalone-tool character-counter-tool" aria-labelledby="counterToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">COUNT / SCRIPT / FREQUENCY</p><h2 id="counterToolTitle">텍스트를 입력하고 글자수를 실시간으로 확인하세요</h2></div><div class="status-pill" id="counterStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>텍스트를 입력하세요</span></div></div>
+        <div class="counter-workspace">
+          <section class="counter-input-panel" aria-labelledby="counterInputTitle">
+            <div class="panel-topline"><h3 id="counterInputTitle">계산할 텍스트</h3><span id="counterInputCount">0 / 3,000,000</span></div>
+            <textarea id="counterInput" spellcheck="false" placeholder="여기에 자기소개서, 원고 또는 확인할 텍스트를 입력하세요..."></textarea>
+            <div class="counter-input-actions">
+              <div><button class="text-button" id="counterSample" type="button" data-sample="中文字符统计与汉字词频
+日本語の文字数カウントと漢字分析
+한국어 글자수 세기와 한자 분석
+CJK text analysis 2026.">예시 불러오기</button><button class="text-button" id="counterClear" type="button">비우기</button></div>
+              <label class="counter-file-action" id="counterFileLabel" for="counterFileInput"><span>파일 불러오기</span><input id="counterFileInput" type="file" accept=".txt,.md,.csv,.json,.docx,text/plain,text/markdown,text/csv,application/json,application/vnd.openxmlformats-officedocument.wordprocessingml.document" /></label>
+            </div>
+            <div class="counter-file-meta"><span>TXT, MD, CSV, JSON, DOCX 지원 · 파일당 10 MB 이하</span><strong id="counterFileName"></strong></div>
+          </section>
+          <section class="counter-summary-panel" aria-labelledby="counterStatsTitle">
+            <div class="panel-topline"><h3 id="counterStatsTitle">글자수 계산 결과</h3><span>UNICODE</span></div>
+            <div class="counter-metric-grid">
+              <article class="counter-metric"><span>공백 포함</span><strong data-counter-metric="characters">0</strong><small>띄어쓰기와 줄바꿈 포함</small></article>
+              <article class="counter-metric"><span>공백 제외</span><strong data-counter-metric="charactersNoWhitespace">0</strong><small>띄어쓰기와 줄바꿈 제외</small></article>
+              <article class="counter-metric"><span>단어 수</span><strong data-counter-metric="words">0</strong><small>언어별 단어 경계 사용</small></article>
+              <article class="counter-metric"><span>문장 수</span><strong data-counter-metric="sentences">0</strong><small>문장 끝을 기준으로 계산</small></article>
+              <article class="counter-metric"><span>문단 수</span><strong data-counter-metric="paragraphs">0</strong><small>빈 줄로 구분</small></article>
+              <article class="counter-metric"><span>줄 수</span><strong data-counter-metric="lines">0</strong><small>빈 줄 포함</small></article>
+              <article class="counter-metric"><span>UTF-8 바이트</span><strong data-counter-metric="bytes">0</strong><small>인코딩 기준 용량</small></article>
+              <article class="counter-metric"><span>사용한 글자 종류</span><strong data-counter-metric="uniqueCharacters">0</strong><small>공백 제외</small></article>
+            </div>
+            <div class="counter-target">
+              <label for="counterTarget"><span>목표 글자수</span><input id="counterTarget" type="number" min="1" max="3000000" step="100" value="1000" /></label>
+              <div><span>공백 제외 기준</span><strong><span id="counterTargetValue">1000</span> 자 · <span id="counterTargetPercent">0%</span></strong></div>
+              <span class="counter-target-track"><span id="counterTargetBar"></span></span>
+            </div>
+          </section>
+        </div>
+        <div class="counter-detail-grid">
+          <section class="counter-breakdown-panel" aria-labelledby="counterBreakdownTitle"><div class="counter-detail-head"><div><p class="section-kicker">SCRIPT</p><h3 id="counterBreakdownTitle">문자 구성</h3></div><p>유니코드 문자 체계로 구분하며 공통 한자는 한자로 계산합니다.</p></div><ul class="counter-category-list">
+              <li data-counter-category="han"><span class="counter-category-name">한자</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="hiragana"><span class="counter-category-name">히라가나</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="katakana"><span class="counter-category-name">가타카나</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="hangul"><span class="counter-category-name">한글</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="latin"><span class="counter-category-name">영문</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="number"><span class="counter-category-name">숫자</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="punctuationSymbol"><span class="counter-category-name">문장부호·기호</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+              <li data-counter-category="other"><span class="counter-category-name">기타 문자</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>
+            </ul></section>
+          <section class="counter-frequency-panel" aria-labelledby="counterFrequencyTitle"><div class="counter-detail-head"><div><p class="section-kicker">FREQUENCY</p><h3 id="counterFrequencyTitle">자주 쓴 글자</h3></div><p>공백을 제외하고 많이 사용한 글자 12개를 보여 줍니다.</p></div><label class="counter-frequency-toggle"><input id="counterExcludePunctuation" type="checkbox" checked /><span>문장부호와 기호 제외</span></label><p class="counter-frequency-empty" id="counterFrequencyEmpty">텍스트를 입력하면 글자별 사용 횟수가 표시됩니다.</p><ol class="counter-frequency-list" id="counterFrequency"></ol></section>
+        </div>
+        <p class="counter-privacy-note">글자수 계산은 현재 브라우저에서 처리됩니다. DOCX를 불러올 때만 공개 문서 분석 기능을 가져오며 파일 내용은 업로드하지 않습니다.</p>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="counterFeatureTitle"><div class="section-heading"><p class="section-kicker">공백 제외 글자수·바이트 계산</p><h2 id="counterFeatureTitle">한글과 한자까지 구분하는 온라인 글자수 계산기</h2><p class="seo-intro">글자수 세기, 공백 제외 글자수, 단어 수와 바이트 계산이 필요한 자기소개서, 이력서, 과제, 원고와 입력 폼에서 바로 사용할 수 있습니다.</p></div><div class="seo-grid">
+          <article><h3>화면에 보이는 글자 기준</h3><p>이모지 묶음과 결합 문자를 유니코드 글자 단위로 처리해 하나의 글자를 여러 개로 잘못 세지 않습니다.</p></article>
+          <article><h3>한글·한자·영문 구분</h3><p>한글, 한자, 영문, 숫자, 일본어 가나와 문장부호를 나눠 다국어 텍스트 구성을 확인합니다.</p></article>
+          <article><h3>목표 글자수와 사용 빈도</h3><p>자기소개서나 입력란의 목표 글자수를 설정하고 진행률과 반복해서 사용한 글자를 확인합니다.</p></article>
+        </div><section class="word-howto" aria-labelledby="counterHowTitle"><h2 id="counterHowTitle">온라인에서 글자수 세는 방법</h2><ol>
+          <li>텍스트를 입력하거나 붙여 넣고, 필요하면 TXT나 DOCX 파일을 불러옵니다.</li>
+          <li>공백 포함·제외 글자수, 단어, 문장, 문단, 줄 수와 UTF-8 바이트를 확인합니다.</li>
+          <li>문자 구성, 자주 쓴 글자와 목표 글자수 진행률을 함께 점검합니다.</li>
+        </ol></section><section class="pinyin-faq" aria-labelledby="counterFaqTitle"><h2 id="counterFaqTitle">글자수 세기 자주 묻는 질문</h2>
+          <details><summary>공백 포함과 공백 제외는 어떻게 다른가요?</summary><p>공백 포함은 띄어쓰기, 탭과 줄바꿈도 글자수에 넣습니다. 공백 제외는 이 항목을 빼고 계산합니다. 지원서나 입력 폼이 요구하는 기준을 확인하세요.</p></details>
+          <details><summary>바이트 수가 사이트마다 다른 이유는 무엇인가요?</summary><p>이 도구는 UTF-8 기준입니다. 채용 사이트나 공공기관 시스템이 EUC-KR 또는 자체 계산 규칙을 사용하면 결과가 다를 수 있습니다.</p></details>
+          <details><summary>Word 파일이 서버로 전송되나요?</summary><p>아니요. DOCX 텍스트는 브라우저에서 추출하며 JianFan.app이나 외부 변환 서버로 전송하지 않습니다.</p></details>
+          <details><summary>긴 글도 계산할 수 있나요?</summary><p>최대 300만 자까지 지원합니다. 긴 내용은 백그라운드에서 계산하며 제한을 넘으면 나눠서 사용해 주세요.</p></details>
+        </section><p class="section-kicker pinyin-related-kicker">관련 텍스트 도구</p><nav class="landing-links" aria-label="관련 텍스트 및 문서 도구">
+          <a href="/ko/character-counter/" aria-current="page">글자수 세기</a>
+          <a href="/ko/word-to-txt/">DOCX TXT 변환</a>
+          <a href="/ko/file-text-converter/">문서 중국어 변환</a>
+          <a href="/ko/japanese-characters/">일본어 문자 복사</a>
+          <a href="/ko/chinese-to-pinyin/">중국어 병음 변환</a>
+          <a href="/ko/chinese-stroke-order/">중국어 한자 필순</a>
+          <a href="/ko/japanese-chinese-kanji-converter/">일본·중국 한자 변환</a>
+          <a href="/ko/simplified-to-traditional/">간체를 번체로</a>
+        </nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app는 브라우저에서 실행되는 글자수 계산, 중국어 변환 및 문서 텍스트 도구를 제공합니다.</p><nav class="footer-links" aria-label="바닥글"><a href="/ko/about/">소개</a><a href="/ko/contact/">문의</a><a href="/ko/privacy/">개인정보 보호 안내</a></nav></footer>
+  </body>
+</html>
