@@ -1,0 +1,27 @@
+/*
+  Content-Signal: ai-train=no, search=yes, ai-input=yes
+
+/
+  Link: </.well-known/agent-skills/index.json>; rel="service-desc"; type="application/json", </.well-known/agent-skills/jianfan-browser-tools/SKILL.md>; rel="service-doc"; type="text/markdown"
+
+/zh-tw/
+  Link: </.well-known/agent-skills/index.json>; rel="service-desc"; type="application/json", </.well-known/agent-skills/jianfan-browser-tools/SKILL.md>; rel="service-doc"; type="text/markdown"
+
+/en/
+  Link: </.well-known/agent-skills/index.json>; rel="service-desc"; type="application/json", </.well-known/agent-skills/jianfan-browser-tools/SKILL.md>; rel="service-doc"; type="text/markdown"
+
+/ja/
+  Link: </.well-known/agent-skills/index.json>; rel="service-desc"; type="application/json", </.well-known/agent-skills/jianfan-browser-tools/SKILL.md>; rel="service-doc"; type="text/markdown"
+
+/ko/
+  Link: </.well-known/agent-skills/index.json>; rel="service-desc"; type="application/json", </.well-known/agent-skills/jianfan-browser-tools/SKILL.md>; rel="service-doc"; type="text/markdown"
+
+/.well-known/agent-skills/index.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+
+/.well-known/agent-skills/*/SKILL.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *

@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -32,7 +33,7 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
 const uniqueSitemapUrls = new Set(sitemapUrls);
 if (uniqueSitemapUrls.size !== sitemapUrls.length) throw new Error("sitemap.xml contains duplicate URLs");
 
-for (const entryFile of ["app.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js"]) {
+for (const entryFile of ["app.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "webmcp.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
@@ -81,6 +82,9 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (!isConverterPage && !isStandaloneToolPage && !isInfoPage) continue;
   if (isConverterPage) {
     converterPages += 1;
+    if (!html.includes('src="/webmcp.js"')) {
+      throw new Error(`${relativePath}: missing WebMCP browser tool registration`);
+    }
     if (localizeConverterHtml(html, relativePath, localizationData) !== html) {
       throw new Error(`${relativePath}: static localized content is out of sync with app.js`);
     }
@@ -179,6 +183,9 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (isCharacterCounterPage && (!html.includes('src="/character-counter.js"') || !html.includes('id="counterInput"'))) {
     throw new Error(`${relativePath}: missing character-counter assets or input`);
   }
+  if (isCharacterCounterPage && !html.includes('src="/webmcp.js"')) {
+    throw new Error(`${relativePath}: missing character-counter WebMCP registration`);
+  }
   if (relativePath === path.join("character-counter", "index.html")) {
     for (const keyword of ["在线字数统计", "汉字字数统计", "字符数统计"]) {
       if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
@@ -194,6 +201,49 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
       if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
     }
   }
+}
+
+const agentIndexText = await readFile(
+  path.join(projectRoot, ".well-known", "agent-skills", "index.json"),
+  "utf8"
+);
+const agentIndex = JSON.parse(agentIndexText);
+if (agentIndex.$schema !== "https://schemas.agentskills.io/discovery/0.2.0/schema.json") {
+  throw new Error("agent skills index uses an unsupported schema");
+}
+if (!Array.isArray(agentIndex.skills) || agentIndex.skills.length !== 1) {
+  throw new Error("agent skills index must contain one browser-tool skill");
+}
+const [agentSkill] = agentIndex.skills;
+if (
+  agentSkill.name !== "jianfan-browser-tools" ||
+  agentSkill.type !== "skill-md" ||
+  !/^sha256:[a-f0-9]{64}$/.test(agentSkill.digest)
+) {
+  throw new Error("agent skills index contains invalid skill metadata");
+}
+const agentSkillPath = path.join(projectRoot, agentSkill.url.replace(/^\//, ""));
+const agentSkillBytes = await readFile(agentSkillPath);
+const agentSkillDigest = `sha256:${createHash("sha256").update(agentSkillBytes).digest("hex")}`;
+if (agentSkill.digest !== agentSkillDigest) {
+  throw new Error("agent skill digest is out of sync; run scripts/sync-agent-discovery.mjs");
+}
+
+const headers = await readFile(path.join(projectRoot, "_headers"), "utf8");
+if (
+  !headers.includes("Content-Signal: ai-train=no, search=yes, ai-input=yes") ||
+  !headers.includes('rel="service-desc"') ||
+  !headers.includes('rel="service-doc"')
+) {
+  throw new Error("_headers is missing agent discovery or Content Signals");
+}
+const robots = await readFile(path.join(projectRoot, "robots.txt"), "utf8");
+if (!robots.includes("Content-Signal: ai-train=no, search=yes, ai-input=yes")) {
+  throw new Error("robots.txt is missing Content Signals");
+}
+const notFound = await readFile(path.join(projectRoot, "404.html"), "utf8");
+if (!notFound.includes('name="robots" content="noindex, follow"')) {
+  throw new Error("404.html must prevent unsupported discovery URLs from being indexed");
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);

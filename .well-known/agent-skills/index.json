@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "jianfan-browser-tools",
+      "type": "skill-md",
+      "description": "Use JianFan.app browser-local tools for Simplified and Traditional Chinese conversion, CJK character counting, Chinese Pinyin, and stroke-order lookup.",
+      "url": "/.well-known/agent-skills/jianfan-browser-tools/SKILL.md",
+      "digest": "sha256:7afb04a9a5b4d260669f46043719ac93b993abf8d90bdf8f28336fbe4b449d80"
+    }
+  ]
+}
