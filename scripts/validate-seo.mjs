@@ -207,7 +207,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   }
   if (isWorksheetPage) {
     if (
-      !html.includes("cdn.jsdelivr.net/npm/hanzi-writer/dist/hanzi-writer.min.js") ||
+      !html.includes("cdn.jsdmirror.cn/npm/hanzi-writer/dist/hanzi-writer.min.js") ||
       !html.includes('src="/vendor/pinyin-pro.js"') ||
       !html.includes('src="/han-character-worksheet.js"') ||
       !html.includes('id="worksheetInput"')
