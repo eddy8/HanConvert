@@ -33,7 +33,7 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
 const uniqueSitemapUrls = new Set(sitemapUrls);
 if (uniqueSitemapUrls.size !== sitemapUrls.length) throw new Error("sitemap.xml contains duplicate URLs");
 
-for (const entryFile of ["app.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "han-character-worksheet.js", "webmcp.js"]) {
+for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "han-character-worksheet.js", "webmcp.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
@@ -47,6 +47,7 @@ let converterPages = 0;
 let standaloneToolPages = 0;
 let infoPages = 0;
 const canonicalUrls = new Set();
+const localizedHomePages = new Set(["index.html", "zh-tw/index.html", "en/index.html", "ja/index.html", "ko/index.html"]);
 
 for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const relativePath = path.relative(projectRoot, htmlPath);
@@ -80,6 +81,17 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isWordToTxtPage = html.includes('data-tool-page="word-to-txt"');
   const isCharacterCounterPage = html.includes('data-tool-page="character-counter"');
   const isWorksheetPage = html.includes('data-tool-page="han-character-worksheet"');
+  if (localizedHomePages.has(relativePath) && !html.includes('src="/app-download.js"')) {
+    throw new Error(`${relativePath}: missing platform-specific app download navigation`);
+  }
+  if (localizedHomePages.has(relativePath) && !html.includes('data-i18n="seoAppTitle"')) {
+    throw new Error(`${relativePath}: missing static desktop app SEO copy`);
+  }
+  if (relativePath === "index.html") {
+    for (const keyword of ["简体转繁体 APP", "繁体转简体 APP"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
   if (!isConverterPage && !isStandaloneToolPage && !isInfoPage) continue;
   if (isConverterPage) {
     converterPages += 1;
