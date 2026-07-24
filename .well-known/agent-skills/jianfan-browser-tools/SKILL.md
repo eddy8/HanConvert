@@ -1,6 +1,6 @@
 ---
 name: jianfan-browser-tools
-description: Use JianFan.app browser-local tools for Simplified and Traditional Chinese conversion, CJK character counting, Chinese Pinyin, and stroke-order lookup.
+description: Use JianFan.app browser-local tools for Simplified and Traditional Chinese conversion, CJK character counting, Chinese Pinyin, stroke-order lookup, and printable Han character worksheets.
 ---
 
 # JianFan.app Browser Tools
@@ -18,6 +18,8 @@ Korean text without uploading that text to a conversion API.
   `https://jianfan.app/chinese-to-pinyin/`
 - Chinese stroke-order lookup:
   `https://jianfan.app/chinese-stroke-order/`
+- Printable Chinese character worksheets with tracing grids:
+  `https://jianfan.app/han-character-worksheet/`
 - Japanese Shinjitai and Kyujitai conversion:
   `https://jianfan.app/japanese-kanji-converter/`
 - Word and DOCX to plain text:
@@ -39,7 +41,7 @@ directly to the invoking browser agent.
 ## Constraints
 
 - These are browser applications, not public HTTP APIs.
-- Text conversion and counting run in the browser.
+- Text conversion, counting, and worksheet layout run in the browser.
 - Do not look for OAuth credentials or send user text to a server.
 - Review proper nouns, names, regional wording, and formal text after automatic
   Chinese conversion.

@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="Free Chinese character worksheet generator for printable Hanzi writing practice. Create Tian Zi Ge or Mi Zi Ge sheets with tracing, Pinyin, stroke order, A4 or Letter PDF printing." />
+    <title>Chinese Character Worksheet Generator - Printable Hanzi Practice | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/en/han-character-worksheet/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/han-character-worksheet/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/han-character-worksheet/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/han-character-worksheet/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/han-character-worksheet/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/han-character-worksheet/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/han-character-worksheet/" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer/dist/hanzi-writer.min.js"></script>
+    <script defer src="/vendor/pinyin-pro.js"></script>
+    <script defer src="/han-character-worksheet.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/en/han-character-worksheet/#webapp",
+            "name": "Chinese Character Worksheet Generator",
+            "url": "https://jianfan.app/en/han-character-worksheet/",
+            "description": "Free Chinese character worksheet generator for printable Hanzi writing practice. Create Tian Zi Ge or Mi Zi Ge sheets with tracing, Pinyin, stroke order, A4 or Letter PDF printing.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript and printing support",
+            "inLanguage": "en",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/en/han-character-worksheet/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://jianfan.app/en/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Chinese Character Worksheet Generator",
+                "item": "https://jianfan.app/en/han-character-worksheet/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/en/han-character-worksheet/#howto",
+            "name": "How to create a Chinese character worksheet",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "Enter the Hanzi, vocabulary or short passage you want to practise."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "Choose a grid and adjust tracing, Pinyin, stroke order, rows and columns."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "Review the white paper preview, then print it or save it as a PDF."
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/en/han-character-worksheet/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Can I download the worksheet as a PDF?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Select Print / Save PDF, then choose Save as PDF in your browser's print dialog."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does it support Simplified and Traditional Chinese?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. You can enter common Simplified and Traditional characters. The exact printed glyph also depends on fonts available on your device."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How are polyphonic characters handled?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Words and sentences use contextual Pinyin. If you enter one Hanzi by itself, all dictionary readings are shown. When grouped duplicates have different contextual readings, the worksheet displays each detected reading."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is my worksheet text uploaded?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Layout happens locally. When stroke order is enabled, only individual character-data requests are made to a public remote source."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why might stroke order differ from my textbook?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Some character forms and conventions differ across Mainland China, Taiwan, Hong Kong, Japan and Korea. Use your local curriculum for formal study."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="han-character-worksheet" data-page-slug="han-character-worksheet" data-locale="en" data-sample-text="你好中文 汉字学习 永字八法" data-default-worksheet-title="Chinese writing practice" data-name-label="Name:" data-date-label="Date:" data-message-idle="Waiting for Chinese characters" data-message-loading-strokes="Loading public stroke-order data" data-message-ready="Worksheet ready for {count} characters" data-message-ready-without-strokes="Worksheet ready; stroke data is unavailable for some characters" data-message-invalid="Enter at least one Chinese character first" data-message-empty="Your printable worksheet preview will appear here." data-message-stroke-loading="Loading stroke order" data-message-stroke-missing="Stroke data unavailable" data-message-stroke-count="{count} strokes" data-message-stroke-order-label="Stroke-order guide for {character}">
+    <a class="skip-nav" href="#main">Skip to main content</a>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="/en/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">字</span><span>JianFan.app</span></a>
+      <nav class="top-actions" aria-label="Primary navigation">
+        <a class="nav-link" href="/en/">Home</a>
+        <label class="language-picker"><span>Language</span><select id="localeSelect" aria-label="Language">
+              <option value="zh-CN">简体中文</option>
+              <option value="zh-TW">繁體中文</option>
+              <option value="en" selected>English</option>
+              <option value="ja">日本語</option>
+              <option value="ko">한국어</option>
+          </select></label>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="tool-hero worksheet-tool-hero" aria-labelledby="pageTitle">
+        <div><p class="section-kicker">TIAN ZI GE · TRACING · PINYIN · STROKE ORDER</p><h1 id="pageTitle">Chinese Character Worksheet Generator</h1><p class="lede">Type Chinese characters and build a printable writing practice sheet with model characters, tracing guides and blank grids. Adjust the layout, then print or save it as a PDF.</p></div>
+        <div class="worksheet-hero-sheet" aria-hidden="true"><span>永</span><i></i><i></i><i></i><b>PDF</b></div>
+      </section>
+
+      <section class="standalone-tool worksheet-tool" aria-labelledby="worksheetToolTitle">
+        <div class="standalone-tool-head">
+          <div><p class="section-kicker">WRITE / TRACE / PRINT</p><h2 id="worksheetToolTitle">Build a printable Hanzi practice sheet</h2></div>
+          <div class="status-pill" id="worksheetStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>Waiting for Chinese characters</span></div>
+        </div>
+        <div class="worksheet-builder">
+          <form class="worksheet-controls" id="worksheetControls">
+            <div class="worksheet-input-head"><label for="worksheetInput">Characters to practise</label><output id="worksheetCharacterCount">0 / 40</output></div>
+            <textarea id="worksheetInput" maxlength="1000" spellcheck="false" placeholder="Enter characters, words or a short passage; up to 40 Hanzi"></textarea>
+            <div class="worksheet-input-actions"><button id="worksheetSample" type="button">Load sample</button><button id="worksheetClear" type="button">Clear</button></div>
+            <label class="worksheet-field" for="worksheetTitle"><span>Worksheet title</span><input id="worksheetTitle" type="text" maxlength="60" placeholder="Chinese writing practice" /></label>
+            <fieldset class="worksheet-settings"><legend>Worksheet settings</legend>
+              <div class="worksheet-setting-grid">
+                <label class="worksheet-field" for="worksheetPaperSize"><span>Paper</span><select id="worksheetPaperSize"><option value="a4">A4</option><option value="letter">Letter</option></select></label>
+                <label class="worksheet-field" for="worksheetGridStyle"><span>Writing grid</span><select id="worksheetGridStyle">
+                    <option value="tian">Tian Zi Ge</option>
+                    <option value="mi">Mi Zi Ge</option>
+                    <option value="square">Plain squares</option>
+                </select></label>
+              </div>
+              <label class="worksheet-range" for="worksheetColumns"><span>Boxes per row</span><output id="worksheetColumnsValue">10</output><input id="worksheetColumns" type="range" min="6" max="12" value="10" /></label>
+              <label class="worksheet-range" for="worksheetRows"><span>Rows per character</span><output id="worksheetRowsValue">2</output><input id="worksheetRows" type="range" min="1" max="3" value="2" /></label>
+              <label class="worksheet-range" for="worksheetTraceCells"><span>Trace boxes</span><output id="worksheetTraceCellsValue">3</output><input id="worksheetTraceCells" type="range" min="0" max="9" value="3" /></label>
+              <label class="worksheet-range" for="worksheetTraceOpacity"><span>Trace darkness</span><output id="worksheetTraceOpacityValue">20%</output><input id="worksheetTraceOpacity" type="range" min="8" max="50" value="20" /></label>
+              <div class="worksheet-switches">
+                <label><input id="worksheetShowPinyin" type="checkbox" checked /><span>Show Pinyin</span></label>
+                <label><input id="worksheetShowStrokeOrder" type="checkbox" checked /><span>Show stroke-order guide</span></label>
+                <label><input id="worksheetDedupe" type="checkbox" checked /><span>Remove duplicate characters</span></label>
+              </div>
+            </fieldset>
+            <p class="worksheet-privacy">Worksheet text is laid out in this browser. If stroke order is enabled, public data for each character is requested remotely on demand.</p>
+          </form>
+          <section class="worksheet-preview-panel" aria-labelledby="worksheetPreviewTitle">
+            <div class="worksheet-preview-head"><div><span>LIVE PAPER</span><h3 id="worksheetPreviewTitle">Print preview</h3></div><button class="primary-action" id="worksheetPrint" type="button">Print / Save PDF</button></div>
+            <div class="worksheet-preview-viewport" id="worksheetPreview"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="seo-band standalone-info" aria-labelledby="worksheetFeatureTitle">
+        <div class="section-heading"><p class="section-kicker">Printable Chinese writing practice</p><h2 id="worksheetFeatureTitle">Make a Chinese writing practice sheet in one workspace</h2><p class="seo-intro">A free Chinese character worksheet generator for learners, families and teachers. Create Tian Zi Ge or Mi Zi Ge practice paper without signing up, uploading text or installing an app.</p></div>
+        <div class="seo-grid">
+          <article><h3>Model, trace, then write</h3><p>Start with a clear model character, trace adjustable faded copies, and finish with blank boxes for writing from memory.</p></article>
+          <article><h3>Tian Zi Ge and Mi Zi Ge grids</h3><p>Choose centre guides, diagonal guides or plain squares, then set the number of boxes and practice rows.</p></article>
+          <article><h3>Context-aware Pinyin</h3><p>Pinyin uses the surrounding word or sentence to resolve polyphonic characters. For a single Hanzi, all dictionary readings are shown; stroke-order guides remain optional.</p></article>
+        </div>
+        <section class="word-howto" aria-labelledby="worksheetHowTitle"><h2 id="worksheetHowTitle">How to create a Chinese character worksheet</h2><ol>
+            <li>Enter the Hanzi, vocabulary or short passage you want to practise.</li>
+            <li>Choose a grid and adjust tracing, Pinyin, stroke order, rows and columns.</li>
+            <li>Review the white paper preview, then print it or save it as a PDF.</li>
+          </ol></section>
+        <section class="pinyin-faq" aria-labelledby="worksheetFaqTitle"><h2 id="worksheetFaqTitle">Chinese worksheet generator questions</h2>
+          <details><summary>Can I download the worksheet as a PDF?</summary><p>Yes. Select Print / Save PDF, then choose Save as PDF in your browser's print dialog.</p></details>
+          <details><summary>Does it support Simplified and Traditional Chinese?</summary><p>Yes. You can enter common Simplified and Traditional characters. The exact printed glyph also depends on fonts available on your device.</p></details>
+          <details><summary>How are polyphonic characters handled?</summary><p>Words and sentences use contextual Pinyin. If you enter one Hanzi by itself, all dictionary readings are shown. When grouped duplicates have different contextual readings, the worksheet displays each detected reading.</p></details>
+          <details><summary>Is my worksheet text uploaded?</summary><p>No. Layout happens locally. When stroke order is enabled, only individual character-data requests are made to a public remote source.</p></details>
+          <details><summary>Why might stroke order differ from my textbook?</summary><p>Some character forms and conventions differ across Mainland China, Taiwan, Hong Kong, Japan and Korea. Use your local curriculum for formal study.</p></details>
+        </section>
+        <p class="section-kicker pinyin-related-kicker">Related Chinese tools</p><nav class="landing-links" aria-label="Related Chinese character and text tools">
+          <a href="/en/han-character-worksheet/" aria-current="page">Chinese worksheet generator</a>
+          <a href="/en/chinese-stroke-order/">Chinese stroke order</a>
+          <a href="/en/chinese-to-pinyin/">Chinese to Pinyin</a>
+          <a href="/en/character-counter/">CJK character counter</a>
+          <a href="/en/japanese-chinese-kanji-converter/">Japanese and Chinese Kanji</a>
+          <a href="/en/japanese-characters/">Japanese character copy</a>
+          <a href="/en/simplified-to-traditional/">Simplified to Traditional</a>
+          <a href="/en/traditional-to-simplified/">Traditional to Simplified</a>
+          <a href="/en/word-to-txt/">Word to text</a>
+        </nav>
+      </section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app provides browser-local Chinese learning, conversion and text tools.</p><nav class="footer-links" aria-label="Footer"><a href="/en/about/">About</a><a href="/en/contact/">Contact</a><a href="/en/privacy/">Privacy Statement</a></nav></footer>
+  </body>
+</html>
