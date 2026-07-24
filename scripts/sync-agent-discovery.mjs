@@ -59,7 +59,7 @@ const index = {
     {
       name: skillName,
       type: "skill-md",
-      description: "Use JianFan.app browser-local tools for Simplified and Traditional Chinese conversion, CJK character counting, Chinese Pinyin, and stroke-order lookup.",
+      description: "Use JianFan.app browser-local tools for Simplified and Traditional Chinese conversion, CJK character counting, Chinese Pinyin, stroke-order lookup, and printable Han character worksheets.",
       url: skillRelativeUrl,
       digest: `sha256:${digest}`
     }

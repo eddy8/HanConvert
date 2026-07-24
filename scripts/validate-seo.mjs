@@ -33,7 +33,7 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
 const uniqueSitemapUrls = new Set(sitemapUrls);
 if (uniqueSitemapUrls.size !== sitemapUrls.length) throw new Error("sitemap.xml contains duplicate URLs");
 
-for (const entryFile of ["app.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "webmcp.js"]) {
+for (const entryFile of ["app.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "han-character-worksheet.js", "webmcp.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
@@ -79,6 +79,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isStrokeOrderPage = html.includes('data-tool-page="stroke-order"');
   const isWordToTxtPage = html.includes('data-tool-page="word-to-txt"');
   const isCharacterCounterPage = html.includes('data-tool-page="character-counter"');
+  const isWorksheetPage = html.includes('data-tool-page="han-character-worksheet"');
   if (!isConverterPage && !isStandaloneToolPage && !isInfoPage) continue;
   if (isConverterPage) {
     converterPages += 1;
@@ -117,10 +118,10 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     if (!webApplication || webApplication.url !== canonical) {
       throw new Error(`${relativePath}: invalid WebApplication schema`);
     }
-    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
+    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isWorksheetPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
       throw new Error(`${relativePath}: missing tool FAQPage schema`);
     }
-    if ((isWordToTxtPage || isCharacterCounterPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
+    if ((isWordToTxtPage || isCharacterCounterPage || isWorksheetPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
       throw new Error(`${relativePath}: missing tool HowTo schema`);
     }
   }
@@ -142,7 +143,10 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (isConverterPage && !html.includes('data-route="character-counter"')) {
     throw new Error(`${relativePath}: missing character-counter link`);
   }
-  if (isStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/") || !html.includes("chinese-to-pinyin/") || !html.includes("chinese-stroke-order/") || !html.includes("word-to-txt/"))) {
+  if (isConverterPage && !html.includes('data-route="han-character-worksheet"')) {
+    throw new Error(`${relativePath}: missing Han character worksheet link`);
+  }
+  if (isStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/") || !html.includes("chinese-to-pinyin/") || !html.includes("chinese-stroke-order/") || !html.includes("word-to-txt/") || !html.includes("han-character-worksheet/"))) {
     throw new Error(`${relativePath}: missing related tool links`);
   }
   if (isPinyinPage) {
@@ -201,6 +205,41 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
       if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
     }
   }
+  if (isWorksheetPage) {
+    if (
+      !html.includes("cdn.jsdelivr.net/npm/hanzi-writer/dist/hanzi-writer.min.js") ||
+      !html.includes('src="/vendor/pinyin-pro.js"') ||
+      !html.includes('src="/han-character-worksheet.js"') ||
+      !html.includes('id="worksheetInput"')
+    ) {
+      throw new Error(`${relativePath}: missing worksheet browser assets or input`);
+    }
+  }
+  if (relativePath === path.join("han-character-worksheet", "index.html")) {
+    for (const keyword of ["田字格字帖生成器", "汉字练习纸", "在线字帖生成器"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("zh-tw", "han-character-worksheet", "index.html")) {
+    for (const keyword of ["國字練習紙", "田字格", "描紅"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("en", "han-character-worksheet", "index.html")) {
+    for (const keyword of ["Chinese Character Worksheet Generator", "Chinese writing practice", "Tian Zi Ge"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("ja", "han-character-worksheet", "index.html")) {
+    for (const keyword of ["漢字練習プリント", "なぞり書き", "印刷"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("ko", "han-character-worksheet", "index.html")) {
+    for (const keyword of ["한자 쓰기 연습장", "따라쓰기 학습지", "인쇄"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
 }
 
 const agentIndexText = await readFile(
@@ -247,8 +286,8 @@ if (!notFound.includes('name="robots" content="noindex, follow"')) {
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
-if (standaloneToolPages !== 30) throw new Error(`expected 30 standalone tool pages, found ${standaloneToolPages}`);
+if (standaloneToolPages !== 35) throw new Error(`expected 35 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
-if (sitemapUrls.length !== 80) throw new Error(`expected 80 sitemap URLs, found ${sitemapUrls.length}`);
+if (sitemapUrls.length !== 85) throw new Error(`expected 85 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, and ${sitemapUrls.length} sitemap URLs.`);

@@ -4,9 +4,9 @@
     {
       "name": "jianfan-browser-tools",
       "type": "skill-md",
-      "description": "Use JianFan.app browser-local tools for Simplified and Traditional Chinese conversion, CJK character counting, Chinese Pinyin, and stroke-order lookup.",
+      "description": "Use JianFan.app browser-local tools for Simplified and Traditional Chinese conversion, CJK character counting, Chinese Pinyin, stroke-order lookup, and printable Han character worksheets.",
       "url": "/.well-known/agent-skills/jianfan-browser-tools/SKILL.md",
-      "digest": "sha256:7afb04a9a5b4d260669f46043719ac93b993abf8d90bdf8f28336fbe4b449d80"
+      "digest": "sha256:09b81e26a51342e5e61c18def09bee73f21a920dbac651fa888e2ff249132e2a"
     }
   ]
 }
