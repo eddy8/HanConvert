@@ -17,6 +17,25 @@ const CONVERSION_CHUNK_SIZE = 16000;
 const CHUNK_BREAKPOINTS = ["\n", "。", "！", "？", "；", ";", ".", "!", "?"];
 const MAX_INPUT_CHARACTERS = 3000000;
 const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024;
+const SUPPORTED_CONVERSION_CONFIGS = Object.freeze([
+  "s2t",
+  "t2s",
+  "s2tw",
+  "s2twp",
+  "s2hk",
+  "s2hkp",
+  "tw2s",
+  "tw2sp",
+  "hk2s",
+  "hk2sp",
+  "t2tw",
+  "tw2t",
+  "t2hk",
+  "hk2t",
+  "jp2t",
+  "t2jp"
+]);
+const SUPPORTED_CONVERSION_CONFIG_SET = new Set(SUPPORTED_CONVERSION_CONFIGS);
 
 const translations = {
   "zh-CN": {
@@ -2081,3 +2100,29 @@ function getReverseConfig(config) {
   };
   return reverse[config] || "t2s";
 }
+
+async function convertChineseTextForAgent(value, config = "s2t") {
+  const text = String(value ?? "");
+  if (!SUPPORTED_CONVERSION_CONFIG_SET.has(config)) {
+    throw new RangeError(`Unsupported conversion config: ${config}`);
+  }
+  if (text.length > MAX_INPUT_CHARACTERS) {
+    throw new RangeError(`Text exceeds the ${MAX_INPUT_CHARACTERS} character limit.`);
+  }
+  if (!text) return "";
+
+  const converter = await getConverter(config);
+  const output = [];
+  for (const chunk of splitTextForConversion(text)) {
+    output.push(await converter(chunk));
+    await yieldToBrowser();
+  }
+  return output.join("");
+}
+
+globalThis.JianFanAgentTools = Object.freeze({
+  configs: SUPPORTED_CONVERSION_CONFIGS,
+  convertChineseText: convertChineseTextForAgent,
+  maxInputCharacters: MAX_INPUT_CHARACTERS
+});
+document.dispatchEvent(new Event("jianfan-agent-tools-ready"));

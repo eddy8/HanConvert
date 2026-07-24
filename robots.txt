@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /*?config=
 Disallow: /*&config=
+Content-Signal: ai-train=no, search=yes, ai-input=yes
 
 Sitemap: https://jianfan.app/sitemap.xml

@@ -444,6 +444,7 @@ ${alternates}
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.css" />
     <script defer src="/character-counter.js"></script>
+    <script defer src="/webmcp.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
 ${JSON.stringify(buildSchema(locale, page), null, 2).split("\n").map((line) => `      ${line}`).join("\n")}
