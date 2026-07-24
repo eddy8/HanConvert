@@ -156,6 +156,24 @@ main,
   text-decoration: none;
 }
 
+.app-download-link {
+  gap: 7px;
+  border-color: rgba(64, 242, 176, 0.28);
+  color: var(--ink);
+}
+
+.app-download-link::before {
+  color: var(--accent);
+  content: "↓";
+  font-family: var(--font-mono);
+  font-weight: 800;
+}
+
+.app-download-link:hover {
+  border-color: var(--line-strong);
+  background: rgba(64, 242, 176, 0.08);
+}
+
 .language-picker {
   gap: 8px;
   font-size: 0.9rem;
@@ -980,6 +998,19 @@ textarea::placeholder {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.035);
+}
+
+.seo-grid .seo-app-card {
+  grid-column: 1 / -1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.8fr);
+  align-items: center;
+  gap: 20px;
+}
+
+.seo-grid .seo-app-card h3 {
+  margin-bottom: 0;
 }
 
 .feature-index {
@@ -3281,6 +3312,11 @@ html[lang="ko"] .worksheet-sheet {
   .feature-grid,
   .seo-grid {
     grid-template-columns: 1fr;
+  }
+
+  .seo-grid .seo-app-card {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .signal-panel {
