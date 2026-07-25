@@ -101,10 +101,10 @@ const tools = {
         count: "出现次数",
         disclaimer: "本工具转换汉字字形，不会把日语句子翻译成中文；正式姓名、地名和专业文本仍需人工确认。",
         featureTitle: "一次输入，完成三种汉字字形比较",
-        featureIntro: "面向日中汉字转换、日本汉字转简体字以及简繁日三体对照需求。",
+        featureIntro: "这款中日汉字转换工具支持中文繁体字、简体字、日文汉字相互转换，适用于日中汉字转换、日本汉字转简体字、中文汉字转日文汉字以及中日汉字比较。",
         cards: [
-          ["正确处理转换来源", "先选择输入文字类型，再按日本、简体或繁体对应链路转换，避免使用错误方向。"],
-          ["差异字自动汇总", "仅列出三种结果中存在差异的汉字，并合并重复字形、统计出现次数。"],
+          ["正确处理转换来源", "先选择输入文字类型，再按日本、简体或繁体对应链路完成日文汉字转换和中文汉字字形转换，避免使用错误方向。"],
+          ["差异字自动汇总", "并排进行日文汉字、简体字和繁体字对照，仅列出存在差异的汉字，并合并重复字形、统计出现次数。"],
           ["浏览器本地处理", "文本不上传服务器，可分别复制三种结果；转换能力基于 OpenCC。"]
         ],
         footer: "JianFan.app 提供浏览器本地运行的中文与日文汉字转换工具。",
@@ -135,21 +135,21 @@ const tools = {
         count: "出現次數",
         disclaimer: "本工具轉換漢字字形，不會把日語句子翻譯成中文；正式姓名、地名和專業文字仍需人工確認。",
         featureTitle: "一次輸入，完成三種漢字字形比較",
-        featureIntro: "面向日中漢字轉換、日本漢字轉簡體字以及簡繁日三體對照需求。",
+        featureIntro: "這款中日漢字轉換工具支援中文繁體字、簡體字、日文漢字相互轉換，適用於日中漢字轉換、日本漢字轉簡體字、中文漢字轉日文漢字以及中日漢字比較。",
         cards: [
-          ["正確處理轉換來源", "先選擇輸入文字類型，再依日本、簡體或繁體對應鏈路轉換，避免使用錯誤方向。"],
-          ["差異字自動彙整", "只列出三種結果中存在差異的漢字，並合併重複字形、統計出現次數。"],
+          ["正確處理轉換來源", "先選擇輸入文字類型，再依日本、簡體或繁體對應鏈路完成日文漢字轉換和中文漢字字形轉換，避免使用錯誤方向。"],
+          ["差異字自動彙整", "並排進行日文漢字、簡體字和繁體字對照，只列出存在差異的漢字，並合併重複字形、統計出現次數。"],
           ["瀏覽器本機處理", "文字不會上傳伺服器，可分別複製三種結果；轉換能力基於 OpenCC。"]
         ],
         footer: "JianFan.app 提供在瀏覽器本機運行的中文與日文漢字轉換工具。",
         sampleText: "日本語の国と学、芸術と図書館の漢字表記を比較します。"
       },
       en: {
-        title: "Japanese, Simplified and Traditional Chinese Kanji Converter | JianFan.app",
-        description: "Convert and compare Japanese kanji, Simplified Chinese, and Traditional Chinese in three columns with a changed-glyph table. Processing stays in your browser.",
-        eyebrow: "Japanese · Simplified · Traditional",
-        heading: "Japanese and Chinese Kanji Converter",
-        lede: "Enter one form and compare Japanese kanji, Simplified Chinese, and Traditional Chinese side by side for review and character-level checking.",
+        title: "Chinese to Japanese Kanji Converter | JianFan.app",
+        description: "Convert Chinese to Japanese kanji and compare Japanese, Simplified Chinese, and Traditional Chinese in three columns with a changed-glyph table in your browser.",
+        eyebrow: "Simplified Chinese · Traditional Chinese · Japanese Kanji",
+        heading: "Chinese to Kanji Converter",
+        lede: "Enter Japanese kanji, Simplified Chinese, or Traditional Chinese. Convert Chinese characters to modern Japanese kanji and compare all three forms side by side.",
         sourceLabel: "Input character type",
         sourceJapanese: "Japanese kanji",
         sourceSimplified: "Simplified Chinese",
@@ -158,7 +158,7 @@ const tools = {
         inputPlaceholder: "Paste Japanese kanji, Simplified Chinese, or Traditional Chinese...",
         sample: "Sample",
         clear: "Clear",
-        convert: "Convert and compare",
+        convert: "Convert",
         outputJapanese: "Japanese kanji",
         outputSimplified: "Simplified Chinese",
         outputTraditional: "Traditional Chinese",
@@ -167,16 +167,17 @@ const tools = {
         comparisonTitle: "Japanese, Simplified, and Traditional comparison",
         comparisonEmpty: "Changed glyphs and occurrence counts will appear here after conversion.",
         count: "Occurrences",
-        disclaimer: "This tool converts kanji glyph forms; it does not translate Japanese sentences into Chinese. Review official names, places, and specialist text manually.",
-        featureTitle: "Compare three kanji forms from one input",
-        featureIntro: "Built for Japanese-to-Simplified conversion, Japanese-Chinese kanji comparison, and three-way glyph review.",
+        disclaimer: "A Chinese to Kanji translator in this context converts kanji glyph forms only; it does not translate Chinese sentences into natural Japanese, add kana or pronunciation, or translate Japanese sentences into Chinese. Review official names, places, and specialist text manually.",
+        featureTitle: "Japanese, Simplified and Traditional Chinese Kanji Converter",
+        featureIntro: "Built for Chinese to Kanji conversion, Chinese characters to Japanese Kanji, Simplified Chinese to Japanese kanji, Traditional Chinese to Japanese kanji, Japanese-to-Simplified conversion, Japanese-Chinese kanji comparison, and three-way glyph review.",
         cards: [
-          ["Source-aware conversion", "Select the input form first so Japanese, Simplified, and Traditional text follows the correct conversion path."],
-          ["Deduplicated differences", "Only differing glyphs are listed, with repeated character combinations merged and counted."],
+          ["Source-aware conversion", "This Japanese and Chinese Kanji Converter lets you select Japanese, Simplified, or Traditional as the input character type for Japanese Kanji conversion, including Chinese characters into modern Japanese Kanji (Shinjitai)."],
+          ["Deduplicated differences", "Use the Chinese-Japanese Kanji converter and comparator to compare Japanese and Chinese Kanji side by side, review orthographic differences, and merge repeated differences with counts."],
           ["Local browser processing", "Text is not uploaded. Copy each result independently; conversion is powered by OpenCC."]
         ],
         footer: "JianFan.app provides browser-local Chinese and Japanese kanji conversion tools.",
-        sampleText: "日本語の国と学、芸術と図書館の漢字表記を比較します。"
+        sampleText: "汉字转换：国家、学习、艺术、图书馆。",
+        defaultSourceType: "simplified"
       },
       ja: {
         title: "日本語漢字を簡体字に変換 - 日中漢字変換ツール | JianFan.app",
@@ -203,10 +204,10 @@ const tools = {
         count: "出現回数",
         disclaimer: "このツールは漢字の字形を変換するもので、日本語の文章を中国語へ翻訳するものではありません。氏名・地名・専門文書は確認してください。",
         featureTitle: "一度の入力で3種類の漢字を比較",
-        featureIntro: "「簡体字に変換」「日本語漢字 簡体字 変換」「日中漢字変換」の用途に対応します。",
+        featureIntro: "この日中（簡・繁）漢字変換ツールは、「簡体字に変換」「日本語漢字 簡体字 変換」「日中漢字変換」に加え、中国語の漢字を日本の漢字に変換して比較する用途に対応します。",
         cards: [
-          ["入力元に合わせて変換", "日本語・簡体字・繁体字から入力形式を選び、正しい変換経路で3種類を生成します。"],
-          ["異なる漢字を自動集計", "3つの結果で字形が異なる漢字だけを抽出し、重複をまとめて出現回数を表示します。"],
+          ["入力元に合わせて変換", "日本語・簡体字・繁体字から入力文字の種類を選び、日本語漢字への変換を含む正しい経路で3種類を生成します。"],
+          ["異なる漢字を自動集計", "日本の漢字と中国語の簡体字・繁体字を比較し、字形が異なる漢字だけを抽出して出現回数を表示します。"],
           ["ブラウザー内で処理", "入力内容はサーバーへ送信されません。各結果を個別にコピーでき、OpenCC を基に変換します。"]
         ],
         footer: "JianFan.app はブラウザー内で動作する中国語・日本語漢字変換ツールです。",
@@ -237,9 +238,9 @@ const tools = {
         count: "등장 횟수",
         disclaimer: "이 도구는 한자 글자 모양을 변환하며 일본어 문장을 중국어로 번역하지 않습니다. 공식 이름, 지명, 전문 문서는 직접 확인하세요.",
         featureTitle: "한 번 입력해 세 가지 한자 표기 비교",
-        featureIntro: "일본 한자와 중국어 간체·번체 변환 및 글자별 대조 작업에 맞춘 페이지입니다.",
+        featureIntro: "온라인 일본 한자 변환 및 중국어 간체·번체 변환 도구로, 중국 한자를 일본 한자로 변환하고 일본 한자·간체·번체 비교 결과를 한눈에 확인할 수 있습니다.",
         cards: [
-          ["입력 유형별 변환", "일본어·간체·번체 중 입력 유형을 선택해 올바른 경로로 세 결과를 생성합니다."],
+          ["입력 유형별 변환", "일본어·간체·번체 중 입력 유형을 선택해 일본 한자로 변환하는 과정을 포함한 올바른 경로로 세 결과를 생성합니다."],
           ["다른 글자 자동 정리", "세 결과에서 모양이 다른 한자만 추출하고 중복을 합쳐 등장 횟수를 표시합니다."],
           ["브라우저 로컬 처리", "텍스트를 서버에 업로드하지 않으며 각 결과를 따로 복사할 수 있습니다. 변환은 OpenCC 기반입니다."]
         ],
@@ -486,6 +487,12 @@ ${links.map(([slug, label]) => `          <a href="${localizedPath(locale, slug)
 
 function buildConverterPage(locale, slug, content) {
   const meta = locales[locale];
+  const defaultSourceType = content.defaultSourceType || "japanese";
+  const sourceTypes = [
+    ["japanese", content.sourceJapanese],
+    ["simplified", content.sourceSimplified],
+    ["traditional", content.sourceTraditional]
+  ];
   return `<!doctype html>
 <html lang="${meta.lang}">
   <head>
@@ -504,9 +511,10 @@ ${buildHero(content, ["日", "简", "繁"])}
           <div class="status-pill" id="toolStatus" role="status" aria-live="polite"><span class="status-dot"></span><span></span></div>
         </div>
         <div class="source-type-control" role="radiogroup" aria-label="${content.sourceLabel}">
-          <button type="button" data-source-type="japanese" role="radio" aria-checked="true" class="is-active">${content.sourceJapanese}</button>
-          <button type="button" data-source-type="simplified" role="radio" aria-checked="false">${content.sourceSimplified}</button>
-          <button type="button" data-source-type="traditional" role="radio" aria-checked="false">${content.sourceTraditional}</button>
+${sourceTypes.map(([id, label]) => {
+    const isActive = id === defaultSourceType;
+    return `          <button type="button" data-source-type="${id}" role="radio" aria-checked="${isActive}"${isActive ? ' class="is-active"' : ""}>${label}</button>`;
+  }).join("\n")}
         </div>
         <div class="triple-converter-grid">
           <section class="triple-text-panel input-variant" aria-labelledby="tripleInputTitle">
