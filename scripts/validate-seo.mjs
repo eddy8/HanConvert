@@ -82,6 +82,13 @@ const localizedKanjiKeywords = new Map([
     "일본 한자·간체·번체 비교"
   ]]
 ]);
+const localizedRomajiKeywords = new Map([
+  ["kanji-to-romaji/index.html", ["日文汉字转罗马字", "日语罗马音转换", "日文转罗马音", "日文汉字转平假名", "日语假名标注", "Kanji to alphabet"]],
+  ["zh-tw/kanji-to-romaji/index.html", ["日文漢字轉羅馬字", "日語羅馬拼音轉換", "日文轉羅馬音", "日文漢字轉平假名", "日語假名標註", "Kanji to alphabet"]],
+  ["en/kanji-to-romaji/index.html", ["Kanji to Romaji", "Japanese to Romaji", "Kanji to alphabet", "Kanji to Hiragana", "Furigana"]],
+  ["ja/kanji-to-romaji/index.html", ["漢字をローマ字に変換", "日本語をローマ字に変換", "漢字をひらがなに変換", "ふりがな変換ツール", "漢字にふりがなを自動付与"]],
+  ["ko/kanji-to-romaji/index.html", ["일본어 한자 로마자 변환", "한자 히라가나 변환", "일본어 발음 변환", "후리가나 변환"]]
+]);
 
 for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const relativePath = path.relative(projectRoot, htmlPath);
@@ -115,6 +122,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isWordToTxtPage = html.includes('data-tool-page="word-to-txt"');
   const isCharacterCounterPage = html.includes('data-tool-page="character-counter"');
   const isWorksheetPage = html.includes('data-tool-page="han-character-worksheet"');
+  const isKanjiRomajiPage = html.includes('data-tool-page="kanji-to-romaji"');
   if (localizedHomePages.has(relativePath) && !html.includes('src="/app-download.js"')) {
     throw new Error(`${relativePath}: missing platform-specific app download navigation`);
   }
@@ -164,7 +172,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     if (!webApplication || webApplication.url !== canonical) {
       throw new Error(`${relativePath}: invalid WebApplication schema`);
     }
-    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isWorksheetPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
+    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isKanjiRomajiPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
       throw new Error(`${relativePath}: missing tool FAQPage schema`);
     }
     if ((isWordToTxtPage || isCharacterCounterPage || isWorksheetPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
@@ -220,8 +228,29 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (isConverterPage && !html.includes('data-route="han-character-worksheet"')) {
     throw new Error(`${relativePath}: missing Han character worksheet link`);
   }
-  if (isStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/") || !html.includes("chinese-to-pinyin/") || !html.includes("chinese-stroke-order/") || !html.includes("word-to-txt/") || !html.includes("han-character-worksheet/"))) {
+  if (isConverterPage && !html.includes('data-route="kanji-to-romaji"')) {
+    throw new Error(`${relativePath}: missing Kanji-to-Romaji link`);
+  }
+  if (isStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/") || !html.includes("chinese-to-pinyin/") || !html.includes("chinese-stroke-order/") || !html.includes("word-to-txt/") || !html.includes("han-character-worksheet/") || !html.includes("kanji-to-romaji/"))) {
     throw new Error(`${relativePath}: missing related tool links`);
+  }
+  if (isKanjiRomajiPage) {
+    for (const asset of [
+      'src="/kanji-romaji-core.js"',
+      "cdn.jsdelivr.net/npm/kuroshiro@1.2.0/dist/kuroshiro.min.js",
+      "cdn.jsdelivr.net/npm/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js",
+      'src="/kanji-to-romaji.js"',
+      "data-dictionary-path=",
+      "data-dictionary-fallback-path="
+    ]) {
+      if (!html.includes(asset)) throw new Error(`${relativePath}: missing Kanji-to-Romaji asset ${asset}`);
+    }
+    const targetKeywords = localizedRomajiKeywords.get(relativePath) || [];
+    for (const keyword of targetKeywords) {
+      if (!html.toLowerCase().includes(keyword.toLowerCase())) {
+        throw new Error(`${relativePath}: missing localized Romaji keyword ${keyword}`);
+      }
+    }
   }
   if (isPinyinPage) {
     if (!html.includes('src="/vendor/pinyin-pro.js"') || !html.includes('src="/pinyin-tool.js"')) {
@@ -360,8 +389,8 @@ if (!notFound.includes('name="robots" content="noindex, follow"')) {
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
-if (standaloneToolPages !== 35) throw new Error(`expected 35 standalone tool pages, found ${standaloneToolPages}`);
+if (standaloneToolPages !== 40) throw new Error(`expected 40 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
-if (sitemapUrls.length !== 85) throw new Error(`expected 85 sitemap URLs, found ${sitemapUrls.length}`);
+if (sitemapUrls.length !== 90) throw new Error(`expected 90 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, and ${sitemapUrls.length} sitemap URLs.`);

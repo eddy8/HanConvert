@@ -1723,6 +1723,61 @@ textarea::placeholder {
   margin-top: 20px;
 }
 
+.romaji-options {
+  grid-template-columns: minmax(420px, 1.15fr) minmax(340px, 0.85fr);
+  margin-bottom: 6px;
+}
+
+.romaji-options fieldset {
+  transition: opacity 160ms var(--ease);
+}
+
+.romaji-options fieldset.is-disabled {
+  opacity: 0.46;
+}
+
+.romaji-resource-note {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+.romaji-furigana-output {
+  min-height: 224px;
+  max-height: 420px;
+  flex: 1 1 auto;
+  padding: 14px;
+  overflow: auto;
+  color: var(--ink);
+  font-size: 1.08rem;
+  line-height: 2.4;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.romaji-furigana-output[hidden],
+.romaji-text-panel textarea[hidden],
+#romajiRetry[hidden] {
+  display: none;
+}
+
+.romaji-furigana-output ruby {
+  margin-inline: 1px;
+  ruby-position: over;
+}
+
+.romaji-furigana-output rt {
+  color: var(--accent-2);
+  font-size: 0.6rem;
+  font-weight: 750;
+}
+
+.romaji-furigana-output .pinyin-empty {
+  margin: 0;
+  line-height: 1.7;
+}
+
 .stroke-search {
   display: grid;
   grid-template-columns: minmax(130px, 0.24fr) minmax(0, 1fr);
