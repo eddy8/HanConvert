@@ -48,6 +48,40 @@ let standaloneToolPages = 0;
 let infoPages = 0;
 const canonicalUrls = new Set();
 const localizedHomePages = new Set(["index.html", "zh-tw/index.html", "en/index.html", "ja/index.html", "ko/index.html"]);
+const localizedKanjiKeywords = new Map([
+  ["japanese-chinese-kanji-converter/index.html", [
+    "日中汉字转换",
+    "中日汉字转换工具",
+    "中文繁体字、简体字、日文汉字相互转换",
+    "中日汉字比较",
+    "日文汉字转换",
+    "中文汉字转日文汉字"
+  ]],
+  ["zh-tw/japanese-chinese-kanji-converter/index.html", [
+    "日中漢字轉換",
+    "中日漢字轉換工具",
+    "中文繁體字、簡體字、日文漢字相互轉換",
+    "中日漢字比較",
+    "日文漢字轉換",
+    "中文漢字轉日文漢字"
+  ]],
+  ["ja/japanese-chinese-kanji-converter/index.html", [
+    "日中（簡・繁）漢字変換ツール",
+    "簡体字に変換",
+    "日本語漢字 簡体字 変換",
+    "日中漢字変換",
+    "中国語の漢字を日本の漢字に変換",
+    "日本語漢字への変換",
+    "日本の漢字と中国語の簡体字・繁体字を比較"
+  ]],
+  ["ko/japanese-chinese-kanji-converter/index.html", [
+    "일본 한자 변환",
+    "일본 한자로 변환",
+    "중국 한자를 일본 한자로 변환",
+    "중국어 간체·번체 변환",
+    "일본 한자·간체·번체 비교"
+  ]]
+]);
 
 for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const relativePath = path.relative(projectRoot, htmlPath);
@@ -142,6 +176,34 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   }
   if (isConverterPage && (!html.includes('data-route="japanese-chinese-kanji-converter"') || !html.includes('data-route="japanese-characters"'))) {
     throw new Error(`${relativePath}: missing Japanese tool links`);
+  }
+  if (relativePath === path.join("en", "japanese-chinese-kanji-converter", "index.html")) {
+    for (const keyword of [
+      "Chinese to Kanji Converter",
+      "Chinese to Kanji translator",
+      "Chinese characters to Japanese Kanji",
+      "Chinese-Japanese Kanji converter and comparator",
+      "Simplified Chinese to Japanese kanji",
+      "Traditional Chinese to Japanese kanji",
+      "Compare Japanese and Chinese kanji",
+      "Japanese and Chinese Kanji Converter",
+      "Japanese, Simplified and Traditional Chinese Kanji Converter",
+      "modern Japanese Kanji (Shinjitai)",
+      "orthographic differences",
+      "Japanese-to-Simplified conversion",
+      "Japanese-Chinese kanji comparison"
+    ]) {
+      if (!html.toLowerCase().includes(keyword.toLowerCase())) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+    if (!/data-source-type="simplified"[^>]+aria-checked="true"[^>]+class="is-active"/.test(html)) {
+      throw new Error(`${relativePath}: Simplified Chinese must be the default input type`);
+    }
+  }
+  const competitorKeywords = localizedKanjiKeywords.get(relativePath);
+  if (competitorKeywords) {
+    for (const keyword of competitorKeywords) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing localized competitor keyword ${keyword}`);
+    }
   }
   if (isConverterPage && !html.includes('data-route="chinese-to-pinyin"')) {
     throw new Error(`${relativePath}: missing Chinese-to-Pinyin link`);

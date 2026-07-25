@@ -6,8 +6,8 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="description" content="Convert and compare Japanese kanji, Simplified Chinese, and Traditional Chinese in three columns with a changed-glyph table. Processing stays in your browser." />
-    <title>Japanese, Simplified and Traditional Chinese Kanji Converter | JianFan.app</title>
+    <meta name="description" content="Convert Chinese to Japanese kanji and compare Japanese, Simplified Chinese, and Traditional Chinese in three columns with a changed-glyph table in your browser." />
+    <title>Chinese to Japanese Kanji Converter | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/en/japanese-chinese-kanji-converter/" />
     <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/japanese-chinese-kanji-converter/" />
     <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-chinese-kanji-converter/" />
@@ -27,9 +27,9 @@
           {
             "@type": "WebApplication",
             "@id": "https://jianfan.app/en/japanese-chinese-kanji-converter/#webapp",
-            "name": "Japanese, Simplified and Traditional Chinese Kanji Converter",
+            "name": "Chinese to Japanese Kanji Converter",
             "url": "https://jianfan.app/en/japanese-chinese-kanji-converter/",
-            "description": "Convert and compare Japanese kanji, Simplified Chinese, and Traditional Chinese in three columns with a changed-glyph table. Processing stays in your browser.",
+            "description": "Convert Chinese to Japanese kanji and compare Japanese, Simplified Chinese, and Traditional Chinese in three columns with a changed-glyph table in your browser.",
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript",
@@ -60,7 +60,7 @@
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Japanese and Chinese Kanji Converter",
+                "name": "Chinese to Kanji Converter",
                 "item": "https://jianfan.app/en/japanese-chinese-kanji-converter/"
               }
             ]
@@ -94,9 +94,9 @@
     <main id="main">
       <section class="tool-hero" aria-labelledby="pageTitle">
         <div>
-          <p class="section-kicker">Japanese · Simplified · Traditional</p>
-          <h1 id="pageTitle">Japanese and Chinese Kanji Converter</h1>
-          <p class="lede">Enter one form and compare Japanese kanji, Simplified Chinese, and Traditional Chinese side by side for review and character-level checking.</p>
+          <p class="section-kicker">Simplified Chinese · Traditional Chinese · Japanese Kanji</p>
+          <h1 id="pageTitle">Chinese to Kanji Converter</h1>
+          <p class="lede">Enter Japanese kanji, Simplified Chinese, or Traditional Chinese. Convert Chinese characters to modern Japanese kanji and compare all three forms side by side.</p>
         </div>
         <div class="tool-hero-glyphs" aria-hidden="true"><span>日</span><span>简</span><span>繁</span></div>
       </section>
@@ -109,8 +109,8 @@
           <div class="status-pill" id="toolStatus" role="status" aria-live="polite"><span class="status-dot"></span><span></span></div>
         </div>
         <div class="source-type-control" role="radiogroup" aria-label="Input character type">
-          <button type="button" data-source-type="japanese" role="radio" aria-checked="true" class="is-active">Japanese kanji</button>
-          <button type="button" data-source-type="simplified" role="radio" aria-checked="false">Simplified Chinese</button>
+          <button type="button" data-source-type="japanese" role="radio" aria-checked="false">Japanese kanji</button>
+          <button type="button" data-source-type="simplified" role="radio" aria-checked="true" class="is-active">Simplified Chinese</button>
           <button type="button" data-source-type="traditional" role="radio" aria-checked="false">Traditional Chinese</button>
         </div>
         <div class="triple-converter-grid">
@@ -118,9 +118,9 @@
             <div class="panel-topline"><h3 id="tripleInputTitle">Input text</h3><span id="tripleInputCount">0</span></div>
             <textarea id="tripleInput" spellcheck="false" placeholder="Paste Japanese kanji, Simplified Chinese, or Traditional Chinese..."></textarea>
             <div class="panel-actions">
-              <button class="text-button" id="tripleSample" type="button" data-sample="日本語の国と学、芸術と図書館の漢字表記を比較します。">Sample</button>
+              <button class="text-button" id="tripleSample" type="button" data-sample="汉字转换：国家、学习、艺术、图书馆。">Sample</button>
               <button class="text-button" id="tripleClear" type="button">Clear</button>
-              <button class="primary-action" id="tripleConvert" type="button">Convert and compare</button>
+              <button class="primary-action" id="tripleConvert" type="button">Convert</button>
             </div>
           </section>
           <section class="triple-text-panel output-variant japanese" aria-labelledby="japaneseOutputTitle">
@@ -139,7 +139,7 @@
             <div class="panel-actions"><button class="text-button" type="button" data-copy-output="traditional">Copy</button></div>
           </section>
         </div>
-        <p class="tool-disclaimer">This tool converts kanji glyph forms; it does not translate Japanese sentences into Chinese. Review official names, places, and specialist text manually.</p>
+        <p class="tool-disclaimer">A Chinese to Kanji translator in this context converts kanji glyph forms only; it does not translate Chinese sentences into natural Japanese, add kana or pronunciation, or translate Japanese sentences into Chinese. Review official names, places, and specialist text manually.</p>
         <section class="triple-comparison" aria-labelledby="tripleComparisonTitle">
           <div class="japanese-comparison-head">
             <div><p class="section-kicker">Three-way differences</p><h3 id="tripleComparisonTitle">Japanese, Simplified, and Traditional comparison</h3><p id="tripleComparisonSummary" class="japanese-comparison-summary" aria-live="polite"></p></div>
@@ -156,12 +156,12 @@
       <section class="seo-band standalone-info" aria-labelledby="featureTitle">
         <div class="section-heading">
           <p class="section-kicker">Related tools</p>
-          <h2 id="featureTitle">Compare three kanji forms from one input</h2>
-          <p class="seo-intro">Built for Japanese-to-Simplified conversion, Japanese-Chinese kanji comparison, and three-way glyph review.</p>
+          <h2 id="featureTitle">Japanese, Simplified and Traditional Chinese Kanji Converter</h2>
+          <p class="seo-intro">Built for Chinese to Kanji conversion, Chinese characters to Japanese Kanji, Simplified Chinese to Japanese kanji, Traditional Chinese to Japanese kanji, Japanese-to-Simplified conversion, Japanese-Chinese kanji comparison, and three-way glyph review.</p>
         </div>
         <div class="seo-grid">
-          <article><h3>Source-aware conversion</h3><p>Select the input form first so Japanese, Simplified, and Traditional text follows the correct conversion path.</p></article>
-          <article><h3>Deduplicated differences</h3><p>Only differing glyphs are listed, with repeated character combinations merged and counted.</p></article>
+          <article><h3>Source-aware conversion</h3><p>This Japanese and Chinese Kanji Converter lets you select Japanese, Simplified, or Traditional as the input character type for Japanese Kanji conversion, including Chinese characters into modern Japanese Kanji (Shinjitai).</p></article>
+          <article><h3>Deduplicated differences</h3><p>Use the Chinese-Japanese Kanji converter and comparator to compare Japanese and Chinese Kanji side by side, review orthographic differences, and merge repeated differences with counts.</p></article>
           <article><h3>Local browser processing</h3><p>Text is not uploaded. Copy each result independently; conversion is powered by OpenCC.</p></article>
         </div>
         <nav class="landing-links" aria-label="Related tools">
