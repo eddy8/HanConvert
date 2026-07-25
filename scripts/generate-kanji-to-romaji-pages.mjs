@@ -6,7 +6,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 const siteOrigin = "https://jianfan.app";
 const slug = "kanji-to-romaji";
 const sampleText = "明日は東京で日本語を勉強します。";
-const dictionaryPath = "https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/";
+const dictionaryPath = "https://cdn.jsdmirror.cn/npm/kuromoji@0.1.2/dict/";
 const dictionaryFallbackPath = "https://cdn.jsdmirror.cn/npm/kuromoji@0.1.2/dict/";
 
 const locales = {
@@ -344,8 +344,8 @@ ${alternates}
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.css" />
     <script defer src="/kanji-romaji-core.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/kuroshiro@1.2.0/dist/kuroshiro.min.js" integrity="sha384-i0fCgQX2L7yc7QngiOa1uCpsr11LT0znqyCpGi9XWIr9w+M5RQ8Re6hZomt4U4DN" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js" integrity="sha384-NOit6gdHi5KYKpNeXLjskpn7d2o9z+7yU2g2Ea5KBWsU9gb7CVKF4C5C7llA9X9m" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdmirror.cn/npm/kuroshiro@1.2.0/dist/kuroshiro.min.js" integrity="sha384-i0fCgQX2L7yc7QngiOa1uCpsr11LT0znqyCpGi9XWIr9w+M5RQ8Re6hZomt4U4DN" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdmirror.cn/npm/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js" integrity="sha384-NOit6gdHi5KYKpNeXLjskpn7d2o9z+7yU2g2Ea5KBWsU9gb7CVKF4C5C7llA9X9m" crossorigin="anonymous"></script>
     <script defer src="/kanji-to-romaji.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">

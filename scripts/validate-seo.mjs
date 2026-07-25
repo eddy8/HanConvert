@@ -237,8 +237,8 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (isKanjiRomajiPage) {
     for (const asset of [
       'src="/kanji-romaji-core.js"',
-      "cdn.jsdelivr.net/npm/kuroshiro@1.2.0/dist/kuroshiro.min.js",
-      "cdn.jsdelivr.net/npm/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js",
+      "cdn.jsdmirror.cn/npm/kuroshiro@1.2.0/dist/kuroshiro.min.js",
+      "cdn.jsdmirror.cn/npm/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js",
       'src="/kanji-to-romaji.js"',
       "data-dictionary-path=",
       "data-dictionary-fallback-path="
