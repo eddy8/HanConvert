@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="免費日文漢字轉羅馬字工具，將日語文字轉換為羅馬字、平假名、片假名或振假名，支援平文式、訓令式、日本式羅馬字與上下文讀音。" />
+    <title>日文漢字轉羅馬字 - 日語羅馬拼音、平假名與注音 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/zh-tw/kanji-to-romaji/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/kanji-to-romaji/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/kanji-to-romaji/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/kanji-to-romaji/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/kanji-to-romaji/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/kanji-to-romaji/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/kanji-to-romaji/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="/kanji-romaji-core.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/kuroshiro@1.2.0/dist/kuroshiro.min.js" integrity="sha384-i0fCgQX2L7yc7QngiOa1uCpsr11LT0znqyCpGi9XWIr9w+M5RQ8Re6hZomt4U4DN" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js" integrity="sha384-NOit6gdHi5KYKpNeXLjskpn7d2o9z+7yU2g2Ea5KBWsU9gb7CVKF4C5C7llA9X9m" crossorigin="anonymous"></script>
+    <script defer src="/kanji-to-romaji.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/zh-tw/kanji-to-romaji/#webapp",
+            "name": "日文漢字轉羅馬字與平假名",
+            "url": "https://jianfan.app/zh-tw/kanji-to-romaji/",
+            "description": "免費日文漢字轉羅馬字工具，將日語文字轉換為羅馬字、平假名、片假名或振假名，支援平文式、訓令式、日本式羅馬字與上下文讀音。",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "zh-Hant",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/zh-tw/kanji-to-romaji/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "網站首頁",
+                "item": "https://jianfan.app/zh-tw/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "日文漢字轉羅馬字與平假名",
+                "item": "https://jianfan.app/zh-tw/kanji-to-romaji/"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/zh-tw/kanji-to-romaji/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Kanji to alphabet 是什麼？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "通常指將日文漢字或日語句子轉成拉丁字母，也就是日語羅馬字。本頁對應的主要輸出是 Romaji。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "可以把日文漢字轉成平假名嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以。選擇「平假名」會用日語讀音取代漢字；選擇「振假名」則保留漢字並在上方標註讀音。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "為什麼同一個漢字會有不同讀音？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "日語漢字有音讀、訓讀與特殊讀法，工具會依常見詞語和上下文選擇讀音，人名與地名仍可能需要手動確認。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="kanji-to-romaji" data-page-slug="kanji-to-romaji" data-locale="zh-TW" data-dictionary-path="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/" data-dictionary-fallback-path="https://cdn.jsdmirror.cn/npm/kuromoji@0.1.2/dict/" data-message-idle="等待輸入日語文字" data-message-loading="首次使用，正在遠端載入日語詞典" data-message-converting="正在轉換第 {current}/{total} 段" data-message-ready="日語讀音轉換完成" data-message-copied="已複製轉換結果" data-message-copy-failed="無法自動複製，請手動複製" data-message-component-error="轉換元件載入失敗，請重新整理頁面" data-message-dictionary-error="日語詞典載入失敗，請檢查網路後重試" data-message-not-japanese="請輸入包含日文漢字或假名的文字" data-message-too-long="文字不能超過 {limit} 個字元">
+    <a class="skip-nav" href="#main">跳到主要內容</a>
+    <header class="site-header" aria-label="網站頁首">
+      <a class="brand" href="/zh-tw/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">漢</span><span>JianFan.app</span></a>
+      <nav class="top-actions" aria-label="主要導覽"><a class="nav-link" href="/zh-tw/">網站首頁</a><label class="language-picker"><span>介面語言</span><select id="localeSelect" aria-label="介面語言">
+              <option value="zh-CN">简体中文</option>
+              <option value="zh-TW" selected>繁體中文</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ko">한국어</option>
+          </select></label></nav>
+    </header>
+    <main id="main">
+      <section class="tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">日語讀音 · 羅馬字 · 平假名 · 振假名</p><h1 id="pageTitle">日文漢字轉羅馬字與平假名</h1><p class="lede">輸入包含漢字、平假名或片假名的日語句子，即可進行日語羅馬拼音轉換、假名轉換與漢字注音。讀音會依常見詞語與句子上下文判斷。</p></div><div class="tool-hero-glyphs" aria-hidden="true"><span>漢</span><span>かな</span><span>A</span></div></section>
+      <section class="standalone-tool romaji-tool" aria-labelledby="romajiToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">READ / ROMANIZE</p><h2 id="romajiToolTitle">輸入日語並選擇輸出格式</h2></div><div class="status-pill" id="romajiStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>等待輸入日語文字</span></div></div>
+        <div class="pinyin-options romaji-options">
+          <fieldset><legend>輸出格式</legend><div class="pinyin-format-control romaji-format-control" role="radiogroup" aria-label="輸出格式">
+            <button type="button" data-romaji-format="romaji" data-output-title="羅馬字結果" data-output-placeholder="轉換後的日語羅馬字會顯示在這裡" role="radio" aria-checked="true" class="is-active"><span>羅馬字</span><small>nihongo</small></button>
+            <button type="button" data-romaji-format="hiragana" data-output-title="平假名結果" data-output-placeholder="轉換後的平假名會顯示在這裡" role="radio" aria-checked="false"><span>平假名</span><small>にほんご</small></button>
+            <button type="button" data-romaji-format="katakana" data-output-title="片假名結果" data-output-placeholder="轉換後的片假名會顯示在這裡" role="radio" aria-checked="false"><span>片假名</span><small>ニホンゴ</small></button>
+            <button type="button" data-romaji-format="furigana" data-output-title="漢字振假名標註" data-output-placeholder="轉換後的振假名會顯示在這裡" role="radio" aria-checked="false"><span>振假名</span><small>日本語</small></button>
+          </div></fieldset>
+          <fieldset id="romajiSystemFieldset"><legend>羅馬字系統</legend><div class="pinyin-case-control romaji-system-control" role="radiogroup" aria-label="羅馬字系統">
+            <button type="button" data-romaji-system="hepburn" role="radio" aria-checked="true" class="is-active">平文式（Hepburn）</button>
+            <button type="button" data-romaji-system="kunrei" role="radio" aria-checked="false">訓令式（Kunrei）</button>
+            <button type="button" data-romaji-system="nippon" role="radio" aria-checked="false">日本式（Nippon）</button>
+          </div></fieldset>
+        </div>
+        <p class="romaji-resource-note">首次轉換會遠端按需載入公開日語詞典，之後可在目前頁面繼續使用。</p>
+        <div class="pinyin-converter-grid romaji-converter-grid">
+          <section class="pinyin-text-panel romaji-text-panel input-variant" aria-labelledby="romajiInputTitle"><div class="panel-topline"><h3 id="romajiInputTitle">日語文字</h3><span id="romajiInputCount">0</span></div><textarea id="romajiInput" spellcheck="false" placeholder="輸入或貼上包含漢字、平假名或片假名的日語..."></textarea><div class="panel-actions"><button class="text-button" id="romajiSample" type="button" data-sample="明日は東京で日本語を勉強します。">範例</button><button class="text-button" id="romajiClear" type="button">清空</button><button class="primary-action" id="romajiConvert" type="button">轉換讀音</button></div></section>
+          <section class="pinyin-text-panel romaji-text-panel output-variant" aria-labelledby="romajiOutputTitle"><div class="panel-topline"><h3 id="romajiOutputTitle">羅馬字結果</h3><span id="romajiOutputCount">0</span></div><textarea id="romajiOutput" readonly spellcheck="false" placeholder="轉換後的日語羅馬字會顯示在這裡"></textarea><div id="furiganaOutput" class="romaji-furigana-output" hidden><p id="furiganaOutputEmpty" class="pinyin-empty">轉換後會在這裡顯示帶振假名的日語文字。</p></div><div class="panel-actions"><button class="text-button" id="romajiRetry" type="button" hidden>重新載入</button><button class="text-button" id="romajiCopy" type="button">複製結果</button></div></section>
+        </div>
+        <p class="tool-disclaimer">本工具轉換的是日語讀音，不是漢語拼音或中日翻譯。日語漢字可能有多種音讀、訓讀；人名、地名、罕見詞與特殊讀法仍需人工確認。</p>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="romajiFeatureTitle"><div class="section-heading"><p class="section-kicker">日語羅馬拼音轉換</p><h2 id="romajiFeatureTitle">日文轉羅馬字、平假名與振假名</h2><p class="seo-intro">涵蓋日文漢字轉羅馬字、日文轉羅馬音、日文漢字轉平假名、日語假名標註等常見需求，適合日語學習、發音查詢、字幕與閱讀輔助。</p></div><div class="seo-grid">
+          <article><h3>四種日語讀音輸出</h3><p>可在羅馬字、平假名、片假名與振假名之間快速切換，同一段文字可同時包含日文漢字與假名。</p></article>
+          <article><h3>依上下文判斷讀音</h3><p>使用 Kuromoji 日語詞法分析處理常見活用與漢字讀音，比逐字替換更適合完整單字與句子。</p></article>
+          <article><h3>文字只在瀏覽器處理</h3><p>頁面會遠端取得公開詞典檔案，但輸入的日語文字與轉換結果不會上傳至伺服器。</p></article>
+        </div><section class="pinyin-faq" aria-labelledby="romajiFaqTitle"><h2 id="romajiFaqTitle">日文漢字轉羅馬字常見問題</h2>
+          <details><summary>Kanji to alphabet 是什麼？</summary><p>通常指將日文漢字或日語句子轉成拉丁字母，也就是日語羅馬字。本頁對應的主要輸出是 Romaji。</p></details>
+          <details><summary>可以把日文漢字轉成平假名嗎？</summary><p>可以。選擇「平假名」會用日語讀音取代漢字；選擇「振假名」則保留漢字並在上方標註讀音。</p></details>
+          <details><summary>為什麼同一個漢字會有不同讀音？</summary><p>日語漢字有音讀、訓讀與特殊讀法，工具會依常見詞語和上下文選擇讀音，人名與地名仍可能需要手動確認。</p></details>
+        </section><p class="section-kicker pinyin-related-kicker">相關工具</p><nav class="landing-links" aria-label="相關日語與漢字工具">
+          <a href="/zh-tw/kanji-to-romaji/" aria-current="page">日文漢字轉羅馬字</a>
+          <a href="/zh-tw/japanese-chinese-kanji-converter/">日中漢字三體轉換</a>
+          <a href="/zh-tw/japanese-kanji-converter/">日文新舊字體轉換</a>
+          <a href="/zh-tw/japanese-characters/">日文字元複製</a>
+          <a href="/zh-tw/chinese-to-pinyin/">漢字轉拼音</a>
+          <a href="/zh-tw/chinese-stroke-order/">漢字筆順查詢</a>
+          <a href="/zh-tw/character-counter/">線上字數統計</a>
+          <a href="/zh-tw/han-character-worksheet/">國字練習紙</a>
+          <a href="/zh-tw/word-to-txt/">DOCX 轉 TXT</a>
+        </nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app 提供在瀏覽器中運行的日語讀音、漢字與中文轉換工具。</p><nav class="footer-links" aria-label="頁尾"><a href="/zh-tw/about/">關於我們</a><a href="/zh-tw/contact/">聯絡我們</a><a href="/zh-tw/privacy/">隱私聲明</a></nav></footer>
+  </body>
+</html>

@@ -26,7 +26,7 @@ function buildUrl(slug, locale, priority) {
   alternates.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${absolutePath("", slug)}" />`);
   return `  <url>
     <loc>${absolutePath(locale.prefix, slug)}</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>${priority}</priority>
 ${alternates.join("\n")}
@@ -41,6 +41,9 @@ for (const locale of locales) {
   const priority = ["zh-Hant", "ja"].includes(locale.hreflang) ? "0.9" : "0.8";
   blocks.push(buildUrl("japanese-characters", locale, priority));
 }
+for (const locale of locales) {
+  blocks.push(buildUrl("kanji-to-romaji", locale, locale.hreflang === "ja" ? "0.9" : "0.8"));
+}
 const section = `${markerStart}\n${blocks.join("\n")}\n${markerEnd}`;
 
 const source = await readFile(sitemapPath, "utf8");
@@ -51,4 +54,4 @@ if (source.includes(markerStart)) {
   updated = source.replace("</urlset>", `${section}\n</urlset>`);
 }
 await writeFile(sitemapPath, updated);
-console.log("Added 10 Japanese tool URLs to sitemap.xml.");
+console.log("Added 15 Japanese tool URLs to sitemap.xml.");
