@@ -329,7 +329,14 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     }
   }
   if (relativePath === path.join("en", "han-character-worksheet", "index.html")) {
-    for (const keyword of ["Chinese Character Worksheet Generator", "Chinese writing practice", "Tian Zi Ge"]) {
+    for (const keyword of [
+      "Chinese Character Worksheet Generator",
+      "Chinese practice sheet generator",
+      "Chinese Character Practice Sheet Generator",
+      "Chinese Practice Worksheet Generator",
+      "Chinese writing practice",
+      "Tian Zi Ge"
+    ]) {
       if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
     }
   }

@@ -147,10 +147,11 @@ const content = {
   },
   en: {
     title: "Chinese Character Worksheet Generator - Printable Hanzi Practice | JianFan.app",
-    description: "Free Chinese character worksheet generator for printable Hanzi writing practice. Create Tian Zi Ge or Mi Zi Ge sheets with tracing, Pinyin, stroke order, A4 or Letter PDF printing.",
+    description: "Free Chinese practice sheet generator and Chinese character worksheet maker. Create printable Hanzi sheets with tracing, Pinyin, stroke order, grids and PDF.",
+    alternateNames: ["Chinese Practice Sheet Generator", "Chinese Character Practice Sheet Generator", "Chinese Practice Worksheet Generator"],
     eyebrow: "TIAN ZI GE · TRACING · PINYIN · STROKE ORDER",
     heading: "Chinese Character Worksheet Generator",
-    lede: "Type Chinese characters and build a printable writing practice sheet with model characters, tracing guides and blank grids. Adjust the layout, then print or save it as a PDF.",
+    lede: "Type Chinese characters and build printable Chinese practice sheets with model characters, tracing guides and blank grids. Adjust the layout, then print or save them as a PDF.",
     toolTitle: "Build a printable Hanzi practice sheet",
     inputLabel: "Characters to practise",
     inputPlaceholder: "Enter characters, words or a short passage; up to 40 Hanzi",
@@ -189,17 +190,18 @@ const content = {
       strokeOrderLabel: "Stroke-order guide for {character}"
     },
     seoKicker: "Printable Chinese writing practice",
-    featureTitle: "Make a Chinese writing practice sheet in one workspace",
-    featureIntro: "A free Chinese character worksheet generator for learners, families and teachers. Create Tian Zi Ge or Mi Zi Ge practice paper without signing up, uploading text or installing an app.",
+    featureTitle: "Free Chinese Practice Sheet Generator for Printable Hanzi",
+    featureIntro: "Create custom worksheets for learners, families and teachers with this free Chinese character worksheet generator. Build Tian Zi Ge or Mi Zi Ge practice paper without signing up, uploading text or installing an app.",
     cards: [
       ["Model, trace, then write", "Start with a clear model character, trace adjustable faded copies, and finish with blank boxes for writing from memory."],
       ["Tian Zi Ge and Mi Zi Ge grids", "Choose centre guides, diagonal guides or plain squares, then set the number of boxes and practice rows."],
       ["Context-aware Pinyin", "Pinyin uses the surrounding word or sentence to resolve polyphonic characters. For a single Hanzi, all dictionary readings are shown; stroke-order guides remain optional."]
     ],
-    howTitle: "How to create a Chinese character worksheet",
+    howTitle: "How to generate a Chinese character practice sheet",
     steps: ["Enter the Hanzi, vocabulary or short passage you want to practise.", "Choose a grid and adjust tracing, Pinyin, stroke order, rows and columns.", "Review the white paper preview, then print it or save it as a PDF."],
     faqTitle: "Chinese worksheet generator questions",
     faqs: [
+      ["Can I use this as a Chinese practice sheet generator?", "Yes. Enter your own Chinese characters or vocabulary, choose tracing and blank practice rows, then print the sheet or save it as a PDF."],
       ["Can I download the worksheet as a PDF?", "Yes. Select Print / Save PDF, then choose Save as PDF in your browser's print dialog."],
       ["Does it support Simplified and Traditional Chinese?", "Yes. You can enter common Simplified and Traditional characters. The exact printed glyph also depends on fonts available on your device."],
       ["How are polyphonic characters handled?", "Words and sentences use contextual Pinyin. If you enter one Hanzi by itself, all dictionary readings are shown. When grouped duplicates have different contextual readings, the worksheet displays each detected reading."],
@@ -343,11 +345,11 @@ const content = {
 };
 
 const relatedLabels = {
-  "zh-CN": [[slug, "汉字练习纸"], ["chinese-stroke-order", "汉字笔顺查询"], ["chinese-to-pinyin", "汉字转拼音"], ["character-counter", "在线字数统计"], ["japanese-chinese-kanji-converter", "日中汉字三体转换"], ["japanese-characters", "日文字符复制"], ["simplified-to-traditional", "简体转繁体"], ["traditional-to-simplified", "繁体转简体"], ["word-to-txt", "Word 转 TXT"]],
-  "zh-TW": [[slug, "國字練習紙"], ["chinese-stroke-order", "漢字筆順查詢"], ["chinese-to-pinyin", "漢字轉拼音"], ["character-counter", "線上字數統計"], ["japanese-chinese-kanji-converter", "日中漢字三體轉換"], ["japanese-characters", "日文字元複製"], ["simplified-to-traditional", "簡體轉繁體"], ["traditional-to-simplified", "繁體轉簡體"], ["word-to-txt", "DOCX 轉 TXT"]],
-  en: [[slug, "Chinese worksheet generator"], ["chinese-stroke-order", "Chinese stroke order"], ["chinese-to-pinyin", "Chinese to Pinyin"], ["character-counter", "CJK character counter"], ["japanese-chinese-kanji-converter", "Japanese and Chinese Kanji"], ["japanese-characters", "Japanese character copy"], ["simplified-to-traditional", "Simplified to Traditional"], ["traditional-to-simplified", "Traditional to Simplified"], ["word-to-txt", "Word to text"]],
-  ja: [[slug, "漢字練習プリント"], ["chinese-stroke-order", "中国語漢字の筆順"], ["chinese-to-pinyin", "中国語ピンイン変換"], ["character-counter", "文字数カウント"], ["japanese-chinese-kanji-converter", "日本語漢字・簡体字・繁体字変換"], ["japanese-characters", "日本語文字コピー"], ["japanese-kanji-converter", "旧字体 新字体 変換"], ["word-to-txt", "Word TXT 変換"]],
-  ko: [[slug, "한자 쓰기 연습장"], ["chinese-stroke-order", "중국어 한자 필순"], ["chinese-to-pinyin", "중국어 병음 변환"], ["character-counter", "글자수 세기"], ["japanese-chinese-kanji-converter", "일본·중국 한자 변환"], ["japanese-characters", "일본어 문자 복사"], ["simplified-to-traditional", "간체를 번체로"], ["word-to-txt", "DOCX TXT 변환"]]
+  "zh-CN": [[slug, "汉字练习纸"], ["chinese-stroke-order", "汉字笔顺查询"], ["chinese-to-pinyin", "汉字转拼音"], ["character-counter", "在线字数统计"], ["japanese-chinese-kanji-converter", "日中汉字三体转换"], ["kanji-to-romaji", "日文汉字转罗马字"], ["japanese-characters", "日文字符复制"], ["simplified-to-traditional", "简体转繁体"], ["traditional-to-simplified", "繁体转简体"], ["word-to-txt", "Word 转 TXT"]],
+  "zh-TW": [[slug, "國字練習紙"], ["chinese-stroke-order", "漢字筆順查詢"], ["chinese-to-pinyin", "漢字轉拼音"], ["character-counter", "線上字數統計"], ["japanese-chinese-kanji-converter", "日中漢字三體轉換"], ["kanji-to-romaji", "日文漢字轉羅馬字"], ["japanese-characters", "日文字元複製"], ["simplified-to-traditional", "簡體轉繁體"], ["traditional-to-simplified", "繁體轉簡體"], ["word-to-txt", "DOCX 轉 TXT"]],
+  en: [[slug, "Chinese worksheet generator"], ["chinese-stroke-order", "Chinese stroke order"], ["chinese-to-pinyin", "Chinese to Pinyin"], ["character-counter", "CJK character counter"], ["japanese-chinese-kanji-converter", "Japanese and Chinese Kanji"], ["kanji-to-romaji", "Kanji to Romaji"], ["japanese-characters", "Japanese character copy"], ["simplified-to-traditional", "Simplified to Traditional"], ["traditional-to-simplified", "Traditional to Simplified"], ["word-to-txt", "Word to text"]],
+  ja: [[slug, "漢字練習プリント"], ["chinese-stroke-order", "中国語漢字の筆順"], ["chinese-to-pinyin", "中国語ピンイン変換"], ["character-counter", "文字数カウント"], ["japanese-chinese-kanji-converter", "日本語漢字・簡体字・繁体字変換"], ["kanji-to-romaji", "漢字・ローマ字変換"], ["japanese-characters", "日本語文字コピー"], ["japanese-kanji-converter", "旧字体 新字体 変換"], ["word-to-txt", "Word TXT 変換"]],
+  ko: [[slug, "한자 쓰기 연습장"], ["chinese-stroke-order", "중국어 한자 필순"], ["chinese-to-pinyin", "중국어 병음 변환"], ["character-counter", "글자수 세기"], ["japanese-chinese-kanji-converter", "일본·중국 한자 변환"], ["kanji-to-romaji", "일본어 한자 로마자 변환"], ["japanese-characters", "일본어 문자 복사"], ["simplified-to-traditional", "간체를 번체로"], ["word-to-txt", "DOCX TXT 변환"]]
 };
 
 function escapeHtml(value) {
@@ -367,6 +369,7 @@ function buildSchema(locale, page) {
         "@type": "WebApplication",
         "@id": `${canonical}#webapp`,
         name: page.heading,
+        ...(page.alternateNames ? { alternateName: page.alternateNames } : {}),
         url: canonical,
         description: page.description,
         applicationCategory: "EducationalApplication",
