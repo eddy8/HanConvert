@@ -2,6 +2,8 @@ import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { SEO_DESCRIPTIONS } from "./seo-descriptions.mjs";
+
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 const locales = {
@@ -185,6 +187,14 @@ const pages = {
   }
 };
 
+for (const [slug, descriptions] of Object.entries(SEO_DESCRIPTIONS)) {
+  const page = pages[slug];
+  if (!page) continue;
+  for (const [locale, description] of Object.entries(descriptions)) {
+    if (page.content[locale]) page.content[locale].description = description;
+  }
+}
+
 const directionLinks = [
   '          <a href="/simplified-to-traditional/" data-route="simplified-to-traditional" data-i18n="linkS2T">简体转繁体</a>',
   '          <a href="/traditional-to-simplified/" data-route="traditional-to-simplified" data-i18n="linkT2S">繁体转简体</a>'
@@ -290,4 +300,3 @@ for (const [slug, page] of Object.entries(pages)) {
     await writeFile(destination, preparePage(source, slug, locale, page));
   }
 }
-

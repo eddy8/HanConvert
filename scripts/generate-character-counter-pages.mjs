@@ -2,6 +2,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { SEO_DESCRIPTIONS } from "./seo-descriptions.mjs";
+
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
 const slug = "character-counter";
@@ -362,6 +364,10 @@ const content = {
     targetDefault: 1000
   }
 };
+
+for (const [locale, description] of Object.entries(SEO_DESCRIPTIONS[slug])) {
+  content[locale].description = description;
+}
 
 const relatedLabels = {
   "zh-CN": [[slug, "在线字数统计"], ["word-to-txt", "Word 转 TXT"], ["file-text-converter", "文件文本简繁转换"], ["chinese-to-pinyin", "汉字转拼音"], ["chinese-stroke-order", "汉字笔顺查询"], ["simplified-to-traditional", "简体转繁体"], ["japanese-chinese-kanji-converter", "日中汉字三体转换"], ["japanese-characters", "日文字符复制"]],

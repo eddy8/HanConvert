@@ -2,6 +2,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { SEO_DESCRIPTIONS } from "./seo-descriptions.mjs";
+
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
 const slug = "chinese-stroke-order";
@@ -97,6 +99,10 @@ const content = {
     related: "관련 도구", relatedAria: "관련 문자 도구", footerText: "JianFan.app는 중국어 변환, 병음과 한자 필순 학습 도구를 제공합니다."
   }
 };
+
+for (const [locale, description] of Object.entries(SEO_DESCRIPTIONS[slug])) {
+  content[locale].description = description;
+}
 
 const relatedLabels = {
   "zh-CN": [[slug, "汉字笔顺查询"], ["chinese-to-pinyin", "汉字转拼音"], ["word-to-txt", "Word 转 TXT"], ["simplified-to-traditional", "简体转繁体"], ["traditional-to-simplified", "繁体转简体"], ["japanese-chinese-kanji-converter", "日中汉字三体转换"], ["japanese-characters", "日文字符复制"]],

@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { JAPANESE_CHARACTER_CATEGORIES } from "../japanese-character-data.js";
+import { SEO_DESCRIPTIONS } from "./seo-descriptions.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteOrigin = "https://jianfan.app";
@@ -354,6 +355,10 @@ const tools = {
     }
   }
 };
+
+for (const [locale, description] of Object.entries(SEO_DESCRIPTIONS["japanese-chinese-kanji-converter"])) {
+  tools["japanese-chinese-kanji-converter"].content[locale].description = description;
+}
 
 function localizedPath(locale, slug = "") {
   const prefix = locales[locale].prefix;

@@ -3,6 +3,7 @@ import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { SEO_DESCRIPTIONS, TARGET_META_DESCRIPTION_LENGTH } from "./seo-descriptions.mjs";
 import { getPageContext, loadLocalizationData, localizeConverterHtml } from "./static-localization-lib.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -33,7 +34,7 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
 const uniqueSitemapUrls = new Set(sitemapUrls);
 if (uniqueSitemapUrls.size !== sitemapUrls.length) throw new Error("sitemap.xml contains duplicate URLs");
 
-for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "han-character-worksheet.js", "webmcp.js"]) {
+for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "han-character-worksheet.js", "handwriting-recognition.js", "handwriting-recognition-worker.js", "webmcp.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
@@ -93,7 +94,7 @@ const localizedRomajiKeywords = new Map([
 for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const relativePath = path.relative(projectRoot, htmlPath);
   const html = await readFile(htmlPath, "utf8");
-  const { locale } = getPageContext(relativePath);
+  const { locale, slug } = getPageContext(relativePath);
   const documentLanguage = requireMatch(html, /<html lang="([^"]+)">/, "document language", relativePath);
   const canonical = requireMatch(html, /<link rel="canonical" href="([^"]+)" \/>/, "canonical", relativePath);
 
@@ -123,6 +124,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isCharacterCounterPage = html.includes('data-tool-page="character-counter"');
   const isWorksheetPage = html.includes('data-tool-page="han-character-worksheet"');
   const isKanjiRomajiPage = html.includes('data-tool-page="kanji-to-romaji"');
+  const isHandwritingPage = html.includes('data-tool-page="handwriting-recognition"');
   if (localizedHomePages.has(relativePath) && !html.includes('src="/app-download.js"')) {
     throw new Error(`${relativePath}: missing platform-specific app download navigation`);
   }
@@ -135,6 +137,20 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     }
   }
   if (!isConverterPage && !isStandaloneToolPage && !isInfoPage) continue;
+  const expectedDescription = SEO_DESCRIPTIONS[slug]?.[locale];
+  if (expectedDescription) {
+    const description = requireMatch(html, /<meta\s+name="description"\s+content="([^"]+)"/, "meta description", relativePath);
+    const descriptionLength = [...description].length;
+    if (description !== expectedDescription) {
+      throw new Error(`${relativePath}: meta description is out of sync with seo-descriptions.mjs`);
+    }
+    if (descriptionLength < TARGET_META_DESCRIPTION_LENGTH.min || descriptionLength > TARGET_META_DESCRIPTION_LENGTH.max) {
+      throw new Error(`${relativePath}: meta description length ${descriptionLength} is outside ${TARGET_META_DESCRIPTION_LENGTH.min}-${TARGET_META_DESCRIPTION_LENGTH.max}`);
+    }
+    if (!html.includes(`"description": ${JSON.stringify(expectedDescription)}`)) {
+      throw new Error(`${relativePath}: structured data description is out of sync with meta description`);
+    }
+  }
   if (isConverterPage) {
     converterPages += 1;
     if (!html.includes('src="/webmcp.js"')) {
@@ -172,10 +188,10 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     if (!webApplication || webApplication.url !== canonical) {
       throw new Error(`${relativePath}: invalid WebApplication schema`);
     }
-    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isKanjiRomajiPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
+    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isKanjiRomajiPage || isHandwritingPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
       throw new Error(`${relativePath}: missing tool FAQPage schema`);
     }
-    if ((isWordToTxtPage || isCharacterCounterPage || isWorksheetPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
+    if ((isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isHandwritingPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
       throw new Error(`${relativePath}: missing tool HowTo schema`);
     }
   }
@@ -231,7 +247,10 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (isConverterPage && !html.includes('data-route="kanji-to-romaji"')) {
     throw new Error(`${relativePath}: missing Kanji-to-Romaji link`);
   }
-  if (isStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/") || !html.includes("chinese-to-pinyin/") || !html.includes("chinese-stroke-order/") || !html.includes("word-to-txt/") || !html.includes("han-character-worksheet/") || !html.includes("kanji-to-romaji/"))) {
+  if (isConverterPage && !html.includes('data-route="chinese-handwriting-recognition"')) {
+    throw new Error(`${relativePath}: missing handwriting-recognition link`);
+  }
+  if (isStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/") || !html.includes("chinese-to-pinyin/") || !html.includes("chinese-stroke-order/") || !html.includes("word-to-txt/") || !html.includes("han-character-worksheet/") || !html.includes("kanji-to-romaji/") || !html.includes("chinese-handwriting-recognition/"))) {
     throw new Error(`${relativePath}: missing related tool links`);
   }
   if (isKanjiRomajiPage) {
@@ -350,6 +369,45 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
       if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
     }
   }
+  if (isHandwritingPage) {
+    for (const asset of [
+      'src="/vendor/pinyin-pro.js"',
+      'src="/handwriting-recognition.js"',
+      'id="handwritingCanvas"',
+      'id="handwritingCandidates"'
+    ]) {
+      if (!html.includes(asset)) throw new Error(`${relativePath}: missing handwriting-recognition asset ${asset}`);
+    }
+    const description = requireMatch(html, /<meta name="description" content="([^"]+)" \/>/, "meta description", relativePath);
+    if (description.length < 150 || description.length > 160) {
+      throw new Error(`${relativePath}: handwriting meta description must contain 150-160 characters, found ${description.length}`);
+    }
+  }
+  if (relativePath === path.join("chinese-handwriting-recognition", "index.html")) {
+    for (const keyword of ["手写汉字识别", "在线手写查字", "汉字手写输入"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("zh-tw", "chinese-handwriting-recognition", "index.html")) {
+    for (const keyword of ["手寫漢字辨識", "線上手寫查字", "手寫輸入"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("en", "chinese-handwriting-recognition", "index.html")) {
+    for (const keyword of ["Chinese handwriting recognition", "Chinese handwriting input", "Draw a Chinese character"]) {
+      if (!html.toLowerCase().includes(keyword.toLowerCase())) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("ja", "chinese-handwriting-recognition", "index.html")) {
+    for (const keyword of ["漢字手書き検索", "漢字を手書きで検索", "手書き入力"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("ko", "chinese-handwriting-recognition", "index.html")) {
+    for (const keyword of ["한자 필기인식", "한자 그려서 찾기", "손글씨"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
 }
 
 const agentIndexText = await readFile(
@@ -396,8 +454,8 @@ if (!notFound.includes('name="robots" content="noindex, follow"')) {
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
-if (standaloneToolPages !== 40) throw new Error(`expected 40 standalone tool pages, found ${standaloneToolPages}`);
+if (standaloneToolPages !== 45) throw new Error(`expected 45 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
-if (sitemapUrls.length !== 90) throw new Error(`expected 90 sitemap URLs, found ${sitemapUrls.length}`);
+if (sitemapUrls.length !== 95) throw new Error(`expected 95 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, and ${sitemapUrls.length} sitemap URLs.`);
