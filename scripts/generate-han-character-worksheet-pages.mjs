@@ -2,6 +2,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { SEO_DESCRIPTIONS } from "./seo-descriptions.mjs";
+
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
 const slug = "han-character-worksheet";
@@ -343,6 +345,10 @@ const content = {
     footerText: "JianFan.app는 브라우저에서 실행되는 한자 학습, 중국어 변환 및 텍스트 도구를 제공합니다."
   }
 };
+
+for (const [locale, description] of Object.entries(SEO_DESCRIPTIONS[slug])) {
+  content[locale].description = description;
+}
 
 const relatedLabels = {
   "zh-CN": [[slug, "汉字练习纸"], ["chinese-stroke-order", "汉字笔顺查询"], ["chinese-to-pinyin", "汉字转拼音"], ["character-counter", "在线字数统计"], ["japanese-chinese-kanji-converter", "日中汉字三体转换"], ["kanji-to-romaji", "日文汉字转罗马字"], ["japanese-characters", "日文字符复制"], ["simplified-to-traditional", "简体转繁体"], ["traditional-to-simplified", "繁体转简体"], ["word-to-txt", "Word 转 TXT"]],

@@ -6,9 +6,11 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="service-desc" href="/.well-known/agent-skills/index.json" type="application/json" />
+    <link rel="service-doc" href="/.well-known/agent-skills/jianfan-browser-tools/SKILL.md" type="text/markdown" />
     <meta
       name="description"
-      content="中国語の繁体字を簡体字へオンライン変換。台湾・香港の繁体字と地域別表現にも対応し、ブラウザー内で処理します。"
+      content="繁体字を簡体字へオンライン変換。一般繁体字に加え、台湾・香港由来の字形や地域別表現にも対応します。長文、独自用語、変更箇所のハイライト、コピー、TXT保存を利用でき、資料、字幕、SNS、Webコンテンツ、古い文献の整理に便利です。OpenCCを基にブラウザー内で処理し、入力内容はサーバーへ送信されません。"
     />
     <title>繁体字から簡体字への変換ツール | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/ja/traditional-to-simplified/" />
@@ -22,6 +24,7 @@
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.css" />
     <script type="module" src="/app.js"></script>
+    <script defer src="/app-download.js"></script>
     <script defer src="/webmcp.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -33,7 +36,7 @@
             "@id": "https://jianfan.app/ja/traditional-to-simplified/#webapp",
             "name": "繁体字から簡体字への変換ツール",
             "url": "https://jianfan.app/ja/traditional-to-simplified/",
-            "description": "中国語の繁体字を簡体字へオンライン変換。台湾・香港の繁体字と地域別表現にも対応し、ブラウザー内で処理します。",
+            "description": "繁体字を簡体字へオンライン変換。一般繁体字に加え、台湾・香港由来の字形や地域別表現にも対応します。長文、独自用語、変更箇所のハイライト、コピー、TXT保存を利用でき、資料、字幕、SNS、Webコンテンツ、古い文献の整理に便利です。OpenCCを基にブラウザー内で処理し、入力内容はサーバーへ送信されません。",
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript",
@@ -318,6 +321,10 @@
             <h3 data-i18n="seoUseCaseTitle">ブラウザー内で処理</h3>
             <p data-i18n="seoUseCaseBody">固有名詞、ブランド名、正式文書は変換後も確認してください。</p>
           </article>
+          <article class="seo-app-card">
+            <h3 data-i18n="seoAppTitle">中国語の簡体字・繁体字変換アプリ</h3>
+            <p data-i18n="seoAppBody">macOS と Windows で中国語テキストを頻繁に変換する方向けのデスクトップアプリです。変換処理は端末内で行われます。</p>
+          </article>
         </div>
 
         <nav class="landing-links" aria-label="関連変換ページ">
@@ -337,6 +344,7 @@
           <a href="/ja/word-to-txt/" data-route="word-to-txt" data-i18n="linkWordToTxt">Word TXT 変換</a>
           <a href="/ja/character-counter/" data-route="character-counter" data-i18n="linkCharacterCounter">文字数カウント</a>
           <!-- japanese-tool-links:end -->
+          <a href="/ja/chinese-handwriting-recognition/" data-route="chinese-handwriting-recognition" data-i18n="linkHandwriting">漢字手書き検索</a>
         </nav>
       </section>
     </main>

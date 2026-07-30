@@ -71,7 +71,8 @@
       disableTool();
       return;
     }
-    const initial = extractStrokeCharacters(body.dataset.initialCharacter || "永", MAX_CHARACTERS)[0] || "永";
+    const requestedCharacter = new URLSearchParams(window.location.search).get("character");
+    const initial = extractStrokeCharacters(requestedCharacter || body.dataset.initialCharacter || "永", MAX_CHARACTERS)[0] || "永";
     input.value = initial;
     await setCharacters([initial]);
     setupResizeObserver();

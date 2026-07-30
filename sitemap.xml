@@ -1102,4 +1102,66 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/han-character-worksheet/" />
   </url>
   <!-- han-character-worksheet-tool:end -->
+  <!-- handwriting-recognition-tool:start -->
+  <url>
+    <loc>https://jianfan.app/chinese-handwriting-recognition/</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-handwriting-recognition/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/chinese-handwriting-recognition/</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-handwriting-recognition/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/chinese-handwriting-recognition/</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-handwriting-recognition/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/chinese-handwriting-recognition/</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-handwriting-recognition/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/chinese-handwriting-recognition/</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-handwriting-recognition/" />
+  </url>
+  <!-- handwriting-recognition-tool:end -->
 </urlset>

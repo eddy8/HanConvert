@@ -6,9 +6,11 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="service-desc" href="/.well-known/agent-skills/index.json" type="application/json" />
+    <link rel="service-doc" href="/.well-known/agent-skills/jianfan-browser-tools/SKILL.md" type="text/markdown" />
     <meta
       name="description"
-      content="線上將繁體中文轉換為簡體中文，支援台灣正體和香港繁體轉簡體，文字在瀏覽器本機處理。"
+      content="免費繁體轉簡體線上轉換器，可將繁體、台灣正體或香港繁體轉成簡體中文，並依原文處理台灣、香港與中國大陸地區用詞。支援長篇文字、自訂詞庫、差異高亮、複製及下載 TXT，適合閱讀資料、整理字幕、網頁內容與古籍摘錄。轉換基於 OpenCC，在瀏覽器本機分段完成，內容無需上傳伺服器；一繁多簡、專有名詞及正式文件請配合語境複核。"
     />
     <title>繁體轉簡體 - 線上繁體字轉簡體字轉換器 | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/zh-tw/traditional-to-simplified/" />
@@ -22,6 +24,7 @@
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.css" />
     <script type="module" src="/app.js"></script>
+    <script defer src="/app-download.js"></script>
     <script defer src="/webmcp.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -33,7 +36,7 @@
             "@id": "https://jianfan.app/zh-tw/traditional-to-simplified/#webapp",
             "name": "繁體轉簡體 - 線上繁體字轉簡體字轉換器",
             "url": "https://jianfan.app/zh-tw/traditional-to-simplified/",
-            "description": "線上將繁體中文轉換為簡體中文，支援台灣正體和香港繁體轉簡體，文字在瀏覽器本機處理。",
+            "description": "免費繁體轉簡體線上轉換器，可將繁體、台灣正體或香港繁體轉成簡體中文，並依原文處理台灣、香港與中國大陸地區用詞。支援長篇文字、自訂詞庫、差異高亮、複製及下載 TXT，適合閱讀資料、整理字幕、網頁內容與古籍摘錄。轉換基於 OpenCC，在瀏覽器本機分段完成，內容無需上傳伺服器；一繁多簡、專有名詞及正式文件請配合語境複核。",
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript",
@@ -318,6 +321,10 @@
             <h3 data-i18n="seoUseCaseTitle">瀏覽器本機處理</h3>
             <p data-i18n="seoUseCaseBody">文字不需上傳至伺服器；正式文件、專有名詞和語境相關內容仍建議人工複核。</p>
           </article>
+          <article class="seo-app-card">
+            <h3 data-i18n="seoAppTitle">簡體轉繁體 APP 與繁體轉簡體 APP</h3>
+            <p data-i18n="seoAppBody">適合經常處理中文文字的 macOS 與 Windows 使用者，安裝後可直接從桌面開啟，文字轉換仍在本機完成。</p>
+          </article>
         </div>
 
         <nav class="landing-links" aria-label="相關轉換頁面">
@@ -337,6 +344,7 @@
           <a href="/zh-tw/word-to-txt/" data-route="word-to-txt" data-i18n="linkWordToTxt">DOCX 轉 TXT</a>
           <a href="/zh-tw/character-counter/" data-route="character-counter" data-i18n="linkCharacterCounter">線上字數統計</a>
           <!-- japanese-tool-links:end -->
+          <a href="/zh-tw/chinese-handwriting-recognition/" data-route="chinese-handwriting-recognition" data-i18n="linkHandwriting">手寫漢字辨識</a>
         </nav>
       </section>
     </main>

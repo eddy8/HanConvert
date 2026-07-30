@@ -6,9 +6,11 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="service-desc" href="/.well-known/agent-skills/index.json" type="application/json" />
+    <link rel="service-doc" href="/.well-known/agent-skills/jianfan-browser-tools/SKILL.md" type="text/markdown" />
     <meta
       name="description"
-      content="중국어 간체를 번체로 온라인 변환합니다. 대만 번체, 홍콩 번체, 지역 표현 모드를 지원하며 브라우저에서 처리합니다."
+      content="중국어 간체를 일반 번체, 대만 번체 또는 홍콩 번체로 무료 온라인 변환하세요. 중국 본토·대만·홍콩의 지역 용어 변환을 선택할 수 있으며 긴 텍스트 붙여넣기, 사용자 사전, 변경 글자 강조, 결과 복사와 TXT 저장을 지원합니다. 변환은 브라우저에서 안전하게 처리됩니다."
     />
     <title>중국어 간체를 번체로 변환 | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/ko/simplified-to-traditional/" />
@@ -22,6 +24,7 @@
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.css" />
     <script type="module" src="/app.js"></script>
+    <script defer src="/app-download.js"></script>
     <script defer src="/webmcp.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -33,7 +36,7 @@
             "@id": "https://jianfan.app/ko/simplified-to-traditional/#webapp",
             "name": "중국어 간체를 번체로 변환",
             "url": "https://jianfan.app/ko/simplified-to-traditional/",
-            "description": "중국어 간체를 번체로 온라인 변환합니다. 대만 번체, 홍콩 번체, 지역 표현 모드를 지원하며 브라우저에서 처리합니다.",
+            "description": "중국어 간체를 일반 번체, 대만 번체 또는 홍콩 번체로 무료 온라인 변환하세요. 중국 본토·대만·홍콩의 지역 용어 변환을 선택할 수 있으며 긴 텍스트 붙여넣기, 사용자 사전, 변경 글자 강조, 결과 복사와 TXT 저장을 지원합니다. 변환은 브라우저에서 안전하게 처리됩니다.",
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript",
@@ -318,6 +321,10 @@
             <h3 data-i18n="seoUseCaseTitle">브라우저 로컬 처리</h3>
             <p data-i18n="seoUseCaseBody">고유명사, 브랜드명, 공식 문서는 변환 후에도 검토하세요.</p>
           </article>
+          <article class="seo-app-card">
+            <h3 data-i18n="seoAppTitle">중국어 간체·번체 변환 앱</h3>
+            <p data-i18n="seoAppBody">macOS와 Windows에서 중국어 텍스트를 자주 변환하는 사용자를 위한 데스크톱 앱이며 변환은 기기에서 처리됩니다.</p>
+          </article>
         </div>
 
         <nav class="landing-links" aria-label="관련 변환 페이지">
@@ -337,6 +344,7 @@
           <a href="/ko/word-to-txt/" data-route="word-to-txt" data-i18n="linkWordToTxt">DOCX TXT 변환</a>
           <a href="/ko/character-counter/" data-route="character-counter" data-i18n="linkCharacterCounter">글자수 세기</a>
           <!-- japanese-tool-links:end -->
+          <a href="/ko/chinese-handwriting-recognition/" data-route="chinese-handwriting-recognition" data-i18n="linkHandwriting">한자 필기 인식</a>
         </nav>
       </section>
     </main>

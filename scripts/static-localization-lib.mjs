@@ -2,6 +2,8 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import vm from "node:vm";
 
+import { SEO_DESCRIPTIONS } from "./seo-descriptions.mjs";
+
 const localePrefixes = {
   "zh-CN": "",
   "zh-TW": "zh-tw/",
@@ -37,9 +39,17 @@ function extractObject(source, name, nextName) {
 
 export async function loadLocalizationData(projectRoot) {
   const source = await readFile(path.join(projectRoot, "app.js"), "utf8");
+  const landingPages = extractObject(source, "landingPages", "localePaths");
+  for (const [slug, descriptions] of Object.entries(SEO_DESCRIPTIONS)) {
+    const landingPage = landingPages[slug];
+    if (!landingPage) continue;
+    for (const [locale, description] of Object.entries(descriptions)) {
+      if (landingPage.content[locale]) landingPage.content[locale].pageDescription = description;
+    }
+  }
   return {
     translations: extractObject(source, "translations", "landingPages"),
-    landingPages: extractObject(source, "landingPages", "localePaths")
+    landingPages
   };
 }
 

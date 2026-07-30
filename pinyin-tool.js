@@ -40,6 +40,13 @@
   if (!window.pinyinPro?.pinyin || !window.pinyinPro?.polyphonic) {
     setStatus("error", "error");
     disableTool();
+  } else {
+    const requestedCharacter = new URLSearchParams(window.location.search).get("character");
+    if (/^\p{Script=Han}$/u.test(requestedCharacter || "")) {
+      input.value = requestedCharacter;
+      updateCounts();
+      convert();
+    }
   }
 
   function setupLocaleSelector() {
