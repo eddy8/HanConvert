@@ -1,5 +1,11 @@
 (() => {
   try {
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xqtr731p4c");
+    
     const path = window.location.pathname.replace(/\/+$/, "/");
     const hasManualLocale = localStorage.getItem("jianfan-locale-manual") === "1";
     const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
@@ -27,12 +33,6 @@
 
     const suffix = path === "/" ? "" : path.slice(1);
     window.location.replace(`${localePath}${suffix}${window.location.search}${window.location.hash}`);
-
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "xqtr731p4c");
 
   } catch (error) {
     console.warn(error);
