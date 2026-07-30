@@ -61,7 +61,7 @@
 
   const BOARD_SIZE = 256;
   const CANDIDATE_LIMIT = 10;
-  const STROKE_DATA_ORIGIN = "https://cdn.jsdelivr.net/npm/hanzi-writer-data";
+  const STROKE_DATA_ORIGIN = "https://cdn.jsdmirror.cn/npm/hanzi-writer-data";
   const localePaths = {
     "zh-CN": "/",
     "zh-TW": "/zh-tw/",

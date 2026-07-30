@@ -1,7 +1,7 @@
 "use strict";
 
 const HANZI_LOOKUP_COMMIT = "01f90c3ab99a8fadf0696c28e5eb097223c500db";
-const HANZI_LOOKUP_BASE = `https://cdn.jsdelivr.net/gh/gugray/hanzi_lookup@${HANZI_LOOKUP_COMMIT}/web_demo`;
+const HANZI_LOOKUP_BASE = `https://cdn.jsdmirror.cn/gh/gugray/hanzi_lookup@${HANZI_LOOKUP_COMMIT}/web_demo`;
 
 let readyPromise;
 
