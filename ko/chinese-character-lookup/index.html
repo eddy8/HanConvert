@@ -6,8 +6,8 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="description" content="무료 한자 부수·구성요소 검색 도구입니다. 한 글자를 입력하면 중국어 병음, 부수, 총획수, Unicode, 간체자·번체자 이체자와 영어 뜻을 확인합니다. 좌우·상하·둘러싸기 구조를 트리로 분해하고 구성요소의 획을 강조합니다. 필순·손글씨 검색·병음·한자 쓰기 연습장도 이용하세요." />
-    <title>한자 부수·구성요소 검색 - 획수와 구조 분해 | JianFan.app</title>
+    <meta name="description" content="무료 한자 부수·구성요소 검색 도구입니다. 한자를 입력해 병음·부수, 총획수, Unicode와 구조 트리를 확인하세요. 음을 모르는 한자는 구성요소 한 개부터 네 개를 조합해 찾고, 부품의 반복 입력과 총획수로 후보를 줄입니다. 간체자·번체자, 필순과 손글씨 검색을 이용할 수 있습니다." />
+    <title>한자 부수·구성요소 검색 - 부수·획수와 글자 구조 | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/ko/chinese-character-lookup/" />
     <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-character-lookup/" />
     <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-character-lookup/" />
@@ -32,10 +32,12 @@
             "alternateName": [
               "한자 구성요소 검색",
               "한자 구조 분해",
-              "한자 부수 검색"
+              "한자 부수 검색",
+              "구성요소로 한자 찾기",
+              "부수·획수 검색"
             ],
             "url": "https://jianfan.app/ko/chinese-character-lookup/",
-            "description": "무료 한자 부수·구성요소 검색 도구입니다. 한 글자를 입력하면 중국어 병음, 부수, 총획수, Unicode, 간체자·번체자 이체자와 영어 뜻을 확인합니다. 좌우·상하·둘러싸기 구조를 트리로 분해하고 구성요소의 획을 강조합니다. 필순·손글씨 검색·병음·한자 쓰기 연습장도 이용하세요.",
+            "description": "무료 한자 부수·구성요소 검색 도구입니다. 한자를 입력해 병음·부수, 총획수, Unicode와 구조 트리를 확인하세요. 음을 모르는 한자는 구성요소 한 개부터 네 개를 조합해 찾고, 부품의 반복 입력과 총획수로 후보를 줄입니다. 간체자·번체자, 필순과 손글씨 검색을 이용할 수 있습니다.",
             "applicationCategory": "EducationalApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript",
@@ -74,22 +76,27 @@
           {
             "@type": "HowTo",
             "@id": "https://jianfan.app/ko/chinese-character-lookup/#howto",
-            "name": "한자 구조를 검색하는 방법",
+            "name": "한자 구조와 구성요소 검색 방법",
             "step": [
               {
                 "@type": "HowToStep",
                 "position": 1,
-                "text": "한자를 입력합니다. 단어나 문장을 붙여 넣었다면 생성된 한자 탭에서 한 글자를 고릅니다."
+                "text": "한자를 입력할 수 있으면 한 글자를 검색해 부수와 구조 트리를 확인합니다."
               },
               {
                 "@type": "HowToStep",
                 "position": 2,
-                "text": "색상으로 구분된 글자와 구조 트리를 보고 원하는 구성요소를 선택합니다."
+                "text": "음을 모르면 구성요소 검색으로 전환해 눈에 보이는 부분을 한 개부터 네 개까지 입력합니다."
               },
               {
                 "@type": "HowToStep",
                 "position": 3,
-                "text": "선택한 부품을 다시 검색하거나 필순, 병음, 쓰기 연습 도구로 이동합니다."
+                "text": "필요하면 총획수로 걸러 내고 자주 쓰는 순서 또는 획수순으로 정렬합니다."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "후보를 선택해 읽기, 필순, 병음과 쓰기 연습 도구를 이용합니다."
               }
             ]
           },
@@ -128,6 +135,14 @@
                   "@type": "Answer",
                   "text": "가능합니다. 최대 12개의 한자를 추출해 탭으로 표시하며, 탭을 누르면 한 글자씩 구조를 확인할 수 있습니다."
                 }
+              },
+              {
+                "@type": "Question",
+                "name": "한자 음을 몰라도 구성요소로 찾을 수 있나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "네. 눈에 보이는 구성요소를 한 개부터 네 개까지 입력하면 모두 포함한 한자를 찾습니다. 같은 구성요소를 여러 번 입력하는 방식도 지원합니다."
+                }
               }
             ]
           }
@@ -153,15 +168,20 @@
     </header>
     <main id="main">
       <section class="tool-hero han-lookup-hero" aria-labelledby="pageTitle">
-        <div><p class="section-kicker">한자 검색 · 구성요소 강조 · 구조 분해</p><h1 id="pageTitle">한자 부수·구성요소 검색</h1><p class="lede">한자를 입력해 부수, 획수, 중국어 병음과 이체자를 확인하고 색상 글자와 구조 트리에서 각 구성요소를 살펴보세요.</p></div>
+        <div><p class="section-kicker">한자 검색 · 구성요소 강조 · 구조 분해</p><h1 id="pageTitle">한자 부수·구성요소 검색</h1><p class="lede">한자의 부수, 획수, 중국어 병음과 구조를 확인하세요. 읽기 모르는 한자는 여러 구성요소와 총획수로 찾을 수 있습니다.</p></div>
         <div class="han-lookup-hero-equation" aria-hidden="true"><span>氵</span><i>+</i><span>青</span><i>=</i><strong>清</strong></div>
       </section>
 
       <section class="standalone-tool han-lookup-tool" aria-labelledby="hanLookupToolTitle">
         <div class="standalone-tool-head">
           <div><p class="section-kicker">LOOK UP / DECOMPOSE / FOCUS</p><h2 id="hanLookupToolTitle">한자를 입력하고 글자 구조 확인하기</h2></div>
+          <div class="han-lookup-mode-switch" role="tablist" aria-label="한자 검색 방법">
+            <button id="hanLookupCharacterMode" type="button" role="tab" aria-selected="true" aria-controls="hanCharacterLookupPanel" data-han-lookup-mode="character">한자 조회</button>
+            <button id="hanLookupComponentMode" type="button" role="tab" aria-selected="false" aria-controls="hanComponentLookupPanel" data-han-lookup-mode="component">구성요소로 찾기</button>
+          </div>
           <div class="status-pill" id="hanLookupStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>한자 데이터를 검색하는 중</span></div>
         </div>
+        <div id="hanCharacterLookupPanel" role="tabpanel" aria-labelledby="hanLookupCharacterMode">
         <form class="han-lookup-form" id="hanLookupForm">
           <label for="hanLookupInput">검색할 한자</label>
           <div><input id="hanLookupInput" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="예: 明, 清, 赢" /><button class="primary-action" id="hanLookupSubmit" type="submit">한자 검색</button></div>
@@ -173,7 +193,7 @@
           <section class="han-lookup-glyph-panel" aria-labelledby="hanLookupGlyphTitle">
             <div class="panel-topline"><div><h3 id="hanLookupGlyphTitle">구성요소 색상 글자</h3><p>색상은 가장 바깥쪽 구성요소를 나타냅니다. 구조 트리에서 항목을 선택하면 해당 획이 강조됩니다.</p></div></div>
             <div class="han-lookup-glyph-stage"><div id="hanLookupGlyph"></div><span id="hanLookupGlyphFallback">明</span></div>
-            <div class="han-lookup-focus-bar"><span id="hanLookupSelectedText">‘明’의 모든 획을 표시하고 있습니다</span><button id="hanLookupSelectedQuery" type="button" hidden></button></div>
+            <div class="han-lookup-focus-bar"><span id="hanLookupSelectedText">‘明’의 모든 획을 표시하고 있습니다</span><div><button id="hanLookupSelectedQuery" type="button" hidden></button><button id="hanLookupSelectedFind" type="button" hidden></button></div></div>
           </section>
 
           <section class="han-lookup-tree-panel" aria-labelledby="hanLookupTreeTitle">
@@ -205,25 +225,75 @@
             </div>
           </aside>
         </div>
+        </div>
+
+        <section class="han-component-panel" id="hanComponentLookupPanel" role="tabpanel" aria-labelledby="hanLookupComponentMode" hidden>
+          <div class="han-component-workspace">
+            <form class="han-component-form" id="hanComponentForm">
+              <div class="han-component-heading"><p class="section-kicker">COMPONENT / RADICAL / STROKES</p><h3>구성요소로 한자 찾기</h3><p>읽기 모르는 한자를 눈에 보이는 구성요소 한 개부터 네 개로 찾으세요. 같은 부분이 반복되면 여러 번 입력할 수 있습니다.</p></div>
+              <label for="hanComponentInput">한자 구성요소</label>
+              <div class="han-component-input-row"><input id="hanComponentInput" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="12" placeholder="예: 氵 青 또는 木木木" /><button class="primary-action" id="hanComponentSubmit" type="submit">한자 찾기</button></div>
+              <div class="han-component-selected-head"><span>선택한 구성요소</span><button id="hanComponentClear" type="button" disabled>지우기</button></div>
+              <div class="han-component-selected" id="hanComponentSelected"><span>선택한 구성요소 없음</span></div>
+              <fieldset class="han-component-common"><legend>자주 쓰는 부수·구성요소</legend><div>
+                <button type="button" data-han-component="亻" title="구성요소 ‘亻’ 추가" aria-label="구성요소 ‘亻’ 추가">亻</button>
+                <button type="button" data-han-component="氵" title="구성요소 ‘氵’ 추가" aria-label="구성요소 ‘氵’ 추가">氵</button>
+                <button type="button" data-han-component="扌" title="구성요소 ‘扌’ 추가" aria-label="구성요소 ‘扌’ 추가">扌</button>
+                <button type="button" data-han-component="口" title="구성요소 ‘口’ 추가" aria-label="구성요소 ‘口’ 추가">口</button>
+                <button type="button" data-han-component="女" title="구성요소 ‘女’ 추가" aria-label="구성요소 ‘女’ 추가">女</button>
+                <button type="button" data-han-component="子" title="구성요소 ‘子’ 추가" aria-label="구성요소 ‘子’ 추가">子</button>
+                <button type="button" data-han-component="宀" title="구성요소 ‘宀’ 추가" aria-label="구성요소 ‘宀’ 추가">宀</button>
+                <button type="button" data-han-component="心" title="구성요소 ‘心’ 추가" aria-label="구성요소 ‘心’ 추가">心</button>
+                <button type="button" data-han-component="忄" title="구성요소 ‘忄’ 추가" aria-label="구성요소 ‘忄’ 추가">忄</button>
+                <button type="button" data-han-component="木" title="구성요소 ‘木’ 추가" aria-label="구성요소 ‘木’ 추가">木</button>
+                <button type="button" data-han-component="火" title="구성요소 ‘火’ 추가" aria-label="구성요소 ‘火’ 추가">火</button>
+                <button type="button" data-han-component="灬" title="구성요소 ‘灬’ 추가" aria-label="구성요소 ‘灬’ 추가">灬</button>
+                <button type="button" data-han-component="日" title="구성요소 ‘日’ 추가" aria-label="구성요소 ‘日’ 추가">日</button>
+                <button type="button" data-han-component="月" title="구성요소 ‘月’ 추가" aria-label="구성요소 ‘月’ 추가">月</button>
+                <button type="button" data-han-component="言" title="구성요소 ‘言’ 추가" aria-label="구성요소 ‘言’ 추가">言</button>
+                <button type="button" data-han-component="糸" title="구성요소 ‘糸’ 추가" aria-label="구성요소 ‘糸’ 추가">糸</button>
+                <button type="button" data-han-component="艹" title="구성요소 ‘艹’ 추가" aria-label="구성요소 ‘艹’ 추가">艹</button>
+                <button type="button" data-han-component="辶" title="구성요소 ‘辶’ 추가" aria-label="구성요소 ‘辶’ 추가">辶</button>
+                <button type="button" data-han-component="阝" title="구성요소 ‘阝’ 추가" aria-label="구성요소 ‘阝’ 추가">阝</button>
+                <button type="button" data-han-component="金" title="구성요소 ‘金’ 추가" aria-label="구성요소 ‘金’ 추가">金</button>
+                <button type="button" data-han-component="貝" title="구성요소 ‘貝’ 추가" aria-label="구성요소 ‘貝’ 추가">貝</button>
+                <button type="button" data-han-component="車" title="구성요소 ‘車’ 추가" aria-label="구성요소 ‘車’ 추가">車</button>
+              </div></fieldset>
+              <div class="han-component-filters">
+                <label><span>총획수</span><select id="hanComponentStrokes"><option value="">전체</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31+">31+</option></select></label>
+                <label><span>결과 정렬</span><select id="hanComponentSort"><option value="common">자주 쓰는 한자 우선</option><option value="strokes">획수 적은 순</option></select></label>
+              </div>
+            </form>
+            <section class="han-component-results-panel" aria-labelledby="hanComponentResultsTitle">
+              <div class="han-component-results-head"><div><p class="section-kicker">MATCHING CHARACTERS</p><h3 id="hanComponentResultsTitle">후보 한자</h3></div><p id="hanComponentSummary">구성요소를 입력하거나 자주 쓰는 부수를 선택해 한자를 찾아보세요.</p></div>
+              <div class="han-component-results" id="hanComponentResults" aria-label="후보 한자"></div>
+              <p class="han-component-empty" id="hanComponentEmpty">구성요소를 입력하거나 자주 쓰는 부수를 선택해 한자를 찾아보세요.</p>
+              <button class="han-component-more" id="hanComponentMore" type="button" hidden>더 보기</button>
+            </section>
+          </div>
+        </section>
+        <p class="han-lookup-source-note">구조 데이터는 Make Me a Hanzi, 읽기와 이체자 정보는 Unicode Unihan을 참고합니다. 글자 분해는 지역별 자형과 자료에 따라 달라질 수 있으며 유일한 자원 해석을 뜻하지 않습니다. <a href="https://github.com/skishore/makemeahanzi">글자 데이터 설명</a> · <a href="https://www.unicode.org/reports/tr38/">Unihan 설명</a></p>
       </section>
 
       <section class="seo-band standalone-info" aria-labelledby="hanLookupFeatureTitle">
-        <div class="section-heading"><p class="section-kicker">한자 구성요소 검색</p><h2 id="hanLookupFeatureTitle">한자 안의 부수와 구성요소를 한눈에 확인</h2><p class="seo-intro">IDS 기호를 그대로 보여 주지 않고 좌우, 상하, 둘러싸기처럼 익숙한 구조 이름으로 바꿔 표시합니다. 글자 모양은 알지만 어떤 부분으로 이루어졌는지 알고 싶을 때 유용합니다.</p></div>
+        <div class="section-heading"><p class="section-kicker">한자 구성요소 검색</p><h2 id="hanLookupFeatureTitle">한자를 분해하고 구성요소로 모르는 한자 찾기</h2><p class="seo-intro">IDS 기호를 좌우, 상하, 둘러싸기처럼 익숙한 구조 이름으로 바꿔 표시합니다. 음을 모르거나 입력하기 어려운 한자는 눈에 보이는 한자 부수와 구성요소를 한 개부터 네 개까지 조합해 찾을 수 있습니다.</p></div>
         <div class="seo-grid">
           <article><h3>부수와 구성요소를 구분</h3><p>사전 분류에 사용하는 부수뿐 아니라 현대 한자 모양을 이루는 다른 부분과 중첩된 관계도 함께 보여 줍니다.</p></article>
-          <article><h3>구성요소와 획 동시 강조</h3><p>구조 트리에서 구성요소를 고르면 왼쪽 글자에서 관련 획만 강조됩니다. 독립 한자인 부품은 이어서 검색할 수 있습니다.</p></article>
+          <article><h3>여러 구성요소로 한자 찾기</h3><p>氵와 青으로 清을 찾고 木을 세 번 입력해 森을 찾을 수 있습니다. 총획수 조건으로 후보를 더 줄일 수도 있습니다.</p></article>
           <article><h3>필순과 쓰기 학습으로 연결</h3><p>검색한 글자를 다시 입력하지 않고 필순, 중국어 병음, 손글씨 검색, 전자격자 쓰기 연습장으로 이동합니다.</p></article>
         </div>
-        <section class="word-howto" aria-labelledby="hanLookupHowTitle"><h2 id="hanLookupHowTitle">한자 구조를 검색하는 방법</h2><ol>
-            <li>한자를 입력합니다. 단어나 문장을 붙여 넣었다면 생성된 한자 탭에서 한 글자를 고릅니다.</li>
-            <li>색상으로 구분된 글자와 구조 트리를 보고 원하는 구성요소를 선택합니다.</li>
-            <li>선택한 부품을 다시 검색하거나 필순, 병음, 쓰기 연습 도구로 이동합니다.</li>
+        <section class="word-howto" aria-labelledby="hanLookupHowTitle"><h2 id="hanLookupHowTitle">한자 구조와 구성요소 검색 방법</h2><ol>
+            <li>한자를 입력할 수 있으면 한 글자를 검색해 부수와 구조 트리를 확인합니다.</li>
+            <li>음을 모르면 구성요소 검색으로 전환해 눈에 보이는 부분을 한 개부터 네 개까지 입력합니다.</li>
+            <li>필요하면 총획수로 걸러 내고 자주 쓰는 순서 또는 획수순으로 정렬합니다.</li>
+            <li>후보를 선택해 읽기, 필순, 병음과 쓰기 연습 도구를 이용합니다.</li>
           </ol></section>
         <section class="pinyin-faq" aria-labelledby="hanLookupFaqTitle"><h2 id="hanLookupFaqTitle">한자 부수·구성요소 검색 질문</h2>
           <details><summary>부수와 구성요소는 같은가요?</summary><p>아닙니다. 부수는 주로 사전의 분류와 검색에 쓰는 대표 요소입니다. 구성요소는 글자 모양을 이루는 부분이므로 한 한자에 여러 개가 포함될 수 있습니다.</p></details>
           <details><summary>자료마다 분해 결과가 다른 이유는 무엇인가요?</summary><p>분해 단계가 다를 수 있고 중국 간체자, 번체자, 대만과 일본 자형에도 차이가 있습니다. 따라서 한 글자에 여러 가지 타당한 분석이 존재할 수 있습니다.</p></details>
           <details><summary>구조 트리가 실제 한자 어원을 뜻하나요?</summary><p>반드시 그렇지는 않습니다. 이 도구는 주로 현대 자형의 시각적 구성을 설명합니다. 구성 방식은 학습 참고 정보로 이용하세요.</p></details>
           <details><summary>여러 글자를 한 번에 입력할 수 있나요?</summary><p>가능합니다. 최대 12개의 한자를 추출해 탭으로 표시하며, 탭을 누르면 한 글자씩 구조를 확인할 수 있습니다.</p></details>
+          <details><summary>한자 음을 몰라도 구성요소로 찾을 수 있나요?</summary><p>네. 눈에 보이는 구성요소를 한 개부터 네 개까지 입력하면 모두 포함한 한자를 찾습니다. 같은 구성요소를 여러 번 입력하는 방식도 지원합니다.</p></details>
         </section>
         <p class="section-kicker pinyin-related-kicker">관련 한자 도구</p>
         <nav class="landing-links" aria-label="관련 한자 및 텍스트 도구">
@@ -241,6 +311,6 @@
       </section>
     </main>
     <footer class="site-footer"><p>JianFan.app는 브라우저에서 사용하는 한자 구조, 필기 인식, 중국어 병음, 필순 및 텍스트 변환 도구를 제공합니다.</p><nav class="footer-links" aria-label="바닥글"><a href="/ko/about/">소개</a><a href="/ko/contact/">문의</a><a href="/ko/privacy/">개인정보 보호 안내</a></nav></footer>
-    <script id="hanLookupLabels" type="application/json">{"structures":{"leftRight":"좌우 구조","topBottom":"상하 구조","leftMiddleRight":"좌중우 구조","topMiddleBottom":"상중하 구조","fullEnclosure":"완전 둘러싸기","topEnclosure":"위에서 둘러싸기","bottomEnclosure":"아래에서 둘러싸기","leftEnclosure":"왼쪽에서 둘러싸기","upperLeftEnclosure":"왼쪽 위에서 둘러싸기","upperRightEnclosure":"오른쪽 위에서 둘러싸기","lowerLeftEnclosure":"왼쪽 아래에서 둘러싸기","rightEnclosure":"오른쪽에서 둘러싸기","lowerRightEnclosure":"오른쪽 아래에서 둘러싸기","overlaid":"겹침 구조","horizontalReflection":"좌우 반전 구조","rotation":"회전 구조","single":"독체 또는 기타 구조"},"formations":{"ideographic":"회의자","pictographic":"상형자","pictophonetic":"형성자","unknown":"기타 구성 방식"},"onReading":"음독","kunReading":"훈독","wholeCharacter":"한자 전체","component":"구성요소"}</script>
+    <script id="hanLookupLabels" type="application/json">{"structures":{"leftRight":"좌우 구조","topBottom":"상하 구조","leftMiddleRight":"좌중우 구조","topMiddleBottom":"상중하 구조","fullEnclosure":"완전 둘러싸기","topEnclosure":"위에서 둘러싸기","bottomEnclosure":"아래에서 둘러싸기","leftEnclosure":"왼쪽에서 둘러싸기","upperLeftEnclosure":"왼쪽 위에서 둘러싸기","upperRightEnclosure":"오른쪽 위에서 둘러싸기","lowerLeftEnclosure":"왼쪽 아래에서 둘러싸기","rightEnclosure":"오른쪽에서 둘러싸기","lowerRightEnclosure":"오른쪽 아래에서 둘러싸기","overlaid":"겹침 구조","horizontalReflection":"좌우 반전 구조","rotation":"회전 구조","single":"독체 또는 기타 구조"},"formations":{"ideographic":"회의자","pictographic":"상형자","pictophonetic":"형성자","unknown":"기타 구성 방식"},"onReading":"음독","kunReading":"훈독","wholeCharacter":"한자 전체","component":"구성요소","componentSearch":{"modeAria":"한자 검색 방법","characterMode":"한자 조회","componentMode":"구성요소로 찾기","title":"구성요소로 한자 찾기","intro":"읽기 모르는 한자를 눈에 보이는 구성요소 한 개부터 네 개로 찾으세요. 같은 부분이 반복되면 여러 번 입력할 수 있습니다.","inputLabel":"한자 구성요소","placeholder":"예: 氵 青 또는 木木木","submit":"한자 찾기","selectedLabel":"선택한 구성요소","selectedEmpty":"선택한 구성요소 없음","clear":"지우기","commonLabel":"자주 쓰는 부수·구성요소","strokeLabel":"총획수","strokeAll":"전체","sortLabel":"결과 정렬","sortCommon":"자주 쓰는 한자 우선","sortStrokes":"획수 적은 순","resultsTitle":"후보 한자","initialHint":"구성요소를 입력하거나 자주 쓰는 부수를 선택해 한자를 찾아보세요.","loadMore":"더 보기","loading":"구성요소를 검색하는 중","invalid":"한자 구성요소를 한 개부터 네 개까지 입력하세요","failed":"구성요소 검색 데이터를 불러오지 못했습니다. 잠시 후 다시 시도하세요","noResults":"모든 구성요소를 포함한 한자가 없습니다. 구성요소를 줄이거나 총획수 조건을 해제하세요.","resultSummary":"‘{components}’를 포함한 한자 {count}개","removeComponent":"구성요소 ‘{character}’ 삭제","addComponent":"구성요소 ‘{character}’ 추가","resultLabel":"한자 ‘{character}’ 보기, {strokes}획, 중국어 병음 {reading}","resultStroke":"{count}획","findContaining":"‘{character}’를 포함한 한자 찾기"}}</script>
   </body>
 </html>

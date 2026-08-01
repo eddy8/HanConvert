@@ -1,5 +1,4 @@
 const WORD_BANKS_URL = "words/word-banks.json";
-const WORD_BANKS_ASSET_VERSION = "20260609-1";
 
 const GRADE_LABELS = {
   p1: "小学一年级",
@@ -808,7 +807,7 @@ async function loadWordBanks() {
   state.wordBankLabels = { ...GRADE_LABELS };
 
   try {
-    const response = await fetch(`${WORD_BANKS_URL}?v=${WORD_BANKS_ASSET_VERSION}`);
+    const response = await fetch(WORD_BANKS_URL);
     if (!response.ok) throw new Error(`词库加载失败：${response.status}`);
 
     const payload = await response.json();

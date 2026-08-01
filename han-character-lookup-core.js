@@ -24,6 +24,73 @@
     return [...new Set([...String(value).matchAll(/\p{Script=Han}/gu)].map((match) => match[0]))].slice(0, limit);
   }
 
+  function extractHanComponents(value, limit = 4) {
+    return [...String(value).matchAll(/\p{Script=Han}/gu)].map((match) => match[0]).slice(0, limit);
+  }
+
+  function findCharactersByComponents(index, components, options = {}) {
+    const requested = Array.isArray(components) ? components.slice(0, 4) : extractHanComponents(components);
+    if (!requested.length || !index?.components || !index?.meta) return [];
+
+    const requiredCounts = new Map();
+    for (const component of requested) requiredCounts.set(component, (requiredCounts.get(component) || 0) + 1);
+
+    const candidateLists = [...requiredCounts].map(([component, count]) => ({
+      component,
+      count,
+      characters: Array.from(index.components[component] || "")
+    }));
+    if (candidateLists.some((item) => !item.characters.length)) return [];
+    candidateLists.sort((left, right) => left.characters.length - right.characters.length);
+
+    const otherSets = candidateLists.slice(1).map((item) => ({ ...item, characters: new Set(item.characters) }));
+    const strokeFilter = String(options.strokes || "");
+    const minimumStrokes = strokeFilter.endsWith("+") ? Number.parseInt(strokeFilter, 10) : 0;
+    const exactStrokes = minimumStrokes ? 0 : Number.parseInt(strokeFilter, 10) || 0;
+
+    return candidateLists[0].characters
+      .filter((character) => otherSets.every((item) => item.characters.has(character)))
+      .filter((character) => candidateLists.every((item) => {
+        if (item.count === 1) return true;
+        return (index.repeated?.[item.component]?.[character] || 1) >= item.count;
+      }))
+      .filter((character) => {
+        const strokes = index.meta[character]?.[0] || 0;
+        if (minimumStrokes) return strokes >= minimumStrokes;
+        return !exactStrokes || strokes === exactStrokes;
+      })
+      .sort((left, right) => compareComponentResults(index.meta, left, right, options.locale, options.sort));
+  }
+
+  function compareComponentResults(meta, left, right, locale = "zh-CN", sort = "common") {
+    const leftMeta = meta[left] || [];
+    const rightMeta = meta[right] || [];
+    const leftStrokes = leftMeta[0] || 99;
+    const rightStrokes = rightMeta[0] || 99;
+    const commonComparison = compareCommonRank(leftMeta, rightMeta, locale);
+    if (sort === "strokes" && leftStrokes !== rightStrokes) return leftStrokes - rightStrokes;
+    if (commonComparison) return commonComparison;
+    if (leftStrokes !== rightStrokes) return leftStrokes - rightStrokes;
+    return left.codePointAt(0) - right.codePointAt(0);
+  }
+
+  function compareCommonRank(leftMeta, rightMeta, locale) {
+    const leftPriority = localePriority(leftMeta[3] || 0, locale);
+    const rightPriority = localePriority(rightMeta[3] || 0, locale);
+    if (leftPriority !== rightPriority) return rightPriority - leftPriority;
+    if ((leftMeta[1] || 0) !== (rightMeta[1] || 0)) return (rightMeta[1] || 0) - (leftMeta[1] || 0);
+    const leftGrade = leftMeta[2] || 99;
+    const rightGrade = rightMeta[2] || 99;
+    return leftGrade - rightGrade;
+  }
+
+  function localePriority(flags, locale) {
+    if (locale === "ja") return flags & 2 ? 3 : flags & 4 ? 2 : 0;
+    if (locale === "ko") return flags & 8 ? 3 : flags & 16 ? 2 : 0;
+    if (locale === "zh-CN" || locale === "en") return flags & 1 ? 2 : 0;
+    return 0;
+  }
+
   function parseIds(value) {
     const characters = Array.from(String(value || ""));
     let cursor = 0;
@@ -85,8 +152,10 @@
 
   return {
     decodeMatches,
+    extractHanComponents,
     extractHanCharacters,
     findNode,
+    findCharactersByComponents,
     formatCodePoint,
     operatorArity,
     parseIds,

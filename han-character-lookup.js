@@ -8,13 +8,19 @@
 
   const core = globalThis.HanCharacterLookupCore;
   const labels = JSON.parse(document.querySelector("#hanLookupLabels").textContent);
+  const componentLabels = labels.componentSearch;
   const localePrefixes = { "zh-CN": "", "zh-TW": "zh-tw/", en: "en/", ja: "ja/", ko: "ko/" };
   const dataCache = new Map();
   const strokeCache = new Map();
   const componentColors = ["#40f2b0", "#ffcc66", "#ff7d8b"];
+  const componentPageSize = 72;
   const svgNamespace = "http://www.w3.org/2000/svg";
   const elements = {
+    tool: document.querySelector(".han-lookup-tool"),
     locale: document.querySelector("#localeSelect"),
+    modeButtons: document.querySelectorAll("[data-han-lookup-mode]"),
+    characterPanel: document.querySelector("#hanCharacterLookupPanel"),
+    componentPanel: document.querySelector("#hanComponentLookupPanel"),
     form: document.querySelector("#hanLookupForm"),
     input: document.querySelector("#hanLookupInput"),
     submit: document.querySelector("#hanLookupSubmit"),
@@ -26,6 +32,7 @@
     structureEmpty: document.querySelector("#hanLookupStructureEmpty"),
     selectedText: document.querySelector("#hanLookupSelectedText"),
     selectedQuery: document.querySelector("#hanLookupSelectedQuery"),
+    selectedFind: document.querySelector("#hanLookupSelectedFind"),
     currentCharacter: document.querySelector("#hanLookupCurrentCharacter"),
     pinyin: document.querySelector("#hanLookupPinyin"),
     radical: document.querySelector("#hanLookupRadical"),
@@ -48,15 +55,37 @@
     copy: document.querySelector("#hanLookupCopy"),
     strokeLink: document.querySelector("#hanLookupStrokeLink"),
     pinyinLink: document.querySelector("#hanLookupPinyinLink"),
-    worksheetLink: document.querySelector("#hanLookupWorksheetLink")
+    worksheetLink: document.querySelector("#hanLookupWorksheetLink"),
+    componentForm: document.querySelector("#hanComponentForm"),
+    componentInput: document.querySelector("#hanComponentInput"),
+    componentSubmit: document.querySelector("#hanComponentSubmit"),
+    componentClear: document.querySelector("#hanComponentClear"),
+    componentSelected: document.querySelector("#hanComponentSelected"),
+    componentStrokes: document.querySelector("#hanComponentStrokes"),
+    componentSort: document.querySelector("#hanComponentSort"),
+    componentSummary: document.querySelector("#hanComponentSummary"),
+    componentResults: document.querySelector("#hanComponentResults"),
+    componentEmpty: document.querySelector("#hanComponentEmpty"),
+    componentMore: document.querySelector("#hanComponentMore")
   };
 
+  let activeMode = "character";
   let characters = [];
   let currentCharacter = "";
   let currentRecord = null;
   let currentTree = null;
   let currentMatches = [];
   let selectedPath = [];
+  let componentIndexPromise = null;
+  let componentIndex = null;
+  let selectedComponents = [];
+  let componentResults = [];
+  let componentVisibleCount = componentPageSize;
+  let componentSearchToken = 0;
+  const statusByMode = {
+    character: { text: message("loading"), type: "idle" },
+    component: { text: componentLabels.initialHint, type: "idle" }
+  };
 
   setupEvents();
   initialize();
@@ -67,6 +96,17 @@
   }
 
   function setupEvents() {
+    elements.modeButtons.forEach((button) => {
+      button.addEventListener("click", () => setMode(button.dataset.hanLookupMode));
+      button.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+        event.preventDefault();
+        const nextMode = button.dataset.hanLookupMode === "character" ? "component" : "character";
+        setMode(nextMode);
+        [...elements.modeButtons].find((item) => item.dataset.hanLookupMode === nextMode)?.focus();
+      });
+    });
+
     elements.form.addEventListener("submit", (event) => {
       event.preventDefault();
       const nextCharacters = core.extractHanCharacters(elements.input.value);
@@ -89,7 +129,7 @@
       const locale = elements.locale.value;
       localStorage.setItem("jianfan-locale", locale);
       localStorage.setItem("jianfan-locale-manual", "1");
-      const query = currentCharacter ? `?character=${encodeURIComponent(currentCharacter)}` : "";
+      const query = activeMode === "component" ? buildComponentQuery() : currentCharacter ? `?character=${encodeURIComponent(currentCharacter)}` : "";
       window.location.assign(`/${localePrefixes[locale]}chinese-character-lookup/${query}`);
     });
 
@@ -98,13 +138,251 @@
       const node = core.findNode(currentTree, selectedPath);
       if (node && isHan(node.value)) setCharacters([node.value]);
     });
+    elements.selectedFind.addEventListener("click", () => {
+      const node = core.findNode(currentTree, selectedPath);
+      if (node && isHan(node.value)) startComponentSearch([node.value]);
+    });
+
+    elements.componentForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const nextComponents = core.extractHanComponents(elements.componentInput.value);
+      if (!nextComponents.length) {
+        setComponentStatus("invalid", "error");
+        elements.componentInput.focus();
+        return;
+      }
+      startComponentSearch(nextComponents);
+    });
+
+    document.querySelectorAll("[data-han-component]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const inputComponents = core.extractHanComponents(elements.componentInput.value);
+        const current = inputComponents.length ? inputComponents : selectedComponents;
+        if (current.length >= 4) return;
+        startComponentSearch([...current, button.dataset.hanComponent]);
+      });
+    });
+
+    elements.componentClear.addEventListener("click", clearComponentSearch);
+    elements.componentStrokes.addEventListener("change", () => {
+      if (selectedComponents.length) searchByComponents();
+      else updateComponentHistory();
+    });
+    elements.componentSort.addEventListener("change", () => {
+      if (selectedComponents.length) searchByComponents();
+      else updateComponentHistory();
+    });
+    elements.componentMore.addEventListener("click", () => {
+      componentVisibleCount += componentPageSize;
+      renderComponentResults(componentIndex);
+    });
   }
 
   function initialize() {
-    const requested = new URLSearchParams(window.location.search).get("character");
+    const params = new URLSearchParams(window.location.search);
+    const requestedComponents = core.extractHanComponents(params.get("components") || "");
+    const requestedMode = params.get("mode");
+    const requestedStrokes = params.get("strokes") || "";
+    const requestedSort = params.get("sort") || "common";
+    if ([...elements.componentStrokes.options].some((option) => option.value === requestedStrokes)) elements.componentStrokes.value = requestedStrokes;
+    if ([...elements.componentSort.options].some((option) => option.value === requestedSort)) elements.componentSort.value = requestedSort;
+
+    if (requestedComponents.length || requestedMode === "components") {
+      characters = [body.dataset.initialCharacter || "明"];
+      currentCharacter = characters[0];
+      elements.input.value = currentCharacter;
+      renderCharacterTabs();
+      resetResult(currentCharacter);
+      setMode("component", { updateHistory: false });
+      if (requestedComponents.length) startComponentSearch(requestedComponents);
+      return;
+    }
+
+    const requested = params.get("character");
     const initial = core.extractHanCharacters(requested || body.dataset.initialCharacter || "明");
     elements.input.value = initial.join("");
     setCharacters(initial.length ? initial : ["明"]);
+  }
+
+  function setMode(mode, options = {}) {
+    const nextMode = mode === "component" ? "component" : "character";
+    activeMode = nextMode;
+    body.dataset.lookupMode = nextMode;
+    elements.modeButtons.forEach((button) => {
+      const selected = button.dataset.hanLookupMode === nextMode;
+      button.setAttribute("aria-selected", String(selected));
+      button.tabIndex = selected ? 0 : -1;
+    });
+    elements.characterPanel.hidden = nextMode !== "character";
+    elements.componentPanel.hidden = nextMode !== "component";
+    renderStatus(statusByMode[nextMode]);
+
+    if (options.updateHistory !== false) {
+      if (nextMode === "component") updateComponentHistory();
+      else if (currentCharacter) window.history.replaceState(null, "", `${window.location.pathname}?character=${encodeURIComponent(currentCharacter)}`);
+    }
+    if (nextMode === "character" && options.loadCharacter !== false && !currentRecord && currentCharacter) selectCharacter(currentCharacter);
+  }
+
+  function startComponentSearch(components) {
+    selectedComponents = components.slice(0, 4);
+    elements.componentInput.value = selectedComponents.join("");
+    renderSelectedComponents();
+    setMode("component", { updateHistory: false });
+    searchByComponents();
+  }
+
+  function clearComponentSearch() {
+    componentSearchToken += 1;
+    selectedComponents = [];
+    componentResults = [];
+    componentVisibleCount = componentPageSize;
+    elements.componentInput.value = "";
+    elements.componentResults.replaceChildren();
+    elements.componentSummary.textContent = componentLabels.initialHint;
+    elements.componentEmpty.textContent = componentLabels.initialHint;
+    elements.componentEmpty.hidden = false;
+    elements.componentMore.hidden = true;
+    elements.componentSubmit.disabled = false;
+    renderSelectedComponents();
+    setComponentStatusText(componentLabels.initialHint);
+    updateComponentHistory();
+  }
+
+  function renderSelectedComponents() {
+    elements.componentSelected.replaceChildren();
+    elements.componentClear.disabled = !selectedComponents.length;
+    if (!selectedComponents.length) {
+      const empty = document.createElement("span");
+      empty.textContent = componentLabels.selectedEmpty;
+      elements.componentSelected.append(empty);
+      return;
+    }
+
+    selectedComponents.forEach((character, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.setAttribute("aria-label", componentMessage("removeComponent", { character }));
+      const glyph = document.createElement("strong");
+      glyph.textContent = character;
+      const remove = document.createElement("span");
+      remove.textContent = "×";
+      remove.setAttribute("aria-hidden", "true");
+      button.append(glyph, remove);
+      button.addEventListener("click", () => {
+        const next = selectedComponents.filter((_, componentIndex) => componentIndex !== index);
+        if (next.length) startComponentSearch(next);
+        else clearComponentSearch();
+      });
+      elements.componentSelected.append(button);
+    });
+  }
+
+  async function loadComponentIndex() {
+    if (!componentIndexPromise) {
+      componentIndexPromise = fetch("/data/han-character-lookup/components.json").then((response) => {
+        if (!response.ok) throw new Error("Component index unavailable");
+        return response.json();
+      }).then((index) => {
+        if (index.version !== 1 || !index.components || !index.meta) throw new Error("Invalid component index");
+        componentIndex = index;
+        return index;
+      }).catch((error) => {
+        componentIndexPromise = null;
+        componentIndex = null;
+        throw error;
+      });
+    }
+    return componentIndexPromise;
+  }
+
+  async function searchByComponents() {
+    if (!selectedComponents.length) return;
+    const token = ++componentSearchToken;
+    setComponentStatus("loading");
+    elements.componentSubmit.disabled = true;
+    elements.componentSummary.textContent = componentLabels.loading;
+    try {
+      const index = await loadComponentIndex();
+      if (token !== componentSearchToken) return;
+      componentResults = core.findCharactersByComponents(index, selectedComponents, {
+        locale: body.dataset.locale,
+        sort: elements.componentSort.value,
+        strokes: elements.componentStrokes.value
+      });
+      componentVisibleCount = componentPageSize;
+      renderComponentResults(index);
+      if (componentResults.length) {
+        const values = { count: componentResults.length, components: selectedComponents.join(" + ") };
+        setComponentStatusText(componentMessage("resultSummary", values), "ready");
+      } else {
+        setComponentStatus("noResults");
+      }
+      updateComponentHistory();
+    } catch (error) {
+      if (token !== componentSearchToken) return;
+      console.error(error);
+      componentResults = [];
+      elements.componentResults.replaceChildren();
+      elements.componentSummary.textContent = componentLabels.failed;
+      elements.componentEmpty.textContent = componentLabels.failed;
+      elements.componentEmpty.hidden = false;
+      elements.componentMore.hidden = true;
+      setComponentStatus("failed", "error");
+    } finally {
+      if (token === componentSearchToken) elements.componentSubmit.disabled = false;
+    }
+  }
+
+  function renderComponentResults(index) {
+    elements.componentResults.replaceChildren();
+    const values = { count: componentResults.length, components: selectedComponents.join(" + ") };
+    elements.componentSummary.textContent = componentResults.length ? componentMessage("resultSummary", values) : componentLabels.noResults;
+    elements.componentEmpty.textContent = componentResults.length ? componentLabels.initialHint : componentLabels.noResults;
+    elements.componentEmpty.hidden = Boolean(componentResults.length);
+
+    componentResults.slice(0, componentVisibleCount).forEach((character) => {
+      const metadata = index.meta[character] || [];
+      const strokes = metadata[0] || "-";
+      const reading = metadata[4] || "-";
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "han-component-result";
+      const resultLabel = componentMessage("resultLabel", { character, strokes, reading });
+      button.setAttribute("aria-label", resultLabel);
+      button.title = resultLabel;
+      const glyph = document.createElement("strong");
+      glyph.textContent = character;
+      const pronunciation = document.createElement("span");
+      pronunciation.textContent = reading;
+      const strokeCount = document.createElement("small");
+      strokeCount.textContent = componentMessage("resultStroke", { count: strokes });
+      button.append(glyph, pronunciation, strokeCount);
+      button.addEventListener("click", () => {
+        setMode("character", { updateHistory: false, loadCharacter: false });
+        setCharacters([character]);
+        elements.tool.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      elements.componentResults.append(button);
+    });
+    elements.componentMore.hidden = componentVisibleCount >= componentResults.length;
+  }
+
+  function buildComponentQuery() {
+    const params = new URLSearchParams();
+    if (selectedComponents.length) params.set("components", selectedComponents.join(""));
+    else params.set("mode", "components");
+    if (elements.componentStrokes.value) params.set("strokes", elements.componentStrokes.value);
+    if (elements.componentSort.value !== "common") params.set("sort", elements.componentSort.value);
+    return `?${params.toString()}`;
+  }
+
+  function updateComponentHistory() {
+    if (activeMode === "component") window.history.replaceState(null, "", `${window.location.pathname}${buildComponentQuery()}`);
+  }
+
+  function componentMessage(key, values = {}) {
+    return (componentLabels[key] || key).replace(/\{(\w+)\}/g, (_, name) => values[name] ?? "");
   }
 
   function setCharacters(nextCharacters) {
@@ -201,6 +479,8 @@
     elements.glyphFallback.hidden = false;
     elements.structureTree.replaceChildren();
     elements.structureEmpty.hidden = true;
+    elements.selectedQuery.hidden = true;
+    elements.selectedFind.hidden = true;
     for (const target of [elements.pinyin, elements.radical, elements.strokes, elements.structure]) target.textContent = "-";
     elements.unicode.textContent = core.formatCodePoint(character);
     for (const row of [elements.definitionRow, elements.cantoneseRow, elements.japaneseRow, elements.koreanRow, elements.variantsRow]) row.hidden = true;
@@ -268,6 +548,7 @@
       elements.structureEmpty.textContent = message("structureUnavailable", { character: currentCharacter });
       elements.selectedText.textContent = message("allStrokes", { character: currentCharacter });
       elements.selectedQuery.hidden = true;
+      elements.selectedFind.hidden = true;
       return;
     }
 
@@ -331,7 +612,9 @@
       ? message("selectedComponent", { character: label })
       : message("allStrokes", { character: currentCharacter });
     elements.selectedQuery.hidden = !path.length || !isHan(label);
+    elements.selectedFind.hidden = !path.length || !isHan(label);
     if (!elements.selectedQuery.hidden) elements.selectedQuery.textContent = message("queryComponent", { character: label });
+    if (!elements.selectedFind.hidden) elements.selectedFind.textContent = componentMessage("findContaining", { character: label });
     elements.structureTree.querySelectorAll("[data-path]").forEach((item) => {
       item.classList.toggle("is-active", item.dataset.path === path.join("."));
     });
@@ -381,6 +664,7 @@
     elements.structureEmpty.textContent = message("missingDetail", { character });
     elements.selectedText.textContent = message("allStrokes", { character });
     elements.selectedQuery.hidden = true;
+    elements.selectedFind.hidden = true;
   }
 
   function updateActionLinks(character) {
@@ -391,9 +675,25 @@
   }
 
   function setStatus(key, type = "idle", values = {}) {
-    elements.status.classList.toggle("is-ready", type === "ready");
-    elements.status.classList.toggle("is-error", type === "error");
-    elements.status.lastElementChild.textContent = message(key, values);
+    const state = { text: message(key, values), type };
+    statusByMode.character = state;
+    if (activeMode === "character") renderStatus(state);
+  }
+
+  function setComponentStatus(key, type = "idle", values = {}) {
+    setComponentStatusText(componentMessage(key, values), type);
+  }
+
+  function setComponentStatusText(text, type = "idle") {
+    const state = { text, type };
+    statusByMode.component = state;
+    if (activeMode === "component") renderStatus(state);
+  }
+
+  function renderStatus(state) {
+    elements.status.classList.toggle("is-ready", state.type === "ready");
+    elements.status.classList.toggle("is-error", state.type === "error");
+    elements.status.lastElementChild.textContent = state.text;
   }
 
   async function copyCurrentCharacter() {

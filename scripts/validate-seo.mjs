@@ -136,6 +136,9 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     for (const keyword of ["简体转繁体 APP", "繁体转简体 APP"]) {
       if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
     }
+    if (!html.includes('href="/word-spelling/"')) {
+      throw new Error(`${relativePath}: missing word spelling tool link`);
+    }
   }
   if (!isConverterPage && !isStandaloneToolPage && !isInfoPage) continue;
   const expectedDescription = SEO_DESCRIPTIONS[slug]?.[locale];
@@ -413,34 +416,34 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     }
   }
   if (isHanLookupPage) {
-    for (const asset of ['src="/han-character-lookup-core.js"', 'src="/han-character-lookup.js"', 'id="hanLookupGlyph"', 'id="hanLookupStructureTree"']) {
+    for (const asset of ['src="/han-character-lookup-core.js"', 'src="/han-character-lookup.js"', 'id="hanLookupGlyph"', 'id="hanLookupStructureTree"', 'id="hanComponentLookupPanel"', 'id="hanComponentInput"', 'id="hanComponentResults"']) {
       if (!html.includes(asset)) throw new Error(`${relativePath}: missing Han-character lookup asset ${asset}`);
     }
   }
   if (relativePath === path.join("chinese-character-lookup", "index.html")) {
-    for (const keyword of ["汉字查询", "汉字结构查询", "汉字拆解", "汉字部首查询", "汉字偏旁部首"]) {
+    for (const keyword of ["汉字查询", "汉字结构查询", "汉字拆解", "汉字部首查询", "汉字偏旁部首", "部件查字", "按部件查字"]) {
       if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
     }
   }
   if (relativePath === path.join("en", "chinese-character-lookup", "index.html")) {
-    for (const keyword of ["Chinese Character Lookup", "Chinese character decomposition", "Chinese Radical Lookup", "components"]) {
+    for (const keyword of ["Chinese Character Lookup", "Chinese character decomposition", "Chinese Radical Lookup", "Chinese Character Component Search", "find a Chinese character by components"]) {
       if (!html.toLowerCase().includes(keyword.toLowerCase())) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
     }
   }
   if (relativePath === path.join("ja", "chinese-character-lookup", "index.html")) {
-    for (const keyword of ["漢字の構成", "漢字構成検索", "漢字部首検索", "構成部品"]) {
+    for (const keyword of ["漢字の構成", "漢字構成検索", "漢字部首検索", "構成部品", "構成検索", "パーツ検索", "部品から"]) {
       if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
     }
   }
   if (relativePath === path.join("ko", "chinese-character-lookup", "index.html")) {
-    for (const keyword of ["한자 부수", "한자 구성요소 검색", "한자 구조 분해"]) {
+    for (const keyword of ["한자 부수", "한자 구성요소 검색", "한자 구조 분해", "구성요소로 한자 찾기", "부수·획수 검색"]) {
       if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
     }
   }
 }
 
 const hanLookupManifest = JSON.parse(await readFile(path.join(projectRoot, "data", "han-character-lookup", "manifest.json"), "utf8"));
-if (hanLookupManifest.records !== 9574 || hanLookupManifest.sources?.makeMeAHanzi?.commit !== "bddc96d41bef78427ed0e034e9f7e31d71fd1b92" || hanLookupManifest.sources?.unihan?.version !== "17.0.0") {
+if (hanLookupManifest.records !== 9574 || hanLookupManifest.components !== 9574 || hanLookupManifest.sources?.makeMeAHanzi?.commit !== "bddc96d41bef78427ed0e034e9f7e31d71fd1b92" || hanLookupManifest.sources?.unihan?.version !== "17.0.0") {
   throw new Error("Han-character lookup data manifest is missing records or pinned source versions");
 }
 
@@ -490,6 +493,6 @@ if (!notFound.includes('name="robots" content="noindex, follow"')) {
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
 if (standaloneToolPages !== 50) throw new Error(`expected 50 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
-if (sitemapUrls.length !== 100) throw new Error(`expected 100 sitemap URLs, found ${sitemapUrls.length}`);
+if (sitemapUrls.length !== 101) throw new Error(`expected 101 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, and ${sitemapUrls.length} sitemap URLs.`);
