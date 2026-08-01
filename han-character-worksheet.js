@@ -195,6 +195,7 @@
   const core = globalThis.HanCharacterWorksheetCore;
   const body = document.body;
   if (body.dataset.toolPage !== "han-character-worksheet") return;
+  const useJapaneseStandard = body.dataset.characterStandard === "japanese";
 
   const elements = {
     localeSelect: document.querySelector("#localeSelect"),
@@ -223,6 +224,7 @@
   };
   const localePrefixes = { "zh-CN": "", "zh-TW": "zh-tw/", en: "en/", ja: "ja/", ko: "ko/" };
   const strokeDataCache = new Map();
+  let japaneseRecordMapPromise;
   let renderToken = 0;
   let renderTimer = 0;
 
@@ -270,6 +272,7 @@
   }
 
   function getPinyin(character) {
+    if (useJapaneseStandard) return "";
     try {
       const value = globalThis.pinyinPro?.pinyin(character, {
         toneType: "symbol",
@@ -372,8 +375,21 @@
 
   async function getStrokeData(character) {
     if (!strokeDataCache.has(character)) {
-      const promise =
-        typeof globalThis.HanziWriter?.loadCharacterData === "function"
+      const promise = useJapaneseStandard
+        ? fetch(globalThis.JapaneseStrokeCore.dataUrlForKanji(character), {
+            mode: "cors",
+            cache: "force-cache"
+          })
+            .then((response) => {
+              if (!response.ok) throw new Error(`KanjiVG data unavailable for ${character}`);
+              return response.text();
+            })
+            .then((source) => ({
+              standard: "japanese",
+              ...globalThis.JapaneseStrokeCore.parseKanjiVgSource(source)
+            }))
+            .catch(() => null)
+        : typeof globalThis.HanziWriter?.loadCharacterData === "function"
           ? globalThis.HanziWriter.loadCharacterData(character).catch(() => null)
           : Promise.resolve(null);
       strokeDataCache.set(character, promise);
@@ -381,19 +397,30 @@
     return strokeDataCache.get(character);
   }
 
-  function createStrokeDiagram(strokes, stepIndex) {
+  function createStrokeDiagram(data, stepIndex) {
     const item = document.createElement("span");
     item.className = "worksheet-stroke-step";
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("viewBox", "0 0 48 48");
+    svg.setAttribute("viewBox", data.standard === "japanese" ? "0 0 109 109" : "0 0 48 48");
     svg.setAttribute("aria-hidden", "true");
     const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    const transform = globalThis.HanziWriter.getScalingTransform(48, 48, 3);
-    group.setAttribute("transform", transform.transform);
+    if (data.standard !== "japanese") {
+      const transform = globalThis.HanziWriter.getScalingTransform(48, 48, 3);
+      group.setAttribute("transform", transform.transform);
+    }
     for (let index = 0; index <= stepIndex; index += 1) {
       const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      path.setAttribute("d", strokes[index]);
-      path.setAttribute("fill", index === stepIndex ? "#111827" : "#9ca3af");
+      const stroke = data.strokes[index];
+      path.setAttribute("d", data.standard === "japanese" ? stroke.d : stroke);
+      if (data.standard === "japanese") {
+        path.setAttribute("fill", "none");
+        path.setAttribute("stroke", index === stepIndex ? "#111827" : "#9ca3af");
+        path.setAttribute("stroke-width", "3");
+        path.setAttribute("stroke-linecap", "round");
+        path.setAttribute("stroke-linejoin", "round");
+      } else {
+        path.setAttribute("fill", index === stepIndex ? "#111827" : "#9ca3af");
+      }
       group.append(path);
     }
     svg.append(group);
@@ -431,15 +458,43 @@
               ellipsis.textContent = "…";
               target.append(ellipsis);
             }
-            target.append(createStrokeDiagram(data.strokes, stepIndex));
+            target.append(createStrokeDiagram(data, stepIndex));
           });
         }
       })
     );
-    if (token === renderToken) {
-      setStatus(missing ? "readyWithoutStrokes" : "ready", "ready", {
-        count: characters.length
-      });
+    return missing;
+  }
+
+  function getJapaneseRecordMap() {
+    if (!japaneseRecordMapPromise) {
+      japaneseRecordMapPromise = globalThis.JapaneseKanjiData.load({
+        onProgress(progress) {
+          if (progress.percent) setStatus("loadingDictionary", "idle", { percent: progress.percent });
+        }
+      }).then(globalThis.JapaneseKanjiData.buildRecordMap);
+    }
+    return japaneseRecordMapPromise;
+  }
+
+  async function renderJapaneseReadings(characters, token) {
+    try {
+      const records = await getJapaneseRecordMap();
+      if (token !== renderToken) return characters.length;
+      let missing = 0;
+      for (const character of new Set(characters)) {
+        const readings = globalThis.JapaneseKanjiData.worksheetReadings(records.get(character));
+        if (!readings.length) missing += 1;
+        const targets = Array.from(elements.preview.querySelectorAll(".worksheet-character-block"))
+          .filter((target) => target.dataset.character === character);
+        targets.forEach((target) => {
+          target.querySelector(".worksheet-character-pinyin").textContent = readings.join(" / ");
+        });
+      }
+      return missing;
+    } catch (error) {
+      console.error(error);
+      return characters.length;
     }
   }
 
@@ -459,7 +514,7 @@
     const token = ++renderToken;
     updateControlReadouts();
     const settings = getSettings();
-    const contextualReadings = settings.showPinyin
+    const contextualReadings = settings.showPinyin && !useJapaneseStandard
       ? core.getContextualReadings(
           elements.input.value,
           globalThis.pinyinPro?.pinyin,
@@ -480,10 +535,23 @@
       fragment.append(createSheet(blocks, index, plan.pages.length, plan.settings));
     });
     elements.preview.replaceChildren(fragment);
-    setStatus(plan.settings.showStrokeOrder ? "loadingStrokes" : "ready", plan.settings.showStrokeOrder ? "idle" : "ready", {
+    const needsJapaneseReadings = useJapaneseStandard && plan.settings.showPinyin;
+    const isLoadingResources = plan.settings.showStrokeOrder || needsJapaneseReadings;
+    setStatus(isLoadingResources ? "loadingStrokes" : "ready", isLoadingResources ? "idle" : "ready", {
       count: plan.characters.length
     });
-    if (plan.settings.showStrokeOrder) renderStrokeOrders(plan.characters, token);
+    const tasks = [];
+    if (plan.settings.showStrokeOrder) tasks.push(renderStrokeOrders(plan.characters, token));
+    if (needsJapaneseReadings) tasks.push(renderJapaneseReadings(plan.characters, token));
+    if (tasks.length) {
+      Promise.all(tasks).then((missingCounts) => {
+        if (token !== renderToken) return;
+        const hasMissing = missingCounts.some((count) => count > 0);
+        setStatus(hasMissing ? "readyWithoutStrokes" : "ready", "ready", {
+          count: plan.characters.length
+        });
+      });
+    }
   }
 
   elements.form.addEventListener("input", () => scheduleRender());

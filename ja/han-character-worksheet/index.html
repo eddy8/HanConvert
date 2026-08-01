@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="description" content="漢字練習プリントを無料で作成。中国語の漢字や単語を入力すると、ピンイン、筆順見本、なぞり書き、空欄マス付きの練習用紙を生成します。田字格、米字格、方眼から選び、フォント、マスの大きさ、行数、薄い見本の数、表示順を調整可能。氏名、日付、タイトルも追加でき、A4またはLetter用紙へ直接印刷、PDF保存できます。" />
+    <meta name="description" content="漢字練習プリントを無料で作成。練習したい漢字を入力すると、日本の学校字形による筆順、音読み・訓読み、見本、なぞり書き、空欄マス付きの練習用紙を生成します。十字・対角線・方眼から選び、1行のマス数、練習行数、薄い見本の数を調整可能。氏名、日付、タイトルも追加でき、A4またはLetter用紙へ印刷、PDF保存できます。" />
     <title>漢字練習プリント作成 - なぞり書き・マス目を無料印刷 | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/ja/han-character-worksheet/" />
     <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/han-character-worksheet/" />
@@ -18,8 +18,8 @@
     <link rel="preconnect" href="https://cdn.jsdmirror.cn" crossorigin />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.css" />
-    <script defer src="https://cdn.jsdmirror.cn/npm/hanzi-writer/dist/hanzi-writer.min.js"></script>
-    <script defer src="/vendor/pinyin-pro.js"></script>
+    <script defer src="/japanese-kanji-data.js"></script>
+    <script defer src="/japanese-stroke-order.js"></script>
     <script defer src="/han-character-worksheet.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -31,7 +31,7 @@
             "@id": "https://jianfan.app/ja/han-character-worksheet/#webapp",
             "name": "漢字練習プリント作成",
             "url": "https://jianfan.app/ja/han-character-worksheet/",
-            "description": "漢字練習プリントを無料で作成。中国語の漢字や単語を入力すると、ピンイン、筆順見本、なぞり書き、空欄マス付きの練習用紙を生成します。田字格、米字格、方眼から選び、フォント、マスの大きさ、行数、薄い見本の数、表示順を調整可能。氏名、日付、タイトルも追加でき、A4またはLetter用紙へ直接印刷、PDF保存できます。",
+            "description": "漢字練習プリントを無料で作成。練習したい漢字を入力すると、日本の学校字形による筆順、音読み・訓読み、見本、なぞり書き、空欄マス付きの練習用紙を生成します。十字・対角線・方眼から選び、1行のマス数、練習行数、薄い見本の数を調整可能。氏名、日付、タイトルも追加でき、A4またはLetter用紙へ印刷、PDF保存できます。",
             "applicationCategory": "EducationalApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript and printing support",
@@ -111,10 +111,10 @@
               },
               {
                 "@type": "Question",
-                "name": "多音字のピンインはどう表示されますか？",
+                "name": "音読みと訓読みはどのように表示されますか？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "熟語や文では中国語の文脈に応じたピンインを表示します。漢字を1字だけ入力した場合は、辞書にある読みをすべて表示します。"
+                  "text": "各漢字についてKANJIDIC2に収録された標準的な音読み・訓読みをまとめて表示します。熟語固有の読みや人名の読みは必要に応じて確認してください。"
                 }
               },
               {
@@ -122,7 +122,7 @@
                 "name": "入力した内容は送信されますか？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "本文は送信されません。筆順を表示するときだけ、1文字ごとの公開字形データをリモートから取得します。"
+                  "text": "本文は送信されません。辞典索引と、筆順を表示する文字ごとの公開ベクターデータだけを取得します。"
                 }
               },
               {
@@ -130,7 +130,7 @@
                 "name": "筆順は日本の学校基準ですか？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "筆順見本は中国語字形データを使用します。日本語の正式な書き順学習では、学校の教科書や学習指導資料を確認してください。"
+                  "text": "はい。中国語向け筆順を流用せず、日本の学校字形を基準にしたKanjiVGデータを使用します。"
                 }
               }
             ]
@@ -140,7 +140,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body data-tool-page="han-character-worksheet" data-page-slug="han-character-worksheet" data-locale="ja" data-sample-text="漢字練習 学校生活 春夏秋冬" data-default-worksheet-title="漢字の書き取り練習" data-name-label="名前：" data-date-label="日付：" data-message-idle="漢字の入力待ち" data-message-loading-strokes="公開筆順データを読み込み中" data-message-ready="{count}字の練習プリントを作成しました" data-message-ready-without-strokes="プリントを作成しました。一部の字に筆順データがありません" data-message-invalid="漢字を1字以上入力してください" data-message-empty="漢字を入力すると、印刷用プリントがここに表示されます。" data-message-stroke-loading="筆順を読み込み中" data-message-stroke-missing="筆順データなし" data-message-stroke-count="{count}画" data-message-stroke-order-label="「{character}」の筆順見本">
+  <body data-tool-page="han-character-worksheet" data-page-slug="han-character-worksheet" data-locale="ja" data-character-standard="japanese" data-sample-text="漢字練習 学校生活 春夏秋冬" data-default-worksheet-title="漢字の書き取り練習" data-name-label="名前：" data-date-label="日付：" data-message-idle="漢字の入力待ち" data-message-loading-strokes="日本語の読み方と筆順データを読み込み中" data-message-loading-dictionary="日本語漢字辞典を読み込み中（{percent}%）" data-message-ready="{count}字の練習プリントを作成しました" data-message-ready-without-strokes="プリントを作成しました。一部の字に筆順データがありません" data-message-invalid="漢字を1字以上入力してください" data-message-empty="漢字を入力すると、印刷用プリントがここに表示されます。" data-message-stroke-loading="筆順を読み込み中" data-message-stroke-missing="筆順データなし" data-message-stroke-count="{count}画" data-message-stroke-order-label="「{character}」の筆順見本">
     <a class="skip-nav" href="#main">メインコンテンツへ移動</a>
     <header class="site-header" aria-label="サイトヘッダー">
       <a class="brand" href="/ja/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">字</span><span>JianFan.app</span></a>
@@ -186,12 +186,12 @@
               <label class="worksheet-range" for="worksheetTraceCells"><span>なぞり書きマス</span><output id="worksheetTraceCellsValue">3</output><input id="worksheetTraceCells" type="range" min="0" max="9" value="3" /></label>
               <label class="worksheet-range" for="worksheetTraceOpacity"><span>見本の濃さ</span><output id="worksheetTraceOpacityValue">20%</output><input id="worksheetTraceOpacity" type="range" min="8" max="50" value="20" /></label>
               <div class="worksheet-switches">
-                <label><input id="worksheetShowPinyin" type="checkbox" checked /><span>ピンインを表示</span></label>
+                <label><input id="worksheetShowPinyin" type="checkbox" checked /><span>音読み・訓読みを表示</span></label>
                 <label><input id="worksheetShowStrokeOrder" type="checkbox" checked /><span>筆順見本を表示</span></label>
                 <label><input id="worksheetDedupe" type="checkbox" checked /><span>同じ漢字をまとめる</span></label>
               </div>
             </fieldset>
-            <p class="worksheet-privacy">入力内容はこのブラウザー内だけで処理します。筆順見本を有効にした場合のみ、公開されている字形データを文字ごとに取得します。</p>
+            <p class="worksheet-privacy">入力内容はこのブラウザー内だけで処理します。読み方にはKANJIDIC2、筆順には日本の学校字形に基づくKanjiVGの公開データを使用します。</p>
           </form>
           <section class="worksheet-preview-panel" aria-labelledby="worksheetPreviewTitle">
             <div class="worksheet-preview-head"><div><span>LIVE PAPER</span><h3 id="worksheetPreviewTitle">印刷プレビュー</h3></div><button class="primary-action" id="worksheetPrint" type="button">印刷 / PDF 保存</button></div>
@@ -205,7 +205,7 @@
         <div class="seo-grid">
           <article><h3>なぞってから自分で書く</h3><p>濃い見本、薄いなぞり書き、空欄マスの順に配置し、字形を確認しながら反復練習できます。</p></article>
           <article><h3>マス目と練習量を調整</h3><p>十字・対角線・通常マスを選び、学年や用途に合わせて1行のマス数と練習行数を変更できます。</p></article>
-          <article><h3>文脈に応じたピンイン</h3><p>語句や文では文脈から多音字の中国語ピンインを判定し、漢字1字だけの場合は候補の読みをすべて表示します。筆順見本も任意で追加できます。</p></article>
+          <article><h3>音読み・訓読みと日本の筆順</h3><p>KANJIDIC2に収録された音読み・訓読みを表示し、KanjiVGの日本学校字形による筆順見本も追加できます。</p></article>
         </div>
         <section class="word-howto" aria-labelledby="worksheetHowTitle"><h2 id="worksheetHowTitle">漢字練習プリントの作り方</h2><ol>
             <li>練習したい漢字、熟語、短い文章を入力します。</li>
@@ -215,31 +215,25 @@
         <section class="pinyin-faq" aria-labelledby="worksheetFaqTitle"><h2 id="worksheetFaqTitle">漢字練習プリントのよくある質問</h2>
           <details><summary>PDFで保存できますか？</summary><p>はい。印刷ボタンを押し、ブラウザーの印刷画面で「PDFに保存」を選択してください。</p></details>
           <details><summary>小学生の漢字練習に使えますか？</summary><p>入力した漢字だけでプリントを作れるため、宿題や間違えた漢字の復習に使えます。字形は端末のフォントにも左右されます。</p></details>
-          <details><summary>多音字のピンインはどう表示されますか？</summary><p>熟語や文では中国語の文脈に応じたピンインを表示します。漢字を1字だけ入力した場合は、辞書にある読みをすべて表示します。</p></details>
-          <details><summary>入力した内容は送信されますか？</summary><p>本文は送信されません。筆順を表示するときだけ、1文字ごとの公開字形データをリモートから取得します。</p></details>
-          <details><summary>筆順は日本の学校基準ですか？</summary><p>筆順見本は中国語字形データを使用します。日本語の正式な書き順学習では、学校の教科書や学習指導資料を確認してください。</p></details>
+          <details><summary>音読みと訓読みはどのように表示されますか？</summary><p>各漢字についてKANJIDIC2に収録された標準的な音読み・訓読みをまとめて表示します。熟語固有の読みや人名の読みは必要に応じて確認してください。</p></details>
+          <details><summary>入力した内容は送信されますか？</summary><p>本文は送信されません。辞典索引と、筆順を表示する文字ごとの公開ベクターデータだけを取得します。</p></details>
+          <details><summary>筆順は日本の学校基準ですか？</summary><p>はい。中国語向け筆順を流用せず、日本の学校字形を基準にしたKanjiVGデータを使用します。</p></details>
         </section>
         <p class="section-kicker pinyin-related-kicker">関連する漢字ツール</p><nav class="landing-links" aria-label="関連する漢字・文字ツール">
           <a href="/ja/han-character-worksheet/" aria-current="page">漢字練習プリント</a>
-          <a href="/ja/chinese-stroke-order/">中国語漢字の筆順</a>
-          <a href="/ja/chinese-to-pinyin/">中国語ピンイン変換</a>
+          <a href="/ja/japanese-stroke-order/">漢字の書き順・筆順</a>
+          <a href="/ja/kanji-to-hiragana/">漢字をひらがな・ふりがなに変換</a>
+          <a href="/ja/japanese-handwriting-recognition/">手書き漢字検索</a>
+          <a href="/ja/japanese-kanji-dictionary/">漢字検索・漢字辞典</a>
           <a href="/ja/character-counter/">文字数カウント</a>
           <a href="/ja/japanese-chinese-kanji-converter/">日本語漢字・簡体字・繁体字変換</a>
           <a href="/ja/kanji-to-romaji/">漢字・ローマ字変換</a>
           <a href="/ja/japanese-characters/">日本語文字コピー</a>
           <a href="/ja/japanese-kanji-converter/">旧字体 新字体 変換</a>
           <a href="/ja/word-to-txt/">Word TXT 変換</a>
-          <a href="/ja/chinese-handwriting-recognition/">漢字手書き検索</a>
-          <!-- han-character-lookup-link:start -->
-          <a href="/ja/chinese-character-lookup/" data-route="chinese-character-lookup">漢字の構成・部首検索</a>
-          <!-- han-character-lookup-link:end -->
         </nav>
       </section>
     </main>
-    <footer class="site-footer"><p>JianFan.app はブラウザー内で動作する漢字学習・中国語変換・文字ツールを提供します。</p><nav class="footer-links" aria-label="Footer">
-        <a href="/ja/about/">JianFan.app について</a>
-        <a href="/ja/contact/">お問い合わせ</a>
-        <a href="/ja/privacy/">プライバシー声明</a>
-      </nav></footer>
+    <footer class="site-footer"><p>JianFan.app はブラウザー内で動作する漢字学習・中国語変換・文字ツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
   </body>
 </html>

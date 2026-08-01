@@ -66,3 +66,16 @@ test("validates supported text and DOCX files", () => {
   assert.equal(validateFileDescriptor("sheet.xlsx", 1024), "unsupported");
   assert.equal(validateFileDescriptor("large.txt", MAX_FILE_SIZE_BYTES + 1), "tooLarge");
 });
+
+test("converts non-whitespace characters to 400-cell manuscript sheets", () => {
+  const empty = analyzeText("", "ja");
+  const partial = analyzeText("日".repeat(401), "ja");
+  const exact = analyzeText("日".repeat(800), "ja");
+
+  assert.equal(empty.manuscriptSheets, 0);
+  assert.equal(empty.manuscriptLastSheetCharacters, 0);
+  assert.equal(partial.manuscriptSheets, 2);
+  assert.equal(partial.manuscriptLastSheetCharacters, 1);
+  assert.equal(exact.manuscriptSheets, 2);
+  assert.equal(exact.manuscriptLastSheetCharacters, 400);
+});

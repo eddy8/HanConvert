@@ -9,6 +9,7 @@
     ko: "/ko/"
   };
   const core = window.KanjiRomajiCore;
+  const readingApi = window.JapaneseReadingClient;
   const body = document.body;
   const dictionaryPaths = [
     body.dataset.dictionaryPath,
@@ -32,7 +33,7 @@
   const systemFieldset = document.querySelector("#romajiSystemFieldset");
   let activeFormat = "romaji";
   let activeSystem = "hepburn";
-  let enginePromise;
+  let readingClient;
   let conversionToken = 0;
   let copyValue = "";
 
@@ -41,7 +42,7 @@
   updateCounts();
   setStatus("idle");
 
-  if (!core) {
+  if (!core || !readingApi) {
     setStatus("componentError", "error");
     disableTool();
   }
@@ -72,13 +73,13 @@
       systemFieldset.disabled = activeFormat !== "romaji";
       systemFieldset.classList.toggle("is-disabled", activeFormat !== "romaji");
       updateOutputPresentation(button);
-      if (input.value && enginePromise) convert();
+      if (input.value && readingClient) convert();
     }));
 
     systemButtons.forEach((button) => button.addEventListener("click", () => {
       activeSystem = button.dataset.romajiSystem;
       updateButtonGroup(systemButtons, button);
-      if (input.value && enginePromise && activeFormat === "romaji") convert();
+      if (input.value && readingClient && activeFormat === "romaji") convert();
     }));
 
     document.querySelector("#romajiSample").addEventListener("click", (event) => {
@@ -120,41 +121,9 @@
     updateCounts();
   }
 
-  async function getEngine() {
-    if (enginePromise) return enginePromise;
-    const Kuroshiro = window.Kuroshiro?.default || window.Kuroshiro;
-    const KuromojiAnalyzer = window.KuromojiAnalyzer?.default || window.KuromojiAnalyzer;
-    if (
-      typeof Kuroshiro !== "function" ||
-      typeof KuromojiAnalyzer !== "function" ||
-      dictionaryPaths.length === 0
-    ) {
-      const error = new Error("Kuroshiro browser components are unavailable");
-      error.code = "COMPONENT_UNAVAILABLE";
-      throw error;
-    }
-
-    setStatus("loading");
-    enginePromise = initializeEngine(Kuroshiro, KuromojiAnalyzer)
-      .catch((error) => {
-        enginePromise = undefined;
-        throw error;
-      });
-    return enginePromise;
-  }
-
-  async function initializeEngine(Kuroshiro, KuromojiAnalyzer) {
-    let lastError;
-    for (const dictPath of dictionaryPaths) {
-      try {
-        const engine = new Kuroshiro();
-        await engine.init(new KuromojiAnalyzer({ dictPath }));
-        return engine;
-      } catch (error) {
-        lastError = error;
-      }
-    }
-    throw lastError || new Error("No Japanese dictionary path is available");
+  function getReadingClient() {
+    if (!readingClient) readingClient = readingApi.createClient();
+    return readingClient;
   }
 
   async function convert() {
@@ -185,34 +154,23 @@
 
     setBusy(true);
     try {
-      const engine = await getEngine();
-      if (currentToken !== conversionToken) return;
-
-      const chunks = core.splitJapaneseText(value);
-      const options = core.buildConversionOptions(activeFormat, activeSystem);
-      const results = [];
-      const useKunrei = activeFormat === "romaji" && activeSystem === "kunrei";
-      for (let index = 0; index < chunks.length; index += 1) {
-        setStatus("converting", "idle", {
-          current: (index + 1).toLocaleString(locale),
-          total: chunks.length.toLocaleString(locale)
-        });
-        const protectedInput = useKunrei
-          ? core.protectLatinAndNumberRuns(chunks[index])
-          : { text: chunks[index], replacements: [] };
-        const converted = await engine.convert(protectedInput.text, options);
-        results.push(
-          useKunrei
-            ? core.restoreProtectedRuns(
-              core.convertNipponToKunrei(converted),
-              protectedInput.replacements
-            )
-            : converted
-        );
+      const result = await getReadingClient().convert({
+        value,
+        format: activeFormat,
+        system: activeSystem,
+        dictionaryPaths
+      }, (progress) => {
         if (currentToken !== conversionToken) return;
-      }
-
-      const result = results.join("");
+        if (progress.stage !== "converting") {
+          setStatus("loading");
+          return;
+        }
+        setStatus("converting", "idle", {
+          current: Math.min(progress.total, progress.completed + 1).toLocaleString(locale),
+          total: progress.total.toLocaleString(locale)
+        });
+      });
+      if (currentToken !== conversionToken) return;
       if (activeFormat === "furigana") {
         copyValue = renderSafeFurigana(result);
       } else {
@@ -227,7 +185,8 @@
       clearOutput();
       updateCounts();
       retryButton.hidden = false;
-      setStatus(error.code === "COMPONENT_UNAVAILABLE" ? "componentError" : "dictionaryError", "error");
+      const componentCodes = new Set(["COMPONENT_UNAVAILABLE", "WORKER_UNAVAILABLE", "WORKER_FAILED"]);
+      setStatus(componentCodes.has(error.code) ? "componentError" : "dictionaryError", "error");
     } finally {
       setBusy(false);
     }

@@ -301,11 +301,11 @@ const content = {
 };
 
 const relatedLabels = {
-  "zh-CN": [[slug, "日文汉字转罗马字"], ["japanese-chinese-kanji-converter", "日中汉字三体转换"], ["japanese-kanji-converter", "日文新旧字体转换"], ["japanese-characters", "日文字符复制"], ["chinese-to-pinyin", "汉字转拼音"], ["chinese-stroke-order", "汉字笔顺查询"], ["character-counter", "在线字数统计"], ["han-character-worksheet", "汉字练习纸"], ["word-to-txt", "Word 转 TXT"]],
-  "zh-TW": [[slug, "日文漢字轉羅馬字"], ["japanese-chinese-kanji-converter", "日中漢字三體轉換"], ["japanese-kanji-converter", "日文新舊字體轉換"], ["japanese-characters", "日文字元複製"], ["chinese-to-pinyin", "漢字轉拼音"], ["chinese-stroke-order", "漢字筆順查詢"], ["character-counter", "線上字數統計"], ["han-character-worksheet", "國字練習紙"], ["word-to-txt", "DOCX 轉 TXT"]],
-  en: [[slug, "Kanji to Romaji"], ["japanese-chinese-kanji-converter", "Japanese and Chinese Kanji"], ["japanese-kanji-converter", "Shinjitai and Kyujitai"], ["japanese-characters", "Japanese character copy"], ["chinese-to-pinyin", "Chinese to Pinyin"], ["chinese-stroke-order", "Chinese stroke order"], ["character-counter", "CJK character counter"], ["han-character-worksheet", "Chinese worksheet generator"], ["word-to-txt", "Word to text"]],
-  ja: [[slug, "漢字・ローマ字変換"], ["japanese-chinese-kanji-converter", "日中漢字3種類変換"], ["japanese-kanji-converter", "旧字体・新字体変換"], ["japanese-characters", "日本語文字コピー"], ["chinese-to-pinyin", "中国語ピンイン変換"], ["chinese-stroke-order", "中国語漢字の筆順"], ["character-counter", "文字数カウント"], ["han-character-worksheet", "漢字練習プリント"], ["word-to-txt", "Word TXT 変換"]],
-  ko: [[slug, "일본어 한자 로마자 변환"], ["japanese-chinese-kanji-converter", "일본·중국 한자 변환"], ["japanese-kanji-converter", "일본 신자체·구자체 변환"], ["japanese-characters", "일본어 문자 복사"], ["chinese-to-pinyin", "중국어 병음 변환"], ["chinese-stroke-order", "중국어 한자 필순"], ["character-counter", "글자수 세기"], ["han-character-worksheet", "한자 쓰기 연습장"], ["word-to-txt", "DOCX TXT 변환"]]
+  "zh-CN": [[slug, "日文汉字转罗马字"], ["japanese-handwriting-recognition", "日文手写查字"], ["japanese-kanji-dictionary", "日本汉字字典"], ["japanese-chinese-kanji-converter", "日中汉字三体转换"], ["japanese-kanji-converter", "日文新旧字体转换"], ["japanese-characters", "日文字符复制"], ["chinese-to-pinyin", "汉字转拼音"], ["chinese-stroke-order", "汉字笔顺查询"], ["character-counter", "在线字数统计"], ["han-character-worksheet", "汉字练习纸"], ["word-to-txt", "Word 转 TXT"]],
+  "zh-TW": [[slug, "日文漢字轉羅馬字"], ["japanese-handwriting-recognition", "日文手寫查字"], ["japanese-kanji-dictionary", "日本漢字字典"], ["japanese-chinese-kanji-converter", "日中漢字三體轉換"], ["japanese-kanji-converter", "日文新舊字體轉換"], ["japanese-characters", "日文字元複製"], ["chinese-to-pinyin", "漢字轉拼音"], ["chinese-stroke-order", "漢字筆順查詢"], ["character-counter", "線上字數統計"], ["han-character-worksheet", "國字練習紙"], ["word-to-txt", "DOCX 轉 TXT"]],
+  en: [[slug, "Kanji to Romaji"], ["japanese-handwriting-recognition", "Japanese handwriting lookup"], ["japanese-kanji-dictionary", "Japanese Kanji dictionary"], ["japanese-chinese-kanji-converter", "Japanese and Chinese Kanji"], ["japanese-kanji-converter", "Shinjitai and Kyujitai"], ["japanese-characters", "Japanese character copy"], ["chinese-to-pinyin", "Chinese to Pinyin"], ["chinese-stroke-order", "Chinese stroke order"], ["character-counter", "CJK character counter"], ["han-character-worksheet", "Chinese worksheet generator"], ["word-to-txt", "Word to text"]],
+  ja: [[slug, "漢字・ローマ字変換"], ["japanese-handwriting-recognition", "手書き漢字検索"], ["japanese-kanji-dictionary", "漢字検索・漢字辞典"], ["japanese-chinese-kanji-converter", "日中漢字3種類変換"], ["japanese-kanji-converter", "旧字体・新字体変換"], ["japanese-characters", "日本語文字コピー"], ["chinese-to-pinyin", "中国語ピンイン変換"], ["chinese-stroke-order", "中国語漢字の筆順"], ["character-counter", "文字数カウント"], ["han-character-worksheet", "漢字練習プリント"], ["word-to-txt", "Word TXT 変換"]],
+  ko: [[slug, "일본어 한자 로마자 변환"], ["japanese-handwriting-recognition", "일본 한자 손글씨 검색"], ["japanese-kanji-dictionary", "일본 한자 사전"], ["japanese-chinese-kanji-converter", "일본·중국 한자 변환"], ["japanese-kanji-converter", "일본 신자체·구자체 변환"], ["japanese-characters", "일본어 문자 복사"], ["chinese-to-pinyin", "중국어 병음 변환"], ["chinese-stroke-order", "중국어 한자 필순"], ["character-counter", "글자수 세기"], ["han-character-worksheet", "한자 쓰기 연습장"], ["word-to-txt", "DOCX TXT 변환"]]
 };
 
 function escapeHtml(value) {
@@ -344,8 +344,7 @@ ${alternates}
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.css" />
     <script defer src="/kanji-romaji-core.js"></script>
-    <script defer src="https://cdn.jsdmirror.cn/npm/kuroshiro@1.2.0/dist/kuroshiro.min.js" integrity="sha384-i0fCgQX2L7yc7QngiOa1uCpsr11LT0znqyCpGi9XWIr9w+M5RQ8Re6hZomt4U4DN" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdmirror.cn/npm/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js" integrity="sha384-NOit6gdHi5KYKpNeXLjskpn7d2o9z+7yU2g2Ea5KBWsU9gb7CVKF4C5C7llA9X9m" crossorigin="anonymous"></script>
+    <script defer src="/japanese-reading-client.js"></script>
     <script defer src="/kanji-to-romaji.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">

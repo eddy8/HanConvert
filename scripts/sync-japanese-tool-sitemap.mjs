@@ -7,6 +7,7 @@ const sitemapPath = path.join(projectRoot, "sitemap.xml");
 const origin = "https://jianfan.app";
 const markerStart = "  <!-- japanese-tools:start -->";
 const markerEnd = "  <!-- japanese-tools:end -->";
+const lastModified = "2026-08-01";
 const locales = [
   { hreflang: "zh-CN", prefix: "" },
   { hreflang: "zh-Hant", prefix: "zh-tw/" },
@@ -26,7 +27,7 @@ function buildUrl(slug, locale, priority) {
   alternates.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${absolutePath("", slug)}" />`);
   return `  <url>
     <loc>${absolutePath(locale.prefix, slug)}</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>${lastModified}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>${priority}</priority>
 ${alternates.join("\n")}
@@ -44,6 +45,11 @@ for (const locale of locales) {
 for (const locale of locales) {
   blocks.push(buildUrl("kanji-to-romaji", locale, locale.hreflang === "ja" ? "0.9" : "0.8"));
 }
+for (const slug of ["kanji-to-hiragana", "japanese-stroke-order", "japanese-kanji-dictionary", "japanese-handwriting-recognition"]) {
+  for (const locale of locales) {
+    blocks.push(buildUrl(slug, locale, locale.hreflang === "ja" ? "0.9" : "0.8"));
+  }
+}
 const section = `${markerStart}\n${blocks.join("\n")}\n${markerEnd}`;
 
 const source = await readFile(sitemapPath, "utf8");
@@ -54,4 +60,4 @@ if (source.includes(markerStart)) {
   updated = source.replace("</urlset>", `${section}\n</urlset>`);
 }
 await writeFile(sitemapPath, updated);
-console.log("Added 15 Japanese tool URLs to sitemap.xml.");
+console.log(`Added ${blocks.length} Japanese tool URLs to sitemap.xml.`);

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="漢字をひらがなに変換し、ふりがなを自動で付けられる無料ツールです。日本語の文章を純粋なひらがな、送り仮名を残した読み、ルビ付き表示、コピー可能なRuby HTMLへ変換。Kuromojiが単語と文脈から一般的な読み方を判定し、学習教材、字幕、ブログ、読み上げ原稿の作成を支援します。入力文はブラウザー内で処理されます。" />
+    <title>漢字をひらがなに変換 - ふりがな自動・ルビ振り | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/ja/kanji-to-hiragana/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/kanji-to-hiragana/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/kanji-to-hiragana/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/kanji-to-hiragana/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/kanji-to-hiragana/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/kanji-to-hiragana/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/kanji-to-hiragana/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="/kanji-romaji-core.js"></script>
+    <script defer src="/japanese-reading-client.js"></script>
+    <script defer src="/kanji-to-hiragana.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/ja/kanji-to-hiragana/#webapp",
+            "name": "漢字をひらがなに変換・ふりがなを自動作成",
+            "alternateName": [
+              "漢字ひらがな変換",
+              "ふりがな自動",
+              "ルビ振り",
+              "ふりがな変換ツール"
+            ],
+            "url": "https://jianfan.app/ja/kanji-to-hiragana/",
+            "description": "漢字をひらがなに変換し、ふりがなを自動で付けられる無料ツールです。日本語の文章を純粋なひらがな、送り仮名を残した読み、ルビ付き表示、コピー可能なRuby HTMLへ変換。Kuromojiが単語と文脈から一般的な読み方を判定し、学習教材、字幕、ブログ、読み上げ原稿の作成を支援します。入力文はブラウザー内で処理されます。",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "ja",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/ja/kanji-to-hiragana/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "ホーム",
+                "item": "https://jianfan.app/ja/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "漢字をひらがなに変換・ふりがなを自動作成",
+                "item": "https://jianfan.app/ja/kanji-to-hiragana/"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/ja/kanji-to-hiragana/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "ひらがな変換とふりがなの違いは何ですか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "ひらがな変換は漢字を読み方へ置き換えます。ふりがなは元の漢字を残し、その上に小さく読み方を表示します。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "ルビHTMLとは何ですか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "ブラウザーで漢字の上や横に読み方を表示する標準HTMLです。Ruby対応のエディターやWebページで利用できます。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "人名や地名も正しく変換できますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "一般的な語は文脈から判定しますが、人名、地名、当て字、作品名には複数の読み方があるため確認が必要です。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="kanji-to-hiragana" data-page-slug="kanji-to-hiragana" data-locale="ja" data-dictionary-path="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/" data-dictionary-fallback-path="https://cdn.jsdmirror.cn/npm/kuromoji@0.1.2/dict/" data-message-idle="日本語の入力待ち" data-message-components="読み方変換を読み込み中 {current}/{total}" data-message-dictionary="日本語辞書を読み込み中 {current}/{total}" data-message-initializing="日本語辞書を初期化中" data-message-converting="{total}件中{current}件目を変換中" data-message-complete="変換結果を準備中" data-message-ready="読み方の変換が完了しました" data-message-copied-text="テキストをコピーしました" data-message-copied-html="Ruby HTMLをコピーしました" data-message-copy-failed="自動コピーに失敗しました。出力を選択してコピーしてください。" data-message-component-error="変換機能を読み込めませんでした。ページを再読み込みしてください。" data-message-dictionary-error="日本語辞書を読み込めませんでした。通信環境を確認して再試行してください。" data-message-not-japanese="漢字またはかなを含む日本語を入力してください" data-message-too-long="テキストは{limit}文字までです">
+    <a class="skip-nav" href="#main">メインコンテンツへ移動</a>
+    <header class="site-header" aria-label="サイトヘッダー"><a class="brand" href="/ja/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">読</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="メインナビゲーション"><a class="nav-link" href="/ja/">ホーム</a><label class="language-picker"><span>表示言語</span><select id="localeSelect" aria-label="表示言語">
+              <option value="zh-CN">简体中文</option>
+              <option value="zh-TW">繁體中文</option>
+              <option value="en">English</option>
+              <option value="ja" selected>日本語</option>
+              <option value="ko">한국어</option>
+          </select></label></nav></header>
+    <main id="main">
+      <section class="tool-hero reading-tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">漢字の読み · ひらがな · ふりがな · ルビ</p><h1 id="pageTitle">漢字をひらがなに変換・ふりがなを自動作成</h1><p class="lede">漢字とかなが混在した文章を、ひらがな、ふりがな付き日本語、送り仮名を残した読み、Ruby HTMLへ変換できます。一般的な単語は文脈から読み方を判定します。</p></div><div class="reading-hero-sample" aria-hidden="true"><ruby>日本語<rt>にほんご</rt></ruby><span>→</span><strong>にほんご</strong></div></section>
+      <section class="standalone-tool hiragana-tool" aria-labelledby="hiraganaToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">READ / ANNOTATE / COPY</p><h2 id="hiraganaToolTitle">日本語を入力して読み方の表示形式を選択</h2></div><div><div class="status-pill" id="hiraganaStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>日本語の入力待ち</span></div><progress class="reading-progress" id="hiraganaProgress" max="12" value="0" hidden></progress></div></div>
+        <fieldset class="reading-format-fieldset"><legend>表示形式</legend><div class="pinyin-format-control reading-format-control" role="radiogroup" aria-label="表示形式">
+            <button type="button" data-hiragana-format="hiragana" data-output-title="ひらがな変換結果" data-output-placeholder="変換後のひらがながここに表示されます" role="radio" aria-checked="true" class="is-active"><span>ひらがな</span><small>にほんご</small></button>
+            <button type="button" data-hiragana-format="furigana" data-output-title="ふりがな付き日本語" data-output-placeholder="ふりがな付きの日本語がここに表示されます" role="radio" aria-checked="false"><span>ふりがな</span><small>日本語</small></button>
+            <button type="button" data-hiragana-format="okurigana" data-output-title="送り仮名を残した読み" data-output-placeholder="漢字と送り仮名を残した読みがここに表示されます" role="radio" aria-checked="false"><span>送り仮名を残す</span><small>読(よ)み方</small></button>
+            <button type="button" data-hiragana-format="ruby" data-output-title="Ruby HTMLコード" data-output-placeholder="コピーできるRuby HTMLがここに表示されます" role="radio" aria-checked="false"><span>ルビHTML</span><small>&lt;ruby&gt;</small></button>
+        </div></fieldset>
+        <p class="romaji-resource-note">初回変換時に公開日本語辞書をリモートから読み込みます。読み込み後はこのページで続けて利用できます。</p>
+        <div class="pinyin-converter-grid reading-converter-grid">
+          <section class="pinyin-text-panel input-variant" aria-labelledby="hiraganaInputTitle"><div class="panel-topline"><h3 id="hiraganaInputTitle">変換する日本語</h3><span id="hiraganaInputCount">0</span></div><textarea id="hiraganaInput" spellcheck="false" placeholder="漢字・ひらがな・カタカナを含む日本語を入力・貼り付け..."></textarea><div class="panel-actions"><button class="text-button" id="hiraganaSample" type="button" data-sample="明日は東京で日本語を勉強します。">サンプル</button><button class="text-button" id="hiraganaClear" type="button">クリア</button><button class="primary-action" id="hiraganaConvert" type="button">読み方を変換</button></div></section>
+          <section class="pinyin-text-panel output-variant" aria-labelledby="hiraganaOutputTitle"><div class="panel-topline"><h3 id="hiraganaOutputTitle">ひらがな変換結果</h3><span id="hiraganaOutputCount">0</span></div><textarea id="hiraganaPlainOutput" readonly spellcheck="false" placeholder="変換後のひらがながここに表示されます"></textarea><div id="hiraganaVisualOutput" class="romaji-furigana-output reading-visual-output" hidden><p id="hiraganaVisualEmpty" class="pinyin-empty">変換すると、ふりがな付きの日本語がここに表示されます。</p></div><div class="panel-actions"><button class="text-button" id="hiraganaRetry" type="button" hidden>再読み込み</button><button class="text-button" id="hiraganaCopyText" type="button" disabled>テキストをコピー</button><button class="text-button" id="hiraganaCopyHtml" type="button" disabled>Ruby HTMLをコピー</button></div></section>
+        </div>
+        <p class="tool-disclaimer">漢字には音読み・訓読み・特殊な読み方があります。人名、地名、作品名、難読語、専門用語は信頼できる資料でも確認してください。</p>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="hiraganaFeatureTitle"><div class="section-heading"><p class="section-kicker">漢字をひらがなに変換 · ふりがな自動</p><h2 id="hiraganaFeatureTitle">ひらがな変換、ふりがな自動、ルビ振りを一つの画面で</h2><p class="seo-intro">「漢字をひらがなに変換」「ふりがなを自動で付ける」「ルビを振る」といった用途に対応し、文章の読み方を目的に合う形式で取り出せます。</p></div><div class="seo-grid">
+          <article><h3>単語と文脈に応じた読み方</h3><p>日本語の形態素解析で一般的な単語や活用を判定し、漢字を一文字ずつ置き換えるより自然な読みを選びます。</p></article>
+          <article><h3>読む場合も編集する場合も便利</h3><p>画面上でふりがなを確認し、ひらがな、括弧付きの読み、標準的なRuby HTMLを用途に合わせてコピーできます。</p></article>
+          <article><h3>入力した文章は送信しません</h3><p>公開辞書ファイルはリモートから取得しますが、入力文と変換結果はブラウザー内だけで処理します。</p></article>
+        </div><section class="word-howto" aria-labelledby="hiraganaHowTitle"><h2 id="hiraganaHowTitle">漢字をひらがなに変換してふりがなを付ける方法</h2><ol>
+          <li>漢字やかなを含む日本語の文章を入力します。</li>
+          <li>ひらがな、ふりがな、送り仮名、ルビHTMLから形式を選びます。</li>
+          <li>読み方を変換し、人名や地名などの特殊な読みを確認します。</li>
+          <li>テキストまたはRuby HTMLをコピーして利用します。</li>
+        </ol></section><section class="pinyin-faq" aria-labelledby="hiraganaFaqTitle"><h2 id="hiraganaFaqTitle">ひらがな変換・ふりがな自動のよくある質問</h2>
+          <details><summary>ひらがな変換とふりがなの違いは何ですか？</summary><p>ひらがな変換は漢字を読み方へ置き換えます。ふりがなは元の漢字を残し、その上に小さく読み方を表示します。</p></details>
+          <details><summary>ルビHTMLとは何ですか？</summary><p>ブラウザーで漢字の上や横に読み方を表示する標準HTMLです。Ruby対応のエディターやWebページで利用できます。</p></details>
+          <details><summary>人名や地名も正しく変換できますか？</summary><p>一般的な語は文脈から判定しますが、人名、地名、当て字、作品名には複数の読み方があるため確認が必要です。</p></details>
+        </section><p class="section-kicker pinyin-related-kicker">関連する日本語ツール</p><nav class="landing-links" aria-label="関連する日本語読み方・漢字ツール">
+          <a href="/ja/kanji-to-hiragana/" aria-current="page">漢字をひらがなに変換</a>
+          <a href="/ja/kanji-to-romaji/">漢字をローマ字に変換</a>
+          <a href="/ja/japanese-stroke-order/">漢字の書き順</a>
+          <a href="/ja/japanese-kanji-dictionary/">漢字検索</a>
+          <a href="/ja/japanese-handwriting-recognition/">手書き漢字検索</a>
+          <a href="/ja/han-character-worksheet/">漢字練習プリント</a>
+          <a href="/ja/character-counter/">文字数カウント</a>
+          <a href="/ja/japanese-kanji-converter/">旧字体・新字体変換</a>
+        </nav><p class="reading-source-note">読み方の変換にはKuroshiroとKuromoji.jsの公開日本語辞書を使用します。入力文が辞書提供元へ送信されることはありません。</p></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app はブラウザーで使える日本語の読み方、漢字学習、中国語変換ツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
+  </body>
+</html>

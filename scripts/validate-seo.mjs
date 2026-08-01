@@ -34,7 +34,7 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
 const uniqueSitemapUrls = new Set(sitemapUrls);
 if (uniqueSitemapUrls.size !== sitemapUrls.length) throw new Error("sitemap.xml contains duplicate URLs");
 
-for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "han-character-worksheet.js", "handwriting-recognition.js", "handwriting-recognition-worker.js", "han-character-lookup-core.js", "han-character-lookup.js", "webmcp.js"]) {
+for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "han-character-worksheet.js", "handwriting-recognition.js", "handwriting-recognition-worker.js", "han-character-lookup-core.js", "han-character-lookup.js", "kanji-romaji-core.js", "kanji-to-romaji.js", "japanese-reading-client.js", "japanese-reading-worker.js", "kanji-to-hiragana.js", "japanese-stroke-order.js", "japanese-kanji-data.js", "japanese-kanji-dictionary.js", "japanese-handwriting-recognition.js", "webmcp.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
@@ -126,6 +126,11 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isKanjiRomajiPage = html.includes('data-tool-page="kanji-to-romaji"');
   const isHandwritingPage = html.includes('data-tool-page="handwriting-recognition"');
   const isHanLookupPage = html.includes('data-tool-page="han-character-lookup"');
+  const isEstablishedStandaloneToolPage = isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isKanjiRomajiPage || isHandwritingPage || isHanLookupPage;
+  const hasHandwritingLink = html.includes("chinese-handwriting-recognition/") || html.includes("japanese-handwriting-recognition/");
+  const hasCharacterLookupLink = html.includes("chinese-character-lookup/") || html.includes("japanese-kanji-dictionary/");
+  const hasReadingToolLink = html.includes("chinese-to-pinyin/") || html.includes("kanji-to-hiragana/");
+  const hasStrokeToolLink = html.includes("chinese-stroke-order/") || html.includes("japanese-stroke-order/");
   if (localizedHomePages.has(relativePath) && !html.includes('src="/app-download.js"')) {
     throw new Error(`${relativePath}: missing platform-specific app download navigation`);
   }
@@ -254,17 +259,16 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (isConverterPage && !html.includes('data-route="chinese-handwriting-recognition"')) {
     throw new Error(`${relativePath}: missing handwriting-recognition link`);
   }
-  if ((isConverterPage || isStandaloneToolPage) && !html.includes("chinese-character-lookup/")) {
+  if ((isConverterPage || isEstablishedStandaloneToolPage) && !hasCharacterLookupLink) {
     throw new Error(`${relativePath}: missing Han-character lookup link`);
   }
-  if (isStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/") || !html.includes("chinese-to-pinyin/") || !html.includes("chinese-stroke-order/") || !html.includes("word-to-txt/") || !html.includes("han-character-worksheet/") || !html.includes("kanji-to-romaji/") || !html.includes("chinese-handwriting-recognition/") || !html.includes("chinese-character-lookup/"))) {
+  if (isEstablishedStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/") || !hasReadingToolLink || !hasStrokeToolLink || !html.includes("word-to-txt/") || !html.includes("han-character-worksheet/") || !html.includes("kanji-to-romaji/") || !hasHandwritingLink || !hasCharacterLookupLink)) {
     throw new Error(`${relativePath}: missing related tool links`);
   }
   if (isKanjiRomajiPage) {
     for (const asset of [
       'src="/kanji-romaji-core.js"',
-      "cdn.jsdmirror.cn/npm/kuroshiro@1.2.0/dist/kuroshiro.min.js",
-      "cdn.jsdmirror.cn/npm/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js",
+      'src="/japanese-reading-client.js"',
       'src="/kanji-to-romaji.js"',
       "data-dictionary-path=",
       "data-dictionary-fallback-path="
@@ -335,12 +339,10 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     }
   }
   if (isWorksheetPage) {
-    if (
-      !html.includes("cdn.jsdmirror.cn/npm/hanzi-writer/dist/hanzi-writer.min.js") ||
-      !html.includes('src="/vendor/pinyin-pro.js"') ||
-      !html.includes('src="/han-character-worksheet.js"') ||
-      !html.includes('id="worksheetInput"')
-    ) {
+    const hasLocaleAssets = locale === "ja"
+      ? html.includes('src="/japanese-kanji-data.js"') && html.includes('src="/japanese-stroke-order.js"') && !html.includes("pinyin-pro")
+      : html.includes("cdn.jsdelivr.net/npm/hanzi-writer/dist/hanzi-writer.min.js") && html.includes('src="/vendor/pinyin-pro.js"');
+    if (!hasLocaleAssets || !html.includes('src="/han-character-worksheet.js"') || !html.includes('id="worksheetInput"')) {
       throw new Error(`${relativePath}: missing worksheet browser assets or input`);
     }
   }
@@ -491,8 +493,8 @@ if (!notFound.includes('name="robots" content="noindex, follow"')) {
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
-if (standaloneToolPages !== 50) throw new Error(`expected 50 standalone tool pages, found ${standaloneToolPages}`);
+if (standaloneToolPages !== 70) throw new Error(`expected 70 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
-if (sitemapUrls.length !== 101) throw new Error(`expected 101 sitemap URLs, found ${sitemapUrls.length}`);
+if (sitemapUrls.length !== 121) throw new Error(`expected 121 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, and ${sitemapUrls.length} sitemap URLs.`);

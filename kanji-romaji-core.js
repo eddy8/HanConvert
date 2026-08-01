@@ -9,7 +9,7 @@
 
   const MAX_INPUT_CHARACTERS = 20000;
   const CONVERSION_CHUNK_CHARACTERS = 2000;
-  const FORMATS = new Set(["romaji", "hiragana", "katakana", "furigana"]);
+  const FORMATS = new Set(["romaji", "hiragana", "katakana", "furigana", "okurigana"]);
   const ROMAJI_SYSTEMS = new Set(["hepburn", "kunrei", "nippon"]);
   const NATURAL_BREAK = /[\n。！？!?]/u;
   const JAPANESE_SCRIPT = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u;
@@ -58,6 +58,9 @@
 
     if (normalizedFormat === "furigana") {
       return { to: "hiragana", mode: "furigana" };
+    }
+    if (normalizedFormat === "okurigana") {
+      return { to: "hiragana", mode: "okurigana" };
     }
     if (normalizedFormat === "romaji") {
       const engineSystem = normalizedSystem === "kunrei" ? "nippon" : normalizedSystem;
