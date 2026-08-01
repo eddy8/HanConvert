@@ -421,7 +421,7 @@ function buildHead(locale, page) {
     .join("\n");
   const toolDependencies = locale === "ja"
     ? `    <script defer src="/japanese-kanji-data.js"></script>\n    <script defer src="/japanese-stroke-order.js"></script>`
-    : `    <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer/dist/hanzi-writer.min.js"></script>\n    <script defer src="/vendor/pinyin-pro.js"></script>`;
+    : `    <script defer src="https://cdn.jsdmirror.cn/npm/hanzi-writer/dist/hanzi-writer.min.js"></script>\n    <script defer src="/vendor/pinyin-pro.js"></script>`;
   return `    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#07120f" />

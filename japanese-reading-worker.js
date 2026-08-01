@@ -2,8 +2,8 @@
 
 const COMPONENT_SOURCES = [
   [
-    "https://cdn.jsdelivr.net/npm/kuroshiro@1.2.0/dist/kuroshiro.min.js",
-    "https://cdn.jsdelivr.net/npm/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js"
+    "https://cdn.jsdmirror.cn/npm/kuroshiro@1.2.0/dist/kuroshiro.min.js",
+    "https://cdn.jsdmirror.cn/npm/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js"
   ],
   [
     "https://cdn.jsdmirror.cn/npm/kuroshiro@1.2.0/dist/kuroshiro.min.js",

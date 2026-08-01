@@ -20,7 +20,7 @@ test("builds the documented five-digit KanjiVG filename", () => {
 
 test("pins the official KanjiVG release without a version query", () => {
   assert.equal(core.KANJIVG_RELEASE, "r20250816");
-  assert.equal(core.dataUrlForKanji("永"), "https://cdn.jsdelivr.net/gh/KanjiVG/kanjivg@r20250816/kanji/06c38.svg");
+  assert.equal(core.dataUrlForKanji("永"), "https://cdn.jsdmirror.cn/gh/KanjiVG/kanjivg@r20250816/kanji/06c38.svg");
   assert.doesNotMatch(core.dataUrlForKanji("永"), /\?v=/u);
 });
 

@@ -6,7 +6,7 @@
   "use strict";
 
   const KANJIVG_RELEASE = "r20250816";
-  const KANJIVG_BASE = `https://cdn.jsdelivr.net/gh/KanjiVG/kanjivg@${KANJIVG_RELEASE}/kanji`;
+  const KANJIVG_BASE = `https://cdn.jsdmirror.cn/gh/KanjiVG/kanjivg@${KANJIVG_RELEASE}/kanji`;
 
   function extractKanji(value, limit = 8) {
     const matches = [...String(value).matchAll(/\p{Script=Han}/gu)].map((match) => match[0]);

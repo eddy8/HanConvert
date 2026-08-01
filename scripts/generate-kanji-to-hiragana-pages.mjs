@@ -6,7 +6,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 const siteOrigin = "https://jianfan.app";
 const slug = "kanji-to-hiragana";
 const sampleText = "明日は東京で日本語を勉強します。";
-const dictionaryPath = "https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/";
+const dictionaryPath = "https://cdn.jsdmirror.cn/npm/kuromoji@0.1.2/dict/";
 const dictionaryFallbackPath = "https://cdn.jsdmirror.cn/npm/kuromoji@0.1.2/dict/";
 
 const locales = {

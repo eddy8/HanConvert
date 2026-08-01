@@ -341,7 +341,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (isWorksheetPage) {
     const hasLocaleAssets = locale === "ja"
       ? html.includes('src="/japanese-kanji-data.js"') && html.includes('src="/japanese-stroke-order.js"') && !html.includes("pinyin-pro")
-      : html.includes("cdn.jsdelivr.net/npm/hanzi-writer/dist/hanzi-writer.min.js") && html.includes('src="/vendor/pinyin-pro.js"');
+      : html.includes("cdn.jsdmirror.cn/npm/hanzi-writer/dist/hanzi-writer.min.js") && html.includes('src="/vendor/pinyin-pro.js"');
     if (!hasLocaleAssets || !html.includes('src="/han-character-worksheet.js"') || !html.includes('id="worksheetInput"')) {
       throw new Error(`${relativePath}: missing worksheet browser assets or input`);
     }

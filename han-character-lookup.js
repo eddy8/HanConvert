@@ -444,7 +444,7 @@
 
   async function loadStrokeData(character) {
     if (!strokeCache.has(character)) {
-      const request = fetch(`https://cdn.jsdelivr.net/npm/hanzi-writer-data/${encodeURIComponent(character)}.json`, { mode: "cors" }).then((response) => {
+      const request = fetch(`https://cdn.jsdmirror.cn/npm/hanzi-writer-data/${encodeURIComponent(character)}.json`, { mode: "cors" }).then((response) => {
         if (!response.ok) throw new Error(`Stroke data unavailable: ${character}`);
         return response.json();
       });

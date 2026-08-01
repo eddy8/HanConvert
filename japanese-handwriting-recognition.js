@@ -5,7 +5,7 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
   "use strict";
   const COMMIT = "e036ef26dc307d897653f5b8750a8cb048f042b3";
-  const PATTERN_URL = `https://cdn.jsdelivr.net/gh/barionleg/okanjirec@${COMMIT}/docs/resources/javascript/ref-patterns.js`;
+  const PATTERN_URL = `https://cdn.jsdmirror.cn/gh/barionleg/okanjirec@${COMMIT}/docs/resources/javascript/ref-patterns.js`;
   const PATTERN_SHA256 = "e1770a3f32ce18cc1c0eff67c539e663a3e2b0437172bde66abc3336aedf06c7";
 
   function uniqueCandidates(value, limit = 10) {
