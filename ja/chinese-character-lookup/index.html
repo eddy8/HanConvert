@@ -6,8 +6,8 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="description" content="漢字の構成・部首を無料検索。漢字を1文字入力すると、中国語のピンイン、部首、画数、Unicode、簡体字・繁体字の異体字、英語の意味を確認できます。左右・上下・囲み構造を色分けした字形とツリーで分解し、構成部品に対応する画を強調。筆順、手書き検索、ピンイン、漢字練習プリントにも移動できます。登録不要です。" />
-    <title>漢字の構成・部首検索 - 部品と画数を分解表示 | JianFan.app</title>
+    <meta name="description" content="漢字の構成・部首を無料検索。漢字を入力するとピンイン、部首、画数、Unicode、簡体字・繁体字、英語の意味、色分け字形と構成ツリーを確認できます。読み方が分からない漢字は、一つから四つの構成部品を使う構成検索（パーツ検索）で逆引きし、総画数と常用順で候補を絞り込み可能。筆順、手書き検索、練習プリントにも移動できます。" />
+    <title>漢字の構成・部首検索 - 部品検索と画数・構成分解 | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/ja/chinese-character-lookup/" />
     <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-character-lookup/" />
     <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-character-lookup/" />
@@ -32,10 +32,12 @@
             "alternateName": [
               "漢字構成検索",
               "漢字分解",
-              "漢字部首検索"
+              "漢字部首検索",
+              "構成検索",
+              "パーツ検索"
             ],
             "url": "https://jianfan.app/ja/chinese-character-lookup/",
-            "description": "漢字の構成・部首を無料検索。漢字を1文字入力すると、中国語のピンイン、部首、画数、Unicode、簡体字・繁体字の異体字、英語の意味を確認できます。左右・上下・囲み構造を色分けした字形とツリーで分解し、構成部品に対応する画を強調。筆順、手書き検索、ピンイン、漢字練習プリントにも移動できます。登録不要です。",
+            "description": "漢字の構成・部首を無料検索。漢字を入力するとピンイン、部首、画数、Unicode、簡体字・繁体字、英語の意味、色分け字形と構成ツリーを確認できます。読み方が分からない漢字は、一つから四つの構成部品を使う構成検索（パーツ検索）で逆引きし、総画数と常用順で候補を絞り込み可能。筆順、手書き検索、練習プリントにも移動できます。",
             "applicationCategory": "EducationalApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript",
@@ -74,22 +76,27 @@
           {
             "@type": "HowTo",
             "@id": "https://jianfan.app/ja/chinese-character-lookup/#howto",
-            "name": "漢字の構成を調べる方法",
+            "name": "漢字の構成検索・パーツ検索の使い方",
             "step": [
               {
                 "@type": "HowToStep",
                 "position": 1,
-                "text": "漢字を1文字入力します。熟語を貼り付けた場合は文字タブから選択します。"
+                "text": "漢字が入力できる場合は、一文字を検索して部首と構成ツリーを確認します。"
               },
               {
                 "@type": "HowToStep",
                 "position": 2,
-                "text": "色分け字形と構成ツリーを確認し、調べたい部品を選びます。"
+                "text": "読み方が分からない場合は部品検索へ切り替え、見えている部品を一つから四つ入力します。"
               },
               {
                 "@type": "HowToStep",
                 "position": 3,
-                "text": "選択した部品を再検索するか、筆順や練習プリントへ進みます。"
+                "text": "必要に応じて総画数で絞り、常用順または画数順に並べます。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "候補の漢字を選び、読み、筆順、ピンインや練習プリントを確認します。"
               }
             ]
           },
@@ -128,6 +135,14 @@
                   "@type": "Answer",
                   "text": "入力できます。最大12文字の漢字を抽出してタブに表示します。タブを選ぶと1文字ずつ構成を確認できます。"
                 }
+              },
+              {
+                "@type": "Question",
+                "name": "読み方が分からない漢字も検索できますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "はい。見えている構成部品を一つから四つ入力すると、すべての部品を含む漢字を検索できます。同じ部品も繰り返して指定できます。"
+                }
               }
             ]
           }
@@ -153,15 +168,20 @@
     </header>
     <main id="main">
       <section class="tool-hero han-lookup-hero" aria-labelledby="pageTitle">
-        <div><p class="section-kicker">漢字検索 · 部品表示 · 構成分解</p><h1 id="pageTitle">漢字の構成・部首検索</h1><p class="lede">漢字を入力して部首、画数、読み、異体字を確認し、色分け字形と構成ツリーから部品の組み合わせを調べられます。</p></div>
+        <div><p class="section-kicker">漢字検索 · 部品表示 · 構成分解</p><h1 id="pageTitle">漢字の構成・部首検索</h1><p class="lede">漢字の部首・画数・読みと構成を確認できます。読み方が分からない漢字は、見えている複数の部品から逆引きできます。</p></div>
         <div class="han-lookup-hero-equation" aria-hidden="true"><span>氵</span><i>+</i><span>青</span><i>=</i><strong>清</strong></div>
       </section>
 
       <section class="standalone-tool han-lookup-tool" aria-labelledby="hanLookupToolTitle">
         <div class="standalone-tool-head">
           <div><p class="section-kicker">LOOK UP / DECOMPOSE / FOCUS</p><h2 id="hanLookupToolTitle">漢字を入力して構成を調べる</h2></div>
+          <div class="han-lookup-mode-switch" role="tablist" aria-label="漢字の検索方法">
+            <button id="hanLookupCharacterMode" type="button" role="tab" aria-selected="true" aria-controls="hanCharacterLookupPanel" data-han-lookup-mode="character">漢字から調べる</button>
+            <button id="hanLookupComponentMode" type="button" role="tab" aria-selected="false" aria-controls="hanComponentLookupPanel" data-han-lookup-mode="component">部品から探す</button>
+          </div>
           <div class="status-pill" id="hanLookupStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>漢字データを検索中</span></div>
         </div>
+        <div id="hanCharacterLookupPanel" role="tabpanel" aria-labelledby="hanLookupCharacterMode">
         <form class="han-lookup-form" id="hanLookupForm">
           <label for="hanLookupInput">調べる漢字</label>
           <div><input id="hanLookupInput" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="例：明、清、赢" /><button class="primary-action" id="hanLookupSubmit" type="submit">漢字を検索</button></div>
@@ -173,7 +193,7 @@
           <section class="han-lookup-glyph-panel" aria-labelledby="hanLookupGlyphTitle">
             <div class="panel-topline"><div><h3 id="hanLookupGlyphTitle">部品を色分けした字形</h3><p>色は外側の構成部品に対応します。ツリーの項目を選ぶと、該当する画だけを強調できます。</p></div></div>
             <div class="han-lookup-glyph-stage"><div id="hanLookupGlyph"></div><span id="hanLookupGlyphFallback">明</span></div>
-            <div class="han-lookup-focus-bar"><span id="hanLookupSelectedText">「明」のすべての画を表示中</span><button id="hanLookupSelectedQuery" type="button" hidden></button></div>
+            <div class="han-lookup-focus-bar"><span id="hanLookupSelectedText">「明」のすべての画を表示中</span><div><button id="hanLookupSelectedQuery" type="button" hidden></button><button id="hanLookupSelectedFind" type="button" hidden></button></div></div>
           </section>
 
           <section class="han-lookup-tree-panel" aria-labelledby="hanLookupTreeTitle">
@@ -205,25 +225,75 @@
             </div>
           </aside>
         </div>
+        </div>
+
+        <section class="han-component-panel" id="hanComponentLookupPanel" role="tabpanel" aria-labelledby="hanLookupComponentMode" hidden>
+          <div class="han-component-workspace">
+            <form class="han-component-form" id="hanComponentForm">
+              <div class="han-component-heading"><p class="section-kicker">COMPONENT / RADICAL / STROKES</p><h3>構成検索（パーツ検索）</h3><p>読み方が分からない漢字を、見えている一つから四つの構成部品で検索できます。同じ部品も繰り返し指定できます。</p></div>
+              <label for="hanComponentInput">漢字を構成する部品</label>
+              <div class="han-component-input-row"><input id="hanComponentInput" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="12" placeholder="例：山 石、または 車車車" /><button class="primary-action" id="hanComponentSubmit" type="submit">漢字を検索</button></div>
+              <div class="han-component-selected-head"><span>選択した部品</span><button id="hanComponentClear" type="button" disabled>クリア</button></div>
+              <div class="han-component-selected" id="hanComponentSelected"><span>部品が選択されていません</span></div>
+              <fieldset class="han-component-common"><legend>よく使う構成部品</legend><div>
+                <button type="button" data-han-component="亻" title="部品「亻」を追加" aria-label="部品「亻」を追加">亻</button>
+                <button type="button" data-han-component="氵" title="部品「氵」を追加" aria-label="部品「氵」を追加">氵</button>
+                <button type="button" data-han-component="扌" title="部品「扌」を追加" aria-label="部品「扌」を追加">扌</button>
+                <button type="button" data-han-component="口" title="部品「口」を追加" aria-label="部品「口」を追加">口</button>
+                <button type="button" data-han-component="女" title="部品「女」を追加" aria-label="部品「女」を追加">女</button>
+                <button type="button" data-han-component="子" title="部品「子」を追加" aria-label="部品「子」を追加">子</button>
+                <button type="button" data-han-component="宀" title="部品「宀」を追加" aria-label="部品「宀」を追加">宀</button>
+                <button type="button" data-han-component="心" title="部品「心」を追加" aria-label="部品「心」を追加">心</button>
+                <button type="button" data-han-component="忄" title="部品「忄」を追加" aria-label="部品「忄」を追加">忄</button>
+                <button type="button" data-han-component="木" title="部品「木」を追加" aria-label="部品「木」を追加">木</button>
+                <button type="button" data-han-component="火" title="部品「火」を追加" aria-label="部品「火」を追加">火</button>
+                <button type="button" data-han-component="灬" title="部品「灬」を追加" aria-label="部品「灬」を追加">灬</button>
+                <button type="button" data-han-component="日" title="部品「日」を追加" aria-label="部品「日」を追加">日</button>
+                <button type="button" data-han-component="月" title="部品「月」を追加" aria-label="部品「月」を追加">月</button>
+                <button type="button" data-han-component="言" title="部品「言」を追加" aria-label="部品「言」を追加">言</button>
+                <button type="button" data-han-component="糸" title="部品「糸」を追加" aria-label="部品「糸」を追加">糸</button>
+                <button type="button" data-han-component="艹" title="部品「艹」を追加" aria-label="部品「艹」を追加">艹</button>
+                <button type="button" data-han-component="辶" title="部品「辶」を追加" aria-label="部品「辶」を追加">辶</button>
+                <button type="button" data-han-component="阝" title="部品「阝」を追加" aria-label="部品「阝」を追加">阝</button>
+                <button type="button" data-han-component="金" title="部品「金」を追加" aria-label="部品「金」を追加">金</button>
+                <button type="button" data-han-component="貝" title="部品「貝」を追加" aria-label="部品「貝」を追加">貝</button>
+                <button type="button" data-han-component="車" title="部品「車」を追加" aria-label="部品「車」を追加">車</button>
+              </div></fieldset>
+              <div class="han-component-filters">
+                <label><span>総画数</span><select id="hanComponentStrokes"><option value="">指定なし</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31+">31+</option></select></label>
+                <label><span>並び順</span><select id="hanComponentSort"><option value="common">常用漢字を優先</option><option value="strokes">画数が少ない順</option></select></label>
+              </div>
+            </form>
+            <section class="han-component-results-panel" aria-labelledby="hanComponentResultsTitle">
+              <div class="han-component-results-head"><div><p class="section-kicker">MATCHING CHARACTERS</p><h3 id="hanComponentResultsTitle">候補の漢字</h3></div><p id="hanComponentSummary">部品を入力するか、よく使う構成部品を選んで検索してください。</p></div>
+              <div class="han-component-results" id="hanComponentResults" aria-label="候補の漢字"></div>
+              <p class="han-component-empty" id="hanComponentEmpty">部品を入力するか、よく使う構成部品を選んで検索してください。</p>
+              <button class="han-component-more" id="hanComponentMore" type="button" hidden>さらに表示</button>
+            </section>
+          </div>
+        </section>
+        <p class="han-lookup-source-note">構成データは Make Me a Hanzi、読みと異体字は Unicode Unihan を参照しています。字形分解は地域の字体や資料によって異なり、唯一の字源解釈を示すものではありません。 <a href="https://github.com/skishore/makemeahanzi">字形データの説明</a> · <a href="https://www.unicode.org/reports/tr38/">Unihan の説明</a></p>
       </section>
 
       <section class="seo-band standalone-info" aria-labelledby="hanLookupFeatureTitle">
-        <div class="section-heading"><p class="section-kicker">漢字の構成を検索</p><h2 id="hanLookupFeatureTitle">漢字に含まれる部首と構成部品を見やすく表示</h2><p class="seo-intro">IDSの記号をそのまま見せず、左右・上下・囲みなど一般的な構成名に置き換えて表示します。形は分かるものの、どの部品から成り立つかを調べたい場合に利用できます。</p></div>
+        <div class="section-heading"><p class="section-kicker">漢字の構成を検索</p><h2 id="hanLookupFeatureTitle">漢字を分解し、構成する部品からも検索</h2><p class="seo-intro">IDSを左右・上下・囲みなど一般的な構成名に置き換えて表示します。読み方が分からず入力できない漢字は、一つから四つの構成部品を組み合わせる構成検索（パーツ検索）で候補を探せます。</p></div>
         <div class="seo-grid">
           <article><h3>部首だけでなく部品も表示</h3><p>辞書で使う部首に加え、現代の字形を構成する部品と入れ子になった関係を確認できます。</p></article>
-          <article><h3>部品と画を同時に強調</h3><p>構成ツリーから部品を選ぶと、左の字形で対応する画を強調します。独立した漢字の部品は続けて検索できます。</p></article>
+          <article><h3>複数の部品から漢字を検索</h3><p>山と石から岩、三つの車から轟のように、部品の組み合わせと重複を反映し、総画数でも候補を絞れます。</p></article>
           <article><h3>筆順や練習ページへ連携</h3><p>検索した文字を再入力せず、筆順、中国語ピンイン、手書き検索、田字格の練習プリントへ移動できます。</p></article>
         </div>
-        <section class="word-howto" aria-labelledby="hanLookupHowTitle"><h2 id="hanLookupHowTitle">漢字の構成を調べる方法</h2><ol>
-            <li>漢字を1文字入力します。熟語を貼り付けた場合は文字タブから選択します。</li>
-            <li>色分け字形と構成ツリーを確認し、調べたい部品を選びます。</li>
-            <li>選択した部品を再検索するか、筆順や練習プリントへ進みます。</li>
+        <section class="word-howto" aria-labelledby="hanLookupHowTitle"><h2 id="hanLookupHowTitle">漢字の構成検索・パーツ検索の使い方</h2><ol>
+            <li>漢字が入力できる場合は、一文字を検索して部首と構成ツリーを確認します。</li>
+            <li>読み方が分からない場合は部品検索へ切り替え、見えている部品を一つから四つ入力します。</li>
+            <li>必要に応じて総画数で絞り、常用順または画数順に並べます。</li>
+            <li>候補の漢字を選び、読み、筆順、ピンインや練習プリントを確認します。</li>
           </ol></section>
         <section class="pinyin-faq" aria-labelledby="hanLookupFaqTitle"><h2 id="hanLookupFaqTitle">漢字の構成・部首検索に関する質問</h2>
           <details><summary>部首と構成部品は同じですか？</summary><p>同じではありません。部首は主に辞書で分類・検索するための代表要素です。一方、構成部品は字形を組み立てる要素で、一つの漢字に複数含まれます。</p></details>
           <details><summary>資料によって分解結果が違うのはなぜですか？</summary><p>分解する深さが異なるほか、中国の簡体字・繁体字、台湾、日本などで字形が異なる場合があります。そのため複数の妥当な分析が存在します。</p></details>
           <details><summary>表示された構成は漢字の字源ですか？</summary><p>必ずしも字源ではありません。このツールは主に現代字形の見た目を分解します。造字法は学習の参考情報としてご覧ください。</p></details>
           <details><summary>熟語や文章を入力できますか？</summary><p>入力できます。最大12文字の漢字を抽出してタブに表示します。タブを選ぶと1文字ずつ構成を確認できます。</p></details>
+          <details><summary>読み方が分からない漢字も検索できますか？</summary><p>はい。見えている構成部品を一つから四つ入力すると、すべての部品を含む漢字を検索できます。同じ部品も繰り返して指定できます。</p></details>
         </section>
         <p class="section-kicker pinyin-related-kicker">関連する漢字ツール</p>
         <nav class="landing-links" aria-label="関連する漢字・文字ツール">
@@ -241,6 +311,6 @@
       </section>
     </main>
     <footer class="site-footer"><p>JianFan.app はブラウザーで使える漢字構成、手書き検索、中国語ピンイン、筆順、文字変換ツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
-    <script id="hanLookupLabels" type="application/json">{"structures":{"leftRight":"左右構成","topBottom":"上下構成","leftMiddleRight":"左中右構成","topMiddleBottom":"上中下構成","fullEnclosure":"全囲み構成","topEnclosure":"上から囲む構成","bottomEnclosure":"下から囲む構成","leftEnclosure":"左から囲む構成","upperLeftEnclosure":"左上から囲む構成","upperRightEnclosure":"右上から囲む構成","lowerLeftEnclosure":"左下から囲む構成","rightEnclosure":"右から囲む構成","lowerRightEnclosure":"右下から囲む構成","overlaid":"重ね合わせ構成","horizontalReflection":"左右反転構成","rotation":"回転構成","single":"単体またはその他"},"formations":{"ideographic":"会意文字","pictographic":"象形文字","pictophonetic":"形声文字","unknown":"その他の造字法"},"onReading":"音読み","kunReading":"訓読み","wholeCharacter":"漢字全体","component":"構成部品"}</script>
+    <script id="hanLookupLabels" type="application/json">{"structures":{"leftRight":"左右構成","topBottom":"上下構成","leftMiddleRight":"左中右構成","topMiddleBottom":"上中下構成","fullEnclosure":"全囲み構成","topEnclosure":"上から囲む構成","bottomEnclosure":"下から囲む構成","leftEnclosure":"左から囲む構成","upperLeftEnclosure":"左上から囲む構成","upperRightEnclosure":"右上から囲む構成","lowerLeftEnclosure":"左下から囲む構成","rightEnclosure":"右から囲む構成","lowerRightEnclosure":"右下から囲む構成","overlaid":"重ね合わせ構成","horizontalReflection":"左右反転構成","rotation":"回転構成","single":"単体またはその他"},"formations":{"ideographic":"会意文字","pictographic":"象形文字","pictophonetic":"形声文字","unknown":"その他の造字法"},"onReading":"音読み","kunReading":"訓読み","wholeCharacter":"漢字全体","component":"構成部品","componentSearch":{"modeAria":"漢字の検索方法","characterMode":"漢字から調べる","componentMode":"部品から探す","title":"構成検索（パーツ検索）","intro":"読み方が分からない漢字を、見えている一つから四つの構成部品で検索できます。同じ部品も繰り返し指定できます。","inputLabel":"漢字を構成する部品","placeholder":"例：山 石、または 車車車","submit":"漢字を検索","selectedLabel":"選択した部品","selectedEmpty":"部品が選択されていません","clear":"クリア","commonLabel":"よく使う構成部品","strokeLabel":"総画数","strokeAll":"指定なし","sortLabel":"並び順","sortCommon":"常用漢字を優先","sortStrokes":"画数が少ない順","resultsTitle":"候補の漢字","initialHint":"部品を入力するか、よく使う構成部品を選んで検索してください。","loadMore":"さらに表示","loading":"構成部品を検索中","invalid":"構成部品を一つから四つ入力してください","failed":"部品検索データを読み込めません。しばらくしてから再度お試しください","noResults":"すべての部品を含む漢字が見つかりません。部品を減らすか、総画数の指定を解除してください。","resultSummary":"「{components}」を含む漢字が {count} 字見つかりました","removeComponent":"部品「{character}」を削除","addComponent":"部品「{character}」を追加","resultLabel":"漢字「{character}」を表示、{strokes}画、中国語ピンイン {reading}","resultStroke":"{count}画","findContaining":"「{character}」を含む漢字を探す"}}</script>
   </body>
 </html>

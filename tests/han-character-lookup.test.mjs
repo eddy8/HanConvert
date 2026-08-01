@@ -12,15 +12,19 @@ vm.runInNewContext(coreSource, context);
 const core = context.HanCharacterLookupCore;
 
 const localizedPages = [
-  ["zh-CN", "chinese-character-lookup/index.html", "汉字查询与结构拆解"],
-  ["zh-TW", "zh-tw/chinese-character-lookup/index.html", "漢字查詢與結構拆解"],
-  ["en", "en/chinese-character-lookup/index.html", "Chinese Character Lookup & Decomposition"],
-  ["ja", "ja/chinese-character-lookup/index.html", "漢字の構成・部首検索"],
-  ["ko", "ko/chinese-character-lookup/index.html", "한자 부수·구성요소 검색"]
+  ["zh-CN", "chinese-character-lookup/index.html", "汉字查询与结构拆解", "按部件反查汉字"],
+  ["zh-TW", "zh-tw/chinese-character-lookup/index.html", "漢字查詢與結構拆解", "依部件反查漢字"],
+  ["en", "en/chinese-character-lookup/index.html", "Chinese Character Lookup & Decomposition", "Find a Chinese character by components"],
+  ["ja", "ja/chinese-character-lookup/index.html", "漢字の構成・部首検索", "構成検索（パーツ検索）"],
+  ["ko", "ko/chinese-character-lookup/index.html", "한자 부수·구성요소 검색", "구성요소로 한자 찾기"]
 ];
 
 test("extractHanCharacters keeps unique Han characters in input order", () => {
   assert.deepEqual(Array.from(core.extractHanCharacters("A明，清明 123森")), ["明", "清", "森"]);
+});
+
+test("extractHanComponents preserves repeated parts and enforces the four-part limit", () => {
+  assert.deepEqual(Array.from(core.extractHanComponents("A 木 木 木 日 月")), ["木", "木", "木", "日"]);
 });
 
 test("parseIds creates paths for binary and nested ternary structures", () => {
@@ -59,8 +63,20 @@ test("generated data contains structure and localized readings for a common char
   assert.match(data.明.jo, /MEI/);
 });
 
+test("component index supports intersections, repeated parts, stroke filters and localized ranking", async () => {
+  const index = JSON.parse(await readFile(path.join(projectRoot, "data/han-character-lookup/components.json"), "utf8"));
+  assert.equal(index.version, 1);
+  assert.equal(index.records, 9574);
+  assert.deepEqual(Array.from(core.findCharactersByComponents(index, ["日", "月"], { locale: "zh-CN" })), ["明"]);
+  assert.deepEqual(Array.from(core.findCharactersByComponents(index, ["木", "木", "木"], { locale: "zh-CN" })), ["森"]);
+  assert.deepEqual(Array.from(core.findCharactersByComponents(index, ["車", "車", "車"], { locale: "ja" })), ["轟"]);
+  assert.ok(core.findCharactersByComponents(index, ["木"], { locale: "zh-CN", strokes: "12" }).includes("森"));
+  assert.equal(core.findCharactersByComponents(index, ["木"], { locale: "zh-CN", strokes: "11" }).includes("森"), false);
+  assert.equal(core.findCharactersByComponents(index, ["木"], { locale: "ja" })[0], "来");
+});
+
 test("all localized pages contain static copy, hreflang, schemas and browser assets", async () => {
-  for (const [locale, relativePath, heading] of localizedPages) {
+  for (const [locale, relativePath, heading, componentHeading] of localizedPages) {
     const html = await readFile(path.join(projectRoot, relativePath), "utf8");
     const description = html.match(/<meta name="description" content="([^"]+)"/u)?.[1] || "";
     assert.ok([...description].length >= 150 && [...description].length <= 160, `${locale} description length`);
@@ -68,6 +84,10 @@ test("all localized pages contain static copy, hreflang, schemas and browser ass
     assert.match(html, /data-tool-page="han-character-lookup"/);
     assert.match(html, /src="\/han-character-lookup-core\.js"/);
     assert.match(html, /src="\/han-character-lookup\.js"/);
+    assert.match(html, new RegExp(componentHeading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(html, /id="hanComponentLookupPanel"/);
+    assert.match(html, /id="hanComponentResults"/);
+    assert.match(html, /data-han-lookup-mode="component"/);
     assert.match(html, /"@type": "FAQPage"/);
     assert.equal((html.match(/rel="alternate" hreflang=/g) || []).length, 6);
   }

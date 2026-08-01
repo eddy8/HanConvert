@@ -1167,7 +1167,7 @@
   <!-- han-character-lookup-tool:start -->
   <url>
     <loc>https://jianfan.app/chinese-character-lookup/</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-character-lookup/" />
@@ -1179,7 +1179,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/chinese-character-lookup/</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-character-lookup/" />
@@ -1191,7 +1191,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/chinese-character-lookup/</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-character-lookup/" />
@@ -1203,7 +1203,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/chinese-character-lookup/</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-character-lookup/" />
@@ -1215,7 +1215,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/chinese-character-lookup/</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-character-lookup/" />
@@ -1226,4 +1226,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-character-lookup/" />
   </url>
   <!-- han-character-lookup-tool:end -->
+  <url>
+    <loc>https://jianfan.app/word-spelling/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

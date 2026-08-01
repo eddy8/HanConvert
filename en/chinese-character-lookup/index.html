@@ -6,8 +6,8 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="description" content="Look up any Chinese character to see Pinyin, radical, strokes, Unicode and variants. Explore its components with a color-coded glyph and decomposition tree." />
-    <title>Chinese Character Lookup and Decomposition | JianFan.app</title>
+    <meta name="description" content="Look up and decompose Chinese characters by Pinyin, radical, strokes and variants, or find an unknown Hanzi by combining components and filtering stroke count." />
+    <title>Chinese Character Lookup, Component Search and Decomposition | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/en/chinese-character-lookup/" />
     <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-character-lookup/" />
     <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-character-lookup/" />
@@ -32,10 +32,11 @@
             "alternateName": [
               "Chinese Character Decomposition",
               "Hanzi Component Lookup",
-              "Chinese Radical Lookup"
+              "Chinese Radical Lookup",
+              "Chinese Character Component Search"
             ],
             "url": "https://jianfan.app/en/chinese-character-lookup/",
-            "description": "Look up any Chinese character to see Pinyin, radical, strokes, Unicode and variants. Explore its components with a color-coded glyph and decomposition tree.",
+            "description": "Look up and decompose Chinese characters by Pinyin, radical, strokes and variants, or find an unknown Hanzi by combining components and filtering stroke count.",
             "applicationCategory": "EducationalApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript",
@@ -74,22 +75,27 @@
           {
             "@type": "HowTo",
             "@id": "https://jianfan.app/en/chinese-character-lookup/#howto",
-            "name": "How to look up and decompose a Chinese character",
+            "name": "How to look up a Hanzi or search by components",
             "step": [
               {
                 "@type": "HowToStep",
                 "position": 1,
-                "text": "Enter one Hanzi. If you paste a word, select a character from the generated tabs."
+                "text": "If you know the character, enter it to view its color-coded glyph, radical and decomposition tree."
               },
               {
                 "@type": "HowToStep",
                 "position": 2,
-                "text": "Inspect the color-coded glyph and choose a component in the decomposition tree."
+                "text": "If you do not know it, switch to component search and enter one to four recognizable parts."
               },
               {
                 "@type": "HowToStep",
                 "position": 3,
-                "text": "Look up that component or continue to stroke order, Pinyin and practice-sheet tools."
+                "text": "Optionally filter by total stroke count and sort by common usage or stroke count."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "Choose a result to open its full details, stroke order, Pinyin or worksheet tools."
               }
             ]
           },
@@ -128,6 +134,14 @@
                   "@type": "Answer",
                   "text": "Yes. The tool extracts up to twelve Han characters and creates a tab for each one. Punctuation, Latin letters and numbers are ignored."
                 }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I find a Chinese character without knowing its pronunciation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Enter one to four visible components and the tool returns characters containing all of them. Repeated components are counted, so 木木木 can find 森."
+                }
               }
             ]
           }
@@ -153,15 +167,20 @@
     </header>
     <main id="main">
       <section class="tool-hero han-lookup-hero" aria-labelledby="pageTitle">
-        <div><p class="section-kicker">LOOK UP · HIGHLIGHT · DECOMPOSE</p><h1 id="pageTitle">Chinese Character Lookup & Decomposition</h1><p class="lede">Enter a Hanzi to check its Pinyin, radical, strokes and variants, then explore how its components fit together in a color-coded glyph and structure tree.</p></div>
+        <div><p class="section-kicker">LOOK UP · HIGHLIGHT · DECOMPOSE</p><h1 id="pageTitle">Chinese Character Lookup & Decomposition</h1><p class="lede">Look up a Hanzi for Pinyin, radicals, strokes and decomposition, or find an unknown Chinese character by combining the components you can recognize.</p></div>
         <div class="han-lookup-hero-equation" aria-hidden="true"><span>氵</span><i>+</i><span>青</span><i>=</i><strong>清</strong></div>
       </section>
 
       <section class="standalone-tool han-lookup-tool" aria-labelledby="hanLookupToolTitle">
         <div class="standalone-tool-head">
           <div><p class="section-kicker">LOOK UP / DECOMPOSE / FOCUS</p><h2 id="hanLookupToolTitle">Enter a Chinese character to inspect its structure</h2></div>
+          <div class="han-lookup-mode-switch" role="tablist" aria-label="Chinese character search mode">
+            <button id="hanLookupCharacterMode" type="button" role="tab" aria-selected="true" aria-controls="hanCharacterLookupPanel" data-han-lookup-mode="character">Character lookup</button>
+            <button id="hanLookupComponentMode" type="button" role="tab" aria-selected="false" aria-controls="hanComponentLookupPanel" data-han-lookup-mode="component">Component search</button>
+          </div>
           <div class="status-pill" id="hanLookupStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>Looking up character data</span></div>
         </div>
+        <div id="hanCharacterLookupPanel" role="tabpanel" aria-labelledby="hanLookupCharacterMode">
         <form class="han-lookup-form" id="hanLookupForm">
           <label for="hanLookupInput">Chinese character</label>
           <div><input id="hanLookupInput" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="For example: 明, 清, 赢" /><button class="primary-action" id="hanLookupSubmit" type="submit">Look up character</button></div>
@@ -173,7 +192,7 @@
           <section class="han-lookup-glyph-panel" aria-labelledby="hanLookupGlyphTitle">
             <div class="panel-topline"><div><h3 id="hanLookupGlyphTitle">Color-coded component glyph</h3><p>Colors identify the outermost components. Select a tree node to focus the strokes that belong to it.</p></div></div>
             <div class="han-lookup-glyph-stage"><div id="hanLookupGlyph"></div><span id="hanLookupGlyphFallback">明</span></div>
-            <div class="han-lookup-focus-bar"><span id="hanLookupSelectedText">Showing every stroke in 明</span><button id="hanLookupSelectedQuery" type="button" hidden></button></div>
+            <div class="han-lookup-focus-bar"><span id="hanLookupSelectedText">Showing every stroke in 明</span><div><button id="hanLookupSelectedQuery" type="button" hidden></button><button id="hanLookupSelectedFind" type="button" hidden></button></div></div>
           </section>
 
           <section class="han-lookup-tree-panel" aria-labelledby="hanLookupTreeTitle">
@@ -205,25 +224,78 @@
             </div>
           </aside>
         </div>
+        </div>
+
+        <section class="han-component-panel" id="hanComponentLookupPanel" role="tabpanel" aria-labelledby="hanLookupComponentMode" hidden>
+          <div class="han-component-workspace">
+            <form class="han-component-form" id="hanComponentForm">
+              <div class="han-component-heading"><p class="section-kicker">COMPONENT / RADICAL / STROKES</p><h3>Find a Chinese character by components</h3><p>Enter one to four visible parts to find Hanzi containing all of them. Repeat a component when it appears more than once.</p></div>
+              <label for="hanComponentInput">Character components</label>
+              <div class="han-component-input-row"><input id="hanComponentInput" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="12" placeholder="For example: 氵 青 or 木木木" /><button class="primary-action" id="hanComponentSubmit" type="submit">Find characters</button></div>
+              <div class="han-component-selected-head"><span>Selected components</span><button id="hanComponentClear" type="button" disabled>Clear</button></div>
+              <div class="han-component-selected" id="hanComponentSelected"><span>No components selected</span></div>
+              <fieldset class="han-component-common"><legend>Common radicals and components</legend><div>
+                <button type="button" data-han-component="亻" title="Add component 亻" aria-label="Add component 亻">亻</button>
+                <button type="button" data-han-component="氵" title="Add component 氵" aria-label="Add component 氵">氵</button>
+                <button type="button" data-han-component="扌" title="Add component 扌" aria-label="Add component 扌">扌</button>
+                <button type="button" data-han-component="口" title="Add component 口" aria-label="Add component 口">口</button>
+                <button type="button" data-han-component="女" title="Add component 女" aria-label="Add component 女">女</button>
+                <button type="button" data-han-component="子" title="Add component 子" aria-label="Add component 子">子</button>
+                <button type="button" data-han-component="宀" title="Add component 宀" aria-label="Add component 宀">宀</button>
+                <button type="button" data-han-component="心" title="Add component 心" aria-label="Add component 心">心</button>
+                <button type="button" data-han-component="木" title="Add component 木" aria-label="Add component 木">木</button>
+                <button type="button" data-han-component="火" title="Add component 火" aria-label="Add component 火">火</button>
+                <button type="button" data-han-component="日" title="Add component 日" aria-label="Add component 日">日</button>
+                <button type="button" data-han-component="月" title="Add component 月" aria-label="Add component 月">月</button>
+                <button type="button" data-han-component="言" title="Add component 言" aria-label="Add component 言">言</button>
+                <button type="button" data-han-component="讠" title="Add component 讠" aria-label="Add component 讠">讠</button>
+                <button type="button" data-han-component="糸" title="Add component 糸" aria-label="Add component 糸">糸</button>
+                <button type="button" data-han-component="纟" title="Add component 纟" aria-label="Add component 纟">纟</button>
+                <button type="button" data-han-component="艹" title="Add component 艹" aria-label="Add component 艹">艹</button>
+                <button type="button" data-han-component="辶" title="Add component 辶" aria-label="Add component 辶">辶</button>
+                <button type="button" data-han-component="阝" title="Add component 阝" aria-label="Add component 阝">阝</button>
+                <button type="button" data-han-component="金" title="Add component 金" aria-label="Add component 金">金</button>
+                <button type="button" data-han-component="钅" title="Add component 钅" aria-label="Add component 钅">钅</button>
+                <button type="button" data-han-component="貝" title="Add component 貝" aria-label="Add component 貝">貝</button>
+                <button type="button" data-han-component="贝" title="Add component 贝" aria-label="Add component 贝">贝</button>
+                <button type="button" data-han-component="車" title="Add component 車" aria-label="Add component 車">車</button>
+                <button type="button" data-han-component="车" title="Add component 车" aria-label="Add component 车">车</button>
+              </div></fieldset>
+              <div class="han-component-filters">
+                <label><span>Total strokes</span><select id="hanComponentStrokes"><option value="">Any</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31+">31+</option></select></label>
+                <label><span>Sort results</span><select id="hanComponentSort"><option value="common">Common first</option><option value="strokes">Fewest strokes first</option></select></label>
+              </div>
+            </form>
+            <section class="han-component-results-panel" aria-labelledby="hanComponentResultsTitle">
+              <div class="han-component-results-head"><div><p class="section-kicker">MATCHING CHARACTERS</p><h3 id="hanComponentResultsTitle">Matching characters</h3></div><p id="hanComponentSummary">Enter components or choose common parts to start a Chinese character component search.</p></div>
+              <div class="han-component-results" id="hanComponentResults" aria-label="Matching characters"></div>
+              <p class="han-component-empty" id="hanComponentEmpty">Enter components or choose common parts to start a Chinese character component search.</p>
+              <button class="han-component-more" id="hanComponentMore" type="button" hidden>Show more</button>
+            </section>
+          </div>
+        </section>
+        <p class="han-lookup-source-note">Structure data comes from Make Me a Hanzi; readings and variants use Unicode Unihan. Decompositions can vary by glyph region and source and are not a single authoritative account of character origin. <a href="https://github.com/skishore/makemeahanzi">Character data documentation</a> · <a href="https://www.unicode.org/reports/tr38/">Unihan documentation</a></p>
       </section>
 
       <section class="seo-band standalone-info" aria-labelledby="hanLookupFeatureTitle">
-        <div class="section-heading"><p class="section-kicker">Chinese character decomposition</p><h2 id="hanLookupFeatureTitle">See the radical, components and structure inside a Hanzi</h2><p class="seo-intro">This Chinese character lookup turns IDS notation into familiar left-right, top-bottom and enclosure layouts. It is designed for learners who recognize a character but want to understand its visible components and related strokes.</p></div>
+        <div class="section-heading"><p class="section-kicker">Chinese character decomposition</p><h2 id="hanLookupFeatureTitle">Decompose a Hanzi or find a Chinese character by its components</h2><p class="seo-intro">This Chinese character lookup turns IDS notation into familiar left-right, top-bottom and enclosure layouts. Its component search also identifies an unknown Hanzi from one to four visible parts, without requiring Pinyin or pronunciation.</p></div>
         <div class="seo-grid">
           <article><h3>More than a radical label</h3><p>See the dictionary radical alongside the other components and nested groups that make up the modern character shape.</p></article>
-          <article><h3>Components linked to strokes</h3><p>Select a component in the tree and the corresponding strokes remain in focus on the glyph. Independent components can be looked up again.</p></article>
+          <article><h3>Search with multiple components</h3><p>Combine visible parts such as 氵 and 青 to find 清, repeat 木 three times to find 森, then narrow matches by total stroke count.</p></article>
           <article><h3>Continue with practical tools</h3><p>Open animated stroke order, Pinyin, handwriting lookup or a printable Tian Zi Ge worksheet without entering the character again.</p></article>
         </div>
-        <section class="word-howto" aria-labelledby="hanLookupHowTitle"><h2 id="hanLookupHowTitle">How to look up and decompose a Chinese character</h2><ol>
-            <li>Enter one Hanzi. If you paste a word, select a character from the generated tabs.</li>
-            <li>Inspect the color-coded glyph and choose a component in the decomposition tree.</li>
-            <li>Look up that component or continue to stroke order, Pinyin and practice-sheet tools.</li>
+        <section class="word-howto" aria-labelledby="hanLookupHowTitle"><h2 id="hanLookupHowTitle">How to look up a Hanzi or search by components</h2><ol>
+            <li>If you know the character, enter it to view its color-coded glyph, radical and decomposition tree.</li>
+            <li>If you do not know it, switch to component search and enter one to four recognizable parts.</li>
+            <li>Optionally filter by total stroke count and sort by common usage or stroke count.</li>
+            <li>Choose a result to open its full details, stroke order, Pinyin or worksheet tools.</li>
           </ol></section>
         <section class="pinyin-faq" aria-labelledby="hanLookupFaqTitle"><h2 id="hanLookupFaqTitle">Chinese character decomposition questions</h2>
           <details><summary>Are radicals and components the same thing?</summary><p>No. A radical is mainly an indexing category used by dictionaries. Components are the visible units that form a character, so one Hanzi can contain several components but normally has one indexing radical.</p></details>
           <details><summary>Why do decomposition results differ between sources?</summary><p>Characters can be divided at different levels, and Simplified, Traditional, mainland Chinese, Taiwanese and Japanese glyph conventions may use different shapes. More than one analysis can therefore be reasonable.</p></details>
           <details><summary>Does the tree show the true etymology of a character?</summary><p>Not necessarily. The tree describes the visible modern glyph. Formation labels are learning aids and should not replace specialist paleographic or etymological research.</p></details>
           <details><summary>Can I paste more than one character?</summary><p>Yes. The tool extracts up to twelve Han characters and creates a tab for each one. Punctuation, Latin letters and numbers are ignored.</p></details>
+          <details><summary>Can I find a Chinese character without knowing its pronunciation?</summary><p>Yes. Enter one to four visible components and the tool returns characters containing all of them. Repeated components are counted, so 木木木 can find 森.</p></details>
         </section>
         <p class="section-kicker pinyin-related-kicker">Related Chinese tools</p>
         <nav class="landing-links" aria-label="Related Chinese character and text tools">
@@ -241,6 +313,6 @@
       </section>
     </main>
     <footer class="site-footer"><p>JianFan.app provides browser-based Chinese character structure, handwriting, Pinyin, stroke-order and text-conversion tools.</p><nav class="footer-links" aria-label="Footer"><a href="/en/about/">About</a><a href="/en/contact/">Contact</a><a href="/en/privacy/">Privacy Statement</a></nav></footer>
-    <script id="hanLookupLabels" type="application/json">{"structures":{"leftRight":"Left-right","topBottom":"Top-bottom","leftMiddleRight":"Left-middle-right","topMiddleBottom":"Top-middle-bottom","fullEnclosure":"Full enclosure","topEnclosure":"Enclosed from top","bottomEnclosure":"Enclosed from bottom","leftEnclosure":"Enclosed from left","upperLeftEnclosure":"Enclosed from upper left","upperRightEnclosure":"Enclosed from upper right","lowerLeftEnclosure":"Enclosed from lower left","rightEnclosure":"Enclosed from right","lowerRightEnclosure":"Enclosed from lower right","overlaid":"Overlaid","horizontalReflection":"Horizontal reflection","rotation":"Rotated","single":"Single or other structure"},"formations":{"ideographic":"Compound ideograph","pictographic":"Pictograph","pictophonetic":"Phono-semantic compound","unknown":"Other formation"},"onReading":"On","kunReading":"Kun","wholeCharacter":"Whole character","component":"Component"}</script>
+    <script id="hanLookupLabels" type="application/json">{"structures":{"leftRight":"Left-right","topBottom":"Top-bottom","leftMiddleRight":"Left-middle-right","topMiddleBottom":"Top-middle-bottom","fullEnclosure":"Full enclosure","topEnclosure":"Enclosed from top","bottomEnclosure":"Enclosed from bottom","leftEnclosure":"Enclosed from left","upperLeftEnclosure":"Enclosed from upper left","upperRightEnclosure":"Enclosed from upper right","lowerLeftEnclosure":"Enclosed from lower left","rightEnclosure":"Enclosed from right","lowerRightEnclosure":"Enclosed from lower right","overlaid":"Overlaid","horizontalReflection":"Horizontal reflection","rotation":"Rotated","single":"Single or other structure"},"formations":{"ideographic":"Compound ideograph","pictographic":"Pictograph","pictophonetic":"Phono-semantic compound","unknown":"Other formation"},"onReading":"On","kunReading":"Kun","wholeCharacter":"Whole character","component":"Component","componentSearch":{"modeAria":"Chinese character search mode","characterMode":"Character lookup","componentMode":"Component search","title":"Find a Chinese character by components","intro":"Enter one to four visible parts to find Hanzi containing all of them. Repeat a component when it appears more than once.","inputLabel":"Character components","placeholder":"For example: 氵 青 or 木木木","submit":"Find characters","selectedLabel":"Selected components","selectedEmpty":"No components selected","clear":"Clear","commonLabel":"Common radicals and components","strokeLabel":"Total strokes","strokeAll":"Any","sortLabel":"Sort results","sortCommon":"Common first","sortStrokes":"Fewest strokes first","resultsTitle":"Matching characters","initialHint":"Enter components or choose common parts to start a Chinese character component search.","loadMore":"Show more","loading":"Matching components","invalid":"Enter one to four Chinese character components","failed":"The component index could not load. Try again shortly","noResults":"No character contains all of these components. Remove a component or clear the stroke filter.","resultSummary":"Found {count} characters containing {components}","removeComponent":"Remove component {character}","addComponent":"Add component {character}","resultLabel":"View {character}, {strokes} strokes, Pinyin {reading}","resultStroke":"{count} strokes","findContaining":"Find characters containing {character}"}}</script>
   </body>
 </html>

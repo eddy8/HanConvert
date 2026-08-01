@@ -19,12 +19,12 @@ const locales = {
 
 const content = {
   "zh-CN": {
-    title: "汉字查询与结构拆解 - 部首、部件和笔画在线查询 | JianFan.app",
+    title: "汉字查询与结构拆解 - 部首、部件查字和笔画在线查询 | JianFan.app",
     description: SEO_DESCRIPTIONS[slug]["zh-CN"],
-    alternateNames: ["汉字结构查询", "汉字拆解", "汉字部首查询"],
+    alternateNames: ["汉字结构查询", "汉字拆解", "汉字部首查询", "部件查字", "按部件查字"],
     eyebrow: "汉字查询 · 部件高亮 · 结构拆解",
     heading: "汉字查询与结构拆解",
-    lede: "输入一个汉字，查看拼音、部首、笔画和异体字，并通过彩色字形与结构树理解它由哪些部件组成。",
+    lede: "输入汉字可查看拼音、部首、笔画和结构拆解；不知道读音时，也可输入多个部件反查可能的汉字。",
     toolTitle: "输入汉字，查看字形结构",
     inputLabel: "要查询的汉字",
     placeholder: "例如：明、清、赢",
@@ -45,21 +45,22 @@ const content = {
     dataSource: "字形数据说明",
     unicodeSource: "Unihan 数据说明",
     featureKicker: "汉字结构查询",
-    featureTitle: "从整个汉字看到汉字偏旁部首和组成部件",
-    featureIntro: "汉字结构查询适合遇到认识字形却不了解组成方式的场景。页面将 IDS 字形描述转换成普通用户容易理解的左右、上下、包围等结构，并把对应笔画直接标在字形上。",
+    featureTitle: "正向拆解汉字，也能按部件反查生僻字",
+    featureIntro: "汉字结构查询可将 IDS 字形描述转换成左右、上下、包围等常见结构，并把对应笔画直接标在字形上；遇到不知道读音、无法输入的字，还能根据看得出的汉字偏旁部首和组成部件进行部件查字。",
     cards: [
       ["逐层拆解而非只报部首", "除了字典检索使用的部首，还会显示构成汉字的其他部件及层级关系，帮助区分部首、偏旁和部件。"],
-      ["部件与笔画同步高亮", "点击结构树中的部件，左侧字形立即聚焦对应笔画；还可以继续查询能够独立成字的部件。"],
+      ["多个部件组合反查", "输入氵和青可找到清，输入三个木可找到森；还可按总笔画筛选，并优先展示常用字。"],
       ["查字结果连接学习工具", "查询后可直接打开动态笔顺、汉字拼音、手写识别或田字格字帖，不必重复输入同一个字。"]
     ],
-    howTitle: "如何查询并拆解汉字",
-    steps: ["输入一个汉字；粘贴词语时，可从自动生成的汉字标签中选择。", "查看彩色字形和结构树，点击部件聚焦对应笔画。", "继续查询所选部件，或前往笔顺、拼音和字帖页面。"],
+    howTitle: "如何查询、拆解或按部件查字",
+    steps: ["已知汉字时，输入一个字并查看彩色字形、部首与结构树。", "不知道读音时，切换到部件查字并输入一至四个可辨认的部件。", "需要缩小范围时选择总笔画，并按常用程度或笔画数排序。", "点击候选字进入完整资料，或继续查看笔顺、拼音和字帖。"],
     faqTitle: "汉字结构拆解常见问题",
     faqs: [
       ["部首和部件是一回事吗？", "不是。部首主要用于字典分类与检索，部件是构成汉字字形的单位。一个汉字通常只有一个索引部首，但可以包含多个部件。"],
       ["为什么不同网站的拆解结果不完全一样？", "汉字可按不同层级拆分，简体、繁体以及中国大陆、台湾、日本等地区的字形也可能不同，因此同一个字可能存在多种合理描述。"],
       ["结构拆解代表汉字的真实字源吗？", "不一定。本工具主要展示现代字形的视觉组成。构字类型可作为学习提示，但不能替代古文字学或权威字源研究。"],
-      ["可以一次输入多个汉字吗？", "可以。页面会提取最多十二个汉字并生成标签，点击标签即可逐字查询，标点、字母和数字会被忽略。"]
+      ["可以一次输入多个汉字吗？", "可以。页面会提取最多十二个汉字并生成标签，点击标签即可逐字查询，标点、字母和数字会被忽略。"],
+      ["不知道汉字读音，可以按部件查字吗？", "可以。输入一至四个看得出的部件，系统会匹配同时包含这些部件的汉字。相同部件可以重复输入，例如三个木可找到森。"]
     ],
     related: "相关汉字工具",
     relatedAria: "相关汉字与文字工具",
@@ -74,12 +75,12 @@ const content = {
     }
   },
   "zh-TW": {
-    title: "漢字查詢與結構拆解 - 部首、部件及筆畫線上查詢 | JianFan.app",
+    title: "漢字查詢與結構拆解 - 部件檢索、部首及筆畫線上查詢 | JianFan.app",
     description: SEO_DESCRIPTIONS[slug]["zh-TW"],
-    alternateNames: ["漢字結構查詢", "漢字拆解", "國字部首查詢"],
+    alternateNames: ["漢字結構查詢", "漢字拆解", "國字部首查詢", "部件檢索", "部件查字"],
     eyebrow: "漢字查詢 · 部件標示 · 結構拆解",
     heading: "漢字查詢與結構拆解",
-    lede: "輸入一個漢字，查看拼音、部首、筆畫與異體字，並透過彩色字形和結構樹理解各個組成部件。",
+    lede: "輸入漢字可查看拼音、部首、筆畫與結構拆解；不知道讀音時，也能輸入多個部件反查可能的漢字。",
     toolTitle: "輸入漢字，查看字形結構",
     inputLabel: "要查詢的漢字",
     placeholder: "例如：明、清、贏",
@@ -100,21 +101,22 @@ const content = {
     dataSource: "字形資料說明",
     unicodeSource: "Unihan 資料說明",
     featureKicker: "漢字結構查詢",
-    featureTitle: "從完整漢字看見部首、偏旁和組成部件",
-    featureIntro: "漢字結構查詢適合認得字形、卻不了解組成方式的情況。頁面會將 IDS 字形描述轉換成容易理解的左右、上下、包圍等結構，並直接在字形上標示對應筆畫。",
+    featureTitle: "正向拆解漢字，也能依部件反查生僻字",
+    featureIntro: "漢字結構查詢會將 IDS 字形描述轉換成左右、上下、包圍等常見結構，並在字形上標示對應筆畫；遇到不會讀、無法輸入的字，也可依看得出的偏旁部件進行部件檢索。",
     cards: [
       ["逐層拆解，不只列出部首", "除了字典檢索所用的部首，也會呈現其他部件與層級關係，協助分辨部首、偏旁及部件。"],
-      ["部件與筆畫同步標示", "點選結構樹中的部件，左側字形會立即聚焦相關筆畫；能獨立成字的部件還可繼續查詢。"],
+      ["組合多個部件反查", "輸入氵與青可找到清，輸入三個木可找到森；亦可依總筆畫篩選，並優先顯示常用字。"],
       ["連結既有漢字學習工具", "查詢後可直接開啟動態筆順、漢語拼音、手寫辨識或田字格練習紙，不必重新輸入。"]
     ],
-    howTitle: "如何查詢並拆解漢字",
-    steps: ["輸入一個漢字；貼上詞語時，可從自動產生的漢字標籤中選取。", "查看彩色字形與結構樹，點選部件聚焦相關筆畫。", "繼續查詢選取的部件，或前往筆順、拼音和練習紙頁面。"],
+    howTitle: "如何查詢、拆解或依部件找字",
+    steps: ["已知漢字時，輸入一個字並查看彩色字形、部首與結構樹。", "不知道讀音時，切換至部件檢索並輸入一至四個可辨認的部件。", "需要縮小範圍時選擇總筆畫，再依常用程度或筆畫數排序。", "點選候選字查看完整資料，或繼續前往筆順、拼音與練習紙。"],
     faqTitle: "漢字結構拆解常見問題",
     faqs: [
       ["部首和部件相同嗎？", "不同。部首主要用於字典分類與檢索，部件是組成漢字字形的單位。一個漢字通常只有一個索引部首，但可能包含多個部件。"],
       ["為什麼不同網站的拆解結果不完全一樣？", "漢字可依不同層級拆分，正體、簡體及臺灣、中國大陸、日本等地區的字形也可能不同，因此可能有多種合理描述。"],
       ["結構拆解就是漢字的真實字源嗎？", "不一定。本工具主要呈現現代字形的視覺組成。構字類型可作為學習提示，但不能取代古文字學或權威字源研究。"],
-      ["可以一次輸入多個漢字嗎？", "可以。頁面會擷取最多十二個漢字並產生標籤，點選標籤即可逐字查詢，標點、字母和數字會略過。"]
+      ["可以一次輸入多個漢字嗎？", "可以。頁面會擷取最多十二個漢字並產生標籤，點選標籤即可逐字查詢，標點、字母和數字會略過。"],
+      ["不知道漢字讀音，可以依部件查字嗎？", "可以。輸入一至四個看得出的部件，即會配對同時含有這些部件的漢字。相同部件可重複輸入，例如三個木可找到森。"]
     ],
     related: "相關漢字工具",
     relatedAria: "相關漢字與文字工具",
@@ -129,12 +131,12 @@ const content = {
     }
   },
   en: {
-    title: "Chinese Character Lookup and Decomposition | JianFan.app",
+    title: "Chinese Character Lookup, Component Search and Decomposition | JianFan.app",
     description: SEO_DESCRIPTIONS[slug].en,
-    alternateNames: ["Chinese Character Decomposition", "Hanzi Component Lookup", "Chinese Radical Lookup"],
+    alternateNames: ["Chinese Character Decomposition", "Hanzi Component Lookup", "Chinese Radical Lookup", "Chinese Character Component Search"],
     eyebrow: "LOOK UP · HIGHLIGHT · DECOMPOSE",
     heading: "Chinese Character Lookup & Decomposition",
-    lede: "Enter a Hanzi to check its Pinyin, radical, strokes and variants, then explore how its components fit together in a color-coded glyph and structure tree.",
+    lede: "Look up a Hanzi for Pinyin, radicals, strokes and decomposition, or find an unknown Chinese character by combining the components you can recognize.",
     toolTitle: "Enter a Chinese character to inspect its structure",
     inputLabel: "Chinese character",
     placeholder: "For example: 明, 清, 赢",
@@ -155,21 +157,22 @@ const content = {
     dataSource: "Character data documentation",
     unicodeSource: "Unihan documentation",
     featureKicker: "Chinese character decomposition",
-    featureTitle: "See the radical, components and structure inside a Hanzi",
-    featureIntro: "This Chinese character lookup turns IDS notation into familiar left-right, top-bottom and enclosure layouts. It is designed for learners who recognize a character but want to understand its visible components and related strokes.",
+    featureTitle: "Decompose a Hanzi or find a Chinese character by its components",
+    featureIntro: "This Chinese character lookup turns IDS notation into familiar left-right, top-bottom and enclosure layouts. Its component search also identifies an unknown Hanzi from one to four visible parts, without requiring Pinyin or pronunciation.",
     cards: [
       ["More than a radical label", "See the dictionary radical alongside the other components and nested groups that make up the modern character shape."],
-      ["Components linked to strokes", "Select a component in the tree and the corresponding strokes remain in focus on the glyph. Independent components can be looked up again."],
+      ["Search with multiple components", "Combine visible parts such as 氵 and 青 to find 清, repeat 木 three times to find 森, then narrow matches by total stroke count."],
       ["Continue with practical tools", "Open animated stroke order, Pinyin, handwriting lookup or a printable Tian Zi Ge worksheet without entering the character again."]
     ],
-    howTitle: "How to look up and decompose a Chinese character",
-    steps: ["Enter one Hanzi. If you paste a word, select a character from the generated tabs.", "Inspect the color-coded glyph and choose a component in the decomposition tree.", "Look up that component or continue to stroke order, Pinyin and practice-sheet tools."],
+    howTitle: "How to look up a Hanzi or search by components",
+    steps: ["If you know the character, enter it to view its color-coded glyph, radical and decomposition tree.", "If you do not know it, switch to component search and enter one to four recognizable parts.", "Optionally filter by total stroke count and sort by common usage or stroke count.", "Choose a result to open its full details, stroke order, Pinyin or worksheet tools."],
     faqTitle: "Chinese character decomposition questions",
     faqs: [
       ["Are radicals and components the same thing?", "No. A radical is mainly an indexing category used by dictionaries. Components are the visible units that form a character, so one Hanzi can contain several components but normally has one indexing radical."],
       ["Why do decomposition results differ between sources?", "Characters can be divided at different levels, and Simplified, Traditional, mainland Chinese, Taiwanese and Japanese glyph conventions may use different shapes. More than one analysis can therefore be reasonable."],
       ["Does the tree show the true etymology of a character?", "Not necessarily. The tree describes the visible modern glyph. Formation labels are learning aids and should not replace specialist paleographic or etymological research."],
-      ["Can I paste more than one character?", "Yes. The tool extracts up to twelve Han characters and creates a tab for each one. Punctuation, Latin letters and numbers are ignored."]
+      ["Can I paste more than one character?", "Yes. The tool extracts up to twelve Han characters and creates a tab for each one. Punctuation, Latin letters and numbers are ignored."],
+      ["Can I find a Chinese character without knowing its pronunciation?", "Yes. Enter one to four visible components and the tool returns characters containing all of them. Repeated components are counted, so 木木木 can find 森."]
     ],
     related: "Related Chinese tools",
     relatedAria: "Related Chinese character and text tools",
@@ -184,12 +187,12 @@ const content = {
     }
   },
   ja: {
-    title: "漢字の構成・部首検索 - 部品と画数を分解表示 | JianFan.app",
+    title: "漢字の構成・部首検索 - 部品検索と画数・構成分解 | JianFan.app",
     description: SEO_DESCRIPTIONS[slug].ja,
-    alternateNames: ["漢字構成検索", "漢字分解", "漢字部首検索"],
+    alternateNames: ["漢字構成検索", "漢字分解", "漢字部首検索", "構成検索", "パーツ検索"],
     eyebrow: "漢字検索 · 部品表示 · 構成分解",
     heading: "漢字の構成・部首検索",
-    lede: "漢字を入力して部首、画数、読み、異体字を確認し、色分け字形と構成ツリーから部品の組み合わせを調べられます。",
+    lede: "漢字の部首・画数・読みと構成を確認できます。読み方が分からない漢字は、見えている複数の部品から逆引きできます。",
     toolTitle: "漢字を入力して構成を調べる",
     inputLabel: "調べる漢字",
     placeholder: "例：明、清、赢",
@@ -210,21 +213,22 @@ const content = {
     dataSource: "字形データの説明",
     unicodeSource: "Unihan の説明",
     featureKicker: "漢字の構成を検索",
-    featureTitle: "漢字に含まれる部首と構成部品を見やすく表示",
-    featureIntro: "IDSの記号をそのまま見せず、左右・上下・囲みなど一般的な構成名に置き換えて表示します。形は分かるものの、どの部品から成り立つかを調べたい場合に利用できます。",
+    featureTitle: "漢字を分解し、構成する部品からも検索",
+    featureIntro: "IDSを左右・上下・囲みなど一般的な構成名に置き換えて表示します。読み方が分からず入力できない漢字は、一つから四つの構成部品を組み合わせる構成検索（パーツ検索）で候補を探せます。",
     cards: [
       ["部首だけでなく部品も表示", "辞書で使う部首に加え、現代の字形を構成する部品と入れ子になった関係を確認できます。"],
-      ["部品と画を同時に強調", "構成ツリーから部品を選ぶと、左の字形で対応する画を強調します。独立した漢字の部品は続けて検索できます。"],
+      ["複数の部品から漢字を検索", "山と石から岩、三つの車から轟のように、部品の組み合わせと重複を反映し、総画数でも候補を絞れます。"],
       ["筆順や練習ページへ連携", "検索した文字を再入力せず、筆順、中国語ピンイン、手書き検索、田字格の練習プリントへ移動できます。"]
     ],
-    howTitle: "漢字の構成を調べる方法",
-    steps: ["漢字を1文字入力します。熟語を貼り付けた場合は文字タブから選択します。", "色分け字形と構成ツリーを確認し、調べたい部品を選びます。", "選択した部品を再検索するか、筆順や練習プリントへ進みます。"],
+    howTitle: "漢字の構成検索・パーツ検索の使い方",
+    steps: ["漢字が入力できる場合は、一文字を検索して部首と構成ツリーを確認します。", "読み方が分からない場合は部品検索へ切り替え、見えている部品を一つから四つ入力します。", "必要に応じて総画数で絞り、常用順または画数順に並べます。", "候補の漢字を選び、読み、筆順、ピンインや練習プリントを確認します。"],
     faqTitle: "漢字の構成・部首検索に関する質問",
     faqs: [
       ["部首と構成部品は同じですか？", "同じではありません。部首は主に辞書で分類・検索するための代表要素です。一方、構成部品は字形を組み立てる要素で、一つの漢字に複数含まれます。"],
       ["資料によって分解結果が違うのはなぜですか？", "分解する深さが異なるほか、中国の簡体字・繁体字、台湾、日本などで字形が異なる場合があります。そのため複数の妥当な分析が存在します。"],
       ["表示された構成は漢字の字源ですか？", "必ずしも字源ではありません。このツールは主に現代字形の見た目を分解します。造字法は学習の参考情報としてご覧ください。"],
-      ["熟語や文章を入力できますか？", "入力できます。最大12文字の漢字を抽出してタブに表示します。タブを選ぶと1文字ずつ構成を確認できます。"]
+      ["熟語や文章を入力できますか？", "入力できます。最大12文字の漢字を抽出してタブに表示します。タブを選ぶと1文字ずつ構成を確認できます。"],
+      ["読み方が分からない漢字も検索できますか？", "はい。見えている構成部品を一つから四つ入力すると、すべての部品を含む漢字を検索できます。同じ部品も繰り返して指定できます。"]
     ],
     related: "関連する漢字ツール",
     relatedAria: "関連する漢字・文字ツール",
@@ -239,12 +243,12 @@ const content = {
     }
   },
   ko: {
-    title: "한자 부수·구성요소 검색 - 획수와 구조 분해 | JianFan.app",
+    title: "한자 부수·구성요소 검색 - 부수·획수와 글자 구조 | JianFan.app",
     description: SEO_DESCRIPTIONS[slug].ko,
-    alternateNames: ["한자 구성요소 검색", "한자 구조 분해", "한자 부수 검색"],
+    alternateNames: ["한자 구성요소 검색", "한자 구조 분해", "한자 부수 검색", "구성요소로 한자 찾기", "부수·획수 검색"],
     eyebrow: "한자 검색 · 구성요소 강조 · 구조 분해",
     heading: "한자 부수·구성요소 검색",
-    lede: "한자를 입력해 부수, 획수, 중국어 병음과 이체자를 확인하고 색상 글자와 구조 트리에서 각 구성요소를 살펴보세요.",
+    lede: "한자의 부수, 획수, 중국어 병음과 구조를 확인하세요. 읽기 모르는 한자는 여러 구성요소와 총획수로 찾을 수 있습니다.",
     toolTitle: "한자를 입력하고 글자 구조 확인하기",
     inputLabel: "검색할 한자",
     placeholder: "예: 明, 清, 赢",
@@ -265,21 +269,22 @@ const content = {
     dataSource: "글자 데이터 설명",
     unicodeSource: "Unihan 설명",
     featureKicker: "한자 구성요소 검색",
-    featureTitle: "한자 안의 부수와 구성요소를 한눈에 확인",
-    featureIntro: "IDS 기호를 그대로 보여 주지 않고 좌우, 상하, 둘러싸기처럼 익숙한 구조 이름으로 바꿔 표시합니다. 글자 모양은 알지만 어떤 부분으로 이루어졌는지 알고 싶을 때 유용합니다.",
+    featureTitle: "한자를 분해하고 구성요소로 모르는 한자 찾기",
+    featureIntro: "IDS 기호를 좌우, 상하, 둘러싸기처럼 익숙한 구조 이름으로 바꿔 표시합니다. 음을 모르거나 입력하기 어려운 한자는 눈에 보이는 한자 부수와 구성요소를 한 개부터 네 개까지 조합해 찾을 수 있습니다.",
     cards: [
       ["부수와 구성요소를 구분", "사전 분류에 사용하는 부수뿐 아니라 현대 한자 모양을 이루는 다른 부분과 중첩된 관계도 함께 보여 줍니다."],
-      ["구성요소와 획 동시 강조", "구조 트리에서 구성요소를 고르면 왼쪽 글자에서 관련 획만 강조됩니다. 독립 한자인 부품은 이어서 검색할 수 있습니다."],
+      ["여러 구성요소로 한자 찾기", "氵와 青으로 清을 찾고 木을 세 번 입력해 森을 찾을 수 있습니다. 총획수 조건으로 후보를 더 줄일 수도 있습니다."],
       ["필순과 쓰기 학습으로 연결", "검색한 글자를 다시 입력하지 않고 필순, 중국어 병음, 손글씨 검색, 전자격자 쓰기 연습장으로 이동합니다."]
     ],
-    howTitle: "한자 구조를 검색하는 방법",
-    steps: ["한자를 입력합니다. 단어나 문장을 붙여 넣었다면 생성된 한자 탭에서 한 글자를 고릅니다.", "색상으로 구분된 글자와 구조 트리를 보고 원하는 구성요소를 선택합니다.", "선택한 부품을 다시 검색하거나 필순, 병음, 쓰기 연습 도구로 이동합니다."],
+    howTitle: "한자 구조와 구성요소 검색 방법",
+    steps: ["한자를 입력할 수 있으면 한 글자를 검색해 부수와 구조 트리를 확인합니다.", "음을 모르면 구성요소 검색으로 전환해 눈에 보이는 부분을 한 개부터 네 개까지 입력합니다.", "필요하면 총획수로 걸러 내고 자주 쓰는 순서 또는 획수순으로 정렬합니다.", "후보를 선택해 읽기, 필순, 병음과 쓰기 연습 도구를 이용합니다."],
     faqTitle: "한자 부수·구성요소 검색 질문",
     faqs: [
       ["부수와 구성요소는 같은가요?", "아닙니다. 부수는 주로 사전의 분류와 검색에 쓰는 대표 요소입니다. 구성요소는 글자 모양을 이루는 부분이므로 한 한자에 여러 개가 포함될 수 있습니다."],
       ["자료마다 분해 결과가 다른 이유는 무엇인가요?", "분해 단계가 다를 수 있고 중국 간체자, 번체자, 대만과 일본 자형에도 차이가 있습니다. 따라서 한 글자에 여러 가지 타당한 분석이 존재할 수 있습니다."],
       ["구조 트리가 실제 한자 어원을 뜻하나요?", "반드시 그렇지는 않습니다. 이 도구는 주로 현대 자형의 시각적 구성을 설명합니다. 구성 방식은 학습 참고 정보로 이용하세요."],
-      ["여러 글자를 한 번에 입력할 수 있나요?", "가능합니다. 최대 12개의 한자를 추출해 탭으로 표시하며, 탭을 누르면 한 글자씩 구조를 확인할 수 있습니다."]
+      ["여러 글자를 한 번에 입력할 수 있나요?", "가능합니다. 최대 12개의 한자를 추출해 탭으로 표시하며, 탭을 누르면 한 글자씩 구조를 확인할 수 있습니다."],
+      ["한자 음을 몰라도 구성요소로 찾을 수 있나요?", "네. 눈에 보이는 구성요소를 한 개부터 네 개까지 입력하면 모두 포함한 한자를 찾습니다. 같은 구성요소를 여러 번 입력하는 방식도 지원합니다."]
     ],
     related: "관련 한자 도구",
     relatedAria: "관련 한자 및 텍스트 도구",
@@ -293,6 +298,72 @@ const content = {
       onReading: "음독", kunReading: "훈독", wholeCharacter: "한자 전체", component: "구성요소"
     }
   }
+};
+
+const componentSearchContent = {
+  "zh-CN": {
+    modeAria: "汉字查询方式", characterMode: "单字查询", componentMode: "部件查字",
+    title: "按部件反查汉字", intro: "输入一至四个看得出的汉字部件，查找同时包含这些部件的字。相同部件可以重复输入。",
+    inputLabel: "汉字部件", placeholder: "例如：氵 青，或 木木木", submit: "查找汉字",
+    selectedLabel: "已选部件", selectedEmpty: "尚未选择部件", clear: "清空",
+    commonLabel: "常用偏旁部件", strokeLabel: "总笔画", strokeAll: "不限", sortLabel: "结果排序", sortCommon: "常用字优先", sortStrokes: "笔画少优先",
+    resultsTitle: "候选汉字", initialHint: "输入部件或点击常用部件，即可反查可能的汉字。", loadMore: "显示更多",
+    loading: "正在匹配部件", invalid: "请输入一至四个汉字部件", failed: "部件索引暂时无法加载，请稍后重试", noResults: "没有找到同时包含这些部件的汉字，可以减少部件或取消笔画筛选。",
+    resultSummary: "找到 {count} 个包含“{components}”的汉字", removeComponent: "移除部件“{character}”", addComponent: "添加部件“{character}”",
+    resultLabel: "查看汉字“{character}”，{strokes}画，拼音 {reading}", resultStroke: "{count}画", findContaining: "查找含“{character}”的字"
+  },
+  "zh-TW": {
+    modeAria: "漢字查詢方式", characterMode: "單字查詢", componentMode: "部件檢索",
+    title: "依部件反查漢字", intro: "輸入一至四個看得出的漢字部件，尋找同時包含這些部件的字。相同部件可以重複輸入。",
+    inputLabel: "漢字部件", placeholder: "例如：氵 青，或 木木木", submit: "尋找漢字",
+    selectedLabel: "已選部件", selectedEmpty: "尚未選取部件", clear: "清除",
+    commonLabel: "常用偏旁部件", strokeLabel: "總筆畫", strokeAll: "不限", sortLabel: "結果排序", sortCommon: "常用字優先", sortStrokes: "筆畫少優先",
+    resultsTitle: "候選漢字", initialHint: "輸入部件或點選常用部件，即可反查可能的漢字。", loadMore: "顯示更多",
+    loading: "正在配對部件", invalid: "請輸入一至四個漢字部件", failed: "部件索引暫時無法載入，請稍後再試", noResults: "找不到同時包含這些部件的漢字，可減少部件或取消筆畫篩選。",
+    resultSummary: "找到 {count} 個包含「{components}」的漢字", removeComponent: "移除部件「{character}」", addComponent: "加入部件「{character}」",
+    resultLabel: "查看漢字「{character}」，{strokes}畫，漢語拼音 {reading}", resultStroke: "{count}畫", findContaining: "尋找含「{character}」的字"
+  },
+  en: {
+    modeAria: "Chinese character search mode", characterMode: "Character lookup", componentMode: "Component search",
+    title: "Find a Chinese character by components", intro: "Enter one to four visible parts to find Hanzi containing all of them. Repeat a component when it appears more than once.",
+    inputLabel: "Character components", placeholder: "For example: 氵 青 or 木木木", submit: "Find characters",
+    selectedLabel: "Selected components", selectedEmpty: "No components selected", clear: "Clear",
+    commonLabel: "Common radicals and components", strokeLabel: "Total strokes", strokeAll: "Any", sortLabel: "Sort results", sortCommon: "Common first", sortStrokes: "Fewest strokes first",
+    resultsTitle: "Matching characters", initialHint: "Enter components or choose common parts to start a Chinese character component search.", loadMore: "Show more",
+    loading: "Matching components", invalid: "Enter one to four Chinese character components", failed: "The component index could not load. Try again shortly", noResults: "No character contains all of these components. Remove a component or clear the stroke filter.",
+    resultSummary: "Found {count} characters containing {components}", removeComponent: "Remove component {character}", addComponent: "Add component {character}",
+    resultLabel: "View {character}, {strokes} strokes, Pinyin {reading}", resultStroke: "{count} strokes", findContaining: "Find characters containing {character}"
+  },
+  ja: {
+    modeAria: "漢字の検索方法", characterMode: "漢字から調べる", componentMode: "部品から探す",
+    title: "構成検索（パーツ検索）", intro: "読み方が分からない漢字を、見えている一つから四つの構成部品で検索できます。同じ部品も繰り返し指定できます。",
+    inputLabel: "漢字を構成する部品", placeholder: "例：山 石、または 車車車", submit: "漢字を検索",
+    selectedLabel: "選択した部品", selectedEmpty: "部品が選択されていません", clear: "クリア",
+    commonLabel: "よく使う構成部品", strokeLabel: "総画数", strokeAll: "指定なし", sortLabel: "並び順", sortCommon: "常用漢字を優先", sortStrokes: "画数が少ない順",
+    resultsTitle: "候補の漢字", initialHint: "部品を入力するか、よく使う構成部品を選んで検索してください。", loadMore: "さらに表示",
+    loading: "構成部品を検索中", invalid: "構成部品を一つから四つ入力してください", failed: "部品検索データを読み込めません。しばらくしてから再度お試しください", noResults: "すべての部品を含む漢字が見つかりません。部品を減らすか、総画数の指定を解除してください。",
+    resultSummary: "「{components}」を含む漢字が {count} 字見つかりました", removeComponent: "部品「{character}」を削除", addComponent: "部品「{character}」を追加",
+    resultLabel: "漢字「{character}」を表示、{strokes}画、中国語ピンイン {reading}", resultStroke: "{count}画", findContaining: "「{character}」を含む漢字を探す"
+  },
+  ko: {
+    modeAria: "한자 검색 방법", characterMode: "한자 조회", componentMode: "구성요소로 찾기",
+    title: "구성요소로 한자 찾기", intro: "읽기 모르는 한자를 눈에 보이는 구성요소 한 개부터 네 개로 찾으세요. 같은 부분이 반복되면 여러 번 입력할 수 있습니다.",
+    inputLabel: "한자 구성요소", placeholder: "예: 氵 青 또는 木木木", submit: "한자 찾기",
+    selectedLabel: "선택한 구성요소", selectedEmpty: "선택한 구성요소 없음", clear: "지우기",
+    commonLabel: "자주 쓰는 부수·구성요소", strokeLabel: "총획수", strokeAll: "전체", sortLabel: "결과 정렬", sortCommon: "자주 쓰는 한자 우선", sortStrokes: "획수 적은 순",
+    resultsTitle: "후보 한자", initialHint: "구성요소를 입력하거나 자주 쓰는 부수를 선택해 한자를 찾아보세요.", loadMore: "더 보기",
+    loading: "구성요소를 검색하는 중", invalid: "한자 구성요소를 한 개부터 네 개까지 입력하세요", failed: "구성요소 검색 데이터를 불러오지 못했습니다. 잠시 후 다시 시도하세요", noResults: "모든 구성요소를 포함한 한자가 없습니다. 구성요소를 줄이거나 총획수 조건을 해제하세요.",
+    resultSummary: "‘{components}’를 포함한 한자 {count}개", removeComponent: "구성요소 ‘{character}’ 삭제", addComponent: "구성요소 ‘{character}’ 추가",
+    resultLabel: "한자 ‘{character}’ 보기, {strokes}획, 중국어 병음 {reading}", resultStroke: "{count}획", findContaining: "‘{character}’를 포함한 한자 찾기"
+  }
+};
+
+const popularComponents = {
+  "zh-CN": ["亻", "氵", "扌", "口", "女", "子", "宀", "心", "忄", "木", "火", "灬", "日", "月", "讠", "纟", "艹", "辶", "阝", "钅", "贝", "车"],
+  "zh-TW": ["亻", "氵", "扌", "口", "女", "子", "宀", "心", "忄", "木", "火", "灬", "日", "月", "言", "糸", "艹", "辶", "阝", "金", "貝", "車"],
+  en: ["亻", "氵", "扌", "口", "女", "子", "宀", "心", "木", "火", "日", "月", "言", "讠", "糸", "纟", "艹", "辶", "阝", "金", "钅", "貝", "贝", "車", "车"],
+  ja: ["亻", "氵", "扌", "口", "女", "子", "宀", "心", "忄", "木", "火", "灬", "日", "月", "言", "糸", "艹", "辶", "阝", "金", "貝", "車"],
+  ko: ["亻", "氵", "扌", "口", "女", "子", "宀", "心", "忄", "木", "火", "灬", "日", "月", "言", "糸", "艹", "辶", "阝", "金", "貝", "車"]
 };
 
 const relatedLabels = {
@@ -309,6 +380,14 @@ function escapeHtml(value) {
 
 function localizedPath(locale, targetSlug = "") {
   return `/${locales[locale].prefix}${targetSlug ? `${targetSlug}/` : ""}`;
+}
+
+function buildStrokeOptions(component) {
+  return [
+    `<option value="">${component.strokeAll}</option>`,
+    ...Array.from({ length: 30 }, (_, index) => `<option value="${index + 1}">${index + 1}</option>`),
+    '<option value="31+">31+</option>'
+  ].join("");
 }
 
 function buildSchema(locale, page) {
@@ -369,6 +448,7 @@ ${JSON.stringify(buildSchema(locale, page), null, 2).split("\n").map((line) => `
 function buildPage(locale) {
   const meta = locales[locale];
   const page = content[locale];
+  const component = componentSearchContent[locale];
   const options = Object.entries(locales).map(([value, option]) => `              <option value="${value}"${value === locale ? " selected" : ""}>${option.label}</option>`).join("\n");
   const messageAttributes = Object.entries(page.messages).map(([key, value]) => ` data-message-${key.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)}="${escapeHtml(value)}"`).join("");
   const related = relatedLabels[locale].map(([targetSlug, label]) => `          <a href="${localizedPath(locale, targetSlug)}"${targetSlug === slug ? ' aria-current="page"' : ""}>${label}</a>`).join("\n");
@@ -399,8 +479,13 @@ ${options}
       <section class="standalone-tool han-lookup-tool" aria-labelledby="hanLookupToolTitle">
         <div class="standalone-tool-head">
           <div><p class="section-kicker">LOOK UP / DECOMPOSE / FOCUS</p><h2 id="hanLookupToolTitle">${page.toolTitle}</h2></div>
+          <div class="han-lookup-mode-switch" role="tablist" aria-label="${component.modeAria}">
+            <button id="hanLookupCharacterMode" type="button" role="tab" aria-selected="true" aria-controls="hanCharacterLookupPanel" data-han-lookup-mode="character">${component.characterMode}</button>
+            <button id="hanLookupComponentMode" type="button" role="tab" aria-selected="false" aria-controls="hanComponentLookupPanel" data-han-lookup-mode="component">${component.componentMode}</button>
+          </div>
           <div class="status-pill" id="hanLookupStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>${page.messages.loading}</span></div>
         </div>
+        <div id="hanCharacterLookupPanel" role="tabpanel" aria-labelledby="hanLookupCharacterMode">
         <form class="han-lookup-form" id="hanLookupForm">
           <label for="hanLookupInput">${page.inputLabel}</label>
           <div><input id="hanLookupInput" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="${page.placeholder}" /><button class="primary-action" id="hanLookupSubmit" type="submit">${page.submit}</button></div>
@@ -412,7 +497,7 @@ ${options}
           <section class="han-lookup-glyph-panel" aria-labelledby="hanLookupGlyphTitle">
             <div class="panel-topline"><div><h3 id="hanLookupGlyphTitle">${page.glyphTitle}</h3><p>${page.glyphHint}</p></div></div>
             <div class="han-lookup-glyph-stage"><div id="hanLookupGlyph"></div><span id="hanLookupGlyphFallback">明</span></div>
-            <div class="han-lookup-focus-bar"><span id="hanLookupSelectedText">${page.messages.allStrokes.replace("{character}", "明")}</span><button id="hanLookupSelectedQuery" type="button" hidden></button></div>
+            <div class="han-lookup-focus-bar"><span id="hanLookupSelectedText">${page.messages.allStrokes.replace("{character}", "明")}</span><div><button id="hanLookupSelectedQuery" type="button" hidden></button><button id="hanLookupSelectedFind" type="button" hidden></button></div></div>
           </section>
 
           <section class="han-lookup-tree-panel" aria-labelledby="hanLookupTreeTitle">
@@ -444,6 +529,33 @@ ${options}
             </div>
           </aside>
         </div>
+        </div>
+
+        <section class="han-component-panel" id="hanComponentLookupPanel" role="tabpanel" aria-labelledby="hanLookupComponentMode" hidden>
+          <div class="han-component-workspace">
+            <form class="han-component-form" id="hanComponentForm">
+              <div class="han-component-heading"><p class="section-kicker">COMPONENT / RADICAL / STROKES</p><h3>${component.title}</h3><p>${component.intro}</p></div>
+              <label for="hanComponentInput">${component.inputLabel}</label>
+              <div class="han-component-input-row"><input id="hanComponentInput" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="12" placeholder="${component.placeholder}" /><button class="primary-action" id="hanComponentSubmit" type="submit">${component.submit}</button></div>
+              <div class="han-component-selected-head"><span>${component.selectedLabel}</span><button id="hanComponentClear" type="button" disabled>${component.clear}</button></div>
+              <div class="han-component-selected" id="hanComponentSelected"><span>${component.selectedEmpty}</span></div>
+              <fieldset class="han-component-common"><legend>${component.commonLabel}</legend><div>
+${popularComponents[locale].map((character) => `                <button type="button" data-han-component="${character}" title="${component.addComponent.replace("{character}", character)}" aria-label="${component.addComponent.replace("{character}", character)}">${character}</button>`).join("\n")}
+              </div></fieldset>
+              <div class="han-component-filters">
+                <label><span>${component.strokeLabel}</span><select id="hanComponentStrokes">${buildStrokeOptions(component)}</select></label>
+                <label><span>${component.sortLabel}</span><select id="hanComponentSort"><option value="common">${component.sortCommon}</option><option value="strokes">${component.sortStrokes}</option></select></label>
+              </div>
+            </form>
+            <section class="han-component-results-panel" aria-labelledby="hanComponentResultsTitle">
+              <div class="han-component-results-head"><div><p class="section-kicker">MATCHING CHARACTERS</p><h3 id="hanComponentResultsTitle">${component.resultsTitle}</h3></div><p id="hanComponentSummary">${component.initialHint}</p></div>
+              <div class="han-component-results" id="hanComponentResults" aria-label="${component.resultsTitle}"></div>
+              <p class="han-component-empty" id="hanComponentEmpty">${component.initialHint}</p>
+              <button class="han-component-more" id="hanComponentMore" type="button" hidden>${component.loadMore}</button>
+            </section>
+          </div>
+        </section>
+        <p class="han-lookup-source-note">${page.sourceNote} <a href="https://github.com/skishore/makemeahanzi">${page.dataSource}</a> · <a href="https://www.unicode.org/reports/tr38/">${page.unicodeSource}</a></p>
       </section>
 
       <section class="seo-band standalone-info" aria-labelledby="hanLookupFeatureTitle">
@@ -464,7 +576,7 @@ ${related}
       </section>
     </main>
     <footer class="site-footer"><p>${page.footerText}</p><nav class="footer-links" aria-label="${meta.footer}"><a href="${base("about")}">${meta.about}</a><a href="${base("contact")}">${meta.contact}</a><a href="${base("privacy")}">${meta.privacy}</a></nav></footer>
-    <script id="hanLookupLabels" type="application/json">${JSON.stringify(page.lookupLabels).replaceAll("<", "\\u003c")}</script>
+    <script id="hanLookupLabels" type="application/json">${JSON.stringify({ ...page.lookupLabels, componentSearch: component }).replaceAll("<", "\\u003c")}</script>
   </body>
 </html>`;
 }
