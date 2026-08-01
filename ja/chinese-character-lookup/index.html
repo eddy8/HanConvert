@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="漢字の構成・部首を無料検索。漢字を1文字入力すると、中国語のピンイン、部首、画数、Unicode、簡体字・繁体字の異体字、英語の意味を確認できます。左右・上下・囲み構造を色分けした字形とツリーで分解し、構成部品に対応する画を強調。筆順、手書き検索、ピンイン、漢字練習プリントにも移動できます。登録不要です。" />
+    <title>漢字の構成・部首検索 - 部品と画数を分解表示 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/ja/chinese-character-lookup/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/chinese-character-lookup/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-character-lookup/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-character-lookup/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-character-lookup/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-character-lookup/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-character-lookup/" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="/han-character-lookup-core.js"></script>
+    <script defer src="/han-character-lookup.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/ja/chinese-character-lookup/#webapp",
+            "name": "漢字の構成・部首検索",
+            "alternateName": [
+              "漢字構成検索",
+              "漢字分解",
+              "漢字部首検索"
+            ],
+            "url": "https://jianfan.app/ja/chinese-character-lookup/",
+            "description": "漢字の構成・部首を無料検索。漢字を1文字入力すると、中国語のピンイン、部首、画数、Unicode、簡体字・繁体字の異体字、英語の意味を確認できます。左右・上下・囲み構造を色分けした字形とツリーで分解し、構成部品に対応する画を強調。筆順、手書き検索、ピンイン、漢字練習プリントにも移動できます。登録不要です。",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "ja",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/ja/chinese-character-lookup/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "ホーム",
+                "item": "https://jianfan.app/ja/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "漢字の構成・部首検索",
+                "item": "https://jianfan.app/ja/chinese-character-lookup/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/ja/chinese-character-lookup/#howto",
+            "name": "漢字の構成を調べる方法",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "漢字を1文字入力します。熟語を貼り付けた場合は文字タブから選択します。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "色分け字形と構成ツリーを確認し、調べたい部品を選びます。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "選択した部品を再検索するか、筆順や練習プリントへ進みます。"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/ja/chinese-character-lookup/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "部首と構成部品は同じですか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "同じではありません。部首は主に辞書で分類・検索するための代表要素です。一方、構成部品は字形を組み立てる要素で、一つの漢字に複数含まれます。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "資料によって分解結果が違うのはなぜですか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "分解する深さが異なるほか、中国の簡体字・繁体字、台湾、日本などで字形が異なる場合があります。そのため複数の妥当な分析が存在します。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "表示された構成は漢字の字源ですか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "必ずしも字源ではありません。このツールは主に現代字形の見た目を分解します。造字法は学習の参考情報としてご覧ください。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "熟語や文章を入力できますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "入力できます。最大12文字の漢字を抽出してタブに表示します。タブを選ぶと1文字ずつ構成を確認できます。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="han-character-lookup" data-page-slug="chinese-character-lookup" data-locale="ja" data-initial-character="明" data-message-loading="漢字データを検索中" data-message-ready="「{character}」の構成を表示しています" data-message-invalid="漢字を1文字以上入力してください" data-message-missing="「{character}」の構成データがありません" data-message-missing-detail="現在の字形データに「{character}」は収録されていません。手書き検索または別の漢字をお試しください。" data-message-copied="「{character}」をコピーしました" data-message-copy-failed="自動コピーに失敗しました。漢字を選択してコピーしてください" data-message-structure-unavailable="「{character}」には信頼できる部品分解データがありません" data-message-all-strokes="「{character}」のすべての画を表示中" data-message-selected-component="構成部品「{character}」を強調中" data-message-query-component="「{character}」を検索" data-message-semantic-component="「{character}」が意味を示す" data-message-phonetic-component="「{character}」が音を示す" data-message-glyph-label="「{character}」の構成部品を色分けした字形" data-message-glyph-unavailable="色分けした画を読み込めないため、システムフォントの字形を表示しています">
+    <a class="skip-nav" href="#main">メインコンテンツへ移動</a>
+    <header class="site-header" aria-label="サイトヘッダー">
+      <a class="brand" href="/ja/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">字</span><span>JianFan.app</span></a>
+      <nav class="top-actions" aria-label="メインナビゲーション">
+        <a class="nav-link" href="/ja/">ホーム</a>
+        <label class="language-picker"><span>表示言語</span><select id="localeSelect" aria-label="表示言語">
+              <option value="zh-CN">简体中文</option>
+              <option value="zh-TW">繁體中文</option>
+              <option value="en">English</option>
+              <option value="ja" selected>日本語</option>
+              <option value="ko">한국어</option>
+          </select></label>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="tool-hero han-lookup-hero" aria-labelledby="pageTitle">
+        <div><p class="section-kicker">漢字検索 · 部品表示 · 構成分解</p><h1 id="pageTitle">漢字の構成・部首検索</h1><p class="lede">漢字を入力して部首、画数、読み、異体字を確認し、色分け字形と構成ツリーから部品の組み合わせを調べられます。</p></div>
+        <div class="han-lookup-hero-equation" aria-hidden="true"><span>氵</span><i>+</i><span>青</span><i>=</i><strong>清</strong></div>
+      </section>
+
+      <section class="standalone-tool han-lookup-tool" aria-labelledby="hanLookupToolTitle">
+        <div class="standalone-tool-head">
+          <div><p class="section-kicker">LOOK UP / DECOMPOSE / FOCUS</p><h2 id="hanLookupToolTitle">漢字を入力して構成を調べる</h2></div>
+          <div class="status-pill" id="hanLookupStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>漢字データを検索中</span></div>
+        </div>
+        <form class="han-lookup-form" id="hanLookupForm">
+          <label for="hanLookupInput">調べる漢字</label>
+          <div><input id="hanLookupInput" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="例：明、清、赢" /><button class="primary-action" id="hanLookupSubmit" type="submit">漢字を検索</button></div>
+        </form>
+        <div class="han-lookup-samples"><span>サンプル</span><button type="button" data-han-lookup-sample="明">明</button><button type="button" data-han-lookup-sample="清">清</button><button type="button" data-han-lookup-sample="赢">赢</button><button type="button" data-han-lookup-sample="森">森</button></div>
+        <div class="han-lookup-character-tabs" id="hanLookupCharacterTabs" aria-label="調べる漢字" hidden></div>
+
+        <div class="han-lookup-workspace">
+          <section class="han-lookup-glyph-panel" aria-labelledby="hanLookupGlyphTitle">
+            <div class="panel-topline"><div><h3 id="hanLookupGlyphTitle">部品を色分けした字形</h3><p>色は外側の構成部品に対応します。ツリーの項目を選ぶと、該当する画だけを強調できます。</p></div></div>
+            <div class="han-lookup-glyph-stage"><div id="hanLookupGlyph"></div><span id="hanLookupGlyphFallback">明</span></div>
+            <div class="han-lookup-focus-bar"><span id="hanLookupSelectedText">「明」のすべての画を表示中</span><button id="hanLookupSelectedQuery" type="button" hidden></button></div>
+          </section>
+
+          <section class="han-lookup-tree-panel" aria-labelledby="hanLookupTreeTitle">
+            <div class="panel-topline"><div><h3 id="hanLookupTreeTitle">漢字の構成ツリー</h3><p>字形を段階的に分解します。部首は辞書検索用の分類で、構成部品は漢字を形作る要素です。両者は同じとは限りません。</p></div></div>
+            <div class="han-lookup-tree" id="hanLookupStructureTree"></div>
+            <p class="han-lookup-tree-empty" id="hanLookupStructureEmpty" hidden></p>
+          </section>
+
+          <aside class="han-lookup-detail-panel" aria-labelledby="hanLookupDetailTitle">
+            <div class="han-lookup-detail-heading"><span id="hanLookupCurrentCharacter">明</span><div><p class="section-kicker">CHARACTER DATA</p><h3 id="hanLookupDetailTitle">漢字の基本情報</h3></div></div>
+            <dl class="han-lookup-facts">
+              <div><dt>中国語ピンイン</dt><dd id="hanLookupPinyin">-</dd></div>
+              <div><dt>部首</dt><dd id="hanLookupRadical">-</dd></div>
+              <div><dt>画数</dt><dd id="hanLookupStrokes">-</dd></div>
+              <div><dt>字形構成</dt><dd id="hanLookupStructure">-</dd></div>
+              <div><dt>Unicode</dt><dd id="hanLookupUnicode">U+660E</dd></div>
+              <div id="hanLookupDefinitionRow" hidden><dt>英語の意味</dt><dd id="hanLookupDefinition">-</dd></div>
+              <div id="hanLookupCantoneseRow" hidden><dt>広東語</dt><dd id="hanLookupCantonese">-</dd></div>
+              <div id="hanLookupJapaneseRow" hidden><dt>日本語の読み</dt><dd id="hanLookupJapanese">-</dd></div>
+              <div id="hanLookupKoreanRow" hidden><dt>韓国漢字音</dt><dd id="hanLookupKorean">-</dd></div>
+              <div id="hanLookupVariantsRow" hidden><dt>簡体字・繁体字・異体字</dt><dd class="han-lookup-variants" id="hanLookupVariants"></dd></div>
+            </dl>
+            <div class="han-lookup-formation" id="hanLookupFormation" hidden><span>造字法</span><strong id="hanLookupFormationType"></strong><small id="hanLookupFormationDetail"></small></div>
+            <div class="han-lookup-actions">
+              <button class="primary-action" id="hanLookupCopy" type="button">漢字をコピー</button>
+              <a id="hanLookupStrokeLink" data-base="/ja/chinese-stroke-order/" href="/ja/chinese-stroke-order/?character=明">筆順を見る</a>
+              <a id="hanLookupPinyinLink" data-base="/ja/chinese-to-pinyin/" href="/ja/chinese-to-pinyin/?character=明">ピンインを調べる</a>
+              <a id="hanLookupWorksheetLink" data-base="/ja/han-character-worksheet/" href="/ja/han-character-worksheet/?character=明">練習プリントを作る</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="seo-band standalone-info" aria-labelledby="hanLookupFeatureTitle">
+        <div class="section-heading"><p class="section-kicker">漢字の構成を検索</p><h2 id="hanLookupFeatureTitle">漢字に含まれる部首と構成部品を見やすく表示</h2><p class="seo-intro">IDSの記号をそのまま見せず、左右・上下・囲みなど一般的な構成名に置き換えて表示します。形は分かるものの、どの部品から成り立つかを調べたい場合に利用できます。</p></div>
+        <div class="seo-grid">
+          <article><h3>部首だけでなく部品も表示</h3><p>辞書で使う部首に加え、現代の字形を構成する部品と入れ子になった関係を確認できます。</p></article>
+          <article><h3>部品と画を同時に強調</h3><p>構成ツリーから部品を選ぶと、左の字形で対応する画を強調します。独立した漢字の部品は続けて検索できます。</p></article>
+          <article><h3>筆順や練習ページへ連携</h3><p>検索した文字を再入力せず、筆順、中国語ピンイン、手書き検索、田字格の練習プリントへ移動できます。</p></article>
+        </div>
+        <section class="word-howto" aria-labelledby="hanLookupHowTitle"><h2 id="hanLookupHowTitle">漢字の構成を調べる方法</h2><ol>
+            <li>漢字を1文字入力します。熟語を貼り付けた場合は文字タブから選択します。</li>
+            <li>色分け字形と構成ツリーを確認し、調べたい部品を選びます。</li>
+            <li>選択した部品を再検索するか、筆順や練習プリントへ進みます。</li>
+          </ol></section>
+        <section class="pinyin-faq" aria-labelledby="hanLookupFaqTitle"><h2 id="hanLookupFaqTitle">漢字の構成・部首検索に関する質問</h2>
+          <details><summary>部首と構成部品は同じですか？</summary><p>同じではありません。部首は主に辞書で分類・検索するための代表要素です。一方、構成部品は字形を組み立てる要素で、一つの漢字に複数含まれます。</p></details>
+          <details><summary>資料によって分解結果が違うのはなぜですか？</summary><p>分解する深さが異なるほか、中国の簡体字・繁体字、台湾、日本などで字形が異なる場合があります。そのため複数の妥当な分析が存在します。</p></details>
+          <details><summary>表示された構成は漢字の字源ですか？</summary><p>必ずしも字源ではありません。このツールは主に現代字形の見た目を分解します。造字法は学習の参考情報としてご覧ください。</p></details>
+          <details><summary>熟語や文章を入力できますか？</summary><p>入力できます。最大12文字の漢字を抽出してタブに表示します。タブを選ぶと1文字ずつ構成を確認できます。</p></details>
+        </section>
+        <p class="section-kicker pinyin-related-kicker">関連する漢字ツール</p>
+        <nav class="landing-links" aria-label="関連する漢字・文字ツール">
+          <a href="/ja/chinese-character-lookup/" aria-current="page">漢字の構成・部首検索</a>
+          <a href="/ja/chinese-handwriting-recognition/">漢字手書き検索</a>
+          <a href="/ja/chinese-stroke-order/">中国語漢字の筆順</a>
+          <a href="/ja/chinese-to-pinyin/">中国語ピンイン変換</a>
+          <a href="/ja/han-character-worksheet/">漢字練習プリント</a>
+          <a href="/ja/character-counter/">文字数カウント</a>
+          <a href="/ja/japanese-chinese-kanji-converter/">日本語漢字・簡体字・繁体字変換</a>
+          <a href="/ja/kanji-to-romaji/">漢字・ローマ字変換</a>
+          <a href="/ja/japanese-characters/">日本語文字コピー</a>
+          <a href="/ja/word-to-txt/">Word TXT 変換</a>
+        </nav>
+      </section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app はブラウザーで使える漢字構成、手書き検索、中国語ピンイン、筆順、文字変換ツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
+    <script id="hanLookupLabels" type="application/json">{"structures":{"leftRight":"左右構成","topBottom":"上下構成","leftMiddleRight":"左中右構成","topMiddleBottom":"上中下構成","fullEnclosure":"全囲み構成","topEnclosure":"上から囲む構成","bottomEnclosure":"下から囲む構成","leftEnclosure":"左から囲む構成","upperLeftEnclosure":"左上から囲む構成","upperRightEnclosure":"右上から囲む構成","lowerLeftEnclosure":"左下から囲む構成","rightEnclosure":"右から囲む構成","lowerRightEnclosure":"右下から囲む構成","overlaid":"重ね合わせ構成","horizontalReflection":"左右反転構成","rotation":"回転構成","single":"単体またはその他"},"formations":{"ideographic":"会意文字","pictographic":"象形文字","pictophonetic":"形声文字","unknown":"その他の造字法"},"onReading":"音読み","kunReading":"訓読み","wholeCharacter":"漢字全体","component":"構成部品"}</script>
+  </body>
+</html>

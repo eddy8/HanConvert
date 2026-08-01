@@ -15,6 +15,7 @@ const expectedSlugs = [
   "japanese-kanji-converter",
   "character-counter",
   "chinese-stroke-order",
+  "chinese-character-lookup",
   "han-character-worksheet"
 ];
 const expectedLocales = ["zh-CN", "zh-TW", "en", "ja", "ko"];
@@ -43,6 +44,7 @@ test("preserves the primary search intent in Chinese and English descriptions", 
     "japanese-kanji-converter": ["新字体旧字体", "Shinjitai"],
     "character-counter": ["字数统计", "character counter"],
     "chinese-stroke-order": ["汉字笔顺", "stroke order"],
+    "chinese-character-lookup": ["汉字查询", "Chinese character"],
     "han-character-worksheet": ["Chinese practice sheet generator", "Chinese practice sheet generator"]
   };
 

@@ -3774,6 +3774,571 @@ html[lang="ko"] .worksheet-sheet {
   color: var(--accent);
 }
 
+.han-lookup-hero {
+  min-height: 128px;
+}
+
+.han-lookup-hero-equation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 300px;
+  color: var(--muted);
+}
+
+.han-lookup-hero-equation span,
+.han-lookup-hero-equation strong {
+  display: grid;
+  width: 66px;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #0b1f1a;
+  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-size: 2.2rem;
+}
+
+.han-lookup-hero-equation span:first-child {
+  color: var(--accent);
+}
+
+.han-lookup-hero-equation span:nth-of-type(2) {
+  color: var(--accent-2);
+}
+
+.han-lookup-hero-equation strong {
+  border-color: rgba(255, 125, 139, 0.5);
+  color: #ff7d8b;
+}
+
+.han-lookup-hero-equation i {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-weight: 800;
+}
+
+.han-lookup-tool {
+  padding: 0;
+  overflow: hidden;
+}
+
+.han-lookup-tool > .standalone-tool-head {
+  min-height: 68px;
+  margin: 0;
+  padding: 12px 18px;
+}
+
+.han-lookup-form {
+  display: grid;
+  padding: 14px 18px 8px;
+  border-top: 1px solid var(--line);
+  grid-template-columns: minmax(150px, 210px) minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.han-lookup-form > label {
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.han-lookup-form > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.han-lookup-form input {
+  width: 100%;
+  min-height: 46px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #091713;
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+
+.han-lookup-form input::placeholder {
+  color: rgba(159, 186, 176, 0.58);
+}
+
+.han-lookup-form button {
+  min-width: 138px;
+}
+
+.han-lookup-samples,
+.han-lookup-character-tabs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding-inline: 18px;
+}
+
+.han-lookup-samples {
+  padding-bottom: 14px;
+}
+
+.han-lookup-samples > span {
+  margin-right: 5px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.han-lookup-samples button,
+.han-lookup-character-tabs button,
+.han-lookup-variants button {
+  display: grid;
+  width: 38px;
+  min-height: 38px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #0a1915;
+  color: var(--ink);
+  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-size: 1.2rem;
+}
+
+.han-lookup-samples button:hover,
+.han-lookup-character-tabs button:hover,
+.han-lookup-variants button:hover {
+  border-color: rgba(255, 204, 102, 0.58);
+}
+
+.han-lookup-character-tabs {
+  min-height: 54px;
+  padding-block: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.han-lookup-character-tabs[hidden] {
+  display: none;
+}
+
+.han-lookup-character-tabs button.is-active {
+  border-color: var(--accent);
+  background: rgba(64, 242, 176, 0.12);
+  box-shadow: inset 0 -3px 0 var(--accent);
+}
+
+.han-lookup-workspace {
+  display: grid;
+  min-height: 530px;
+  border-top: 1px solid var(--line);
+  grid-template-columns: minmax(280px, 0.78fr) minmax(360px, 1.12fr) minmax(300px, 0.82fr);
+}
+
+.han-lookup-glyph-panel,
+.han-lookup-tree-panel,
+.han-lookup-detail-panel {
+  min-width: 0;
+  padding: 18px;
+}
+
+.han-lookup-tree-panel {
+  overflow-x: auto;
+}
+
+.han-lookup-glyph-panel,
+.han-lookup-tree-panel {
+  border-right: 1px solid var(--line);
+}
+
+.han-lookup-glyph-panel .panel-topline,
+.han-lookup-tree-panel .panel-topline {
+  display: block;
+  min-height: 88px;
+  padding: 0;
+  border: 0;
+}
+
+.han-lookup-glyph-panel .panel-topline h3,
+.han-lookup-tree-panel .panel-topline h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.han-lookup-glyph-panel .panel-topline p,
+.han-lookup-tree-panel .panel-topline p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.han-lookup-glyph-stage {
+  position: relative;
+  display: grid;
+  width: min(100%, 350px);
+  aspect-ratio: 1;
+  margin: 8px auto 0;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(64, 242, 176, 0.32);
+  border-radius: var(--radius-sm);
+  background-color: #091713;
+  background-image:
+    linear-gradient(rgba(127, 255, 210, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(127, 255, 210, 0.1) 1px, transparent 1px);
+  background-size: 50% 50%;
+}
+
+#hanLookupGlyph,
+#hanLookupGlyph svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#hanLookupGlyph {
+  position: absolute;
+  inset: 0;
+  padding: 24px;
+}
+
+#hanLookupGlyph path {
+  transition:
+    fill 150ms var(--ease),
+    opacity 150ms var(--ease),
+    filter 150ms var(--ease);
+}
+
+#hanLookupGlyph path.is-muted {
+  opacity: 0.13;
+}
+
+#hanLookupGlyph path.is-focused {
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+#hanLookupGlyphFallback {
+  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-size: clamp(8rem, 14vw, 12rem);
+  line-height: 1;
+}
+
+#hanLookupGlyphFallback[hidden] {
+  display: none;
+}
+
+.han-lookup-focus-bar {
+  display: flex;
+  min-height: 48px;
+  width: min(100%, 350px);
+  margin: 10px auto 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.han-lookup-focus-bar button {
+  min-height: 34px;
+  padding: 5px 10px;
+  border: 1px solid rgba(255, 204, 102, 0.4);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 204, 102, 0.08);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.han-lookup-focus-bar button[hidden] {
+  display: none;
+}
+
+.han-lookup-tree {
+  display: grid;
+  min-width: 340px;
+  min-height: 360px;
+  align-content: start;
+  justify-items: center;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.han-lookup-tree-connector {
+  width: 1px;
+  height: 18px;
+  background: rgba(127, 255, 210, 0.35);
+}
+
+.han-lookup-tree-character,
+.han-lookup-tree-operator {
+  min-width: 64px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #0a1915;
+  color: var(--ink);
+}
+
+.han-lookup-tree-character {
+  display: grid;
+  min-height: 68px;
+  padding: 7px 9px;
+  place-items: center;
+  box-shadow: inset 0 3px 0 var(--component-color);
+}
+
+.han-lookup-tree-character strong {
+  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.han-lookup-tree-character small,
+.han-lookup-tree-operator small {
+  color: var(--muted);
+  font-size: 0.66rem;
+}
+
+.han-lookup-tree-character.is-root {
+  width: 76px;
+  box-shadow: inset 0 3px 0 var(--ink);
+}
+
+.han-lookup-tree-character.is-active,
+.han-lookup-tree-operator.is-active {
+  border-color: var(--accent-2);
+  background: rgba(255, 204, 102, 0.08);
+}
+
+.han-lookup-tree-group {
+  display: grid;
+  width: 100%;
+  justify-items: center;
+  gap: 9px;
+}
+
+.han-lookup-tree-operator {
+  display: flex;
+  min-height: 34px;
+  max-width: 150px;
+  padding: 5px 9px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 0.72rem;
+}
+
+.han-lookup-tree-operator:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.han-lookup-tree-children {
+  position: relative;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(var(--tree-columns), minmax(68px, 1fr));
+  gap: 10px;
+}
+
+.han-lookup-tree-children::before {
+  position: absolute;
+  top: -5px;
+  right: calc(50% / var(--tree-columns));
+  left: calc(50% / var(--tree-columns));
+  height: 1px;
+  background: rgba(127, 255, 210, 0.3);
+  content: "";
+}
+
+.han-lookup-tree-empty {
+  display: grid;
+  min-height: 260px;
+  margin: 0;
+  padding: 24px;
+  place-items: center;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.han-lookup-tree-empty[hidden] {
+  display: none;
+}
+
+.han-lookup-detail-heading {
+  display: grid;
+  min-height: 78px;
+  align-items: center;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.han-lookup-detail-heading > span {
+  display: grid;
+  width: 58px;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(255, 204, 102, 0.35);
+  border-radius: var(--radius-sm);
+  color: var(--accent-2);
+  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-size: 2.25rem;
+}
+
+.han-lookup-detail-heading .section-kicker {
+  margin-bottom: 4px;
+}
+
+.han-lookup-detail-heading h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.han-lookup-facts {
+  display: grid;
+  margin: 12px 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.han-lookup-facts > div {
+  display: grid;
+  min-height: 39px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  grid-template-columns: minmax(95px, 0.42fr) minmax(0, 0.58fr);
+  gap: 10px;
+}
+
+.han-lookup-facts > div[hidden] {
+  display: none;
+}
+
+.han-lookup-facts dt {
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.han-lookup-facts dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.han-lookup-variants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-block: 5px;
+}
+
+.han-lookup-variants button {
+  width: 32px;
+  min-height: 32px;
+  font-size: 1rem;
+}
+
+.han-lookup-formation {
+  display: grid;
+  margin-top: 14px;
+  padding: 11px 12px;
+  border-left: 3px solid var(--accent-2);
+  background: rgba(255, 204, 102, 0.06);
+  gap: 3px;
+}
+
+.han-lookup-formation[hidden] {
+  display: none;
+}
+
+.han-lookup-formation span,
+.han-lookup-formation small {
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.han-lookup-actions {
+  display: grid;
+  margin-top: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.han-lookup-actions button,
+.han-lookup-actions a {
+  display: flex;
+  min-height: 38px;
+  padding: 7px 10px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  font-size: 0.78rem;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+}
+
+.han-lookup-actions .primary-action {
+  border-color: transparent;
+  color: #04110d;
+}
+
+.han-lookup-actions a:hover {
+  border-color: rgba(64, 242, 176, 0.55);
+  background: rgba(64, 242, 176, 0.07);
+}
+
+.han-lookup-source-note {
+  margin: 0;
+  padding: 12px 18px 15px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+.han-lookup-source-note a {
+  color: var(--accent);
+}
+
+@media (max-width: 1200px) {
+  .han-lookup-workspace {
+    grid-template-columns: minmax(280px, 0.82fr) minmax(360px, 1.18fr);
+  }
+
+  .han-lookup-tree-panel {
+    border-right: 0;
+  }
+
+  .han-lookup-detail-panel {
+    border-top: 1px solid var(--line);
+    grid-column: 1 / -1;
+  }
+
+  .han-lookup-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .han-lookup-facts > div:nth-child(odd) {
+    border-right: 1px solid var(--line);
+    padding-right: 14px;
+  }
+
+  .han-lookup-facts > div:nth-child(even) {
+    padding-left: 14px;
+  }
+
+  .han-lookup-actions {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 @keyframes scan {
   to {
     transform: rotate(360deg);
@@ -3948,6 +4513,10 @@ html[lang="ko"] .worksheet-sheet {
     display: none;
   }
 
+  .han-lookup-hero-equation {
+    display: none;
+  }
+
   .standalone-tool-head,
   .character-search-row,
   .recent-characters {
@@ -3970,8 +4539,45 @@ html[lang="ko"] .worksheet-sheet {
   .counter-detail-grid,
   .worksheet-builder,
   .handwriting-workspace,
+  .han-lookup-workspace,
   .word-howto ol {
     grid-template-columns: 1fr;
+  }
+
+  .han-lookup-form {
+    grid-template-columns: 1fr;
+  }
+
+  .han-lookup-form > div {
+    grid-template-columns: 1fr;
+  }
+
+  .han-lookup-form button {
+    min-width: 0;
+  }
+
+  .han-lookup-glyph-panel,
+  .han-lookup-tree-panel {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .han-lookup-detail-panel {
+    grid-column: auto;
+  }
+
+  .han-lookup-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .han-lookup-facts > div:nth-child(odd),
+  .han-lookup-facts > div:nth-child(even) {
+    padding-inline: 0;
+    border-right: 0;
+  }
+
+  .han-lookup-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .handwriting-draw-panel {
@@ -4119,6 +4725,15 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 @media (max-width: 430px) {
+  .han-lookup-focus-bar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .han-lookup-actions {
+    grid-template-columns: 1fr;
+  }
+
   .handwriting-draw-panel,
   .handwriting-match-panel {
     padding: 16px;

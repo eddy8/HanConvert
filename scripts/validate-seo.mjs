@@ -34,7 +34,7 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
 const uniqueSitemapUrls = new Set(sitemapUrls);
 if (uniqueSitemapUrls.size !== sitemapUrls.length) throw new Error("sitemap.xml contains duplicate URLs");
 
-for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "han-character-worksheet.js", "handwriting-recognition.js", "handwriting-recognition-worker.js", "webmcp.js"]) {
+for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "han-character-worksheet.js", "handwriting-recognition.js", "handwriting-recognition-worker.js", "han-character-lookup-core.js", "han-character-lookup.js", "webmcp.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
@@ -125,6 +125,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isWorksheetPage = html.includes('data-tool-page="han-character-worksheet"');
   const isKanjiRomajiPage = html.includes('data-tool-page="kanji-to-romaji"');
   const isHandwritingPage = html.includes('data-tool-page="handwriting-recognition"');
+  const isHanLookupPage = html.includes('data-tool-page="han-character-lookup"');
   if (localizedHomePages.has(relativePath) && !html.includes('src="/app-download.js"')) {
     throw new Error(`${relativePath}: missing platform-specific app download navigation`);
   }
@@ -188,10 +189,10 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     if (!webApplication || webApplication.url !== canonical) {
       throw new Error(`${relativePath}: invalid WebApplication schema`);
     }
-    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isKanjiRomajiPage || isHandwritingPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
+    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isKanjiRomajiPage || isHandwritingPage || isHanLookupPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
       throw new Error(`${relativePath}: missing tool FAQPage schema`);
     }
-    if ((isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isHandwritingPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
+    if ((isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isHandwritingPage || isHanLookupPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
       throw new Error(`${relativePath}: missing tool HowTo schema`);
     }
   }
@@ -250,7 +251,10 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (isConverterPage && !html.includes('data-route="chinese-handwriting-recognition"')) {
     throw new Error(`${relativePath}: missing handwriting-recognition link`);
   }
-  if (isStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/") || !html.includes("chinese-to-pinyin/") || !html.includes("chinese-stroke-order/") || !html.includes("word-to-txt/") || !html.includes("han-character-worksheet/") || !html.includes("kanji-to-romaji/") || !html.includes("chinese-handwriting-recognition/"))) {
+  if ((isConverterPage || isStandaloneToolPage) && !html.includes("chinese-character-lookup/")) {
+    throw new Error(`${relativePath}: missing Han-character lookup link`);
+  }
+  if (isStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/") || !html.includes("chinese-to-pinyin/") || !html.includes("chinese-stroke-order/") || !html.includes("word-to-txt/") || !html.includes("han-character-worksheet/") || !html.includes("kanji-to-romaji/") || !html.includes("chinese-handwriting-recognition/") || !html.includes("chinese-character-lookup/"))) {
     throw new Error(`${relativePath}: missing related tool links`);
   }
   if (isKanjiRomajiPage) {
@@ -408,6 +412,36 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
       if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
     }
   }
+  if (isHanLookupPage) {
+    for (const asset of ['src="/han-character-lookup-core.js"', 'src="/han-character-lookup.js"', 'id="hanLookupGlyph"', 'id="hanLookupStructureTree"']) {
+      if (!html.includes(asset)) throw new Error(`${relativePath}: missing Han-character lookup asset ${asset}`);
+    }
+  }
+  if (relativePath === path.join("chinese-character-lookup", "index.html")) {
+    for (const keyword of ["汉字查询", "汉字结构查询", "汉字拆解", "汉字部首查询", "汉字偏旁部首"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("en", "chinese-character-lookup", "index.html")) {
+    for (const keyword of ["Chinese Character Lookup", "Chinese character decomposition", "Chinese Radical Lookup", "components"]) {
+      if (!html.toLowerCase().includes(keyword.toLowerCase())) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("ja", "chinese-character-lookup", "index.html")) {
+    for (const keyword of ["漢字の構成", "漢字構成検索", "漢字部首検索", "構成部品"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("ko", "chinese-character-lookup", "index.html")) {
+    for (const keyword of ["한자 부수", "한자 구성요소 검색", "한자 구조 분해"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+}
+
+const hanLookupManifest = JSON.parse(await readFile(path.join(projectRoot, "data", "han-character-lookup", "manifest.json"), "utf8"));
+if (hanLookupManifest.records !== 9574 || hanLookupManifest.sources?.makeMeAHanzi?.commit !== "bddc96d41bef78427ed0e034e9f7e31d71fd1b92" || hanLookupManifest.sources?.unihan?.version !== "17.0.0") {
+  throw new Error("Han-character lookup data manifest is missing records or pinned source versions");
 }
 
 const agentIndexText = await readFile(
@@ -454,8 +488,8 @@ if (!notFound.includes('name="robots" content="noindex, follow"')) {
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
-if (standaloneToolPages !== 45) throw new Error(`expected 45 standalone tool pages, found ${standaloneToolPages}`);
+if (standaloneToolPages !== 50) throw new Error(`expected 50 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
-if (sitemapUrls.length !== 95) throw new Error(`expected 95 sitemap URLs, found ${sitemapUrls.length}`);
+if (sitemapUrls.length !== 100) throw new Error(`expected 100 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, and ${sitemapUrls.length} sitemap URLs.`);

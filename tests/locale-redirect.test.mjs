@@ -32,7 +32,7 @@ function mirrorBannerIsScheduled(languages, options = {}) {
         if (type === "DOMContentLoaded") scheduled = true;
       },
     },
-    console,
+    console: { warn() {} },
   };
 
   vm.runInNewContext(script, context);

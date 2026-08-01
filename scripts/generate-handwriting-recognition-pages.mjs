@@ -40,6 +40,7 @@ const content = {
     copy: "复制汉字",
     strokeLink: "查看笔顺",
     pinyinLink: "查询拼音",
+    structureLink: "查看结构",
     sourceNote: "手写笔画仅在当前浏览器中处理。首次使用会远程加载公开识别组件与字形数据。",
     sourceLink: "开源识别组件",
     messages: {
@@ -99,6 +100,7 @@ const content = {
     copy: "複製漢字",
     strokeLink: "查看筆順",
     pinyinLink: "查詢拼音",
+    structureLink: "查看結構",
     sourceNote: "手寫筆畫只在目前的瀏覽器中處理。首次使用會從遠端載入公開辨識元件與字形資料。",
     sourceLink: "開源辨識元件",
     messages: {
@@ -158,6 +160,7 @@ const content = {
     copy: "Copy character",
     strokeLink: "View stroke order",
     pinyinLink: "Check Pinyin",
+    structureLink: "View structure",
     sourceNote: "Your pen strokes are processed in this browser. The public recognition component and character data are loaded remotely on first use.",
     sourceLink: "Open-source recognizer",
     messages: {
@@ -217,6 +220,7 @@ const content = {
     copy: "漢字をコピー",
     strokeLink: "筆順を見る",
     pinyinLink: "ピンインを調べる",
+    structureLink: "構成を見る",
     sourceNote: "入力した筆画はこのブラウザー内で処理されます。初回のみ公開認識コンポーネントと字形データをリモートから読み込みます。",
     sourceLink: "オープンソース認識機能",
     messages: {
@@ -276,6 +280,7 @@ const content = {
     copy: "한자 복사",
     strokeLink: "필순 보기",
     pinyinLink: "병음 조회",
+    structureLink: "구조 보기",
     sourceNote: "입력한 필획은 이 브라우저에서만 처리됩니다. 처음 사용할 때 공개 인식 구성 요소와 글자 데이터를 원격으로 불러옵니다.",
     sourceLink: "오픈 소스 인식기",
     messages: {
@@ -314,11 +319,11 @@ const content = {
 };
 
 const relatedLabels = {
-  "zh-CN": [[slug, "手写汉字识别"], ["chinese-stroke-order", "汉字笔顺查询"], ["chinese-to-pinyin", "汉字转拼音"], ["han-character-worksheet", "汉字练习纸"], ["character-counter", "在线字数统计"], ["japanese-chinese-kanji-converter", "日中汉字三体转换"], ["kanji-to-romaji", "日文汉字转罗马字"], ["japanese-characters", "日文字符复制"], ["word-to-txt", "Word 转 TXT"]],
-  "zh-TW": [[slug, "手寫漢字辨識"], ["chinese-stroke-order", "漢字筆順查詢"], ["chinese-to-pinyin", "漢字轉拼音"], ["han-character-worksheet", "國字練習紙"], ["character-counter", "線上字數統計"], ["japanese-chinese-kanji-converter", "日中漢字三體轉換"], ["kanji-to-romaji", "日文漢字轉羅馬字"], ["japanese-characters", "日文字元複製"], ["word-to-txt", "DOCX 轉 TXT"]],
-  en: [[slug, "Chinese handwriting recognition"], ["chinese-stroke-order", "Chinese stroke order"], ["chinese-to-pinyin", "Chinese to Pinyin"], ["han-character-worksheet", "Chinese worksheet generator"], ["character-counter", "CJK character counter"], ["japanese-chinese-kanji-converter", "Japanese and Chinese Kanji"], ["kanji-to-romaji", "Kanji to Romaji"], ["japanese-characters", "Japanese character copy"], ["word-to-txt", "Word to text"]],
-  ja: [[slug, "漢字手書き検索"], ["chinese-stroke-order", "中国語漢字の筆順"], ["chinese-to-pinyin", "中国語ピンイン変換"], ["han-character-worksheet", "漢字練習プリント"], ["character-counter", "文字数カウント"], ["japanese-chinese-kanji-converter", "日本語漢字・簡体字・繁体字変換"], ["kanji-to-romaji", "漢字・ローマ字変換"], ["japanese-characters", "日本語文字コピー"], ["word-to-txt", "Word TXT 変換"]],
-  ko: [[slug, "한자 필기 인식"], ["chinese-stroke-order", "중국어 한자 필순"], ["chinese-to-pinyin", "중국어 병음 변환"], ["han-character-worksheet", "한자 쓰기 연습장"], ["character-counter", "글자수 세기"], ["japanese-chinese-kanji-converter", "일본·중국 한자 변환"], ["kanji-to-romaji", "일본어 한자 로마자 변환"], ["japanese-characters", "일본어 문자 복사"], ["word-to-txt", "DOCX TXT 변환"]]
+  "zh-CN": [[slug, "手写汉字识别"], ["chinese-character-lookup", "汉字查询与结构拆解"], ["chinese-stroke-order", "汉字笔顺查询"], ["chinese-to-pinyin", "汉字转拼音"], ["han-character-worksheet", "汉字练习纸"], ["character-counter", "在线字数统计"], ["japanese-chinese-kanji-converter", "日中汉字三体转换"], ["kanji-to-romaji", "日文汉字转罗马字"], ["japanese-characters", "日文字符复制"], ["word-to-txt", "Word 转 TXT"]],
+  "zh-TW": [[slug, "手寫漢字辨識"], ["chinese-character-lookup", "漢字查詢與結構拆解"], ["chinese-stroke-order", "漢字筆順查詢"], ["chinese-to-pinyin", "漢字轉拼音"], ["han-character-worksheet", "國字練習紙"], ["character-counter", "線上字數統計"], ["japanese-chinese-kanji-converter", "日中漢字三體轉換"], ["kanji-to-romaji", "日文漢字轉羅馬字"], ["japanese-characters", "日文字元複製"], ["word-to-txt", "DOCX 轉 TXT"]],
+  en: [[slug, "Chinese handwriting recognition"], ["chinese-character-lookup", "Chinese character lookup"], ["chinese-stroke-order", "Chinese stroke order"], ["chinese-to-pinyin", "Chinese to Pinyin"], ["han-character-worksheet", "Chinese worksheet generator"], ["character-counter", "CJK character counter"], ["japanese-chinese-kanji-converter", "Japanese and Chinese Kanji"], ["kanji-to-romaji", "Kanji to Romaji"], ["japanese-characters", "Japanese character copy"], ["word-to-txt", "Word to text"]],
+  ja: [[slug, "漢字手書き検索"], ["chinese-character-lookup", "漢字の構成・部首検索"], ["chinese-stroke-order", "中国語漢字の筆順"], ["chinese-to-pinyin", "中国語ピンイン変換"], ["han-character-worksheet", "漢字練習プリント"], ["character-counter", "文字数カウント"], ["japanese-chinese-kanji-converter", "日本語漢字・簡体字・繁体字変換"], ["kanji-to-romaji", "漢字・ローマ字変換"], ["japanese-characters", "日本語文字コピー"], ["word-to-txt", "Word TXT 変換"]],
+  ko: [[slug, "한자 필기 인식"], ["chinese-character-lookup", "한자 부수·구성요소 검색"], ["chinese-stroke-order", "중국어 한자 필순"], ["chinese-to-pinyin", "중국어 병음 변환"], ["han-character-worksheet", "한자 쓰기 연습장"], ["character-counter", "글자수 세기"], ["japanese-chinese-kanji-converter", "일본·중국 한자 변환"], ["kanji-to-romaji", "일본어 한자 로마자 변환"], ["japanese-characters", "일본어 문자 복사"], ["word-to-txt", "DOCX TXT 변환"]]
 };
 
 function escapeHtml(value) {
@@ -480,12 +485,12 @@ ${localeOptions}
                   <button class="primary-action" id="handwritingCopy" type="button">${page.copy}</button>
                   <a id="handwritingStrokeLink" href="${localizedPath(locale, "chinese-stroke-order")}">${page.strokeLink}</a>
                   <a id="handwritingPinyinLink" href="${localizedPath(locale, "chinese-to-pinyin")}">${page.pinyinLink}</a>
+                  <a id="handwritingStructureLink" href="${localizedPath(locale, "chinese-character-lookup")}">${page.structureLink}</a>
                 </div>
               </div>
             </article>
           </section>
         </div>
-        <p class="handwriting-source-note">${page.sourceNote} <a href="https://github.com/gugray/hanzi_lookup" rel="license external">${page.sourceLink}</a></p>
       </section>
 
       <section class="seo-band standalone-info" aria-labelledby="handwritingFeatureTitle">

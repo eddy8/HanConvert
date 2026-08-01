@@ -512,10 +512,13 @@
     const locale = elements.localeSelect.value;
     localStorage.setItem("jianfan-locale", locale);
     localStorage.setItem("jianfan-locale-manual", "1");
-    window.location.assign(`/${localePrefixes[locale]}han-character-worksheet/`);
+    const characters = core.extractHanCharacters(elements.input.value, { dedupe: false }).join("");
+    const query = characters ? `?character=${encodeURIComponent(characters)}` : "";
+    window.location.assign(`/${localePrefixes[locale]}han-character-worksheet/${query}`);
   });
 
   updateControlReadouts();
-  elements.input.value = body.dataset.sampleText;
+  const requestedCharacters = new URLSearchParams(window.location.search).get("character");
+  elements.input.value = core.extractHanCharacters(requestedCharacters || "", { dedupe: false }).join("") || body.dataset.sampleText;
   renderWorksheet();
 })();
