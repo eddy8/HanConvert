@@ -114,6 +114,7 @@
   const copyButton = document.querySelector("#handwritingCopy");
   const strokeLink = document.querySelector("#handwritingStrokeLink");
   const pinyinLink = document.querySelector("#handwritingPinyinLink");
+  const structureLink = document.querySelector("#handwritingStructureLink");
   const context = canvas?.getContext("2d");
 
   if (!canvas || !board || !context || !core) return;
@@ -390,6 +391,7 @@
     resultUnicode.textContent = core.formatUnicode(character);
     strokeLink.href = `${localePaths[locale]}chinese-stroke-order/?character=${encodeURIComponent(character)}`;
     pinyinLink.href = `${localePaths[locale]}chinese-to-pinyin/?character=${encodeURIComponent(character)}`;
+    structureLink.href = `${localePaths[locale]}chinese-character-lookup/?character=${encodeURIComponent(character)}`;
 
     const requestId = ++detailRequestId;
     try {
