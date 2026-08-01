@@ -250,7 +250,7 @@ select {
 }
 
 .button.primary {
-  background: linear-gradient(180deg, #27bfd0, var(--accent-dark));
+  background: linear-gradient(180deg, #087080, #075766);
   color: #fff;
 }
 

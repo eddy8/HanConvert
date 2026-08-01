@@ -15,6 +15,8 @@
     const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
     const normalizedLanguages = languages.filter(Boolean).map((language) => language.toLowerCase().replace("_", "-"));
 
+    setupSegmentedRadioGroups();
+
     if (shouldShowMirrorBanner(normalizedLanguages)) {
       showMirrorBanner();
     }
@@ -64,6 +66,93 @@
       primaryLanguage === "zh-sg" ||
       primaryLanguage === "zh-my"
     );
+  }
+
+  function setupSegmentedRadioGroups() {
+    if (typeof document.querySelectorAll !== "function") return;
+    const runAfterFrame = typeof window.requestAnimationFrame === "function"
+      ? window.requestAnimationFrame.bind(window)
+      : (callback) => setTimeout(callback, 0);
+
+    const initialize = () => {
+      document.querySelectorAll('[role="radiogroup"]').forEach((group) => {
+        const radios = getRadioButtons(group);
+        if (!radios.length || group.dataset.radioKeyboardReady === "1") return;
+
+        group.dataset.radioKeyboardReady = "1";
+        syncRadioTabStops(group);
+
+        group.addEventListener("click", (event) => {
+          if (!findClosestRadio(event.target)) return;
+          runAfterFrame(() => syncRadioTabStops(group));
+        });
+
+        group.addEventListener("keydown", (event) => {
+          const current = findClosestRadio(event.target);
+          if (!current || current.closest('[role="radiogroup"]') !== group) return;
+
+          const currentRadios = getRadioButtons(group);
+          if (!currentRadios.length) return;
+
+          const currentIndex = currentRadios.indexOf(current);
+          if (currentIndex === -1) return;
+
+          const nextIndex = getNextRadioIndex(event.key, currentIndex, currentRadios.length);
+          if (nextIndex === currentIndex) return;
+
+          event.preventDefault();
+          const nextRadio = currentRadios[nextIndex];
+          nextRadio.focus();
+          nextRadio.click();
+          runAfterFrame(() => syncRadioTabStops(group));
+        });
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initialize, { once: true });
+      return;
+    }
+
+    initialize();
+  }
+
+  function findClosestRadio(target) {
+    if (typeof target?.closest !== "function") return null;
+    return target.closest('[role="radio"]');
+  }
+
+  function getRadioButtons(group) {
+    return [...group.querySelectorAll('[role="radio"]')].filter((radio) => {
+      return !radio.disabled && radio.getAttribute("aria-disabled") !== "true" && !radio.hidden;
+    });
+  }
+
+  function getNextRadioIndex(key, currentIndex, radioCount) {
+    switch (key) {
+      case "ArrowRight":
+      case "ArrowDown":
+        return (currentIndex + 1) % radioCount;
+      case "ArrowLeft":
+      case "ArrowUp":
+        return (currentIndex - 1 + radioCount) % radioCount;
+      case "Home":
+        return 0;
+      case "End":
+        return radioCount - 1;
+      default:
+        return currentIndex;
+    }
+  }
+
+  function syncRadioTabStops(group) {
+    const radios = getRadioButtons(group);
+    if (!radios.length) return;
+
+    const checkedRadio = radios.find((radio) => radio.getAttribute("aria-checked") === "true") || radios[0];
+    radios.forEach((radio) => {
+      radio.tabIndex = radio === checkedRadio ? 0 : -1;
+    });
   }
 
   function showMirrorBanner() {
