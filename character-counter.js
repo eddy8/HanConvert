@@ -102,6 +102,11 @@
       category: classifyGrapheme(character)
     })).sort((left, right) => right.count - left.count || left.character.localeCompare(right.character, locale));
 
+    const manuscriptSheets = charactersNoWhitespace ? Math.ceil(charactersNoWhitespace / 400) : 0;
+    const manuscriptLastSheetCharacters = charactersNoWhitespace
+      ? ((charactersNoWhitespace - 1) % 400) + 1
+      : 0;
+
     return {
       characters,
       charactersNoWhitespace,
@@ -111,6 +116,8 @@
       lines: text ? text.split(/\r\n?|\n/u).length : 0,
       bytes: new TextEncoder().encode(text).length,
       uniqueCharacters: frequencies.size,
+      manuscriptSheets,
+      manuscriptLastSheetCharacters,
       categories,
       frequency
     };

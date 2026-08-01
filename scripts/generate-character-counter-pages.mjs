@@ -247,7 +247,9 @@ const content = {
       paragraphs: ["段落数", "空行で区切る"],
       lines: ["行数", "空行を含む"],
       bytes: ["UTF-8バイト数", "文字コード上の容量"],
-      uniqueCharacters: ["使用文字の種類", "空白を除く"]
+      uniqueCharacters: ["使用文字の種類", "空白を除く"],
+      manuscriptSheets: ["400字詰め原稿用紙", "必要枚数（切り上げ）"],
+      manuscriptLastSheetCharacters: ["原稿用紙の最終枚", "400字中の使用文字数"]
     },
     targetLabel: "目標文字数",
     targetProgress: "空白なしの進捗",
@@ -274,17 +276,18 @@ const content = {
     },
     seoKicker: "文字数カウンター・空白なし文字数",
     featureTitle: "日本語の文章を詳しく確認できる文字数カウンター",
-    featureIntro: "文字数カウント、空白なし文字数、行数、バイト数をすぐに確認できます。原稿、レポート、志望動機、SNS投稿、フォーム入力など、文字数制限がある文章のチェックに便利です。",
+    featureIntro: "文字数カウント、空白なし文字数、行数、バイト数に加え、400字詰め原稿用紙の必要枚数も確認できます。原稿、レポート、志望動機、SNS投稿など、文字数制限がある文章のチェックに便利です。",
     cards: [
       ["見た目どおりの文字数", "絵文字や結合文字をUnicodeの文字単位で扱い、画面上では1文字のものを不自然に分割しません。"],
       ["漢字・かなの割合", "漢字、ひらがな、カタカナ、英字、数字、記号を分けて、日本語文章の文字種を確認できます。"],
-      ["目標文字数と使用頻度", "400字など任意の目標を設定し、進捗とよく使う文字を同時にチェックできます。"]
+      ["原稿用紙換算と目標文字数", "空白なし文字数を400字詰め原稿用紙の枚数へ換算し、任意の目標に対する進捗も確認できます。"]
     ],
     howTitle: "文字数をカウントする方法",
-    steps: ["文章を入力・貼り付けるか、TXTやDOCXなどのファイルを読み込みます。", "空白あり・空白なしの文字数、単語、文、段落、行、バイト数を確認します。", "必要に応じて文字種、使用頻度、目標文字数まで確認します。"],
+    steps: ["文章を入力・貼り付けるか、TXTやDOCXなどのファイルを読み込みます。", "空白あり・空白なしの文字数、原稿用紙換算、行、バイト数を確認します。", "必要に応じて文字種、使用頻度、目標文字数まで確認します。"],
     faqTitle: "文字数カウントのよくある質問",
     faqs: [
       ["空白ありと空白なしの違いは何ですか？", "空白ありはスペースや改行も1文字として含めます。空白なしはスペース、タブ、改行を除いた文字数です。応募フォームなどでは指定された数え方を確認してください。"],
+      ["400字詰め原稿用紙の枚数はどう計算しますか？", "空白なし文字数を400で割り、途中の用紙も1枚として切り上げます。実際の原稿用紙では改行や段落によって使用マス数が変わるため、目安としてご利用ください。"],
       ["日本語の単語数はどのように数えますか？", "ブラウザーの言語別単語分割機能を使います。形態素解析とは異なるため、用途によって他サービスと結果が少し異なる場合があります。"],
       ["Wordファイルはアップロードされますか？", "アップロードされません。DOCXからの文字抽出はブラウザー内で行い、JianFan.appや外部の変換サーバーへ送りません。"],
       ["長い文章にも対応していますか？", "最大300万文字まで対応します。長文はバックグラウンドで集計し、それを超える場合は分割してご利用ください。"]
@@ -370,11 +373,11 @@ for (const [locale, description] of Object.entries(SEO_DESCRIPTIONS[slug])) {
 }
 
 const relatedLabels = {
-  "zh-CN": [[slug, "在线字数统计"], ["word-to-txt", "Word 转 TXT"], ["file-text-converter", "文件文本简繁转换"], ["chinese-to-pinyin", "汉字转拼音"], ["chinese-stroke-order", "汉字笔顺查询"], ["simplified-to-traditional", "简体转繁体"], ["japanese-chinese-kanji-converter", "日中汉字三体转换"], ["japanese-characters", "日文字符复制"]],
-  "zh-TW": [[slug, "線上字數統計"], ["word-to-txt", "DOCX 轉 TXT"], ["file-text-converter", "文件文字簡繁轉換"], ["chinese-to-pinyin", "漢字轉拼音"], ["chinese-stroke-order", "漢字筆順查詢"], ["simplified-to-traditional", "簡體轉繁體"], ["japanese-chinese-kanji-converter", "日中漢字三體轉換"], ["japanese-characters", "日文字元複製"]],
-  en: [[slug, "CJK character counter"], ["word-to-txt", "Word to text"], ["file-text-converter", "Document Chinese converter"], ["chinese-to-pinyin", "Chinese to Pinyin"], ["chinese-stroke-order", "Chinese stroke order"], ["simplified-to-traditional", "Simplified to Traditional"], ["japanese-chinese-kanji-converter", "Japanese and Chinese Kanji"], ["japanese-characters", "Japanese character copy"]],
-  ja: [[slug, "文字数カウント"], ["word-to-txt", "Word TXT 変換"], ["file-text-converter", "文書の中国語簡繁変換"], ["japanese-characters", "日本語文字コピー"], ["japanese-kanji-converter", "旧字体 新字体 変換"], ["chinese-to-pinyin", "中国語ピンイン変換"], ["chinese-stroke-order", "中国語漢字の筆順"], ["japanese-chinese-kanji-converter", "日中漢字3種類変換"]],
-  ko: [[slug, "글자수 세기"], ["word-to-txt", "DOCX TXT 변환"], ["file-text-converter", "문서 중국어 변환"], ["japanese-characters", "일본어 문자 복사"], ["chinese-to-pinyin", "중국어 병음 변환"], ["chinese-stroke-order", "중국어 한자 필순"], ["japanese-chinese-kanji-converter", "일본·중국 한자 변환"], ["simplified-to-traditional", "간체를 번체로"]]
+  "zh-CN": [[slug, "在线字数统计"], ["word-to-txt", "Word 转 TXT"], ["file-text-converter", "文件文本简繁转换"], ["chinese-to-pinyin", "汉字转拼音"], ["chinese-stroke-order", "汉字笔顺查询"], ["han-character-worksheet", "汉字练习纸"], ["kanji-to-romaji", "日文汉字转罗马字"], ["chinese-handwriting-recognition", "手写汉字识别"], ["chinese-character-lookup", "汉字查询与结构拆解"], ["simplified-to-traditional", "简体转繁体"], ["japanese-chinese-kanji-converter", "日中汉字三体转换"], ["japanese-characters", "日文字符复制"]],
+  "zh-TW": [[slug, "線上字數統計"], ["word-to-txt", "DOCX 轉 TXT"], ["file-text-converter", "文件文字簡繁轉換"], ["chinese-to-pinyin", "漢字轉拼音"], ["chinese-stroke-order", "漢字筆順查詢"], ["han-character-worksheet", "國字練習紙"], ["kanji-to-romaji", "日文漢字轉羅馬字"], ["chinese-handwriting-recognition", "手寫漢字辨識"], ["chinese-character-lookup", "漢字查詢與結構拆解"], ["simplified-to-traditional", "簡體轉繁體"], ["japanese-chinese-kanji-converter", "日中漢字三體轉換"], ["japanese-characters", "日文字元複製"]],
+  en: [[slug, "CJK character counter"], ["word-to-txt", "Word to text"], ["file-text-converter", "Document Chinese converter"], ["chinese-to-pinyin", "Chinese to Pinyin"], ["chinese-stroke-order", "Chinese stroke order"], ["han-character-worksheet", "Chinese worksheet generator"], ["kanji-to-romaji", "Kanji to Romaji"], ["chinese-handwriting-recognition", "Chinese handwriting recognition"], ["chinese-character-lookup", "Chinese character lookup"], ["simplified-to-traditional", "Simplified to Traditional"], ["japanese-chinese-kanji-converter", "Japanese and Chinese Kanji"], ["japanese-characters", "Japanese character copy"]],
+  ja: [[slug, "文字数カウント"], ["word-to-txt", "Word TXT 変換"], ["file-text-converter", "文書の中国語簡繁変換"], ["japanese-characters", "日本語文字コピー"], ["japanese-kanji-converter", "旧字体 新字体 変換"], ["chinese-to-pinyin", "中国語ピンイン変換"], ["chinese-stroke-order", "中国語漢字の筆順"], ["han-character-worksheet", "漢字練習プリント"], ["kanji-to-romaji", "漢字・ローマ字変換"], ["chinese-handwriting-recognition", "中国語の手書き漢字検索"], ["chinese-character-lookup", "漢字の構成・部首検索"], ["japanese-chinese-kanji-converter", "日中漢字3種類変換"]],
+  ko: [[slug, "글자수 세기"], ["word-to-txt", "DOCX TXT 변환"], ["file-text-converter", "문서 중국어 변환"], ["japanese-characters", "일본어 문자 복사"], ["chinese-to-pinyin", "중국어 병음 변환"], ["chinese-stroke-order", "중국어 한자 필순"], ["han-character-worksheet", "한자 쓰기 연습장"], ["kanji-to-romaji", "일본어 한자 로마자 변환"], ["chinese-handwriting-recognition", "손글씨 한자 인식"], ["chinese-character-lookup", "한자 부수·구성요소 검색"], ["japanese-chinese-kanji-converter", "일본·중국 한자 변환"], ["simplified-to-traditional", "간체를 번체로"]]
 };
 
 function escapeHtml(value) {

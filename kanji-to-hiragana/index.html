@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="免费日文汉字转平假名与振假名工具，可将含汉字、平假名和片假名的日语句子转换为纯平假名、保留送假名的读音或带注音的 Ruby 文本，并复制文本或 HTML。使用 Kuromoji 结合词语和句子上下文判断常见读音，适合日语学习、阅读辅助、字幕、课件和网页标注；人名、地名及特殊读法建议人工确认，文本仅在浏览器本地处理。" />
+    <title>日文汉字转平假名 - 振假名自动生成与 Ruby 注音 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/kanji-to-hiragana/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/kanji-to-hiragana/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/kanji-to-hiragana/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/kanji-to-hiragana/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/kanji-to-hiragana/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/kanji-to-hiragana/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/kanji-to-hiragana/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script defer src="/kanji-romaji-core.js"></script>
+    <script defer src="/japanese-reading-client.js"></script>
+    <script defer src="/kanji-to-hiragana.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/kanji-to-hiragana/#webapp",
+            "name": "日文汉字转平假名与振假名",
+            "alternateName": [
+              "日文汉字转平假名",
+              "日语振假名生成器",
+              "日文注音",
+              "Ruby 注音生成器"
+            ],
+            "url": "https://jianfan.app/kanji-to-hiragana/",
+            "description": "免费日文汉字转平假名与振假名工具，可将含汉字、平假名和片假名的日语句子转换为纯平假名、保留送假名的读音或带注音的 Ruby 文本，并复制文本或 HTML。使用 Kuromoji 结合词语和句子上下文判断常见读音，适合日语学习、阅读辅助、字幕、课件和网页标注；人名、地名及特殊读法建议人工确认，文本仅在浏览器本地处理。",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "zh-CN",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/kanji-to-hiragana/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "网站首页",
+                "item": "https://jianfan.app/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "日文汉字转平假名与振假名",
+                "item": "https://jianfan.app/kanji-to-hiragana/"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/kanji-to-hiragana/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "平假名转换和振假名有什么区别？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "纯平假名会用读音替换汉字；振假名保留原来的汉字，并在汉字上方显示读音。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Ruby HTML 是什么？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ruby 是网页显示注音的标准 HTML 标签。复制后可在支持 Ruby 的网页编辑器中显示汉字及其上方读音。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "人名和地名的读音一定正确吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不一定。人名、地名、当字和作品名可能有特殊读法，自动结果应结合可靠资料确认。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="kanji-to-hiragana" data-page-slug="kanji-to-hiragana" data-locale="zh-CN" data-dictionary-path="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/" data-dictionary-fallback-path="https://cdn.jsdmirror.cn/npm/kuromoji@0.1.2/dict/" data-message-idle="等待输入日语文本" data-message-components="正在加载日语读音组件 {current}/{total}" data-message-dictionary="正在加载日语词典 {current}/{total}" data-message-initializing="正在初始化日语词典" data-message-converting="正在转换第 {current}/{total} 段" data-message-complete="正在整理转换结果" data-message-ready="日语读音转换完成" data-message-copied-text="已复制普通文本" data-message-copied-html="已复制 Ruby HTML" data-message-copy-failed="无法自动复制，请手动选择内容" data-message-component-error="转换组件加载失败，请刷新页面" data-message-dictionary-error="日语词典加载失败，请检查网络后重试" data-message-not-japanese="请输入包含日文汉字或假名的文本" data-message-too-long="文本不能超过 {limit} 个字符">
+    <a class="skip-nav" href="#main">跳到主要内容</a>
+    <header class="site-header" aria-label="网站页眉"><a class="brand" href="/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">読</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="主要导航"><a class="nav-link" href="/">网站首页</a><label class="language-picker"><span>界面语言</span><select id="localeSelect" aria-label="界面语言">
+              <option value="zh-CN" selected>简体中文</option>
+              <option value="zh-TW">繁體中文</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ko">한국어</option>
+          </select></label></nav></header>
+    <main id="main">
+      <section class="tool-hero reading-tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">日语读音 · 平假名 · 振假名 · Ruby 注音</p><h1 id="pageTitle">日文汉字转平假名与振假名</h1><p class="lede">输入日语句子，即可转换为纯平假名、带振假名的日文或可复制的 Ruby HTML。常见汉字读音会结合词语和句子上下文判断。</p></div><div class="reading-hero-sample" aria-hidden="true"><ruby>日本語<rt>にほんご</rt></ruby><span>→</span><strong>にほんご</strong></div></section>
+      <section class="standalone-tool hiragana-tool" aria-labelledby="hiraganaToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">READ / ANNOTATE / COPY</p><h2 id="hiraganaToolTitle">输入日语并选择注音方式</h2></div><div><div class="status-pill" id="hiraganaStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>等待输入日语文本</span></div><progress class="reading-progress" id="hiraganaProgress" max="12" value="0" hidden></progress></div></div>
+        <fieldset class="reading-format-fieldset"><legend>输出方式</legend><div class="pinyin-format-control reading-format-control" role="radiogroup" aria-label="输出方式">
+            <button type="button" data-hiragana-format="hiragana" data-output-title="平假名转换结果" data-output-placeholder="转换后的平假名会显示在这里" role="radio" aria-checked="true" class="is-active"><span>纯平假名</span><small>にほんご</small></button>
+            <button type="button" data-hiragana-format="furigana" data-output-title="振假名预览" data-output-placeholder="转换后的振假名会显示在这里" role="radio" aria-checked="false"><span>振假名</span><small>日本語</small></button>
+            <button type="button" data-hiragana-format="okurigana" data-output-title="保留送假名的结果" data-output-placeholder="保留汉字和送假名的读音会显示在这里" role="radio" aria-checked="false"><span>保留送假名</span><small>読(よ)み方</small></button>
+            <button type="button" data-hiragana-format="ruby" data-output-title="Ruby HTML 代码" data-output-placeholder="可复制的 Ruby HTML 会显示在这里" role="radio" aria-checked="false"><span>Ruby HTML</span><small>&lt;ruby&gt;</small></button>
+        </div></fieldset>
+        <p class="romaji-resource-note">首次转换需要远程加载公开日语词典；加载完成后可在当前页面连续使用。</p>
+        <div class="pinyin-converter-grid reading-converter-grid">
+          <section class="pinyin-text-panel input-variant" aria-labelledby="hiraganaInputTitle"><div class="panel-topline"><h3 id="hiraganaInputTitle">日语文本</h3><span id="hiraganaInputCount">0</span></div><textarea id="hiraganaInput" spellcheck="false" placeholder="输入或粘贴包含汉字、平假名或片假名的日语..."></textarea><div class="panel-actions"><button class="text-button" id="hiraganaSample" type="button" data-sample="明日は東京で日本語を勉強します。">示例</button><button class="text-button" id="hiraganaClear" type="button">清空</button><button class="primary-action" id="hiraganaConvert" type="button">转换读音</button></div></section>
+          <section class="pinyin-text-panel output-variant" aria-labelledby="hiraganaOutputTitle"><div class="panel-topline"><h3 id="hiraganaOutputTitle">平假名转换结果</h3><span id="hiraganaOutputCount">0</span></div><textarea id="hiraganaPlainOutput" readonly spellcheck="false" placeholder="转换后的平假名会显示在这里"></textarea><div id="hiraganaVisualOutput" class="romaji-furigana-output reading-visual-output" hidden><p id="hiraganaVisualEmpty" class="pinyin-empty">转换后会在这里显示带振假名的日语文本。</p></div><div class="panel-actions"><button class="text-button" id="hiraganaRetry" type="button" hidden>重试加载</button><button class="text-button" id="hiraganaCopyText" type="button" disabled>复制文本</button><button class="text-button" id="hiraganaCopyHtml" type="button" disabled>复制 Ruby HTML</button></div></section>
+        </div>
+        <p class="tool-disclaimer">日语汉字可能有音读、训读和特殊读法。一般词语可结合上下文判断，人名、地名、作品名和生僻词仍建议人工确认。</p>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="hiraganaFeatureTitle"><div class="section-heading"><p class="section-kicker">汉字转平假名 · 振假名自动生成</p><h2 id="hiraganaFeatureTitle">把日语汉字转换为平假名、振假名或 Ruby 注音</h2><p class="seo-intro">针对日文汉字转平假名、日语振假名自动生成、汉字读音查询和网页 Ruby 注音等需求，同一段日语可以切换不同输出形式。</p></div><div class="seo-grid">
+          <article><h3>根据词语和句子判断读音</h3><p>使用日语词法分析识别常见单词和活用，比逐个汉字查音更适合完整句子。</p></article>
+          <article><h3>普通读者与网页编辑都能使用</h3><p>可直接阅读振假名预览，也可复制平假名文本、括号读音或标准 Ruby HTML。</p></article>
+          <article><h3>文本在浏览器内转换</h3><p>页面只远程获取公开词典文件，输入的日语和转换结果不会上传到转换服务器。</p></article>
+        </div><section class="word-howto" aria-labelledby="hiraganaHowTitle"><h2 id="hiraganaHowTitle">如何给日语汉字添加振假名</h2><ol>
+          <li>输入或粘贴包含日文汉字和假名的句子。</li>
+          <li>选择纯平假名、振假名、保留送假名或 Ruby HTML。</li>
+          <li>点击转换并检查人名、地名等特殊读音。</li>
+          <li>复制普通文本或 Ruby HTML，用于笔记、字幕、课件或网页。</li>
+        </ol></section><section class="pinyin-faq" aria-labelledby="hiraganaFaqTitle"><h2 id="hiraganaFaqTitle">汉字转平假名与振假名常见问题</h2>
+          <details><summary>平假名转换和振假名有什么区别？</summary><p>纯平假名会用读音替换汉字；振假名保留原来的汉字，并在汉字上方显示读音。</p></details>
+          <details><summary>Ruby HTML 是什么？</summary><p>Ruby 是网页显示注音的标准 HTML 标签。复制后可在支持 Ruby 的网页编辑器中显示汉字及其上方读音。</p></details>
+          <details><summary>人名和地名的读音一定正确吗？</summary><p>不一定。人名、地名、当字和作品名可能有特殊读法，自动结果应结合可靠资料确认。</p></details>
+        </section><p class="section-kicker pinyin-related-kicker">相关日语工具</p><nav class="landing-links" aria-label="相关日语读音与汉字工具">
+          <a href="/kanji-to-hiragana/" aria-current="page">日文汉字转平假名</a>
+          <a href="/kanji-to-romaji/">日文汉字转罗马字</a>
+          <a href="/japanese-stroke-order/">日本汉字笔顺</a>
+          <a href="/japanese-kanji-dictionary/">日本汉字查询</a>
+          <a href="/japanese-handwriting-recognition/">日文手写汉字查询</a>
+          <a href="/han-character-worksheet/">汉字练习纸</a>
+          <a href="/character-counter/">在线字数统计</a>
+          <a href="/japanese-kanji-converter/">日文新旧字体转换</a>
+        </nav><p class="reading-source-note">读音转换基于 Kuroshiro 与 Kuromoji.js 的公开日语词典，输入文本不会发送给词典来源。</p></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app 提供在浏览器中运行的日语读音、汉字学习与中文转换工具。</p><nav class="footer-links" aria-label="页脚"><a href="/about/">关于我们</a><a href="/contact/">联系我们</a><a href="/privacy/">隐私声明</a></nav></footer>
+  </body>
+</html>

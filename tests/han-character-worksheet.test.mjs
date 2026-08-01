@@ -5,6 +5,7 @@ import vm from "node:vm";
 
 const source = await readFile(new URL("../han-character-worksheet.js", import.meta.url), "utf8");
 const pinyinSource = await readFile(new URL("../vendor/pinyin-pro.js", import.meta.url), "utf8");
+const japanesePage = await readFile(new URL("../ja/han-character-worksheet/index.html", import.meta.url), "utf8");
 const context = {};
 context.globalThis = context;
 vm.runInNewContext(source, context);
@@ -135,4 +136,14 @@ test("keeps the first and final stroke when reducing long stroke sequences", () 
   assert.equal(steps[0], 0);
   assert.equal(steps.at(-1), 24);
   assert.deepEqual(Array.from(selectStrokeSteps(5)), [0, 1, 2, 3, 4]);
+});
+
+test("Japanese worksheet ships localized static copy and Japanese reference data", () => {
+  assert.match(japanesePage, /<html lang="ja">/);
+  assert.match(japanesePage, /data-character-standard="japanese"/);
+  assert.match(japanesePage, /<h1 id="pageTitle">漢字練習プリント作成<\/h1>/);
+  assert.match(japanesePage, /音読み・訓読みを表示/);
+  assert.match(japanesePage, /src="\/japanese-kanji-data\.js"/);
+  assert.match(japanesePage, /src="\/japanese-stroke-order\.js"/);
+  assert.doesNotMatch(japanesePage, /pinyin-pro|hanzi-writer/i);
 });

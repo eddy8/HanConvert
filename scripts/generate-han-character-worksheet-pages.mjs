@@ -236,18 +236,19 @@ const content = {
     rows: "1字の練習行数",
     traceCells: "なぞり書きマス",
     traceOpacity: "見本の濃さ",
-    showPinyin: "ピンインを表示",
+    showPinyin: "音読み・訓読みを表示",
     showStrokeOrder: "筆順見本を表示",
     dedupe: "同じ漢字をまとめる",
     previewTitle: "印刷プレビュー",
     print: "印刷 / PDF 保存",
-    privacy: "入力内容はこのブラウザー内だけで処理します。筆順見本を有効にした場合のみ、公開されている字形データを文字ごとに取得します。",
+    privacy: "入力内容はこのブラウザー内だけで処理します。読み方にはKANJIDIC2、筆順には日本の学校字形に基づくKanjiVGの公開データを使用します。",
     nameLabel: "名前：",
     dateLabel: "日付：",
     sampleText: "漢字練習 学校生活 春夏秋冬",
     messages: {
       idle: "漢字の入力待ち",
-      loadingStrokes: "公開筆順データを読み込み中",
+      loadingStrokes: "日本語の読み方と筆順データを読み込み中",
+      loadingDictionary: "日本語漢字辞典を読み込み中（{percent}%）",
       ready: "{count}字の練習プリントを作成しました",
       readyWithoutStrokes: "プリントを作成しました。一部の字に筆順データがありません",
       invalid: "漢字を1字以上入力してください",
@@ -263,7 +264,7 @@ const content = {
     cards: [
       ["なぞってから自分で書く", "濃い見本、薄いなぞり書き、空欄マスの順に配置し、字形を確認しながら反復練習できます。"],
       ["マス目と練習量を調整", "十字・対角線・通常マスを選び、学年や用途に合わせて1行のマス数と練習行数を変更できます。"],
-      ["文脈に応じたピンイン", "語句や文では文脈から多音字の中国語ピンインを判定し、漢字1字だけの場合は候補の読みをすべて表示します。筆順見本も任意で追加できます。"]
+      ["音読み・訓読みと日本の筆順", "KANJIDIC2に収録された音読み・訓読みを表示し、KanjiVGの日本学校字形による筆順見本も追加できます。"]
     ],
     howTitle: "漢字練習プリントの作り方",
     steps: ["練習したい漢字、熟語、短い文章を入力します。", "マス目、なぞり書き、練習行数、読み、筆順を設定します。", "白い用紙プレビューを確認し、印刷または PDF 保存します。"],
@@ -271,9 +272,9 @@ const content = {
     faqs: [
       ["PDFで保存できますか？", "はい。印刷ボタンを押し、ブラウザーの印刷画面で「PDFに保存」を選択してください。"],
       ["小学生の漢字練習に使えますか？", "入力した漢字だけでプリントを作れるため、宿題や間違えた漢字の復習に使えます。字形は端末のフォントにも左右されます。"],
-      ["多音字のピンインはどう表示されますか？", "熟語や文では中国語の文脈に応じたピンインを表示します。漢字を1字だけ入力した場合は、辞書にある読みをすべて表示します。"],
-      ["入力した内容は送信されますか？", "本文は送信されません。筆順を表示するときだけ、1文字ごとの公開字形データをリモートから取得します。"],
-      ["筆順は日本の学校基準ですか？", "筆順見本は中国語字形データを使用します。日本語の正式な書き順学習では、学校の教科書や学習指導資料を確認してください。"]
+      ["音読みと訓読みはどのように表示されますか？", "各漢字についてKANJIDIC2に収録された標準的な音読み・訓読みをまとめて表示します。熟語固有の読みや人名の読みは必要に応じて確認してください。"],
+      ["入力した内容は送信されますか？", "本文は送信されません。辞典索引と、筆順を表示する文字ごとの公開ベクターデータだけを取得します。"],
+      ["筆順は日本の学校基準ですか？", "はい。中国語向け筆順を流用せず、日本の学校字形を基準にしたKanjiVGデータを使用します。"]
     ],
     related: "関連する漢字ツール",
     relatedAria: "関連する漢字・文字ツール",
@@ -351,11 +352,11 @@ for (const [locale, description] of Object.entries(SEO_DESCRIPTIONS[slug])) {
 }
 
 const relatedLabels = {
-  "zh-CN": [[slug, "汉字练习纸"], ["chinese-stroke-order", "汉字笔顺查询"], ["chinese-to-pinyin", "汉字转拼音"], ["character-counter", "在线字数统计"], ["japanese-chinese-kanji-converter", "日中汉字三体转换"], ["kanji-to-romaji", "日文汉字转罗马字"], ["japanese-characters", "日文字符复制"], ["simplified-to-traditional", "简体转繁体"], ["traditional-to-simplified", "繁体转简体"], ["word-to-txt", "Word 转 TXT"]],
-  "zh-TW": [[slug, "國字練習紙"], ["chinese-stroke-order", "漢字筆順查詢"], ["chinese-to-pinyin", "漢字轉拼音"], ["character-counter", "線上字數統計"], ["japanese-chinese-kanji-converter", "日中漢字三體轉換"], ["kanji-to-romaji", "日文漢字轉羅馬字"], ["japanese-characters", "日文字元複製"], ["simplified-to-traditional", "簡體轉繁體"], ["traditional-to-simplified", "繁體轉簡體"], ["word-to-txt", "DOCX 轉 TXT"]],
-  en: [[slug, "Chinese worksheet generator"], ["chinese-stroke-order", "Chinese stroke order"], ["chinese-to-pinyin", "Chinese to Pinyin"], ["character-counter", "CJK character counter"], ["japanese-chinese-kanji-converter", "Japanese and Chinese Kanji"], ["kanji-to-romaji", "Kanji to Romaji"], ["japanese-characters", "Japanese character copy"], ["simplified-to-traditional", "Simplified to Traditional"], ["traditional-to-simplified", "Traditional to Simplified"], ["word-to-txt", "Word to text"]],
-  ja: [[slug, "漢字練習プリント"], ["chinese-stroke-order", "中国語漢字の筆順"], ["chinese-to-pinyin", "中国語ピンイン変換"], ["character-counter", "文字数カウント"], ["japanese-chinese-kanji-converter", "日本語漢字・簡体字・繁体字変換"], ["kanji-to-romaji", "漢字・ローマ字変換"], ["japanese-characters", "日本語文字コピー"], ["japanese-kanji-converter", "旧字体 新字体 変換"], ["word-to-txt", "Word TXT 変換"]],
-  ko: [[slug, "한자 쓰기 연습장"], ["chinese-stroke-order", "중국어 한자 필순"], ["chinese-to-pinyin", "중국어 병음 변환"], ["character-counter", "글자수 세기"], ["japanese-chinese-kanji-converter", "일본·중국 한자 변환"], ["kanji-to-romaji", "일본어 한자 로마자 변환"], ["japanese-characters", "일본어 문자 복사"], ["simplified-to-traditional", "간체를 번체로"], ["word-to-txt", "DOCX TXT 변환"]]
+  "zh-CN": [[slug, "汉字练习纸"], ["chinese-stroke-order", "汉字笔顺查询"], ["chinese-to-pinyin", "汉字转拼音"], ["character-counter", "在线字数统计"], ["chinese-handwriting-recognition", "手写汉字识别"], ["chinese-character-lookup", "汉字查询与结构拆解"], ["japanese-chinese-kanji-converter", "日中汉字三体转换"], ["kanji-to-romaji", "日文汉字转罗马字"], ["japanese-characters", "日文字符复制"], ["simplified-to-traditional", "简体转繁体"], ["traditional-to-simplified", "繁体转简体"], ["word-to-txt", "Word 转 TXT"]],
+  "zh-TW": [[slug, "國字練習紙"], ["chinese-stroke-order", "漢字筆順查詢"], ["chinese-to-pinyin", "漢字轉拼音"], ["character-counter", "線上字數統計"], ["chinese-handwriting-recognition", "手寫漢字辨識"], ["chinese-character-lookup", "漢字查詢與結構拆解"], ["japanese-chinese-kanji-converter", "日中漢字三體轉換"], ["kanji-to-romaji", "日文漢字轉羅馬字"], ["japanese-characters", "日文字元複製"], ["simplified-to-traditional", "簡體轉繁體"], ["traditional-to-simplified", "繁體轉簡體"], ["word-to-txt", "DOCX 轉 TXT"]],
+  en: [[slug, "Chinese worksheet generator"], ["chinese-stroke-order", "Chinese stroke order"], ["chinese-to-pinyin", "Chinese to Pinyin"], ["character-counter", "CJK character counter"], ["chinese-handwriting-recognition", "Chinese handwriting recognition"], ["chinese-character-lookup", "Chinese character lookup"], ["japanese-chinese-kanji-converter", "Japanese and Chinese Kanji"], ["kanji-to-romaji", "Kanji to Romaji"], ["japanese-characters", "Japanese character copy"], ["simplified-to-traditional", "Simplified to Traditional"], ["traditional-to-simplified", "Traditional to Simplified"], ["word-to-txt", "Word to text"]],
+  ja: [[slug, "漢字練習プリント"], ["japanese-stroke-order", "漢字の書き順・筆順"], ["kanji-to-hiragana", "漢字をひらがな・ふりがなに変換"], ["japanese-handwriting-recognition", "手書き漢字検索"], ["japanese-kanji-dictionary", "漢字検索・漢字辞典"], ["character-counter", "文字数カウント"], ["japanese-chinese-kanji-converter", "日本語漢字・簡体字・繁体字変換"], ["kanji-to-romaji", "漢字・ローマ字変換"], ["japanese-characters", "日本語文字コピー"], ["japanese-kanji-converter", "旧字体 新字体 変換"], ["word-to-txt", "Word TXT 変換"]],
+  ko: [[slug, "한자 쓰기 연습장"], ["chinese-stroke-order", "중국어 한자 필순"], ["chinese-to-pinyin", "중국어 병음 변환"], ["character-counter", "글자수 세기"], ["chinese-handwriting-recognition", "손글씨 한자 인식"], ["chinese-character-lookup", "한자 부수·구성요소 검색"], ["japanese-chinese-kanji-converter", "일본·중국 한자 변환"], ["kanji-to-romaji", "일본어 한자 로마자 변환"], ["japanese-characters", "일본어 문자 복사"], ["simplified-to-traditional", "간체를 번체로"], ["word-to-txt", "DOCX TXT 변환"]]
 };
 
 function escapeHtml(value) {
@@ -418,6 +419,9 @@ function buildHead(locale, page) {
   const alternates = Object.entries(locales)
     .map(([targetLocale, meta]) => `    <link rel="alternate" hreflang="${meta.hreflang}" href="${origin}${localizedPath(targetLocale, slug)}" />`)
     .join("\n");
+  const toolDependencies = locale === "ja"
+    ? `    <script defer src="/japanese-kanji-data.js"></script>\n    <script defer src="/japanese-stroke-order.js"></script>`
+    : `    <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer/dist/hanzi-writer.min.js"></script>\n    <script defer src="/vendor/pinyin-pro.js"></script>`;
   return `    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#07120f" />
@@ -431,8 +435,7 @@ ${alternates}
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.css" />
-    <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer/dist/hanzi-writer.min.js"></script>
-    <script defer src="/vendor/pinyin-pro.js"></script>
+${toolDependencies}
     <script defer src="/han-character-worksheet.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -462,7 +465,7 @@ function buildPage(locale) {
   <head>
 ${buildHead(locale, page)}
   </head>
-  <body data-tool-page="han-character-worksheet" data-page-slug="${slug}" data-locale="${locale}" data-sample-text="${escapeHtml(page.sampleText)}" data-default-worksheet-title="${escapeHtml(page.defaultTitle)}" data-name-label="${escapeHtml(page.nameLabel)}" data-date-label="${escapeHtml(page.dateLabel)}"${messages}>
+  <body data-tool-page="han-character-worksheet" data-page-slug="${slug}" data-locale="${locale}" data-character-standard="${locale === "ja" ? "japanese" : "chinese"}" data-sample-text="${escapeHtml(page.sampleText)}" data-default-worksheet-title="${escapeHtml(page.defaultTitle)}" data-name-label="${escapeHtml(page.nameLabel)}" data-date-label="${escapeHtml(page.dateLabel)}"${messages}>
     <a class="skip-nav" href="#main">${meta.skip}</a>
     <header class="site-header" aria-label="${meta.header}">
       <a class="brand" href="${localizedPath(locale)}" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">字</span><span>JianFan.app</span></a>

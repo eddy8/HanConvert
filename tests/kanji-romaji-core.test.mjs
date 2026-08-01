@@ -66,6 +66,10 @@ test("builds Kuroshiro options for each supported output", () => {
     to: "hiragana",
     mode: "furigana"
   });
+  assert.deepEqual(plain(buildConversionOptions("okurigana")), {
+    to: "hiragana",
+    mode: "okurigana"
+  });
 });
 
 test("falls back to Hepburn Romaji for unsupported settings", () => {
