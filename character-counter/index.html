@@ -167,11 +167,19 @@ CJK text analysis 2026.">加载示例</button><button class="text-button" id="co
               <article class="counter-metric"><span>段落</span><strong data-counter-metric="paragraphs">0</strong><small>以空行分隔</small></article>
               <article class="counter-metric"><span>行数</span><strong data-counter-metric="lines">0</strong><small>包含非空与空白行</small></article>
               <article class="counter-metric"><span>UTF-8 字节</span><strong data-counter-metric="bytes">0</strong><small>实际编码占用</small></article>
+              <article class="counter-metric"><span>双字节表单</span><strong data-counter-metric="bytesKorean2">0</strong><small>非 ASCII 字符按 2 字节</small></article>
               <article class="counter-metric"><span>不同字符</span><strong data-counter-metric="uniqueCharacters">0</strong><small>排除空白字符</small></article>
             </div>
             <div class="counter-target">
-              <label for="counterTarget"><span>目标字数</span><input id="counterTarget" type="number" min="1" max="3000000" step="100" value="1000" /></label>
-              <div><span>不含空白字符进度</span><strong><span id="counterTargetValue">1000</span> 字 · <span id="counterTargetPercent">0%</span></strong></div>
+              <div class="counter-target-controls">
+                <label for="counterTarget"><span>目标字数</span><input id="counterTarget" type="number" min="1" max="12000000" step="100" value="1000" /></label>
+                <label for="counterTargetMode"><span>目标统计口径</span><select id="counterTargetMode">
+                    <option value="charactersNoWhitespace" data-basis="不含空白字符进度" data-unit="字" selected>不含空白字符</option>
+                    <option value="bytes" data-basis="UTF-8 字节进度" data-unit="B">UTF-8 字节</option>
+                    <option value="bytesKorean2" data-basis="非 ASCII 字符按 2 字节" data-unit="B">双字节表单</option>
+                  </select></label>
+              </div>
+              <div><span id="counterTargetBasis">不含空白字符进度</span><strong><span id="counterTargetValue">1000</span> <span id="counterTargetUnit">字</span> · <span id="counterTargetPercent">0%</span></strong></div>
               <span class="counter-target-track"><span id="counterTargetBar"></span></span>
             </div>
           </section>

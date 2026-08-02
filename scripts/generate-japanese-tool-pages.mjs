@@ -296,7 +296,7 @@ const tools = {
         footer: "JianFan.app 提供在瀏覽器本機運行的中文與日文字符工具。"
       },
       en: {
-        title: "Copy Japanese Characters - Hiragana, Katakana and Symbols | JianFan.app",
+        title: "Japanese Character Copy - Hiragana, Katakana, Symbols | JianFan.app",
         description: "Find and copy Hiragana, Katakana, half-width Kana, small Kana, voiced characters, and Japanese symbols with category filters and romaji search.",
         eyebrow: "Hiragana · Katakana · Japanese symbols",
         heading: "Find and Copy Japanese Characters",

@@ -61,6 +61,14 @@
     return trimmed.split(/(?<=[.!?。！？])(?:\s+|$)|\n+/u).filter((item) => item.trim()).length;
   }
 
+  function countKoreanFormBytes(value) {
+    let bytes = 0;
+    for (const character of String(value || "")) {
+      bytes += character.codePointAt(0) <= 0x7f ? 1 : 2;
+    }
+    return bytes;
+  }
+
   function classifyGrapheme(grapheme) {
     if (SCRIPT_TESTS.han.test(grapheme)) return "han";
     if (SCRIPT_TESTS.hiragana.test(grapheme)) return "hiragana";
@@ -115,6 +123,7 @@
       paragraphs: text.trim() ? text.trim().split(/\n[ \t]*\n+/u).filter((item) => item.trim()).length : 0,
       lines: text ? text.split(/\r\n?|\n/u).length : 0,
       bytes: new TextEncoder().encode(text).length,
+      bytesKorean2: countKoreanFormBytes(text),
       uniqueCharacters: frequencies.size,
       manuscriptSheets,
       manuscriptLastSheetCharacters,
@@ -141,6 +150,7 @@
     MAX_INPUT_CHARACTERS,
     analyzeText,
     classifyGrapheme,
+    countKoreanFormBytes,
     filterFrequency,
     validateFileDescriptor
   };
@@ -164,6 +174,9 @@
     fileLabel: document.querySelector("#counterFileLabel"),
     fileName: document.querySelector("#counterFileName"),
     target: document.querySelector("#counterTarget"),
+    targetMode: document.querySelector("#counterTargetMode"),
+    targetBasis: document.querySelector("#counterTargetBasis"),
+    targetUnit: document.querySelector("#counterTargetUnit"),
     targetValue: document.querySelector("#counterTargetValue"),
     targetBar: document.querySelector("#counterTargetBar"),
     targetPercent: document.querySelector("#counterTargetPercent"),
@@ -202,7 +215,11 @@
   }
 
   function renderMetrics() {
-    const values = { ...result, bytes: formatBytes(result.bytes) };
+    const values = {
+      ...result,
+      bytes: formatBytes(result.bytes),
+      bytesKorean2: formatBytes(result.bytesKorean2)
+    };
     for (const element of elements.metrics) {
       const value = values[element.dataset.counterMetric] ?? 0;
       element.textContent = typeof value === "number" ? formatNumber(value) : value;
@@ -218,11 +235,14 @@
     }
 
     const target = Math.max(1, Number(elements.target.value) || 1);
-    const progress = Math.min(100, Math.round((result.charactersNoWhitespace / target) * 100));
+    const selectedMode = elements.targetMode.selectedOptions[0];
+    const measuredValue = Number(result[elements.targetMode.value]) || 0;
+    const progress = Math.min(100, Math.round((measuredValue / target) * 100));
+    elements.targetBasis.textContent = selectedMode.dataset.basis || "";
     elements.targetValue.textContent = formatNumber(target);
+    elements.targetUnit.textContent = selectedMode.dataset.unit || "";
     elements.targetPercent.textContent = `${progress}%`;
     elements.targetBar.style.width = `${progress}%`;
-    elements.target.setAttribute("aria-valuetext", `${progress}%`);
     renderFrequency();
   }
 
@@ -382,6 +402,7 @@
     importFile(event.dataTransfer.files[0]);
   });
   elements.target.addEventListener("input", renderMetrics);
+  elements.targetMode.addEventListener("change", renderMetrics);
   elements.excludePunctuation.addEventListener("change", renderFrequency);
   elements.localeSelect.addEventListener("change", () => {
     const locale = elements.localeSelect.value;

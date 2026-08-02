@@ -2942,7 +2942,7 @@ textarea::placeholder {
 
 .counter-metric-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 6px;
 }
 
@@ -2995,20 +2995,36 @@ textarea::placeholder {
   background: rgba(64, 242, 176, 0.04);
 }
 
+.counter-target-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.counter-target-controls label {
+  display: grid;
+  align-items: stretch;
+  gap: 5px;
+}
+
 .counter-target label,
 .counter-target > div {
   color: var(--muted);
   font-size: 0.7rem;
 }
 
-.counter-target input {
-  width: 116px;
+.counter-target input,
+.counter-target select {
+  width: 100%;
   min-height: 30px;
   padding: 4px 7px;
   border: 1px solid var(--line);
   border-radius: 5px;
   background: rgba(2, 9, 8, 0.7);
   color: var(--ink);
+}
+
+.counter-target input {
   text-align: right;
 }
 
@@ -5720,6 +5736,399 @@ html[lang="ko"] .worksheet-sheet {
   .reading-converter-grid textarea,
   .reading-visual-output {
     min-height: 250px;
+  }
+}
+
+.korean-tool-hero {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.korean-hero-signal {
+  display: grid;
+  min-width: 250px;
+  padding: 14px 22px;
+  border-left: 1px solid rgba(64, 242, 176, 0.42);
+  grid-template-columns: 1fr;
+  gap: 3px;
+  text-align: right;
+}
+
+.korean-hero-signal span,
+.korean-hero-signal b {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 750;
+}
+
+.korean-hero-signal strong {
+  color: var(--ink);
+  font-family: Batang, "Noto Serif CJK KR", "Source Han Serif K", serif;
+  font-size: 3.25rem;
+  line-height: 1.08;
+}
+
+.korean-hanja-name-filter {
+  display: flex !important;
+  min-height: 45px;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #091713;
+  align-items: center;
+  flex-direction: row !important;
+  gap: 9px !important;
+}
+
+.korean-hanja-name-filter input {
+  width: 17px !important;
+  min-height: 17px !important;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.korean-hanja-name-filter span {
+  color: var(--ink);
+  font-size: 0.76rem;
+  line-height: 1.3;
+}
+
+.korean-hanja-result > strong,
+.korean-name-result > strong {
+  font-family: Batang, "Noto Serif CJK KR", "Source Han Serif K", serif;
+}
+
+.korean-converter-tool {
+  overflow: hidden;
+}
+
+.korean-converter-controls {
+  display: grid;
+  padding: 0 18px 14px;
+  grid-template-columns: minmax(280px, 1fr) minmax(210px, 0.42fr);
+  gap: 12px;
+  align-items: end;
+}
+
+.korean-converter-controls .segmented-control {
+  display: grid;
+  min-height: 44px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #07130f;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3px;
+}
+
+.korean-converter-controls .segmented-control button {
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 750;
+}
+
+.korean-converter-controls .segmented-control button.is-active {
+  background: var(--accent);
+  color: #04140e;
+}
+
+.korean-converter-controls > label,
+.korean-converter-editors > label {
+  display: grid;
+  min-width: 0;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.korean-converter-controls select {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #091713;
+  color: var(--ink);
+}
+
+.korean-converter-editors {
+  display: grid;
+  border-block: 1px solid var(--line);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.korean-converter-editors label {
+  padding: 14px 18px 18px;
+}
+
+.korean-converter-editors label + label {
+  border-left: 1px solid var(--line);
+}
+
+.korean-converter-editors textarea {
+  width: 100%;
+  min-height: 300px;
+  padding: 16px;
+  resize: vertical;
+  border: 1px solid rgba(64, 242, 176, 0.24);
+  border-radius: var(--radius-sm);
+  outline: none;
+  background: #07130f;
+  color: var(--ink);
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+.korean-converter-editors textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(64, 242, 176, 0.12);
+}
+
+.korean-converter-editors textarea[readonly] {
+  background: #0a1915;
+}
+
+.korean-converter-actions {
+  display: flex;
+  padding: 14px 18px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.korean-converter-actions button {
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #0a1915;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.korean-converter-actions .primary-action {
+  border-color: transparent;
+  background: var(--accent);
+  color: #04140e;
+}
+
+.korean-converter-choices-panel {
+  padding: 16px 18px;
+  border-top: 1px solid var(--line);
+}
+
+.korean-converter-choices-panel h3 {
+  margin: 0 0 8px;
+  font-size: 0.96rem;
+}
+
+.korean-converter-choices-panel > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.korean-converter-choice {
+  display: grid;
+  padding: 10px 0;
+  border-top: 1px solid rgba(125, 166, 151, 0.15);
+  grid-template-columns: minmax(90px, 150px) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.korean-converter-choice strong {
+  padding-top: 7px;
+  color: var(--accent-2);
+}
+
+.korean-converter-choice > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.korean-converter-choice button {
+  min-width: 38px;
+  min-height: 36px;
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #091713;
+  color: var(--ink);
+  font-family: Batang, "Noto Serif CJK KR", serif;
+}
+
+.korean-converter-choice button.is-active {
+  border-color: var(--accent);
+  background: rgba(64, 242, 176, 0.12);
+  color: var(--accent);
+}
+
+.korean-name-form {
+  display: grid;
+  padding: 0 18px 16px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.korean-name-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.korean-name-form input {
+  width: 100%;
+  min-height: 46px;
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #091713;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.korean-name-form > div {
+  display: flex;
+  gap: 8px;
+}
+
+.korean-name-form button {
+  min-height: 46px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #0a1915;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.korean-name-form .primary-action {
+  border-color: transparent;
+  background: var(--accent);
+  color: #04140e;
+}
+
+.korean-name-results-panel {
+  min-height: 320px;
+  border-top: 1px solid var(--line);
+}
+
+.korean-name-results-panel > p {
+  margin: 28px 18px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.korean-name-results {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.korean-name-result {
+  display: grid;
+  min-width: 0;
+  padding: 16px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  grid-template-columns: 74px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.korean-name-result > strong {
+  display: grid;
+  width: 74px;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(255, 204, 102, 0.36);
+  border-radius: var(--radius-sm);
+  background: #091713;
+  color: var(--accent-2);
+  font-size: 2.45rem;
+}
+
+.korean-name-result b {
+  color: var(--accent);
+  font-size: 0.92rem;
+}
+
+.korean-name-result p {
+  min-height: 42px;
+  margin: 6px 0 9px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.korean-name-result nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.korean-name-result a,
+.korean-name-result button {
+  min-height: 32px;
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #0a1915;
+  color: var(--ink);
+  font-size: 0.7rem;
+  text-decoration: none;
+}
+
+@media (max-width: 1100px) {
+  .korean-name-results {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 780px) {
+  .korean-tool-hero,
+  .korean-converter-controls,
+  .korean-converter-editors,
+  .korean-name-form {
+    grid-template-columns: 1fr;
+  }
+
+  .korean-hero-signal {
+    min-width: 0;
+    padding: 12px 0 0;
+    border-top: 1px solid rgba(64, 242, 176, 0.28);
+    border-left: 0;
+    text-align: left;
+  }
+
+  .korean-converter-editors label + label {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .korean-converter-editors textarea {
+    min-height: 230px;
+  }
+
+  .korean-converter-choice {
+    grid-template-columns: 1fr;
+  }
+
+  .korean-name-form > div,
+  .korean-name-form button {
+    width: 100%;
+  }
+
+  .korean-name-results {
+    grid-template-columns: 1fr;
   }
 }
 

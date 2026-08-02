@@ -1181,7 +1181,7 @@ const landingPages = {
         seoUseCaseBody: "支援多選文件並合併提取文字；複雜排版仍建議轉換後人工複核格式。"
       },
       en: {
-        pageTitle: "Chinese Document Text Converter for Word, PDF, TXT and Excel | JianFan.app",
+        pageTitle: "Chinese Document Converter - Word, PDF, TXT, Excel | JianFan.app",
         pageDescription: "Upload Word, PDF, TXT, or Excel files, extract text in the browser, and convert Simplified and Traditional Chinese with OpenCC.",
         eyebrow: "Document text conversion",
         title: "Chinese text converter for Word, PDF, TXT, and Excel",

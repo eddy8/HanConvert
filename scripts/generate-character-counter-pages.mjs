@@ -40,11 +40,16 @@ const content = {
       paragraphs: ["段落", "以空行分隔"],
       lines: ["行数", "包含非空与空白行"],
       bytes: ["UTF-8 字节", "实际编码占用"],
+      bytesKorean2: ["双字节表单", "非 ASCII 字符按 2 字节"],
       uniqueCharacters: ["不同字符", "排除空白字符"]
     },
     targetLabel: "目标字数",
-    targetProgress: "不含空白字符进度",
-    targetUnit: "字",
+    targetModeLabel: "目标统计口径",
+    targetModes: {
+      charactersNoWhitespace: ["不含空白字符", "不含空白字符进度", "字"],
+      bytes: ["UTF-8 字节", "UTF-8 字节进度", "B"],
+      bytesKorean2: ["双字节表单", "非 ASCII 字符按 2 字节", "B"]
+    },
     breakdownTitle: "文字构成",
     breakdownIntro: "按 Unicode 文字系统识别，共用汉字统一计入汉字。",
     categories: { han: "汉字", hiragana: "平假名", katakana: "片假名", hangul: "韩文", latin: "英文字母", number: "数字", punctuationSymbol: "标点与符号", other: "其它字符" },
@@ -109,11 +114,16 @@ const content = {
       paragraphs: ["段落", "以空白行分隔"],
       lines: ["行數", "包含空白行"],
       bytes: ["UTF-8 位元組", "實際編碼大小"],
+      bytesKorean2: ["雙位元組表單", "非 ASCII 字元按 2 位元組"],
       uniqueCharacters: ["相異字元", "排除空白字元"]
     },
     targetLabel: "目標字數",
-    targetProgress: "不含空白字元進度",
-    targetUnit: "字",
+    targetModeLabel: "目標統計方式",
+    targetModes: {
+      charactersNoWhitespace: ["不含空白字元", "不含空白字元進度", "字"],
+      bytes: ["UTF-8 位元組", "UTF-8 位元組進度", "B"],
+      bytesKorean2: ["雙位元組表單", "非 ASCII 字元按 2 位元組", "B"]
+    },
     breakdownTitle: "文字組成",
     breakdownIntro: "依 Unicode 文字系統辨識，共用漢字統一列入漢字。",
     categories: { han: "漢字", hiragana: "平假名", katakana: "片假名", hangul: "韓文", latin: "英文字母", number: "數字", punctuationSymbol: "標點與符號", other: "其他字元" },
@@ -178,11 +188,16 @@ const content = {
       paragraphs: ["Paragraphs", "Separated by blank lines"],
       lines: ["Lines", "Including blank lines"],
       bytes: ["UTF-8 bytes", "Encoded storage size"],
+      bytesKorean2: ["2-byte form count", "Non-ASCII characters count as 2 bytes"],
       uniqueCharacters: ["Unique characters", "Whitespace excluded"]
     },
     targetLabel: "Character target",
-    targetProgress: "Progress excluding whitespace",
-    targetUnit: "characters",
+    targetModeLabel: "Target measure",
+    targetModes: {
+      charactersNoWhitespace: ["Characters without spaces", "Progress excluding whitespace", "characters"],
+      bytes: ["UTF-8 bytes", "UTF-8 byte progress", "B"],
+      bytesKorean2: ["Korean 2-byte form", "Non-ASCII characters count as 2 bytes", "B"]
+    },
     breakdownTitle: "CJK script breakdown",
     breakdownIntro: "Detected by Unicode script. Shared Han ideographs are grouped together.",
     categories: { han: "Han characters", hiragana: "Hiragana", katakana: "Katakana", hangul: "Hangul", latin: "Latin letters", number: "Numbers", punctuationSymbol: "Punctuation & symbols", other: "Other characters" },
@@ -247,13 +262,18 @@ const content = {
       paragraphs: ["段落数", "空行で区切る"],
       lines: ["行数", "空行を含む"],
       bytes: ["UTF-8バイト数", "文字コード上の容量"],
+      bytesKorean2: ["2バイト換算", "ASCII以外を2バイトで換算"],
       uniqueCharacters: ["使用文字の種類", "空白を除く"],
       manuscriptSheets: ["400字詰め原稿用紙", "必要枚数（切り上げ）"],
       manuscriptLastSheetCharacters: ["原稿用紙の最終枚", "400字中の使用文字数"]
     },
     targetLabel: "目標文字数",
-    targetProgress: "空白なしの進捗",
-    targetUnit: "文字",
+    targetModeLabel: "目標の基準",
+    targetModes: {
+      charactersNoWhitespace: ["空白なし文字数", "空白なしの進捗", "文字"],
+      bytes: ["UTF-8バイト数", "UTF-8バイト数の進捗", "B"],
+      bytesKorean2: ["2バイト換算", "ASCII以外を2バイトで換算", "B"]
+    },
     breakdownTitle: "文字種の内訳",
     breakdownIntro: "Unicodeの文字体系で判定し、共通する漢字は漢字として集計します。",
     categories: { han: "漢字", hiragana: "ひらがな", katakana: "カタカナ", hangul: "ハングル", latin: "英字", number: "数字", punctuationSymbol: "記号・句読点", other: "その他" },
@@ -302,7 +322,7 @@ const content = {
     description: "무료 글자수 세기와 글자수 계산기. 공백 포함·제외 글자수, 단어, 문장, 줄 수, UTF-8 바이트를 실시간 계산하고 한글·한자·영문 비율과 글자 빈도를 확인하세요.",
     eyebrow: "실시간 계산 · 한글·한자 분석 · 브라우저 로컬 처리",
     heading: "글자수 세기",
-    lede: "텍스트를 입력하면 공백 포함·제외 글자수, 단어, 문장, 문단, 줄 수와 UTF-8 바이트를 바로 계산합니다. 한글·한자·영문 구성과 자주 쓴 글자도 확인할 수 있습니다.",
+    lede: "텍스트를 입력하면 공백 포함·제외 글자수, 단어, 문장, 문단과 줄 수를 바로 계산합니다. UTF-8과 국내 입력폼의 2바이트 기준을 비교하고 한글·한자·영문 구성도 확인할 수 있습니다.",
     toolTitle: "텍스트를 입력하고 글자수를 실시간으로 확인하세요",
     inputTitle: "계산할 텍스트",
     inputPlaceholder: "여기에 자기소개서, 원고 또는 확인할 텍스트를 입력하세요...",
@@ -319,11 +339,16 @@ const content = {
       paragraphs: ["문단 수", "빈 줄로 구분"],
       lines: ["줄 수", "빈 줄 포함"],
       bytes: ["UTF-8 바이트", "인코딩 기준 용량"],
+      bytesKorean2: ["2바이트 기준", "한글·한자 등 2B, ASCII 1B"],
       uniqueCharacters: ["사용한 글자 종류", "공백 제외"]
     },
-    targetLabel: "목표 글자수",
-    targetProgress: "공백 제외 기준",
-    targetUnit: "자",
+    targetLabel: "목표 값",
+    targetModeLabel: "목표 계산 기준",
+    targetModes: {
+      charactersNoWhitespace: ["공백 제외 글자수", "공백 제외 글자수 기준", "자"],
+      bytes: ["UTF-8 바이트", "UTF-8 바이트 기준", "B"],
+      bytesKorean2: ["국내 입력폼 2바이트", "한글·한자 등 2B, ASCII 1B", "B"]
+    },
     breakdownTitle: "문자 구성",
     breakdownIntro: "유니코드 문자 체계로 구분하며 공통 한자는 한자로 계산합니다.",
     categories: { han: "한자", hiragana: "히라가나", katakana: "가타카나", hangul: "한글", latin: "영문", number: "숫자", punctuationSymbol: "문장부호·기호", other: "기타 문자" },
@@ -357,7 +382,7 @@ const content = {
     faqTitle: "글자수 세기 자주 묻는 질문",
     faqs: [
       ["공백 포함과 공백 제외는 어떻게 다른가요?", "공백 포함은 띄어쓰기, 탭과 줄바꿈도 글자수에 넣습니다. 공백 제외는 이 항목을 빼고 계산합니다. 지원서나 입력 폼이 요구하는 기준을 확인하세요."],
-      ["바이트 수가 사이트마다 다른 이유는 무엇인가요?", "이 도구는 UTF-8 기준입니다. 채용 사이트나 공공기관 시스템이 EUC-KR 또는 자체 계산 규칙을 사용하면 결과가 다를 수 있습니다."],
+      ["바이트 수가 사이트마다 다른 이유는 무엇인가요?", "UTF-8에서는 한글이 보통 3바이트지만 일부 국내 채용·공공기관 입력폼은 한글과 한자를 2바이트로 계산합니다. 이 페이지에서 두 기준을 함께 확인할 수 있습니다."],
       ["Word 파일이 서버로 전송되나요?", "아니요. DOCX 텍스트는 브라우저에서 추출하며 JianFan.app이나 외부 변환 서버로 전송하지 않습니다."],
       ["긴 글도 계산할 수 있나요?", "최대 300만 자까지 지원합니다. 긴 내용은 백그라운드에서 계산하며 제한을 넘으면 나눠서 사용해 주세요."]
     ],
@@ -479,6 +504,10 @@ function buildPage(locale) {
   const categories = Object.entries(page.categories)
     .map(([key, label]) => `              <li data-counter-category="${key}"><span class="counter-category-name">${label}</span><span class="counter-category-bar" aria-hidden="true"><span></span></span><strong>0</strong><small>0%</small></li>`)
     .join("\n");
+  const targetModes = Object.entries(page.targetModes)
+    .map(([key, [label, basis, unit]], index) => `                    <option value="${key}" data-basis="${escapeHtml(basis)}" data-unit="${escapeHtml(unit)}"${index === 0 ? " selected" : ""}>${escapeHtml(label)}</option>`)
+    .join("\n");
+  const [, initialTargetBasis, initialTargetUnit] = Object.values(page.targetModes)[0];
 
   return `<!doctype html>
 <html lang="${meta.lang}">
@@ -510,8 +539,13 @@ ${localeOptions}
 ${metrics}
             </div>
             <div class="counter-target">
-              <label for="counterTarget"><span>${page.targetLabel}</span><input id="counterTarget" type="number" min="1" max="3000000" step="100" value="${page.targetDefault}" /></label>
-              <div><span>${page.targetProgress}</span><strong><span id="counterTargetValue">${page.targetDefault}</span> ${page.targetUnit} · <span id="counterTargetPercent">0%</span></strong></div>
+              <div class="counter-target-controls">
+                <label for="counterTarget"><span>${page.targetLabel}</span><input id="counterTarget" type="number" min="1" max="12000000" step="100" value="${page.targetDefault}" /></label>
+                <label for="counterTargetMode"><span>${page.targetModeLabel}</span><select id="counterTargetMode">
+${targetModes}
+                  </select></label>
+              </div>
+              <div><span id="counterTargetBasis">${initialTargetBasis}</span><strong><span id="counterTargetValue">${page.targetDefault}</span> <span id="counterTargetUnit">${initialTargetUnit}</span> · <span id="counterTargetPercent">0%</span></strong></div>
               <span class="counter-target-track"><span id="counterTargetBar"></span></span>
             </div>
           </section>

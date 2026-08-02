@@ -97,6 +97,7 @@
   const body = document.body;
   const locale = body.dataset.locale || "zh-CN";
   const pageSlug = body.dataset.pageSlug || "chinese-handwriting-recognition";
+  const usesKoreanReadings = body.dataset.readingSource === "korean";
   const canvas = document.querySelector("#handwritingCanvas");
   const board = document.querySelector("#handwritingBoard");
   const status = document.querySelector("#handwritingStatus");
@@ -217,7 +218,13 @@
     }
     if (message.type !== "results" || message.requestId < latestAppliedRequestId) return;
     latestAppliedRequestId = message.requestId;
-    renderCandidates(core.normalizeMatches(message.matches, CANDIDATE_LIMIT));
+    const limit = usesKoreanReadings ? 30 : CANDIDATE_LIMIT;
+    const matches = core.normalizeMatches(message.matches, limit);
+    if (usesKoreanReadings) {
+      rankKoreanCandidates(matches).then(renderCandidates).catch(() => renderCandidates(matches.slice(0, CANDIDATE_LIMIT)));
+    } else {
+      renderCandidates(matches);
+    }
   }
 
   function showWorkerError() {
@@ -348,11 +355,12 @@
       type: "lookup",
       requestId: lookupRequestId,
       strokes: core.cloneStrokes(strokes),
-      limit: CANDIDATE_LIMIT
+      limit: usesKoreanReadings ? 30 : CANDIDATE_LIMIT
     });
   }
 
   function renderCandidates(matches) {
+    matches = matches.slice(0, CANDIDATE_LIMIT);
     candidates.replaceChildren();
     if (!matches.length) {
       candidateEmpty.hidden = false;
@@ -386,12 +394,25 @@
     });
     result.hidden = false;
     resultCharacter.textContent = character;
-    resultPinyin.textContent = getReadings(character) || "-";
+    resultPinyin.textContent = usesKoreanReadings ? "…" : (getReadings(character) || "-");
     resultStrokes.textContent = "…";
     resultUnicode.textContent = core.formatUnicode(character);
-    strokeLink.href = `${localePaths[locale]}chinese-stroke-order/?character=${encodeURIComponent(character)}`;
-    pinyinLink.href = `${localePaths[locale]}chinese-to-pinyin/?character=${encodeURIComponent(character)}`;
+    strokeLink.href = `${localePaths[locale]}${usesKoreanReadings ? "korean-hanja-dictionary" : "chinese-stroke-order"}/?character=${encodeURIComponent(character)}`;
+    pinyinLink.href = `${localePaths[locale]}${usesKoreanReadings ? "korean-name-hanja" : "chinese-to-pinyin"}/?character=${encodeURIComponent(character)}`;
     structureLink.href = `${localePaths[locale]}chinese-character-lookup/?character=${encodeURIComponent(character)}`;
+
+    if (usesKoreanReadings) {
+      try {
+        const payload = await window.KoreanHanjaData.loadCharacters();
+        const record = payload.records.find((item) => item.character === character);
+        if (selectedCharacter === character) {
+          resultPinyin.textContent = record?.readings?.join(" / ") || "-";
+          if (record?.strokes) resultStrokes.textContent = record.strokes.toLocaleString(locale);
+        }
+      } catch {
+        if (selectedCharacter === character) resultPinyin.textContent = "-";
+      }
+    }
 
     const requestId = ++detailRequestId;
     try {
@@ -417,6 +438,18 @@
     } catch {
       return "";
     }
+  }
+
+  async function rankKoreanCandidates(matches) {
+    const payload = await window.KoreanHanjaData.loadCharacters();
+    const records = window.KoreanHanjaData.buildRecordMap(payload);
+    return [...matches].sort((left, right) => {
+      const leftRecord = records.get(left.character);
+      const rightRecord = records.get(right.character);
+      const leftRank = leftRecord?.nameUse ? 0 : leftRecord?.readings?.length ? 1 : 2;
+      const rightRank = rightRecord?.nameUse ? 0 : rightRecord?.readings?.length ? 1 : 2;
+      return leftRank - rightRank || right.score - left.score;
+    });
   }
 
   async function copyCharacter() {
