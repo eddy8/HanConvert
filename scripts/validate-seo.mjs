@@ -8,6 +8,7 @@ import { getPageContext, loadLocalizationData, localizeConverterHtml } from "./s
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteOrigin = "https://jianfan.app";
+const maxTitleLength = 70;
 const localizationData = await loadLocalizationData(projectRoot);
 const documentLanguages = { "zh-CN": "zh-CN", "zh-TW": "zh-Hant", en: "en", ja: "ja", ko: "ko" };
 
@@ -34,7 +35,7 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
 const uniqueSitemapUrls = new Set(sitemapUrls);
 if (uniqueSitemapUrls.size !== sitemapUrls.length) throw new Error("sitemap.xml contains duplicate URLs");
 
-for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "han-character-worksheet.js", "handwriting-recognition.js", "handwriting-recognition-worker.js", "han-character-lookup-core.js", "han-character-lookup.js", "kanji-romaji-core.js", "kanji-to-romaji.js", "japanese-reading-client.js", "japanese-reading-worker.js", "kanji-to-hiragana.js", "japanese-stroke-order.js", "japanese-kanji-data.js", "japanese-kanji-dictionary.js", "japanese-handwriting-recognition.js", "webmcp.js"]) {
+for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "han-character-worksheet.js", "handwriting-recognition.js", "handwriting-recognition-worker.js", "han-character-lookup-core.js", "han-character-lookup.js", "kanji-romaji-core.js", "kanji-to-romaji.js", "japanese-reading-client.js", "japanese-reading-worker.js", "kanji-to-hiragana.js", "japanese-stroke-order.js", "japanese-kanji-data.js", "japanese-kanji-dictionary.js", "japanese-handwriting-recognition.js", "korean-hanja-data.js", "korean-hanja-dictionary.js", "hangul-hanja-converter.js", "korean-name-hanja.js", "webmcp.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
@@ -96,7 +97,13 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const html = await readFile(htmlPath, "utf8");
   const { locale, slug } = getPageContext(relativePath);
   const documentLanguage = requireMatch(html, /<html lang="([^"]+)">/, "document language", relativePath);
+  const title = requireMatch(html, /<title>([\s\S]*?)<\/title>/i, "title", relativePath).trim();
   const canonical = requireMatch(html, /<link rel="canonical" href="([^"]+)" \/>/, "canonical", relativePath);
+
+  const titleLength = [...title].length;
+  if (titleLength > maxTitleLength) {
+    throw new Error(`${relativePath}: title length ${titleLength} exceeds ${maxTitleLength} characters`);
+  }
 
   if (documentLanguage !== documentLanguages[locale]) {
     throw new Error(`${relativePath}: expected document language ${documentLanguages[locale]}, found ${documentLanguage}`);
@@ -126,6 +133,11 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isKanjiRomajiPage = html.includes('data-tool-page="kanji-to-romaji"');
   const isHandwritingPage = html.includes('data-tool-page="handwriting-recognition"');
   const isHanLookupPage = html.includes('data-tool-page="han-character-lookup"');
+  const isKoreanDictionaryPage = html.includes('data-tool-page="korean-hanja-dictionary"');
+  const isKoreanHandwritingPage = html.includes('data-tool-page="korean-hanja-handwriting-recognition"');
+  const isHangulHanjaConverterPage = html.includes('data-tool-page="hangul-hanja-converter"');
+  const isKoreanNamePage = html.includes('data-tool-page="korean-name-hanja"');
+  const isKoreanToolPage = isKoreanDictionaryPage || isKoreanHandwritingPage || isHangulHanjaConverterPage || isKoreanNamePage;
   const isEstablishedStandaloneToolPage = isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isKanjiRomajiPage || isHandwritingPage || isHanLookupPage;
   const hasHandwritingLink = html.includes("chinese-handwriting-recognition/") || html.includes("japanese-handwriting-recognition/");
   const hasCharacterLookupLink = html.includes("chinese-character-lookup/") || html.includes("japanese-kanji-dictionary/");
@@ -157,6 +169,16 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
       throw new Error(`${relativePath}: meta description length ${descriptionLength} is outside ${TARGET_META_DESCRIPTION_LENGTH.min}-${TARGET_META_DESCRIPTION_LENGTH.max}`);
     }
     if (!html.includes(`"description": ${JSON.stringify(expectedDescription)}`)) {
+      throw new Error(`${relativePath}: structured data description is out of sync with meta description`);
+    }
+  }
+  if (isKoreanToolPage) {
+    const description = requireMatch(html, /<meta\s+name="description"\s+content="([^"]+)"/, "meta description", relativePath);
+    const descriptionLength = [...description].length;
+    if (descriptionLength < TARGET_META_DESCRIPTION_LENGTH.min || descriptionLength > TARGET_META_DESCRIPTION_LENGTH.max) {
+      throw new Error(`${relativePath}: meta description length ${descriptionLength} is outside ${TARGET_META_DESCRIPTION_LENGTH.min}-${TARGET_META_DESCRIPTION_LENGTH.max}`);
+    }
+    if (!html.includes(`"description":${JSON.stringify(description)}`)) {
       throw new Error(`${relativePath}: structured data description is out of sync with meta description`);
     }
   }
@@ -197,10 +219,10 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     if (!webApplication || webApplication.url !== canonical) {
       throw new Error(`${relativePath}: invalid WebApplication schema`);
     }
-    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isKanjiRomajiPage || isHandwritingPage || isHanLookupPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
+    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isKanjiRomajiPage || isHandwritingPage || isHanLookupPage || isKoreanToolPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
       throw new Error(`${relativePath}: missing tool FAQPage schema`);
     }
-    if ((isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isHandwritingPage || isHanLookupPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
+    if ((isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isHandwritingPage || isHanLookupPage || isKoreanToolPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
       throw new Error(`${relativePath}: missing tool HowTo schema`);
     }
   }
@@ -259,11 +281,50 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (isConverterPage && !html.includes('data-route="chinese-handwriting-recognition"')) {
     throw new Error(`${relativePath}: missing handwriting-recognition link`);
   }
+  if (isConverterPage) {
+    for (const target of ["korean-hanja-dictionary", "korean-hanja-handwriting-recognition", "hangul-hanja-converter", "korean-name-hanja"]) {
+      if (!html.includes(`data-route="${target}"`)) throw new Error(`${relativePath}: missing Korean tool link ${target}`);
+    }
+  }
   if ((isConverterPage || isEstablishedStandaloneToolPage) && !hasCharacterLookupLink) {
     throw new Error(`${relativePath}: missing Han-character lookup link`);
   }
   if (isEstablishedStandaloneToolPage && (!html.includes("japanese-chinese-kanji-converter/") || !html.includes("japanese-characters/") || !hasReadingToolLink || !hasStrokeToolLink || !html.includes("word-to-txt/") || !html.includes("han-character-worksheet/") || !html.includes("kanji-to-romaji/") || !hasHandwritingLink || !hasCharacterLookupLink)) {
     throw new Error(`${relativePath}: missing related tool links`);
+  }
+  if (isKoreanToolPage) {
+    for (const target of ["korean-hanja-dictionary/", "korean-hanja-handwriting-recognition/", "hangul-hanja-converter/", "korean-name-hanja/"]) {
+      if (!html.includes(target)) throw new Error(`${relativePath}: missing related Korean tool link ${target}`);
+    }
+  }
+  if (isKoreanDictionaryPage) {
+    for (const asset of ['src="/korean-hanja-data.js"', 'src="/korean-hanja-dictionary.js"', 'id="koreanHanjaQuery"']) {
+      if (!html.includes(asset)) throw new Error(`${relativePath}: missing Korean dictionary asset ${asset}`);
+    }
+  }
+  if (isKoreanHandwritingPage) {
+    for (const asset of ['src="/korean-hanja-data.js"', 'src="/handwriting-recognition.js"', 'data-reading-source="korean"', 'id="handwritingCanvas"']) {
+      if (!html.includes(asset)) throw new Error(`${relativePath}: missing Korean handwriting asset ${asset}`);
+    }
+  }
+  if (isHangulHanjaConverterPage) {
+    for (const asset of ['src="/korean-hanja-data.js"', 'src="/hangul-hanja-converter.js"', 'id="koreanConverterInput"']) {
+      if (!html.includes(asset)) throw new Error(`${relativePath}: missing Hangul-Hanja converter asset ${asset}`);
+    }
+  }
+  if (isKoreanNamePage) {
+    for (const asset of ['src="/korean-hanja-data.js"', 'src="/korean-name-hanja.js"', 'id="koreanNameQuery"']) {
+      if (!html.includes(asset)) throw new Error(`${relativePath}: missing Korean name-Hanja asset ${asset}`);
+    }
+  }
+  const koreanTargetKeywords = new Map([
+    [path.join("ko", "korean-hanja-dictionary", "index.html"), ["한자 찾기", "옥편", "부수", "획수"]],
+    [path.join("ko", "korean-hanja-handwriting-recognition", "index.html"), ["한자 필기인식", "한자 써서 찾기"]],
+    [path.join("ko", "hangul-hanja-converter", "index.html"), ["한글 한자 변환", "한자 한글 변환"]],
+    [path.join("ko", "korean-name-hanja", "index.html"), ["인명용 한자", "이름 한자"]]
+  ]).get(relativePath);
+  for (const keyword of koreanTargetKeywords || []) {
+    if (!html.includes(keyword)) throw new Error(`${relativePath}: missing Korean target keyword ${keyword}`);
   }
   if (isKanjiRomajiPage) {
     for (const asset of [
@@ -493,8 +554,8 @@ if (!notFound.includes('name="robots" content="noindex, follow"')) {
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
-if (standaloneToolPages !== 70) throw new Error(`expected 70 standalone tool pages, found ${standaloneToolPages}`);
+if (standaloneToolPages !== 90) throw new Error(`expected 90 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
-if (sitemapUrls.length !== 121) throw new Error(`expected 121 sitemap URLs, found ${sitemapUrls.length}`);
+if (sitemapUrls.length !== 141) throw new Error(`expected 141 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, and ${sitemapUrls.length} sitemap URLs.`);

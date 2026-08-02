@@ -131,7 +131,7 @@ const content = {
     }
   },
   en: {
-    title: "Chinese Character Lookup, Component Search and Decomposition | JianFan.app",
+    title: "Chinese Character Lookup & Component Search | JianFan.app",
     description: SEO_DESCRIPTIONS[slug].en,
     alternateNames: ["Chinese Character Decomposition", "Hanzi Component Lookup", "Chinese Radical Lookup", "Chinese Character Component Search"],
     eyebrow: "LOOK UP · HIGHLIGHT · DECOMPOSE",

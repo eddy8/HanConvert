@@ -58,7 +58,7 @@ const content = {
     howTitle: "如何替日語漢字加上振假名", steps: ["輸入或貼上包含日文漢字與假名的句子。", "選擇純平假名、振假名、保留送假名或 Ruby HTML。", "執行轉換並檢查人名、地名等特殊讀音。", "複製一般文字或 Ruby HTML，用於筆記、字幕、教材或網頁。"], faqTitle: "漢字轉平假名與振假名常見問題", faqs: [["平假名轉換和振假名有何不同？", "純平假名會以讀音取代漢字；振假名保留原有漢字，並在漢字上方顯示讀音。"], ["Ruby HTML 是什麼？", "Ruby 是網頁顯示注音的標準 HTML 標籤，可在支援 Ruby 的編輯器中顯示漢字及其上方讀音。"], ["人名和地名的讀音一定正確嗎？", "不一定。人名、地名、當字與作品名可能有特殊讀法，自動結果應配合可靠資料確認。"]], related: "相關日語工具", relatedAria: "相關日語讀音與漢字工具", sourceNote: "讀音轉換使用 Kuroshiro 與 Kuromoji.js 的公開日語詞典，輸入文字不會傳送給詞典來源。", footerText: "JianFan.app 提供在瀏覽器中執行的日語讀音、漢字學習與中文轉換工具。"
   },
   en: {
-    title: "Kanji to Hiragana Converter - Furigana & Ruby Generator | JianFan.app",
+    title: "Kanji to Hiragana - Furigana & Ruby Generator | JianFan.app",
     description: "Convert Japanese Kanji to Hiragana, automatically add Furigana or Ruby markup, and copy text or HTML with context-aware readings processed in your browser.",
     alternateNames: ["Kanji to Hiragana Converter", "Furigana Generator", "Japanese Ruby Generator", "Add Furigana to Japanese"],
     eyebrow: "KANJI READING · HIRAGANA · FURIGANA · RUBY", heading: "Kanji to Hiragana & Furigana Converter", lede: "Convert Japanese sentences to Hiragana, add Furigana above Kanji, keep Okurigana, or generate clean Ruby HTML. Common readings are resolved from words and sentence context.", toolTitle: "Enter Japanese and choose a reading format", formatsLabel: "Output format",

@@ -167,11 +167,19 @@ CJK text analysis 2026.">載入範例</button><button class="text-button" id="co
               <article class="counter-metric"><span>段落</span><strong data-counter-metric="paragraphs">0</strong><small>以空白行分隔</small></article>
               <article class="counter-metric"><span>行數</span><strong data-counter-metric="lines">0</strong><small>包含空白行</small></article>
               <article class="counter-metric"><span>UTF-8 位元組</span><strong data-counter-metric="bytes">0</strong><small>實際編碼大小</small></article>
+              <article class="counter-metric"><span>雙位元組表單</span><strong data-counter-metric="bytesKorean2">0</strong><small>非 ASCII 字元按 2 位元組</small></article>
               <article class="counter-metric"><span>相異字元</span><strong data-counter-metric="uniqueCharacters">0</strong><small>排除空白字元</small></article>
             </div>
             <div class="counter-target">
-              <label for="counterTarget"><span>目標字數</span><input id="counterTarget" type="number" min="1" max="3000000" step="100" value="1000" /></label>
-              <div><span>不含空白字元進度</span><strong><span id="counterTargetValue">1000</span> 字 · <span id="counterTargetPercent">0%</span></strong></div>
+              <div class="counter-target-controls">
+                <label for="counterTarget"><span>目標字數</span><input id="counterTarget" type="number" min="1" max="12000000" step="100" value="1000" /></label>
+                <label for="counterTargetMode"><span>目標統計方式</span><select id="counterTargetMode">
+                    <option value="charactersNoWhitespace" data-basis="不含空白字元進度" data-unit="字" selected>不含空白字元</option>
+                    <option value="bytes" data-basis="UTF-8 位元組進度" data-unit="B">UTF-8 位元組</option>
+                    <option value="bytesKorean2" data-basis="非 ASCII 字元按 2 位元組" data-unit="B">雙位元組表單</option>
+                  </select></label>
+              </div>
+              <div><span id="counterTargetBasis">不含空白字元進度</span><strong><span id="counterTargetValue">1000</span> <span id="counterTargetUnit">字</span> · <span id="counterTargetPercent">0%</span></strong></div>
               <span class="counter-target-track"><span id="counterTargetBar"></span></span>
             </div>
           </section>

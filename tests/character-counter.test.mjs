@@ -15,6 +15,7 @@ const {
   MAX_FILE_SIZE_BYTES,
   analyzeText,
   classifyGrapheme,
+  countKoreanFormBytes,
   filterFrequency,
   validateFileDescriptor
 } = context.CharacterCounterCore;
@@ -35,6 +36,15 @@ test("keeps emoji sequences as one grapheme", () => {
   assert.equal(result.characters, 3);
   assert.equal(result.charactersNoWhitespace, 3);
   assert.equal(result.uniqueCharacters, 3);
+});
+
+test("calculates Korean two-byte form limits separately from UTF-8", () => {
+  assert.equal(countKoreanFormBytes("ABC 123"), 7);
+  assert.equal(countKoreanFormBytes("한글漢字"), 8);
+
+  const result = analyzeText("한글 A", "ko");
+  assert.equal(result.bytesKorean2, 6);
+  assert.equal(result.bytes, new TextEncoder().encode("한글 A").length);
 });
 
 test("counts paragraphs, sentences and words", () => {

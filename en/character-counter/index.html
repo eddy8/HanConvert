@@ -167,11 +167,19 @@ CJK text analysis 2026.">Load sample</button><button class="text-button" id="cou
               <article class="counter-metric"><span>Paragraphs</span><strong data-counter-metric="paragraphs">0</strong><small>Separated by blank lines</small></article>
               <article class="counter-metric"><span>Lines</span><strong data-counter-metric="lines">0</strong><small>Including blank lines</small></article>
               <article class="counter-metric"><span>UTF-8 bytes</span><strong data-counter-metric="bytes">0</strong><small>Encoded storage size</small></article>
+              <article class="counter-metric"><span>2-byte form count</span><strong data-counter-metric="bytesKorean2">0</strong><small>Non-ASCII characters count as 2 bytes</small></article>
               <article class="counter-metric"><span>Unique characters</span><strong data-counter-metric="uniqueCharacters">0</strong><small>Whitespace excluded</small></article>
             </div>
             <div class="counter-target">
-              <label for="counterTarget"><span>Character target</span><input id="counterTarget" type="number" min="1" max="3000000" step="100" value="1000" /></label>
-              <div><span>Progress excluding whitespace</span><strong><span id="counterTargetValue">1000</span> characters · <span id="counterTargetPercent">0%</span></strong></div>
+              <div class="counter-target-controls">
+                <label for="counterTarget"><span>Character target</span><input id="counterTarget" type="number" min="1" max="12000000" step="100" value="1000" /></label>
+                <label for="counterTargetMode"><span>Target measure</span><select id="counterTargetMode">
+                    <option value="charactersNoWhitespace" data-basis="Progress excluding whitespace" data-unit="characters" selected>Characters without spaces</option>
+                    <option value="bytes" data-basis="UTF-8 byte progress" data-unit="B">UTF-8 bytes</option>
+                    <option value="bytesKorean2" data-basis="Non-ASCII characters count as 2 bytes" data-unit="B">Korean 2-byte form</option>
+                  </select></label>
+              </div>
+              <div><span id="counterTargetBasis">Progress excluding whitespace</span><strong><span id="counterTargetValue">1000</span> <span id="counterTargetUnit">characters</span> · <span id="counterTargetPercent">0%</span></strong></div>
               <span class="counter-target-track"><span id="counterTargetBar"></span></span>
             </div>
           </section>

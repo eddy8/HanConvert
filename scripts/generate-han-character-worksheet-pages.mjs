@@ -148,7 +148,7 @@ const content = {
     footerText: "JianFan.app 提供在瀏覽器本機執行的漢字學習、中文轉換與文字處理工具。"
   },
   en: {
-    title: "Chinese Character Worksheet Generator - Printable Hanzi Practice | JianFan.app",
+    title: "Chinese Practice Sheet Generator - Printable Hanzi | JianFan.app",
     description: "Free Chinese practice sheet generator and Chinese character worksheet maker. Create printable Hanzi sheets with tracing, Pinyin, stroke order, grids and PDF.",
     alternateNames: ["Chinese Practice Sheet Generator", "Chinese Character Practice Sheet Generator", "Chinese Practice Worksheet Generator"],
     eyebrow: "TIAN ZI GE · TRACING · PINYIN · STROKE ORDER",

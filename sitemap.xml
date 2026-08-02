@@ -1472,4 +1472,246 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- korean-hanja-tools:start -->
+  <url>
+    <loc>https://jianfan.app/korean-hanja-dictionary/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/korean-hanja-dictionary/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/korean-hanja-dictionary/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/korean-hanja-dictionary/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/korean-hanja-dictionary/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/korean-hanja-dictionary/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/korean-hanja-dictionary/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/korean-hanja-dictionary/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/korean-hanja-dictionary/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/korean-hanja-dictionary/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/korean-hanja-dictionary/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/korean-hanja-handwriting-recognition/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/korean-hanja-handwriting-recognition/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/korean-hanja-handwriting-recognition/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/korean-hanja-handwriting-recognition/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/korean-hanja-handwriting-recognition/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/korean-hanja-handwriting-recognition/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/korean-hanja-handwriting-recognition/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/korean-hanja-handwriting-recognition/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/korean-hanja-handwriting-recognition/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/korean-hanja-handwriting-recognition/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/korean-hanja-handwriting-recognition/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/hangul-hanja-converter/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hangul-hanja-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/hangul-hanja-converter/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hangul-hanja-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/hangul-hanja-converter/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hangul-hanja-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/hangul-hanja-converter/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hangul-hanja-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/hangul-hanja-converter/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hangul-hanja-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hangul-hanja-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/korean-name-hanja/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/korean-name-hanja/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/korean-name-hanja/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/korean-name-hanja/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/korean-name-hanja/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/korean-name-hanja/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/korean-name-hanja/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/korean-name-hanja/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/korean-name-hanja/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/korean-name-hanja/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/korean-name-hanja/" />
+  </url>
+  <!-- korean-hanja-tools:end -->
 </urlset>
