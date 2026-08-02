@@ -5,7 +5,7 @@
           c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
           t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
           y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "xqtr731p4c");
+      })(window, document, "clarity", "script", "xvwb5du7xv");
     } catch (analyticsError) {
       console.warn(analyticsError);
     }
