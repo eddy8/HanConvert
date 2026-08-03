@@ -103,7 +103,7 @@
   const BOARD_SIZE = 256;
   const CANDIDATE_LIMIT = 10;
   const REMOTE_LOOKUP_TIMEOUT = 4500;
-  const REMOTE_LOOKUP_URL = "https://www.drawchinese.com/hwr/";
+  const REMOTE_LOOKUP_URL = "https://jianfan.app/api/hwr/";
   const STROKE_DATA_ORIGIN = "https://cdn.jsdmirror.cn/npm/hanzi-writer-data";
   const localePaths = {
     "zh-CN": "/",
