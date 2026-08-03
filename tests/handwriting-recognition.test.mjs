@@ -10,8 +10,10 @@ vm.runInNewContext(source, context);
 
 const {
   cloneStrokes,
+  encodeRemoteStrokes,
   formatUnicode,
   normalizeMatches,
+  normalizeRemoteMatches,
   shouldAppendPoint,
   toBoardPoint
 } = context.HandwritingRecognitionCore;
@@ -54,6 +56,25 @@ test("normalizes unique Hanzi candidates and preserves score order", () => {
   );
 });
 
+test("encodes browser strokes for the remote fallback protocol", () => {
+  assert.equal(
+    encodeRemoteStrokes([[[0, 0], [128, 256]], [[256, 128]]]),
+    "zh-cn0a0a130a260as260a130as"
+  );
+  assert.equal(encodeRemoteStrokes([[[Number.NaN, 2]]]), "");
+});
+
+test("normalizes remote fallback text into unique Hanzi candidates", () => {
+  assert.deepEqual(
+    JSON.parse(JSON.stringify(normalizeRemoteMatches("孙 孙 A 称\u0000承", 3))),
+    [
+      { character: "孙", score: 3 },
+      { character: "称", score: 2 },
+      { character: "承", score: 1 }
+    ]
+  );
+});
+
 test("formats supplementary Han characters without splitting surrogate pairs", () => {
   assert.equal(formatUnicode("漢"), "U+6F22");
   assert.equal(formatUnicode("𠮷"), "U+20BB7");
@@ -63,4 +84,11 @@ test("pins the official HanziLookup commit in the browser worker", async () => {
   const workerSource = await readFile(new URL("../handwriting-recognition-worker.js", import.meta.url), "utf8");
   assert.match(workerSource, /01f90c3ab99a8fadf0696c28e5eb097223c500db/);
   assert.match(workerSource, /wasm_bindgen\.lookup\(event\.data\.strokes, event\.data\.limit\)/);
+});
+
+test("uses DrawChinese only after an empty local result", () => {
+  assert.match(source, /supportsRemoteFallback && !matches\.length/);
+  assert.match(source, /https:\/\/www\.drawchinese\.com\/hwr\//);
+  assert.match(source, /credentials: "omit"/);
+  assert.match(source, /referrerPolicy: "no-referrer"/);
 });
