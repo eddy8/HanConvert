@@ -41,8 +41,6 @@ const content = {
     strokeLink: "查看笔顺",
     pinyinLink: "查询拼音",
     structureLink: "查看结构",
-    sourceNote: "手写笔画仅在当前浏览器中处理。首次使用会远程加载公开识别组件与字形数据。",
-    sourceLink: "开源识别组件",
     messages: {
       loading: "正在加载手写识别组件",
       ready: "可以开始手写汉字",
@@ -101,8 +99,6 @@ const content = {
     strokeLink: "查看筆順",
     pinyinLink: "查詢拼音",
     structureLink: "查看結構",
-    sourceNote: "手寫筆畫只在目前的瀏覽器中處理。首次使用會從遠端載入公開辨識元件與字形資料。",
-    sourceLink: "開源辨識元件",
     messages: {
       loading: "正在載入手寫辨識元件",
       ready: "可以開始手寫漢字",
@@ -161,8 +157,6 @@ const content = {
     strokeLink: "View stroke order",
     pinyinLink: "Check Pinyin",
     structureLink: "View structure",
-    sourceNote: "Your pen strokes are processed in this browser. The public recognition component and character data are loaded remotely on first use.",
-    sourceLink: "Open-source recognizer",
     messages: {
       loading: "Loading handwriting recognition",
       ready: "Ready for Chinese handwriting input",
@@ -223,8 +217,6 @@ const content = {
     strokeLink: "筆順を見る",
     pinyinLink: "ピンインを調べる",
     structureLink: "構成を見る",
-    sourceNote: "入力した筆画はこのブラウザー内で処理されます。初回のみ公開認識コンポーネントと字形データをリモートから読み込みます。",
-    sourceLink: "オープンソース認識機能",
     messages: {
       loading: "手書き認識を読み込み中",
       ready: "漢字を手書きできます",
@@ -283,8 +275,6 @@ const content = {
     strokeLink: "필순 보기",
     pinyinLink: "병음 조회",
     structureLink: "구조 보기",
-    sourceNote: "입력한 필획은 이 브라우저에서만 처리됩니다. 처음 사용할 때 공개 인식 구성 요소와 글자 데이터를 원격으로 불러옵니다.",
-    sourceLink: "오픈 소스 인식기",
     messages: {
       loading: "필기 인식 기능 불러오는 중",
       ready: "한자 손글씨를 입력할 수 있습니다",
@@ -493,7 +483,6 @@ ${localeOptions}
             </article>
           </section>
         </div>
-        <p class="handwriting-source-note">${page.sourceNote} <a href="https://github.com/gugray/hanzi_lookup" rel="license external">${page.sourceLink}</a></p>
       </section>
 
       <section class="seo-band standalone-info" aria-labelledby="handwritingFeatureTitle">

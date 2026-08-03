@@ -45,13 +45,54 @@
     return result;
   }
 
+  function encodeRemoteStrokes(strokes, options = {}) {
+    const language = String(options.language || "zh-cn");
+    const sourceSize = Math.max(1, Number(options.sourceSize) || 256);
+    const targetSize = Math.max(1, Number(options.targetSize) || 260);
+    const scale = targetSize / sourceSize;
+    const encoded = [];
+
+    for (const stroke of Array.isArray(strokes) ? strokes : []) {
+      const points = [];
+      for (const point of Array.isArray(stroke) ? stroke : []) {
+        const x = Number(point?.[0]);
+        const y = Number(point?.[1]);
+        if (!Number.isFinite(x) || !Number.isFinite(y)) continue;
+        points.push(`${Math.round(clamp(x * scale, 0, targetSize))}a${Math.round(clamp(y * scale, 0, targetSize))}a`);
+      }
+      if (points.length) encoded.push(`${points.join("")}s`);
+    }
+
+    return encoded.length ? `${language}${encoded.join("")}` : "";
+  }
+
+  function normalizeRemoteMatches(payload, limit = 10) {
+    const result = [];
+    const seen = new Set();
+    for (const character of Array.from(String(payload || ""))) {
+      if (!HAN_PATTERN.test(character) || seen.has(character)) continue;
+      seen.add(character);
+      result.push({ character, score: Math.max(1, limit - result.length) });
+      if (result.length >= limit) break;
+    }
+    return result;
+  }
+
   function formatUnicode(character) {
     const value = Array.from(String(character || ""))[0];
     if (!value) return "";
     return `U+${value.codePointAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
   }
 
-  return { cloneStrokes, formatUnicode, normalizeMatches, shouldAppendPoint, toBoardPoint };
+  return {
+    cloneStrokes,
+    encodeRemoteStrokes,
+    formatUnicode,
+    normalizeMatches,
+    normalizeRemoteMatches,
+    shouldAppendPoint,
+    toBoardPoint
+  };
 });
 
 (function () {
@@ -61,6 +102,8 @@
 
   const BOARD_SIZE = 256;
   const CANDIDATE_LIMIT = 10;
+  const REMOTE_LOOKUP_TIMEOUT = 4500;
+  const REMOTE_LOOKUP_URL = "https://www.drawchinese.com/hwr/";
   const STROKE_DATA_ORIGIN = "https://cdn.jsdmirror.cn/npm/hanzi-writer-data";
   const localePaths = {
     "zh-CN": "/",
@@ -97,6 +140,7 @@
   const body = document.body;
   const locale = body.dataset.locale || "zh-CN";
   const pageSlug = body.dataset.pageSlug || "chinese-handwriting-recognition";
+  const supportsRemoteFallback = pageSlug === "chinese-handwriting-recognition";
   const usesKoreanReadings = body.dataset.readingSource === "korean";
   const canvas = document.querySelector("#handwritingCanvas");
   const board = document.querySelector("#handwritingBoard");
@@ -126,10 +170,10 @@
   let worker;
   let workerReady = false;
   let lookupRequestId = 0;
-  let latestAppliedRequestId = 0;
   let detailRequestId = 0;
   let selectedCharacter = "";
   let lookupTimer;
+  let remoteLookupController;
 
   setupLocaleSelector();
   setupCanvas();
@@ -216,10 +260,13 @@
       showWorkerError();
       return;
     }
-    if (message.type !== "results" || message.requestId < latestAppliedRequestId) return;
-    latestAppliedRequestId = message.requestId;
+    if (message.type !== "results" || message.requestId !== lookupRequestId) return;
     const limit = usesKoreanReadings ? 30 : CANDIDATE_LIMIT;
     const matches = core.normalizeMatches(message.matches, limit);
+    if (supportsRemoteFallback && !matches.length) {
+      requestRemoteLookup(message.requestId, core.cloneStrokes(strokes));
+      return;
+    }
     if (usesKoreanReadings) {
       rankKoreanCandidates(matches).then(renderCandidates).catch(() => renderCandidates(matches.slice(0, CANDIDATE_LIMIT)));
     } else {
@@ -325,6 +372,8 @@
 
   function clearDrawing() {
     window.clearTimeout(lookupTimer);
+    remoteLookupController?.abort();
+    remoteLookupController = undefined;
     strokes = [];
     currentStroke = undefined;
     selectedCharacter = "";
@@ -349,6 +398,8 @@
 
   function requestLookup() {
     if (!workerReady || !strokes.length) return;
+    remoteLookupController?.abort();
+    remoteLookupController = undefined;
     lookupRequestId += 1;
     setStatus("recognizing");
     worker.postMessage({
@@ -357,6 +408,38 @@
       strokes: core.cloneStrokes(strokes),
       limit: usesKoreanReadings ? 30 : CANDIDATE_LIMIT
     });
+  }
+
+  async function requestRemoteLookup(requestId, lookupStrokes) {
+    const encodedStrokes = core.encodeRemoteStrokes(lookupStrokes);
+    if (!encodedStrokes) {
+      renderCandidates([]);
+      return;
+    }
+
+    const controller = new AbortController();
+    remoteLookupController?.abort();
+    remoteLookupController = controller;
+    const timeout = window.setTimeout(() => controller.abort(), REMOTE_LOOKUP_TIMEOUT);
+
+    try {
+      const response = await fetch(REMOTE_LOOKUP_URL, {
+        method: "POST",
+        mode: "cors",
+        credentials: "omit",
+        referrerPolicy: "no-referrer",
+        body: new URLSearchParams({ bh: encodedStrokes }),
+        signal: controller.signal
+      });
+      if (!response.ok) throw new Error(`Remote handwriting recognition returned ${response.status}`);
+      const matches = core.normalizeRemoteMatches(await response.text(), CANDIDATE_LIMIT);
+      if (requestId === lookupRequestId && remoteLookupController === controller) renderCandidates(matches);
+    } catch {
+      if (requestId === lookupRequestId && remoteLookupController === controller) renderCandidates([]);
+    } finally {
+      window.clearTimeout(timeout);
+      if (remoteLookupController === controller) remoteLookupController = undefined;
+    }
   }
 
   function renderCandidates(matches) {
