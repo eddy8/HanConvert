@@ -464,7 +464,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     }
   }
   if (relativePath === path.join("en", "chinese-handwriting-recognition", "index.html")) {
-    for (const keyword of ["Chinese handwriting recognition", "Chinese handwriting input", "Draw a Chinese character"]) {
+    for (const keyword of ["Chinese handwriting recognition", "Chinese handwriting input", "Draw a Chinese character", "Find a Chinese character by drawing", "Search Chinese Characters by Drawing", "Draw Hanzi Online"]) {
       if (!html.toLowerCase().includes(keyword.toLowerCase())) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
     }
   }
