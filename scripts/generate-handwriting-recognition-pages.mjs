@@ -139,7 +139,7 @@ const content = {
   en: {
     title: "Chinese Handwriting Recognition - Draw and Look Up Hanzi | JianFan.app",
     description: "Free Chinese handwriting input and recognition online. Draw a Hanzi with a mouse, finger or pen to find matches, Pinyin, stroke count and stroke order.",
-    alternateNames: ["Chinese Handwriting Input", "Draw Chinese Character", "Chinese Character Lookup by Drawing"],
+    alternateNames: ["Chinese Handwriting Input", "Draw Chinese Character", "Chinese Character Lookup by Drawing", "Find Chinese Character by Drawing", "Search Chinese Characters by Drawing", "Draw Hanzi Online"],
     eyebrow: "DRAW HANZI · RECOGNIZE · LOOK UP",
     heading: "Chinese Handwriting Recognition",
     lede: "Cannot pronounce or type a Chinese character? Draw its shape in the writing grid to get likely Hanzi matches, then check its Pinyin, stroke count and stroke order.",
@@ -176,8 +176,8 @@ const content = {
       candidateLabel: "Select candidate character {character}"
     },
     seoKicker: "Chinese handwriting input online",
-    featureTitle: "Draw a Chinese character to identify and look it up",
-    featureIntro: "Use this Chinese handwriting recognition tool when you know what a Hanzi looks like but not how to type or pronounce it. Draw with a mouse, trackpad, touchscreen or pen and choose from the closest character matches.",
+    featureTitle: "Find a Chinese character by drawing it online",
+    featureIntro: "Use this Chinese handwriting recognition tool when you know what a Hanzi looks like but not its Pinyin or how to type it. Draw the Chinese character with a mouse, trackpad, touchscreen or pen, then choose from the closest matches.",
     cards: [
       ["Live character candidates", "The list refreshes after each completed stroke and shows up to ten likely Hanzi. Undo the last stroke whenever the shape goes wrong."],
       ["Useful character details", "Choose a match to see its common Pinyin readings, stroke count and Unicode, then copy it or open the animated stroke-order lookup."],
@@ -187,6 +187,8 @@ const content = {
     steps: ["Draw one Chinese character in the centre of the grid, one stroke at a time.", "Choose the closest Hanzi from the automatically updated matches.", "Check its Pinyin and stroke count, or continue to the animated stroke-order page."],
     faqTitle: "Chinese handwriting recognition questions",
     faqs: [
+      ["How can I find a Chinese character if I do not know its Pinyin?", "Draw the character shape in the writing grid and select the closest result. You can then check its Pinyin, stroke count, Unicode and stroke order without knowing its pronunciation first."],
+      ["Can I draw a Chinese character with a mouse or finger?", "Yes. The writing grid works with a mouse, trackpad, touchscreen or digital pen on desktop, tablet and mobile browsers."],
       ["Does stroke order affect recognition?", "The matcher uses stroke direction, position and count. Small stroke-order differences may still work, but a large, clear character written in the usual order normally produces better matches."],
       ["Does it recognize Simplified and Traditional Chinese?", "It covers more than 9,000 common Simplified and Traditional characters. A few rare variants or Japanese-only forms may be unavailable."],
       ["Can it recognize a photo or a handwritten sentence?", "No. This tool recognizes one character drawn on the writing pad. It is not photo OCR or continuous handwriting recognition."],
@@ -491,6 +493,7 @@ ${localeOptions}
             </article>
           </section>
         </div>
+        <p class="handwriting-source-note">${page.sourceNote} <a href="https://github.com/gugray/hanzi_lookup" rel="license external">${page.sourceLink}</a></p>
       </section>
 
       <section class="seo-band standalone-info" aria-labelledby="handwritingFeatureTitle">
