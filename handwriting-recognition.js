@@ -140,7 +140,10 @@
   const body = document.body;
   const locale = body.dataset.locale || "zh-CN";
   const pageSlug = body.dataset.pageSlug || "chinese-handwriting-recognition";
-  const supportsRemoteFallback = pageSlug === "chinese-handwriting-recognition";
+  const supportsRemoteFallback = [
+    "chinese-handwriting-recognition",
+    "korean-hanja-handwriting-recognition"
+  ].includes(pageSlug);
   const usesKoreanReadings = body.dataset.readingSource === "korean";
   const canvas = document.querySelector("#handwritingCanvas");
   const board = document.querySelector("#handwritingBoard");
@@ -151,6 +154,8 @@
   const clearButton = document.querySelector("#handwritingClear");
   const candidates = document.querySelector("#handwritingCandidates");
   const candidateEmpty = document.querySelector("#handwritingCandidateEmpty");
+  const remoteAction = document.querySelector("#handwritingRemoteAction");
+  const remoteButton = document.querySelector("#handwritingRemoteLookup");
   const result = document.querySelector("#handwritingResult");
   const resultCharacter = document.querySelector("#handwritingResultCharacter");
   const resultPinyin = document.querySelector("#handwritingResultPinyin");
@@ -218,6 +223,10 @@
 
     clearButton.addEventListener("click", clearDrawing);
     copyButton.addEventListener("click", copyCharacter);
+    remoteButton?.addEventListener("click", () => {
+      if (!strokes.length || remoteLookupController) return;
+      requestRemoteLookup(lookupRequestId, core.cloneStrokes(strokes), true);
+    });
 
     document.querySelectorAll("[data-handwriting-sample]").forEach((button) => {
       button.addEventListener("click", () => {
@@ -267,11 +276,7 @@
       requestRemoteLookup(message.requestId, core.cloneStrokes(strokes));
       return;
     }
-    if (usesKoreanReadings) {
-      rankKoreanCandidates(matches).then(renderCandidates).catch(() => renderCandidates(matches.slice(0, CANDIDATE_LIMIT)));
-    } else {
-      renderCandidates(matches);
-    }
+    renderLocalCandidates(matches, message.requestId);
   }
 
   function showWorkerError() {
@@ -382,6 +387,7 @@
     candidates.replaceChildren();
     candidateEmpty.hidden = false;
     result.hidden = true;
+    setRemoteActionVisible(false);
     if (workerReady) setStatus("ready", "ready");
   }
 
@@ -400,6 +406,7 @@
     if (!workerReady || !strokes.length) return;
     remoteLookupController?.abort();
     remoteLookupController = undefined;
+    setRemoteActionVisible(false);
     lookupRequestId += 1;
     setStatus("recognizing");
     worker.postMessage({
@@ -410,16 +417,34 @@
     });
   }
 
-  async function requestRemoteLookup(requestId, lookupStrokes) {
-    const encodedStrokes = core.encodeRemoteStrokes(lookupStrokes);
+  async function renderLocalCandidates(matches, requestId) {
+    let rankedMatches = matches;
+    if (usesKoreanReadings) {
+      try {
+        rankedMatches = await rankKoreanCandidates(matches);
+      } catch {
+        rankedMatches = matches.slice(0, CANDIDATE_LIMIT);
+      }
+    }
+    if (requestId !== lookupRequestId) return;
+    renderCandidates(rankedMatches);
+    setRemoteActionVisible(supportsRemoteFallback && rankedMatches.length > 0);
+  }
+
+  async function requestRemoteLookup(requestId, lookupStrokes, isManual = false) {
+    const encodedStrokes = core.encodeRemoteStrokes(lookupStrokes, {
+      language: usesKoreanReadings ? "zh-tw" : "zh-cn"
+    });
     if (!encodedStrokes) {
-      renderCandidates([]);
+      if (!isManual) renderCandidates([]);
       return;
     }
 
     const controller = new AbortController();
     remoteLookupController?.abort();
     remoteLookupController = controller;
+    if (remoteButton) remoteButton.disabled = true;
+    if (isManual) setStatus("remoteRecognizing");
     const timeout = window.setTimeout(() => controller.abort(), REMOTE_LOOKUP_TIMEOUT);
 
     try {
@@ -432,14 +457,47 @@
         signal: controller.signal
       });
       if (!response.ok) throw new Error(`Remote handwriting recognition returned ${response.status}`);
-      const matches = core.normalizeRemoteMatches(await response.text(), CANDIDATE_LIMIT);
-      if (requestId === lookupRequestId && remoteLookupController === controller) renderCandidates(matches);
+      let matches = core.normalizeRemoteMatches(await response.text(), CANDIDATE_LIMIT);
+      if (matches.length && usesKoreanReadings) {
+        try {
+          matches = await rankKoreanCandidates(matches);
+        } catch {
+          // Keep the recognition service order when the Korean dictionary is unavailable.
+        }
+      }
+      if (requestId === lookupRequestId && remoteLookupController === controller) {
+        if (matches.length) {
+          renderCandidates(matches);
+          setRemoteActionVisible(false);
+        } else if (isManual) {
+          setStatus("remoteNoMatch", "error");
+          setRemoteActionVisible(true);
+        } else {
+          renderCandidates([]);
+        }
+      }
     } catch {
-      if (requestId === lookupRequestId && remoteLookupController === controller) renderCandidates([]);
+      if (requestId === lookupRequestId && remoteLookupController === controller) {
+        if (isManual) {
+          setStatus("remoteError", "error");
+          setRemoteActionVisible(true);
+        } else {
+          renderCandidates([]);
+        }
+      }
     } finally {
       window.clearTimeout(timeout);
-      if (remoteLookupController === controller) remoteLookupController = undefined;
+      if (remoteLookupController === controller) {
+        remoteLookupController = undefined;
+        if (remoteButton) remoteButton.disabled = false;
+      }
     }
+  }
+
+  function setRemoteActionVisible(visible) {
+    if (!remoteAction || !remoteButton) return;
+    remoteAction.hidden = !visible;
+    if (!visible) remoteButton.disabled = false;
   }
 
   function renderCandidates(matches) {

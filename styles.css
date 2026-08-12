@@ -4099,6 +4099,52 @@ html[lang="ko"] .worksheet-sheet {
   display: none;
 }
 
+.handwriting-remote-action {
+  display: flex;
+  min-height: 34px;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.handwriting-remote-action[hidden] {
+  display: none;
+}
+
+.handwriting-remote-action button {
+  scale: 1;
+  padding: 5px 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent-2);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 204, 102, 0.42);
+  text-underline-offset: 3px;
+  transition-property: color, opacity, scale, text-decoration-color;
+  transition-duration: 140ms;
+  transition-timing-function: var(--ease);
+}
+
+.handwriting-remote-action button:hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
+.handwriting-remote-action button:active {
+  scale: 0.96;
+}
+
+.handwriting-remote-action button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
 .handwriting-result {
   display: grid;
   min-height: 220px;

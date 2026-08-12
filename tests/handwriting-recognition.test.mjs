@@ -86,9 +86,39 @@ test("pins the official HanziLookup commit in the browser worker", async () => {
   assert.match(workerSource, /wasm_bindgen\.lookup\(event\.data\.strokes, event\.data\.limit\)/);
 });
 
-test("uses DrawChinese only after an empty local result", () => {
+test("uses the remote endpoint automatically after an empty local result", () => {
   assert.match(source, /supportsRemoteFallback && !matches\.length/);
-  assert.match(source, /https:\/\/www\.drawchinese\.com\/hwr\//);
+  assert.match(source, /requestRemoteLookup\(message\.requestId, core\.cloneStrokes\(strokes\)\)/);
+  assert.match(source, /"korean-hanja-handwriting-recognition"/);
+  assert.match(source, /https:\/\/jianfan\.app\/api\/hwr\//);
   assert.match(source, /credentials: "omit"/);
   assert.match(source, /referrerPolicy: "no-referrer"/);
+});
+
+test("offers manual remote recognition only for non-empty local matches", () => {
+  assert.match(source, /setRemoteActionVisible\(supportsRemoteFallback && rankedMatches\.length > 0\)/);
+  assert.match(source, /requestRemoteLookup\(lookupRequestId, core\.cloneStrokes\(strokes\), true\)/);
+});
+
+test("uses Traditional Chinese recognition and Korean reranking for Hanja pages", () => {
+  assert.match(source, /language: usesKoreanReadings \? "zh-tw" : "zh-cn"/);
+  assert.match(source, /if \(matches\.length && usesKoreanReadings\)/);
+  assert.match(source, /matches = await rankKoreanCandidates\(matches\)/);
+});
+
+test("ships localized manual remote-recognition prompts", async () => {
+  const pages = [
+    ["../chinese-handwriting-recognition/index.html", "识别结果有误？", "试试远程识别"],
+    ["../zh-tw/chinese-handwriting-recognition/index.html", "辨識結果不理想？", "試試遠端辨識"],
+    ["../en/chinese-handwriting-recognition/index.html", "Results not right?", "Try remote recognition"],
+    ["../ja/chinese-handwriting-recognition/index.html", "候補が合いませんか？", "オンライン認識を試す"],
+    ["../ko/chinese-handwriting-recognition/index.html", "인식 결과가 정확하지 않나요?", "온라인 인식 시도"]
+  ];
+
+  for (const [path, hint, action] of pages) {
+    const html = await readFile(new URL(path, import.meta.url), "utf8");
+    assert.match(html, new RegExp(`<div class="handwriting-remote-action"[^>]*hidden>`));
+    assert.ok(html.includes(hint));
+    assert.ok(html.includes(action));
+  }
 });
