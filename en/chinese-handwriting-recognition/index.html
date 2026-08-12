@@ -155,7 +155,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="en" data-message-loading="Loading handwriting recognition" data-message-ready="Ready for Chinese handwriting input" data-message-recognizing="Finding matching Chinese characters" data-message-matched="Found {count} possible characters" data-message-no-match="No match yet. Undo a stroke or try drawing again" data-message-error="Recognition could not load. Check your connection and refresh" data-message-copied="Selected character copied" data-message-copy-failed="Automatic copy failed. Select and copy the character directly" data-message-stroke-count="{count} strokes drawn" data-message-candidate-label="Select candidate character {character}">
+  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="en" data-message-loading="Loading handwriting recognition" data-message-ready="Ready for Chinese handwriting input" data-message-recognizing="Finding matching Chinese characters" data-message-matched="Found {count} possible characters" data-message-no-match="No match yet. Undo a stroke or try drawing again" data-message-remote-recognizing="Checking with remote recognition" data-message-remote-no-match="Remote recognition found no better matches" data-message-remote-error="Remote recognition failed. Check your connection and try again" data-message-error="Recognition could not load. Check your connection and refresh" data-message-copied="Selected character copied" data-message-copy-failed="Automatic copy failed. Select and copy the character directly" data-message-stroke-count="{count} strokes drawn" data-message-candidate-label="Select candidate character {character}">
     <a class="skip-nav" href="#main">Skip to main content</a>
     <header class="site-header" aria-label="Site header">
       <a class="brand" href="/en/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">手</span><span>JianFan.app</span></a>
@@ -204,6 +204,7 @@
             <div class="panel-topline"><div><h3 id="handwritingCandidateTitle">Character matches</h3><p>Matches update after every stroke. Select the character that best fits your drawing.</p></div></div>
             <div class="handwriting-candidates" id="handwritingCandidates" role="listbox" aria-label="Character matches"></div>
             <p class="handwriting-candidate-empty" id="handwritingCandidateEmpty">Draw the first stroke to see likely Chinese characters.</p>
+            <div class="handwriting-remote-action" id="handwritingRemoteAction" hidden><span>Results not right?</span><button id="handwritingRemoteLookup" type="button">Try remote recognition</button></div>
             <article class="handwriting-result" id="handwritingResult" aria-labelledby="handwritingResultTitle" hidden>
               <div class="handwriting-result-character" id="handwritingResultCharacter"></div>
               <div class="handwriting-result-content">

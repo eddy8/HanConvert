@@ -136,7 +136,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="ja" data-message-loading="手書き認識を読み込み中" data-message-ready="漢字を手書きできます" data-message-recognizing="似ている漢字を検索中" data-message-matched="候補を {count} 文字見つけました" data-message-no-match="候補が見つかりません。1画戻すか、書き直してください" data-message-error="手書き認識を読み込めません。通信を確認して再読み込みしてください" data-message-copied="選択した漢字をコピーしました" data-message-copy-failed="自動コピーに失敗しました。漢字を選択してコピーしてください" data-message-stroke-count="{count}画入力" data-message-candidate-label="候補の「{character}」を選択">
+  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="ja" data-message-loading="手書き認識を読み込み中" data-message-ready="漢字を手書きできます" data-message-recognizing="似ている漢字を検索中" data-message-matched="候補を {count} 文字見つけました" data-message-no-match="候補が見つかりません。1画戻すか、書き直してください" data-message-remote-recognizing="オンライン認識で検索中" data-message-remote-no-match="オンライン認識でも適切な候補が見つかりませんでした" data-message-remote-error="オンライン認識に失敗しました。通信を確認してもう一度お試しください" data-message-error="手書き認識を読み込めません。通信を確認して再読み込みしてください" data-message-copied="選択した漢字をコピーしました" data-message-copy-failed="自動コピーに失敗しました。漢字を選択してコピーしてください" data-message-stroke-count="{count}画入力" data-message-candidate-label="候補の「{character}」を選択">
     <a class="skip-nav" href="#main">メインコンテンツへ移動</a>
     <header class="site-header" aria-label="サイトヘッダー">
       <a class="brand" href="/ja/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">手</span><span>JianFan.app</span></a>
@@ -185,6 +185,7 @@
             <div class="panel-topline"><div><h3 id="handwritingCandidateTitle">漢字の候補</h3><p>1画書くごとに候補が更新されます。最も近い漢字を選んでください。</p></div></div>
             <div class="handwriting-candidates" id="handwritingCandidates" role="listbox" aria-label="漢字の候補"></div>
             <p class="handwriting-candidate-empty" id="handwritingCandidateEmpty">最初の1画を書くと、漢字候補がここに表示されます。</p>
+            <div class="handwriting-remote-action" id="handwritingRemoteAction" hidden><span>候補が合いませんか？</span><button id="handwritingRemoteLookup" type="button">オンライン認識を試す</button></div>
             <article class="handwriting-result" id="handwritingResult" aria-labelledby="handwritingResultTitle" hidden>
               <div class="handwriting-result-character" id="handwritingResultCharacter"></div>
               <div class="handwriting-result-content">

@@ -136,7 +136,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="ko" data-message-loading="필기 인식 기능 불러오는 중" data-message-ready="한자 손글씨를 입력할 수 있습니다" data-message-recognizing="비슷한 한자 찾는 중" data-message-matched="후보 한자 {count}개를 찾았습니다" data-message-no-match="후보를 찾지 못했습니다. 한 획을 되돌리거나 다시 써 주세요" data-message-error="필기 인식 기능을 불러오지 못했습니다. 네트워크 확인 후 새로 고침하세요" data-message-copied="선택한 한자를 복사했습니다" data-message-copy-failed="자동 복사에 실패했습니다. 한자를 직접 선택해 복사하세요" data-message-stroke-count="{count}획 입력" data-message-candidate-label="후보 한자 {character} 선택">
+  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="ko" data-message-loading="필기 인식 기능 불러오는 중" data-message-ready="한자 손글씨를 입력할 수 있습니다" data-message-recognizing="비슷한 한자 찾는 중" data-message-matched="후보 한자 {count}개를 찾았습니다" data-message-no-match="후보를 찾지 못했습니다. 한 획을 되돌리거나 다시 써 주세요" data-message-remote-recognizing="온라인 인식으로 찾는 중" data-message-remote-no-match="온라인 인식에서도 더 적합한 후보를 찾지 못했습니다" data-message-remote-error="온라인 인식에 실패했습니다. 네트워크를 확인한 후 다시 시도하세요" data-message-error="필기 인식 기능을 불러오지 못했습니다. 네트워크 확인 후 새로 고침하세요" data-message-copied="선택한 한자를 복사했습니다" data-message-copy-failed="자동 복사에 실패했습니다. 한자를 직접 선택해 복사하세요" data-message-stroke-count="{count}획 입력" data-message-candidate-label="후보 한자 {character} 선택">
     <a class="skip-nav" href="#main">주요 내용으로 이동</a>
     <header class="site-header" aria-label="사이트 헤더">
       <a class="brand" href="/ko/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">手</span><span>JianFan.app</span></a>
@@ -185,6 +185,7 @@
             <div class="panel-topline"><div><h3 id="handwritingCandidateTitle">인식 후보 한자</h3><p>한 획을 마칠 때마다 후보가 바뀝니다. 가장 비슷한 한자를 선택하세요.</p></div></div>
             <div class="handwriting-candidates" id="handwritingCandidates" role="listbox" aria-label="인식 후보 한자"></div>
             <p class="handwriting-candidate-empty" id="handwritingCandidateEmpty">첫 획을 쓰면 한자 후보가 여기에 표시됩니다.</p>
+            <div class="handwriting-remote-action" id="handwritingRemoteAction" hidden><span>인식 결과가 정확하지 않나요?</span><button id="handwritingRemoteLookup" type="button">온라인 인식 시도</button></div>
             <article class="handwriting-result" id="handwritingResult" aria-labelledby="handwritingResultTitle" hidden>
               <div class="handwriting-result-character" id="handwritingResultCharacter"></div>
               <div class="handwriting-result-content">

@@ -136,7 +136,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="zh-CN" data-message-loading="正在加载手写识别组件" data-message-ready="可以开始手写汉字" data-message-recognizing="正在匹配候选汉字" data-message-matched="已找到 {count} 个候选汉字" data-message-no-match="暂未找到候选字，请撤销或重新书写" data-message-error="手写识别组件加载失败，请检查网络后刷新" data-message-copied="已复制所选汉字" data-message-copy-failed="自动复制失败，请直接选择汉字复制" data-message-stroke-count="已写 {count} 笔" data-message-candidate-label="选择候选汉字“{character}”">
+  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="zh-CN" data-message-loading="正在加载手写识别组件" data-message-ready="可以开始手写汉字" data-message-recognizing="正在匹配候选汉字" data-message-matched="已找到 {count} 个候选汉字" data-message-no-match="暂未找到候选字，请撤销或重新书写" data-message-remote-recognizing="正在进行远程识别" data-message-remote-no-match="远程识别未找到更合适的候选字" data-message-remote-error="远程识别失败，请检查网络后重试" data-message-error="手写识别组件加载失败，请检查网络后刷新" data-message-copied="已复制所选汉字" data-message-copy-failed="自动复制失败，请直接选择汉字复制" data-message-stroke-count="已写 {count} 笔" data-message-candidate-label="选择候选汉字“{character}”">
     <a class="skip-nav" href="#main">跳到主要内容</a>
     <header class="site-header" aria-label="网站页眉">
       <a class="brand" href="/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">手</span><span>JianFan.app</span></a>
@@ -185,6 +185,7 @@
             <div class="panel-topline"><div><h3 id="handwritingCandidateTitle">识别候选字</h3><p>每完成一笔都会自动更新，点击最接近的汉字继续查询。</p></div></div>
             <div class="handwriting-candidates" id="handwritingCandidates" role="listbox" aria-label="识别候选字"></div>
             <p class="handwriting-candidate-empty" id="handwritingCandidateEmpty">写下第一笔后，候选汉字会显示在这里。</p>
+            <div class="handwriting-remote-action" id="handwritingRemoteAction" hidden><span>识别结果有误？</span><button id="handwritingRemoteLookup" type="button">试试远程识别</button></div>
             <article class="handwriting-result" id="handwritingResult" aria-labelledby="handwritingResultTitle" hidden>
               <div class="handwriting-result-character" id="handwritingResultCharacter"></div>
               <div class="handwriting-result-content">

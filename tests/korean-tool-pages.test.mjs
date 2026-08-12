@@ -54,6 +54,26 @@ test("uses the expected browser scripts for each Korean tool", async () => {
   }
 });
 
+test("ships localized Korean Hanja remote-recognition controls and accurate data-use copy", async () => {
+  const prompts = {
+    "zh-CN": ["候选不准确？", "试试远程识别"],
+    "zh-TW": ["候選不準確？", "試試遠端辨識"],
+    en: ["Matches not right?", "Try online recognition"],
+    ja: ["候補が合いませんか？", "オンライン認識を試す"],
+    ko: ["후보가 정확하지 않나요?", "온라인 인식 시도"]
+  };
+  const obsoleteClaims = /无需上传笔迹|不需上傳筆跡|Drawing coordinates are not uploaded|筆跡はサーバーへ送信しません|필기 좌표는 서버로 보내지 않습니다/u;
+
+  for (const [locale, config] of Object.entries(locales)) {
+    const html = await readFile(pagePath(config.prefix, "korean-hanja-handwriting-recognition"), "utf8");
+    assert.match(html, /<div class="handwriting-remote-action" id="handwritingRemoteAction" hidden>/);
+    assert.ok(html.includes(prompts[locale][0]), `${locale} remote hint`);
+    assert.ok(html.includes(prompts[locale][1]), `${locale} remote action`);
+    assert.ok(html.includes("data-message-remote-recognizing="), `${locale} remote status`);
+    assert.doesNotMatch(html, obsoleteClaims, `${locale} accurate upload disclosure`);
+  }
+});
+
 test("records reproducible Korean Hanja data provenance and counts", async () => {
   const index = JSON.parse(await readFile(path.join(projectRoot, "data", "korean-hanja", "index.json"), "utf8"));
   const words = JSON.parse(await readFile(path.join(projectRoot, "data", "korean-hanja", "words.json"), "utf8"));

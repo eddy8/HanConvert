@@ -136,7 +136,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="zh-TW" data-message-loading="正在載入手寫辨識元件" data-message-ready="可以開始手寫漢字" data-message-recognizing="正在比對候選漢字" data-message-matched="已找到 {count} 個候選漢字" data-message-no-match="暫時找不到候選字，請復原或重新書寫" data-message-error="手寫辨識元件載入失敗，請檢查網路後重新整理" data-message-copied="已複製所選漢字" data-message-copy-failed="自動複製失敗，請直接選取漢字複製" data-message-stroke-count="已寫 {count} 畫" data-message-candidate-label="選取候選漢字「{character}」">
+  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="zh-TW" data-message-loading="正在載入手寫辨識元件" data-message-ready="可以開始手寫漢字" data-message-recognizing="正在比對候選漢字" data-message-matched="已找到 {count} 個候選漢字" data-message-no-match="暫時找不到候選字，請復原或重新書寫" data-message-remote-recognizing="正在進行遠端辨識" data-message-remote-no-match="遠端辨識未找到更合適的候選字" data-message-remote-error="遠端辨識失敗，請檢查網路後再試一次" data-message-error="手寫辨識元件載入失敗，請檢查網路後重新整理" data-message-copied="已複製所選漢字" data-message-copy-failed="自動複製失敗，請直接選取漢字複製" data-message-stroke-count="已寫 {count} 畫" data-message-candidate-label="選取候選漢字「{character}」">
     <a class="skip-nav" href="#main">跳到主要內容</a>
     <header class="site-header" aria-label="網站頁首">
       <a class="brand" href="/zh-tw/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">手</span><span>JianFan.app</span></a>
@@ -185,6 +185,7 @@
             <div class="panel-topline"><div><h3 id="handwritingCandidateTitle">辨識候選字</h3><p>每完成一畫就會自動更新，點選最接近的漢字繼續查詢。</p></div></div>
             <div class="handwriting-candidates" id="handwritingCandidates" role="listbox" aria-label="辨識候選字"></div>
             <p class="handwriting-candidate-empty" id="handwritingCandidateEmpty">寫下第一畫後，候選漢字會顯示在這裡。</p>
+            <div class="handwriting-remote-action" id="handwritingRemoteAction" hidden><span>辨識結果不理想？</span><button id="handwritingRemoteLookup" type="button">試試遠端辨識</button></div>
             <article class="handwriting-result" id="handwritingResult" aria-labelledby="handwritingResultTitle" hidden>
               <div class="handwriting-result-character" id="handwritingResultCharacter"></div>
               <div class="handwriting-result-content">
