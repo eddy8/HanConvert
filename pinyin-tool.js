@@ -41,9 +41,12 @@
     setStatus("error", "error");
     disableTool();
   } else {
-    const requestedCharacter = new URLSearchParams(window.location.search).get("character");
-    if (/^\p{Script=Han}$/u.test(requestedCharacter || "")) {
-      input.value = requestedCharacter;
+    const parameters = new URLSearchParams(window.location.search);
+    const requestedText = parameters.get("text");
+    const requestedCharacter = parameters.get("character");
+    const initialValue = requestedText || (/^\p{Script=Han}$/u.test(requestedCharacter || "") ? requestedCharacter : "");
+    if (initialValue) {
+      input.value = initialValue;
       updateCounts();
       convert();
     }

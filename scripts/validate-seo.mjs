@@ -35,7 +35,7 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
 const uniqueSitemapUrls = new Set(sitemapUrls);
 if (uniqueSitemapUrls.size !== sitemapUrls.length) throw new Error("sitemap.xml contains duplicate URLs");
 
-for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "han-character-worksheet.js", "handwriting-recognition.js", "handwriting-recognition-worker.js", "han-character-lookup-core.js", "han-character-lookup.js", "kanji-romaji-core.js", "kanji-to-romaji.js", "japanese-reading-client.js", "japanese-reading-worker.js", "kanji-to-hiragana.js", "japanese-stroke-order.js", "japanese-kanji-data.js", "japanese-kanji-dictionary.js", "japanese-handwriting-recognition.js", "korean-hanja-data.js", "korean-hanja-dictionary.js", "hangul-hanja-converter.js", "korean-name-hanja.js", "webmcp.js"]) {
+for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "han-character-worksheet.js", "handwriting-recognition.js", "handwriting-recognition-worker.js", "photo-chinese-character-recognition.js", "han-character-lookup-core.js", "han-character-lookup.js", "kanji-romaji-core.js", "kanji-to-romaji.js", "japanese-reading-client.js", "japanese-reading-worker.js", "kanji-to-hiragana.js", "japanese-stroke-order.js", "japanese-kanji-data.js", "japanese-kanji-dictionary.js", "japanese-handwriting-recognition.js", "korean-hanja-data.js", "korean-hanja-dictionary.js", "hangul-hanja-converter.js", "korean-name-hanja.js", "webmcp.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
@@ -132,6 +132,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isWorksheetPage = html.includes('data-tool-page="han-character-worksheet"');
   const isKanjiRomajiPage = html.includes('data-tool-page="kanji-to-romaji"');
   const isHandwritingPage = html.includes('data-tool-page="handwriting-recognition"');
+  const isPhotoOcrPage = html.includes('data-tool-page="photo-chinese-character-recognition"');
   const isHanLookupPage = html.includes('data-tool-page="han-character-lookup"');
   const isKoreanDictionaryPage = html.includes('data-tool-page="korean-hanja-dictionary"');
   const isKoreanHandwritingPage = html.includes('data-tool-page="korean-hanja-handwriting-recognition"');
@@ -148,6 +149,9 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   }
   if (localizedHomePages.has(relativePath) && !html.includes('data-i18n="seoAppTitle"')) {
     throw new Error(`${relativePath}: missing static desktop app SEO copy`);
+  }
+  if (localizedHomePages.has(relativePath) && !html.includes('data-route="photo-chinese-character-recognition"')) {
+    throw new Error(`${relativePath}: missing photo Chinese-character-recognition link`);
   }
   if (relativePath === "index.html") {
     for (const keyword of ["简体转繁体 APP", "繁体转简体 APP"]) {
@@ -219,10 +223,10 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     if (!webApplication || webApplication.url !== canonical) {
       throw new Error(`${relativePath}: invalid WebApplication schema`);
     }
-    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isKanjiRomajiPage || isHandwritingPage || isHanLookupPage || isKoreanToolPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
+    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isKanjiRomajiPage || isHandwritingPage || isPhotoOcrPage || isHanLookupPage || isKoreanToolPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
       throw new Error(`${relativePath}: missing tool FAQPage schema`);
     }
-    if ((isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isHandwritingPage || isHanLookupPage || isKoreanToolPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
+    if ((isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isHandwritingPage || isPhotoOcrPage || isHanLookupPage || isKoreanToolPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
       throw new Error(`${relativePath}: missing tool HowTo schema`);
     }
   }
@@ -300,6 +304,11 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (isKoreanDictionaryPage) {
     for (const asset of ['src="/korean-hanja-data.js"', 'src="/korean-hanja-dictionary.js"', 'id="koreanHanjaQuery"']) {
       if (!html.includes(asset)) throw new Error(`${relativePath}: missing Korean dictionary asset ${asset}`);
+    }
+  }
+  if (isPhotoOcrPage) {
+    for (const asset of ['src="/photo-chinese-character-recognition.js"', 'href="/photo-chinese-character-recognition.css"', 'id="photoInput"', 'id="photoResultText"']) {
+      if (!html.includes(asset)) throw new Error(`${relativePath}: missing photo OCR asset ${asset}`);
     }
   }
   if (isKoreanHandwritingPage) {
@@ -554,8 +563,8 @@ if (!notFound.includes('name="robots" content="noindex, follow"')) {
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
-if (standaloneToolPages !== 90) throw new Error(`expected 90 standalone tool pages, found ${standaloneToolPages}`);
+if (standaloneToolPages !== 95) throw new Error(`expected 95 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
-if (sitemapUrls.length !== 141) throw new Error(`expected 141 sitemap URLs, found ${sitemapUrls.length}`);
+if (sitemapUrls.length !== 146) throw new Error(`expected 146 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, and ${sitemapUrls.length} sitemap URLs.`);
