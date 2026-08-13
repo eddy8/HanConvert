@@ -431,6 +431,57 @@ body {
   line-height: 1.55;
 }
 
+.photo-ocr-error-dialog {
+  width: min(calc(100% - 32px), 430px);
+  padding: 0;
+  border: 1px solid rgba(255, 120, 120, 0.5);
+  border-radius: var(--radius-sm);
+  background: #0b1815;
+  color: var(--ink);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.48);
+}
+
+.photo-ocr-error-dialog::backdrop {
+  background: rgba(1, 9, 7, 0.78);
+}
+
+.photo-ocr-error-dialog form {
+  display: grid;
+  margin: 0;
+  padding: 22px;
+  gap: 12px;
+}
+
+.photo-ocr-error-dialog h2,
+.photo-ocr-error-dialog p {
+  margin: 0;
+}
+
+.photo-ocr-error-dialog h2 {
+  font-size: 1.08rem;
+}
+
+.photo-ocr-error-dialog p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.photo-ocr-error-dialog button {
+  min-height: 42px;
+  margin-top: 4px;
+  border: 1px solid rgba(64, 242, 176, 0.5);
+  border-radius: var(--radius-sm);
+  background: rgba(64, 242, 176, 0.12);
+  color: var(--accent);
+  font: inherit;
+  font-weight: 750;
+}
+
+.photo-ocr-error-dialog button:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
+}
+
 .photo-ocr-tool button,
 .photo-ocr-tool .photo-ocr-capture {
   transition: border-color 140ms var(--ease), background 140ms var(--ease), color 140ms var(--ease), transform 140ms var(--ease);
