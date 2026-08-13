@@ -32,9 +32,18 @@ test("parseError prefers the service error message", () => {
   assert.equal(api.parseError(null, 413), "图片超过大小限制");
 });
 
+test("429 responses display the fixed localized rate-limit dialog", () => {
+  assert.match(browserSource, /response\.status === 429/);
+  assert.match(browserSource, /response\.status === 429\s*\? message\("rateLimited"\)/);
+  assert.doesNotMatch(browserSource, /getServiceErrorMessage/);
+  assert.match(browserSource, /showErrorDialog\(errorMessage\)/);
+  assert.match(pageSource, /<dialog class="photo-ocr-error-dialog" id="photoOcrErrorDialog"/);
+  assert.match(pageSource, /"rateLimited":"请求次数过多，请稍后重试"/);
+});
+
 test("the formal tool uploads one processed image using the OCR API contract", () => {
-  assert.match(browserSource, /"http:\/\/localhost:8787\/api\/ocr\/text"/);
-  assert.match(browserSource, /: "\/api\/ocr\/text"/);
+  assert.match(browserSource, /const OCR_URL = "https:\/\/jianfan\.app\/api\/ocr\/text"/);
+  assert.doesNotMatch(browserSource, /localhost:8787/);
   assert.match(browserSource, /Authorization: window\.atob\(OCR_AUTHORIZATION\)/);
   assert.match(browserSource, /const OCR_AUTHORIZATION = "QmVhcmVyIGdlbWluaQ=="/);
   assert.doesNotMatch(browserSource, new RegExp(["Bearer", "gemini"].join(" ")));

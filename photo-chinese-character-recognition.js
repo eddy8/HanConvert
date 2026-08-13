@@ -214,6 +214,8 @@
   const strokeLink = document.querySelector("#photoStrokeLink");
   const pinyinLink = document.querySelector("#photoPinyinLink");
   const structureLink = document.querySelector("#photoStructureLink");
+  const errorDialog = document.querySelector("#photoOcrErrorDialog");
+  const errorDialogMessage = document.querySelector("#photoOcrErrorMessage");
 
   if (!input || !sourceCanvas || !window.PhotoChineseCharacterRecognitionApi) return;
 
@@ -488,7 +490,13 @@
         signal: controller.signal
       });
       const payload = await response.json().catch(() => null);
-      if (!response.ok) throw userFacingError(errorMessageForStatus(response.status));
+      if (!response.ok) {
+        const errorMessage = response.status === 429
+          ? message("rateLimited")
+          : errorMessageForStatus(response.status);
+        if (response.status === 429) showErrorDialog(errorMessage);
+        throw userFacingError(errorMessage);
+      }
 
       let result;
       try {
@@ -527,6 +535,15 @@
     if (code === 415) return message("unsupportedImage");
     if (code === 422) return message("noText");
     return message("serviceUnavailable");
+  }
+
+  function showErrorDialog(value) {
+    if (!errorDialog || !errorDialogMessage || typeof errorDialog.showModal !== "function") {
+      window.alert(value);
+      return;
+    }
+    errorDialogMessage.textContent = value;
+    if (!errorDialog.open) errorDialog.showModal();
   }
 
   function userFacingError(value) {
