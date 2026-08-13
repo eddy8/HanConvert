@@ -156,9 +156,7 @@
 
   if (typeof document !== "object") return;
 
-  const OCR_URL = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname)
-    ? "http://localhost:8787/api/ocr/text"
-    : "/api/ocr/text";
+  const OCR_URL = "https://jianfan.app/api/ocr/text";
   const OCR_AUTHORIZATION = "QmVhcmVyIGdlbWluaQ==";
   const OCR_TIMEOUT = 30000;
   const MAX_SOURCE_BYTES = 24 * 1024 * 1024;
