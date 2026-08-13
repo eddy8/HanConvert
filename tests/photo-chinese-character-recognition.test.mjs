@@ -130,6 +130,23 @@ test("all five formal pages contain static localized primary headings", async ()
   }
 });
 
+test("all localized pages cover researched photo OCR and image-to-text intent", async () => {
+  const pages = [
+    ["../photo-chinese-character-recognition/index.html", ["图片转文字", "图片文字识别", "图片提取文字"]],
+    ["../zh-tw/photo-chinese-character-recognition/index.html", ["圖片轉文字", "圖片文字辨識", "從圖片擷取文字"]],
+    ["../en/photo-chinese-character-recognition/index.html", ["Chinese OCR Online", "image-to-text", "Chinese image-to-text"]],
+    ["../ja/photo-chinese-character-recognition/index.html", ["中国語画像OCR", "画像テキスト化", "画像から文字起こし"]],
+    ["../ko/photo-chinese-character-recognition/index.html", ["중국어 이미지 OCR", "이미지 텍스트 추출", "사진으로 한자 찾기"]]
+  ];
+  for (const [path, terms] of pages) {
+    const source = await readFile(new URL(path, import.meta.url), "utf8");
+    const visibleBody = source.slice(source.indexOf("<body")).toLocaleLowerCase();
+    for (const term of terms) {
+      assert.ok(visibleBody.includes(term.toLocaleLowerCase()), `${path} visible body is missing ${term}`);
+    }
+  }
+});
+
 test("all localized pages ask for another image when processing cannot reach 2 MB", async () => {
   const pages = [
     "../photo-chinese-character-recognition/index.html",

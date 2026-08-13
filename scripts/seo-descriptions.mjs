@@ -5,11 +5,11 @@ export const TARGET_META_DESCRIPTION_LENGTH = Object.freeze({
 
 export const SEO_DESCRIPTIONS = Object.freeze({
   "photo-chinese-character-recognition": Object.freeze({
-    "zh-CN": "在线拍照汉字识别与图片识别汉字工具，拍摄或上传手机照片、截图、扫描件，即可通过中文 OCR 提取简体字和繁体字。识别结果可整段复制，点击其中任意汉字还能查询拼音、笔画数、Unicode、笔顺与字形结构，适合查书籍、菜单、路牌和学习资料中的陌生字。图片上传前会在浏览器中自动裁剪并压缩，请勿提交含敏感信息的内容。",
-    "zh-TW": "線上拍照漢字辨識與圖片辨識漢字工具，拍攝或上傳手機照片、截圖及掃描檔，即可透過中文 OCR 擷取正體字和簡體字。辨識結果可整段複製，點選其中任一漢字還能查詢漢語拼音、筆畫數、Unicode、筆順與字形結構，適合查找書籍、菜單、路牌及學習資料中的陌生字。圖片上傳前會在瀏覽器中自動裁切並壓縮，請勿提交含敏感資料的內容。",
-    en: "Recognize Chinese characters from photos, screenshots and scans online. Copy text or tap any Hanzi for Pinyin, strokes, Unicode, stroke order and structure.",
-    ja: "写真から中国語の漢字を認識できる無料オンラインOCRです。スマホ写真、スクリーンショット、スキャン画像から簡体字・繁体字を文字に変換してコピーできます。認識した漢字を選ぶと、中国語のピンイン、画数、Unicode、筆順、字形構成も確認可能。画像は送信前にブラウザーで自動トリミング・圧縮処理されます。",
-    ko: "사진으로 중국 한자를 인식하는 무료 온라인 OCR 도구입니다. 휴대폰 사진, 스크린샷, 스캔 이미지에서 간체자와 번체자를 텍스트로 추출해 복사하세요. 인식된 한자를 누르면 중국어 병음, 획수, Unicode, 필순과 글자 구조도 확인할 수 있으며 이미지는 전송 전에 자동 압축됩니다."
+    "zh-CN": "在线拍照汉字识别、图片转文字与图片识别汉字工具，拍摄或上传手机照片、截图和扫描件，即可通过中文 OCR 提取简体字与繁体字。识别结果可整段复制，点击任意汉字还能查询拼音、笔画数、Unicode、笔顺和字形结构，适合查找书籍、菜单、路牌与学习资料中的陌生字。图片会先在浏览器中自动裁剪和压缩，请勿上传敏感内容。",
+    "zh-TW": "線上拍照漢字辨識、圖片轉文字與圖片辨識漢字工具，拍攝或上傳手機照片、截圖和掃描檔，即可透過中文 OCR 擷取正體字與簡體字。辨識結果可整段複製，點選任一漢字還能查詢漢語拼音、筆畫數、Unicode、筆順和字形結構，適合查找書籍、菜單、路牌與學習資料中的陌生字。圖片會先在瀏覽器中自動裁切和壓縮，請勿上傳敏感內容。",
+    en: "Recognize Chinese characters from photos with a Chinese OCR online tool. Convert images, screenshots and scans to text, then check Pinyin and stroke order.",
+    ja: "無料オンライン中国語画像OCRで、写真やスクリーンショットから簡体字・繁体字をすぐにテキスト化できます。画像から中国語テキストを抽出してコピーし、認識した漢字のピンイン、画数、Unicode、筆順、字形構成も確認可能です。スマホ写真やスキャン画像に対応し、送信前にブラウザーで自動トリミング・圧縮します。",
+    ko: "중국어 이미지 OCR로 사진·스크린샷에서 중국 한자를 인식하고 텍스트를 추출하세요. 간체자와 번체자를 복사하고, 한자를 누르면 중국어 병음, 획수, Unicode, 필순과 글자 구조를 확인할 수 있습니다. 휴대폰 사진과 스캔 이미지를 지원하며 전송 전에 자동으로 자르고 압축합니다."
   }),
   "file-text-converter": Object.freeze({
     "zh-CN": "免费文件文本简繁转换工具，支持上传 Word、PDF、TXT 和 Excel 文件，在浏览器中提取文字并转换为简体、通用繁体、台湾正体或香港繁体。可多选文件、合并内容并复制结果，也可用于 Word 转 TXT、PDF 转 TXT 与 Excel 转 TXT。文件无需上传服务器，复杂排版和扫描版 PDF 请在转换后核对。",

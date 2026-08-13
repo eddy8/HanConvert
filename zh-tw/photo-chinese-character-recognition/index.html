@@ -6,8 +6,8 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="description" content="線上拍照漢字辨識與圖片辨識漢字工具，拍攝或上傳手機照片、截圖及掃描檔，即可透過中文 OCR 擷取正體字和簡體字。辨識結果可整段複製，點選其中任一漢字還能查詢漢語拼音、筆畫數、Unicode、筆順與字形結構，適合查找書籍、菜單、路牌及學習資料中的陌生字。圖片上傳前會在瀏覽器中自動裁切並壓縮，請勿提交含敏感資料的內容。" />
-    <title>線上拍照漢字辨識 - 圖片辨識漢字與拍照查字 | JianFan.app</title>
+    <meta name="description" content="線上拍照漢字辨識、圖片轉文字與圖片辨識漢字工具，拍攝或上傳手機照片、截圖和掃描檔，即可透過中文 OCR 擷取正體字與簡體字。辨識結果可整段複製，點選任一漢字還能查詢漢語拼音、筆畫數、Unicode、筆順和字形結構，適合查找書籍、菜單、路牌與學習資料中的陌生字。圖片會先在瀏覽器中自動裁切和壓縮，請勿上傳敏感內容。" />
+    <title>線上拍照漢字辨識 - 圖片轉文字與拍照查字 | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/zh-tw/photo-chinese-character-recognition/" />
     <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="en" href="https://jianfan.app/en/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/photo-chinese-character-recognition/" />
     <link rel="alternate" hreflang="x-default" href="https://jianfan.app/photo-chinese-character-recognition/" />
@@ -26,10 +26,12 @@
         "圖片辨識漢字",
         "拍照查字",
         "中文 OCR",
-        "漢字圖片轉文字"
+        "漢字圖片轉文字",
+        "圖片文字辨識",
+        "從圖片擷取文字"
       ],
       "url": "https://jianfan.app/zh-tw/photo-chinese-character-recognition/",
-      "description": "線上拍照漢字辨識與圖片辨識漢字工具，拍攝或上傳手機照片、截圖及掃描檔，即可透過中文 OCR 擷取正體字和簡體字。辨識結果可整段複製，點選其中任一漢字還能查詢漢語拼音、筆畫數、Unicode、筆順與字形結構，適合查找書籍、菜單、路牌及學習資料中的陌生字。圖片上傳前會在瀏覽器中自動裁切並壓縮，請勿提交含敏感資料的內容。",
+      "description": "線上拍照漢字辨識、圖片轉文字與圖片辨識漢字工具，拍攝或上傳手機照片、截圖和掃描檔，即可透過中文 OCR 擷取正體字與簡體字。辨識結果可整段複製，點選任一漢字還能查詢漢語拼音、筆畫數、Unicode、筆順和字形結構，適合查找書籍、菜單、路牌與學習資料中的陌生字。圖片會先在瀏覽器中自動裁切和壓縮，請勿上傳敏感內容。",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Any",
       "browserRequirements": "Requires JavaScript and image upload support",
@@ -59,7 +61,7 @@
     {
       "@type": "HowTo",
       "name": "如何線上拍照辨識漢字",
-      "description": "線上拍照漢字辨識與圖片辨識漢字工具，拍攝或上傳手機照片、截圖及掃描檔，即可透過中文 OCR 擷取正體字和簡體字。辨識結果可整段複製，點選其中任一漢字還能查詢漢語拼音、筆畫數、Unicode、筆順與字形結構，適合查找書籍、菜單、路牌及學習資料中的陌生字。圖片上傳前會在瀏覽器中自動裁切並壓縮，請勿提交含敏感資料的內容。",
+      "description": "線上拍照漢字辨識、圖片轉文字與圖片辨識漢字工具，拍攝或上傳手機照片、截圖和掃描檔，即可透過中文 OCR 擷取正體字與簡體字。辨識結果可整段複製，點選任一漢字還能查詢漢語拼音、筆畫數、Unicode、筆順和字形結構，適合查找書籍、菜單、路牌與學習資料中的陌生字。圖片會先在瀏覽器中自動裁切和壓縮，請勿上傳敏感內容。",
       "step": [
         {
           "@type": "HowToStep",
@@ -112,6 +114,14 @@
             "@type": "Answer",
             "text": "本頁讀取照片或截圖中的漢字；手寫辨識頁則是在田字格逐畫書寫，依筆畫軌跡比對一個漢字。"
           }
+        },
+        {
+          "@type": "Question",
+          "name": "可以把圖片中的中文轉成可複製文字嗎？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以。本工具可用於中文圖片轉文字、圖片文字辨識和從圖片擷取文字，從手機照片、截圖或掃描檔擷取正體字與簡體字，結果可整段複製。"
+          }
         }
       ]
     }
@@ -154,10 +164,10 @@
       </section>
 
       <section class="seo-band standalone-info" aria-labelledby="photoFeatureTitle">
-        <div class="section-heading"><p class="section-kicker">圖片辨識漢字與拍照查字</p><h2 id="photoFeatureTitle">從照片擷取漢字，再逐字查詢</h2><p class="seo-intro">線上拍照漢字辨識適合處理書籍、菜單、路牌、課堂資料、截圖及掃描檔。不只把圖片中的正體字或簡體字轉成可複製文字，也能由 OCR 結果直接查詢拼音、筆順與漢字結構。</p></div>
+        <div class="section-heading"><p class="section-kicker">拍照識字 · 圖片轉文字 · 拍照查字</p><h2 id="photoFeatureTitle">從照片和圖片擷取漢字，再逐字查詢</h2><p class="seo-intro">線上拍照漢字辨識也能作為中文圖片轉文字與圖片文字辨識工具，適合處理書籍、菜單、路牌、課堂資料、截圖和掃描檔。它可擷取圖片中的正體字或簡體字，並由 OCR 結果直接查詢拼音、筆順與漢字結構。</p></div>
         <div class="seo-grid"><article><h3>照片、截圖和掃描檔</h3><p>手機可直接開啟相機，也能從相簿選圖；電腦端可上傳現有照片與截圖。</p></article><article><h3>上傳前自動處理圖片</h3><p>頁面會在瀏覽器中尋找文字區域、裁去多餘邊緣並壓縮尺寸，以減少上傳時間及流量。</p></article><article><h3>辨識後點選漢字查字</h3><p>點選結果中的任一漢字，即可查看漢語拼音、筆畫數與 Unicode，並前往筆順或結構查詢。</p></article></div>
         <section class="pinyin-howto" aria-labelledby="photoHowTitle"><h2 id="photoHowTitle">如何線上拍照辨識漢字</h2><ol><li>拍攝漢字，或選擇手機相簿、電腦中的照片、截圖或掃描圖片。</li><li>確認自動裁切後的預覽，點選辨識按鈕並等待文字結果。</li><li>複製完整結果，或點選其中的漢字繼續查拼音、筆順和字形結構。</li></ol></section>
-        <section class="pinyin-faq" aria-labelledby="photoFaqTitle"><h2 id="photoFaqTitle">拍照漢字辨識常見問題</h2><details><summary>可以一次辨識多個漢字嗎？</summary><p>可以。圖片可包含單字、詞語或多行文字；回傳多字結果時，可複製全文，也能點選任一漢字查字。</p></details><details><summary>支援正體字和簡體字嗎？</summary><p>支援常見正體字和簡體字。模糊照片、藝術字、嚴重傾斜、反光或複雜背景可能影響中文 OCR 結果。</p></details><details><summary>圖片會在本機辨識嗎？</summary><p>不會完全在本機辨識。自動裁切和壓縮在瀏覽器中完成，處理後的圖片會上傳到 JianFan.app OCR 服務。</p></details><details><summary>拍照辨識和手寫辨識有何不同？</summary><p>本頁讀取照片或截圖中的漢字；手寫辨識頁則是在田字格逐畫書寫，依筆畫軌跡比對一個漢字。</p></details></section>
+        <section class="pinyin-faq" aria-labelledby="photoFaqTitle"><h2 id="photoFaqTitle">拍照漢字辨識常見問題</h2><details><summary>可以一次辨識多個漢字嗎？</summary><p>可以。圖片可包含單字、詞語或多行文字；回傳多字結果時，可複製全文，也能點選任一漢字查字。</p></details><details><summary>支援正體字和簡體字嗎？</summary><p>支援常見正體字和簡體字。模糊照片、藝術字、嚴重傾斜、反光或複雜背景可能影響中文 OCR 結果。</p></details><details><summary>圖片會在本機辨識嗎？</summary><p>不會完全在本機辨識。自動裁切和壓縮在瀏覽器中完成，處理後的圖片會上傳到 JianFan.app OCR 服務。</p></details><details><summary>拍照辨識和手寫辨識有何不同？</summary><p>本頁讀取照片或截圖中的漢字；手寫辨識頁則是在田字格逐畫書寫，依筆畫軌跡比對一個漢字。</p></details><details><summary>可以把圖片中的中文轉成可複製文字嗎？</summary><p>可以。本工具可用於中文圖片轉文字、圖片文字辨識和從圖片擷取文字，從手機照片、截圖或掃描檔擷取正體字與簡體字，結果可整段複製。</p></details></section>
         <p class="section-kicker pinyin-related-kicker">相關漢字工具</p><nav class="landing-links" aria-label="相關漢字與文字工具"><a href="/zh-tw/chinese-handwriting-recognition/" data-route="chinese-handwriting-recognition">手寫漢字辨識</a><a href="/zh-tw/chinese-character-lookup/" data-route="chinese-character-lookup">漢字查詢與結構拆解</a><a href="/zh-tw/chinese-stroke-order/" data-route="chinese-stroke-order">漢字筆順查詢</a><a href="/zh-tw/chinese-to-pinyin/" data-route="chinese-to-pinyin">漢字轉拼音</a><a href="/zh-tw/han-character-worksheet/" data-route="han-character-worksheet">國字練習紙</a></nav>
       </section>
     </main>
