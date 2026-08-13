@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="Recognize Chinese characters from photos, screenshots and scans online. Copy text or tap any Hanzi for Pinyin, strokes, Unicode, stroke order and structure." />
+    <title>Chinese Character Recognition from Photo | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/en/photo-chinese-character-recognition/" />
+    <link rel="alternate" hreflang="zh-CN" href="https://jianfan.app/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="en" href="https://jianfan.app/en/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/photo-chinese-character-recognition/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/photo-chinese-character-recognition/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/photo-chinese-character-recognition.css" />
+    <script defer src="/vendor/pinyin-pro.js"></script>
+    <script defer src="/photo-chinese-character-recognition.js"></script>
+    <!-- seo-schema:start --><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Chinese Character Recognition from Photo",
+      "alternateName": [
+        "Chinese photo OCR",
+        "Recognize Chinese characters from image",
+        "Hanzi image to text"
+      ],
+      "url": "https://jianfan.app/en/photo-chinese-character-recognition/",
+      "description": "Recognize Chinese characters from photos, screenshots and scans online. Copy text or tap any Hanzi for Pinyin, strokes, Unicode, stroke order and structure.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript and image upload support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://jianfan.app/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Chinese Character Recognition from Photo",
+          "item": "https://jianfan.app/en/photo-chinese-character-recognition/"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "How to recognize Chinese characters from a photo",
+      "description": "Recognize Chinese characters from photos, screenshots and scans online. Copy text or tap any Hanzi for Pinyin, strokes, Unicode, stroke order and structure.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "text": "Photograph the Chinese text, or choose a photo, screenshot or scan from your device."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "text": "Check the automatically cropped preview, then start recognition and wait for the text result."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "text": "Copy the full text, or tap a Hanzi to check its Pinyin, stroke order and structure."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can it recognize more than one Chinese character?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. An image may contain one Hanzi, a phrase or several lines. Copy the complete result or tap any recognized character to look it up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it support Simplified and Traditional Chinese?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It supports common Simplified and Traditional characters. Blur, stylized lettering, glare, steep angles and busy backgrounds can reduce OCR accuracy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does recognition run entirely in my browser?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Cropping and compression run in your browser, then the processed image is uploaded to the JianFan.app OCR service for recognition."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is photo OCR different from handwriting recognition?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This page reads Chinese text from a photo or screenshot. The handwriting tool matches one character from strokes drawn in its writing grid."
+          }
+        }
+      ]
+    }
+  ]
+}</script><!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="photo-chinese-character-recognition" data-page-slug="photo-chinese-character-recognition" data-locale="en">
+    <script type="application/json" id="photoOcrMessages">{"waiting":"Waiting for an image","processingImage":"Cropping and compressing the image","imageReady":"Image ready for recognition","compressionFailed":"The processed image is larger than 2 MB. Take another photo or choose a different image","emptyImage":"The image is empty. Choose another file","sourceTooLarge":"The original image must be 24 MB or smaller","unsupportedImage":"Use a PNG, JPEG, WebP, HEIC or HEIF image","imageSelected":"Image selected","emptyPreviewTitle":"Take or choose a photo","emptyPreviewBody":"Use the camera, photo library or a desktop image","uploading":"Uploading and recognizing the image","recognizing":"Recognizing Chinese characters…","recognizedCharacter":"Recognized as “{character}”","recognizedText":"Chinese text recognized","noText":"No usable Chinese text was returned","timeout":"Recognition timed out. Check your connection and try again","networkError":"Could not reach the recognition service. Check your connection and try again","authError":"Recognition service authorization failed","uploadTooLarge":"The processed image is larger than 2 MB. Take another photo or choose a different image","serviceUnavailable":"Recognition is temporarily unavailable. Try again later","resultEmpty":"Choose an image, then select “Recognize Chinese characters”.","resultSummary":"{count} Chinese characters recognized","selectCharacter":"Look up Chinese character {character}","copiedText":"Extracted text copied","copiedCharacter":"Copied “{character}”","copyFailed":"Automatic copy failed. Select and copy the text directly","recognitionFailed":"Recognition failed"}</script>
+    <a class="skip-nav" href="#main">Skip to main content</a>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="/en/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">拍</span><span>JianFan.app</span></a>
+      <nav class="top-actions" aria-label="Primary navigation"><a class="nav-link" href="/en/">Home</a><label class="language-picker"><span>Language</span><select id="localeSelect" aria-label="Language"><option value="zh-CN">简体中文</option><option value="zh-TW">繁體中文</option><option value="en" selected>English</option><option value="ja">日本語</option><option value="ko">한국어</option></select></label></nav>
+    </header>
+
+    <main id="main" class="photo-ocr-main">
+      <section class="tool-hero photo-ocr-hero" aria-labelledby="pageTitle">
+        <div><p class="section-kicker">PHOTO OCR · EXTRACT HANZI · LOOK UP</p><h1 id="pageTitle">Chinese Character Recognition from Photo</h1><p class="lede">Take or upload a photo, screenshot or scan containing Chinese characters. Copy the extracted text, or tap any Hanzi to check its Pinyin, stroke count, order and structure.</p></div>
+        <div class="photo-ocr-signal" aria-hidden="true"><span>PHOTO</span><strong>字</strong><b>OCR</b></div>
+      </section>
+
+      <section class="standalone-tool photo-ocr-tool" aria-labelledby="photoToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">PHOTO / OCR</p><h2 id="photoToolTitle">Recognize Chinese characters in an image</h2></div><div class="status-pill" id="photoOcrStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>Waiting for an image</span></div></div>
+        <div class="photo-ocr-workspace">
+          <section class="photo-ocr-panel" aria-labelledby="photoSourceTitle">
+            <div class="photo-ocr-panel-head"><span class="photo-ocr-step" aria-hidden="true">01</span><div><h3 id="photoSourceTitle">Choose a Chinese text image</h3><p>Keep the characters sharp and complete. Avoid glare, steep angles and busy backgrounds.</p></div></div>
+            <div class="photo-ocr-capture-row"><button class="photo-ocr-capture" id="photoCapture" type="button">Take or choose a photo</button><input class="visually-hidden" id="photoInput" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,.heic,.heif" capture="environment" /><button class="photo-ocr-secondary" id="photoReset" type="button" disabled>Choose again</button></div>
+            <button class="photo-ocr-recognize" id="photoRecognize" type="button" disabled>Recognize Chinese characters</button>
+            <div class="photo-ocr-canvas-frame is-empty" id="photoSourceFrame"><canvas id="photoSourceCanvas" aria-label="Choose a Chinese text image"></canvas><div class="photo-ocr-empty" id="photoSourceEmpty"><strong>Take or choose a photo</strong><span>PNG, JPEG, WebP, HEIC and HEIF supported</span></div></div>
+          </section>
+
+          <section class="photo-ocr-results" aria-labelledby="photoResultsTitle">
+            <div class="photo-ocr-panel-head"><span class="photo-ocr-step" aria-hidden="true">02</span><div><h3 id="photoResultsTitle">OCR result</h3><p>Copy all extracted text, or tap a highlighted Hanzi for character details.</p></div></div>
+            <p class="photo-ocr-results-empty" id="photoResultsEmpty">Choose an image, then select “Recognize Chinese characters”.</p>
+            <div class="photo-ocr-result-text" id="photoResultText" aria-live="polite" aria-label="OCR result" hidden></div>
+            <div class="photo-ocr-result-actions" id="photoTextActions" hidden><output id="photoResultSummary"></output><a id="photoPinyinText" href="/en/chinese-to-pinyin/" hidden>Convert all to Pinyin</a><button id="photoCopyText" type="button">Copy extracted text</button></div>
+            <article class="photo-ocr-character-detail" id="photoCharacterDetail" aria-labelledby="photoCharacterDetailTitle" hidden><h4 class="visually-hidden" id="photoCharacterDetailTitle">Selected character details</h4><output class="photo-ocr-result-character" id="photoResultCharacter"></output><dl class="photo-ocr-character-meta"><div><dt>Pinyin</dt><dd id="photoResultPinyin">-</dd></div><div><dt>Stroke count</dt><dd id="photoResultStrokes">-</dd></div><div><dt>Unicode</dt><dd id="photoResultUnicode">-</dd></div></dl><div class="photo-ocr-character-actions"><button id="photoCopyCharacter" type="button">Copy character</button><a id="photoStrokeLink" href="/en/chinese-stroke-order/">View stroke order</a><a id="photoPinyinLink" href="/en/chinese-to-pinyin/">Check Pinyin</a><a id="photoStructureLink" href="/en/chinese-character-lookup/">View structure</a></div></article>
+          </section>
+        </div>
+        <p class="photo-ocr-privacy">Your browser automatically crops and compresses the image first. When you start recognition, the processed image is uploaded to the JianFan.app OCR service. Do not upload images containing personal, identity or other sensitive information.</p>
+      </section>
+
+      <section class="seo-band standalone-info" aria-labelledby="photoFeatureTitle">
+        <div class="section-heading"><p class="section-kicker">Chinese photo OCR and Hanzi lookup</p><h2 id="photoFeatureTitle">Extract Chinese text from a photo, then inspect each Hanzi</h2><p class="seo-intro">Use online Chinese character recognition for books, menus, signs, study sheets, screenshots and scanned pages. The tool turns Simplified or Traditional Chinese in an image into copyable text and connects each recognized Hanzi to Pinyin, stroke order and character structure.</p></div>
+        <div class="seo-grid"><article><h3>Photos, screenshots and scans</h3><p>Open the phone camera or photo library, or upload an existing image from a desktop browser.</p></article><article><h3>Automatic image preparation</h3><p>Before upload, the browser finds the content area, trims excess borders and compresses the image to reduce transfer time.</p></article><article><h3>Tap a Hanzi to look it up</h3><p>Select any Chinese character in the result to see Pinyin, stroke count and Unicode, then open stroke-order or structure lookup.</p></article></div>
+        <section class="pinyin-howto" aria-labelledby="photoHowTitle"><h2 id="photoHowTitle">How to recognize Chinese characters from a photo</h2><ol><li>Photograph the Chinese text, or choose a photo, screenshot or scan from your device.</li><li>Check the automatically cropped preview, then start recognition and wait for the text result.</li><li>Copy the full text, or tap a Hanzi to check its Pinyin, stroke order and structure.</li></ol></section>
+        <section class="pinyin-faq" aria-labelledby="photoFaqTitle"><h2 id="photoFaqTitle">Chinese photo OCR questions</h2><details><summary>Can it recognize more than one Chinese character?</summary><p>Yes. An image may contain one Hanzi, a phrase or several lines. Copy the complete result or tap any recognized character to look it up.</p></details><details><summary>Does it support Simplified and Traditional Chinese?</summary><p>It supports common Simplified and Traditional characters. Blur, stylized lettering, glare, steep angles and busy backgrounds can reduce OCR accuracy.</p></details><details><summary>Does recognition run entirely in my browser?</summary><p>No. Cropping and compression run in your browser, then the processed image is uploaded to the JianFan.app OCR service for recognition.</p></details><details><summary>How is photo OCR different from handwriting recognition?</summary><p>This page reads Chinese text from a photo or screenshot. The handwriting tool matches one character from strokes drawn in its writing grid.</p></details></section>
+        <p class="section-kicker pinyin-related-kicker">Related Chinese tools</p><nav class="landing-links" aria-label="Related Chinese character and text tools"><a href="/en/chinese-handwriting-recognition/" data-route="chinese-handwriting-recognition">Chinese handwriting recognition</a><a href="/en/chinese-character-lookup/" data-route="chinese-character-lookup">Chinese character lookup</a><a href="/en/chinese-stroke-order/" data-route="chinese-stroke-order">Chinese stroke order</a><a href="/en/chinese-to-pinyin/" data-route="chinese-to-pinyin">Chinese to Pinyin</a><a href="/en/han-character-worksheet/" data-route="han-character-worksheet">Chinese worksheet generator</a></nav>
+      </section>
+    </main>
+
+    <footer class="site-footer"><p>JianFan.app provides Chinese photo OCR, handwriting, Pinyin, stroke-order and text-conversion tools.</p><nav class="footer-links" aria-label="Footer"><a href="/en/about/">About</a><a href="/en/contact/">Contact</a><a href="/en/privacy/">Privacy Statement</a></nav></footer>
+  </body>
+</html>
