@@ -25,6 +25,11 @@
   let payload;
   let reverseWords;
   const selections = {};
+  const splitRanges = {};
+  const expandedChoices = new Set();
+  let currentChoices = [];
+  let activeChoiceId = "";
+  let focusRequest = "";
   let inputTimer;
 
   function message(key, values = {}) {
@@ -56,33 +61,174 @@
     return payload;
   }
 
-  function renderChoices(choices) {
+  function resetChoiceState() {
+    Object.keys(selections).forEach((key) => delete selections[key]);
+    Object.keys(splitRanges).forEach((key) => delete splitRanges[key]);
+    expandedChoices.clear();
+    currentChoices = [];
+    activeChoiceId = "";
+    focusRequest = "";
+  }
+
+  function buildContext(choice) {
+    const characters = Array.from(elements.input.value);
+    const start = Math.max(0, choice.start - 18);
+    const end = Math.min(characters.length, choice.end + 18);
+    const context = document.createElement("p");
+    context.className = "korean-converter-choice-context";
+    if (start > 0) context.append("…");
+    context.append(characters.slice(start, choice.start).join(""));
+    const mark = document.createElement("mark");
+    mark.textContent = characters.slice(choice.start, choice.end).join("");
+    context.append(mark, characters.slice(choice.end, end).join(""));
+    if (end < characters.length) context.append("…");
+    return context;
+  }
+
+  function moveChoice(offset) {
+    if (currentChoices.length < 2) return;
+    const currentIndex = Math.max(0, currentChoices.findIndex((choice) => choice.id === activeChoiceId));
+    activeChoiceId = currentChoices[(currentIndex + offset + currentChoices.length) % currentChoices.length].id;
+    focusRequest = offset < 0 ? "previous" : "next";
+    renderChoices(currentChoices, true);
+  }
+
+  function renderChoices(choices, preserveFiltered = false) {
     elements.choices.replaceChildren();
-    const ambiguous = choices.filter((choice) => choice.candidates.length > 1).slice(0, 20);
-    elements.choicesEmpty.hidden = ambiguous.length > 0;
-    const fragment = document.createDocumentFragment();
-    for (const choice of ambiguous) {
-      const group = document.createElement("section");
-      group.className = "korean-converter-choice";
-      const title = document.createElement("strong");
-      title.textContent = choice.source;
-      const buttons = document.createElement("div");
-      for (const candidate of choice.candidates.slice(0, 12)) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.textContent = candidate;
-        button.classList.toggle("is-active", (selections[choice.source] || choice.selected) === candidate);
-        button.setAttribute("aria-pressed", String((selections[choice.source] || choice.selected) === candidate));
-        button.addEventListener("click", () => {
-          selections[choice.source] = candidate;
-          convert();
-        });
-        buttons.append(button);
-      }
-      group.append(title, buttons);
-      fragment.append(group);
+    if (!preserveFiltered) currentChoices = choices.filter((choice) => choice.candidates.length > 1);
+    elements.choicesEmpty.hidden = currentChoices.length > 0;
+    if (!currentChoices.length) return;
+
+    let currentIndex = currentChoices.findIndex((choice) => choice.id === activeChoiceId);
+    if (currentIndex < 0) {
+      currentIndex = currentChoices.findIndex((choice) => !choice.resolved);
+      if (currentIndex < 0) currentIndex = 0;
     }
-    elements.choices.append(fragment);
+    const choice = currentChoices[currentIndex];
+    activeChoiceId = choice.id;
+    let focusTarget;
+    function trackFocus(button, key) {
+      if (focusRequest === key || (focusRequest === "firstCandidate" && key.startsWith("candidate:"))) {
+        focusTarget ||= button;
+      }
+    }
+
+    const group = document.createElement("section");
+    group.className = "korean-converter-choice";
+    group.setAttribute("aria-label", `${choice.source} ${message("choicePosition", { current: currentIndex + 1, total: currentChoices.length })}`);
+
+    const header = document.createElement("div");
+    header.className = "korean-converter-choice-header";
+    const title = document.createElement("strong");
+    title.textContent = choice.source;
+    const counter = document.createElement("span");
+    counter.textContent = message("choicePosition", { current: currentIndex + 1, total: currentChoices.length });
+    const navigation = document.createElement("div");
+    navigation.className = "korean-converter-choice-navigation";
+    for (const [offset, symbol, label, key] of [[-1, "←", message("previousChoice"), "previous"], [1, "→", message("nextChoice"), "next"]]) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = symbol;
+      button.title = label;
+      button.setAttribute("aria-label", label);
+      button.disabled = currentChoices.length < 2;
+      button.addEventListener("click", () => moveChoice(offset));
+      trackFocus(button, key);
+      navigation.append(button);
+    }
+    header.append(title, counter, navigation);
+
+    const candidates = document.createElement("div");
+    candidates.className = "korean-converter-choice-candidates";
+    const expanded = expandedChoices.has(choice.id);
+    const visibleCandidates = expanded ? choice.candidates : choice.candidates.slice(0, 24);
+    for (const candidate of visibleCandidates) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = candidate;
+      button.classList.toggle("is-active", choice.selected === candidate);
+      button.setAttribute("aria-pressed", String(choice.selected === candidate));
+      button.addEventListener("click", () => {
+        selections[choice.id] = candidate;
+        activeChoiceId = choice.id;
+        focusRequest = `candidate:${candidate}`;
+        convert();
+      });
+      trackFocus(button, `candidate:${candidate}`);
+      candidates.append(button);
+    }
+    if (choice.candidates.length > 24) {
+      const expand = document.createElement("button");
+      expand.type = "button";
+      expand.className = "korean-converter-choice-expand";
+      expand.textContent = expanded
+        ? message("showLess")
+        : message("showAll", { count: choice.candidates.length.toLocaleString(body.dataset.locale) });
+      expand.setAttribute("aria-expanded", String(expanded));
+      expand.addEventListener("click", () => {
+        if (expanded) expandedChoices.delete(choice.id);
+        else expandedChoices.add(choice.id);
+        focusRequest = "expand";
+        renderChoices(currentChoices, true);
+      });
+      trackFocus(expand, "expand");
+      candidates.append(expand);
+    }
+
+    const actions = document.createElement("div");
+    actions.className = "korean-converter-choice-actions";
+    const keep = document.createElement("button");
+    keep.type = "button";
+    keep.textContent = message("keepOriginal");
+    keep.classList.toggle("is-active", choice.resolved && choice.selected === choice.source);
+    keep.setAttribute("aria-pressed", String(choice.resolved && choice.selected === choice.source));
+    keep.addEventListener("click", () => {
+      selections[choice.id] = choice.source;
+      activeChoiceId = choice.id;
+      focusRequest = "keep";
+      convert();
+    });
+    trackFocus(keep, "keep");
+    actions.append(keep);
+
+    if (Array.from(choice.source).length > 1) {
+      const split = document.createElement("button");
+      split.type = "button";
+      split.textContent = message("splitCharacters");
+      split.addEventListener("click", () => {
+        splitRanges[choice.id] = { start: choice.start, end: choice.end, source: choice.source };
+        delete selections[choice.id];
+        activeChoiceId = "";
+        focusRequest = "firstCandidate";
+        convert();
+      });
+      trackFocus(split, "split");
+      actions.append(split);
+    }
+
+    const matchingOccurrences = currentChoices.filter((item) => item.source === choice.source && item.candidates.includes(choice.selected));
+    if (choice.selected !== choice.source && matchingOccurrences.length > 1) {
+      const applyAll = document.createElement("button");
+      applyAll.type = "button";
+      applyAll.textContent = message("applyAll");
+      applyAll.addEventListener("click", () => {
+        for (const item of matchingOccurrences) selections[item.id] = choice.selected;
+        activeChoiceId = choice.id;
+        focusRequest = "applyAll";
+        convert();
+      });
+      trackFocus(applyAll, "applyAll");
+      actions.append(applyAll);
+    }
+
+    group.append(header, buildContext(choice), candidates, actions);
+    elements.choices.append(group);
+    if (focusTarget) {
+      focusRequest = "";
+      window.setTimeout(() => {
+        if (focusTarget.isConnected) focusTarget.focus();
+      }, 0);
+    }
   }
 
   async function convert() {
@@ -91,28 +237,32 @@
       elements.output.value = "";
       elements.choices.replaceChildren();
       elements.choicesEmpty.hidden = false;
+      currentChoices = [];
+      activeChoiceId = "";
       setStatus("idle");
       return;
     }
     try {
       const data = await ensureWords();
       let pending = 0;
+      let result;
       if (direction === "hangul-to-hanja") {
-        const result = core.convertHangulToHanja(input, data.words, {
+        result = core.convertHangulToHanja(input, data.words, {
           mode: elements.mode.value,
-          selections
+          selections,
+          splitRanges
         });
-        elements.output.value = result.output;
-        renderChoices(result.choices);
-        pending = new Set(result.choices
-          .filter((choice) => choice.candidates.length > 1 && !selections[choice.source])
-          .map((choice) => choice.source)).size;
       } else {
         if (!reverseWords) reverseWords = core.buildReverseWords(data.words);
-        elements.output.value = core.convertHanjaToHangul(input, reverseWords, { mode: elements.mode.value });
-        elements.choices.replaceChildren();
-        elements.choicesEmpty.hidden = false;
+        result = core.convertHanjaToHangul(input, reverseWords, {
+          mode: elements.mode.value,
+          selections,
+          splitRanges
+        });
       }
+      elements.output.value = result.output;
+      renderChoices(result.choices);
+      pending = result.choices.filter((choice) => choice.candidates.length > 1 && !choice.resolved).length;
       setStatus(pending ? "pending" : "ready", pending ? "idle" : "ready", {
         count: [...elements.output.value].length.toLocaleString(body.dataset.locale),
         pending: pending.toLocaleString(body.dataset.locale)
@@ -127,7 +277,7 @@
   function setDirection(nextDirection) {
     if (direction === nextDirection) return;
     direction = nextDirection;
-    Object.keys(selections).forEach((key) => delete selections[key]);
+    resetChoiceState();
     elements.directions.forEach((button) => {
       const active = button.dataset.koreanDirection === direction;
       button.classList.toggle("is-active", active);
@@ -147,10 +297,12 @@
     inputTimer = window.setTimeout(convert, 350);
   });
   elements.sample.addEventListener("click", () => {
+    resetChoiceState();
     elements.input.value = direction === "hangul-to-hanja" ? "대한민국의 역사와 문화" : "大韓民國의 歷史와 文化";
     convert();
   });
   elements.clear.addEventListener("click", () => {
+    resetChoiceState();
     elements.input.value = "";
     elements.output.value = "";
     elements.choices.replaceChildren();
