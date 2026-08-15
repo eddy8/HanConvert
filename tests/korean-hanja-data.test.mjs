@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import vm from "node:vm";
+import { buildReverseWordObject } from "../scripts/korean-hanja-reverse-build.mjs";
 
 const source = await readFile(new URL("../korean-hanja-data.js", import.meta.url), "utf8");
 const context = { TextDecoder };
@@ -10,6 +11,7 @@ vm.runInNewContext(source, context);
 const core = context.KoreanHanjaData;
 const characters = JSON.parse(await readFile(new URL("../data/korean-hanja/index.json", import.meta.url), "utf8"));
 const wordPayload = JSON.parse(await readFile(new URL("../data/korean-hanja/words.json", import.meta.url), "utf8"));
+const reverseWordPayload = JSON.parse(await readFile(new URL("../data/korean-hanja/reverse-words.json", import.meta.url), "utf8"));
 
 test("contains Korean readings and current name-use status", () => {
   const record = characters.records.find((item) => item.character === "韓");
@@ -93,6 +95,18 @@ test("converts Hanja words to Hangul using the reverse dictionary", () => {
   assert.equal(core.convertHanjaToHangul("大韓民國과 韓國", reverse).output, "대한민국과 한국");
 });
 
+test("converts with the pre-generated reverse dictionary without building a Map", () => {
+  assert.equal(reverseWordPayload.meta.entries, 258282);
+  assert.ok(reverseWordPayload.words["大韓民國"].includes("대한민국"));
+  assert.equal(core.convertHanjaToHangul("大韓民國", reverseWordPayload.words).output, "대한민국");
+});
+
+test("keeps build-time and browser reverse normalization aligned", () => {
+  const words = { 력사: ["歷史"], 역사: ["歷史"], 녀자: ["女子"] };
+  const browserResult = Object.fromEntries(core.buildReverseWords(words));
+  assert.deepEqual(buildReverseWordObject(words), JSON.parse(JSON.stringify(browserResult)));
+});
+
 test("preserves polyphonic Hanja until its Korean reading is selected", () => {
   const reverse = core.buildReverseWords({ 낙: ["樂"], 락: ["樂"], 악: ["樂"], 요: ["樂"] });
   const pending = core.convertHanjaToHangul("樂", reverse);
@@ -124,4 +138,61 @@ test("prefers South Korean initial-sound-law readings in reverse conversion", ()
   const reverse = core.buildReverseWords({ 력사: ["歷史"], 역사: ["歷史"] });
   assert.deepEqual([...reverse.get("歷史")], ["역사"]);
   assert.equal(core.convertHanjaToHangul("歷史", reverse).output, "역사");
+});
+
+test("formats annotations in a stable Hangul-Hanja order in both directions", () => {
+  const words = { 국가: ["國家"] };
+  const reverse = core.buildReverseWords(words);
+  assert.equal(core.convertHangulToHanja("국가", words, { mode: "hangul-hanja" }).output, "국가(國家)");
+  assert.equal(core.convertHanjaToHangul("國家", reverse, { mode: "hangul-hanja" }).output, "국가(國家)");
+  assert.equal(core.convertHangulToHanja("국가", words, { mode: "hanja-hangul" }).output, "國家(국가)");
+  assert.equal(core.convertHanjaToHangul("國家", reverse, { mode: "hanja-hangul" }).output, "國家(국가)");
+});
+
+test("normalizes and limits Korean personal dictionary entries", () => {
+  const entries = core.normalizePersonalDictionaryEntries([
+    { id: "old", hangul: " 수도 ", hanja: " 首都 ", enabled: false },
+    { id: "new", hangul: "수도", hanja: "水道" },
+    { hangul: "plain latin", hanja: "水道" },
+    { hangul: "수도", hanja: "plain latin" }
+  ]);
+  assert.equal(entries.length, 1);
+  assert.deepEqual({ ...entries[0] }, { id: "new", hangul: "수도", hanja: "水道", enabled: true });
+});
+
+test("prioritizes the personal dictionary for Hangul and Hanja conversion", () => {
+  const entries = [{ hangul: "수도", hanja: "水道", enabled: true }];
+  const personalWords = core.buildPersonalWords(entries);
+  const personalReverseWords = core.buildPersonalReverseWords(entries);
+  const words = { 수도: ["首都", "水道"] };
+  const reverse = core.buildReverseWords({ 수도: ["首都"], 물길: ["水道"] });
+
+  const toHanja = core.convertHangulToHanja("수도", words, { personalWords });
+  assert.equal(toHanja.output, "水道");
+  assert.equal(toHanja.choices[0].resolved, true);
+
+  const toHangul = core.convertHanjaToHangul("水道", reverse, { personalReverseWords });
+  assert.equal(toHangul.output, "수도");
+  assert.equal(toHangul.choices[0].resolved, true);
+});
+
+test("builds concise Korean glosses and expandable character details for candidates", () => {
+  const recordMap = core.buildRecordMap(characters);
+  const toHanja = core.buildCandidateDetails(
+    { direction: "hangul-to-hanja", source: "수도" },
+    "首都",
+    recordMap
+  );
+  assert.equal(toHanja.summary, "首 머리 수 · 都 도읍 도");
+  assert.deepEqual(
+    Array.from(toHanja.items, ({ character, radical, strokes }) => ({ character, radical, strokes })),
+    [{ character: "首", radical: "首", strokes: 9 }, { character: "都", radical: "阝", strokes: 10 }]
+  );
+
+  const toHangul = core.buildCandidateDetails(
+    { direction: "hanja-to-hangul", source: "樂" },
+    "악",
+    recordMap
+  );
+  assert.equal(toHangul.summary, "樂 풍류 악");
 });

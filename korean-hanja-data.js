@@ -7,11 +7,18 @@
 
   const CHARACTER_URL = "/data/korean-hanja/index.json";
   const WORD_URL = "/data/korean-hanja/words.json";
+  const REVERSE_WORD_URL = "/data/korean-hanja/reverse-words.json";
   const NAME_URL = "/data/korean-hanja/name-use.json";
+  const PERSONAL_DICTIONARY_STORAGE_KEY = "jianfan-korean-hanja-dictionary-v1";
+  const MAX_PERSONAL_DICTIONARY_ENTRIES = 200;
+  const MAX_PERSONAL_DICTIONARY_TERM_LENGTH = 80;
   const HAN_PATTERN = /^\p{Script=Han}$/u;
   const HANGUL_PATTERN = /^[가-힣]$/u;
+  const HAN_CONTENT_PATTERN = /\p{Script=Han}/u;
+  const HANGUL_CONTENT_PATTERN = /[가-힣]/u;
   let characterPromise;
   let wordPromise;
+  let reverseWordPromise;
   let namePromise;
 
   async function parseResponse(response, onProgress) {
@@ -65,6 +72,17 @@
     return wordPromise;
   }
 
+  function loadReverseWords(options = {}) {
+    if (!reverseWordPromise) {
+      reverseWordPromise = loadUrl(REVERSE_WORD_URL, reverseWordPromise, options.onProgress, options.fetch)
+        .catch((error) => {
+          reverseWordPromise = undefined;
+          throw error;
+        });
+    }
+    return reverseWordPromise;
+  }
+
   function loadNames(options = {}) {
     if (!namePromise) {
       namePromise = loadUrl(NAME_URL, namePromise, options.onProgress, options.fetch)
@@ -78,6 +96,80 @@
 
   function buildRecordMap(payload) {
     return new Map((payload?.records || []).map((record) => [record.character, record]));
+  }
+
+  function buildCandidateDetails(choice, candidate, records) {
+    const recordMap = records instanceof Map ? records : buildRecordMap(records);
+    const hanja = choice?.direction === "hanja-to-hangul" ? String(choice.source || "") : String(candidate || "");
+    const hangul = choice?.direction === "hanja-to-hangul" ? String(candidate || "") : String(choice?.source || "");
+    const hanjaCharacters = Array.from(hanja);
+    const hangulCharacters = Array.from(hangul);
+    const alignReadings = hanjaCharacters.length === hangulCharacters.length;
+    const items = hanjaCharacters.map((character, index) => {
+      const record = recordMap.get(character);
+      const reading = alignReadings ? hangulCharacters[index] : "";
+      const readingIndex = reading ? record?.readings?.indexOf(reading) ?? -1 : -1;
+      const glossGroup = readingIndex >= 0 ? record?.glosses?.[readingIndex] : record?.glosses?.[0];
+      const gloss = String(glossGroup || "").split(/\s*,\s*/u)[0];
+      return {
+        character,
+        reading: reading || record?.readings?.[0] || "",
+        gloss,
+        radical: record?.radical || "",
+        strokes: Number(record?.strokes) || 0
+      };
+    });
+    return {
+      items,
+      summary: items.map((item) => `${item.character} ${item.gloss || item.reading}`.trim()).join(" · ")
+    };
+  }
+
+  function normalizePersonalDictionaryEntries(value) {
+    if (!Array.isArray(value)) return [];
+    const entries = [];
+    const hangulIndexes = new Map();
+    for (const rawEntry of value) {
+      if (!rawEntry || typeof rawEntry !== "object") continue;
+      const hangul = String(rawEntry.hangul || "").normalize("NFC").trim();
+      const hanja = String(rawEntry.hanja || "").normalize("NFC").trim();
+      if (!hangul || !hanja || !HANGUL_CONTENT_PATTERN.test(hangul) || !HAN_CONTENT_PATTERN.test(hanja)) continue;
+      if (Array.from(hangul).length > MAX_PERSONAL_DICTIONARY_TERM_LENGTH || Array.from(hanja).length > MAX_PERSONAL_DICTIONARY_TERM_LENGTH) continue;
+      const entry = {
+        id: typeof rawEntry.id === "string" && rawEntry.id ? rawEntry.id : `korean-dictionary-${entries.length + 1}`,
+        hangul,
+        hanja,
+        enabled: rawEntry.enabled !== false
+      };
+      if (hangulIndexes.has(hangul)) {
+        entries[hangulIndexes.get(hangul)] = entry;
+        continue;
+      }
+      hangulIndexes.set(hangul, entries.length);
+      entries.push(entry);
+      if (entries.length >= MAX_PERSONAL_DICTIONARY_ENTRIES) break;
+    }
+    return entries;
+  }
+
+  function buildPersonalWords(entries) {
+    const words = Object.create(null);
+    for (const entry of normalizePersonalDictionaryEntries(entries)) {
+      if (entry.enabled) words[entry.hangul] = [entry.hanja];
+    }
+    return words;
+  }
+
+  function buildPersonalReverseWords(entries) {
+    const reverse = new Map();
+    for (const entry of normalizePersonalDictionaryEntries(entries)) {
+      if (!entry.enabled) continue;
+      const readings = reverse.get(entry.hanja) || [];
+      const reading = normalizeInitialSoundLaw(entry.hangul);
+      if (!readings.includes(reading)) readings.push(reading);
+      reverse.set(entry.hanja, readings);
+    }
+    return reverse;
   }
 
   function normalizeKorean(value) {
@@ -153,9 +245,14 @@
     });
   }
 
-  function formatConversion(source, selected, mode) {
+  function formatConversion(source, selected, mode, direction) {
     if (selected === source) return source;
-    return mode === "parentheses" ? `${source}(${selected})` : selected;
+    if (mode === "parentheses") return `${source}(${selected})`;
+    const hangul = direction === "hangul-to-hanja" ? source : selected;
+    const hanja = direction === "hangul-to-hanja" ? selected : source;
+    if (mode === "hangul-hanja") return `${hangul}(${hanja})`;
+    if (mode === "hanja-hangul") return `${hanja}(${hangul})`;
+    return selected;
   }
 
   function convertHangulToHanja(text, words, options = {}) {
@@ -163,6 +260,7 @@
     const characters = Array.from(input);
     const mode = options.mode || "replace";
     const selections = options.selections || {};
+    const personalWords = options.personalWords || {};
     const allowSingleCharacter = characters.length === 1 && HANGUL_PATTERN.test(characters[0]);
     const choices = [];
     let output = "";
@@ -173,7 +271,9 @@
         continue;
       }
       const splitRange = findSplitRange(options.splitRanges, characters, index);
-      const match = longestMatch(input, index, splitRange ? 1 : 8, (token) => words?.[token]);
+      const maximumLength = splitRange ? 1 : 8;
+      const match = longestMatch(input, index, maximumLength, (token) => personalWords?.[token])
+        || longestMatch(input, index, maximumLength, (token) => words?.[token]);
       if (!match) {
         output += characters[index];
         index += 1;
@@ -186,7 +286,7 @@
       }
       const id = createChoiceId("hangul-to-hanja", index, match.length, match.token);
       const resolution = resolveChoice(match.value, selections, id, match.token);
-      output += formatConversion(match.token, resolution.selected, mode);
+      output += formatConversion(match.token, resolution.selected, mode, "hangul-to-hanja");
       choices.push({
         id,
         direction: "hangul-to-hanja",
@@ -215,6 +315,11 @@
     return reverse;
   }
 
+  function lookupReading(dictionary, token) {
+    if (dictionary instanceof Map) return dictionary.get(token);
+    return dictionary?.[token];
+  }
+
   function normalizeInitialSoundLaw(word) {
     const characters = Array.from(String(word || ""));
     if (!characters.length) return "";
@@ -237,6 +342,7 @@
     const characters = Array.from(input);
     const mode = options.mode || "replace";
     const selections = options.selections || {};
+    const personalReverseWords = options.personalReverseWords;
     const choices = [];
     let output = "";
     for (let index = 0; index < characters.length;) {
@@ -246,7 +352,9 @@
         continue;
       }
       const splitRange = findSplitRange(options.splitRanges, characters, index);
-      const match = longestMatch(input, index, splitRange ? 1 : 8, (token) => reverseWords?.get(token));
+      const maximumLength = splitRange ? 1 : 8;
+      const match = longestMatch(input, index, maximumLength, (token) => lookupReading(personalReverseWords, token))
+        || longestMatch(input, index, maximumLength, (token) => lookupReading(reverseWords, token));
       if (!match) {
         output += characters[index];
         index += 1;
@@ -255,7 +363,7 @@
       const candidates = Array.isArray(match.value) ? match.value : [match.value];
       const id = createChoiceId("hanja-to-hangul", index, match.length, match.token);
       const resolution = resolveChoice(candidates, selections, id, match.token);
-      output += formatConversion(match.token, resolution.selected, mode);
+      output += formatConversion(match.token, resolution.selected, mode, "hanja-to-hangul");
       choices.push({
         id,
         direction: "hanja-to-hangul",
@@ -273,17 +381,26 @@
 
   return {
     CHARACTER_URL,
+    MAX_PERSONAL_DICTIONARY_ENTRIES,
+    MAX_PERSONAL_DICTIONARY_TERM_LENGTH,
     NAME_URL,
+    PERSONAL_DICTIONARY_STORAGE_KEY,
+    REVERSE_WORD_URL,
     WORD_URL,
+    buildCandidateDetails,
+    buildPersonalReverseWords,
+    buildPersonalWords,
     buildRecordMap,
     buildReverseWords,
     convertHangulToHanja,
     convertHanjaToHangul,
     loadCharacters,
     loadNames,
+    loadReverseWords,
     loadWords,
     normalizeInitialSoundLaw,
     normalizeKorean,
+    normalizePersonalDictionaryEntries,
     searchRecords
   };
 });
