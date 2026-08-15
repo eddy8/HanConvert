@@ -16,7 +16,7 @@ const locales = {
   "zh-TW": { prefix: "zh-tw", lang: "zh-Hant", headings: ["韓國漢字查詢與線上字典", "韓國漢字手寫辨識與查字", "韓文與韓國漢字線上轉換", "韓國人名用漢字與姓名漢字查詢"] },
   en: { prefix: "en", lang: "en", headings: ["Korean Hanja Dictionary & Lookup", "Korean Hanja Handwriting Recognition", "Hangul Hanja Converter", "Korean Personal-Name Hanja Search"] },
   ja: { prefix: "ja", lang: "ja", headings: ["韓国漢字検索・オンライン辞典", "韓国漢字の手書き検索", "ハングル・韓国漢字変換", "韓国の人名用漢字・名前漢字検索"] },
-  ko: { prefix: "ko", lang: "ko", headings: ["한자 찾기·온라인 옥편", "한자 필기인식·써서 찾기", "한글 한자 변환·한자 한글 변환", "인명용 한자·이름 한자 찾기"] }
+  ko: { prefix: "ko", lang: "ko", headings: ["한자 찾기·온라인 옥편", "한자 필기인식·써서 찾기", "한자 변환기·한글 한자 변환", "인명용 한자·이름 한자 찾기"] }
 };
 
 function pagePath(prefix, slug) {
