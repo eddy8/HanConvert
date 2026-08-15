@@ -91,6 +91,15 @@ test("ships localized P1 candidate details, output formats, and personal diction
   }
 });
 
+test("uses natural Chinese wording for both conversion directions", async () => {
+  const simplified = await readFile(pagePath("", "hangul-hanja-converter"), "utf8");
+  const traditional = await readFile(pagePath("zh-tw", "hangul-hanja-converter"), "utf8");
+  assert.ok(simplified.includes("支持韩文转汉字与汉字转韩文，优先匹配完整词语"));
+  assert.ok(traditional.includes("支援韓文轉漢字與漢字轉韓文，優先配對完整詞語"));
+  assert.doesNotMatch(simplified, /在 한글 한자 변환 与 한자 한글 변환 之间切换/u);
+  assert.doesNotMatch(traditional, /在 한글 한자 변환 與 한자 한글 변환 之間切換/u);
+});
+
 test("ships localized Korean Hanja remote-recognition controls and accurate data-use copy", async () => {
   const prompts = {
     "zh-CN": ["候选不准确？", "试试远程识别"],
