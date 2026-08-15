@@ -329,7 +329,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const koreanTargetKeywords = new Map([
     [path.join("ko", "korean-hanja-dictionary", "index.html"), ["한자 찾기", "옥편", "부수", "획수"]],
     [path.join("ko", "korean-hanja-handwriting-recognition", "index.html"), ["한자 필기인식", "한자 써서 찾기"]],
-    [path.join("ko", "hangul-hanja-converter", "index.html"), ["한글 한자 변환", "한자 한글 변환"]],
+    [path.join("ko", "hangul-hanja-converter", "index.html"), ["한자 변환기", "한글 한자 변환", "한자 한글 변환", "한자 번역기", "한자 독음 변환기"]],
     [path.join("ko", "korean-name-hanja", "index.html"), ["인명용 한자", "이름 한자"]]
   ]).get(relativePath);
   for (const keyword of koreanTargetKeywords || []) {
