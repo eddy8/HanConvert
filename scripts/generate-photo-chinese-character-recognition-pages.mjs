@@ -18,7 +18,7 @@ const locales = {
 
 const content = {
   "zh-CN": {
-    title: "在线拍照汉字识别 - 图片转文字与拍照查字 | JianFan.app",
+    title: "拍照识字 - 在线拍照汉字识别、图片转文字与拍照查字 | JianFan.app",
     alternateNames: ["图片识别汉字", "拍照查字", "中文 OCR", "汉字图片转文字", "图片文字识别", "图片提取文字"],
     eyebrow: "拍照识字 · 中文 OCR · 点击查字",
     heading: "在线拍照汉字识别",
