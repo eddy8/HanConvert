@@ -54,6 +54,23 @@ test("uses the expected browser scripts for each Korean tool", async () => {
   }
 });
 
+test("ships localized bidirectional conversion-review controls", async () => {
+  const labels = {
+    "zh-CN": ["转换候选", "保留原文", "逐字选择", "相同词全部使用此项"],
+    "zh-TW": ["轉換候選", "保留原文", "逐字選擇", "相同詞全部使用此項"],
+    en: ["Conversion choices", "Keep original", "Choose one character at a time", "Use for every matching occurrence"],
+    ja: ["変換候補", "原文のまま", "1文字ずつ選ぶ", "同じ語のすべてに適用"],
+    ko: ["변환 후보", "원문 유지", "한 자씩 선택", "같은 낱말에 모두 적용"]
+  };
+  for (const [locale, config] of Object.entries(locales)) {
+    const html = await readFile(pagePath(config.prefix, "hangul-hanja-converter"), "utf8");
+    assert.ok(html.includes(`<h3 id="koreanConverterChoicesTitle">${labels[locale][0]}</h3>`), `${locale} review heading`);
+    for (const label of labels[locale].slice(1)) assert.ok(html.includes(label), `${locale} includes ${label}`);
+    assert.ok(html.includes("data-message-previous-choice="), `${locale} previous occurrence control`);
+    assert.ok(html.includes("data-message-next-choice="), `${locale} next occurrence control`);
+  }
+});
+
 test("ships localized Korean Hanja remote-recognition controls and accurate data-use copy", async () => {
   const prompts = {
     "zh-CN": ["候选不准确？", "试试远程识别"],

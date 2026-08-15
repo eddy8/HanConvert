@@ -122,6 +122,42 @@
     return null;
   }
 
+  function createChoiceId(direction, start, length, source) {
+    return `${direction}:${start}:${start + length}:${source}`;
+  }
+
+  function getOptionValue(options, key) {
+    if (options instanceof Map) return options.get(key);
+    return Object.prototype.hasOwnProperty.call(options || {}, key) ? options[key] : undefined;
+  }
+
+  function resolveChoice(candidates, selections, id, source) {
+    if (candidates.length === 1) return { selected: candidates[0], resolved: true };
+    const occurrenceSelection = getOptionValue(selections, id);
+    const legacySelection = occurrenceSelection === undefined ? getOptionValue(selections, source) : undefined;
+    const requested = occurrenceSelection === undefined ? legacySelection : occurrenceSelection;
+    if (requested === source) return { selected: source, resolved: true };
+    if (candidates.includes(requested)) return { selected: requested, resolved: true };
+    return { selected: source, resolved: false };
+  }
+
+  function findSplitRange(splitRanges, characters, index) {
+    const ranges = splitRanges instanceof Map
+      ? [...splitRanges.values()]
+      : Array.isArray(splitRanges)
+        ? splitRanges
+        : Object.values(splitRanges || {});
+    return ranges.find((range) => {
+      if (!range || index < range.start || index >= range.end) return false;
+      return characters.slice(range.start, range.end).join("") === range.source;
+    });
+  }
+
+  function formatConversion(source, selected, mode) {
+    if (selected === source) return source;
+    return mode === "parentheses" ? `${source}(${selected})` : selected;
+  }
+
   function convertHangulToHanja(text, words, options = {}) {
     const input = String(text || "");
     const characters = Array.from(input);
@@ -136,28 +172,31 @@
         index += 1;
         continue;
       }
-      const match = longestMatch(input, index, 8, (token) => words?.[token]);
+      const splitRange = findSplitRange(options.splitRanges, characters, index);
+      const match = longestMatch(input, index, splitRange ? 1 : 8, (token) => words?.[token]);
       if (!match) {
         output += characters[index];
         index += 1;
         continue;
       }
-      if (match.length === 1 && !allowSingleCharacter) {
+      if (match.length === 1 && !allowSingleCharacter && !splitRange) {
         output += characters[index];
         index += 1;
         continue;
       }
-      const selected = match.value.length === 1
-        ? match.value[0]
-        : match.value.includes(selections[match.token])
-          ? selections[match.token]
-          : match.token;
-      output += selected === match.token
-        ? match.token
-        : mode === "parentheses"
-          ? `${match.token}(${selected})`
-          : selected;
-      choices.push({ source: match.token, selected, candidates: match.value });
+      const id = createChoiceId("hangul-to-hanja", index, match.length, match.token);
+      const resolution = resolveChoice(match.value, selections, id, match.token);
+      output += formatConversion(match.token, resolution.selected, mode);
+      choices.push({
+        id,
+        direction: "hangul-to-hanja",
+        start: index,
+        end: index + match.length,
+        source: match.token,
+        selected: resolution.selected,
+        resolved: resolution.resolved,
+        candidates: match.value
+      });
       index += match.length;
     }
     return { output, choices };
@@ -167,8 +206,10 @@
     const reverse = new Map();
     for (const [hangul, candidates] of Object.entries(words || {})) {
       for (const hanja of candidates) {
-        const current = reverse.get(hanja);
-        if (!current || normalizeInitialSoundLaw(current) === hangul) reverse.set(hanja, hangul);
+        const reading = normalizeInitialSoundLaw(hangul);
+        const readings = reverse.get(hanja) || [];
+        if (!readings.includes(reading)) readings.push(reading);
+        reverse.set(hanja, readings);
       }
     }
     return reverse;
@@ -195,6 +236,8 @@
     const input = String(text || "");
     const characters = Array.from(input);
     const mode = options.mode || "replace";
+    const selections = options.selections || {};
+    const choices = [];
     let output = "";
     for (let index = 0; index < characters.length;) {
       if (!HAN_PATTERN.test(characters[index])) {
@@ -202,16 +245,30 @@
         index += 1;
         continue;
       }
-      const match = longestMatch(input, index, 8, (token) => reverseWords?.get(token));
+      const splitRange = findSplitRange(options.splitRanges, characters, index);
+      const match = longestMatch(input, index, splitRange ? 1 : 8, (token) => reverseWords?.get(token));
       if (!match) {
         output += characters[index];
         index += 1;
         continue;
       }
-      output += mode === "parentheses" ? `${match.token}(${match.value})` : match.value;
+      const candidates = Array.isArray(match.value) ? match.value : [match.value];
+      const id = createChoiceId("hanja-to-hangul", index, match.length, match.token);
+      const resolution = resolveChoice(candidates, selections, id, match.token);
+      output += formatConversion(match.token, resolution.selected, mode);
+      choices.push({
+        id,
+        direction: "hanja-to-hangul",
+        start: index,
+        end: index + match.length,
+        source: match.token,
+        selected: resolution.selected,
+        resolved: resolution.resolved,
+        candidates
+      });
       index += match.length;
     }
-    return output;
+    return { output, choices };
   }
 
   return {
