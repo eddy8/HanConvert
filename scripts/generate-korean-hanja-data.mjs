@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { buildReverseWordObject } from "./korean-hanja-reverse-build.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const libhangulPath = process.argv[2];
@@ -192,6 +193,7 @@ const words = Object.fromEntries(
     .sort(([left], [right]) => left.localeCompare(right, "ko"))
     .map(([hangul, candidates]) => [hangul, candidates])
 );
+const reverseWords = buildReverseWordObject(words);
 const browserCompatibleNameCount = [...courtCodes.values()].filter((record) => record.browserCompatible).length;
 const generatedAt = new Date().toISOString();
 
@@ -225,6 +227,17 @@ await writeFile(
 await writeFile(
   path.join(outputDirectory, "words.json"),
   `${JSON.stringify({ meta: { generatedAt, entries: wordCandidates.size }, words })}\n`
+);
+await writeFile(
+  path.join(outputDirectory, "reverse-words.json"),
+  `${JSON.stringify({
+    meta: {
+      generatedAt,
+      entries: Object.keys(reverseWords).length,
+      source: "/data/korean-hanja/words.json"
+    },
+    words: reverseWords
+  })}\n`
 );
 await writeFile(
   path.join(outputDirectory, "name-use.json"),

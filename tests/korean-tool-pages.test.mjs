@@ -71,6 +71,26 @@ test("ships localized bidirectional conversion-review controls", async () => {
   }
 });
 
+test("ships localized P1 candidate details, output formats, and personal dictionary controls", async () => {
+  const labels = {
+    "zh-CN": ["个人词典", "三种显示格式", "候选音训与个人词典"],
+    "zh-TW": ["個人辭典", "三種顯示格式", "候選音訓與個人辭典"],
+    en: ["Personal dictionary", "Three output layouts", "Korean glosses and personal terms"],
+    ja: ["個人辞書", "3種類の表示形式", "韓国語の訓と個人辞書"],
+    ko: ["개인 한자 사전", "세 가지 표기 방식", "훈음 확인과 개인 사전"]
+  };
+  for (const [locale, config] of Object.entries(locales)) {
+    const html = await readFile(pagePath(config.prefix, "hangul-hanja-converter"), "utf8");
+    assert.ok(html.includes('<option value="hangul-hanja">한글(漢字)</option>'), `${locale} Hangul-first output`);
+    assert.ok(html.includes('<option value="hanja-hangul">漢字(한글)</option>'), `${locale} Hanja-first output`);
+    assert.ok(html.includes('id="koreanConverterDictionaryForm"'), `${locale} personal dictionary form`);
+    assert.ok(html.includes('id="koreanConverterDictionaryList"'), `${locale} personal dictionary list`);
+    assert.ok(html.includes("data-message-candidate-details="), `${locale} candidate detail label`);
+    assert.ok(html.includes("data-message-dictionary-storage-error="), `${locale} local storage fallback`);
+    for (const label of labels[locale]) assert.ok(html.includes(label), `${locale} includes ${label}`);
+  }
+});
+
 test("ships localized Korean Hanja remote-recognition controls and accurate data-use copy", async () => {
   const prompts = {
     "zh-CN": ["候选不准确？", "试试远程识别"],
@@ -94,11 +114,15 @@ test("ships localized Korean Hanja remote-recognition controls and accurate data
 test("records reproducible Korean Hanja data provenance and counts", async () => {
   const index = JSON.parse(await readFile(path.join(projectRoot, "data", "korean-hanja", "index.json"), "utf8"));
   const words = JSON.parse(await readFile(path.join(projectRoot, "data", "korean-hanja", "words.json"), "utf8"));
+  const reverseWords = JSON.parse(await readFile(path.join(projectRoot, "data", "korean-hanja", "reverse-words.json"), "utf8"));
   const names = JSON.parse(await readFile(path.join(projectRoot, "data", "korean-hanja", "name-use.json"), "utf8"));
   assert.equal(index.meta.recordCount, 27581);
   assert.equal(index.meta.sources.libhangul.license, "BSD-3-Clause");
   assert.match(index.meta.sources.libhangul.sha256, /^[a-f0-9]{64}$/);
   assert.equal(words.meta.entries, 186847);
+  assert.equal(reverseWords.meta.entries, 258282);
+  assert.equal(reverseWords.meta.source, "/data/korean-hanja/words.json");
+  assert.ok(reverseWords.words["大韓民國"].includes("대한민국"));
   assert.equal(names.meta.uniqueCodes, 9495);
   assert.equal(names.meta.browserCompatible, 9118);
   assert.equal(names.records.find((record) => record.character === "民")?.strokes, 5);

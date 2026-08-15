@@ -5963,6 +5963,179 @@ html[lang="ko"] .worksheet-sheet {
   color: #04140e;
 }
 
+.korean-converter-dictionary {
+  border-top: 1px solid var(--line);
+  background: rgba(4, 12, 10, 0.42);
+}
+
+.korean-converter-dictionary > summary {
+  display: flex;
+  min-height: 46px;
+  padding: 10px 18px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.korean-converter-dictionary > summary span:last-child {
+  color: var(--accent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.korean-converter-dictionary-body {
+  padding: 4px 18px 16px;
+  border-top: 1px solid rgba(125, 166, 151, 0.14);
+}
+
+.korean-converter-dictionary-body > p {
+  margin: 8px 0 10px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+#koreanConverterDictionaryForm {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 8px;
+}
+
+#koreanConverterDictionaryForm label {
+  display: grid;
+  min-width: 0;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+#koreanConverterDictionaryForm input {
+  width: 100%;
+  min-height: 42px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #07130f;
+  color: var(--ink);
+}
+
+#koreanConverterDictionaryForm input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+#koreanConverterDictionaryForm button {
+  min-height: 42px;
+  padding: 8px 13px;
+}
+
+.korean-converter-dictionary-arrow {
+  display: grid;
+  min-height: 42px;
+  place-items: center;
+  color: var(--accent-2);
+}
+
+#koreanConverterDictionaryStatus {
+  min-height: 1.2em;
+  color: var(--accent-2);
+}
+
+#koreanConverterDictionaryEmpty {
+  text-align: center;
+}
+
+#koreanConverterDictionaryList {
+  display: grid;
+  max-height: 220px;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+#koreanConverterDictionaryList:empty {
+  display: none;
+}
+
+#koreanConverterDictionaryList li {
+  display: grid;
+  min-height: 42px;
+  padding: 4px 6px 4px 9px;
+  border: 1px solid rgba(125, 166, 151, 0.18);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.025);
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 9px;
+}
+
+.korean-converter-dictionary-toggle {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  cursor: pointer;
+}
+
+.korean-converter-dictionary-toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+
+.korean-converter-dictionary-pair {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 9px;
+}
+
+.korean-converter-dictionary-pair b {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 0.82rem;
+}
+
+.korean-converter-dictionary-pair span {
+  color: var(--accent-2);
+}
+
+.korean-converter-dictionary-remove,
+#koreanConverterDictionaryClear {
+  min-width: 34px;
+  min-height: 34px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--muted);
+}
+
+.korean-converter-dictionary-remove {
+  font-size: 1.1rem;
+}
+
+.korean-converter-dictionary-remove:hover,
+#koreanConverterDictionaryClear:hover {
+  border-color: rgba(255, 107, 112, 0.48);
+  color: var(--danger);
+}
+
+.korean-converter-dictionary-footer {
+  display: flex;
+  margin-top: 7px;
+  justify-content: flex-end;
+}
+
 .korean-converter-choices-panel {
   padding: 16px 18px;
   border-top: 1px solid var(--line);
@@ -6042,6 +6215,21 @@ html[lang="ko"] .worksheet-sheet {
   gap: 6px;
 }
 
+.korean-converter-choice-candidates {
+  align-items: flex-start;
+}
+
+.korean-converter-candidate-option {
+  display: grid;
+  min-width: 190px;
+  max-width: 310px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #091713;
+  flex: 1 1 220px;
+}
+
 .korean-converter-choice-candidates button,
 .korean-converter-choice-navigation button,
 .korean-converter-choice-actions button {
@@ -6058,6 +6246,81 @@ html[lang="ko"] .worksheet-sheet {
 .korean-converter-choice-candidates button {
   font-family: Batang, "Noto Serif CJK KR", serif;
   font-size: 0.94rem;
+}
+
+.korean-converter-candidate-option .korean-converter-candidate-select {
+  display: grid;
+  min-width: 0;
+  min-height: 54px;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  justify-items: start;
+  gap: 2px;
+  text-align: left;
+}
+
+.korean-converter-candidate-select strong {
+  color: inherit;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.korean-converter-candidate-summary {
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.korean-converter-candidate-select.is-active .korean-converter-candidate-summary {
+  color: rgba(64, 242, 176, 0.8);
+}
+
+.korean-converter-candidate-detail {
+  border-top: 1px solid rgba(125, 166, 151, 0.14);
+}
+
+.korean-converter-candidate-detail > summary {
+  display: grid;
+  width: 34px;
+  min-height: 30px;
+  margin-left: auto;
+  place-items: center;
+  color: var(--muted);
+  font-family: Georgia, serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.korean-converter-candidate-detail > summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.korean-converter-candidate-detail-body {
+  display: grid;
+  gap: 5px;
+  padding: 0 9px 9px;
+}
+
+.korean-converter-candidate-detail-body > div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.67rem;
+  line-height: 1.45;
+}
+
+.korean-converter-candidate-detail-body strong {
+  color: var(--accent-2);
+  font-family: Batang, "Noto Serif CJK KR", serif;
+  font-size: 0.86rem;
 }
 
 .korean-converter-choice button:hover:not(:disabled) {
@@ -6256,6 +6519,28 @@ html[lang="ko"] .worksheet-sheet {
 
   .korean-converter-choice-actions button {
     flex: 1 1 auto;
+  }
+
+  #koreanConverterDictionaryForm {
+    grid-template-columns: 1fr;
+  }
+
+  #koreanConverterDictionaryForm input {
+    font-size: 1rem;
+  }
+
+  .korean-converter-dictionary-arrow {
+    min-height: 20px;
+    transform: rotate(90deg);
+  }
+
+  #koreanConverterDictionaryForm button {
+    width: 100%;
+  }
+
+  .korean-converter-candidate-option {
+    max-width: none;
+    flex-basis: 100%;
   }
 
   .korean-name-form > div,
