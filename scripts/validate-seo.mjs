@@ -153,6 +153,16 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (localizedHomePages.has(relativePath) && !html.includes('data-route="photo-chinese-character-recognition"')) {
     throw new Error(`${relativePath}: missing photo Chinese-character-recognition link`);
   }
+  if (localizedHomePages.has(relativePath)) {
+    const description = requireMatch(html, /<meta\s+name="description"\s+content="([^"]+)"/, "meta description", relativePath);
+    const descriptionLength = [...description].length;
+    if (descriptionLength < TARGET_META_DESCRIPTION_LENGTH.min || descriptionLength > TARGET_META_DESCRIPTION_LENGTH.max) {
+      throw new Error(`${relativePath}: home meta description length ${descriptionLength} is outside ${TARGET_META_DESCRIPTION_LENGTH.min}-${TARGET_META_DESCRIPTION_LENGTH.max}`);
+    }
+    if (!html.includes(`"description": ${JSON.stringify(description)}`)) {
+      throw new Error(`${relativePath}: structured data description is out of sync with home meta description`);
+    }
+  }
   if (relativePath === "index.html") {
     for (const keyword of ["简体转繁体 APP", "繁体转简体 APP"]) {
       if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
