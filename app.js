@@ -41,7 +41,7 @@ const translations = {
   "zh-CN": {
     pageTitle: "简繁转换 - 简体转繁体 / 繁体转简体在线工具 | JianFan.app",
     pageDescription:
-      "JianFan.app 是基于 OpenCC 的在线简繁转换工具，支持简体转繁体、繁体转简体、台湾正体、香港繁体、地区用词和自定义词库，文本仅在浏览器本地处理。",
+      "JianFan.app 是基于 OpenCC 的在线简繁转换工具，支持简体转繁体、繁体转简体、台湾正体、香港繁体、地区用词与自定义词库，长文本在浏览器本地处理。网站还提供汉字转拼音、笔顺查询、汉字查询与结构拆解、田字格字帖生成、字数统计、手写汉字识别和在线拍照识字等中文、日文与韩文汉字工具，无需安装即可使用。",
     skip: "跳到主要内容",
     homeLink: "网站首页",
     languageLabel: "界面语言",
@@ -174,13 +174,13 @@ const translations = {
     linkWorksheet: "汉字练习纸",
     linkWordToTxt: "Word 转 TXT",
     linkCharacterCounter: "在线字数统计",
-    footerText: "JianFan.app 是一个浏览器本地运行的中文简繁转换工具。",
+    footerText: "JianFan.app 提供面向中文、日文和韩文的在线汉字工具，涵盖简繁转换、读音、笔顺、查字、手写与图片识别等功能。",
     privacyLink: "隐私声明"
   },
   "zh-TW": {
     pageTitle: "簡繁轉換 - 簡體轉繁體 / 繁體轉簡體線上工具 | JianFan.app",
     pageDescription:
-      "JianFan.app 是基於 OpenCC 的線上簡繁轉換工具，支援簡體轉繁體、繁體轉簡體、台灣正體、香港繁體、地區用詞與自訂詞庫，文字僅在瀏覽器本機處理。",
+      "JianFan.app 是基於 OpenCC 的線上簡繁轉換工具，支援簡體轉繁體、繁體轉簡體、台灣正體、香港繁體、地區用詞與自訂詞庫，長篇文字在瀏覽器本機處理。網站也提供漢字轉拼音、筆順查詢、漢字查詢與結構拆解、國字練習紙、字數統計、手寫漢字辨識和拍照辨識漢字等中文、日文與韓文漢字工具，免安裝即可使用。",
     skip: "跳到主要內容",
     homeLink: "網站首頁",
     languageLabel: "介面語言",
@@ -313,13 +313,13 @@ const translations = {
     linkWorksheet: "國字練習紙",
     linkWordToTxt: "DOCX 轉 TXT",
     linkCharacterCounter: "線上字數統計",
-    footerText: "JianFan.app 是一個瀏覽器本地運行的中文簡繁轉換工具。",
+    footerText: "JianFan.app 提供面向中文、日文與韓文的線上漢字工具，涵蓋簡繁轉換、讀音、筆順、查字、手寫與圖片辨識等功能。",
     privacyLink: "隱私聲明"
   },
   en: {
     pageTitle: "Simplified to Traditional Chinese Converter | JianFan.app",
     pageDescription:
-      "JianFan.app is an OpenCC-powered Chinese converter for Simplified and Traditional Chinese, Taiwan and Hong Kong variants, regional wording, and custom dictionaries. Text is processed locally in your browser.",
+      "JianFan.app converts Simplified and Traditional Chinese with Taiwan and Hong Kong variants, plus Pinyin, stroke order, lookup, worksheet and recognition tools.",
     skip: "Skip to main content",
     homeLink: "Home",
     languageLabel: "Language",
@@ -452,13 +452,13 @@ const translations = {
     linkWorksheet: "Chinese worksheet generator",
     linkWordToTxt: "Word to text",
     linkCharacterCounter: "CJK character counter",
-    footerText: "JianFan.app is a browser-local Chinese Simplified and Traditional conversion tool.",
+    footerText: "JianFan.app provides online character tools for Chinese, Japanese, and Korean, including script conversion, readings, stroke order, dictionaries, handwriting, and image recognition.",
     privacyLink: "Privacy Statement"
   },
   ja: {
     pageTitle: "簡体字 繁体字 変換ツール | JianFan.app",
     pageDescription:
-      "JianFan.app は OpenCC ベースの中国語変換ツールです。簡体字・繁体字、台湾・香港字体、地域別表現、カスタム辞書に対応し、テキストはブラウザ内で処理されます。",
+      "JianFan.app は、簡体字・繁体字、台湾・香港向け表記を変換できる OpenCC ベースのオンラインツールです。ピンイン、漢字の読み方・筆順・検索、文字数カウント、練習プリント、手書き検索、写真からの文字認識など、中国語・日本語・韓国語の漢字ツールも利用でき、テキストはブラウザー内で処理されます。",
     skip: "メインコンテンツへ移動",
     homeLink: "ホーム",
     languageLabel: "表示言語",
@@ -591,13 +591,13 @@ const translations = {
     linkWorksheet: "漢字練習プリント",
     linkWordToTxt: "Word TXT 変換",
     linkCharacterCounter: "文字数カウント",
-    footerText: "JianFan.app はブラウザー内で動作する中国語簡繁変換ツールです。",
+    footerText: "JianFan.app は、中国語・日本語・韓国語の漢字ツールを提供しています。簡繁変換、読み方、筆順、漢字検索、手書き・画像認識などをオンラインで利用できます。",
     privacyLink: "プライバシー声明"
   },
   ko: {
     pageTitle: "간체 번체 변환기 | JianFan.app",
     pageDescription:
-      "JianFan.app는 OpenCC 기반 온라인 중국어 변환기로 간체·번체, 대만·홍콩 번체, 지역별 표현과 사용자 사전을 지원하며 텍스트를 브라우저에서만 처리합니다.",
+      "JianFan.app는 OpenCC 기반 간체·번체 변환기로 대만·홍콩 번체와 사용자 사전을 지원합니다. 중국어 병음, 한자 필순, 한자 찾기·옥편, 글자수 세기, 쓰기 연습장, 필기·사진 인식 등 중국어·일본어·한국어 한자 도구도 이용할 수 있고 텍스트는 브라우저에서 처리됩니다.",
     skip: "본문으로 건너뛰기",
     homeLink: "홈",
     languageLabel: "인터페이스 언어",
@@ -730,7 +730,7 @@ const translations = {
     linkWorksheet: "한자 쓰기 연습장",
     linkWordToTxt: "DOCX TXT 변환",
     linkCharacterCounter: "글자수 세기",
-    footerText: "JianFan.app는 브라우저에서 로컬로 실행되는 중국어 간체·번체 변환 도구입니다.",
+    footerText: "JianFan.app는 중국어·일본어·한국어 한자 온라인 도구를 제공합니다. 간체·번체 변환, 읽기, 필순, 한자 찾기, 필기·사진 인식 등을 이용할 수 있습니다.",
     privacyLink: "개인정보 보호 안내"
   }
 };
