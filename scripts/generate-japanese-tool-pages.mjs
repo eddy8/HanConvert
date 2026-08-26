@@ -27,7 +27,10 @@ const relatedToolLabels = {
     "chinese-stroke-order": "汉字笔顺查询",
     "word-to-txt": "Word 转 TXT",
     "simplified-to-traditional": "简体转繁体",
-    "traditional-to-simplified": "繁体转简体"
+    "traditional-to-simplified": "繁体转简体",
+    "han-character-worksheet": "汉字练习纸",
+    "chinese-handwriting-recognition": "手写汉字识别",
+    "chinese-character-lookup": "汉字查询与结构拆解"
   },
   "zh-TW": {
     kicker: "相關工具",
@@ -39,7 +42,10 @@ const relatedToolLabels = {
     "chinese-stroke-order": "漢字筆順查詢",
     "word-to-txt": "DOCX 轉 TXT",
     "simplified-to-traditional": "簡體轉繁體",
-    "traditional-to-simplified": "繁體轉簡體"
+    "traditional-to-simplified": "繁體轉簡體",
+    "han-character-worksheet": "國字練習紙",
+    "chinese-handwriting-recognition": "手寫漢字辨識",
+    "chinese-character-lookup": "漢字查詢與結構拆解"
   },
   en: {
     kicker: "Related tools",
@@ -51,7 +57,10 @@ const relatedToolLabels = {
     "chinese-stroke-order": "Chinese stroke order",
     "word-to-txt": "Word to text",
     "simplified-to-traditional": "Simplified to Traditional",
-    "traditional-to-simplified": "Traditional to Simplified"
+    "traditional-to-simplified": "Traditional to Simplified",
+    "han-character-worksheet": "Chinese worksheet generator",
+    "chinese-handwriting-recognition": "Chinese handwriting recognition",
+    "chinese-character-lookup": "Chinese character lookup"
   },
   ja: {
     kicker: "関連ツール",
@@ -63,7 +72,10 @@ const relatedToolLabels = {
     "chinese-stroke-order": "中国語漢字の筆順",
     "word-to-txt": "Word TXT 変換",
     "simplified-to-traditional": "簡体字から繁体字",
-    "traditional-to-simplified": "繁体字を簡体字に変換"
+    "traditional-to-simplified": "繁体字を簡体字に変換",
+    "han-character-worksheet": "漢字練習プリント",
+    "chinese-handwriting-recognition": "漢字手書き検索",
+    "chinese-character-lookup": "漢字の構成・部首検索"
   },
   ko: {
     kicker: "관련 도구",
@@ -75,7 +87,10 @@ const relatedToolLabels = {
     "chinese-stroke-order": "중국어 한자 필순",
     "word-to-txt": "DOCX TXT 변환",
     "simplified-to-traditional": "간체를 번체로",
-    "traditional-to-simplified": "번체를 간체로"
+    "traditional-to-simplified": "번체를 간체로",
+    "han-character-worksheet": "한자 쓰기 연습장",
+    "chinese-handwriting-recognition": "한자 필기 인식",
+    "chinese-character-lookup": "한자 부수·구성요소 검색"
   }
 };
 
@@ -113,6 +128,24 @@ const tools = {
           ["差异字自动汇总", "并排进行日文汉字、简体字和繁体字对照，仅列出存在差异的汉字，并合并重复字形、统计出现次数。"],
           ["浏览器本地处理", "文本不上传服务器，可分别复制三种结果；转换能力基于 OpenCC。"]
         ],
+        examplesTitle: "常见日本汉字、简体字与繁体字对照",
+        examplesIntro: "三套标准既有相同字形，也有各自简化后的写法。下面这些常见字可以帮助判断输入类型和核对转换方向。",
+        examplesAria: "日本汉字、简体字与繁体字示例对照表",
+        examples: [
+          ["国", "国", "國", "日本新字体与中国简体字相同"],
+          ["学", "学", "學", "日本新字体与中国简体字相同"],
+          ["芸", "艺", "藝", "三种标准的字形不同"],
+          ["図", "图", "圖", "三种标准的字形不同"]
+        ],
+        exampleNote: "差异说明",
+        faqTitle: "日中汉字转换常见问题",
+        faqs: [
+          ["把中文汉字转换成日本汉字，就是翻译成日语吗？", "不是。本页只转换汉字字形，不改变词序、语法和词义，也不会自动添加平假名或片假名。需要自然日语时仍应使用翻译工具。"],
+          ["日本新字体和中国简体字是同一套标准吗？", "不是。两者分别在日本和中国大陆形成并标准化，有些字形相同，例如“国”和“学”；也有“芸／艺”“図／图”等不同写法。"],
+          ["怎样选择输入文字类型？", "按原文实际使用的标准选择日本汉字、中国简体字或中国繁体字。来源不确定时，可先观察“艺／藝／芸”“图／圖／図”等差异明显的字。"],
+          ["为什么有些汉字转换后没有变化？", "许多汉字在三套标准中共用同一 Unicode 字符或常用字形，因此结果保持不变是正常现象，并不表示转换失败。"],
+          ["姓名、地名和专业术语可以直接采用转换结果吗？", "不建议直接用于正式场景。姓名、地名、机构名、异体字及专业术语可能有约定写法，应结合原始资料或官方来源复核。"]
+        ],
         footer: "JianFan.app 提供浏览器本地运行的中文与日文汉字转换工具。",
         sampleText: "日本語の国と学、芸術と図書館の漢字表記を比較します。"
       },
@@ -147,6 +180,24 @@ const tools = {
           ["差異字自動彙整", "並排進行日文漢字、簡體字和繁體字對照，只列出存在差異的漢字，並合併重複字形、統計出現次數。"],
           ["瀏覽器本機處理", "文字不會上傳伺服器，可分別複製三種結果；轉換能力基於 OpenCC。"]
         ],
+        examplesTitle: "常見日本漢字、簡體字與繁體字對照",
+        examplesIntro: "三套標準既有相同字形，也有各自簡化後的寫法。以下常見字可協助判斷輸入類型並核對轉換方向。",
+        examplesAria: "日本漢字、簡體字與繁體字範例對照表",
+        examples: [
+          ["国", "国", "國", "日本新字體與中國簡體字相同"],
+          ["学", "学", "學", "日本新字體與中國簡體字相同"],
+          ["芸", "艺", "藝", "三種標準的字形不同"],
+          ["図", "图", "圖", "三種標準的字形不同"]
+        ],
+        exampleNote: "差異說明",
+        faqTitle: "日中漢字轉換常見問題",
+        faqs: [
+          ["把中文漢字轉成日本漢字，就是翻譯成日文嗎？", "不是。本頁只轉換漢字字形，不會改寫詞序、文法與詞義，也不會自動加入平假名或片假名。需要自然日文時仍應使用翻譯工具。"],
+          ["日本新字體和中國簡體字是同一套標準嗎？", "不是。兩者分別在日本和中國大陸形成並標準化，有些字形相同，例如「国」和「学」；也有「芸／艺」「図／图」等不同寫法。"],
+          ["應該怎麼選擇輸入文字類型？", "依原文實際使用的標準選擇日本漢字、中國簡體字或中國繁體字。來源不確定時，可先觀察「艺／藝／芸」「图／圖／図」等差異明顯的字。"],
+          ["為什麼有些漢字轉換後沒有變化？", "許多漢字在三套標準中共用相同 Unicode 字元或常用字形，因此結果保持不變是正常現象，不代表轉換失敗。"],
+          ["姓名、地名和專業術語可以直接採用轉換結果嗎？", "不建議直接用於正式情境。姓名、地名、機構名、異體字與專業術語可能有慣用寫法，應搭配原始資料或官方來源複核。"]
+        ],
         footer: "JianFan.app 提供在瀏覽器本機運行的中文與日文漢字轉換工具。",
         sampleText: "日本語の国と学、芸術と図書館の漢字表記を比較します。"
       },
@@ -180,6 +231,24 @@ const tools = {
           ["Source-aware conversion", "This Japanese and Chinese Kanji Converter lets you select Japanese, Simplified, or Traditional as the input character type for Japanese Kanji conversion, including Chinese characters into modern Japanese Kanji (Shinjitai)."],
           ["Deduplicated differences", "Use the Chinese-Japanese Kanji converter and comparator to compare Japanese and Chinese Kanji side by side, review orthographic differences, and merge repeated differences with counts."],
           ["Local browser processing", "Text is not uploaded. Copy each result independently; conversion is powered by OpenCC."]
+        ],
+        examplesTitle: "Common Japanese, Simplified, and Traditional forms",
+        examplesIntro: "The three standards share many characters, but their modern simplifications do not always match. These examples help identify the source script and verify the conversion direction.",
+        examplesAria: "Examples comparing Japanese Kanji, Simplified Chinese, and Traditional Chinese",
+        examples: [
+          ["国", "国", "國", "Japanese and Simplified Chinese match"],
+          ["学", "学", "學", "Japanese and Simplified Chinese match"],
+          ["芸", "艺", "藝", "All three standards use different forms"],
+          ["図", "图", "圖", "All three standards use different forms"]
+        ],
+        exampleNote: "Difference",
+        faqTitle: "Chinese and Japanese Kanji converter questions",
+        faqs: [
+          ["Does converting Chinese characters to Japanese Kanji translate the text into Japanese?", "No. The converter changes character forms only. It does not rewrite Chinese grammar, choose Japanese vocabulary, add kana, or translate a sentence into natural Japanese."],
+          ["Are Japanese Shinjitai and Simplified Chinese the same system?", "No. Japan and Mainland China standardized their modern forms separately. Some forms match, such as 国 and 学, while others differ, such as Japanese 芸 and 図 versus Simplified Chinese 艺 and 图."],
+          ["Which input character type should I select?", "Choose the standard used by the source text: Japanese Kanji, Simplified Chinese, or Traditional Chinese. If the source is unclear, distinctive sets such as 芸／艺／藝 and 図／图／圖 can help identify it."],
+          ["Why do some characters stay unchanged?", "Many Han characters use the same Unicode character or common written form across all three standards. An unchanged result is expected and does not mean conversion failed."],
+          ["Can I use the result for names, places, or official documents?", "Treat it as a comparison aid. Personal names, place names, organization names, variant characters, and specialist terms may follow established forms that require an official source check."]
         ],
         footer: "JianFan.app provides browser-local Chinese and Japanese kanji conversion tools.",
         sampleText: "汉字转换：国家、学习、艺术、图书馆。",
@@ -216,6 +285,24 @@ const tools = {
           ["異なる漢字を自動集計", "日本の漢字と中国語の簡体字・繁体字を比較し、字形が異なる漢字だけを抽出して出現回数を表示します。"],
           ["ブラウザー内で処理", "入力内容はサーバーへ送信されません。各結果を個別にコピーでき、OpenCC を基に変換します。"]
         ],
+        examplesTitle: "日本語漢字・簡体字・繁体字の代表的な違い",
+        examplesIntro: "3種類の漢字には共通する字形と、それぞれ異なる簡略形があります。入力元の判別や変換結果の確認に使える代表例です。",
+        examplesAria: "日本語漢字・簡体字・繁体字の例を比較する表",
+        examples: [
+          ["国", "国", "國", "日本の新字体と簡体字が同じ"],
+          ["学", "学", "學", "日本の新字体と簡体字が同じ"],
+          ["芸", "艺", "藝", "3種類で字形が異なる"],
+          ["図", "图", "圖", "3種類で字形が異なる"]
+        ],
+        exampleNote: "違い",
+        faqTitle: "日中漢字変換のよくある質問",
+        faqs: [
+          ["中国語の漢字を日本の漢字に変換すると、日本語訳になりますか？", "いいえ。このページが変換するのは漢字の字形だけです。語順や文法、単語の意味は翻訳せず、ひらがな・カタカナや読み方も追加しません。"],
+          ["日本の新字体と中国語の簡体字は同じですか？", "同じ体系ではありません。日本と中国大陸で別々に標準化されました。「国」「学」のように同じ字もありますが、「芸／艺」「図／图」のように異なる字もあります。"],
+          ["入力文字の種類はどう選べばよいですか？", "原文が日本語漢字、中国語簡体字、中国語繁体字のどれで書かれているかに合わせて選択します。不明な場合は「芸／艺／藝」「図／图／圖」などを手掛かりにできます。"],
+          ["変換しても形が変わらない漢字があるのはなぜですか？", "3種類で同じ Unicode 文字や一般的な字形を共有する漢字が多いためです。変化しない結果も正常で、変換失敗ではありません。"],
+          ["氏名・地名・専門用語にもそのまま使えますか？", "確認用として利用し、正式な表記は原資料や公的資料で照合してください。人名、地名、組織名、異体字、専門用語には慣用表記がある場合があります。"]
+        ],
         footer: "JianFan.app はブラウザー内で動作する中国語・日本語漢字変換ツールです。",
         sampleText: "日本語の国と学、芸術と図書館の漢字表記を比較します。"
       },
@@ -249,6 +336,24 @@ const tools = {
           ["입력 유형별 변환", "일본어·간체·번체 중 입력 유형을 선택해 일본 한자로 변환하는 과정을 포함한 올바른 경로로 세 결과를 생성합니다."],
           ["다른 글자 자동 정리", "세 결과에서 모양이 다른 한자만 추출하고 중복을 합쳐 등장 횟수를 표시합니다."],
           ["브라우저 로컬 처리", "텍스트를 서버에 업로드하지 않으며 각 결과를 따로 복사할 수 있습니다. 변환은 OpenCC 기반입니다."]
+        ],
+        examplesTitle: "일본 한자·간체·번체의 대표 글자 비교",
+        examplesIntro: "세 문자 표준에는 같은 글자도 있고 서로 다르게 간략화된 글자도 있습니다. 아래 예시로 입력 유형을 구분하고 변환 방향을 확인할 수 있습니다.",
+        examplesAria: "일본 한자, 중국어 간체와 번체 예시 비교표",
+        examples: [
+          ["国", "国", "國", "일본 신자체와 중국 간체가 같음"],
+          ["学", "学", "學", "일본 신자체와 중국 간체가 같음"],
+          ["芸", "艺", "藝", "세 표준의 글자 모양이 다름"],
+          ["図", "图", "圖", "세 표준의 글자 모양이 다름"]
+        ],
+        exampleNote: "차이",
+        faqTitle: "일본·중국 한자 변환 자주 묻는 질문",
+        faqs: [
+          ["중국 한자를 일본 한자로 바꾸면 일본어 번역이 되나요?", "아닙니다. 이 도구는 한자 글자 모양만 변환합니다. 어순, 문법과 단어 뜻을 번역하지 않으며 히라가나, 가타카나 또는 읽는 법도 추가하지 않습니다."],
+          ["일본 신자체와 중국어 간체는 같은 체계인가요?", "같은 체계가 아닙니다. 일본과 중국 대륙에서 따로 표준화했습니다. 国, 学처럼 같은 글자도 있지만 일본의 芸, 図와 중국 간체의 艺, 图처럼 다른 글자도 있습니다."],
+          ["입력 문자 유형은 어떻게 선택하나요?", "원문이 실제로 사용하는 표준에 따라 일본 한자, 중국어 간체 또는 번체를 선택하세요. 출처가 불분명하면 芸／艺／藝, 図／图／圖처럼 차이가 뚜렷한 글자를 확인할 수 있습니다."],
+          ["변환 후에도 바뀌지 않는 한자가 있는 이유는 무엇인가요?", "세 표준이 같은 Unicode 문자나 일반 글자 모양을 공유하는 경우가 많기 때문입니다. 결과가 같아도 정상이며 변환 실패를 뜻하지 않습니다."],
+          ["이름, 지명과 전문 용어에 결과를 바로 사용해도 되나요?", "비교와 확인 용도로 사용하세요. 인명, 지명, 기관명, 이체자와 전문 용어에는 관용 표기가 있을 수 있으므로 원문이나 공식 자료로 다시 확인해야 합니다."]
         ],
         footer: "JianFan.app는 브라우저에서 실행되는 중국어·일본어 한자 변환 도구입니다.",
         sampleText: "日本語の国と学、芸術と図書館の漢字表記を比較します。"
@@ -386,9 +491,7 @@ function buildHead(locale, slug, content) {
   const alternates = Object.entries(hreflangs)
     .map(([hreflang, targetLocale]) => `    <link rel="alternate" hreflang="${hreflang}" href="${siteOrigin}${localizedPath(targetLocale, slug)}" />`)
     .join("\n");
-  const schema = {
-    "@context": "https://schema.org",
-    "@graph": [
+  const graph = [
       {
         "@type": "WebApplication",
         "@id": `${canonical}#webapp`,
@@ -411,7 +514,21 @@ function buildHead(locale, slug, content) {
           { "@type": "ListItem", position: 2, name: content.heading, item: canonical }
         ]
       }
-    ]
+  ];
+  if (content.faqs?.length) {
+    graph.push({
+      "@type": "FAQPage",
+      "@id": `${canonical}#faq`,
+      mainEntity: content.faqs.map(([question, answer]) => ({
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: { "@type": "Answer", text: answer }
+      }))
+    });
+  }
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": graph
   };
 
   return `    <meta charset="utf-8" />
@@ -480,6 +597,28 @@ function buildFooter(locale, content) {
 function buildFeatureBand(locale, content, activeSlug) {
   const labels = relatedToolLabels[locale];
   const links = Object.entries(labels).filter(([slug]) => slug !== "kicker");
+  const reference = content.examples?.length ? `
+        <section class="kanji-reference-section" aria-labelledby="kanjiReferenceTitle">
+          <h2 id="kanjiReferenceTitle">${content.examplesTitle}</h2>
+          <p>${content.examplesIntro}</p>
+          <div class="japanese-table-scroll">
+            <table class="japanese-comparison-table kanji-reference-table" aria-label="${escapeHtml(content.examplesAria)}">
+              <thead><tr><th>${content.outputJapanese}</th><th>${content.outputSimplified}</th><th>${content.outputTraditional}</th><th>${content.exampleNote}</th></tr></thead>
+              <tbody>${content.examples.map(([japanese, simplified, traditional, note]) => `<tr><td lang="ja">${japanese}</td><td lang="zh-Hans">${simplified}</td><td lang="zh-Hant">${traditional}</td><td>${note}</td></tr>`).join("")}</tbody>
+            </table>
+          </div>
+        </section>
+        <section class="pinyin-faq" aria-labelledby="kanjiConverterFaqTitle">
+          <h2 id="kanjiConverterFaqTitle">${content.faqTitle}</h2>
+${content.faqs.map(([question, answer]) => `          <details><summary>${question}</summary><p>${answer}</p></details>`).join("\n")}
+        </section>` : "";
+  const relatedLinks = links.map(([slug, label]) => {
+    const link = `<a href="${localizedPath(locale, slug)}"${slug === activeSlug ? ' aria-current="page"' : ""}${slug === "chinese-character-lookup" ? ' data-route="chinese-character-lookup"' : ""}>${label}</a>`;
+    return slug === "chinese-character-lookup"
+      ? `          <!-- han-character-lookup-link:start -->\n          ${link}\n          <!-- han-character-lookup-link:end -->`
+      : `          ${link}`;
+  }).join("\n");
+  const referenceBlock = reference ? `${reference}\n` : "";
   return `      <section class="seo-band standalone-info" aria-labelledby="featureTitle">
         <div class="section-heading">
           <p class="section-kicker">${labels.kicker}</p>
@@ -489,8 +628,8 @@ function buildFeatureBand(locale, content, activeSlug) {
         <div class="seo-grid">
 ${content.cards.map(([title, body]) => `          <article><h3>${title}</h3><p>${body}</p></article>`).join("\n")}
         </div>
-        <nav class="landing-links" aria-label="Related tools">
-${links.map(([slug, label]) => `          <a href="${localizedPath(locale, slug)}"${slug === activeSlug ? ' aria-current="page"' : ""}>${label}</a>`).join("\n")}
+${referenceBlock}        <nav class="landing-links" aria-label="Related tools">
+${relatedLinks}
         </nav>
       </section>`;
 }

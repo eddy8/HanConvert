@@ -64,6 +64,52 @@
                 "item": "https://jianfan.app/ko/japanese-chinese-kanji-converter/"
               }
             ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/ko/japanese-chinese-kanji-converter/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "중국 한자를 일본 한자로 바꾸면 일본어 번역이 되나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "아닙니다. 이 도구는 한자 글자 모양만 변환합니다. 어순, 문법과 단어 뜻을 번역하지 않으며 히라가나, 가타카나 또는 읽는 법도 추가하지 않습니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "일본 신자체와 중국어 간체는 같은 체계인가요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "같은 체계가 아닙니다. 일본과 중국 대륙에서 따로 표준화했습니다. 国, 学처럼 같은 글자도 있지만 일본의 芸, 図와 중국 간체의 艺, 图처럼 다른 글자도 있습니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "입력 문자 유형은 어떻게 선택하나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "원문이 실제로 사용하는 표준에 따라 일본 한자, 중국어 간체 또는 번체를 선택하세요. 출처가 불분명하면 芸／艺／藝, 図／图／圖처럼 차이가 뚜렷한 글자를 확인할 수 있습니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "변환 후에도 바뀌지 않는 한자가 있는 이유는 무엇인가요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "세 표준이 같은 Unicode 문자나 일반 글자 모양을 공유하는 경우가 많기 때문입니다. 결과가 같아도 정상이며 변환 실패를 뜻하지 않습니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "이름, 지명과 전문 용어에 결과를 바로 사용해도 되나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "비교와 확인 용도로 사용하세요. 인명, 지명, 기관명, 이체자와 전문 용어에는 관용 표기가 있을 수 있으므로 원문이나 공식 자료로 다시 확인해야 합니다."
+                }
+              }
+            ]
           }
         ]
       }
@@ -164,6 +210,25 @@
           <article><h3>다른 글자 자동 정리</h3><p>세 결과에서 모양이 다른 한자만 추출하고 중복을 합쳐 등장 횟수를 표시합니다.</p></article>
           <article><h3>브라우저 로컬 처리</h3><p>텍스트를 서버에 업로드하지 않으며 각 결과를 따로 복사할 수 있습니다. 변환은 OpenCC 기반입니다.</p></article>
         </div>
+
+        <section class="kanji-reference-section" aria-labelledby="kanjiReferenceTitle">
+          <h2 id="kanjiReferenceTitle">일본 한자·간체·번체의 대표 글자 비교</h2>
+          <p>세 문자 표준에는 같은 글자도 있고 서로 다르게 간략화된 글자도 있습니다. 아래 예시로 입력 유형을 구분하고 변환 방향을 확인할 수 있습니다.</p>
+          <div class="japanese-table-scroll">
+            <table class="japanese-comparison-table kanji-reference-table" aria-label="일본 한자, 중국어 간체와 번체 예시 비교표">
+              <thead><tr><th>일본 한자</th><th>중국어 간체</th><th>중국어 번체</th><th>차이</th></tr></thead>
+              <tbody><tr><td lang="ja">国</td><td lang="zh-Hans">国</td><td lang="zh-Hant">國</td><td>일본 신자체와 중국 간체가 같음</td></tr><tr><td lang="ja">学</td><td lang="zh-Hans">学</td><td lang="zh-Hant">學</td><td>일본 신자체와 중국 간체가 같음</td></tr><tr><td lang="ja">芸</td><td lang="zh-Hans">艺</td><td lang="zh-Hant">藝</td><td>세 표준의 글자 모양이 다름</td></tr><tr><td lang="ja">図</td><td lang="zh-Hans">图</td><td lang="zh-Hant">圖</td><td>세 표준의 글자 모양이 다름</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+        <section class="pinyin-faq" aria-labelledby="kanjiConverterFaqTitle">
+          <h2 id="kanjiConverterFaqTitle">일본·중국 한자 변환 자주 묻는 질문</h2>
+          <details><summary>중국 한자를 일본 한자로 바꾸면 일본어 번역이 되나요?</summary><p>아닙니다. 이 도구는 한자 글자 모양만 변환합니다. 어순, 문법과 단어 뜻을 번역하지 않으며 히라가나, 가타카나 또는 읽는 법도 추가하지 않습니다.</p></details>
+          <details><summary>일본 신자체와 중국어 간체는 같은 체계인가요?</summary><p>같은 체계가 아닙니다. 일본과 중국 대륙에서 따로 표준화했습니다. 国, 学처럼 같은 글자도 있지만 일본의 芸, 図와 중국 간체의 艺, 图처럼 다른 글자도 있습니다.</p></details>
+          <details><summary>입력 문자 유형은 어떻게 선택하나요?</summary><p>원문이 실제로 사용하는 표준에 따라 일본 한자, 중국어 간체 또는 번체를 선택하세요. 출처가 불분명하면 芸／艺／藝, 図／图／圖처럼 차이가 뚜렷한 글자를 확인할 수 있습니다.</p></details>
+          <details><summary>변환 후에도 바뀌지 않는 한자가 있는 이유는 무엇인가요?</summary><p>세 표준이 같은 Unicode 문자나 일반 글자 모양을 공유하는 경우가 많기 때문입니다. 결과가 같아도 정상이며 변환 실패를 뜻하지 않습니다.</p></details>
+          <details><summary>이름, 지명과 전문 용어에 결과를 바로 사용해도 되나요?</summary><p>비교와 확인 용도로 사용하세요. 인명, 지명, 기관명, 이체자와 전문 용어에는 관용 표기가 있을 수 있으므로 원문이나 공식 자료로 다시 확인해야 합니다.</p></details>
+        </section>
         <nav class="landing-links" aria-label="Related tools">
           <a href="/ko/japanese-chinese-kanji-converter/" aria-current="page">일본·중국 한자 변환</a>
           <a href="/ko/japanese-kanji-converter/">일본 신자체·구자체 변환</a>

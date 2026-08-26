@@ -64,6 +64,52 @@
                 "item": "https://jianfan.app/en/japanese-chinese-kanji-converter/"
               }
             ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/en/japanese-chinese-kanji-converter/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Does converting Chinese characters to Japanese Kanji translate the text into Japanese?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. The converter changes character forms only. It does not rewrite Chinese grammar, choose Japanese vocabulary, add kana, or translate a sentence into natural Japanese."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are Japanese Shinjitai and Simplified Chinese the same system?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Japan and Mainland China standardized their modern forms separately. Some forms match, such as 国 and 学, while others differ, such as Japanese 芸 and 図 versus Simplified Chinese 艺 and 图."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Which input character type should I select?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Choose the standard used by the source text: Japanese Kanji, Simplified Chinese, or Traditional Chinese. If the source is unclear, distinctive sets such as 芸／艺／藝 and 図／图／圖 can help identify it."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why do some characters stay unchanged?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Many Han characters use the same Unicode character or common written form across all three standards. An unchanged result is expected and does not mean conversion failed."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I use the result for names, places, or official documents?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Treat it as a comparison aid. Personal names, place names, organization names, variant characters, and specialist terms may follow established forms that require an official source check."
+                }
+              }
+            ]
           }
         ]
       }
@@ -164,6 +210,25 @@
           <article><h3>Deduplicated differences</h3><p>Use the Chinese-Japanese Kanji converter and comparator to compare Japanese and Chinese Kanji side by side, review orthographic differences, and merge repeated differences with counts.</p></article>
           <article><h3>Local browser processing</h3><p>Text is not uploaded. Copy each result independently; conversion is powered by OpenCC.</p></article>
         </div>
+
+        <section class="kanji-reference-section" aria-labelledby="kanjiReferenceTitle">
+          <h2 id="kanjiReferenceTitle">Common Japanese, Simplified, and Traditional forms</h2>
+          <p>The three standards share many characters, but their modern simplifications do not always match. These examples help identify the source script and verify the conversion direction.</p>
+          <div class="japanese-table-scroll">
+            <table class="japanese-comparison-table kanji-reference-table" aria-label="Examples comparing Japanese Kanji, Simplified Chinese, and Traditional Chinese">
+              <thead><tr><th>Japanese kanji</th><th>Simplified Chinese</th><th>Traditional Chinese</th><th>Difference</th></tr></thead>
+              <tbody><tr><td lang="ja">国</td><td lang="zh-Hans">国</td><td lang="zh-Hant">國</td><td>Japanese and Simplified Chinese match</td></tr><tr><td lang="ja">学</td><td lang="zh-Hans">学</td><td lang="zh-Hant">學</td><td>Japanese and Simplified Chinese match</td></tr><tr><td lang="ja">芸</td><td lang="zh-Hans">艺</td><td lang="zh-Hant">藝</td><td>All three standards use different forms</td></tr><tr><td lang="ja">図</td><td lang="zh-Hans">图</td><td lang="zh-Hant">圖</td><td>All three standards use different forms</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+        <section class="pinyin-faq" aria-labelledby="kanjiConverterFaqTitle">
+          <h2 id="kanjiConverterFaqTitle">Chinese and Japanese Kanji converter questions</h2>
+          <details><summary>Does converting Chinese characters to Japanese Kanji translate the text into Japanese?</summary><p>No. The converter changes character forms only. It does not rewrite Chinese grammar, choose Japanese vocabulary, add kana, or translate a sentence into natural Japanese.</p></details>
+          <details><summary>Are Japanese Shinjitai and Simplified Chinese the same system?</summary><p>No. Japan and Mainland China standardized their modern forms separately. Some forms match, such as 国 and 学, while others differ, such as Japanese 芸 and 図 versus Simplified Chinese 艺 and 图.</p></details>
+          <details><summary>Which input character type should I select?</summary><p>Choose the standard used by the source text: Japanese Kanji, Simplified Chinese, or Traditional Chinese. If the source is unclear, distinctive sets such as 芸／艺／藝 and 図／图／圖 can help identify it.</p></details>
+          <details><summary>Why do some characters stay unchanged?</summary><p>Many Han characters use the same Unicode character or common written form across all three standards. An unchanged result is expected and does not mean conversion failed.</p></details>
+          <details><summary>Can I use the result for names, places, or official documents?</summary><p>Treat it as a comparison aid. Personal names, place names, organization names, variant characters, and specialist terms may follow established forms that require an official source check.</p></details>
+        </section>
         <nav class="landing-links" aria-label="Related tools">
           <a href="/en/japanese-chinese-kanji-converter/" aria-current="page">Japanese and Chinese Kanji</a>
           <a href="/en/japanese-kanji-converter/">Shinjitai and Kyujitai</a>

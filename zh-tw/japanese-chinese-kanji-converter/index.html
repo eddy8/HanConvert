@@ -64,6 +64,52 @@
                 "item": "https://jianfan.app/zh-tw/japanese-chinese-kanji-converter/"
               }
             ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/zh-tw/japanese-chinese-kanji-converter/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "把中文漢字轉成日本漢字，就是翻譯成日文嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不是。本頁只轉換漢字字形，不會改寫詞序、文法與詞義，也不會自動加入平假名或片假名。需要自然日文時仍應使用翻譯工具。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "日本新字體和中國簡體字是同一套標準嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不是。兩者分別在日本和中國大陸形成並標準化，有些字形相同，例如「国」和「学」；也有「芸／艺」「図／图」等不同寫法。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "應該怎麼選擇輸入文字類型？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "依原文實際使用的標準選擇日本漢字、中國簡體字或中國繁體字。來源不確定時，可先觀察「艺／藝／芸」「图／圖／図」等差異明顯的字。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "為什麼有些漢字轉換後沒有變化？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "許多漢字在三套標準中共用相同 Unicode 字元或常用字形，因此結果保持不變是正常現象，不代表轉換失敗。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "姓名、地名和專業術語可以直接採用轉換結果嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不建議直接用於正式情境。姓名、地名、機構名、異體字與專業術語可能有慣用寫法，應搭配原始資料或官方來源複核。"
+                }
+              }
+            ]
           }
         ]
       }
@@ -164,6 +210,25 @@
           <article><h3>差異字自動彙整</h3><p>並排進行日文漢字、簡體字和繁體字對照，只列出存在差異的漢字，並合併重複字形、統計出現次數。</p></article>
           <article><h3>瀏覽器本機處理</h3><p>文字不會上傳伺服器，可分別複製三種結果；轉換能力基於 OpenCC。</p></article>
         </div>
+
+        <section class="kanji-reference-section" aria-labelledby="kanjiReferenceTitle">
+          <h2 id="kanjiReferenceTitle">常見日本漢字、簡體字與繁體字對照</h2>
+          <p>三套標準既有相同字形，也有各自簡化後的寫法。以下常見字可協助判斷輸入類型並核對轉換方向。</p>
+          <div class="japanese-table-scroll">
+            <table class="japanese-comparison-table kanji-reference-table" aria-label="日本漢字、簡體字與繁體字範例對照表">
+              <thead><tr><th>日本漢字</th><th>中國簡體字</th><th>中國繁體字</th><th>差異說明</th></tr></thead>
+              <tbody><tr><td lang="ja">国</td><td lang="zh-Hans">国</td><td lang="zh-Hant">國</td><td>日本新字體與中國簡體字相同</td></tr><tr><td lang="ja">学</td><td lang="zh-Hans">学</td><td lang="zh-Hant">學</td><td>日本新字體與中國簡體字相同</td></tr><tr><td lang="ja">芸</td><td lang="zh-Hans">艺</td><td lang="zh-Hant">藝</td><td>三種標準的字形不同</td></tr><tr><td lang="ja">図</td><td lang="zh-Hans">图</td><td lang="zh-Hant">圖</td><td>三種標準的字形不同</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+        <section class="pinyin-faq" aria-labelledby="kanjiConverterFaqTitle">
+          <h2 id="kanjiConverterFaqTitle">日中漢字轉換常見問題</h2>
+          <details><summary>把中文漢字轉成日本漢字，就是翻譯成日文嗎？</summary><p>不是。本頁只轉換漢字字形，不會改寫詞序、文法與詞義，也不會自動加入平假名或片假名。需要自然日文時仍應使用翻譯工具。</p></details>
+          <details><summary>日本新字體和中國簡體字是同一套標準嗎？</summary><p>不是。兩者分別在日本和中國大陸形成並標準化，有些字形相同，例如「国」和「学」；也有「芸／艺」「図／图」等不同寫法。</p></details>
+          <details><summary>應該怎麼選擇輸入文字類型？</summary><p>依原文實際使用的標準選擇日本漢字、中國簡體字或中國繁體字。來源不確定時，可先觀察「艺／藝／芸」「图／圖／図」等差異明顯的字。</p></details>
+          <details><summary>為什麼有些漢字轉換後沒有變化？</summary><p>許多漢字在三套標準中共用相同 Unicode 字元或常用字形，因此結果保持不變是正常現象，不代表轉換失敗。</p></details>
+          <details><summary>姓名、地名和專業術語可以直接採用轉換結果嗎？</summary><p>不建議直接用於正式情境。姓名、地名、機構名、異體字與專業術語可能有慣用寫法，應搭配原始資料或官方來源複核。</p></details>
+        </section>
         <nav class="landing-links" aria-label="Related tools">
           <a href="/zh-tw/japanese-chinese-kanji-converter/" aria-current="page">日中漢字三體轉換</a>
           <a href="/zh-tw/japanese-kanji-converter/">日文新舊字體轉換</a>
