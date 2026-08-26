@@ -222,7 +222,7 @@ function preparePage(source, slug, locale, page) {
     .replace(/<link rel="canonical" href="[^"]+" \/>/, `<link rel="canonical" href="${localizedPath(locale, slug)}" />`);
 
   const alternateLocales = {
-    "zh-CN": "zh-CN",
+    "zh-Hans": "zh-CN",
     "zh-Hant": "zh-TW",
     en: "en",
     ja: "ja",

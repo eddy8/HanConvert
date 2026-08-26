@@ -8,7 +8,7 @@ const origin = "https://jianfan.app";
 const markerStart = "  <!-- trust-pages:start -->";
 const markerEnd = "  <!-- trust-pages:end -->";
 const locales = [
-  { hreflang: "zh-CN", prefix: "" },
+  { hreflang: "zh-Hans", prefix: "" },
   { hreflang: "zh-Hant", prefix: "zh-tw/" },
   { hreflang: "en", prefix: "en/" },
   { hreflang: "ja", prefix: "ja/" },

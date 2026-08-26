@@ -9,6 +9,7 @@ import { getPageContext, loadLocalizationData, localizeConverterHtml } from "./s
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteOrigin = "https://jianfan.app";
 const maxTitleLength = 70;
+const expectedHreflangs = ["zh-Hans", "zh-Hant", "en", "ja", "ko", "x-default"];
 const localizationData = await loadLocalizationData(projectRoot);
 const documentLanguages = { "zh-CN": "zh-CN", "zh-TW": "zh-Hant", en: "en", ja: "ja", ko: "ko" };
 
@@ -34,6 +35,10 @@ const sitemap = await readFile(path.join(projectRoot, "sitemap.xml"), "utf8");
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 const uniqueSitemapUrls = new Set(sitemapUrls);
 if (uniqueSitemapUrls.size !== sitemapUrls.length) throw new Error("sitemap.xml contains duplicate URLs");
+const sitemapHreflangs = new Set([...sitemap.matchAll(/<xhtml:link\b[^>]*\bhreflang="([^"]+)"/g)].map((match) => match[1]));
+if ([...sitemapHreflangs].sort().join("|") !== [...expectedHreflangs].sort().join("|")) {
+  throw new Error(`sitemap.xml contains unexpected hreflang values: ${[...sitemapHreflangs].sort().join(", ")}`);
+}
 
 for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "han-character-worksheet.js", "handwriting-recognition.js", "handwriting-recognition-worker.js", "photo-chinese-character-recognition.js", "han-character-lookup-core.js", "han-character-lookup.js", "kanji-romaji-core.js", "kanji-to-romaji.js", "japanese-reading-client.js", "japanese-reading-worker.js", "kanji-to-hiragana.js", "japanese-stroke-order.js", "japanese-kanji-data.js", "japanese-kanji-dictionary.js", "japanese-handwriting-recognition.js", "korean-hanja-data.js", "korean-hanja-dictionary.js", "hangul-hanja-converter.js", "korean-name-hanja.js", "webmcp.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
@@ -210,6 +215,10 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
 
   const alternates = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)" \/>/g)];
   if (alternates.length !== 6) throw new Error(`${relativePath}: expected 6 hreflang links`);
+  const alternateLanguages = alternates.map(([, language]) => language).sort();
+  if (alternateLanguages.join("|") !== [...expectedHreflangs].sort().join("|")) {
+    throw new Error(`${relativePath}: unexpected hreflang values ${alternateLanguages.join(", ")}`);
+  }
   if (alternates.some(([, , href]) => !href.startsWith(`${siteOrigin}/`))) {
     throw new Error(`${relativePath}: hreflang URL is not absolute`);
   }
