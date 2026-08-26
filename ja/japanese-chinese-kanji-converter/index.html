@@ -64,6 +64,52 @@
                 "item": "https://jianfan.app/ja/japanese-chinese-kanji-converter/"
               }
             ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/ja/japanese-chinese-kanji-converter/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "中国語の漢字を日本の漢字に変換すると、日本語訳になりますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "いいえ。このページが変換するのは漢字の字形だけです。語順や文法、単語の意味は翻訳せず、ひらがな・カタカナや読み方も追加しません。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "日本の新字体と中国語の簡体字は同じですか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "同じ体系ではありません。日本と中国大陸で別々に標準化されました。「国」「学」のように同じ字もありますが、「芸／艺」「図／图」のように異なる字もあります。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "入力文字の種類はどう選べばよいですか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "原文が日本語漢字、中国語簡体字、中国語繁体字のどれで書かれているかに合わせて選択します。不明な場合は「芸／艺／藝」「図／图／圖」などを手掛かりにできます。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "変換しても形が変わらない漢字があるのはなぜですか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "3種類で同じ Unicode 文字や一般的な字形を共有する漢字が多いためです。変化しない結果も正常で、変換失敗ではありません。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "氏名・地名・専門用語にもそのまま使えますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "確認用として利用し、正式な表記は原資料や公的資料で照合してください。人名、地名、組織名、異体字、専門用語には慣用表記がある場合があります。"
+                }
+              }
+            ]
           }
         ]
       }
@@ -164,6 +210,25 @@
           <article><h3>異なる漢字を自動集計</h3><p>日本の漢字と中国語の簡体字・繁体字を比較し、字形が異なる漢字だけを抽出して出現回数を表示します。</p></article>
           <article><h3>ブラウザー内で処理</h3><p>入力内容はサーバーへ送信されません。各結果を個別にコピーでき、OpenCC を基に変換します。</p></article>
         </div>
+
+        <section class="kanji-reference-section" aria-labelledby="kanjiReferenceTitle">
+          <h2 id="kanjiReferenceTitle">日本語漢字・簡体字・繁体字の代表的な違い</h2>
+          <p>3種類の漢字には共通する字形と、それぞれ異なる簡略形があります。入力元の判別や変換結果の確認に使える代表例です。</p>
+          <div class="japanese-table-scroll">
+            <table class="japanese-comparison-table kanji-reference-table" aria-label="日本語漢字・簡体字・繁体字の例を比較する表">
+              <thead><tr><th>日本語漢字</th><th>中国語簡体字</th><th>中国語繁体字</th><th>違い</th></tr></thead>
+              <tbody><tr><td lang="ja">国</td><td lang="zh-Hans">国</td><td lang="zh-Hant">國</td><td>日本の新字体と簡体字が同じ</td></tr><tr><td lang="ja">学</td><td lang="zh-Hans">学</td><td lang="zh-Hant">學</td><td>日本の新字体と簡体字が同じ</td></tr><tr><td lang="ja">芸</td><td lang="zh-Hans">艺</td><td lang="zh-Hant">藝</td><td>3種類で字形が異なる</td></tr><tr><td lang="ja">図</td><td lang="zh-Hans">图</td><td lang="zh-Hant">圖</td><td>3種類で字形が異なる</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+        <section class="pinyin-faq" aria-labelledby="kanjiConverterFaqTitle">
+          <h2 id="kanjiConverterFaqTitle">日中漢字変換のよくある質問</h2>
+          <details><summary>中国語の漢字を日本の漢字に変換すると、日本語訳になりますか？</summary><p>いいえ。このページが変換するのは漢字の字形だけです。語順や文法、単語の意味は翻訳せず、ひらがな・カタカナや読み方も追加しません。</p></details>
+          <details><summary>日本の新字体と中国語の簡体字は同じですか？</summary><p>同じ体系ではありません。日本と中国大陸で別々に標準化されました。「国」「学」のように同じ字もありますが、「芸／艺」「図／图」のように異なる字もあります。</p></details>
+          <details><summary>入力文字の種類はどう選べばよいですか？</summary><p>原文が日本語漢字、中国語簡体字、中国語繁体字のどれで書かれているかに合わせて選択します。不明な場合は「芸／艺／藝」「図／图／圖」などを手掛かりにできます。</p></details>
+          <details><summary>変換しても形が変わらない漢字があるのはなぜですか？</summary><p>3種類で同じ Unicode 文字や一般的な字形を共有する漢字が多いためです。変化しない結果も正常で、変換失敗ではありません。</p></details>
+          <details><summary>氏名・地名・専門用語にもそのまま使えますか？</summary><p>確認用として利用し、正式な表記は原資料や公的資料で照合してください。人名、地名、組織名、異体字、専門用語には慣用表記がある場合があります。</p></details>
+        </section>
         <nav class="landing-links" aria-label="Related tools">
           <a href="/ja/japanese-chinese-kanji-converter/" aria-current="page">日中漢字3種類変換</a>
           <a href="/ja/japanese-kanji-converter/">旧字体・新字体変換</a>
