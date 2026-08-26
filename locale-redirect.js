@@ -20,6 +20,7 @@
     if (shouldShowMirrorBanner(normalizedLanguages)) {
       showMirrorBanner();
     }
+    return;
 
     if (hasManualLocale || /^\/(zh-tw|en|ja|ko)(\/|$)/.test(path)) return;
 
