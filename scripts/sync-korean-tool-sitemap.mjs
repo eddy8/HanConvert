@@ -14,7 +14,7 @@ const slugs = [
   "korean-name-hanja"
 ];
 const locales = [
-  { hreflang: "zh-CN", prefix: "", priority: "0.8" },
+  { hreflang: "zh-Hans", prefix: "", priority: "0.8" },
   { hreflang: "zh-Hant", prefix: "zh-tw/", priority: "0.8" },
   { hreflang: "en", prefix: "en/", priority: "0.8" },
   { hreflang: "ja", prefix: "ja/", priority: "0.8" },

@@ -9,7 +9,7 @@ const markerStart = "  <!-- japanese-tools:start -->";
 const markerEnd = "  <!-- japanese-tools:end -->";
 const lastModified = "2026-08-01";
 const locales = [
-  { hreflang: "zh-CN", prefix: "" },
+  { hreflang: "zh-Hans", prefix: "" },
   { hreflang: "zh-Hant", prefix: "zh-tw/" },
   { hreflang: "en", prefix: "en/" },
   { hreflang: "ja", prefix: "ja/" },

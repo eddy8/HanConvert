@@ -10,7 +10,7 @@ const dictionaryPath = "https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/";
 const dictionaryFallbackPath = "https://cdn.jsdmirror.cn/npm/kuromoji@0.1.2/dict/";
 
 const locales = {
-  "zh-CN": { prefix: "", lang: "zh-CN", hreflang: "zh-CN", label: "简体中文", home: "网站首页", skip: "跳到主要内容", language: "界面语言", siteHeader: "网站页眉", primary: "主要导航", footerAria: "页脚", about: "关于我们", contact: "联系我们", privacy: "隐私声明" },
+  "zh-CN": { prefix: "", lang: "zh-CN", hreflang: "zh-Hans", label: "简体中文", home: "网站首页", skip: "跳到主要内容", language: "界面语言", siteHeader: "网站页眉", primary: "主要导航", footerAria: "页脚", about: "关于我们", contact: "联系我们", privacy: "隐私声明" },
   "zh-TW": { prefix: "zh-tw/", lang: "zh-Hant", hreflang: "zh-Hant", label: "繁體中文", home: "網站首頁", skip: "跳到主要內容", language: "介面語言", siteHeader: "網站頁首", primary: "主要導覽", footerAria: "頁尾", about: "關於我們", contact: "聯絡我們", privacy: "隱私聲明" },
   en: { prefix: "en/", lang: "en", hreflang: "en", label: "English", home: "Home", skip: "Skip to main content", language: "Language", siteHeader: "Site header", primary: "Primary navigation", footerAria: "Footer", about: "About", contact: "Contact", privacy: "Privacy Statement" },
   ja: { prefix: "ja/", lang: "ja", hreflang: "ja", label: "日本語", home: "ホーム", skip: "メインコンテンツへ移動", language: "表示言語", siteHeader: "サイトヘッダー", primary: "メインナビゲーション", footerAria: "フッター", about: "JianFan.app について", contact: "お問い合わせ", privacy: "プライバシー声明" },

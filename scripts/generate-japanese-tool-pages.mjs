@@ -376,7 +376,7 @@ function escapeHtml(value) {
 function buildHead(locale, slug, content) {
   const canonical = `${siteOrigin}${localizedPath(locale, slug)}`;
   const hreflangs = {
-    "zh-CN": "zh-CN",
+    "zh-Hans": "zh-CN",
     "zh-Hant": "zh-TW",
     en: "en",
     ja: "ja",

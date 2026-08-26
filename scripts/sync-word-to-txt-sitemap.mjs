@@ -9,7 +9,7 @@ const slug = "word-to-txt";
 const markerStart = "  <!-- word-to-txt-tool:start -->";
 const markerEnd = "  <!-- word-to-txt-tool:end -->";
 const locales = [
-  { hreflang: "zh-CN", prefix: "", priority: "0.9" },
+  { hreflang: "zh-Hans", prefix: "", priority: "0.9" },
   { hreflang: "zh-Hant", prefix: "zh-tw/", priority: "0.9" },
   { hreflang: "en", prefix: "en/", priority: "0.9" },
   { hreflang: "ja", prefix: "ja/", priority: "0.9" },
