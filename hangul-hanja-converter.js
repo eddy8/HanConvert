@@ -27,7 +27,8 @@
     dictionaryList: document.querySelector("#koreanConverterDictionaryList"),
     dictionaryEmpty: document.querySelector("#koreanConverterDictionaryEmpty"),
     dictionaryStatus: document.querySelector("#koreanConverterDictionaryStatus"),
-    dictionaryClear: document.querySelector("#koreanConverterDictionaryClear")
+    dictionaryClear: document.querySelector("#koreanConverterDictionaryClear"),
+    examples: [...document.querySelectorAll("[data-korean-converter-example]")]
   };
   let direction = "hangul-to-hanja";
   let payload;
@@ -521,15 +522,19 @@
     if (direction === nextDirection) return;
     direction = nextDirection;
     resetChoiceState();
+    updateDirectionControls();
+    const current = elements.input.value;
+    elements.input.value = elements.output.value;
+    elements.output.value = current;
+    convert();
+  }
+
+  function updateDirectionControls() {
     elements.directions.forEach((button) => {
       const active = button.dataset.koreanDirection === direction;
       button.classList.toggle("is-active", active);
       button.setAttribute("aria-checked", String(active));
     });
-    const current = elements.input.value;
-    elements.input.value = elements.output.value;
-    elements.output.value = current;
-    convert();
   }
 
   elements.directions.forEach((button) => button.addEventListener("click", () => setDirection(button.dataset.koreanDirection)));
@@ -544,6 +549,18 @@
     elements.input.value = direction === "hangul-to-hanja" ? "대한민국의 역사와 문화" : "大韓民國의 歷史와 文化";
     convert();
   });
+  elements.examples.forEach((button) => button.addEventListener("click", () => {
+    const nextDirection = button.dataset.koreanExampleDirection;
+    if (nextDirection && nextDirection !== direction) {
+      direction = nextDirection;
+      updateDirectionControls();
+    }
+    resetChoiceState();
+    elements.input.value = button.dataset.koreanConverterExample || "";
+    elements.output.value = "";
+    convert();
+    elements.input.scrollIntoView({ behavior: "smooth", block: "center" });
+  }));
   elements.clear.addEventListener("click", () => {
     resetChoiceState();
     elements.input.value = "";
