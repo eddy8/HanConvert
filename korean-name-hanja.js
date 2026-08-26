@@ -15,7 +15,8 @@
     progressText: document.querySelector("#koreanNameProgressText"),
     summary: document.querySelector("#koreanNameSummary"),
     results: document.querySelector("#koreanNameResults"),
-    empty: document.querySelector("#koreanNameEmpty")
+    empty: document.querySelector("#koreanNameEmpty"),
+    quickSearches: [...document.querySelectorAll("[data-korean-name-query]")]
   };
   let payload;
 
@@ -119,6 +120,10 @@
     event.preventDefault();
     search();
   });
+  elements.quickSearches.forEach((button) => button.addEventListener("click", () => {
+    elements.query.value = button.dataset.koreanNameQuery || "";
+    search();
+  }));
   elements.clear.addEventListener("click", () => {
     elements.form.reset();
     elements.results.replaceChildren();

@@ -54,6 +54,58 @@ test("uses the expected browser scripts for each Korean tool", async () => {
   }
 });
 
+test("adds localized market examples and contextual paths to every language", async () => {
+  for (const [locale, config] of Object.entries(locales)) {
+    const converter = await readFile(pagePath(config.prefix, "hangul-hanja-converter"), "utf8");
+    const handwriting = await readFile(pagePath(config.prefix, "korean-hanja-handwriting-recognition"), "utf8");
+    const names = await readFile(pagePath(config.prefix, "korean-name-hanja"), "utf8");
+
+    for (const [slug, html] of [
+      ["hangul-hanja-converter", converter],
+      ["korean-hanja-handwriting-recognition", handwriting],
+      ["korean-name-hanja", names]
+    ]) {
+      assert.ok(html.includes('class="korean-market-section"'), `${locale}/${slug} examples`);
+      assert.ok(html.includes('class="korean-market-paths"'), `${locale}/${slug} contextual paths`);
+    }
+
+    assert.equal((converter.match(/data-korean-converter-example=/g) || []).length, 3, `${locale} converter examples`);
+    assert.deepEqual(
+      [...handwriting.matchAll(/data-handwriting-sample="([^"]+)"/g)].map((match) => match[1]),
+      ["人", "大", "木", "中"],
+      `${locale} supported handwriting samples`
+    );
+    for (const example of ["尹", "珉", "曺"]) assert.ok(handwriting.includes(example), `${locale} handwriting example ${example}`);
+    for (const reading of ["민", "서", "지", "윤"]) {
+      assert.ok(names.includes(`data-korean-name-query="${reading}"`), `${locale} name reading ${reading}`);
+    }
+  }
+
+  const koreanConverter = await readFile(pagePath("ko", "hangul-hanja-converter"), "utf8");
+  assert.ok(koreanConverter.includes("실제 문맥으로 확인하는 한글·한자 변환"));
+  assert.ok(koreanConverter.includes('data-korean-converter-example="수도"'));
+  assert.ok(koreanConverter.includes("首都 · 水道 · 修道 등"));
+
+  const japaneseConverter = await readFile(pagePath("ja", "hangul-hanja-converter"), "utf8");
+  assert.ok(japaneseConverter.includes("韓国語の実例で分かるハングル・漢字変換"));
+  assert.ok(japaneseConverter.includes('href="/ja/korean-hanja-handwriting-recognition/"'));
+
+  const japaneseHandwriting = await readFile(pagePath("ja", "korean-hanja-handwriting-recognition"), "utf8");
+  assert.ok(japaneseHandwriting.includes("字形からハングル読みにつなげる検索例"));
+
+  const japaneseNames = await readFile(pagePath("ja", "korean-name-hanja"), "utf8");
+  assert.ok(japaneseNames.includes("同じハングル読みから複数の名前漢字を比較"));
+});
+
+test("wires market example and quick-search controls in the browser scripts", async () => {
+  const converter = await readFile(path.join(projectRoot, "hangul-hanja-converter.js"), "utf8");
+  const names = await readFile(path.join(projectRoot, "korean-name-hanja.js"), "utf8");
+  assert.match(converter, /querySelectorAll\("\[data-korean-converter-example\]"\)/);
+  assert.match(converter, /button\.dataset\.koreanExampleDirection/);
+  assert.match(names, /querySelectorAll\("\[data-korean-name-query\]"\)/);
+  assert.match(names, /button\.dataset\.koreanNameQuery/);
+});
+
 test("ships localized bidirectional conversion-review controls", async () => {
   const labels = {
     "zh-CN": ["转换候选", "保留原文", "逐字选择", "相同词全部使用此项"],

@@ -9,7 +9,7 @@ const localePaths = "zh-CN:/|zh-TW:/zh-tw/|en:/en/|ja:/ja/|ko:/ko/";
 const locales = {
   "zh-CN": { prefix: "", lang: "zh-CN", hreflang: "zh-Hans", label: "简体中文", home: "网站首页", language: "界面语言", header: "网站页眉", nav: "主要导航", footer: "页脚", about: "关于我们", contact: "联系我们", privacy: "隐私声明", skip: "跳到主要内容", related: "相关韩国汉字工具", relatedAria: "相关韩国汉字与韩文工具", footerText: "JianFan.app 提供在浏览器中运行的韩国汉字查询、手写识别和韩汉转换工具。", runtime: { loading: "正在加载词典…", loadingProgress: "词典加载进度：{percent}%", loaded: "已加载 {count} 条资料", ready: "找到 {count} 条结果", noResults: "没有找到符合条件的结果。", results: "{count} 条结果", resultMeta: "部首 {radical} · {strokes} 画", invalid: "请输入查询内容或选择筛选条件。", error: "资料加载失败，请刷新页面后重试。", recognizing: "正在识别笔迹…", matched: "找到 {count} 个候选字", copied: "已复制", copyFailed: "复制失败，请手动复制", candidateLabel: "候选字 {character}", remoteRecognizing: "正在进行远程识别…", remoteNoMatch: "远程识别未找到更合适的候选字", remoteError: "远程识别失败，请检查网络后重试", converted: "已转换 {count} 个字符", conversionPending: "已处理 {count} 个字符，请选择 {pending} 处同音词", descriptionUnavailable: "暂无释义" } },
   "zh-TW": { prefix: "zh-tw/", lang: "zh-Hant", hreflang: "zh-Hant", label: "繁體中文", home: "網站首頁", language: "介面語言", header: "網站頁首", nav: "主要導覽", footer: "頁尾", about: "關於我們", contact: "聯絡我們", privacy: "隱私聲明", skip: "跳到主要內容", related: "相關韓國漢字工具", relatedAria: "相關韓國漢字與韓文工具", footerText: "JianFan.app 提供在瀏覽器中執行的韓國漢字查詢、手寫辨識與韓漢轉換工具。", runtime: { loading: "正在載入字典…", loadingProgress: "字典載入進度：{percent}%", loaded: "已載入 {count} 筆資料", ready: "找到 {count} 筆結果", noResults: "找不到符合條件的結果。", results: "{count} 筆結果", resultMeta: "部首 {radical} · {strokes} 畫", invalid: "請輸入查詢內容或選擇篩選條件。", error: "資料載入失敗，請重新整理頁面後再試。", recognizing: "正在辨識筆跡…", matched: "找到 {count} 個候選字", copied: "已複製", copyFailed: "複製失敗，請手動複製", candidateLabel: "候選字 {character}", remoteRecognizing: "正在進行遠端辨識…", remoteNoMatch: "遠端辨識未找到更合適的候選字", remoteError: "遠端辨識失敗，請檢查網路後再試一次", converted: "已轉換 {count} 個字元", conversionPending: "已處理 {count} 個字元，請選擇 {pending} 處同音詞", descriptionUnavailable: "暫無釋義" } },
-  en: { prefix: "en/", lang: "en", hreflang: "en", label: "English", home: "Home", language: "Language", header: "Site header", nav: "Primary navigation", footer: "Footer", about: "About", contact: "Contact", privacy: "Privacy Statement", skip: "Skip to main content", related: "Related Korean Hanja tools", relatedAria: "Related Korean Hanja and Hangul tools", footerText: "JianFan.app provides browser-based Korean Hanja lookup, handwriting recognition and Hangul conversion tools.", runtime: { loading: "Loading the dictionary…", loadingProgress: "Dictionary loading: {percent}%", loaded: "Loaded {count} records", ready: "Found {count} results", noResults: "No matching results were found.", results: "{count} results", resultMeta: "Radical {radical} · {strokes} strokes", invalid: "Enter a query or choose a filter.", error: "The data could not be loaded. Refresh the page and try again.", recognizing: "Recognizing handwriting…", matched: "Found {count} candidate characters", copied: "Copied", copyFailed: "Copy failed. Select and copy manually.", candidateLabel: "Candidate {character}", remoteRecognizing: "Checking with online recognition…", remoteNoMatch: "Online recognition found no better matches.", remoteError: "Online recognition failed. Check your connection and try again.", converted: "Converted {count} characters", conversionPending: "Processed {count} characters; choose {pending} ambiguous terms", descriptionUnavailable: "No definition available" } },
+  en: { prefix: "en/", lang: "en", hreflang: "en", label: "English", home: "Home", language: "Language", header: "Site header", nav: "Primary navigation", footer: "Footer", about: "About", contact: "Contact", privacy: "Privacy Statement", skip: "Skip to main content", related: "Related Korean Hanja tools", relatedAria: "Related Korean Hanja and Hangul tools", footerText: "JianFan.app provides browser-based Korean Hanja lookup, handwriting recognition and Hangul conversion tools.", runtime: { loading: "Loading the dictionary…", loadingProgress: "Dictionary loading: {percent}%", loaded: "Loaded {count} records", ready: "Found {count} results", noResults: "No matching results were found.", results: "{count} results", resultMeta: "Radical {radical} · {strokes} strokes", invalid: "Enter a query or choose a filter.", error: "The data could not be loaded. Refresh the page and try again.", recognizing: "Recognizing handwriting…", matched: "Found {count} candidate characters", copied: "Copied", copyFailed: "Copy failed. Select and copy manually.", candidateLabel: "Candidate {character}", remoteRecognizing: "Checking with online recognition…", remoteNoMatch: "Online recognition found no better matches.", remoteError: "Online recognition failed. Check your connection and try again.", converted: "Converted {count} characters", conversionPending: "Processed {count} characters; ambiguous choices: {pending}", descriptionUnavailable: "No definition available" } },
   ja: { prefix: "ja/", lang: "ja", hreflang: "ja", label: "日本語", home: "ホーム", language: "表示言語", header: "サイトヘッダー", nav: "メインナビゲーション", footer: "フッター", about: "JianFan.app について", contact: "お問い合わせ", privacy: "プライバシー声明", skip: "メインコンテンツへ移動", related: "関連する韓国漢字ツール", relatedAria: "関連する韓国漢字・ハングルツール", footerText: "JianFan.app はブラウザーで使える韓国漢字検索、手書き認識、ハングル変換ツールを提供します。", runtime: { loading: "辞書を読み込んでいます…", loadingProgress: "辞書の読み込み：{percent}%", loaded: "{count} 件のデータを読み込みました", ready: "{count} 件見つかりました", noResults: "条件に一致する結果はありません。", results: "{count} 件", resultMeta: "部首 {radical} · {strokes} 画", invalid: "検索語を入力するか、絞り込み条件を選んでください。", error: "データを読み込めませんでした。ページを再読み込みしてください。", recognizing: "手書き文字を認識しています…", matched: "候補を {count} 字見つけました", copied: "コピーしました", copyFailed: "コピーできませんでした。手動でコピーしてください。", candidateLabel: "候補 {character}", remoteRecognizing: "オンライン認識で検索しています…", remoteNoMatch: "オンライン認識でも適切な候補が見つかりませんでした。", remoteError: "オンライン認識に失敗しました。通信を確認してもう一度お試しください。", converted: "{count} 文字を変換しました", conversionPending: "{count} 文字を処理しました。{pending} 語の候補を選んでください", descriptionUnavailable: "字義情報はありません" } },
   ko: { prefix: "ko/", lang: "ko", hreflang: "ko", label: "한국어", home: "홈", language: "언어", header: "사이트 헤더", nav: "주요 탐색", footer: "바닥글", about: "소개", contact: "문의", privacy: "개인정보 보호 안내", skip: "주요 내용으로 이동", related: "관련 한자·한글 도구", relatedAria: "관련 한자 찾기와 한글 변환 도구", footerText: "JianFan.app는 브라우저에서 실행되는 한자 찾기, 필기 인식, 한글·한자 변환 도구를 제공합니다.", runtime: { loading: "사전을 불러오는 중…", loadingProgress: "사전 불러오기: {percent}%", loaded: "자료 {count}건을 불러왔습니다", ready: "{count}건을 찾았습니다", noResults: "조건에 맞는 결과가 없습니다.", results: "{count}건", resultMeta: "부수 {radical} · 총 {strokes}획", invalid: "검색어를 입력하거나 검색 조건을 선택하세요.", error: "자료를 불러오지 못했습니다. 페이지를 새로 고침해 주세요.", recognizing: "필기한 한자를 인식하는 중…", matched: "후보 한자 {count}자를 찾았습니다", copied: "복사했습니다", copyFailed: "복사하지 못했습니다. 직접 선택해 복사하세요.", candidateLabel: "후보 {character}", remoteRecognizing: "온라인 인식으로 찾는 중…", remoteNoMatch: "온라인 인식에서도 더 적합한 후보를 찾지 못했습니다.", remoteError: "온라인 인식에 실패했습니다. 네트워크를 확인한 후 다시 시도하세요.", converted: "{count}자를 변환했습니다", conversionPending: "{count}자를 처리했습니다. 동음어 {pending}곳의 한자를 선택하세요", descriptionUnavailable: "뜻풀이 정보 없음" } }
 };
@@ -17,7 +17,7 @@ const locales = {
 const converterLabels = {
   "zh-CN": { choicesTitle: "转换候选", choicesEmpty: "出现多个汉字或韩文读音时，可在这里逐项选择。", pending: "已处理 {count} 个字符，请确认 {pending} 处转换候选", choicePosition: "{current} / {total}", previousChoice: "上一个待确认位置", nextChoice: "下一个待确认位置", keepOriginal: "保留原文", splitCharacters: "逐字选择", applyAll: "相同词全部使用此项", showAll: "显示全部 {count} 个候选", showLess: "收起候选", detailsLoading: "正在加载字义…", detailsUnavailable: "暂无音训资料", candidateDetails: "查看 {candidate} 的部首与笔画", detailRadical: "部首 {radical}", detailStrokes: "{count} 画", dictionary: { title: "个人词典", count: "{enabled}/{total} 已启用", note: "保存常用人名、地名或专业词语，转换时优先使用；资料仅保存在当前浏览器。", hangulLabel: "韩文词语", hangulPlaceholder: "例如：수도", hanjaLabel: "韩国汉字", hanjaPlaceholder: "例如：水道", add: "添加词条", empty: "还没有个人词条。", clear: "清空词典", messages: { dictionaryCount: "{enabled}/{total} 已启用", dictionaryToggle: "启用或停用 {term}", dictionaryRemove: "删除 {term}", dictionaryClearConfirm: "确定清空全部个人词条吗？", dictionaryRequired: "请同时输入韩文词语和韩国汉字。", dictionaryInvalid: "左侧需包含韩文，右侧需包含汉字。", dictionaryTooLong: "每项最多 {limit} 个字符。", dictionaryLimit: "个人词典最多保存 {limit} 项。", dictionaryAdded: "已添加个人词条。", dictionaryUpdated: "已更新个人词条。", dictionaryRemoved: "已删除个人词条。", dictionaryCleared: "已清空个人词典。", dictionaryStorageError: "当前浏览器无法保存词典，本次页面仍可继续使用。" } } },
   "zh-TW": { choicesTitle: "轉換候選", choicesEmpty: "出現多個漢字或韓文讀音時，可在這裡逐項選擇。", pending: "已處理 {count} 個字元，請確認 {pending} 處轉換候選", choicePosition: "{current} / {total}", previousChoice: "上一個待確認位置", nextChoice: "下一個待確認位置", keepOriginal: "保留原文", splitCharacters: "逐字選擇", applyAll: "相同詞全部使用此項", showAll: "顯示全部 {count} 個候選", showLess: "收合候選", detailsLoading: "正在載入字義…", detailsUnavailable: "暫無音訓資料", candidateDetails: "查看 {candidate} 的部首與筆畫", detailRadical: "部首 {radical}", detailStrokes: "{count} 畫", dictionary: { title: "個人辭典", count: "已啟用 {enabled}/{total}", note: "儲存常用人名、地名或專業詞語，轉換時優先套用；資料只保存在目前瀏覽器。", hangulLabel: "韓文詞語", hangulPlaceholder: "例如：수도", hanjaLabel: "韓國漢字", hanjaPlaceholder: "例如：水道", add: "新增詞條", empty: "尚未建立個人詞條。", clear: "清空辭典", messages: { dictionaryCount: "已啟用 {enabled}/{total}", dictionaryToggle: "啟用或停用 {term}", dictionaryRemove: "刪除 {term}", dictionaryClearConfirm: "確定清空全部個人詞條嗎？", dictionaryRequired: "請同時輸入韓文詞語與韓國漢字。", dictionaryInvalid: "左側需包含韓文，右側需包含漢字。", dictionaryTooLong: "每項最多 {limit} 個字元。", dictionaryLimit: "個人辭典最多儲存 {limit} 項。", dictionaryAdded: "已新增個人詞條。", dictionaryUpdated: "已更新個人詞條。", dictionaryRemoved: "已刪除個人詞條。", dictionaryCleared: "已清空個人辭典。", dictionaryStorageError: "目前瀏覽器無法儲存辭典，本次頁面仍可繼續使用。" } } },
-  en: { choicesTitle: "Conversion choices", choicesEmpty: "Alternative Hanja or Hangul readings will appear here for review.", pending: "Processed {count} characters; choose {pending} ambiguous terms", choicePosition: "{current} / {total}", previousChoice: "Previous occurrence", nextChoice: "Next occurrence", keepOriginal: "Keep original", splitCharacters: "Choose one character at a time", applyAll: "Use for every matching occurrence", showAll: "Show all {count} candidates", showLess: "Show fewer", detailsLoading: "Loading meanings…", detailsUnavailable: "No Korean gloss available", candidateDetails: "Show radical and stroke details for {candidate}", detailRadical: "Radical {radical}", detailStrokes: "{count} strokes", dictionary: { title: "Personal dictionary", count: "{enabled} of {total} active", note: "Save preferred names, places and specialist terms. They take priority during conversion and stay in this browser.", hangulLabel: "Hangul term", hangulPlaceholder: "For example: 수도", hanjaLabel: "Korean Hanja", hanjaPlaceholder: "For example: 水道", add: "Add entry", empty: "No personal entries yet.", clear: "Clear dictionary", messages: { dictionaryCount: "{enabled} of {total} active", dictionaryToggle: "Enable or disable {term}", dictionaryRemove: "Remove {term}", dictionaryClearConfirm: "Clear every personal dictionary entry?", dictionaryRequired: "Enter both a Hangul term and its Korean Hanja.", dictionaryInvalid: "The first field must contain Hangul and the second must contain Hanja.", dictionaryTooLong: "Each term can contain up to {limit} characters.", dictionaryLimit: "The personal dictionary can hold up to {limit} entries.", dictionaryAdded: "Personal entry added.", dictionaryUpdated: "Personal entry updated.", dictionaryRemoved: "Personal entry removed.", dictionaryCleared: "Personal dictionary cleared.", dictionaryStorageError: "This browser could not save the dictionary. It remains available on this page." } } },
+  en: { choicesTitle: "Conversion choices", choicesEmpty: "Alternative Hanja or Hangul readings will appear here for review.", pending: "Processed {count} characters; ambiguous choices: {pending}", choicePosition: "{current} / {total}", previousChoice: "Previous occurrence", nextChoice: "Next occurrence", keepOriginal: "Keep original", splitCharacters: "Choose one character at a time", applyAll: "Use for every matching occurrence", showAll: "Show all {count} candidates", showLess: "Show fewer", detailsLoading: "Loading meanings…", detailsUnavailable: "No Korean gloss available", candidateDetails: "Show radical and stroke details for {candidate}", detailRadical: "Radical {radical}", detailStrokes: "{count} strokes", dictionary: { title: "Personal dictionary", count: "{enabled} of {total} active", note: "Save preferred names, places and specialist terms. They take priority during conversion and stay in this browser.", hangulLabel: "Hangul term", hangulPlaceholder: "For example: 수도", hanjaLabel: "Korean Hanja", hanjaPlaceholder: "For example: 水道", add: "Add entry", empty: "No personal entries yet.", clear: "Clear dictionary", messages: { dictionaryCount: "{enabled} of {total} active", dictionaryToggle: "Enable or disable {term}", dictionaryRemove: "Remove {term}", dictionaryClearConfirm: "Clear every personal dictionary entry?", dictionaryRequired: "Enter both a Hangul term and its Korean Hanja.", dictionaryInvalid: "The first field must contain Hangul and the second must contain Hanja.", dictionaryTooLong: "Each term can contain up to {limit} characters.", dictionaryLimit: "The personal dictionary can hold up to {limit} entries.", dictionaryAdded: "Personal entry added.", dictionaryUpdated: "Personal entry updated.", dictionaryRemoved: "Personal entry removed.", dictionaryCleared: "Personal dictionary cleared.", dictionaryStorageError: "This browser could not save the dictionary. It remains available on this page." } } },
   ja: { choicesTitle: "変換候補", choicesEmpty: "複数の漢字候補やハングル読みがある箇所を、ここで順番に選べます。", pending: "{count} 文字を処理しました。{pending} 語の候補を選んでください", choicePosition: "{current} / {total}", previousChoice: "前の箇所", nextChoice: "次の箇所", keepOriginal: "原文のまま", splitCharacters: "1文字ずつ選ぶ", applyAll: "同じ語のすべてに適用", showAll: "候補をすべて表示（{count}件）", showLess: "候補を閉じる", detailsLoading: "字義を読み込み中…", detailsUnavailable: "韓国語の字義情報はありません", candidateDetails: "{candidate} の部首と画数を見る", detailRadical: "部首 {radical}", detailStrokes: "{count}画", dictionary: { title: "個人辞書", count: "{enabled}/{total}件を使用", note: "人名、地名、専門用語の表記を保存すると、変換時に優先されます。データはこのブラウザーだけに保存されます。", hangulLabel: "ハングル語句", hangulPlaceholder: "例：수도", hanjaLabel: "韓国漢字", hanjaPlaceholder: "例：水道", add: "単語を追加", empty: "個人辞書はまだ空です。", clear: "辞書を消去", messages: { dictionaryCount: "{enabled}/{total}件を使用", dictionaryToggle: "{term} を有効または無効にする", dictionaryRemove: "{term} を削除", dictionaryClearConfirm: "個人辞書をすべて消去しますか？", dictionaryRequired: "ハングル語句と韓国漢字の両方を入力してください。", dictionaryInvalid: "左欄にはハングル、右欄には漢字を含めてください。", dictionaryTooLong: "各項目は {limit} 文字以内です。", dictionaryLimit: "個人辞書には最大 {limit} 件まで保存できます。", dictionaryAdded: "個人辞書に追加しました。", dictionaryUpdated: "個人辞書を更新しました。", dictionaryRemoved: "個人辞書から削除しました。", dictionaryCleared: "個人辞書を消去しました。", dictionaryStorageError: "このブラウザーには保存できません。現在のページでは引き続き使用できます。" } } },
   ko: { choicesTitle: "변환 후보", choicesEmpty: "한자 후보나 한글 읽기가 여러 개면 여기에서 하나씩 확인할 수 있습니다.", pending: "{count}자를 처리했습니다. 변환 후보 {pending}곳을 확인하세요", choicePosition: "{current} / {total}", previousChoice: "이전 위치", nextChoice: "다음 위치", keepOriginal: "원문 유지", splitCharacters: "한 자씩 선택", applyAll: "같은 낱말에 모두 적용", showAll: "후보 {count}개 모두 보기", showLess: "후보 접기", detailsLoading: "훈과 뜻을 불러오는 중…", detailsUnavailable: "훈음 정보 없음", candidateDetails: "{candidate}의 부수와 획수 보기", detailRadical: "부수 {radical}", detailStrokes: "총 {count}획", dictionary: { title: "개인 한자 사전", count: "{enabled}/{total}개 사용", note: "이름, 지명, 회사명이나 전문 용어를 저장하면 변환할 때 먼저 적용합니다. 자료는 이 브라우저에만 보관됩니다.", hangulLabel: "한글 낱말", hangulPlaceholder: "예: 수도", hanjaLabel: "한자 표기", hanjaPlaceholder: "예: 水道", add: "낱말 추가", empty: "저장한 개인 낱말이 없습니다.", clear: "사전 비우기", messages: { dictionaryCount: "{enabled}/{total}개 사용", dictionaryToggle: "{term} 사용 여부", dictionaryRemove: "{term} 삭제", dictionaryClearConfirm: "개인 한자 사전을 모두 비울까요?", dictionaryRequired: "한글 낱말과 한자 표기를 모두 입력하세요.", dictionaryInvalid: "왼쪽에는 한글, 오른쪽에는 한자가 포함되어야 합니다.", dictionaryTooLong: "각 항목은 {limit}자까지 입력할 수 있습니다.", dictionaryLimit: "개인 사전은 최대 {limit}개까지 저장할 수 있습니다.", dictionaryAdded: "개인 사전에 추가했습니다.", dictionaryUpdated: "개인 사전을 수정했습니다.", dictionaryRemoved: "개인 사전에서 삭제했습니다.", dictionaryCleared: "개인 한자 사전을 비웠습니다.", dictionaryStorageError: "이 브라우저에 사전을 저장하지 못했습니다. 현재 페이지에서는 계속 사용할 수 있습니다." } } }
 };
@@ -73,6 +73,282 @@ const pages = {
   }
 };
 
+const marketEnhancements = {
+  "hangul-hanja-converter:ko": {
+    exampleTitle: "실제 문맥으로 확인하는 한글·한자 변환",
+    exampleIntro: "한글 음이 같아도 뜻에 따라 한자가 달라집니다. 단어 전체를 먼저 찾은 뒤, 여러 후보가 나오면 문맥에 맞는 표기를 직접 고르세요.",
+    exampleInputLabel: "입력",
+    exampleResultLabel: "변환·후보",
+    exampleAction: "이 예시로 변환",
+    examples: [
+      { input: "대한민국", result: "大韓民國", note: "등록된 낱말을 음절별로 나누지 않고 한 번에 찾습니다.", direction: "hangul-to-hanja" },
+      { input: "수도", result: "首都 · 水道 · 修道 등", note: "같은 음의 한자가 여러 개이므로 문장의 뜻에 맞춰 후보를 선택합니다.", direction: "hangul-to-hanja" },
+      { input: "大韓民國의 歷史", result: "대한민국의 역사", note: "한자가 섞인 문장에서도 조사와 한글은 그대로 두고 한자어의 독음을 바꿉니다.", direction: "hanja-to-hangul" }
+    ],
+    pathTitle: "입력할 수 있는 단서에 맞춰 다음 도구 선택",
+    paths: [
+      { prompt: "글자 모양만 알고 읽기를 모를 때", label: "한자 필기인식으로 써서 찾기", slug: "korean-hanja-handwriting-recognition" },
+      { prompt: "한자음·훈·부수·획수를 함께 볼 때", label: "온라인 옥편에서 한자 찾기", slug: "korean-hanja-dictionary" },
+      { prompt: "이름에 쓸 수 있는 한자인지 확인할 때", label: "인명용 한자 조회하기", slug: "korean-name-hanja" }
+    ]
+  },
+  "hangul-hanja-converter:ja": {
+    exampleTitle: "韓国語の実例で分かるハングル・漢字変換",
+    exampleIntro: "同じハングル表記でも意味によって漢字が変わります。まず単語単位で照合し、複数の候補がある語だけ文脈に合わせて選択します。",
+    exampleInputLabel: "入力",
+    exampleResultLabel: "変換・候補",
+    exampleAction: "この例を試す",
+    examples: [
+      { input: "대한민국", result: "大韓民國", note: "登録済みの語を音節ごとに分けず、まとまりのまま照合します。", direction: "hangul-to-hanja" },
+      { input: "수도", result: "首都・水道・修道 など", note: "同音語は自動で決めつけず、文章の意味に合う韓国漢字を候補から選べます。", direction: "hangul-to-hanja" },
+      { input: "大韓民國의 歷史", result: "대한민국의 역사", note: "漢字とハングルが混在する文章でも、助詞を残して漢字語の読みを確認できます。", direction: "hanja-to-hangul" }
+    ],
+    pathTitle: "分かっている手掛かりから韓国漢字を調べる",
+    paths: [
+      { prompt: "字形は見えるが読み方も入力方法も分からない", label: "韓国漢字を手書きで検索", slug: "korean-hanja-handwriting-recognition" },
+      { prompt: "ハングル読み・部首・画数から候補を絞りたい", label: "韓国漢字辞典で検索", slug: "korean-hanja-dictionary" },
+      { prompt: "韓国の名前に使える漢字と指定読みを確認したい", label: "人名用漢字を検索", slug: "korean-name-hanja" }
+    ]
+  },
+  "korean-hanja-handwriting-recognition:ja": {
+    exampleTitle: "字形からハングル読みにつなげる検索例",
+    exampleIntro: "日本語IMEで読みを推測しにくい字でも、見たまま書いて候補を選ぶと、韓国語の漢字音と人名用の状態を続けて確認できます。",
+    exampleInputLabel: "手書きする字",
+    exampleResultLabel: "韓国語読み",
+    examples: [
+      { input: "尹", result: "윤", note: "韓国の姓で見かける字を、読みが分からない状態から検索できます。" },
+      { input: "珉", result: "민", note: "候補を選ぶと画数とUnicodeに加え、韓国の人名用漢字かどうかも確認できます。" },
+      { input: "曺", result: "조", note: "日本の標準的な字形と異なる韓国の姓の字も、収録データにあれば候補として探せます。" }
+    ],
+    pathTitle: "手書き検索の結果を次の確認へつなげる",
+    paths: [
+      { prompt: "選んだ字の韓国語の訓・部首・画数を詳しく見る", label: "韓国漢字辞典を開く", slug: "korean-hanja-dictionary" },
+      { prompt: "漢字を含む語句や文章をハングル読みに変える", label: "ハングル・漢字変換を使う", slug: "hangul-hanja-converter" },
+      { prompt: "選んだ字を韓国の名前に使えるか確認する", label: "人名用漢字を検索", slug: "korean-name-hanja" }
+    ]
+  },
+  "korean-name-hanja:ja": {
+    quickSearchLabel: "よく調べられる名前の読み",
+    quickSearches: ["민", "서", "지", "윤"],
+    exampleTitle: "同じハングル読みから複数の名前漢字を比較",
+    exampleIntro: "韓国の名前は同じ読みでも選べる漢字が複数あります。読みを一つ入力し、字形と韓国語の訓、裁判所公開データの指定読みを比較してください。",
+    exampleInputLabel: "ハングル読み",
+    exampleResultLabel: "人名用漢字の例",
+    examples: [
+      { input: "민", result: "珉・旻・敏", note: "옥돌、하늘、민첩할 など、韓国語の説明を見比べられます。" },
+      { input: "서", result: "瑞・書・緖", note: "同じ読みでも字義と字形が異なるため、候補を一覧で比較できます。" },
+      { input: "지", result: "智・志・知", note: "指定読みが確認できる標準Unicode字形をコピーして使えます。" }
+    ],
+    pathTitle: "名前漢字を調べる前後に使える韓国漢字ツール",
+    paths: [
+      { prompt: "漢字の形は分かるがハングル読みを入力できない", label: "韓国漢字を手書きで検索", slug: "korean-hanja-handwriting-recognition" },
+      { prompt: "候補の部首・画数や一般の韓国語読みも確認する", label: "韓国漢字辞典で詳しく見る", slug: "korean-hanja-dictionary" },
+      { prompt: "韓国人名や漢字語を文章の中で読みたい", label: "ハングル・漢字変換を使う", slug: "hangul-hanja-converter" }
+    ]
+  }
+};
+
+Object.assign(marketEnhancements, {
+  "hangul-hanja-converter:zh-CN": {
+    exampleTitle: "用实际韩语词语理解韩文汉字转换",
+    exampleIntro: "相同韩文读音可能对应不同韩国汉字。工具会先匹配完整词语；遇到同音词时保留候选，由你根据姓名、新闻或历史资料的上下文确认。",
+    exampleInputLabel: "输入",
+    exampleResultLabel: "转换或候选",
+    exampleAction: "转换这个示例",
+    examples: [
+      { input: "대한민국", result: "大韓民國", note: "已收录的完整词语会优先于逐个韩文音节进行匹配。", direction: "hangul-to-hanja" },
+      { input: "수도", result: "首都 · 水道 · 修道等", note: "同一个韩文词可能有多组汉字写法，需要结合句意选择。", direction: "hangul-to-hanja" },
+      { input: "大韓民國의 歷史", result: "대한민국의 역사", note: "汉字与韩文混排时，保留韩文助词并转换已识别的韩国汉字词。", direction: "hanja-to-hangul" }
+    ],
+    pathTitle: "根据已经掌握的线索选择韩国汉字工具",
+    paths: [
+      { prompt: "只看得到字形，不知道韩文读音也无法输入", label: "手写查找韩国汉字", slug: "korean-hanja-handwriting-recognition" },
+      { prompt: "需要查看韩文读音、韩语释义、部首和画数", label: "打开韩国汉字字典", slug: "korean-hanja-dictionary" },
+      { prompt: "需要核验汉字能否用于韩国姓名及指定读音", label: "查询韩国人名用汉字", slug: "korean-name-hanja" }
+    ]
+  },
+  "hangul-hanja-converter:zh-TW": {
+    exampleTitle: "用實際韓語詞語理解韓文漢字轉換",
+    exampleIntro: "相同韓文讀音可能對應不同韓國漢字。工具會先配對完整詞語；遇到同音詞時保留候選，讓你依姓名、新聞或歷史資料的上下文確認。",
+    exampleInputLabel: "輸入",
+    exampleResultLabel: "轉換或候選",
+    exampleAction: "轉換這個範例",
+    examples: [
+      { input: "대한민국", result: "大韓民國", note: "已收錄的完整詞語會優先於逐個韓文音節進行配對。", direction: "hangul-to-hanja" },
+      { input: "수도", result: "首都 · 水道 · 修道等", note: "同一個韓文詞可能有多組漢字寫法，需要依句意選擇。", direction: "hangul-to-hanja" },
+      { input: "大韓民國의 歷史", result: "대한민국의 역사", note: "漢字與韓文混排時，保留韓文助詞並轉換已辨識的韓國漢字詞。", direction: "hanja-to-hangul" }
+    ],
+    pathTitle: "依已知線索選擇韓國漢字工具",
+    paths: [
+      { prompt: "只看得到字形，不知道韓文讀音也無法輸入", label: "手寫查找韓國漢字", slug: "korean-hanja-handwriting-recognition" },
+      { prompt: "需要查看韓文讀音、韓語釋義、部首與畫數", label: "開啟韓國漢字字典", slug: "korean-hanja-dictionary" },
+      { prompt: "需要核驗漢字能否用於韓國姓名及指定讀音", label: "查詢韓國人名用漢字", slug: "korean-name-hanja" }
+    ]
+  },
+  "hangul-hanja-converter:en": {
+    exampleTitle: "Try common Hangul-to-Hanja and Hanja-to-Hangul cases",
+    exampleIntro: "A Hangul spelling can represent several Hanja words. The converter matches known terms first and leaves homophones for you to resolve from the sentence, name, or document context.",
+    exampleInputLabel: "Input",
+    exampleResultLabel: "Conversion or choices",
+    exampleAction: "Try this example",
+    examples: [
+      { input: "대한민국", result: "大韓民國", note: "A known Korean term is matched as a phrase instead of being split into syllables.", direction: "hangul-to-hanja" },
+      { input: "수도", result: "首都 · 水道 · 修道 and more", note: "One Hangul word may have several Hanja spellings, so the intended meaning must be selected.", direction: "hangul-to-hanja" },
+      { input: "大韓民國의 歷史", result: "대한민국의 역사", note: "In mixed-script Korean, Hangul particles stay in place while recognized Hanja terms receive Korean readings.", direction: "hanja-to-hangul" }
+    ],
+    pathTitle: "Choose a Korean Hanja tool from the clue you have",
+    paths: [
+      { prompt: "You can see the character but cannot type or pronounce it", label: "Draw and find Korean Hanja", slug: "korean-hanja-handwriting-recognition" },
+      { prompt: "You know a reading, radical, stroke count, or Korean meaning", label: "Search the Korean Hanja dictionary", slug: "korean-hanja-dictionary" },
+      { prompt: "You need to check whether a character and reading are allowed in a Korean name", label: "Search personal-name Hanja", slug: "korean-name-hanja" }
+    ]
+  },
+  "korean-hanja-handwriting-recognition:zh-CN": {
+    exampleTitle: "从字形找到韩国汉字的韩文读音",
+    exampleIntro: "这类手写查字不是查询中文拼音，而是从看得见但无法输入的字形开始，先找候选字，再查看韩国汉字音、画数和人名用状态。",
+    exampleInputLabel: "手写字形",
+    exampleResultLabel: "韩文读音",
+    examples: [
+      { input: "尹", result: "윤", note: "遇到韩国姓氏中的汉字时，可以在不知道读音的情况下先按字形查找。" },
+      { input: "珉", result: "민", note: "选中候选后可继续确认画数、Unicode以及是否属于韩国人名用汉字。" },
+      { input: "曺", result: "조", note: "韩国姓名中使用的特殊字形，只要资料已收录，也可以按笔迹寻找候选。" }
+    ],
+    pathTitle: "从手写候选继续核对韩国汉字资料",
+    paths: [
+      { prompt: "查看候选字的韩文训释、部首与总画数", label: "前往韩国汉字字典", slug: "korean-hanja-dictionary" },
+      { prompt: "把包含韩国汉字的词语或段落转换为韩文读音", label: "使用韩文汉字转换", slug: "hangul-hanja-converter" },
+      { prompt: "核验候选字能否用于韩国姓名", label: "查询韩国人名用汉字", slug: "korean-name-hanja" }
+    ]
+  },
+  "korean-hanja-handwriting-recognition:zh-TW": {
+    exampleTitle: "從字形找到韓國漢字的韓文讀音",
+    exampleIntro: "這類手寫查字不是查中文注音或拼音，而是從看得見卻無法輸入的字形開始，先找候選字，再查看韓國漢字音、畫數與人名用狀態。",
+    exampleInputLabel: "手寫字形",
+    exampleResultLabel: "韓文讀音",
+    examples: [
+      { input: "尹", result: "윤", note: "遇到韓國姓氏中的漢字時，可在不知道讀音的情況下先依字形查找。" },
+      { input: "珉", result: "민", note: "選取候選後可接著確認畫數、Unicode，以及是否屬於韓國人名用漢字。" },
+      { input: "曺", result: "조", note: "韓國姓名使用的特殊字形，只要資料已收錄，也能依筆跡尋找候選。" }
+    ],
+    pathTitle: "從手寫候選繼續核對韓國漢字資料",
+    paths: [
+      { prompt: "查看候選字的韓文訓釋、部首與總畫數", label: "前往韓國漢字字典", slug: "korean-hanja-dictionary" },
+      { prompt: "把包含韓國漢字的詞語或段落轉成韓文讀音", label: "使用韓文漢字轉換", slug: "hangul-hanja-converter" },
+      { prompt: "核驗候選字能否用於韓國姓名", label: "查詢韓國人名用漢字", slug: "korean-name-hanja" }
+    ]
+  },
+  "korean-hanja-handwriting-recognition:en": {
+    exampleTitle: "Identify Korean Hanja by shape, then check the Hangul reading",
+    exampleIntro: "This lookup starts from a character you can see but cannot type or pronounce. Draw it, choose a match, and continue to its Korean reading, stroke count, and name-use status.",
+    exampleInputLabel: "Character shape",
+    exampleResultLabel: "Korean reading",
+    examples: [
+      { input: "尹", result: "윤", note: "Find a Hanja used as a Korean surname even when its reading is unknown." },
+      { input: "珉", result: "민", note: "After selecting a match, check its strokes, Unicode form, and Korean personal-name status." },
+      { input: "曺", result: "조", note: "Distinctive forms found in Korean names can also be matched when they are covered by the character data." }
+    ],
+    pathTitle: "Continue from a handwriting match to the right reference",
+    paths: [
+      { prompt: "Inspect Korean readings, glosses, radical, and total strokes", label: "Open the Korean Hanja dictionary", slug: "korean-hanja-dictionary" },
+      { prompt: "Read a Korean phrase or passage containing Hanja", label: "Use the Hangul Hanja converter", slug: "hangul-hanja-converter" },
+      { prompt: "Check whether the character is approved for Korean personal names", label: "Search personal-name Hanja", slug: "korean-name-hanja" }
+    ]
+  },
+  "korean-hanja-handwriting-recognition:ko": {
+    exampleTitle: "한국 성씨·이름 한자를 모양으로 찾는 예",
+    exampleIntro: "한자음과 뜻을 몰라도 보이는 모양을 직접 쓰면 후보를 찾을 수 있습니다. 후보를 고른 뒤 한자음, 획수, 인명용 여부를 이어서 확인하세요.",
+    exampleInputLabel: "써 볼 한자",
+    exampleResultLabel: "한자음",
+    examples: [
+      { input: "尹", result: "윤", note: "성씨 한자의 음을 모를 때 글자 모양을 그대로 써서 찾을 수 있습니다." },
+      { input: "珉", result: "민", note: "후보를 선택하면 획수와 유니코드, 인명용 한자 여부를 함께 확인합니다." },
+      { input: "曺", result: "조", note: "한국 성씨에 쓰이는 이체자도 수록 자료에 있으면 필기 후보로 찾을 수 있습니다." }
+    ],
+    pathTitle: "필기 후보를 찾은 뒤 필요한 정보 확인",
+    paths: [
+      { prompt: "한자음·훈·부수·총획수를 자세히 볼 때", label: "온라인 옥편에서 확인", slug: "korean-hanja-dictionary" },
+      { prompt: "한자가 섞인 낱말이나 문장을 한글 독음으로 바꿀 때", label: "한자 변환기 사용", slug: "hangul-hanja-converter" },
+      { prompt: "찾은 글자를 이름에 쓸 수 있는지 확인할 때", label: "인명용 한자 조회", slug: "korean-name-hanja" }
+    ]
+  },
+  "korean-name-hanja:zh-CN": {
+    quickSearchLabel: "常见姓名读音",
+    quickSearches: ["민", "서", "지", "윤"],
+    exampleTitle: "比较同一韩文读音对应的多个人名用汉字",
+    exampleIntro: "韩国姓名仅凭韩文读音无法推断实际汉字。同一个音可能对应多个人名用字，应比较字形、韩语训释和韩国法院公开的指定读音。",
+    exampleInputLabel: "韩文读音",
+    exampleResultLabel: "人名用汉字示例",
+    examples: [
+      { input: "민", result: "珉 · 旻 · 敏", note: "可对比玉石、天空、敏捷等不同韩语训释与字形。" },
+      { input: "서", result: "瑞 · 書 · 緖", note: "相同读音下存在不同字义，查询结果会分别列出可用字。" },
+      { input: "지", result: "智 · 志 · 知", note: "标准Unicode字形可以直接复制，正式登记前仍需到法院系统核验。" }
+    ],
+    pathTitle: "查询韩国姓名汉字前后可使用的工具",
+    paths: [
+      { prompt: "只知道汉字字形，不知道对应韩文读音", label: "手写查找韩国汉字", slug: "korean-hanja-handwriting-recognition" },
+      { prompt: "需要查看候选字的一般韩文读音、部首和画数", label: "打开韩国汉字字典", slug: "korean-hanja-dictionary" },
+      { prompt: "需要阅读包含韩国姓名或汉字词的文章", label: "使用韩文汉字转换", slug: "hangul-hanja-converter" }
+    ]
+  },
+  "korean-name-hanja:zh-TW": {
+    quickSearchLabel: "常見姓名讀音",
+    quickSearches: ["민", "서", "지", "윤"],
+    exampleTitle: "比較同一韓文讀音對應的多個人名用漢字",
+    exampleIntro: "韓國姓名只憑韓文讀音無法推斷實際漢字。同一個音可能對應多個人名用字，應比較字形、韓語訓釋與韓國法院公開的指定讀音。",
+    exampleInputLabel: "韓文讀音",
+    exampleResultLabel: "人名用漢字範例",
+    examples: [
+      { input: "민", result: "珉 · 旻 · 敏", note: "可比較玉石、天空、敏捷等不同韓語訓釋與字形。" },
+      { input: "서", result: "瑞 · 書 · 緖", note: "相同讀音下有不同字義，查詢結果會分別列出可用字。" },
+      { input: "지", result: "智 · 志 · 知", note: "標準Unicode字形可直接複製，正式登記前仍需至法院系統核驗。" }
+    ],
+    pathTitle: "查詢韓國姓名漢字前後可使用的工具",
+    paths: [
+      { prompt: "只知道漢字字形，不知道對應韓文讀音", label: "手寫查找韓國漢字", slug: "korean-hanja-handwriting-recognition" },
+      { prompt: "需要查看候選字的一般韓文讀音、部首與畫數", label: "開啟韓國漢字字典", slug: "korean-hanja-dictionary" },
+      { prompt: "需要閱讀包含韓國姓名或漢字詞的文章", label: "使用韓文漢字轉換", slug: "hangul-hanja-converter" }
+    ]
+  },
+  "korean-name-hanja:en": {
+    quickSearchLabel: "Common name readings",
+    quickSearches: ["민", "서", "지", "윤"],
+    exampleTitle: "Compare Korean name Hanja that share a Hangul reading",
+    exampleIntro: "Hangul alone does not reveal the actual Hanja in a Korean name. One reading can map to many approved characters, so compare each glyph, Korean gloss, and designated court reading.",
+    exampleInputLabel: "Hangul reading",
+    exampleResultLabel: "Name Hanja examples",
+    examples: [
+      { input: "민", result: "珉 · 旻 · 敏", note: "Compare characters associated with jade, sky, or quickness in the Korean glosses." },
+      { input: "서", result: "瑞 · 書 · 緖", note: "The same reading can carry different meanings, so the tool lists each eligible character separately." },
+      { input: "지", result: "智 · 志 · 知", note: "Copy browser-compatible Unicode forms and verify the final choice on the Korean court service." }
+    ],
+    pathTitle: "Useful Korean Hanja tools before and after a name search",
+    paths: [
+      { prompt: "You know the character shape but not its Hangul reading", label: "Draw and find Korean Hanja", slug: "korean-hanja-handwriting-recognition" },
+      { prompt: "You need general readings, glosses, radical, and stroke information", label: "Open the Korean Hanja dictionary", slug: "korean-hanja-dictionary" },
+      { prompt: "You need to read a Korean name or Hanja word in a passage", label: "Use the Hangul Hanja converter", slug: "hangul-hanja-converter" }
+    ]
+  },
+  "korean-name-hanja:ko": {
+    quickSearchLabel: "자주 찾는 이름 음",
+    quickSearches: ["민", "서", "지", "윤"],
+    exampleTitle: "같은 이름 음에 해당하는 인명용 한자 비교",
+    exampleIntro: "한글 이름 음만으로 실제 한자를 정할 수는 없습니다. 같은 음에 여러 인명용 한자가 있으므로 글자 모양, 뜻과 훈, 법원 공개 조회의 지정 음을 비교하세요.",
+    exampleInputLabel: "한글 이름 음",
+    exampleResultLabel: "인명용 한자 예",
+    examples: [
+      { input: "민", result: "珉 · 旻 · 敏", note: "옥돌, 하늘, 민첩할처럼 서로 다른 뜻과 글자 모양을 비교합니다." },
+      { input: "서", result: "瑞 · 書 · 緖", note: "같은 음이라도 뜻이 다르므로 이름에 맞는 후보를 하나씩 확인합니다." },
+      { input: "지", result: "智 · 志 · 知", note: "표준 유니코드 글자는 복사할 수 있으며 신고 전에는 법원에서 다시 확인해야 합니다." }
+    ],
+    pathTitle: "이름 한자를 찾기 전후에 사용할 도구",
+    paths: [
+      { prompt: "글자 모양만 알고 한글 음을 모를 때", label: "한자 필기인식으로 찾기", slug: "korean-hanja-handwriting-recognition" },
+      { prompt: "일반 한자음·훈·부수·획수를 함께 확인할 때", label: "온라인 옥편에서 보기", slug: "korean-hanja-dictionary" },
+      { prompt: "이름이나 한자어가 들어간 문장의 독음을 볼 때", label: "한자 변환기 사용", slug: "hangul-hanja-converter" }
+    ]
+  }
+});
+
 function escapeHtml(value) {
   return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 }
@@ -100,6 +376,23 @@ function commonRuntimeMessages(runtime) {
   return common;
 }
 
+function marketExamples(page) {
+  if (!page.examples?.length) return "";
+  const items = page.examples.map((example) => {
+    const action = example.direction
+      ? `<button type="button" data-korean-converter-example="${escapeHtml(example.input)}" data-korean-example-direction="${example.direction}">${page.exampleAction}</button>`
+      : "";
+    return `<article><div class="korean-market-example-pair"><span><small>${page.exampleInputLabel}</small><strong>${example.input}</strong></span><b aria-hidden="true">→</b><span><small>${page.exampleResultLabel}</small><strong>${example.result}</strong></span></div><p>${example.note}</p>${action}</article>`;
+  }).join("");
+  return `<section class="korean-market-section" aria-labelledby="koreanMarketExamplesTitle"><div class="section-heading"><h2 id="koreanMarketExamplesTitle">${page.exampleTitle}</h2><p class="seo-intro">${page.exampleIntro}</p></div><div class="korean-market-examples">${items}</div></section>`;
+}
+
+function marketPaths(page, locale) {
+  if (!page.paths?.length) return "";
+  const items = page.paths.map((item) => `<article><p>${item.prompt}</p><a href="${localPath(locale, item.slug)}">${item.label}<span aria-hidden="true">→</span></a></article>`).join("");
+  return `<section class="korean-market-paths" aria-labelledby="koreanMarketPathsTitle"><h2 id="koreanMarketPathsTitle">${page.pathTitle}</h2><div>${items}</div></section>`;
+}
+
 function dictionaryTool(page) {
   const strokes = Array.from({ length: 40 }, (_, index) => `<option value="${index + 1}">${index + 1}</option>`).join("");
   const messages = { idle: page.resultEmpty, ...commonRuntimeMessages(page.runtime), nameAllowed: page.nameAllowed, nameNotConfirmed: page.nameNotConfirmed };
@@ -108,7 +401,8 @@ function dictionaryTool(page) {
 
 function handwritingTool(page) {
   const messages = { loading: page.runtime.loading, ready: page.drawHint, recognizing: page.runtime.recognizing, matched: page.runtime.matched, noMatch: page.runtime.noResults, remoteRecognizing: page.runtime.remoteRecognizing, remoteNoMatch: page.runtime.remoteNoMatch, remoteError: page.runtime.remoteError, error: page.runtime.error, copied: page.runtime.copied, copyFailed: page.runtime.copyFailed, strokeCount: page.strokeCount, candidateLabel: page.runtime.candidateLabel };
-  return { datasets: `${bodyMessages(messages)} data-reading-source="korean"`, html: `<section class="standalone-tool handwriting-tool" aria-labelledby="handwritingToolTitle"><div class="standalone-tool-head"><div><p class="section-kicker">BROWSER HANDWRITING MATCHING</p><h2 id="handwritingToolTitle">${page.toolTitle}</h2></div><div class="status-pill" id="handwritingStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>${messages.loading}</span></div></div><div class="handwriting-workspace"><section class="handwriting-draw-panel" aria-labelledby="handwritingDrawTitle"><div class="panel-topline"><h3 id="handwritingDrawTitle">${page.drawTitle}</h3><output id="handwritingStrokeCount">${page.strokeCount.replace("{count}", "0")}</output></div><div class="handwriting-board" id="handwritingBoard"><span class="handwriting-grid-line is-vertical"></span><span class="handwriting-grid-line is-horizontal"></span><span class="handwriting-grid-line is-diagonal-one"></span><span class="handwriting-grid-line is-diagonal-two"></span><canvas id="handwritingCanvas" aria-label="${escapeHtml(page.drawTitle)}"></canvas><div class="handwriting-loader" id="handwritingLoader"><span></span></div></div><div class="handwriting-actions"><button id="handwritingUndo" type="button"><span aria-hidden="true">↶</span><span>${page.undo}</span></button><button id="handwritingClear" type="button"><span aria-hidden="true">×</span><span>${page.clear}</span></button></div><div class="handwriting-samples"><span>${page.samples}</span>${["人", "大", "木", "中"].map((character) => `<button type="button" data-handwriting-sample="${character}">${character}</button>`).join("")}</div><p class="handwriting-hint">${page.drawHint}</p></section><section class="handwriting-match-panel" aria-labelledby="handwritingCandidatesTitle"><div class="panel-topline"><div><h3 id="handwritingCandidatesTitle">${page.candidatesTitle}</h3><p>${page.candidatesHint}</p></div></div><p class="handwriting-candidate-empty" id="handwritingCandidateEmpty">${page.candidatesEmpty}</p><div class="handwriting-candidates" id="handwritingCandidates" role="listbox" aria-label="${escapeHtml(page.candidatesTitle)}"></div><div class="handwriting-remote-action" id="handwritingRemoteAction" hidden><span>${page.remoteHint}</span><button id="handwritingRemoteLookup" type="button">${page.remoteAction}</button></div><article class="handwriting-result" id="handwritingResult" hidden><strong class="handwriting-result-character" id="handwritingResultCharacter">韓</strong><div class="handwriting-result-content"><h3>${page.resultTitle}</h3><dl><div><dt>${page.labels.reading}</dt><dd id="handwritingResultPinyin"></dd></div><div><dt>${page.labels.strokes}</dt><dd id="handwritingResultStrokes"></dd></div><div><dt>${page.labels.unicode}</dt><dd id="handwritingResultUnicode"></dd></div></dl><nav class="handwriting-result-actions"><button id="handwritingCopy" type="button">${page.copy}</button><a class="primary-action" id="handwritingStrokeLink" href="/korean-hanja-dictionary/">${page.dictionary}</a><a id="handwritingPinyinLink" href="/korean-name-hanja/">${page.name}</a><a id="handwritingStructureLink" href="/chinese-character-lookup/">${page.structure}</a></nav></div></article></section></div><p class="handwriting-source-note">${page.source}</p></section>` };
+  const sampleCharacters = ["人", "大", "木", "中"];
+  return { datasets: `${bodyMessages(messages)} data-reading-source="korean"`, html: `<section class="standalone-tool handwriting-tool" aria-labelledby="handwritingToolTitle"><div class="standalone-tool-head"><div><p class="section-kicker">BROWSER HANDWRITING MATCHING</p><h2 id="handwritingToolTitle">${page.toolTitle}</h2></div><div class="status-pill" id="handwritingStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>${messages.loading}</span></div></div><div class="handwriting-workspace"><section class="handwriting-draw-panel" aria-labelledby="handwritingDrawTitle"><div class="panel-topline"><h3 id="handwritingDrawTitle">${page.drawTitle}</h3><output id="handwritingStrokeCount">${page.strokeCount.replace("{count}", "0")}</output></div><div class="handwriting-board" id="handwritingBoard"><span class="handwriting-grid-line is-vertical"></span><span class="handwriting-grid-line is-horizontal"></span><span class="handwriting-grid-line is-diagonal-one"></span><span class="handwriting-grid-line is-diagonal-two"></span><canvas id="handwritingCanvas" aria-label="${escapeHtml(page.drawTitle)}"></canvas><div class="handwriting-loader" id="handwritingLoader"><span></span></div></div><div class="handwriting-actions"><button id="handwritingUndo" type="button"><span aria-hidden="true">↶</span><span>${page.undo}</span></button><button id="handwritingClear" type="button"><span aria-hidden="true">×</span><span>${page.clear}</span></button></div><div class="handwriting-samples"><span>${page.samples}</span>${sampleCharacters.map((character) => `<button type="button" data-handwriting-sample="${character}">${character}</button>`).join("")}</div><p class="handwriting-hint">${page.drawHint}</p></section><section class="handwriting-match-panel" aria-labelledby="handwritingCandidatesTitle"><div class="panel-topline"><div><h3 id="handwritingCandidatesTitle">${page.candidatesTitle}</h3><p>${page.candidatesHint}</p></div></div><p class="handwriting-candidate-empty" id="handwritingCandidateEmpty">${page.candidatesEmpty}</p><div class="handwriting-candidates" id="handwritingCandidates" role="listbox" aria-label="${escapeHtml(page.candidatesTitle)}"></div><div class="handwriting-remote-action" id="handwritingRemoteAction" hidden><span>${page.remoteHint}</span><button id="handwritingRemoteLookup" type="button">${page.remoteAction}</button></div><article class="handwriting-result" id="handwritingResult" hidden><strong class="handwriting-result-character" id="handwritingResultCharacter">韓</strong><div class="handwriting-result-content"><h3>${page.resultTitle}</h3><dl><div><dt>${page.labels.reading}</dt><dd id="handwritingResultPinyin"></dd></div><div><dt>${page.labels.strokes}</dt><dd id="handwritingResultStrokes"></dd></div><div><dt>${page.labels.unicode}</dt><dd id="handwritingResultUnicode"></dd></div></dl><nav class="handwriting-result-actions"><button id="handwritingCopy" type="button">${page.copy}</button><a class="primary-action" id="handwritingStrokeLink" href="/korean-hanja-dictionary/">${page.dictionary}</a><a id="handwritingPinyinLink" href="/korean-name-hanja/">${page.name}</a><a id="handwritingStructureLink" href="/chinese-character-lookup/">${page.structure}</a></nav></div></article></section></div><p class="handwriting-source-note">${page.source}</p></section>` };
 }
 
 function converterTool(page, locale) {
@@ -120,12 +414,15 @@ function converterTool(page, locale) {
 
 function namesTool(page) {
   const messages = { idle: page.resultEmpty, ...commonRuntimeMessages(page.runtime) };
-  return { datasets: `${bodyMessages(messages)} data-copy-label="${escapeHtml(page.copy)}" data-dictionary-label="${escapeHtml(page.dictionary)}"`, html: `<section class="standalone-tool korean-name-tool" aria-labelledby="koreanNameToolTitle"><div class="standalone-tool-head"><div><p class="section-kicker">KOREAN COURT · PERSONAL-NAME HANJA</p><h2 id="koreanNameToolTitle">${page.toolTitle}</h2></div><div class="status-pill" id="koreanNameStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>${page.resultEmpty}</span></div></div><form class="korean-name-form" id="koreanNameForm"><label for="koreanNameQuery"><span>${page.queryLabel}</span><input id="koreanNameQuery" type="search" autocomplete="off" spellcheck="false" placeholder="${escapeHtml(page.placeholder)}" /></label><div><button class="primary-action" type="submit">${page.search}</button><button id="koreanNameClear" type="button">${page.clear}</button></div></form><div class="kanji-dictionary-progress" id="koreanNameProgress" hidden><span><span id="koreanNameProgressBar"></span></span><strong id="koreanNameProgressText"></strong></div><section class="korean-name-results-panel" aria-labelledby="koreanNameResultsTitle"><div class="panel-topline"><h3 id="koreanNameResultsTitle">${page.resultsTitle}</h3><span id="koreanNameSummary"></span></div><p id="koreanNameEmpty">${page.resultEmpty}</p><div class="korean-name-results" id="koreanNameResults"></div></section><p class="kanji-dictionary-source">${page.source} <a href="https://efamily.scourt.go.kr/cs/CsBltnWrtList.do?bltnbordId=0000010" rel="noopener noreferrer">Official Korean court lookup</a></p></section>` };
+  const quickSearches = page.quickSearches?.length
+    ? `<div class="korean-name-quick-searches"><span>${page.quickSearchLabel}</span>${page.quickSearches.map((query) => `<button type="button" data-korean-name-query="${query}">${query}</button>`).join("")}</div>`
+    : "";
+  return { datasets: `${bodyMessages(messages)} data-copy-label="${escapeHtml(page.copy)}" data-dictionary-label="${escapeHtml(page.dictionary)}"`, html: `<section class="standalone-tool korean-name-tool" aria-labelledby="koreanNameToolTitle"><div class="standalone-tool-head"><div><p class="section-kicker">KOREAN COURT · PERSONAL-NAME HANJA</p><h2 id="koreanNameToolTitle">${page.toolTitle}</h2></div><div class="status-pill" id="koreanNameStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>${page.resultEmpty}</span></div></div><form class="korean-name-form" id="koreanNameForm"><label for="koreanNameQuery"><span>${page.queryLabel}</span><input id="koreanNameQuery" type="search" autocomplete="off" spellcheck="false" placeholder="${escapeHtml(page.placeholder)}" /></label><div><button class="primary-action" type="submit">${page.search}</button><button id="koreanNameClear" type="button">${page.clear}</button></div></form>${quickSearches}<div class="kanji-dictionary-progress" id="koreanNameProgress" hidden><span><span id="koreanNameProgressBar"></span></span><strong id="koreanNameProgressText"></strong></div><section class="korean-name-results-panel" aria-labelledby="koreanNameResultsTitle"><div class="panel-topline"><h3 id="koreanNameResultsTitle">${page.resultsTitle}</h3><span id="koreanNameSummary"></span></div><p id="koreanNameEmpty">${page.resultEmpty}</p><div class="korean-name-results" id="koreanNameResults"></div></section><p class="kanji-dictionary-source">${page.source} <a href="https://efamily.scourt.go.kr/cs/CsBltnWrtList.do?bltnbordId=0000010" rel="noopener noreferrer">Official Korean court lookup</a></p></section>` };
 }
 
 function buildPage(locale, slug, definition) {
   const meta = locales[locale];
-  const page = { ...definition.content[locale], type: definition.type, runtime: meta.runtime };
+  const page = { ...definition.content[locale], ...marketEnhancements[`${slug}:${locale}`], type: definition.type, runtime: meta.runtime };
   const canonical = `${origin}${localPath(locale, slug)}`;
   const alternateLinks = Object.entries(locales).map(([key, item]) => `<link rel="alternate" hreflang="${item.hreflang}" href="${origin}${localPath(key, slug)}" />`).join("");
   const localeOptions = Object.entries(locales).map(([key, item]) => `<option value="${key}"${key === locale ? " selected" : ""}>${item.label}</option>`).join("");
@@ -137,7 +434,7 @@ function buildPage(locale, slug, definition) {
   if (descriptionLength < 150 || descriptionLength > 160) {
     throw new Error(`${slug}/${locale} description has ${descriptionLength} characters`);
   }
-  return `<!doctype html><html lang="${meta.lang}"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="theme-color" content="#07120f" /><link rel="icon" href="/favicon.svg" type="image/svg+xml" /><link rel="apple-touch-icon" href="/apple-touch-icon.png" /><meta name="description" content="${escapeHtml(page.description)}" /><title>${escapeHtml(page.title)}</title><link rel="canonical" href="${canonical}" />${alternateLinks}<link rel="alternate" hreflang="x-default" href="${origin}${localPath("zh-CN", slug)}" /><script src="/locale-redirect.js"></script><link rel="stylesheet" href="/styles.css" />${scripts}<!-- seo-schema:start --><script type="application/ld+json">${JSON.stringify(buildSchema(locale, slug, page))}</script><!-- seo-schema:end --></head><body data-tool-page="${slug}" data-page-slug="${slug}" data-locale="${locale}" data-locale-prefix="${localPath(locale)}" data-locale-paths="${localePaths}" data-empty-value="—"${tool.datasets}><a class="skip-nav" href="#main">${meta.skip}</a><header class="site-header" aria-label="${meta.header}"><a class="brand" href="${localPath(locale)}" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">韓</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="${meta.nav}"><a class="nav-link" href="${localPath(locale)}">${meta.home}</a><label class="language-picker"><span>${meta.language}</span><select id="localeSelect" aria-label="${meta.language}">${localeOptions}</select></label></nav></header><main id="main"><section class="tool-hero korean-tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">${page.eyebrow}</p><h1 id="pageTitle">${page.heading}</h1><p class="lede">${page.lede}</p></div><div class="korean-hero-signal" aria-hidden="true"><span>HANGUL</span><strong>${definition.type === "converter" ? "한 ⇄ 韓" : "韓"}</strong><b>HANJA</b></div></section>${tool.html}<section class="seo-band standalone-info" aria-labelledby="koreanFeatureTitle"><div class="section-heading"><p class="section-kicker">${page.eyebrow}</p><h2 id="koreanFeatureTitle">${page.featureTitle}</h2><p class="seo-intro">${page.featureIntro}</p></div><div class="seo-grid">${page.cards.map(([title, text]) => `<article><h3>${title}</h3><p>${text}</p></article>`).join("")}</div><section class="pinyin-howto" aria-labelledby="koreanHowTitle"><h2 id="koreanHowTitle">${page.howTitle}</h2><ol>${page.steps.map((step) => `<li>${step}</li>`).join("")}</ol></section><section class="pinyin-faq" aria-labelledby="koreanFaqTitle"><h2 id="koreanFaqTitle">FAQ</h2>${page.faqs.map(([question, answer]) => `<details><summary>${question}</summary><p>${answer}</p></details>`).join("")}</section><p class="section-kicker pinyin-related-kicker">${meta.related}</p><nav class="landing-links" aria-label="${meta.relatedAria}">${related}</nav></section></main><footer class="site-footer"><p>${meta.footerText}</p><nav class="footer-links" aria-label="${meta.footer}"><a href="${localPath(locale, "about")}">${meta.about}</a><a href="${localPath(locale, "contact")}">${meta.contact}</a><a href="${localPath(locale, "privacy")}">${meta.privacy}</a></nav></footer></body></html>`;
+  return `<!doctype html><html lang="${meta.lang}"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="theme-color" content="#07120f" /><link rel="icon" href="/favicon.svg" type="image/svg+xml" /><link rel="apple-touch-icon" href="/apple-touch-icon.png" /><meta name="description" content="${escapeHtml(page.description)}" /><title>${escapeHtml(page.title)}</title><link rel="canonical" href="${canonical}" />${alternateLinks}<link rel="alternate" hreflang="x-default" href="${origin}${localPath("zh-CN", slug)}" /><script src="/locale-redirect.js"></script><link rel="stylesheet" href="/styles.css" />${scripts}<!-- seo-schema:start --><script type="application/ld+json">${JSON.stringify(buildSchema(locale, slug, page))}</script><!-- seo-schema:end --></head><body data-tool-page="${slug}" data-page-slug="${slug}" data-locale="${locale}" data-locale-prefix="${localPath(locale)}" data-locale-paths="${localePaths}" data-empty-value="—"${tool.datasets}><a class="skip-nav" href="#main">${meta.skip}</a><header class="site-header" aria-label="${meta.header}"><a class="brand" href="${localPath(locale)}" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">韓</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="${meta.nav}"><a class="nav-link" href="${localPath(locale)}">${meta.home}</a><label class="language-picker"><span>${meta.language}</span><select id="localeSelect" aria-label="${meta.language}">${localeOptions}</select></label></nav></header><main id="main"><section class="tool-hero korean-tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">${page.eyebrow}</p><h1 id="pageTitle">${page.heading}</h1><p class="lede">${page.lede}</p></div><div class="korean-hero-signal" aria-hidden="true"><span>HANGUL</span><strong>${definition.type === "converter" ? "한 ⇄ 韓" : "韓"}</strong><b>HANJA</b></div></section>${tool.html}<section class="seo-band standalone-info" aria-labelledby="koreanFeatureTitle"><div class="section-heading"><p class="section-kicker">${page.eyebrow}</p><h2 id="koreanFeatureTitle">${page.featureTitle}</h2><p class="seo-intro">${page.featureIntro}</p></div><div class="seo-grid">${page.cards.map(([title, text]) => `<article><h3>${title}</h3><p>${text}</p></article>`).join("")}</div>${marketExamples(page)}${marketPaths(page, locale)}<section class="pinyin-howto" aria-labelledby="koreanHowTitle"><h2 id="koreanHowTitle">${page.howTitle}</h2><ol>${page.steps.map((step) => `<li>${step}</li>`).join("")}</ol></section><section class="pinyin-faq" aria-labelledby="koreanFaqTitle"><h2 id="koreanFaqTitle">FAQ</h2>${page.faqs.map(([question, answer]) => `<details><summary>${question}</summary><p>${answer}</p></details>`).join("")}</section><p class="section-kicker pinyin-related-kicker">${meta.related}</p><nav class="landing-links" aria-label="${meta.relatedAria}">${related}</nav></section></main><footer class="site-footer"><p>${meta.footerText}</p><nav class="footer-links" aria-label="${meta.footer}"><a href="${localPath(locale, "about")}">${meta.about}</a><a href="${localPath(locale, "contact")}">${meta.contact}</a><a href="${localPath(locale, "privacy")}">${meta.privacy}</a></nav></footer></body></html>`;
 }
 
 for (const [slug, definition] of Object.entries(pages)) {

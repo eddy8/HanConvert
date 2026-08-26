@@ -5341,6 +5341,16 @@ html[lang="ko"] .worksheet-sheet {
     flex-direction: column;
   }
 
+  .standalone-tool-head .status-pill {
+    max-width: 100%;
+    line-height: 1.45;
+    white-space: normal;
+  }
+
+  .standalone-tool-head .status-dot {
+    flex: 0 0 auto;
+  }
+
   .triple-converter-grid {
     grid-template-columns: 1fr;
   }
@@ -6365,6 +6375,134 @@ html[lang="ko"] .worksheet-sheet {
   font-weight: 700;
 }
 
+.korean-market-section,
+.korean-market-paths {
+  margin-top: 30px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+
+.korean-market-examples,
+.korean-market-paths > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.korean-market-examples article,
+.korean-market-paths article {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.korean-market-example-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+
+.korean-market-example-pair > span {
+  min-width: 0;
+}
+
+.korean-market-example-pair small {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.korean-market-example-pair strong {
+  display: block;
+  overflow-wrap: anywhere;
+  color: var(--accent-2);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.korean-market-example-pair > b {
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.korean-market-examples article > p,
+.korean-market-paths article > p {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+
+.korean-market-examples article > button,
+.korean-market-paths a {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+  padding: 7px 11px;
+  border: 1px solid rgba(64, 242, 176, 0.42);
+  border-radius: var(--radius-sm);
+  background: rgba(64, 242, 176, 0.08);
+  color: var(--ink);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.korean-market-examples article > button:hover,
+.korean-market-paths a:hover {
+  border-color: var(--accent);
+  background: rgba(64, 242, 176, 0.14);
+}
+
+.korean-market-paths h2 {
+  margin-bottom: 14px;
+}
+
+.korean-market-paths article > p {
+  margin-top: 0;
+}
+
+.korean-market-paths a {
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.korean-name-quick-searches {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 0 18px 16px;
+}
+
+.korean-name-quick-searches > span {
+  margin-right: 2px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.korean-name-quick-searches button {
+  min-width: 42px;
+  min-height: 36px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #0a1915;
+  color: var(--accent-2);
+  font-weight: 800;
+}
+
+.korean-name-quick-searches button:hover {
+  border-color: rgba(255, 204, 102, 0.6);
+}
+
 .korean-name-form {
   display: grid;
   padding: 0 18px 16px;
@@ -6546,6 +6684,15 @@ html[lang="ko"] .worksheet-sheet {
   .korean-name-form > div,
   .korean-name-form button {
     width: 100%;
+  }
+
+  .korean-market-examples,
+  .korean-market-paths > div {
+    grid-template-columns: 1fr;
+  }
+
+  .korean-market-example-pair {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   }
 
   .korean-name-results {
