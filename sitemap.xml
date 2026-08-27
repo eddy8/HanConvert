@@ -1776,4 +1776,1268 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/photo-chinese-character-recognition/" />
   </url>
   <!-- photo-chinese-character-recognition:end -->
+  <!-- hanzi-profile-pseo:start -->
+  <url>
+    <loc>https://jianfan.app/hanzi/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/hanzi/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/hanzi/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/hanzi/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/hanzi/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/hanzi/xue/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/xue/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/hanzi/xue/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/xue/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/hanzi/xue/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/xue/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/hanzi/xue/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/xue/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/hanzi/xue/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/xue/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/xue/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/hanzi/guo/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/guo/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/hanzi/guo/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/guo/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/hanzi/guo/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/guo/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/hanzi/guo/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/guo/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/hanzi/guo/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/guo/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/guo/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/hanzi/ai/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/ai/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/hanzi/ai/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/ai/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/hanzi/ai/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/ai/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/hanzi/ai/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/ai/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/hanzi/ai/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/ai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/ai/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/hanzi/ren/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/ren/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/hanzi/ren/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/ren/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/hanzi/ren/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/ren/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/hanzi/ren/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/ren/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/hanzi/ren/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/ren/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/ren/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/hanzi/sun/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/sun/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/hanzi/sun/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/sun/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/hanzi/sun/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/sun/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/hanzi/sun/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/sun/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/hanzi/sun/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi/sun/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi/sun/" />
+  </url>
+  <!-- hanzi-profile-pseo:end -->
+  <!-- scenario-pseo:start -->
+  <url>
+    <loc>https://jianfan.app/word-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/word-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/word-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/word-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/word-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/word-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/word-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/word-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/word-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/word-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/word-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/pdf-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/pdf-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/pdf-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/pdf-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/pdf-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/pdf-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/pdf-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/pdf-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/pdf-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/pdf-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/pdf-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/excel-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/excel-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/excel-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/excel-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/excel-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/excel-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/excel-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/excel-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/excel-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/excel-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/excel-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/txt-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/txt-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/txt-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/txt-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/txt-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/txt-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/txt-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/txt-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/txt-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/txt-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/txt-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/csv-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/csv-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/csv-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/csv-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/csv-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/csv-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/csv-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/csv-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/csv-chinese-converter/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/csv-chinese-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/csv-chinese-converter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/simplified-chinese-to-japanese-kanji/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/simplified-chinese-to-japanese-kanji/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/simplified-chinese-to-japanese-kanji/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/simplified-chinese-to-japanese-kanji/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/simplified-chinese-to-japanese-kanji/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/simplified-chinese-to-japanese-kanji/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/simplified-chinese-to-japanese-kanji/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/simplified-chinese-to-japanese-kanji/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/simplified-chinese-to-japanese-kanji/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/simplified-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/simplified-chinese-to-japanese-kanji/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/traditional-chinese-to-japanese-kanji/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/traditional-chinese-to-japanese-kanji/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/traditional-chinese-to-japanese-kanji/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/traditional-chinese-to-japanese-kanji/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/traditional-chinese-to-japanese-kanji/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/traditional-chinese-to-japanese-kanji/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/traditional-chinese-to-japanese-kanji/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/traditional-chinese-to-japanese-kanji/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/traditional-chinese-to-japanese-kanji/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/traditional-chinese-to-japanese-kanji/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/traditional-chinese-to-japanese-kanji/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/japanese-kanji-to-simplified-chinese/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-kanji-to-simplified-chinese/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/japanese-kanji-to-simplified-chinese/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-kanji-to-simplified-chinese/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/japanese-kanji-to-simplified-chinese/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-kanji-to-simplified-chinese/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/japanese-kanji-to-simplified-chinese/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-kanji-to-simplified-chinese/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/japanese-kanji-to-simplified-chinese/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-kanji-to-simplified-chinese/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-kanji-to-simplified-chinese/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/japanese-kanji-to-traditional-chinese/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-kanji-to-traditional-chinese/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/japanese-kanji-to-traditional-chinese/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-kanji-to-traditional-chinese/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/japanese-kanji-to-traditional-chinese/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-kanji-to-traditional-chinese/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/japanese-kanji-to-traditional-chinese/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-kanji-to-traditional-chinese/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/japanese-kanji-to-traditional-chinese/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/japanese-kanji-to-traditional-chinese/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-kanji-to-traditional-chinese/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/chinese-japanese-kanji-comparison/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-japanese-kanji-comparison/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/chinese-japanese-kanji-comparison/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-japanese-kanji-comparison/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/chinese-japanese-kanji-comparison/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-japanese-kanji-comparison/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/chinese-japanese-kanji-comparison/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-japanese-kanji-comparison/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/chinese-japanese-kanji-comparison/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-japanese-kanji-comparison/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-japanese-kanji-comparison/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/tian-zi-ge-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/tian-zi-ge-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/tian-zi-ge-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/tian-zi-ge-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/tian-zi-ge-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/tian-zi-ge-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/tian-zi-ge-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/tian-zi-ge-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/tian-zi-ge-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/tian-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/tian-zi-ge-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/mi-zi-ge-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/mi-zi-ge-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/mi-zi-ge-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/mi-zi-ge-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/mi-zi-ge-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/mi-zi-ge-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/mi-zi-ge-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/mi-zi-ge-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/mi-zi-ge-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/mi-zi-ge-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/mi-zi-ge-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/hanzi-tracing-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi-tracing-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/hanzi-tracing-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi-tracing-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/hanzi-tracing-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi-tracing-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/hanzi-tracing-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi-tracing-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/hanzi-tracing-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/hanzi-tracing-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/hanzi-tracing-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/pinyin-hanzi-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/pinyin-hanzi-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/pinyin-hanzi-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/pinyin-hanzi-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/pinyin-hanzi-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/pinyin-hanzi-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/pinyin-hanzi-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/pinyin-hanzi-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/pinyin-hanzi-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/pinyin-hanzi-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/pinyin-hanzi-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/stroke-order-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/stroke-order-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/stroke-order-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/stroke-order-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/stroke-order-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/stroke-order-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/stroke-order-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/stroke-order-worksheet/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/stroke-order-worksheet/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/stroke-order-worksheet/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/stroke-order-worksheet/" />
+  </url>
+  <!-- scenario-pseo:end -->
 </urlset>

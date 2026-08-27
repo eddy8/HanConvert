@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 
 import { JAPANESE_CHARACTER_CATEGORIES } from "../japanese-character-data.js";
 import { SEO_DESCRIPTIONS } from "./seo-descriptions.mjs";
+import { buildScenarioCluster } from "./scenario-pseo-links.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteOrigin = "https://jianfan.app";
@@ -696,6 +697,7 @@ ${[["japanese", content.outputJapanese], ["simplified", content.outputSimplified
         </section>
       </section>
 ${buildFeatureBand(locale, content, slug)}
+${buildScenarioCluster(locale, "kanji")}
     </main>
 ${buildFooter(locale, content)}
   </body>

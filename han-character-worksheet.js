@@ -581,12 +581,24 @@
     localStorage.setItem("jianfan-locale", locale);
     localStorage.setItem("jianfan-locale-manual", "1");
     const characters = core.extractHanCharacters(elements.input.value, { dedupe: false }).join("");
-    const query = characters ? `?character=${encodeURIComponent(characters)}` : "";
+    const searchParams = new URLSearchParams(window.location.search);
+    if (characters) searchParams.set("character", characters);
+    else searchParams.delete("character");
+    const query = searchParams.size ? `?${searchParams.toString()}` : "";
     window.location.assign(`/${localePrefixes[locale]}han-character-worksheet/${query}`);
   });
 
+  const searchParams = new URLSearchParams(window.location.search);
+  const requestedGrid = searchParams.get("grid");
+  if (["tian", "mi", "square"].includes(requestedGrid)) elements.gridStyle.value = requestedGrid;
+  const requestedTraceCells = Number.parseInt(searchParams.get("trace"), 10);
+  if (Number.isInteger(requestedTraceCells)) {
+    elements.traceCells.value = String(Math.min(Number(elements.traceCells.max), Math.max(0, requestedTraceCells)));
+  }
+  if (["0", "1"].includes(searchParams.get("pinyin"))) elements.showPinyin.checked = searchParams.get("pinyin") === "1";
+  if (["0", "1"].includes(searchParams.get("strokes"))) elements.showStrokeOrder.checked = searchParams.get("strokes") === "1";
   updateControlReadouts();
-  const requestedCharacters = new URLSearchParams(window.location.search).get("character");
+  const requestedCharacters = searchParams.get("character");
   elements.input.value = core.extractHanCharacters(requestedCharacters || "", { dedupe: false }).join("") || body.dataset.sampleText;
   renderWorksheet();
 })();
