@@ -126,6 +126,15 @@ function setupKanjiConverter() {
   const outputFields = Object.fromEntries(["japanese", "simplified", "traditional"].map((id) => [id, document.querySelector(`#${id}Output`)]));
   const outputCounts = Object.fromEntries(["japanese", "simplified", "traditional"].map((id) => [id, document.querySelector(`#${id}OutputCount`)]));
   const sourceButtons = [...document.querySelectorAll("[data-source-type]")];
+  const requestedSource = new URLSearchParams(window.location.search).get("source");
+  const requestedButton = sourceButtons.find((button) => button.dataset.sourceType === requestedSource);
+  if (requestedButton) {
+    sourceButtons.forEach((button) => {
+      const active = button === requestedButton;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-checked", String(active));
+    });
+  }
   let sourceType = sourceButtons.find((button) => button.classList.contains("is-active"))?.dataset.sourceType || "japanese";
   let timer;
   let conversionToken = 0;

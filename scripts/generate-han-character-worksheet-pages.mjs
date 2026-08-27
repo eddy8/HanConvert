@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { SEO_DESCRIPTIONS } from "./seo-descriptions.mjs";
+import { buildScenarioCluster } from "./scenario-pseo-links.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
@@ -456,6 +457,9 @@ function buildPage(locale) {
   const related = relatedLabels[locale]
     .map(([targetSlug, label]) => `          <a href="${localizedPath(locale, targetSlug)}"${targetSlug === slug ? ' aria-current="page"' : ""}>${label}</a>`)
     .join("\n");
+  const extraRelated = locale === "ja"
+    ? `          <a href="/ja/chinese-handwriting-recognition/">漢字手書き検索</a>\n          <!-- han-character-lookup-link:start -->\n          <a href="/ja/chinese-character-lookup/" data-route="chinese-character-lookup">漢字の構成・部首検索</a>\n          <!-- han-character-lookup-link:end -->`
+    : "";
   const gridOptions = page.gridOptions
     .map(([value, label]) => `                    <option value="${value}">${label}</option>`)
     .join("\n");
@@ -532,8 +536,10 @@ ${page.faqs.map(([question, answer]) => `          <details><summary>${question}
         </section>
         <p class="section-kicker pinyin-related-kicker">${page.related}</p><nav class="landing-links" aria-label="${page.relatedAria}">
 ${related}
+${extraRelated}
         </nav>
       </section>
+${buildScenarioCluster(locale, "worksheet")}
     </main>
     <footer class="site-footer"><p>${page.footerText}</p><nav class="footer-links" aria-label="${meta.footer}"><a href="${localizedPath(locale, "about")}">${meta.about}</a><a href="${localizedPath(locale, "contact")}">${meta.contact}</a><a href="${localizedPath(locale, "privacy")}">${meta.privacy}</a></nav></footer>
   </body>

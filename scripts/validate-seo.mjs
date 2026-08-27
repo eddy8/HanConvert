@@ -12,6 +12,8 @@ const maxTitleLength = 70;
 const expectedHreflangs = ["zh-Hans", "zh-Hant", "en", "ja", "ko", "x-default"];
 const localizationData = await loadLocalizationData(projectRoot);
 const documentLanguages = { "zh-CN": "zh-CN", "zh-TW": "zh-Hant", en: "en", ja: "ja", ko: "ko" };
+const pseoTitleRanges = { "zh-CN": [22, 30], "zh-TW": [22, 30], en: [50, 65], ja: [22, 30], ko: [22, 30] };
+const pseoDescriptionRanges = { "zh-CN": [65, 80], "zh-TW": [65, 80], en: [150, 160], ja: [65, 80], ko: [65, 80] };
 
 async function findHtmlFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -53,6 +55,7 @@ for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "piny
 let converterPages = 0;
 let standaloneToolPages = 0;
 let infoPages = 0;
+let pseoPages = 0;
 const canonicalUrls = new Set();
 const localizedHomePages = new Set(["index.html", "zh-tw/index.html", "en/index.html", "ja/index.html", "ko/index.html"]);
 const localizedKanjiKeywords = new Map([
@@ -130,6 +133,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isConverterPage = html.includes('id="converterTitle"');
   const isStandaloneToolPage = html.includes('data-tool-page=');
   const isInfoPage = html.includes('data-info-page=');
+  const isPseoPage = html.includes('data-pseo-page="hanzi-') || html.includes('data-pseo-page="scenario"');
   const isPinyinPage = html.includes('data-tool-page="pinyin-converter"');
   const isStrokeOrderPage = html.includes('data-tool-page="stroke-order"');
   const isWordToTxtPage = html.includes('data-tool-page="word-to-txt"');
@@ -176,7 +180,22 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
       throw new Error(`${relativePath}: missing word spelling tool link`);
     }
   }
-  if (!isConverterPage && !isStandaloneToolPage && !isInfoPage) continue;
+  if (!isConverterPage && !isStandaloneToolPage && !isInfoPage && !isPseoPage) continue;
+  if (isPseoPage) {
+    const description = requireMatch(html, /<meta\s+name="description"\s+content="([^"]+)"/, "meta description", relativePath);
+    const descriptionLength = [...description].length;
+    const [titleMin, titleMax] = pseoTitleRanges[locale];
+    const [descriptionMin, descriptionMax] = pseoDescriptionRanges[locale];
+    if (titleLength < titleMin || titleLength > titleMax) {
+      throw new Error(`${relativePath}: pSEO title length ${titleLength} is outside ${titleMin}-${titleMax}`);
+    }
+    if (descriptionLength < descriptionMin || descriptionLength > descriptionMax) {
+      throw new Error(`${relativePath}: pSEO description length ${descriptionLength} is outside ${descriptionMin}-${descriptionMax}`);
+    }
+    if (!html.includes(`"description": ${JSON.stringify(description)}`)) {
+      throw new Error(`${relativePath}: pSEO structured-data description is out of sync`);
+    }
+  }
   const expectedDescription = SEO_DESCRIPTIONS[slug]?.[locale];
   if (expectedDescription) {
     const description = requireMatch(html, /<meta\s+name="description"\s+content="([^"]+)"/, "meta description", relativePath);
@@ -212,6 +231,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   }
   if (isStandaloneToolPage) standaloneToolPages += 1;
   if (isInfoPage) infoPages += 1;
+  if (isPseoPage) pseoPages += 1;
 
   const alternates = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)" \/>/g)];
   if (alternates.length !== 6) throw new Error(`${relativePath}: expected 6 hreflang links`);
@@ -236,6 +256,24 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     const organization = schema["@graph"]?.find((item) => item["@type"] === "Organization");
     if (!infoPage || infoPage.url !== canonical || organization?.email !== "admin@jianfan.app") {
       throw new Error(`${relativePath}: invalid ${expectedType} or Organization schema`);
+    }
+  } else if (isPseoPage) {
+    const graph = schema["@graph"];
+    const pageType = html.includes('data-pseo-page="hanzi-index"') ? "CollectionPage" : "WebPage";
+    const pageNode = graph?.find((item) => item["@type"] === pageType);
+    const faqPage = graph?.find((item) => item["@type"] === "FAQPage");
+    const breadcrumb = graph?.find((item) => item["@type"] === "BreadcrumbList");
+    if (!pageNode || pageNode.url !== canonical || !faqPage || !breadcrumb) {
+      throw new Error(`${relativePath}: invalid pSEO page, FAQ or breadcrumb schema`);
+    }
+    if (html.includes('data-pseo-page="hanzi-index"') && !graph.some((item) => item["@type"] === "ItemList")) {
+      throw new Error(`${relativePath}: Hanzi directory is missing ItemList schema`);
+    }
+    if (html.includes('data-pseo-page="hanzi-profile"') && !graph.some((item) => item["@type"] === "DefinedTerm")) {
+      throw new Error(`${relativePath}: Hanzi profile is missing DefinedTerm schema`);
+    }
+    if (html.includes('data-pseo-page="scenario"') && !graph.some((item) => item["@type"] === "HowTo")) {
+      throw new Error(`${relativePath}: scenario page is missing HowTo schema`);
     }
   } else {
     const webApplication = schema["@graph"]?.find((item) => item["@type"] === "WebApplication");
@@ -584,6 +622,7 @@ if (!notFound.includes('name="robots" content="noindex, follow"')) {
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
 if (standaloneToolPages !== 95) throw new Error(`expected 95 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
-if (sitemapUrls.length !== 146) throw new Error(`expected 146 sitemap URLs, found ${sitemapUrls.length}`);
+if (pseoPages !== 105) throw new Error(`expected 105 controlled pSEO pages, found ${pseoPages}`);
+if (sitemapUrls.length !== 251) throw new Error(`expected 251 sitemap URLs, found ${sitemapUrls.length}`);
 
-console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, and ${sitemapUrls.length} sitemap URLs.`);
+console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, ${pseoPages} controlled pSEO pages, and ${sitemapUrls.length} sitemap URLs.`);

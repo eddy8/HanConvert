@@ -2,12 +2,25 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { HANZI_PROFILES, HANZI_UI } from "./hanzi-profile-data.mjs";
 import { SEO_DESCRIPTIONS } from "./seo-descriptions.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
 const slug = "chinese-character-lookup";
 const samples = ["明", "清", "赢", "森"];
+
+function profileCharacter(profile, locale) {
+  if (locale === "zh-TW") return profile.forms.traditional;
+  if (locale === "ja") return profile.forms.japanese;
+  if (locale === "ko") return profile.forms.korean;
+  return profile.forms.simplified;
+}
+
+function profilePath(locale, suffix = "") {
+  const prefix = locales[locale].prefix;
+  return `/${prefix}hanzi/${suffix ? `${suffix}/` : ""}`;
+}
 
 const locales = {
   "zh-CN": { prefix: "", lang: "zh-CN", hreflang: "zh-Hans", label: "简体中文", home: "网站首页", skip: "跳到主要内容", language: "界面语言", header: "网站页眉", nav: "主要导航", footer: "页脚", about: "关于我们", contact: "联系我们", privacy: "隐私声明" },
@@ -453,6 +466,8 @@ function buildPage(locale) {
   const messageAttributes = Object.entries(page.messages).map(([key, value]) => ` data-message-${key.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)}="${escapeHtml(value)}"`).join("");
   const related = relatedLabels[locale].map(([targetSlug, label]) => `          <a href="${localizedPath(locale, targetSlug)}"${targetSlug === slug ? ' aria-current="page"' : ""}>${label}</a>`).join("\n");
   const base = (targetSlug) => localizedPath(locale, targetSlug);
+  const profileUi = HANZI_UI[locale];
+  const profileLinks = HANZI_PROFILES.map((profile) => `          <a href="${profilePath(locale, profile.slug)}">${profileCharacter(profile, locale)}</a>`).join("\n");
 
   return `<!doctype html>
 <html lang="${meta.lang}">
@@ -568,6 +583,13 @@ ${page.steps.map((step) => `            <li>${step}</li>`).join("\n")}
           </ol></section>
         <section class="pinyin-faq" aria-labelledby="hanLookupFaqTitle"><h2 id="hanLookupFaqTitle">${page.faqTitle}</h2>
 ${page.faqs.map(([question, answer]) => `          <details><summary>${question}</summary><p>${answer}</p></details>`).join("\n")}
+        </section>
+        <section class="hanzi-lookup-directory" aria-labelledby="hanLookupDirectoryTitle">
+          <div class="section-heading"><p class="section-kicker">CHARACTER DIRECTORY</p><h2 id="hanLookupDirectoryTitle">${profileUi.directoryLinkTitle}</h2><p class="seo-intro">${profileUi.directoryLinkIntro}</p></div>
+          <nav class="landing-links" aria-label="${profileUi.directoryLinkTitle}">
+            <a href="${profilePath(locale)}">${profileUi.dictionary}</a>
+${profileLinks}
+          </nav>
         </section>
         <p class="section-kicker pinyin-related-kicker">${page.related}</p>
         <nav class="landing-links" aria-label="${page.relatedAria}">
