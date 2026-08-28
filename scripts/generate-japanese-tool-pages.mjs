@@ -380,6 +380,15 @@ const tools = {
         featureTitle: "常用日文字元集中查找和复制",
         featureIntro: "覆盖标准与小写假名、浊音、半浊音、半角片假名、重复符号和日本年代符号。",
         cards: [["点击即复制", "每个字符都是独立按钮，复制后可直接粘贴到文档、社交平台或设计工具。"], ["分类与罗马音搜索", "可按平假名、片假名、半角和符号筛选，也能用字符或罗马音查找。"], ["无需上传内容", "字符表和复制操作完全在浏览器中运行，不会向服务器发送输入内容。"]],
+        howTitle: "如何查找并复制日文字符",
+        steps: ["先选择平假名、片假名、半角片假名或日文符号分类。", "输入日文字符或 ka、shi 等罗马音，缩小字符范围。", "点击单个字符立即复制，或复制当前筛选结果后粘贴到目标位置。"],
+        faqTitle: "日文字符复制常见问题",
+        faqs: [
+          ["复制的是图片还是文字？", "复制结果是可编辑的 Unicode 文本，不是图片。可以直接用于文档、聊天、表格和网页表单。"],
+          ["全角片假名和半角片假名有什么区别？", "全角片假名是现代日文排版的常用形式；半角片假名主要用于旧系统、特定表单和兼容场景。提交前应按目标平台要求选择。"],
+          ["可以用罗马音查找平假名和片假名吗？", "可以。搜索框支持常见假名读音，例如输入 ka 可找到 か、カ 和 ｶ。它用于查找字符，不会把完整日语句子自动转换为假名。"],
+          ["为什么某些日文符号在不同设备上外观不同？", "这些字符使用设备字体显示。日本年号、组合符号或兼容字符可能因字体和系统支持程度不同而改变字形，复制的 Unicode 字符本身不会变成图片。"]
+        ],
         footer: "JianFan.app 提供浏览器本地运行的中文与日文字符工具。"
       },
       "zh-TW": {
@@ -399,6 +408,15 @@ const tools = {
         featureTitle: "常用日文字元集中查找和複製",
         featureIntro: "涵蓋標準與小寫假名、濁音、半濁音、半形片假名、重複符號和日本年號符號。",
         cards: [["點選即可複製", "每個字符都是獨立按鈕，複製後可直接貼到文件、社群平台或設計工具。"], ["分類與羅馬音搜尋", "可依平假名、片假名、半形和符號篩選，也能使用字符或羅馬音查找。"], ["不需上傳內容", "字符表和複製操作完全在瀏覽器中運行，不會向伺服器傳送輸入內容。"]],
+        howTitle: "如何查找並複製日文字元",
+        steps: ["先選擇平假名、片假名、半形片假名或日文符號分類。", "輸入日文字元或 ka、shi 等羅馬字，縮小字元範圍。", "點選單一字元立即複製，或複製目前篩選結果後貼到需要的位置。"],
+        faqTitle: "日文字元複製常見問題",
+        faqs: [
+          ["複製的是圖片還是文字？", "複製結果是可編輯的 Unicode 文字，不是圖片，可直接用於文件、聊天、試算表和網頁表單。"],
+          ["全形片假名和半形片假名有什麼不同？", "全形片假名是現代日文排版的常用形式；半形片假名多用於舊系統、特定表單和相容情境，請依目標平台要求選擇。"],
+          ["可以用羅馬字查找平假名和片假名嗎？", "可以。搜尋框支援常見假名讀音，例如輸入 ka 可找到 か、カ 和 ｶ。此功能用於查找字元，不會把完整日文句子自動轉成假名。"],
+          ["為什麼某些日文符號在不同裝置上外觀不同？", "這些字元由裝置字型顯示。日本年號、組合符號或相容字元可能因字型及系統支援不同而改變外觀，但複製的 Unicode 字元不會變成圖片。"]
+        ],
         footer: "JianFan.app 提供在瀏覽器本機運行的中文與日文字符工具。"
       },
       en: {
@@ -418,6 +436,15 @@ const tools = {
         featureTitle: "A focused Japanese character copy tool",
         featureIntro: "Includes standard and small Kana, voiced and semi-voiced forms, half-width Katakana, iteration marks, and Japanese era symbols.",
         cards: [["Click to copy", "Every character is a separate button ready to paste into documents, social posts, or design tools."], ["Categories and romaji search", "Filter Hiragana, Katakana, half-width forms, and symbols, or search by character and romaji."], ["Browser-local interaction", "The character list and clipboard workflow run in your browser without sending input to a server."]],
+        howTitle: "How to find and copy Japanese characters",
+        steps: ["Choose Hiragana, Katakana, half-width Kana, or Japanese symbols.", "Enter a character or a common romaji reading such as ka or shi to narrow the list.", "Click one character to copy it, or copy all currently filtered results and paste them where needed."],
+        faqTitle: "Japanese character copy and paste FAQ",
+        faqs: [
+          ["Does the tool copy an image or editable text?", "It copies editable Unicode text, not an image, so the result can be pasted into documents, messages, spreadsheets, and web forms."],
+          ["What is the difference between full-width and half-width Katakana?", "Full-width Katakana is standard in modern Japanese text. Half-width Katakana remains useful for legacy systems, constrained fields, and compatibility workflows."],
+          ["Can I search Hiragana and Katakana by romaji?", "Yes. Common readings are indexed, so searching ka finds か, カ, and ｶ. This is a character finder, not a full Japanese sentence-to-kana converter."],
+          ["Why do some Japanese symbols look different after pasting?", "The receiving app chooses the font. Era marks, enclosed forms, and compatibility characters can vary by font or operating system even though the copied Unicode character is unchanged."]
+        ],
         footer: "JianFan.app provides browser-local Chinese and Japanese character tools."
       },
       ja: {
@@ -437,6 +464,15 @@ const tools = {
         featureTitle: "よく使う日本語文字を一覧からコピー",
         featureIntro: "基本・小書き仮名、濁音・半濁音、半角カナ、繰り返し記号、元号記号をまとめています。",
         cards: [["クリックでコピー", "各文字は独立したボタンで、文書、SNS、デザインツールへすぐ貼り付けられます。"], ["カテゴリとローマ字検索", "ひらがな、カタカナ、半角、記号で絞り込み、文字またはローマ字で検索できます。"], ["ブラウザー内で完結", "文字一覧とコピー操作はブラウザー内で実行され、入力内容をサーバーへ送信しません。"]],
+        howTitle: "日本語文字を検索してコピーする方法",
+        steps: ["ひらがな、カタカナ、半角カナ、日本語記号からカテゴリを選びます。", "文字または ka、shi などのローマ字を入力して候補を絞り込みます。", "1文字をクリックしてコピーするか、表示中の文字をまとめてコピーして貼り付けます。"],
+        faqTitle: "日本語文字一覧・コピペのよくある質問",
+        faqs: [
+          ["コピーされるのは画像ですか、文字ですか？", "画像ではなく編集可能な Unicode 文字です。文書、SNS、表計算、Web フォームへそのまま貼り付けられます。"],
+          ["全角カタカナと半角カナはどう使い分けますか？", "通常の日本語表記では全角カタカナを使います。半角カナは旧システム、文字数制限のある入力欄、互換性が必要な場面で使われるため、提出先の指定を確認してください。"],
+          ["ローマ字からひらがな・カタカナを探せますか？", "はい。ka で か、カ、ｶ を探すなど、一般的な読みで検索できます。ただし文章を自動変換する日本語入力ツールではありません。"],
+          ["貼り付け先で日本語記号の見た目が変わるのはなぜですか？", "表示には貼り付け先のフォントが使われます。元号記号、囲み文字、互換文字はフォントやOSによって字形が異なる場合があります。"]
+        ],
         footer: "JianFan.app はブラウザー内で動作する中国語・日本語文字ツールです。"
       },
       ko: {
@@ -456,6 +492,15 @@ const tools = {
         featureTitle: "자주 쓰는 일본어 문자를 한곳에서 복사",
         featureIntro: "기본·작은 가나, 탁음·반탁음, 반각 가타카나, 반복 기호와 일본 연호 기호를 포함합니다.",
         cards: [["클릭해서 복사", "각 문자는 독립 버튼이며 문서, 소셜 게시물, 디자인 도구에 바로 붙여 넣을 수 있습니다."], ["분류와 로마자 검색", "히라가나, 가타카나, 반각, 기호를 필터링하고 문자나 로마자로 검색할 수 있습니다."], ["브라우저에서만 실행", "문자 목록과 복사 작업은 브라우저에서 처리되며 입력 내용을 서버로 보내지 않습니다."]],
+        howTitle: "일본어 문자를 찾아 복사하는 방법",
+        steps: ["히라가나, 가타카나, 반각 가나 또는 일본어 기호 분류를 선택합니다.", "문자나 ka, shi 같은 로마자 읽기를 입력해 목록을 좁힙니다.", "문자 하나를 눌러 복사하거나 현재 검색 결과 전체를 복사해 원하는 곳에 붙여 넣습니다."],
+        faqTitle: "일본어 문자 복사 자주 묻는 질문",
+        faqs: [
+          ["이미지가 복사되나요, 편집 가능한 문자가 복사되나요?", "이미지가 아닌 Unicode 텍스트가 복사됩니다. 문서, 메신저, 스프레드시트와 웹 입력란에 일반 문자처럼 붙여 넣을 수 있습니다."],
+          ["전각 가타카나와 반각 가타카나는 어떻게 다른가요?", "현대 일본어 문장에는 보통 전각 가타카나를 사용합니다. 반각 가타카나는 구형 시스템, 제한된 입력란과 호환성 작업에서 쓰이므로 제출처 기준을 확인하세요."],
+          ["로마자로 히라가나와 가타카나를 찾을 수 있나요?", "가능합니다. ka를 검색하면 か, カ, ｶ를 함께 찾을 수 있습니다. 이 기능은 문자 검색용이며 일본어 문장 전체를 가나로 변환하지는 않습니다."],
+          ["붙여 넣은 일본어 기호 모양이 달라지는 이유는 무엇인가요?", "붙여 넣는 앱과 운영체제의 글꼴로 표시되기 때문입니다. 연호 기호와 호환 문자는 환경에 따라 모양이 달라도 복사된 Unicode 문자는 동일합니다."]
+        ],
         footer: "JianFan.app는 브라우저에서 실행되는 중국어·일본어 문자 도구입니다."
       }
     }
@@ -516,6 +561,18 @@ function buildHead(locale, slug, content) {
         ]
       }
   ];
+  if (content.steps?.length) {
+    graph.push({
+      "@type": "HowTo",
+      "@id": `${canonical}#howto`,
+      name: content.howTitle,
+      step: content.steps.map((text, index) => ({
+        "@type": "HowToStep",
+        position: index + 1,
+        text
+      }))
+    });
+  }
   if (content.faqs?.length) {
     graph.push({
       "@type": "FAQPage",
@@ -608,9 +665,18 @@ function buildFeatureBand(locale, content, activeSlug) {
               <tbody>${content.examples.map(([japanese, simplified, traditional, note]) => `<tr><td lang="ja">${japanese}</td><td lang="zh-Hans">${simplified}</td><td lang="zh-Hant">${traditional}</td><td>${note}</td></tr>`).join("")}</tbody>
             </table>
           </div>
-        </section>
-        <section class="pinyin-faq" aria-labelledby="kanjiConverterFaqTitle">
-          <h2 id="kanjiConverterFaqTitle">${content.faqTitle}</h2>
+        </section>` : "";
+  const howTo = content.steps?.length ? `
+        <section class="word-howto" aria-labelledby="characterCopyHowTitle">
+          <h2 id="characterCopyHowTitle">${content.howTitle}</h2>
+          <ol>
+${content.steps.map((step) => `            <li>${step}</li>`).join("\n")}
+          </ol>
+        </section>` : "";
+  const faqTitleId = content.steps?.length ? "characterCopyFaqTitle" : "kanjiConverterFaqTitle";
+  const faq = content.faqs?.length ? `
+        <section class="pinyin-faq" aria-labelledby="${faqTitleId}">
+          <h2 id="${faqTitleId}">${content.faqTitle}</h2>
 ${content.faqs.map(([question, answer]) => `          <details><summary>${question}</summary><p>${answer}</p></details>`).join("\n")}
         </section>` : "";
   const relatedLinks = links.map(([slug, label]) => {
@@ -619,7 +685,8 @@ ${content.faqs.map(([question, answer]) => `          <details><summary>${questi
       ? `          <!-- han-character-lookup-link:start -->\n          ${link}\n          <!-- han-character-lookup-link:end -->`
       : `          ${link}`;
   }).join("\n");
-  const referenceBlock = reference ? `${reference}\n` : "";
+  const supplementalBlocks = [reference, howTo, faq].filter(Boolean).join("");
+  const supplementalBlock = supplementalBlocks ? `${supplementalBlocks}\n` : "";
   return `      <section class="seo-band standalone-info" aria-labelledby="featureTitle">
         <div class="section-heading">
           <p class="section-kicker">${labels.kicker}</p>
@@ -629,7 +696,7 @@ ${content.faqs.map(([question, answer]) => `          <details><summary>${questi
         <div class="seo-grid">
 ${content.cards.map(([title, body]) => `          <article><h3>${title}</h3><p>${body}</p></article>`).join("\n")}
         </div>
-${referenceBlock}        <nav class="landing-links" aria-label="Related tools">
+${supplementalBlock}        <nav class="landing-links" aria-label="Related tools">
 ${relatedLinks}
         </nav>
       </section>`;

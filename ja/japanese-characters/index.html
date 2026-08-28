@@ -64,6 +64,66 @@
                 "item": "https://jianfan.app/ja/japanese-characters/"
               }
             ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/ja/japanese-characters/#howto",
+            "name": "日本語文字を検索してコピーする方法",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "ひらがな、カタカナ、半角カナ、日本語記号からカテゴリを選びます。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "文字または ka、shi などのローマ字を入力して候補を絞り込みます。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "1文字をクリックしてコピーするか、表示中の文字をまとめてコピーして貼り付けます。"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/ja/japanese-characters/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "コピーされるのは画像ですか、文字ですか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "画像ではなく編集可能な Unicode 文字です。文書、SNS、表計算、Web フォームへそのまま貼り付けられます。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "全角カタカナと半角カナはどう使い分けますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "通常の日本語表記では全角カタカナを使います。半角カナは旧システム、文字数制限のある入力欄、互換性が必要な場面で使われるため、提出先の指定を確認してください。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "ローマ字からひらがな・カタカナを探せますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "はい。ka で か、カ、ｶ を探すなど、一般的な読みで検索できます。ただし文章を自動変換する日本語入力ツールではありません。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "貼り付け先で日本語記号の見た目が変わるのはなぜですか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "表示には貼り付け先のフォントが使われます。元号記号、囲み文字、互換文字はフォントやOSによって字形が異なる場合があります。"
+                }
+              }
+            ]
           }
         ]
       }
@@ -403,6 +463,22 @@
           <article><h3>カテゴリとローマ字検索</h3><p>ひらがな、カタカナ、半角、記号で絞り込み、文字またはローマ字で検索できます。</p></article>
           <article><h3>ブラウザー内で完結</h3><p>文字一覧とコピー操作はブラウザー内で実行され、入力内容をサーバーへ送信しません。</p></article>
         </div>
+
+        <section class="word-howto" aria-labelledby="characterCopyHowTitle">
+          <h2 id="characterCopyHowTitle">日本語文字を検索してコピーする方法</h2>
+          <ol>
+            <li>ひらがな、カタカナ、半角カナ、日本語記号からカテゴリを選びます。</li>
+            <li>文字または ka、shi などのローマ字を入力して候補を絞り込みます。</li>
+            <li>1文字をクリックしてコピーするか、表示中の文字をまとめてコピーして貼り付けます。</li>
+          </ol>
+        </section>
+        <section class="pinyin-faq" aria-labelledby="characterCopyFaqTitle">
+          <h2 id="characterCopyFaqTitle">日本語文字一覧・コピペのよくある質問</h2>
+          <details><summary>コピーされるのは画像ですか、文字ですか？</summary><p>画像ではなく編集可能な Unicode 文字です。文書、SNS、表計算、Web フォームへそのまま貼り付けられます。</p></details>
+          <details><summary>全角カタカナと半角カナはどう使い分けますか？</summary><p>通常の日本語表記では全角カタカナを使います。半角カナは旧システム、文字数制限のある入力欄、互換性が必要な場面で使われるため、提出先の指定を確認してください。</p></details>
+          <details><summary>ローマ字からひらがな・カタカナを探せますか？</summary><p>はい。ka で か、カ、ｶ を探すなど、一般的な読みで検索できます。ただし文章を自動変換する日本語入力ツールではありません。</p></details>
+          <details><summary>貼り付け先で日本語記号の見た目が変わるのはなぜですか？</summary><p>表示には貼り付け先のフォントが使われます。元号記号、囲み文字、互換文字はフォントやOSによって字形が異なる場合があります。</p></details>
+        </section>
         <nav class="landing-links" aria-label="Related tools">
           <a href="/ja/japanese-chinese-kanji-converter/">日中漢字3種類変換</a>
           <a href="/ja/japanese-kanji-converter/">旧字体・新字体変換</a>

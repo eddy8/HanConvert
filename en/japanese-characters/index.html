@@ -64,6 +64,66 @@
                 "item": "https://jianfan.app/en/japanese-characters/"
               }
             ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/en/japanese-characters/#howto",
+            "name": "How to find and copy Japanese characters",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "Choose Hiragana, Katakana, half-width Kana, or Japanese symbols."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "Enter a character or a common romaji reading such as ka or shi to narrow the list."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "Click one character to copy it, or copy all currently filtered results and paste them where needed."
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/en/japanese-characters/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Does the tool copy an image or editable text?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "It copies editable Unicode text, not an image, so the result can be pasted into documents, messages, spreadsheets, and web forms."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the difference between full-width and half-width Katakana?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Full-width Katakana is standard in modern Japanese text. Half-width Katakana remains useful for legacy systems, constrained fields, and compatibility workflows."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I search Hiragana and Katakana by romaji?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Common readings are indexed, so searching ka finds か, カ, and ｶ. This is a character finder, not a full Japanese sentence-to-kana converter."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why do some Japanese symbols look different after pasting?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The receiving app chooses the font. Era marks, enclosed forms, and compatibility characters can vary by font or operating system even though the copied Unicode character is unchanged."
+                }
+              }
+            ]
           }
         ]
       }
@@ -403,6 +463,22 @@
           <article><h3>Categories and romaji search</h3><p>Filter Hiragana, Katakana, half-width forms, and symbols, or search by character and romaji.</p></article>
           <article><h3>Browser-local interaction</h3><p>The character list and clipboard workflow run in your browser without sending input to a server.</p></article>
         </div>
+
+        <section class="word-howto" aria-labelledby="characterCopyHowTitle">
+          <h2 id="characterCopyHowTitle">How to find and copy Japanese characters</h2>
+          <ol>
+            <li>Choose Hiragana, Katakana, half-width Kana, or Japanese symbols.</li>
+            <li>Enter a character or a common romaji reading such as ka or shi to narrow the list.</li>
+            <li>Click one character to copy it, or copy all currently filtered results and paste them where needed.</li>
+          </ol>
+        </section>
+        <section class="pinyin-faq" aria-labelledby="characterCopyFaqTitle">
+          <h2 id="characterCopyFaqTitle">Japanese character copy and paste FAQ</h2>
+          <details><summary>Does the tool copy an image or editable text?</summary><p>It copies editable Unicode text, not an image, so the result can be pasted into documents, messages, spreadsheets, and web forms.</p></details>
+          <details><summary>What is the difference between full-width and half-width Katakana?</summary><p>Full-width Katakana is standard in modern Japanese text. Half-width Katakana remains useful for legacy systems, constrained fields, and compatibility workflows.</p></details>
+          <details><summary>Can I search Hiragana and Katakana by romaji?</summary><p>Yes. Common readings are indexed, so searching ka finds か, カ, and ｶ. This is a character finder, not a full Japanese sentence-to-kana converter.</p></details>
+          <details><summary>Why do some Japanese symbols look different after pasting?</summary><p>The receiving app chooses the font. Era marks, enclosed forms, and compatibility characters can vary by font or operating system even though the copied Unicode character is unchanged.</p></details>
+        </section>
         <nav class="landing-links" aria-label="Related tools">
           <a href="/en/japanese-chinese-kanji-converter/">Japanese and Chinese Kanji</a>
           <a href="/en/japanese-kanji-converter/">Shinjitai and Kyujitai</a>

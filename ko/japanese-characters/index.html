@@ -64,6 +64,66 @@
                 "item": "https://jianfan.app/ko/japanese-characters/"
               }
             ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/ko/japanese-characters/#howto",
+            "name": "일본어 문자를 찾아 복사하는 방법",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "히라가나, 가타카나, 반각 가나 또는 일본어 기호 분류를 선택합니다."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "문자나 ka, shi 같은 로마자 읽기를 입력해 목록을 좁힙니다."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "문자 하나를 눌러 복사하거나 현재 검색 결과 전체를 복사해 원하는 곳에 붙여 넣습니다."
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/ko/japanese-characters/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "이미지가 복사되나요, 편집 가능한 문자가 복사되나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "이미지가 아닌 Unicode 텍스트가 복사됩니다. 문서, 메신저, 스프레드시트와 웹 입력란에 일반 문자처럼 붙여 넣을 수 있습니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "전각 가타카나와 반각 가타카나는 어떻게 다른가요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "현대 일본어 문장에는 보통 전각 가타카나를 사용합니다. 반각 가타카나는 구형 시스템, 제한된 입력란과 호환성 작업에서 쓰이므로 제출처 기준을 확인하세요."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "로마자로 히라가나와 가타카나를 찾을 수 있나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "가능합니다. ka를 검색하면 か, カ, ｶ를 함께 찾을 수 있습니다. 이 기능은 문자 검색용이며 일본어 문장 전체를 가나로 변환하지는 않습니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "붙여 넣은 일본어 기호 모양이 달라지는 이유는 무엇인가요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "붙여 넣는 앱과 운영체제의 글꼴로 표시되기 때문입니다. 연호 기호와 호환 문자는 환경에 따라 모양이 달라도 복사된 Unicode 문자는 동일합니다."
+                }
+              }
+            ]
           }
         ]
       }
@@ -403,6 +463,22 @@
           <article><h3>분류와 로마자 검색</h3><p>히라가나, 가타카나, 반각, 기호를 필터링하고 문자나 로마자로 검색할 수 있습니다.</p></article>
           <article><h3>브라우저에서만 실행</h3><p>문자 목록과 복사 작업은 브라우저에서 처리되며 입력 내용을 서버로 보내지 않습니다.</p></article>
         </div>
+
+        <section class="word-howto" aria-labelledby="characterCopyHowTitle">
+          <h2 id="characterCopyHowTitle">일본어 문자를 찾아 복사하는 방법</h2>
+          <ol>
+            <li>히라가나, 가타카나, 반각 가나 또는 일본어 기호 분류를 선택합니다.</li>
+            <li>문자나 ka, shi 같은 로마자 읽기를 입력해 목록을 좁힙니다.</li>
+            <li>문자 하나를 눌러 복사하거나 현재 검색 결과 전체를 복사해 원하는 곳에 붙여 넣습니다.</li>
+          </ol>
+        </section>
+        <section class="pinyin-faq" aria-labelledby="characterCopyFaqTitle">
+          <h2 id="characterCopyFaqTitle">일본어 문자 복사 자주 묻는 질문</h2>
+          <details><summary>이미지가 복사되나요, 편집 가능한 문자가 복사되나요?</summary><p>이미지가 아닌 Unicode 텍스트가 복사됩니다. 문서, 메신저, 스프레드시트와 웹 입력란에 일반 문자처럼 붙여 넣을 수 있습니다.</p></details>
+          <details><summary>전각 가타카나와 반각 가타카나는 어떻게 다른가요?</summary><p>현대 일본어 문장에는 보통 전각 가타카나를 사용합니다. 반각 가타카나는 구형 시스템, 제한된 입력란과 호환성 작업에서 쓰이므로 제출처 기준을 확인하세요.</p></details>
+          <details><summary>로마자로 히라가나와 가타카나를 찾을 수 있나요?</summary><p>가능합니다. ka를 검색하면 か, カ, ｶ를 함께 찾을 수 있습니다. 이 기능은 문자 검색용이며 일본어 문장 전체를 가나로 변환하지는 않습니다.</p></details>
+          <details><summary>붙여 넣은 일본어 기호 모양이 달라지는 이유는 무엇인가요?</summary><p>붙여 넣는 앱과 운영체제의 글꼴로 표시되기 때문입니다. 연호 기호와 호환 문자는 환경에 따라 모양이 달라도 복사된 Unicode 문자는 동일합니다.</p></details>
+        </section>
         <nav class="landing-links" aria-label="Related tools">
           <a href="/ko/japanese-chinese-kanji-converter/">일본·중국 한자 변환</a>
           <a href="/ko/japanese-kanji-converter/">일본 신자체·구자체 변환</a>
