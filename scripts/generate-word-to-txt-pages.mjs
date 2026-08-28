@@ -1,9 +1,10 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
+const checkOnly = process.argv.includes("--check");
 const slug = "word-to-txt";
 
 const locales = {
@@ -249,7 +250,8 @@ const content = {
   },
   ko: {
     title: "DOCX TXT 변환 - Word 문서 텍스트 변환 | JianFan.app",
-    description: "DOCX TXT 변환과 워드 텍스트 변환을 브라우저에서 무료로 처리하세요. Word 문서의 일반 텍스트를 추출해 편집, 복사, UTF-8 TXT 일괄 다운로드할 수 있습니다.",
+    schemaName: "DOCX TXT 변환 - Word 문서 텍스트 변환",
+    description: "DOCX TXT 변환기로 Word 문서에서 텍스트를 추출하세요. 브라우저에서 편집·복사하고 UTF-8 TXT 일괄 다운로드할 수 있습니다.",
     eyebrow: "WORD를 일반 텍스트로 · 브라우저 로컬 처리",
     heading: "DOCX를 TXT로 변환",
     lede: "Word DOCX 문서에서 서식과 이미지를 제거한 텍스트를 추출하고 편집한 뒤 UTF-8 TXT로 저장합니다. 문서는 서버로 전송되지 않습니다.",
@@ -325,13 +327,14 @@ function localizedPath(locale, targetSlug = "") {
 
 function buildSchema(locale, page) {
   const canonical = `${origin}${localizedPath(locale, slug)}`;
+  const schemaName = page.schemaName ?? page.heading;
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebApplication",
         "@id": `${canonical}#webapp`,
-        name: page.heading,
+        name: schemaName,
         url: canonical,
         description: page.description,
         applicationCategory: "UtilitiesApplication",
@@ -347,7 +350,7 @@ function buildSchema(locale, page) {
         "@id": `${canonical}#breadcrumb`,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: locales[locale].home, item: `${origin}${localizedPath(locale)}` },
-          { "@type": "ListItem", position: 2, name: page.heading, item: canonical }
+          { "@type": "ListItem", position: 2, name: schemaName, item: canonical }
         ]
       },
       {
@@ -454,10 +457,34 @@ ${related}
 </html>`;
 }
 
-for (const locale of Object.keys(locales)) {
-  const directory = path.join(projectRoot, locales[locale].prefix, slug);
-  await mkdir(directory, { recursive: true });
-  await writeFile(path.join(directory, "index.html"), `${buildPage(locale)}\n`);
+function preserveExistingNavigation(generatedHtml, existingHtml) {
+  for (const pattern of [
+    /<nav class="landing-links"[\s\S]*?<\/nav>/,
+    /<footer class="site-footer">[\s\S]*?<\/footer>/
+  ]) {
+    const existingSection = existingHtml.match(pattern)?.[0];
+    if (existingSection) generatedHtml = generatedHtml.replace(pattern, existingSection);
+  }
+  return generatedHtml;
 }
 
-console.log("Generated 5 multilingual Word-to-TXT pages.");
+for (const locale of Object.keys(locales)) {
+  const directory = path.join(projectRoot, locales[locale].prefix, slug);
+  const destination = path.join(directory, "index.html");
+  await mkdir(directory, { recursive: true });
+  let html = buildPage(locale);
+  try {
+    html = preserveExistingNavigation(html, await readFile(destination, "utf8"));
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+  }
+  const generated = `${html}\n`;
+  if (checkOnly) {
+    const existing = await readFile(destination, "utf8");
+    if (generated !== existing) throw new Error(`${path.relative(projectRoot, destination)} is out of sync with the Word-to-TXT generator`);
+  } else {
+    await writeFile(destination, generated);
+  }
+}
+
+console.log(checkOnly ? "Checked 5 multilingual Word-to-TXT pages." : "Generated 5 multilingual Word-to-TXT pages.");

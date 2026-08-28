@@ -52,8 +52,9 @@ const pages = {
         ]
       },
       "zh-TW": {
-        title: "關於 JianFan.app - 簡繁與日文漢字轉換工具",
-        description: "了解 JianFan.app 的工具用途、本機處理方式、OpenCC 技術基礎、內容維護原則和聯絡資訊。",
+        title: "關於我們 - 簡繁轉換與日文漢字、文字工具介紹 | JianFan.app",
+        schemaName: "關於我們 - 簡繁轉換與日文漢字、文字工具介紹",
+        description: "了解 JianFan.app 的簡繁、日文漢字與文字工具，以及瀏覽器本機處理方式、OpenCC 技術基礎、內容維護原則、隱私說明和聯絡資訊。",
         eyebrow: "關於 JianFan.app", heading: "讓文字轉換簡單、透明、可核驗",
         lede: "JianFan.app 是面向一般使用者的線上中文簡繁與日文漢字轉換工具。網站以 jianfan.app 為官方網域，並公開說明功能界線、資料處理方式與聯絡資訊。",
         sections: [
@@ -78,8 +79,9 @@ const pages = {
         ]
       },
       ja: {
-        title: "JianFan.app について - 中国語・日本語漢字変換ツール",
-        description: "JianFan.app の機能、ブラウザー内処理、OpenCC の技術基盤、運用方針、お問い合わせ先を紹介します。",
+        title: "サイト紹介 - 中国語・日本語の文字・漢字変換ツール | JianFan.app",
+        schemaName: "サイト紹介 - 中国語・日本語の文字・漢字変換ツール",
+        description: "JianFan.app の中国語・日本語文字ツール、ブラウザー内処理、OpenCC の技術基盤、運用方針、プライバシー情報、お問い合わせ先を紹介します。",
         eyebrow: "JianFan.app について", heading: "用途と限界が明確な文字変換ツール",
         lede: "JianFan.app は一般利用者向けの中国語簡体字・繁体字と日本語漢字のオンライン変換ツールです。jianfan.app を公式ドメインとし、機能範囲、データ処理方法、連絡先を公開しています。",
         sections: [
@@ -121,8 +123,9 @@ const pages = {
         ]
       },
       "zh-TW": {
-        title: "聯絡 JianFan.app - 意見回饋與問題回報",
-        description: `透過 ${email} 聯絡 JianFan.app，回報轉換問題、功能建議、隱私、安全、無障礙和著作權事項。`,
+        title: "聯絡我們 - 意見回饋、問題回報與隱私著作權聯繫 | JianFan.app",
+        schemaName: "聯絡我們 - 意見回饋、問題回報與隱私著作權聯繫",
+        description: `透過 ${email} 聯絡 JianFan.app，回報文字轉換問題、功能建議，或詢問隱私、安全、無障礙和著作權事項。`,
         eyebrow: "聯絡我們", heading: "聯絡 JianFan.app",
         lede: "歡迎回報轉換結果、頁面體驗和功能建議。請透過下方官方信箱與我們聯絡。",
         emailLabel: "聯絡信箱", emailNote: "我們會查看與網站功能、隱私、安全、無障礙和著作權相關的郵件。",
@@ -145,8 +148,9 @@ const pages = {
         ]
       },
       ja: {
-        title: "JianFan.app お問い合わせ - ご意見・不具合報告",
-        description: `${email} から JianFan.app へ、変換の問題、機能提案、プライバシー、セキュリティ、アクセシビリティ、著作権について連絡できます。`,
+        title: "お問い合わせ - ご意見・不具合報告・著作権について | JianFan.app",
+        schemaName: "お問い合わせ - ご意見・不具合報告・著作権について",
+        description: `変換の問題、機能提案、プライバシー、セキュリティ、アクセシビリティ、著作権について、${email} へお問い合わせください。`,
         eyebrow: "お問い合わせ", heading: "JianFan.app へのお問い合わせ",
         lede: "変換結果、ページの使いやすさ、機能の提案をお寄せください。以下の公式メールアドレスからご連絡いただけます。",
         emailLabel: "メールアドレス", emailNote: "機能、プライバシー、セキュリティ、アクセシビリティ、著作権に関するメールを確認します。",
@@ -183,12 +187,13 @@ function escapeHtml(value) {
 
 function buildAlternates(slug) {
   return [
-    ["zh-CN", "zh-CN"], ["zh-Hant", "zh-TW"], ["en", "en"], ["ja", "ja"], ["ko", "ko"], ["x-default", "zh-CN"]
+    ["zh-Hans", "zh-CN"], ["zh-Hant", "zh-TW"], ["en", "en"], ["ja", "ja"], ["ko", "ko"], ["x-default", "zh-CN"]
   ].map(([hreflang, locale]) => `    <link rel="alternate" hreflang="${hreflang}" href="${origin}${localizedPath(locale, slug)}" />`).join("\n");
 }
 
 function buildSchema(locale, slug, page, content) {
   const url = `${origin}${localizedPath(locale, slug)}`;
+  const schemaName = content.schemaName ?? content.heading;
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -197,14 +202,14 @@ function buildSchema(locale, slug, page, content) {
         email, logo: `${origin}/apple-touch-icon.png`, contactPoint: { "@type": "ContactPoint", email, contactType: "customer support", availableLanguage: ["zh-CN", "zh-Hant", "en", "ja", "ko"] }
       },
       {
-        "@type": page.type, "@id": `${url}#webpage`, url, name: content.heading, description: content.description,
+        "@type": page.type, "@id": `${url}#webpage`, url, name: schemaName, description: content.description,
         inLanguage: locales[locale].lang, isPartOf: { "@type": "WebSite", "@id": `${origin}/#website`, name: "JianFan.app", url: `${origin}/` },
         about: { "@id": `${origin}/#organization` }, mainEntity: { "@id": `${origin}/#organization` }
       },
       {
         "@type": "BreadcrumbList", "@id": `${url}#breadcrumb`, itemListElement: [
           { "@type": "ListItem", position: 1, name: locales[locale].home, item: `${origin}${localizedPath(locale)}` },
-          { "@type": "ListItem", position: 2, name: content.heading, item: url }
+          { "@type": "ListItem", position: 2, name: schemaName, item: url }
         ]
       }
     ]

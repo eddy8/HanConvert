@@ -4,16 +4,24 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { SEO_DESCRIPTIONS, TARGET_META_DESCRIPTION_LENGTH } from "./seo-descriptions.mjs";
+import {
+  decodeHtmlText,
+  getMetadataLengthRange,
+  getTitleContent,
+  LOCALIZED_METADATA_PATHS,
+  LOCALIZED_SEO_DESCRIPTION_SLUGS,
+  SEO_TITLE_SUFFIX,
+  visibleMetadataLength,
+  visibleTitleContentLength
+} from "./seo-metadata-rules.mjs";
 import { getPageContext, loadLocalizationData, localizeConverterHtml } from "./static-localization-lib.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteOrigin = "https://jianfan.app";
-const maxTitleLength = 70;
+const maxTitleLength = 90;
 const expectedHreflangs = ["zh-Hans", "zh-Hant", "en", "ja", "ko", "x-default"];
 const localizationData = await loadLocalizationData(projectRoot);
 const documentLanguages = { "zh-CN": "zh-CN", "zh-TW": "zh-Hant", en: "en", ja: "ja", ko: "ko" };
-const pseoTitleRanges = { "zh-CN": [22, 30], "zh-TW": [22, 30], en: [50, 65], ja: [22, 30], ko: [22, 30] };
-const pseoDescriptionRanges = { "zh-CN": [65, 80], "zh-TW": [65, 80], en: [150, 160], ja: [65, 80], ko: [65, 80] };
 
 async function findHtmlFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -31,6 +39,36 @@ function requireMatch(html, pattern, label, file) {
   const value = html.match(pattern)?.[1];
   if (!value) throw new Error(`${file}: missing ${label}`);
   return value;
+}
+
+function validateManagedStructuredMetadata(html, relativePath, title, description) {
+  const schemaText = requireMatch(
+    html,
+    /<!-- seo-schema:start -->[\s\S]*?<script type="application\/ld\+json">([\s\S]*?)<\/script>/,
+    "JSON-LD",
+    relativePath
+  );
+  const schema = JSON.parse(schemaText);
+  const graph = Array.isArray(schema["@graph"]) ? schema["@graph"] : [schema];
+  const primaryTypes = new Set(["WebApplication", "WebPage", "AboutPage", "ContactPage", "CollectionPage"]);
+  const primary = graph.find((entry) => {
+    const types = Array.isArray(entry["@type"]) ? entry["@type"] : [entry["@type"]];
+    return types.some((type) => primaryTypes.has(type));
+  });
+  const breadcrumb = graph.find((entry) => entry["@type"] === "BreadcrumbList");
+  const finalCrumb = breadcrumb?.itemListElement?.at(-1);
+  const expectedName = getTitleContent(title);
+  const expectedDescription = decodeHtmlText(description);
+
+  if (!primary || primary.name !== expectedName) {
+    throw new Error(`${relativePath}: structured-data name is out of sync with title`);
+  }
+  if (primary.description !== expectedDescription) {
+    throw new Error(`${relativePath}: structured-data description is out of sync with meta description`);
+  }
+  if (!finalCrumb || finalCrumb.name !== expectedName) {
+    throw new Error(`${relativePath}: breadcrumb name is out of sync with title`);
+  }
 }
 
 const sitemap = await readFile(path.join(projectRoot, "sitemap.xml"), "utf8");
@@ -108,13 +146,31 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const title = requireMatch(html, /<title>([\s\S]*?)<\/title>/i, "title", relativePath).trim();
   const canonical = requireMatch(html, /<link rel="canonical" href="([^"]+)" \/>/, "canonical", relativePath);
 
-  const titleLength = [...title].length;
+  const titleLength = visibleMetadataLength(title);
   if (titleLength > maxTitleLength) {
     throw new Error(`${relativePath}: title length ${titleLength} exceeds ${maxTitleLength} characters`);
   }
 
   if (documentLanguage !== documentLanguages[locale]) {
     throw new Error(`${relativePath}: expected document language ${documentLanguages[locale]}, found ${documentLanguage}`);
+  }
+
+  if (LOCALIZED_METADATA_PATHS.has(relativePath)) {
+    const description = requireMatch(html, /<meta\s+name="description"\s+content="([^"]+)"/, "meta description", relativePath);
+    const descriptionLength = visibleMetadataLength(description);
+    const titleContentLength = visibleTitleContentLength(title);
+    const [titleMin, titleMax] = getMetadataLengthRange(locale, "title");
+    const [descriptionMin, descriptionMax] = getMetadataLengthRange(locale, "description");
+    if (!title.endsWith(SEO_TITLE_SUFFIX)) {
+      throw new Error(`${relativePath}: title must end with ${SEO_TITLE_SUFFIX}`);
+    }
+    if (titleContentLength < titleMin || titleContentLength > titleMax) {
+      throw new Error(`${relativePath}: localized title content length ${titleContentLength} is outside ${titleMin}-${titleMax}`);
+    }
+    if (descriptionLength < descriptionMin || descriptionLength > descriptionMax) {
+      throw new Error(`${relativePath}: localized meta description length ${descriptionLength} is outside ${descriptionMin}-${descriptionMax}`);
+    }
+    validateManagedStructuredMetadata(html, relativePath, title, description);
   }
 
   if (!canonical.startsWith(`${siteOrigin}/`)) throw new Error(`${relativePath}: canonical is not absolute`);
@@ -183,12 +239,8 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (!isConverterPage && !isStandaloneToolPage && !isInfoPage && !isPseoPage) continue;
   if (isPseoPage) {
     const description = requireMatch(html, /<meta\s+name="description"\s+content="([^"]+)"/, "meta description", relativePath);
-    const descriptionLength = [...description].length;
-    const [titleMin, titleMax] = pseoTitleRanges[locale];
-    const [descriptionMin, descriptionMax] = pseoDescriptionRanges[locale];
-    if (titleLength < titleMin || titleLength > titleMax) {
-      throw new Error(`${relativePath}: pSEO title length ${titleLength} is outside ${titleMin}-${titleMax}`);
-    }
+    const descriptionLength = visibleMetadataLength(description);
+    const [descriptionMin, descriptionMax] = getMetadataLengthRange(locale, "description");
     if (descriptionLength < descriptionMin || descriptionLength > descriptionMax) {
       throw new Error(`${relativePath}: pSEO description length ${descriptionLength} is outside ${descriptionMin}-${descriptionMax}`);
     }
@@ -199,11 +251,11 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const expectedDescription = SEO_DESCRIPTIONS[slug]?.[locale];
   if (expectedDescription) {
     const description = requireMatch(html, /<meta\s+name="description"\s+content="([^"]+)"/, "meta description", relativePath);
-    const descriptionLength = [...description].length;
+    const descriptionLength = visibleMetadataLength(description);
     if (description !== expectedDescription) {
       throw new Error(`${relativePath}: meta description is out of sync with seo-descriptions.mjs`);
     }
-    if (descriptionLength < TARGET_META_DESCRIPTION_LENGTH.min || descriptionLength > TARGET_META_DESCRIPTION_LENGTH.max) {
+    if (!LOCALIZED_SEO_DESCRIPTION_SLUGS.has(slug) && (descriptionLength < TARGET_META_DESCRIPTION_LENGTH.min || descriptionLength > TARGET_META_DESCRIPTION_LENGTH.max)) {
       throw new Error(`${relativePath}: meta description length ${descriptionLength} is outside ${TARGET_META_DESCRIPTION_LENGTH.min}-${TARGET_META_DESCRIPTION_LENGTH.max}`);
     }
     if (!html.includes(`"description": ${JSON.stringify(expectedDescription)}`)) {
@@ -513,10 +565,6 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
       'id="handwritingCandidates"'
     ]) {
       if (!html.includes(asset)) throw new Error(`${relativePath}: missing handwriting-recognition asset ${asset}`);
-    }
-    const description = requireMatch(html, /<meta name="description" content="([^"]+)" \/>/, "meta description", relativePath);
-    if (description.length < 150 || description.length > 160) {
-      throw new Error(`${relativePath}: handwriting meta description must contain 150-160 characters, found ${description.length}`);
     }
   }
   if (relativePath === path.join("chinese-handwriting-recognition", "index.html")) {

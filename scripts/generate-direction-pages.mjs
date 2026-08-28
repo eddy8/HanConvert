@@ -1,17 +1,19 @@
-import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { SEO_DESCRIPTIONS } from "./seo-descriptions.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const origin = "https://jianfan.app";
+const checkOnly = process.argv.includes("--check");
 
 const locales = {
-  "zh-CN": { source: "index.html", prefix: "", lang: "zh-CN" },
-  "zh-TW": { source: "zh-tw/index.html", prefix: "zh-tw/", lang: "zh-Hant" },
-  en: { source: "en/index.html", prefix: "en/", lang: "en" },
-  ja: { source: "ja/index.html", prefix: "ja/", lang: "ja" },
-  ko: { source: "ko/index.html", prefix: "ko/", lang: "ko" }
+  "zh-CN": { source: "index.html", prefix: "", lang: "zh-CN", home: "网站首页" },
+  "zh-TW": { source: "zh-tw/index.html", prefix: "zh-tw/", lang: "zh-Hant", home: "網站首頁" },
+  en: { source: "en/index.html", prefix: "en/", lang: "en", home: "Home" },
+  ja: { source: "ja/index.html", prefix: "ja/", lang: "ja", home: "ホーム" },
+  ko: { source: "ko/index.html", prefix: "ko/", lang: "ko", home: "홈" }
 };
 
 const pages = {
@@ -55,7 +57,7 @@ const pages = {
         description: "Convert Simplified Chinese to Traditional Chinese online, including Taiwan and Hong Kong variants. Text is processed locally in your browser.",
         eyebrow: "Simplified to Traditional Chinese",
         heading: "Simplified to Traditional Chinese Converter",
-        lede: "Paste Simplified Chinese and convert it instantly. Standard Traditional is selected by default, with Taiwan and Hong Kong options available.",
+        lede: "Paste Simplified Chinese and convert it instantly. The standard Traditional mode is selected by default, with Taiwan and Hong Kong options available.",
         seoKicker: "Simplified to Traditional",
         seoTitle: "Online Simplified Chinese to Traditional Chinese converter",
         seoIntro: "Use this page for articles, subtitles, social posts, product copy, documentation, and everyday Chinese text conversion.",
@@ -104,8 +106,8 @@ const pages = {
     defaultConfig: "t2s",
     content: {
       "zh-CN": {
-        title: "繁体转简体 - 在线繁体字转简体字转换器 | JianFan.app",
-        description: "在线将繁体中文转换为简体中文，支持通用繁体、台湾正体和香港繁体转简体。文本在浏览器本地处理，转换能力基于 OpenCC。",
+        title: "繁体转简体 - 免费在线繁体字转简体字转换器 | JianFan.app",
+        description: "免费繁体转简体在线转换器，支持通用繁体、台湾正体与香港繁体转简体，可按地区处理常用词汇，并提供长文本、自定义词库、差异高亮、复制和下载，内容在浏览器本地完成。",
         eyebrow: "繁体字转简体字",
         heading: "繁体转简体在线转换",
         lede: "粘贴繁体中文即可转换为简体中文。本页默认选择繁体转简体，也可处理台湾正体、香港繁体和地区用词。",
@@ -120,8 +122,8 @@ const pages = {
         seoUseCaseBody: "文字不需要上传到服务器；正式文件、专有名词和语境相关内容仍建议人工复核。"
       },
       "zh-TW": {
-        title: "繁體轉簡體 - 線上繁體字轉簡體字轉換器 | JianFan.app",
-        description: "線上將繁體中文轉換為簡體中文，支援台灣正體和香港繁體轉簡體，文字在瀏覽器本機處理。",
+        title: "繁體轉簡體 - 免費線上繁體字轉簡體字轉換器 | JianFan.app",
+        description: "免費繁體轉簡體線上轉換器，支援通用繁體、台灣正體與香港繁體轉簡體，可依地區處理常用詞彙，並提供長文、自訂詞庫、差異標示、複製和下載，內容在瀏覽器本機完成。",
         eyebrow: "繁體字轉簡體字",
         heading: "繁體轉簡體線上轉換",
         lede: "貼上繁體中文即可轉換為簡體中文。本頁預設選擇繁體轉簡體，也可處理台灣正體、香港繁體與地區用詞。",
@@ -137,10 +139,10 @@ const pages = {
       },
       en: {
         title: "Traditional to Simplified Chinese Converter Online | JianFan.app",
-        description: "Convert Traditional Chinese to Simplified Chinese online, including Taiwan and Hong Kong source text. Processing stays in your browser.",
+        description: "Convert Traditional Chinese to Simplified Chinese online, including Taiwan and Hong Kong text, custom terms, highlights, TXT downloads, and browser processing.",
         eyebrow: "Traditional to Simplified Chinese",
         heading: "Traditional to Simplified Chinese Converter",
-        lede: "Paste Traditional Chinese and convert it instantly. Standard Traditional to Simplified is selected by default, with regional source modes available.",
+        lede: "Paste Traditional Chinese and convert it instantly. Standard Traditional to Simplified is selected by default, with Taiwan and Hong Kong source modes available.",
         seoKicker: "Traditional to Simplified",
         seoTitle: "Online Traditional Chinese to Simplified Chinese converter",
         seoIntro: "Use this page for reading material, subtitles, social posts, product copy, documentation, and everyday Chinese text conversion.",
@@ -152,8 +154,8 @@ const pages = {
         seoUseCaseBody: "Text stays in the browser. Review proper nouns, brands, and formal content before publishing."
       },
       ja: {
-        title: "繁体字から簡体字への変換ツール | JianFan.app",
-        description: "中国語の繁体字を簡体字へオンライン変換。台湾・香港の繁体字と地域別表現にも対応し、ブラウザー内で処理します。",
+        title: "繁体字から簡体字への変換ツール - 台湾・香港表記対応 | JianFan.app",
+        description: "繁体字を簡体字へ無料で変換。一般繁体字のほか、台湾・香港の字形や地域表現、長文、カスタム辞書、差分表示、コピー、TXT保存に対応し、ブラウザー内で処理します。",
         eyebrow: "繁体字から簡体字",
         heading: "繁体字から簡体字へのオンライン変換",
         lede: "中国語の繁体字テキストを貼り付けるだけで簡体字へ変換できます。台湾・香港由来の表現にも対応します。",
@@ -168,8 +170,8 @@ const pages = {
         seoUseCaseBody: "固有名詞、ブランド名、正式文書は変換後も確認してください。"
       },
       ko: {
-        title: "중국어 번체를 간체로 변환 | JianFan.app",
-        description: "중국어 번체를 간체로 온라인 변환합니다. 대만·홍콩 번체와 지역 표현을 지원하며 브라우저에서 처리합니다.",
+        title: "중국어 번체를 간체로 변환 - 대만·홍콩 번체 지원 | JianFan.app",
+        description: "중국어 번체를 간체로 변환하세요. 대만·홍콩 번체와 지역 용어, 긴 글, 사용자 사전, 변경 표시와 TXT 저장을 브라우저에서 지원합니다.",
         eyebrow: "번체를 간체로",
         heading: "중국어 번체 간체 변환기",
         lede: "중국어 번체 텍스트를 붙여 넣으면 간체로 바로 변환합니다. 대만과 홍콩 원문용 모드도 선택할 수 있습니다.",
@@ -195,19 +197,55 @@ for (const [slug, descriptions] of Object.entries(SEO_DESCRIPTIONS)) {
   }
 }
 
-const directionLinks = [
-  '          <a href="/simplified-to-traditional/" data-route="simplified-to-traditional" data-i18n="linkS2T">简体转繁体</a>',
-  '          <a href="/traditional-to-simplified/" data-route="traditional-to-simplified" data-i18n="linkT2S">繁体转简体</a>'
-].join("\n");
-
 function setText(html, key, value) {
   const pattern = new RegExp(`(<[^>]+data-i18n="${key}"[^>]*>)[\\s\\S]*?(<\\/[^>]+>)`);
   return html.replace(pattern, `$1${value}$2`);
 }
 
-function localizedPath(locale, slug) {
+function localizedPath(locale, slug = "") {
   const prefix = locales[locale].prefix;
-  return `/${prefix}${slug}/`;
+  return slug ? `/${prefix}${slug}/` : `/${prefix}`;
+}
+
+function localizedUrl(locale, slug = "") {
+  return `${origin}${localizedPath(locale, slug)}`;
+}
+
+function updateStructuredData(html, slug, locale, content) {
+  const scriptPattern = /    <script type="application\/ld\+json">[\s\S]*?    <\/script>/;
+  const script = html.match(scriptPattern)?.[0];
+  const rawJson = script?.match(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/)?.[1];
+  if (!rawJson) throw new Error(`${locale}/${slug}: missing JSON-LD`);
+
+  const structuredData = JSON.parse(rawJson);
+  const graph = Array.isArray(structuredData["@graph"]) ? structuredData["@graph"] : [];
+  const application = graph.find((entry) => entry["@type"] === "WebApplication");
+  if (!application) throw new Error(`${locale}/${slug}: missing WebApplication schema`);
+
+  const pageUrl = localizedUrl(locale, slug);
+  const pageName = content.title.replace(/\s*\|\s*JianFan\.app$/, "");
+  application["@id"] = `${pageUrl}#webapp`;
+  application.name = pageName;
+  application.url = pageUrl;
+  application.description = content.description;
+
+  structuredData["@graph"] = [
+    ...graph.filter((entry) => entry["@type"] !== "BreadcrumbList"),
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: locales[locale].home, item: localizedUrl(locale) },
+        { "@type": "ListItem", position: 2, name: pageName, item: pageUrl }
+      ]
+    }
+  ];
+
+  const formatted = JSON.stringify(structuredData, null, 2)
+    .split("\n")
+    .map((line) => `      ${line}`)
+    .join("\n");
+  return html.replace(scriptPattern, `    <script type="application/ld+json">\n${formatted}\n    </script>`);
 }
 
 function preparePage(source, slug, locale, page) {
@@ -219,7 +257,7 @@ function preparePage(source, slug, locale, page) {
       /<meta\s+name="description"\s+content="[^"]*"\s*\/>/,
       `<meta\n      name="description"\n      content="${content.description}"\n    />`
     )
-    .replace(/<link rel="canonical" href="[^"]+" \/>/, `<link rel="canonical" href="${localizedPath(locale, slug)}" />`);
+    .replace(/<link rel="canonical" href="[^"]+" \/>/, `<link rel="canonical" href="${localizedUrl(locale, slug)}" />`);
 
   const alternateLocales = {
     "zh-Hans": "zh-CN",
@@ -233,7 +271,7 @@ function preparePage(source, slug, locale, page) {
   for (const [hreflang, alternateLocale] of Object.entries(alternateLocales)) {
     html = html.replace(
       new RegExp(`<link rel="alternate" hreflang="${hreflang}" href="[^"]+" \\/>`),
-      `<link rel="alternate" hreflang="${hreflang}" href="${localizedPath(alternateLocale, slug)}" />`
+      `<link rel="alternate" hreflang="${hreflang}" href="${localizedUrl(alternateLocale, slug)}" />`
     );
   }
 
@@ -253,6 +291,7 @@ function preparePage(source, slug, locale, page) {
   };
 
   for (const [key, value] of Object.entries(replacements)) html = setText(html, key, value);
+  html = updateStructuredData(html, slug, locale, content);
 
   if (page.defaultConfig === "t2s") {
     html = html
@@ -270,33 +309,22 @@ function preparePage(source, slug, locale, page) {
   return html;
 }
 
-async function findHtmlFiles(directory) {
-  const entries = await readdir(directory, { withFileTypes: true });
-  const files = [];
-  for (const entry of entries) {
-    if ([".git", "node_modules"].includes(entry.name)) continue;
-    const entryPath = path.join(directory, entry.name);
-    if (entry.isDirectory()) files.push(...(await findHtmlFiles(entryPath)));
-    if (entry.isFile() && entry.name === "index.html") files.push(entryPath);
-  }
-  return files;
-}
-
-for (const htmlPath of await findHtmlFiles(projectRoot)) {
-  const html = await readFile(htmlPath, "utf8");
-  if (!html.includes('id="converterTitle"') || html.includes('data-route="simplified-to-traditional"')) continue;
-  const updated = html.replace(
-    '          <a href="/taiwan-traditional/" data-route="taiwan-traditional" data-i18n="linkTaiwan">',
-    `${directionLinks}\n          <a href="/taiwan-traditional/" data-route="taiwan-traditional" data-i18n="linkTaiwan">`
-  );
-  await writeFile(htmlPath, updated);
-}
-
 for (const [slug, page] of Object.entries(pages)) {
   for (const [locale, localeData] of Object.entries(locales)) {
-    const source = await readFile(path.join(projectRoot, localeData.source), "utf8");
     const destination = path.join(projectRoot, localeData.prefix, slug, "index.html");
     await mkdir(path.dirname(destination), { recursive: true });
-    await writeFile(destination, preparePage(source, slug, locale, page));
+    let source;
+    try {
+      source = await readFile(destination, "utf8");
+    } catch (error) {
+      if (error.code !== "ENOENT") throw error;
+      source = await readFile(path.join(projectRoot, localeData.source), "utf8");
+    }
+    const generated = preparePage(source, slug, locale, page);
+    if (checkOnly) {
+      if (generated !== source) throw new Error(`${path.relative(projectRoot, destination)} is out of sync with the direction-page generator`);
+    } else {
+      await writeFile(destination, generated);
+    }
   }
 }

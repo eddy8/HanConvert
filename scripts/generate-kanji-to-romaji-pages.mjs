@@ -1,9 +1,10 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteOrigin = "https://jianfan.app";
+const checkOnly = process.argv.includes("--check");
 const slug = "kanji-to-romaji";
 const sampleText = "明日は東京で日本語を勉強します。";
 const dictionaryPath = "https://cdn.jsdmirror.cn/npm/kuromoji@0.1.2/dict/";
@@ -76,7 +77,8 @@ const content = {
   },
   "zh-TW": {
     title: "日文漢字轉羅馬字 - 日語羅馬拼音、平假名與注音 | JianFan.app",
-    description: "免費日文漢字轉羅馬字工具，將日語文字轉換為羅馬字、平假名、片假名或振假名，支援平文式、訓令式、日本式羅馬字與上下文讀音。",
+    schemaName: "日文漢字轉羅馬字 - 日語羅馬拼音、平假名與注音",
+    description: "免費線上日文漢字轉羅馬字工具，將漢字、平假名與片假名轉成羅馬字、平假名、片假名或振假名，支援平文式、訓令式、日本式和常見上下文讀音。",
     eyebrow: "日語讀音 · 羅馬字 · 平假名 · 振假名",
     heading: "日文漢字轉羅馬字與平假名",
     lede: "輸入包含漢字、平假名或片假名的日語句子，即可進行日語羅馬拼音轉換、假名轉換與漢字注音。讀音會依常見詞語與句子上下文判斷。",
@@ -318,11 +320,12 @@ function localizedPath(locale, targetSlug = "") {
 
 function buildSchema(locale, page) {
   const canonical = `${siteOrigin}${localizedPath(locale, slug)}`;
+  const schemaName = page.schemaName ?? page.heading;
   return {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "WebApplication", "@id": `${canonical}#webapp`, name: page.heading, url: canonical, description: page.description, applicationCategory: "EducationalApplication", operatingSystem: "Any", browserRequirements: "Requires JavaScript", inLanguage: locales[locale].lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, isPartOf: { "@type": "WebSite", "@id": `${siteOrigin}/#website`, name: "JianFan.app", url: `${siteOrigin}/` } },
-      { "@type": "BreadcrumbList", "@id": `${canonical}#breadcrumb`, itemListElement: [{ "@type": "ListItem", position: 1, name: locales[locale].home, item: `${siteOrigin}${localizedPath(locale)}` }, { "@type": "ListItem", position: 2, name: page.heading, item: canonical }] },
+      { "@type": "WebApplication", "@id": `${canonical}#webapp`, name: schemaName, url: canonical, description: page.description, applicationCategory: "EducationalApplication", operatingSystem: "Any", browserRequirements: "Requires JavaScript", inLanguage: locales[locale].lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, isPartOf: { "@type": "WebSite", "@id": `${siteOrigin}/#website`, name: "JianFan.app", url: `${siteOrigin}/` } },
+      { "@type": "BreadcrumbList", "@id": `${canonical}#breadcrumb`, itemListElement: [{ "@type": "ListItem", position: 1, name: locales[locale].home, item: `${siteOrigin}${localizedPath(locale)}` }, { "@type": "ListItem", position: 2, name: schemaName, item: canonical }] },
       { "@type": "FAQPage", "@id": `${canonical}#faq`, mainEntity: page.faqs.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) }
     ]
   };
@@ -422,10 +425,34 @@ ${links}
 </html>`;
 }
 
-for (const locale of Object.keys(locales)) {
-  const directory = path.join(projectRoot, locales[locale].prefix, slug);
-  await mkdir(directory, { recursive: true });
-  await writeFile(path.join(directory, "index.html"), `${buildPage(locale)}\n`);
+function preserveExistingNavigation(generatedHtml, existingHtml) {
+  for (const pattern of [
+    /<nav class="landing-links"[\s\S]*?<\/nav>/,
+    /<footer class="site-footer">[\s\S]*?<\/footer>/
+  ]) {
+    const existingSection = existingHtml.match(pattern)?.[0];
+    if (existingSection) generatedHtml = generatedHtml.replace(pattern, existingSection);
+  }
+  return generatedHtml;
 }
 
-console.log("Generated 5 multilingual Kanji-to-Romaji pages.");
+for (const locale of Object.keys(locales)) {
+  const directory = path.join(projectRoot, locales[locale].prefix, slug);
+  const destination = path.join(directory, "index.html");
+  await mkdir(directory, { recursive: true });
+  let html = buildPage(locale);
+  try {
+    html = preserveExistingNavigation(html, await readFile(destination, "utf8"));
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+  }
+  const generated = `${html}\n`;
+  if (checkOnly) {
+    const existing = await readFile(destination, "utf8");
+    if (generated !== existing) throw new Error(`${path.relative(projectRoot, destination)} is out of sync with the Kanji-to-Romaji generator`);
+  } else {
+    await writeFile(destination, generated);
+  }
+}
+
+console.log(checkOnly ? "Checked 5 multilingual Kanji-to-Romaji pages." : "Generated 5 multilingual Kanji-to-Romaji pages.");

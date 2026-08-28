@@ -17,8 +17,8 @@ const locales = {
 
 const content = {
   "zh-CN": {
-    title: "手写汉字识别 - 在线手写查字与汉字输入 | JianFan.app",
-    description: "免费手写汉字识别与在线手写查字工具。遇到不会读、不会输入的汉字，可用鼠标、触控板、触屏或手写笔在田字格中照着字形逐笔书写，页面会边写边显示相似候选字。选中后即可复制，并查询拼音、笔画数、Unicode 与汉字笔顺。支持常见简体字和繁体字，无需注册或安装应用，笔画识别在浏览器本地完成，电脑、平板和手机都可使用。",
+    title: "手写汉字识别 - 在线手写查字与汉字输入工具 | JianFan.app",
+    description: "免费在线手写查字与汉字识别工具，用鼠标、触屏或手写笔逐笔写出不会读的简繁汉字，即时查看候选字、拼音、笔画数和笔顺，默认在浏览器本地识别。",
     alternateNames: ["在线手写查字", "汉字手写输入", "汉字手写查询"],
     eyebrow: "手写识别 · 候选汉字 · 拼音笔顺",
     heading: "手写汉字识别与在线查字",
@@ -80,8 +80,8 @@ const content = {
     footerText: "JianFan.app 提供浏览器中运行的汉字识别、拼音、笔顺与中文转换工具。"
   },
   "zh-TW": {
-    title: "手寫漢字辨識 - 線上手寫查字與國字輸入 | JianFan.app",
-    description: "免費手寫漢字辨識與線上手寫查字工具。遇到不會唸、無法輸入的國字，可用滑鼠、觸控板、觸控螢幕或手寫筆在田字格中照著字形逐畫書寫，頁面會邊寫邊顯示相似候選字。選取後即可複製，並查詢漢語拼音、筆畫數、Unicode 與國字筆順。支援常見正體字和簡體字，免註冊或安裝應用程式，筆畫辨識在瀏覽器本機完成，電腦和手機皆可使用。",
+    title: "手寫漢字辨識 - 線上手寫查字與國字輸入工具 | JianFan.app",
+    description: "免費線上手寫查字與漢字辨識工具，用滑鼠、觸控螢幕或手寫筆逐畫寫出不會讀的正簡體國字，即時查看候選字、拼音、筆畫數和筆順，預設在瀏覽器本機辨識。",
     alternateNames: ["線上手寫查字", "手寫國字辨識", "漢字手寫輸入"],
     eyebrow: "手寫辨識 · 候選漢字 · 拼音筆順",
     heading: "手寫漢字辨識與線上查字",
@@ -144,7 +144,7 @@ const content = {
   },
   en: {
     title: "Chinese Handwriting Recognition - Draw and Look Up Hanzi | JianFan.app",
-    description: "Free Chinese handwriting input and recognition online. Draw a Hanzi with a mouse, finger or pen to find matches, Pinyin, stroke count and stroke order.",
+    description: "Draw a Chinese character online with a mouse, finger, or pen to find matching Hanzi, Pinyin, stroke count, and stroke order with browser-based recognition.",
     alternateNames: ["Chinese Handwriting Input", "Draw Chinese Character", "Chinese Character Lookup by Drawing", "Find Chinese Character by Drawing", "Search Chinese Characters by Drawing", "Draw Hanzi Online"],
     eyebrow: "DRAW HANZI · RECOGNIZE · LOOK UP",
     heading: "Chinese Handwriting Recognition",
@@ -209,7 +209,7 @@ const content = {
   },
   ja: {
     title: "漢字手書き検索 - 手書き入力で漢字を調べる | JianFan.app",
-    description: "漢字手書き検索を無料で利用できます。読み方が分からず入力できない漢字を、マウス、トラックパッド、タッチ画面やペンで1画ずつ書くと、似ている候補をすぐに表示。候補を選んでコピーし、中国語のピンイン、画数、Unicode、筆順を確認できます。簡体字と繁体字に対応し、登録・アプリのインストールは不要です。",
+    description: "読み方が分からない中国語漢字をマウスや指、ペンで一画ずつ書いて検索。簡体字・繁体字の候補、ピンイン、画数、筆順を確認でき、手書き認識はブラウザー内で動作します。",
     alternateNames: ["漢字手書き検索", "手書き漢字認識", "漢字を手書きで検索"],
     eyebrow: "手書き入力 · 漢字候補 · 読み方と筆順",
     heading: "漢字手書き検索",
@@ -271,8 +271,8 @@ const content = {
     footerText: "JianFan.app はブラウザーで使える漢字手書き検索、中国語ピンイン、筆順、文字変換ツールを提供します。"
   },
   ko: {
-    title: "한자 필기 인식 - 손글씨로 한자 찾기 | JianFan.app",
-    description: "무료 한자 필기인식과 한자 그려서 찾기 도구입니다. 읽는 법을 몰라 입력하기 어려운 한자를 마우스나 터치로 쓰면 비슷한 후보를 보여 줍니다. 한자를 골라 복사하고 병음, 획수, Unicode와 필순을 확인하세요. 간체와 번체를 지원하며 회원가입이나 앱 설치 없이 이용할 수 있습니다.",
+    title: "한자 필기 인식 - 온라인 손글씨 한자 찾기 | JianFan.app",
+    description: "무료 한자 필기인식으로 모르는 중국어 한자를 써서 찾으세요. 간체·번체 후보와 병음, 획수, 필순을 확인하며 인식은 브라우저에서 처리됩니다.",
     alternateNames: ["한자 필기 인식", "손글씨 한자 찾기", "한자 그려서 찾기"],
     eyebrow: "손글씨 입력 · 한자 후보 · 병음과 필순",
     heading: "한자 필기 인식·손글씨 한자 찾기",
@@ -353,13 +353,14 @@ function localizedPath(locale, targetSlug = "") {
 
 function buildSchema(locale, page) {
   const canonical = `${origin}${localizedPath(locale, slug)}`;
+  const schemaName = page.title.replace(/\s*\|\s*JianFan\.app$/, "");
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebApplication",
         "@id": `${canonical}#webapp`,
-        name: page.heading,
+        name: schemaName,
         alternateName: page.alternateNames,
         url: canonical,
         description: page.description,
@@ -376,7 +377,7 @@ function buildSchema(locale, page) {
         "@id": `${canonical}#breadcrumb`,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: locales[locale].home, item: `${origin}${localizedPath(locale)}` },
-          { "@type": "ListItem", position: 2, name: page.heading, item: canonical }
+          { "@type": "ListItem", position: 2, name: schemaName, item: canonical }
         ]
       },
       {

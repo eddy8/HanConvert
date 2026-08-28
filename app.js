@@ -840,8 +840,8 @@ const landingPages = {
     defaultConfig: "t2s",
     content: {
       "zh-CN": {
-        pageTitle: "繁体转简体 - 在线繁体字转简体字转换器 | JianFan.app",
-        pageDescription: "在线将繁体中文转换为简体中文，支持通用繁体、台湾正体和香港繁体转简体。文本在浏览器本地处理，转换能力基于 OpenCC。",
+        pageTitle: "繁体转简体 - 免费在线繁体字转简体字转换器 | JianFan.app",
+        pageDescription: "免费繁体转简体在线转换器，支持通用繁体、台湾正体与香港繁体转简体，可按地区处理常用词汇，并提供长文本、自定义词库、差异高亮、复制和下载，内容在浏览器本地完成。",
         eyebrow: "繁体字转简体字",
         title: "繁体转简体在线转换",
         lede: "粘贴繁体中文即可转换为简体中文。本页默认选择繁体转简体，也可处理台湾正体、香港繁体和地区用词。",
@@ -859,8 +859,8 @@ const landingPages = {
         seoUseCaseBody: "文字不需要上传到服务器；正式文件、专有名词和语境相关内容仍建议人工复核。"
       },
       "zh-TW": {
-        pageTitle: "繁體轉簡體 - 線上繁體字轉簡體字轉換器 | JianFan.app",
-        pageDescription: "線上將繁體中文轉換為簡體中文，支援台灣正體和香港繁體轉簡體，文字在瀏覽器本機處理。",
+        pageTitle: "繁體轉簡體 - 免費線上繁體字轉簡體字轉換器 | JianFan.app",
+        pageDescription: "免費繁體轉簡體線上轉換器，支援通用繁體、台灣正體與香港繁體轉簡體，可依地區處理常用詞彙，並提供長文、自訂詞庫、差異標示、複製和下載，內容在瀏覽器本機完成。",
         eyebrow: "繁體字轉簡體字",
         title: "繁體轉簡體線上轉換",
         lede: "貼上繁體中文即可轉換為簡體中文。本頁預設選擇繁體轉簡體，也可處理台灣正體、香港繁體與地區用詞。",
@@ -879,7 +879,7 @@ const landingPages = {
       },
       en: {
         pageTitle: "Traditional to Simplified Chinese Converter Online | JianFan.app",
-        pageDescription: "Convert Traditional Chinese to Simplified Chinese online, including Taiwan and Hong Kong source text. Processing stays in your browser.",
+        pageDescription: "Convert Traditional Chinese to Simplified Chinese online, including Taiwan and Hong Kong text, custom terms, highlights, TXT downloads, and browser processing.",
         eyebrow: "Traditional to Simplified Chinese",
         title: "Traditional to Simplified Chinese Converter",
         lede: "Paste Traditional Chinese and convert it instantly. Standard Traditional to Simplified is selected by default, with Taiwan and Hong Kong source modes available.",
@@ -897,8 +897,8 @@ const landingPages = {
         seoUseCaseBody: "Text stays in the browser. Review proper nouns, brands, and formal content before publishing."
       },
       ja: {
-        pageTitle: "繁体字から簡体字への変換ツール | JianFan.app",
-        pageDescription: "中国語の繁体字を簡体字へオンライン変換。台湾・香港の繁体字と地域別表現にも対応し、ブラウザー内で処理します。",
+        pageTitle: "繁体字から簡体字への変換ツール - 台湾・香港表記対応 | JianFan.app",
+        pageDescription: "繁体字を簡体字へ無料で変換。一般繁体字のほか、台湾・香港の字形や地域表現、長文、カスタム辞書、差分表示、コピー、TXT保存に対応し、ブラウザー内で処理します。",
         eyebrow: "繁体字から簡体字",
         title: "繁体字から簡体字へのオンライン変換",
         lede: "中国語の繁体字テキストを貼り付けるだけで簡体字へ変換できます。台湾・香港由来の表現にも対応します。",
@@ -916,8 +916,8 @@ const landingPages = {
         seoUseCaseBody: "固有名詞、ブランド名、正式文書は変換後も確認してください。"
       },
       ko: {
-        pageTitle: "중국어 번체를 간체로 변환 | JianFan.app",
-        pageDescription: "중국어 번체를 간체로 온라인 변환합니다. 대만·홍콩 번체와 지역 표현을 지원하며 브라우저에서 처리합니다.",
+        pageTitle: "중국어 번체를 간체로 변환 - 대만·홍콩 번체 지원 | JianFan.app",
+        pageDescription: "중국어 번체를 간체로 변환하세요. 대만·홍콩 번체와 지역 용어, 긴 글, 사용자 사전, 변경 표시와 TXT 저장을 브라우저에서 지원합니다.",
         eyebrow: "번체를 간체로",
         title: "중국어 번체 간체 변환기",
         lede: "중국어 번체 텍스트를 붙여 넣으면 간체로 바로 변환합니다. 대만과 홍콩 원문용 모드도 선택할 수 있습니다.",
@@ -941,8 +941,9 @@ const landingPages = {
     content: {
       "zh-CN": {
         pageTitle: "台湾繁体转换 - 简体转台湾正体 / 大陆用词转台湾用词 | JianFan.app",
+        schemaName: "台湾繁体转换 - 简体转台湾正体 / 大陆用词转台湾用词",
         pageDescription:
-          "基于 OpenCC 实现的在线台湾繁体转换工具，支持简体转台湾正体、正体中文转换和大陆用词转台湾用词。",
+          "免费台湾繁体字在线转换器，将简体中文转换为台湾正体中文，并处理大陆用词与台湾常用词差异。支持长文本、自定义词库、差异高亮、复制和下载，内容在浏览器本地完成。",
         eyebrow: "台湾正体转换",
         title: "台湾繁体转换：简体转台湾正体",
         lede: "输入简体中文即可转换为更适合台湾读者的正体中文。高级模式会同时处理字形和部分大陆用词转台湾用词需求。",
@@ -961,8 +962,9 @@ const landingPages = {
         seoUseCaseBody: "转换结果仍建议人工校对，尤其是品牌名、专有名词和语境相关词。"
       },
       "zh-TW": {
-        pageTitle: "台灣繁體轉換 - 簡體轉台灣正體 | JianFan.app",
-        pageDescription: "基於 OpenCC 實現的線上台灣繁體轉換工具，支援簡體轉台灣正體與地區用詞轉換。",
+        pageTitle: "台灣繁體轉換 - 簡體轉台灣正體與在地用詞轉換 | JianFan.app",
+        schemaName: "台灣繁體轉換 - 簡體轉台灣正體與在地用詞轉換",
+        pageDescription: "免費台灣繁體線上轉換器，將簡體中文轉為台灣正體中文，並處理中國大陸用詞與台灣慣用詞差異。支援長文、自訂詞庫、差異標示、複製和下載，內容在瀏覽器本機完成。",
         eyebrow: "台灣正體轉換",
         title: "台灣繁體轉換：簡體轉台灣正體",
         lede: "輸入簡體中文即可轉換為更適合台灣讀者的正體中文，並可處理部分地區用詞差異。",
@@ -980,8 +982,9 @@ const landingPages = {
         seoUseCaseBody: "轉換結果仍建議人工校對，尤其是品牌名、專有名詞和語境相關詞。"
       },
       en: {
-        pageTitle: "Taiwan Traditional Chinese Converter | JianFan.app",
-        pageDescription: "Convert Simplified Chinese to Taiwan Traditional Chinese with regional wording support. Built with OpenCC.",
+        pageTitle: "Taiwan Traditional Chinese Converter - Regional Wording | JianFan.app",
+        schemaName: "Taiwan Traditional Chinese Converter - Regional Wording",
+        pageDescription: "Convert Simplified Chinese to Taiwan Traditional Chinese online with regional wording, custom terms, change highlights, TXT downloads, and browser processing.",
         eyebrow: "Taiwan Traditional conversion",
         title: "Taiwan Traditional Chinese Converter",
         lede: "Convert Simplified Chinese text into Taiwan Traditional Chinese with phrase-level regional wording support.",
@@ -999,8 +1002,9 @@ const landingPages = {
         seoUseCaseBody: "Keep reviewing brand names, product terms, and context-sensitive wording after conversion."
       },
       ja: {
-        pageTitle: "台湾 繁体字 変換 | JianFan.app",
-        pageDescription: "OpenCC を基に、簡体字を台湾向け繁体字に変換。中国語の台湾繁体字表記や地域別表現の確認に使えます。",
+        pageTitle: "台湾繁体字変換 - 簡体字を台湾正体字に変換 | JianFan.app",
+        schemaName: "台湾繁体字変換 - 簡体字を台湾正体字に変換",
+        pageDescription: "中国語の簡体字を台湾向け繁体字・正体字へ無料変換。中国大陸と台湾の地域表現、長文、カスタム辞書、差分表示、コピー、TXT保存に対応し、ブラウザー内で処理します。",
         eyebrow: "台湾繁体字変換",
         title: "台湾 繁体字 変換",
         lede: "簡体字テキストを台湾向けの繁体字に変換し、地域別表現の違いも確認しやすくします。",
@@ -1018,8 +1022,9 @@ const landingPages = {
         seoUseCaseBody: "固有名詞やブランド名は変換後も人の目で確認してください。"
       },
       ko: {
-        pageTitle: "대만 번체 변환 | JianFan.app",
-        pageDescription: "OpenCC 기반 도구로 중국어 간체를 대만 번체로 변환하고 지역 표현 차이를 확인할 수 있습니다.",
+        pageTitle: "대만 번체 변환 - 중국어 간체·대만 용어 변환 | JianFan.app",
+        schemaName: "대만 번체 변환 - 중국어 간체·대만 용어 변환",
+        pageDescription: "중국어 간체를 대만 번체로 변환하세요. 대륙·대만 지역 표현, 긴 글, 사용자 사전, 변경 표시, 복사와 TXT 저장을 브라우저에서 지원합니다.",
         eyebrow: "대만 번체 변환",
         title: "대만 번체 변환",
         lede: "중국어 간체 텍스트를 대만 독자에게 맞는 번체와 지역 표현으로 변환합니다.",

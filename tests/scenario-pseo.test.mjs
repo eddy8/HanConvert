@@ -9,11 +9,10 @@ import {
   SCENARIO_LOCALES,
   SCENARIO_PAGES
 } from "../scripts/scenario-pseo-data.mjs";
+import { getMetadataLengthRange, visibleMetadataLength } from "../scripts/seo-metadata-rules.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
-const titleRanges = { "zh-CN": [22, 30], "zh-TW": [22, 30], en: [50, 65], ja: [22, 30], ko: [22, 30] };
-const descriptionRanges = { "zh-CN": [65, 80], "zh-TW": [65, 80], en: [150, 160], ja: [65, 80], ko: [65, 80] };
 
 function pagePath(locale, slug) {
   return path.join(projectRoot, SCENARIO_LOCALES[locale].prefix, slug, "index.html");
@@ -43,10 +42,9 @@ test("generates 75 localized scenario pages with unique metadata and complete al
       const title = capture(html, /<title>([^<]+)<\/title>/u, "title");
       const description = capture(html, /<meta name="description" content="([^"]+)"/u, "description");
       const canonical = capture(html, /<link rel="canonical" href="([^"]+)"/u, "canonical");
-      const [titleMin, titleMax] = titleRanges[locale];
-      const [descriptionMin, descriptionMax] = descriptionRanges[locale];
-      assert.ok([...title].length >= titleMin && [...title].length <= titleMax, `${scenario.slug}/${locale} title length`);
-      assert.ok([...description].length >= descriptionMin && [...description].length <= descriptionMax, `${scenario.slug}/${locale} description length`);
+      const [descriptionMin, descriptionMax] = getMetadataLengthRange(locale, "description");
+      const descriptionLength = visibleMetadataLength(description);
+      assert.ok(descriptionLength >= descriptionMin && descriptionLength <= descriptionMax, `${scenario.slug}/${locale} description length`);
       assert.equal(canonical, `${origin}${publicPath(locale, scenario.slug)}`);
       assert.equal((html.match(/rel="alternate" hreflang=/gu) || []).length, 6);
       assert.equal(html.includes("?v="), false);

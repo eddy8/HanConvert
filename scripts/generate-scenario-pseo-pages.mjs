@@ -9,6 +9,7 @@ import {
   SCENARIO_UI
 } from "./scenario-pseo-data.mjs";
 import { buildScenarioCluster } from "./scenario-pseo-links.mjs";
+import { getMetadataLengthRange, visibleMetadataLength } from "./seo-metadata-rules.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
@@ -17,8 +18,6 @@ const sitemapMarkerStart = "  <!-- scenario-pseo:start -->";
 const sitemapMarkerEnd = "  <!-- scenario-pseo:end -->";
 const parentMarkerPattern = /\s*<!-- scenario-pseo-links:start -->[\s\S]*?<!-- scenario-pseo-links:end -->\s*/u;
 const lastModified = "2026-08-27";
-const titleRanges = { "zh-CN": [22, 30], "zh-TW": [22, 30], en: [50, 65], ja: [22, 30], ko: [22, 30] };
-const descriptionRanges = { "zh-CN": [65, 80], "zh-TW": [65, 80], en: [150, 160], ja: [65, 80], ko: [65, 80] };
 
 const categoryLabels = Object.freeze({
   "zh-CN": Object.freeze({ file: "文件处理", kanji: "中日字形转换", worksheet: "练习纸制作", specific: "场景要点" }),
@@ -50,13 +49,8 @@ function toolUrl(locale, scenario) {
 }
 
 function assertSeoLength(locale, page, scenario) {
-  const titleLength = [...page.title].length;
-  const descriptionLength = [...page.description].length;
-  const [titleMin, titleMax] = titleRanges[locale];
-  const [descriptionMin, descriptionMax] = descriptionRanges[locale];
-  if (titleLength < titleMin || titleLength > titleMax) {
-    throw new Error(`${locale}/${scenario.slug}: title length ${titleLength} is outside ${titleMin}-${titleMax}`);
-  }
+  const descriptionLength = visibleMetadataLength(page.description);
+  const [descriptionMin, descriptionMax] = getMetadataLengthRange(locale, "description");
   if (descriptionLength < descriptionMin || descriptionLength > descriptionMax) {
     throw new Error(`${locale}/${scenario.slug}: description length ${descriptionLength} is outside ${descriptionMin}-${descriptionMax}`);
   }

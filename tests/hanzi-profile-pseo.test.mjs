@@ -5,11 +5,10 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 import { HANZI_LOCALES, HANZI_PROFILES } from "../scripts/hanzi-profile-data.mjs";
+import { getMetadataLengthRange, visibleMetadataLength } from "../scripts/seo-metadata-rules.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
-const titleRanges = { "zh-CN": [22, 30], "zh-TW": [22, 30], en: [50, 65], ja: [22, 30], ko: [22, 30] };
-const descriptionRanges = { "zh-CN": [65, 80], "zh-TW": [65, 80], en: [150, 160], ja: [65, 80], ko: [65, 80] };
 
 function relativePage(locale, slug = "") {
   return path.join(HANZI_LOCALES[locale].prefix, "hanzi", slug, "index.html");
@@ -47,10 +46,9 @@ test("generates a five-locale Hanzi directory and five static character profiles
       const title = requireCapture(html, /<title>([\s\S]*?)<\/title>/u, "title").trim();
       const description = requireCapture(html, /<meta name="description" content="([^"]+)"/u, "description");
       const canonical = requireCapture(html, /<link rel="canonical" href="([^"]+)"/u, "canonical");
-      const [titleMin, titleMax] = titleRanges[locale];
-      const [descriptionMin, descriptionMax] = descriptionRanges[locale];
-      assert.ok([...title].length >= titleMin && [...title].length <= titleMax, `${relativePage(locale, slug)} title length`);
-      assert.ok([...description].length >= descriptionMin && [...description].length <= descriptionMax, `${relativePage(locale, slug)} description length`);
+      const [descriptionMin, descriptionMax] = getMetadataLengthRange(locale, "description");
+      const descriptionLength = visibleMetadataLength(description);
+      assert.ok(descriptionLength >= descriptionMin && descriptionLength <= descriptionMax, `${relativePage(locale, slug)} description length`);
       assert.equal(canonical, `${origin}${publicPath(locale, slug)}`);
       assert.equal((html.match(/rel="alternate" hreflang=/gu) || []).length, 6);
       assert.equal(html.includes("?v="), false);

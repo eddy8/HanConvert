@@ -5,6 +5,11 @@ import {
   SEO_DESCRIPTIONS,
   TARGET_META_DESCRIPTION_LENGTH
 } from "../scripts/seo-descriptions.mjs";
+import {
+  getMetadataLengthRange,
+  LOCALIZED_SEO_DESCRIPTION_SLUGS,
+  visibleMetadataLength
+} from "../scripts/seo-metadata-rules.mjs";
 
 const expectedSlugs = [
   "photo-chinese-character-recognition",
@@ -21,14 +26,17 @@ const expectedSlugs = [
 ];
 const expectedLocales = ["zh-CN", "zh-TW", "en", "ja", "ko"];
 
-test("keeps targeted multilingual meta descriptions within 150 to 160 characters", () => {
+test("keeps targeted multilingual meta descriptions within their managed length ranges", () => {
   assert.deepEqual(Object.keys(SEO_DESCRIPTIONS), expectedSlugs);
   for (const slug of expectedSlugs) {
     assert.deepEqual(Object.keys(SEO_DESCRIPTIONS[slug]), expectedLocales);
     for (const [locale, description] of Object.entries(SEO_DESCRIPTIONS[slug])) {
-      const length = [...description].length;
+      const length = visibleMetadataLength(description);
+      const [min, max] = LOCALIZED_SEO_DESCRIPTION_SLUGS.has(slug)
+        ? getMetadataLengthRange(locale, "description")
+        : [TARGET_META_DESCRIPTION_LENGTH.min, TARGET_META_DESCRIPTION_LENGTH.max];
       assert.ok(
-        length >= TARGET_META_DESCRIPTION_LENGTH.min && length <= TARGET_META_DESCRIPTION_LENGTH.max,
+        length >= min && length <= max,
         `${slug}/${locale} has ${length} characters`
       );
     }

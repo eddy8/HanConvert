@@ -420,8 +420,9 @@ const tools = {
         footer: "JianFan.app 提供在瀏覽器本機運行的中文與日文字符工具。"
       },
       en: {
-        title: "Japanese Character Copy - Hiragana, Katakana, Symbols | JianFan.app",
-        description: "Find and copy Hiragana, Katakana, half-width Kana, small Kana, voiced characters, and Japanese symbols with category filters and romaji search.",
+    title: "Japanese Character Copy - Hiragana, Katakana, Symbols | JianFan.app",
+    structuredName: "Japanese Character Copy - Hiragana, Katakana, Symbols",
+    description: "Find and copy Hiragana, Katakana, half-width Kana, small Kana, voiced characters, and Japanese symbols online with category filters, details, and Romaji search.",
         eyebrow: "Hiragana · Katakana · Japanese symbols",
         heading: "Find and Copy Japanese Characters",
         lede: "Browse a complete categorized character set, click any character to copy it, search by romaji, or copy the current results at once.",
@@ -526,6 +527,7 @@ function escapeHtml(value) {
 
 function buildHead(locale, slug, content) {
   const canonical = `${siteOrigin}${localizedPath(locale, slug)}`;
+  const structuredName = content.structuredName ?? content.title.replace(/\s*\|\s*JianFan\.app\s*$/, "");
   const hreflangs = {
     "zh-Hans": "zh-CN",
     "zh-Hant": "zh-TW",
@@ -541,7 +543,7 @@ function buildHead(locale, slug, content) {
       {
         "@type": "WebApplication",
         "@id": `${canonical}#webapp`,
-        name: content.title.replace(/\s*\|\s*JianFan\.app\s*$/, ""),
+        name: structuredName,
         url: canonical,
         description: content.description,
         applicationCategory: "UtilitiesApplication",
@@ -557,7 +559,7 @@ function buildHead(locale, slug, content) {
         "@id": `${canonical}#breadcrumb`,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: locales[locale].home, item: `${siteOrigin}${localizedPath(locale)}` },
-          { "@type": "ListItem", position: 2, name: content.heading, item: canonical }
+          { "@type": "ListItem", position: 2, name: content.structuredName ?? content.heading, item: canonical }
         ]
       }
   ];

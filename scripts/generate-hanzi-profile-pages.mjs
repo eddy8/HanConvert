@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { HANZI_LOCALES, HANZI_PROFILES, HANZI_UI } from "./hanzi-profile-data.mjs";
+import { getMetadataLengthRange, visibleMetadataLength } from "./seo-metadata-rules.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
@@ -10,22 +11,6 @@ const sitemapPath = path.join(projectRoot, "sitemap.xml");
 const sitemapMarkerStart = "  <!-- hanzi-profile-pseo:start -->";
 const sitemapMarkerEnd = "  <!-- hanzi-profile-pseo:end -->";
 const lastModified = "2026-08-27";
-
-const titleRanges = Object.freeze({
-  "zh-CN": [22, 30],
-  "zh-TW": [22, 30],
-  en: [50, 65],
-  ja: [22, 30],
-  ko: [22, 30]
-});
-
-const descriptionRanges = Object.freeze({
-  "zh-CN": [65, 80],
-  "zh-TW": [65, 80],
-  en: [150, 160],
-  ja: [65, 80],
-  ko: [65, 80]
-});
 
 const structureOperators = Object.freeze({
   "⿰": "leftRight",
@@ -120,14 +105,9 @@ function currentReading(locale, profile, record) {
   return mandarinReading(record);
 }
 
-function assertSeoLength(locale, title, description, label) {
-  const titleLength = [...title].length;
-  const descriptionLength = [...description].length;
-  const [titleMin, titleMax] = titleRanges[locale];
-  const [descriptionMin, descriptionMax] = descriptionRanges[locale];
-  if (titleLength < titleMin || titleLength > titleMax) {
-    throw new Error(`${label}: ${locale} title length ${titleLength} is outside ${titleMin}-${titleMax}`);
-  }
+function assertSeoLength(locale, description, label) {
+  const descriptionLength = visibleMetadataLength(description);
+  const [descriptionMin, descriptionMax] = getMetadataLengthRange(locale, "description");
   if (descriptionLength < descriptionMin || descriptionLength > descriptionMax) {
     throw new Error(`${label}: ${locale} description length ${descriptionLength} is outside ${descriptionMin}-${descriptionMax}`);
   }
@@ -283,7 +263,7 @@ function buildHubPage(locale, profileRecords) {
   const ui = HANZI_UI[locale];
   const title = ui.hubTitle;
   const description = ui.hubDescription;
-  assertSeoLength(locale, title, description, "hanzi hub");
+  assertSeoLength(locale, description, "hanzi hub");
   const schema = buildHubSchema(locale, title, description);
   const faq = ui.hubFaqs.map(([question, answer]) => `<details><summary>${question}</summary><p>${answer}</p></details>`).join("\n");
   return `<!doctype html>
@@ -450,7 +430,7 @@ function buildProfilePage(locale, profile, record, recordsByForm, profileRecords
   const reading = currentReading(locale, profile, record);
   const title = fill(ui.profileTitle, { character });
   const description = fill(ui.profileDescription, { character, pinyin, strokes: record.s, koreanReading: profile.koreanReading });
-  assertSeoLength(locale, title, description, `hanzi/${profile.slug}`);
+  assertSeoLength(locale, description, `hanzi/${profile.slug}`);
   const faqs = buildProfileFaqs(locale, profile, record);
   const schema = buildProfileSchema(locale, profile, record, title, description, faqs);
   const variants = [...new Set(Object.values(profile.forms))].join(" / ");
