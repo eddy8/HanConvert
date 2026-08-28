@@ -64,6 +64,66 @@
                 "item": "https://jianfan.app/zh-tw/japanese-characters/"
               }
             ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/zh-tw/japanese-characters/#howto",
+            "name": "如何查找並複製日文字元",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "先選擇平假名、片假名、半形片假名或日文符號分類。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "輸入日文字元或 ka、shi 等羅馬字，縮小字元範圍。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "點選單一字元立即複製，或複製目前篩選結果後貼到需要的位置。"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/zh-tw/japanese-characters/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "複製的是圖片還是文字？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "複製結果是可編輯的 Unicode 文字，不是圖片，可直接用於文件、聊天、試算表和網頁表單。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "全形片假名和半形片假名有什麼不同？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "全形片假名是現代日文排版的常用形式；半形片假名多用於舊系統、特定表單和相容情境，請依目標平台要求選擇。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "可以用羅馬字查找平假名和片假名嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以。搜尋框支援常見假名讀音，例如輸入 ka 可找到 か、カ 和 ｶ。此功能用於查找字元，不會把完整日文句子自動轉成假名。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "為什麼某些日文符號在不同裝置上外觀不同？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "這些字元由裝置字型顯示。日本年號、組合符號或相容字元可能因字型及系統支援不同而改變外觀，但複製的 Unicode 字元不會變成圖片。"
+                }
+              }
+            ]
           }
         ]
       }
@@ -403,6 +463,22 @@
           <article><h3>分類與羅馬音搜尋</h3><p>可依平假名、片假名、半形和符號篩選，也能使用字符或羅馬音查找。</p></article>
           <article><h3>不需上傳內容</h3><p>字符表和複製操作完全在瀏覽器中運行，不會向伺服器傳送輸入內容。</p></article>
         </div>
+
+        <section class="word-howto" aria-labelledby="characterCopyHowTitle">
+          <h2 id="characterCopyHowTitle">如何查找並複製日文字元</h2>
+          <ol>
+            <li>先選擇平假名、片假名、半形片假名或日文符號分類。</li>
+            <li>輸入日文字元或 ka、shi 等羅馬字，縮小字元範圍。</li>
+            <li>點選單一字元立即複製，或複製目前篩選結果後貼到需要的位置。</li>
+          </ol>
+        </section>
+        <section class="pinyin-faq" aria-labelledby="characterCopyFaqTitle">
+          <h2 id="characterCopyFaqTitle">日文字元複製常見問題</h2>
+          <details><summary>複製的是圖片還是文字？</summary><p>複製結果是可編輯的 Unicode 文字，不是圖片，可直接用於文件、聊天、試算表和網頁表單。</p></details>
+          <details><summary>全形片假名和半形片假名有什麼不同？</summary><p>全形片假名是現代日文排版的常用形式；半形片假名多用於舊系統、特定表單和相容情境，請依目標平台要求選擇。</p></details>
+          <details><summary>可以用羅馬字查找平假名和片假名嗎？</summary><p>可以。搜尋框支援常見假名讀音，例如輸入 ka 可找到 か、カ 和 ｶ。此功能用於查找字元，不會把完整日文句子自動轉成假名。</p></details>
+          <details><summary>為什麼某些日文符號在不同裝置上外觀不同？</summary><p>這些字元由裝置字型顯示。日本年號、組合符號或相容字元可能因字型及系統支援不同而改變外觀，但複製的 Unicode 字元不會變成圖片。</p></details>
+        </section>
         <nav class="landing-links" aria-label="Related tools">
           <a href="/zh-tw/japanese-chinese-kanji-converter/">日中漢字三體轉換</a>
           <a href="/zh-tw/japanese-kanji-converter/">日文新舊字體轉換</a>

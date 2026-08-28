@@ -64,6 +64,66 @@
                 "item": "https://jianfan.app/japanese-characters/"
               }
             ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/japanese-characters/#howto",
+            "name": "如何查找并复制日文字符",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "先选择平假名、片假名、半角片假名或日文符号分类。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "输入日文字符或 ka、shi 等罗马音，缩小字符范围。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "点击单个字符立即复制，或复制当前筛选结果后粘贴到目标位置。"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/japanese-characters/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "复制的是图片还是文字？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "复制结果是可编辑的 Unicode 文本，不是图片。可以直接用于文档、聊天、表格和网页表单。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "全角片假名和半角片假名有什么区别？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "全角片假名是现代日文排版的常用形式；半角片假名主要用于旧系统、特定表单和兼容场景。提交前应按目标平台要求选择。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "可以用罗马音查找平假名和片假名吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以。搜索框支持常见假名读音，例如输入 ka 可找到 か、カ 和 ｶ。它用于查找字符，不会把完整日语句子自动转换为假名。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "为什么某些日文符号在不同设备上外观不同？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "这些字符使用设备字体显示。日本年号、组合符号或兼容字符可能因字体和系统支持程度不同而改变字形，复制的 Unicode 字符本身不会变成图片。"
+                }
+              }
+            ]
           }
         ]
       }
@@ -403,6 +463,22 @@
           <article><h3>分类与罗马音搜索</h3><p>可按平假名、片假名、半角和符号筛选，也能用字符或罗马音查找。</p></article>
           <article><h3>无需上传内容</h3><p>字符表和复制操作完全在浏览器中运行，不会向服务器发送输入内容。</p></article>
         </div>
+
+        <section class="word-howto" aria-labelledby="characterCopyHowTitle">
+          <h2 id="characterCopyHowTitle">如何查找并复制日文字符</h2>
+          <ol>
+            <li>先选择平假名、片假名、半角片假名或日文符号分类。</li>
+            <li>输入日文字符或 ka、shi 等罗马音，缩小字符范围。</li>
+            <li>点击单个字符立即复制，或复制当前筛选结果后粘贴到目标位置。</li>
+          </ol>
+        </section>
+        <section class="pinyin-faq" aria-labelledby="characterCopyFaqTitle">
+          <h2 id="characterCopyFaqTitle">日文字符复制常见问题</h2>
+          <details><summary>复制的是图片还是文字？</summary><p>复制结果是可编辑的 Unicode 文本，不是图片。可以直接用于文档、聊天、表格和网页表单。</p></details>
+          <details><summary>全角片假名和半角片假名有什么区别？</summary><p>全角片假名是现代日文排版的常用形式；半角片假名主要用于旧系统、特定表单和兼容场景。提交前应按目标平台要求选择。</p></details>
+          <details><summary>可以用罗马音查找平假名和片假名吗？</summary><p>可以。搜索框支持常见假名读音，例如输入 ka 可找到 か、カ 和 ｶ。它用于查找字符，不会把完整日语句子自动转换为假名。</p></details>
+          <details><summary>为什么某些日文符号在不同设备上外观不同？</summary><p>这些字符使用设备字体显示。日本年号、组合符号或兼容字符可能因字体和系统支持程度不同而改变字形，复制的 Unicode 字符本身不会变成图片。</p></details>
+        </section>
         <nav class="landing-links" aria-label="Related tools">
           <a href="/japanese-chinese-kanji-converter/">日中汉字三体转换</a>
           <a href="/japanese-kanji-converter/">日文新旧字体转换</a>
