@@ -4,6 +4,8 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { visibleMetadataLength } from "../scripts/seo-metadata-rules.mjs";
+
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const slugs = [
   "korean-hanja-dictionary",
@@ -31,7 +33,7 @@ test("generates all Korean tools with localized static HTML and SEO metadata", a
       const description = html.match(/<meta name="description" content="([^"]+)"/)?.[1];
       assert.match(html, new RegExp(`<html lang="${config.lang}">`), `${locale}/${slug} language`);
       assert.ok(html.includes(`<h1 id="pageTitle">${config.headings[index]}</h1>`), `${locale}/${slug} static heading`);
-      assert.ok(title && [...title].length <= 70, `${locale}/${slug} title length`);
+      assert.ok(title && visibleMetadataLength(title) <= 90, `${locale}/${slug} title length`);
       assert.ok(description && [...description].length >= 150 && [...description].length <= 160, `${locale}/${slug} description length`);
       assert.equal((html.match(/hreflang=/g) || []).length, 6, `${locale}/${slug} hreflang count`);
       assert.ok(html.includes('"@type":"HowTo"') && html.includes('"@type":"FAQPage"'), `${locale}/${slug} structured data`);

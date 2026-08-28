@@ -2,6 +2,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { visibleMetadataLength } from "./seo-metadata-rules.mjs";
+
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
 const localePaths = "zh-CN:/|zh-TW:/zh-tw/|en:/en/|ja:/ja/|ko:/ko/";
@@ -429,7 +431,7 @@ function buildPage(locale, slug, definition) {
   const tool = definition.type === "dictionary" ? dictionaryTool(page) : definition.type === "handwriting" ? handwritingTool(page) : definition.type === "converter" ? converterTool(page, locale) : namesTool(page);
   const scripts = definition.type === "handwriting" ? `<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin /><script defer src="/korean-hanja-data.js"></script><script defer src="/handwriting-recognition.js"></script>` : definition.type === "dictionary" ? `<script defer src="/korean-hanja-data.js"></script><script defer src="/korean-hanja-dictionary.js"></script>` : definition.type === "converter" ? `<script defer src="/korean-hanja-data.js"></script><script defer src="/hangul-hanja-converter.js"></script>` : `<script defer src="/korean-hanja-data.js"></script><script defer src="/korean-name-hanja.js"></script>`;
   const related = relatedLinks[locale].map(([target, label]) => `<a href="${localPath(locale, target)}"${target === slug ? ' aria-current="page"' : ""}>${label}</a>`).join("");
-  if ([...page.title].length > 70) throw new Error(`${slug}/${locale} title exceeds 70 characters`);
+  if (visibleMetadataLength(page.title) > 90) throw new Error(`${slug}/${locale} title exceeds 90 characters`);
   const descriptionLength = [...page.description].length;
   if (descriptionLength < 150 || descriptionLength > 160) {
     throw new Error(`${slug}/${locale} description has ${descriptionLength} characters`);

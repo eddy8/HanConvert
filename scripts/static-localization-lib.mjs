@@ -80,6 +80,29 @@ function formatMessage(template, values) {
   return String(template).replace(/\{(\w+)\}/g, (_, key) => values[key] ?? "");
 }
 
+function syncStructuredMetadata(html, dictionary, relativePath) {
+  const schemaPattern = /(<!-- seo-schema:start -->\n    <script type="application\/ld\+json">\n)([\s\S]*?)(\n    <\/script>\n    <!-- seo-schema:end -->)/;
+  const match = html.match(schemaPattern);
+  if (!match) throw new Error(`${relativePath}: missing structured data block`);
+
+  const schema = JSON.parse(match[2]);
+  const graph = Array.isArray(schema["@graph"]) ? schema["@graph"] : [];
+  const application = graph.find((entry) => entry["@type"] === "WebApplication");
+  const breadcrumb = graph.find((entry) => entry["@type"] === "BreadcrumbList");
+  const finalCrumb = breadcrumb?.itemListElement?.at(-1);
+  if (!application || !finalCrumb) throw new Error(`${relativePath}: incomplete structured data block`);
+
+  application.name = dictionary.schemaName;
+  application.description = dictionary.pageDescription;
+  finalCrumb.name = dictionary.schemaName;
+
+  const formatted = JSON.stringify(schema, null, 2)
+    .split("\n")
+    .map((line) => `      ${line}`)
+    .join("\n");
+  return html.replace(schemaPattern, `$1${formatted}$3`);
+}
+
 function setAttribute(openingTag, name, value) {
   const escaped = escapeAttribute(value);
   const pattern = new RegExp(`(\\s${name}=")[^"]*(")`);
@@ -151,6 +174,7 @@ export function localizeConverterHtml(source, relativePath, data) {
 
   html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeText(dictionary.pageTitle)}</title>`);
   html = html.replace(/(<meta\s+name="description"\s+content=")[^"]*("\s*\/?>)/, `$1${escapeAttribute(dictionary.pageDescription)}$2`);
+  if (dictionary.schemaName) html = syncStructuredMetadata(html, dictionary, relativePath);
   html = setAttributeById(html, "homeBrand", "href", localizedPath(locale));
   html = setAttributeById(html, "homeLink", "href", localizedPath(locale));
   html = setAttributeById(html, "localeSelect", "aria-label", accessibilityLabels[locale].language);
