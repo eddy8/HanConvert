@@ -94,6 +94,7 @@ let converterPages = 0;
 let standaloneToolPages = 0;
 let infoPages = 0;
 let pseoPages = 0;
+let blogPages = 0;
 const canonicalUrls = new Set();
 const localizedHomePages = new Set(["index.html", "zh-tw/index.html", "en/index.html", "ja/index.html", "ko/index.html"]);
 const localizedKanjiKeywords = new Map([
@@ -141,6 +142,7 @@ const localizedRomajiKeywords = new Map([
 for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const relativePath = path.relative(projectRoot, htmlPath);
   const html = await readFile(htmlPath, "utf8");
+  const isBlogPage = html.includes("data-blog-page=");
   const { locale, slug } = getPageContext(relativePath);
   const documentLanguage = requireMatch(html, /<html lang="([^"]+)">/, "document language", relativePath);
   const title = requireMatch(html, /<title>([\s\S]*?)<\/title>/i, "title", relativePath).trim();
@@ -155,7 +157,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     throw new Error(`${relativePath}: expected document language ${documentLanguages[locale]}, found ${documentLanguage}`);
   }
 
-  if (LOCALIZED_METADATA_PATHS.has(relativePath)) {
+  if (LOCALIZED_METADATA_PATHS.has(relativePath) || isBlogPage) {
     const description = requireMatch(html, /<meta\s+name="description"\s+content="([^"]+)"/, "meta description", relativePath);
     const descriptionLength = visibleMetadataLength(description);
     const titleContentLength = visibleTitleContentLength(title);
@@ -170,7 +172,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     if (descriptionLength < descriptionMin || descriptionLength > descriptionMax) {
       throw new Error(`${relativePath}: localized meta description length ${descriptionLength} is outside ${descriptionMin}-${descriptionMax}`);
     }
-    validateManagedStructuredMetadata(html, relativePath, title, description);
+    if (!isBlogPage) validateManagedStructuredMetadata(html, relativePath, title, description);
   }
 
   if (!canonical.startsWith(`${siteOrigin}/`)) throw new Error(`${relativePath}: canonical is not absolute`);
@@ -236,7 +238,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
       throw new Error(`${relativePath}: missing word spelling tool link`);
     }
   }
-  if (!isConverterPage && !isStandaloneToolPage && !isInfoPage && !isPseoPage) continue;
+  if (!isConverterPage && !isStandaloneToolPage && !isInfoPage && !isPseoPage && !isBlogPage) continue;
   if (isPseoPage) {
     const description = requireMatch(html, /<meta\s+name="description"\s+content="([^"]+)"/, "meta description", relativePath);
     const descriptionLength = visibleMetadataLength(description);
@@ -284,15 +286,22 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (isStandaloneToolPage) standaloneToolPages += 1;
   if (isInfoPage) infoPages += 1;
   if (isPseoPage) pseoPages += 1;
+  if (isBlogPage) blogPages += 1;
 
   const alternates = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)" \/>/g)];
-  if (alternates.length !== 6) throw new Error(`${relativePath}: expected 6 hreflang links`);
+  const pageHreflangs = isBlogPage ? ["zh-Hans", "x-default"] : expectedHreflangs;
+  if (alternates.length !== pageHreflangs.length) {
+    throw new Error(`${relativePath}: expected ${pageHreflangs.length} hreflang links`);
+  }
   const alternateLanguages = alternates.map(([, language]) => language).sort();
-  if (alternateLanguages.join("|") !== [...expectedHreflangs].sort().join("|")) {
+  if (alternateLanguages.join("|") !== [...pageHreflangs].sort().join("|")) {
     throw new Error(`${relativePath}: unexpected hreflang values ${alternateLanguages.join(", ")}`);
   }
   if (alternates.some(([, , href]) => !href.startsWith(`${siteOrigin}/`))) {
     throw new Error(`${relativePath}: hreflang URL is not absolute`);
+  }
+  if (isBlogPage && alternates.some(([, , href]) => href !== canonical)) {
+    throw new Error(`${relativePath}: untranslated blog hreflang must point to the canonical URL`);
   }
 
   const schemaText = requireMatch(
@@ -302,7 +311,48 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     relativePath
   );
   const schema = JSON.parse(schemaText);
-  if (isInfoPage) {
+  if (isBlogPage) {
+    const graph = schema["@graph"];
+    const description = decodeHtmlText(requireMatch(html, /<meta\s+name="description"\s+content="([^"]+)"/, "meta description", relativePath));
+    const h1 = decodeHtmlText(requireMatch(html, /<h1\b[^>]*>([^<]+)<\/h1>/, "H1", relativePath));
+    const breadcrumb = graph?.find((item) => item["@type"] === "BreadcrumbList");
+    const finalCrumb = breadcrumb?.itemListElement?.at(-1);
+    if (html.includes('data-blog-page="index"')) {
+      const collectionPage = graph?.find((item) => item["@type"] === "CollectionPage");
+      const itemList = graph?.find((item) => item["@type"] === "ItemList");
+      if (
+        !collectionPage ||
+        collectionPage.url !== canonical ||
+        collectionPage.name !== h1 ||
+        collectionPage.description !== description ||
+        itemList?.numberOfItems !== 8 ||
+        itemList.itemListElement?.length !== 8 ||
+        finalCrumb?.name !== h1
+      ) {
+        throw new Error(`${relativePath}: invalid blog index, ItemList or breadcrumb schema`);
+      }
+    } else {
+      const webPage = graph?.find((item) => item["@type"] === "WebPage");
+      const blogPosting = graph?.find((item) => item["@type"] === "BlogPosting");
+      const faqPage = graph?.find((item) => item["@type"] === "FAQPage");
+      if (
+        !webPage ||
+        webPage.url !== canonical ||
+        webPage.name !== h1 ||
+        webPage.description !== description ||
+        !blogPosting ||
+        blogPosting.url !== canonical ||
+        blogPosting.headline !== h1 ||
+        blogPosting.description !== description ||
+        !/^\d{4}-\d{2}-\d{2}$/.test(blogPosting.datePublished) ||
+        blogPosting.dateModified !== blogPosting.datePublished ||
+        faqPage?.mainEntity?.length !== 3 ||
+        finalCrumb?.name !== h1
+      ) {
+        throw new Error(`${relativePath}: invalid BlogPosting, FAQ or breadcrumb schema`);
+      }
+    }
+  } else if (isInfoPage) {
     const expectedType = html.includes('data-info-page="about"') ? "AboutPage" : "ContactPage";
     const infoPage = schema["@graph"]?.find((item) => item["@type"] === expectedType);
     const organization = schema["@graph"]?.find((item) => item["@type"] === "Organization");
@@ -671,6 +721,7 @@ if (converterPages !== 35) throw new Error(`expected 35 converter pages, found $
 if (standaloneToolPages !== 95) throw new Error(`expected 95 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
 if (pseoPages !== 105) throw new Error(`expected 105 controlled pSEO pages, found ${pseoPages}`);
-if (sitemapUrls.length !== 251) throw new Error(`expected 251 sitemap URLs, found ${sitemapUrls.length}`);
+if (blogPages !== 9) throw new Error(`expected 9 blog pages, found ${blogPages}`);
+if (sitemapUrls.length !== 260) throw new Error(`expected 260 sitemap URLs, found ${sitemapUrls.length}`);
 
-console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, ${pseoPages} controlled pSEO pages, and ${sitemapUrls.length} sitemap URLs.`);
+console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, ${pseoPages} controlled pSEO pages, ${blogPages} blog pages, and ${sitemapUrls.length} sitemap URLs.`);
