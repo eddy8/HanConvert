@@ -3040,4 +3040,78 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/stroke-order-worksheet/" />
   </url>
   <!-- scenario-pseo:end -->
+  <!-- blog:start -->
+  <url>
+    <loc>https://jianfan.app/blog/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/blog/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/blog/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/blog/simplified-traditional-chinese-differences/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/blog/simplified-traditional-chinese-differences/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/blog/simplified-traditional-chinese-differences/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/blog/convert-word-pdf-excel-txt-chinese/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/blog/convert-word-pdf-excel-txt-chinese/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/blog/convert-word-pdf-excel-txt-chinese/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/blog/find-chinese-character-methods/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/blog/find-chinese-character-methods/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/blog/find-chinese-character-methods/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/blog/photo-vs-handwriting-chinese-recognition/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/blog/photo-vs-handwriting-chinese-recognition/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/blog/photo-vs-handwriting-chinese-recognition/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/blog/chinese-japanese-stroke-order-differences/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/blog/chinese-japanese-stroke-order-differences/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/blog/chinese-japanese-stroke-order-differences/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/blog/chinese-character-worksheet-guide/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/blog/chinese-character-worksheet-guide/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/blog/chinese-character-worksheet-guide/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/blog/chinese-japanese-kanji-differences/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/blog/chinese-japanese-kanji-differences/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/blog/chinese-japanese-kanji-differences/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/blog/kanji-reading-hiragana-romaji-furigana/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/blog/kanji-reading-hiragana-romaji-furigana/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/blog/kanji-reading-hiragana-romaji-furigana/" />
+  </url>
+  <!-- blog:end -->
 </urlset>

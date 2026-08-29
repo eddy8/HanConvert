@@ -12,7 +12,9 @@ const REQUIREMENTS = {
   hanzi: { h1: 1, h2: 4, paragraphs: 8, details: 3, links: 5 },
   info: { h1: 1, h2: 3, paragraphs: 6, links: 4 },
   privacy: { h1: 1, h2: 7, paragraphs: 9, links: 3 },
-  "word-spelling": { h1: 1, h2: 4, paragraphs: 18, details: 1, links: 3 }
+  "word-spelling": { h1: 1, h2: 4, paragraphs: 18, details: 1, links: 3 },
+  "blog-index": { h1: 1, h2: 5, paragraphs: 20, articles: 10, links: 20 },
+  "blog-article": { h1: 1, h2: 7, paragraphs: 20, details: 3, articles: 3, links: 20 }
 };
 
 async function findIndexPages(directory) {
@@ -47,6 +49,8 @@ function contentMetrics(source) {
 
 function classify(relativePath, html) {
   if (relativePath === path.join("word-spelling", "index.html")) return "word-spelling";
+  if (html.includes('data-blog-page="index"')) return "blog-index";
+  if (html.includes('data-blog-page="article"')) return "blog-article";
   if (/(^|\/)privacy\/index\.html$/.test(relativePath)) return "privacy";
   if (html.includes('data-pseo-page="scenario"')) return "scenario";
   if (html.includes('data-pseo-page="hanzi-')) return "hanzi";
