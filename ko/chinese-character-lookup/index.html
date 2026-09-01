@@ -17,7 +17,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-character-lookup/" />
     <link rel="preconnect" href="https://cdn.jsdmirror.cn" crossorigin />
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <script defer src="/han-character-lookup-core.js"></script>
     <script defer src="/han-character-lookup.js"></script>
     <!-- seo-schema:start -->
@@ -187,7 +187,7 @@
           <div><input id="hanLookupInput" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="예: 明, 清, 赢" /><button class="primary-action" id="hanLookupSubmit" type="submit">한자 검색</button></div>
         </form>
         <div class="han-lookup-samples"><span>예시</span><button type="button" data-han-lookup-sample="明">明</button><button type="button" data-han-lookup-sample="清">清</button><button type="button" data-han-lookup-sample="赢">赢</button><button type="button" data-han-lookup-sample="森">森</button></div>
-        <div class="han-lookup-character-tabs" id="hanLookupCharacterTabs" aria-label="검색할 한자" hidden></div>
+        <div class="han-lookup-character-tabs" id="hanLookupCharacterTabs" role="group" aria-label="검색할 한자" hidden></div>
 
         <div class="han-lookup-workspace">
           <section class="han-lookup-glyph-panel" aria-labelledby="hanLookupGlyphTitle">
@@ -266,7 +266,7 @@
             </form>
             <section class="han-component-results-panel" aria-labelledby="hanComponentResultsTitle">
               <div class="han-component-results-head"><div><p class="section-kicker">MATCHING CHARACTERS</p><h3 id="hanComponentResultsTitle">후보 한자</h3></div><p id="hanComponentSummary">구성요소를 입력하거나 자주 쓰는 부수를 선택해 한자를 찾아보세요.</p></div>
-              <div class="han-component-results" id="hanComponentResults" aria-label="후보 한자"></div>
+              <div class="han-component-results" id="hanComponentResults" role="group" aria-label="후보 한자"></div>
               <p class="han-component-empty" id="hanComponentEmpty">구성요소를 입력하거나 자주 쓰는 부수를 선택해 한자를 찾아보세요.</p>
               <button class="han-component-more" id="hanComponentMore" type="button" hidden>더 보기</button>
             </section>

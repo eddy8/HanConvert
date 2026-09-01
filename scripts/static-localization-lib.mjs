@@ -112,7 +112,7 @@ function setAttribute(openingTag, name, value) {
 }
 
 function removeAttribute(openingTag, name) {
-  return openingTag.replace(new RegExp(`\\s${name}="[^"]*"`, "g"), "");
+  return openingTag.replace(new RegExp(`\\s${name}(?:\\s*=\\s*(?:"[^"]*"|'[^']*'|[^\\s>]+))?`, "gi"), "");
 }
 
 function setClassState(openingTag, className, enabled) {
@@ -129,9 +129,9 @@ function setAttributeById(html, id, name, value) {
   return html.replace(pattern, (opening) => setAttribute(opening, name, value));
 }
 
-function setAriaLabelByClass(html, className, value) {
+function setAttributeByClass(html, className, name, value) {
   const pattern = new RegExp(`<([a-z][\\w-]*)\\b([^>]*\\bclass="[^"]*\\b${className}\\b[^"]*"[^>]*)>`, "i");
-  return html.replace(pattern, (opening) => setAttribute(opening, "aria-label", value));
+  return html.replace(pattern, (opening) => setAttribute(opening, name, value));
 }
 
 function localizedPath(locale, slug = "") {
@@ -199,11 +199,12 @@ export function localizeConverterHtml(source, relativePath, data) {
   });
   html = html.replace(/(<span\b[^>]*\bid="customDictionaryCount"[^>]*>)[\s\S]*?(<\/span>)/, `$1${escapeText(formatMessage(dictionary.customDictionaryCount, { enabled: 0, total: 0 }))}$2`);
 
-  html = setAriaLabelByClass(html, "site-header", accessibilityLabels[locale].siteHeader);
-  html = setAriaLabelByClass(html, "top-actions", accessibilityLabels[locale].primary);
-  html = setAriaLabelByClass(html, "mode-strip", accessibilityLabels[locale].direction);
-  html = setAriaLabelByClass(html, "center-controls", accessibilityLabels[locale].actions);
-  html = setAriaLabelByClass(html, "landing-links", accessibilityLabels[locale].related);
-  html = setAriaLabelByClass(html, "footer-links", accessibilityLabels[locale].footer);
+  html = setAttributeByClass(html, "site-header", "aria-label", accessibilityLabels[locale].siteHeader);
+  html = setAttributeByClass(html, "top-actions", "aria-label", accessibilityLabels[locale].primary);
+  html = setAttributeByClass(html, "mode-strip", "aria-label", accessibilityLabels[locale].direction);
+  html = setAttributeByClass(html, "center-controls", "role", "group");
+  html = setAttributeByClass(html, "center-controls", "aria-label", accessibilityLabels[locale].actions);
+  html = setAttributeByClass(html, "landing-links", "aria-label", accessibilityLabels[locale].related);
+  html = setAttributeByClass(html, "footer-links", "aria-label", accessibilityLabels[locale].footer);
   return html;
 }

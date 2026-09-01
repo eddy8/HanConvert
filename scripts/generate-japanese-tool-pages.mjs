@@ -602,7 +602,7 @@ function buildHead(locale, slug, content) {
 ${alternates}
     <link rel="preconnect" href="https://cdn.jsdmirror.cn" />
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <script type="module" src="/japanese-tools.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -801,8 +801,8 @@ ${buildHero(content, ["あ", "ア", "㋿"])}
           <label><span>${content.searchLabel}</span><input id="characterSearch" type="search" autocomplete="off" placeholder="${escapeHtml(content.searchPlaceholder)}" /></label>
           <button class="text-button" id="copyVisibleCharacters" type="button">${content.copyVisible}</button>
         </div>
-        <div class="character-category-tabs" role="tablist" aria-label="${content.searchLabel}">
-${tabs.map(([id, label], index) => `          <button type="button" role="tab" data-category-filter="${id}" aria-selected="${index === 0 ? "true" : "false"}"${index === 0 ? ' class="is-active"' : ""}>${label}</button>`).join("\n")}
+        <div class="character-category-tabs" role="group" aria-label="${content.searchLabel}">
+${tabs.map(([id, label], index) => `          <button type="button" data-category-filter="${id}" aria-pressed="${index === 0 ? "true" : "false"}"${index === 0 ? ' class="is-active"' : ""}>${label}</button>`).join("\n")}
         </div>
         <div class="character-results-meta"><span id="characterResultCount" data-template="${escapeHtml(content.resultTemplate)}"></span></div>
         <section class="recent-characters" aria-labelledby="recentCharactersTitle">

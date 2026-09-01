@@ -448,7 +448,7 @@ ${alternates}
     <link rel="alternate" hreflang="x-default" href="${origin}${localizedPath("zh-CN", slug)}" />
     <link rel="preconnect" href="https://cdn.jsdmirror.cn" crossorigin />
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <script defer src="/han-character-lookup-core.js"></script>
     <script defer src="/han-character-lookup.js"></script>
     <!-- seo-schema:start -->
@@ -506,7 +506,7 @@ ${options}
           <div><input id="hanLookupInput" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="${page.placeholder}" /><button class="primary-action" id="hanLookupSubmit" type="submit">${page.submit}</button></div>
         </form>
         <div class="han-lookup-samples"><span>${page.samples}</span>${samples.map((character) => `<button type="button" data-han-lookup-sample="${character}">${character}</button>`).join("")}</div>
-        <div class="han-lookup-character-tabs" id="hanLookupCharacterTabs" aria-label="${page.inputLabel}" hidden></div>
+        <div class="han-lookup-character-tabs" id="hanLookupCharacterTabs" role="group" aria-label="${page.inputLabel}" hidden></div>
 
         <div class="han-lookup-workspace">
           <section class="han-lookup-glyph-panel" aria-labelledby="hanLookupGlyphTitle">
@@ -564,7 +564,7 @@ ${popularComponents[locale].map((character) => `                <button type="bu
             </form>
             <section class="han-component-results-panel" aria-labelledby="hanComponentResultsTitle">
               <div class="han-component-results-head"><div><p class="section-kicker">MATCHING CHARACTERS</p><h3 id="hanComponentResultsTitle">${component.resultsTitle}</h3></div><p id="hanComponentSummary">${component.initialHint}</p></div>
-              <div class="han-component-results" id="hanComponentResults" aria-label="${component.resultsTitle}"></div>
+              <div class="han-component-results" id="hanComponentResults" role="group" aria-label="${component.resultsTitle}"></div>
               <p class="han-component-empty" id="hanComponentEmpty">${component.initialHint}</p>
               <button class="han-component-more" id="hanComponentMore" type="button" hidden>${component.loadMore}</button>
             </section>

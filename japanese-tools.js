@@ -329,7 +329,7 @@ function setupCharacterCopy() {
     filters.forEach((candidate) => {
       const active = candidate === button;
       candidate.classList.toggle("is-active", active);
-      candidate.setAttribute("aria-selected", String(active));
+      candidate.setAttribute("aria-pressed", String(active));
     });
     applyFilters();
   }));

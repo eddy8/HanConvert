@@ -278,7 +278,7 @@ ${articles.map(renderIndexCard).join("\n")}
     <link rel="canonical" href="${url}" />
 ${alternateLinks()}
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <!-- seo-schema:start -->
     <script type="application/ld+json">
 ${schema}
@@ -367,7 +367,7 @@ function renderArticlePage(article) {
     <link rel="canonical" href="${url}" />
 ${alternateLinks(article.slug)}
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <!-- seo-schema:start -->
     <script type="application/ld+json">
 ${schema}

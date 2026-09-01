@@ -435,7 +435,7 @@ ${alternates}
     <link rel="alternate" hreflang="x-default" href="${origin}${localizedPath("zh-CN", slug)}" />
     <link rel="preconnect" href="https://cdn.jsdmirror.cn" crossorigin />
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
 ${toolDependencies}
     <script defer src="/han-character-worksheet.js"></script>
     <!-- seo-schema:start -->
@@ -504,10 +504,10 @@ ${localeOptions}
 ${gridOptions}
                 </select></label>
               </div>
-              <label class="worksheet-range" for="worksheetColumns"><span>${page.columns}</span><output id="worksheetColumnsValue">10</output><input id="worksheetColumns" type="range" min="6" max="12" value="10" /></label>
-              <label class="worksheet-range" for="worksheetRows"><span>${page.rows}</span><output id="worksheetRowsValue">2</output><input id="worksheetRows" type="range" min="1" max="3" value="2" /></label>
-              <label class="worksheet-range" for="worksheetTraceCells"><span>${page.traceCells}</span><output id="worksheetTraceCellsValue">3</output><input id="worksheetTraceCells" type="range" min="0" max="9" value="3" /></label>
-              <label class="worksheet-range" for="worksheetTraceOpacity"><span>${page.traceOpacity}</span><output id="worksheetTraceOpacityValue">20%</output><input id="worksheetTraceOpacity" type="range" min="8" max="50" value="20" /></label>
+              <label class="worksheet-range" for="worksheetColumns"><span>${page.columns}</span><span class="worksheet-range-value" id="worksheetColumnsValue">10</span><input id="worksheetColumns" type="range" min="6" max="12" value="10" /></label>
+              <label class="worksheet-range" for="worksheetRows"><span>${page.rows}</span><span class="worksheet-range-value" id="worksheetRowsValue">2</span><input id="worksheetRows" type="range" min="1" max="3" value="2" /></label>
+              <label class="worksheet-range" for="worksheetTraceCells"><span>${page.traceCells}</span><span class="worksheet-range-value" id="worksheetTraceCellsValue">3</span><input id="worksheetTraceCells" type="range" min="0" max="9" value="3" /></label>
+              <label class="worksheet-range" for="worksheetTraceOpacity"><span>${page.traceOpacity}</span><span class="worksheet-range-value" id="worksheetTraceOpacityValue">20%</span><input id="worksheetTraceOpacity" type="range" min="8" max="50" value="20" /></label>
               <div class="worksheet-switches">
                 <label><input id="worksheetShowPinyin" type="checkbox" checked /><span>${page.showPinyin}</span></label>
                 <label><input id="worksheetShowStrokeOrder" type="checkbox" checked /><span>${page.showStrokeOrder}</span></label>

@@ -170,7 +170,7 @@ ${alternates(scenario.slug)}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <!-- seo-schema:start -->
     <script type="application/ld+json">${schema}</script>
     <!-- seo-schema:end -->

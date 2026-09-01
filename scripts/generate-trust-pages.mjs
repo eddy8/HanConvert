@@ -264,7 +264,7 @@ function buildPage(locale, slug, page, content) {
     <link rel="canonical" href="${canonical}" />
 ${buildAlternates(slug)}
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <!-- seo-schema:start -->
     <script type="application/ld+json">
 ${schema}
@@ -277,7 +277,7 @@ ${schema}
       <a class="brand" href="${localizedPath(locale)}" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">漢</span><span class="brand-text">JianFan.app</span></a>
       <nav class="top-actions" aria-label="Primary">
         <a class="nav-link" href="${localizedPath(locale)}">${meta.home}</a>
-        <div class="language-picker privacy-language-links" aria-label="${meta.language}">
+        <div class="language-picker privacy-language-links" role="group" aria-label="${meta.language}">
 ${buildLanguageLinks(locale, slug)}
         </div>
       </nav>

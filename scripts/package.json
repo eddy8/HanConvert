@@ -1,0 +1,12 @@
+{
+  "name": "jianfan-build-scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "minify": "node minify-static-assets.mjs",
+    "minify:check": "node minify-static-assets.mjs --check"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

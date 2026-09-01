@@ -162,7 +162,7 @@
   const MAX_SOURCE_BYTES = 24 * 1024 * 1024;
   const MAX_PROCESSED_IMAGE_BYTES = 2 * 1024 * 1024;
   const MAX_IMAGE_DIMENSION = 1600;
-  const STROKE_DATA_ORIGIN = "https://cdn.jsdelivr.net/npm/hanzi-writer-data";
+  const STROKE_DATA_ORIGIN = "https://cdn.jsdmirror.cn/npm/hanzi-writer-data";
   const HAN_PATTERN = /^\p{Script=Han}$/u;
   const localePaths = {
     "zh-CN": "/",

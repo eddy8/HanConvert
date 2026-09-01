@@ -476,7 +476,7 @@ ${alternates}
     <link rel="alternate" hreflang="x-default" href="${origin}${localizedPath("zh-CN", slug)}" />
     <link rel="preconnect" href="https://cdn.jsdmirror.cn" crossorigin />
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <script defer src="/character-counter.js"></script>
     <script defer src="/webmcp.js"></script>
     <!-- seo-schema:start -->

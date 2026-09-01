@@ -131,7 +131,7 @@ function buildHead(locale, page) {
 ${alternates}
     <link rel="alternate" hreflang="x-default" href="${siteOrigin}${localizedPath("zh-CN", slug)}" />
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <script defer src="/kanji-romaji-core.js"></script>
     <script defer src="/japanese-reading-client.js"></script>
     <script defer src="/kanji-to-hiragana.js"></script>

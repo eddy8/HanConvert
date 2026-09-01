@@ -180,7 +180,7 @@ function buildHead(locale, page) {
 ${alternates}
     <link rel="alternate" hreflang="x-default" href="${siteOrigin}${localizedPath("zh-CN", slug)}" />
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <script defer src="/vendor/pinyin-pro.js"></script>
     <script defer src="/pinyin-tool.js"></script>
     <!-- seo-schema:start -->

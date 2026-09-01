@@ -110,7 +110,7 @@ ${alternates}
     <link rel="alternate" hreflang="x-default" href="${origin}${localPath("zh-CN", slug)}" />
     <link rel="preconnect" href="https://cdn.jsdmirror.cn" crossorigin />
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <script defer src="/japanese-stroke-order.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">${JSON.stringify(schema(locale, page))}</script>

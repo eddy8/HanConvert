@@ -1,3 +1,4 @@
+/* After editing this source file, run: node scripts/minify-static-assets.mjs */
 :root {
   color-scheme: dark;
   --bg: #07120f;
@@ -29,7 +30,7 @@ html {
 }
 
 body {
-  min-width: 320px;
+  min-width: 0;
   margin: 0;
   background:
     radial-gradient(circle at 12% 8%, rgba(64, 242, 176, 0.14), transparent 28rem),
@@ -3945,7 +3946,7 @@ textarea::placeholder {
 }
 
 .worksheet-input-head output,
-.worksheet-range output {
+.worksheet-range-value {
   color: var(--accent);
   font-family: var(--font-mono);
   font-size: 0.66rem;
@@ -4014,7 +4015,7 @@ textarea::placeholder {
   font-size: 0.68rem;
 }
 
-.worksheet-range output {
+.worksheet-range-value {
   text-align: right;
 }
 
