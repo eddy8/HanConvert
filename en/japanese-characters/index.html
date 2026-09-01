@@ -17,7 +17,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-characters/" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <script type="module" src="/japanese-tools.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -169,12 +169,12 @@
           <label><span>Search Japanese characters</span><input id="characterSearch" type="search" autocomplete="off" placeholder="Enter a character or romaji, such as あ, ka, or shi" /></label>
           <button class="text-button" id="copyVisibleCharacters" type="button">Copy current results</button>
         </div>
-        <div class="character-category-tabs" role="tablist" aria-label="Search Japanese characters">
-          <button type="button" role="tab" data-category-filter="all" aria-selected="true" class="is-active">All</button>
-          <button type="button" role="tab" data-category-filter="hiragana" aria-selected="false">Hiragana</button>
-          <button type="button" role="tab" data-category-filter="katakana" aria-selected="false">Katakana</button>
-          <button type="button" role="tab" data-category-filter="halfwidth" aria-selected="false">Half-width Kana</button>
-          <button type="button" role="tab" data-category-filter="symbols" aria-selected="false">Japanese symbols</button>
+        <div class="character-category-tabs" role="group" aria-label="Search Japanese characters">
+          <button type="button" data-category-filter="all" aria-pressed="true" class="is-active">All</button>
+          <button type="button" data-category-filter="hiragana" aria-pressed="false">Hiragana</button>
+          <button type="button" data-category-filter="katakana" aria-pressed="false">Katakana</button>
+          <button type="button" data-category-filter="halfwidth" aria-pressed="false">Half-width Kana</button>
+          <button type="button" data-category-filter="symbols" aria-pressed="false">Japanese symbols</button>
         </div>
         <div class="character-results-meta"><span id="characterResultCount" data-template="Showing {count} characters"></span></div>
         <section class="recent-characters" aria-labelledby="recentCharactersTitle">

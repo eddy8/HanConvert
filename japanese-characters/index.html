@@ -17,7 +17,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-characters/" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <script type="module" src="/japanese-tools.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -169,12 +169,12 @@
           <label><span>搜索日文字符</span><input id="characterSearch" type="search" autocomplete="off" placeholder="输入字符或罗马音，例如：あ、ka、shi" /></label>
           <button class="text-button" id="copyVisibleCharacters" type="button">复制当前结果</button>
         </div>
-        <div class="character-category-tabs" role="tablist" aria-label="搜索日文字符">
-          <button type="button" role="tab" data-category-filter="all" aria-selected="true" class="is-active">全部</button>
-          <button type="button" role="tab" data-category-filter="hiragana" aria-selected="false">平假名</button>
-          <button type="button" role="tab" data-category-filter="katakana" aria-selected="false">片假名</button>
-          <button type="button" role="tab" data-category-filter="halfwidth" aria-selected="false">半角片假名</button>
-          <button type="button" role="tab" data-category-filter="symbols" aria-selected="false">日文符号</button>
+        <div class="character-category-tabs" role="group" aria-label="搜索日文字符">
+          <button type="button" data-category-filter="all" aria-pressed="true" class="is-active">全部</button>
+          <button type="button" data-category-filter="hiragana" aria-pressed="false">平假名</button>
+          <button type="button" data-category-filter="katakana" aria-pressed="false">片假名</button>
+          <button type="button" data-category-filter="halfwidth" aria-pressed="false">半角片假名</button>
+          <button type="button" data-category-filter="symbols" aria-pressed="false">日文符号</button>
         </div>
         <div class="character-results-meta"><span id="characterResultCount" data-template="显示 {count} 个字符"></span></div>
         <section class="recent-characters" aria-labelledby="recentCharactersTitle">

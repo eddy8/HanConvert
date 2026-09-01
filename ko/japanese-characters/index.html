@@ -17,7 +17,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jianfan.app/japanese-characters/" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <script type="module" src="/japanese-tools.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -169,12 +169,12 @@
           <label><span>일본어 문자 검색</span><input id="characterSearch" type="search" autocomplete="off" placeholder="문자 또는 로마자 입력: あ, ka, shi" /></label>
           <button class="text-button" id="copyVisibleCharacters" type="button">현재 결과 복사</button>
         </div>
-        <div class="character-category-tabs" role="tablist" aria-label="일본어 문자 검색">
-          <button type="button" role="tab" data-category-filter="all" aria-selected="true" class="is-active">전체</button>
-          <button type="button" role="tab" data-category-filter="hiragana" aria-selected="false">히라가나</button>
-          <button type="button" role="tab" data-category-filter="katakana" aria-selected="false">가타카나</button>
-          <button type="button" role="tab" data-category-filter="halfwidth" aria-selected="false">반각 가나</button>
-          <button type="button" role="tab" data-category-filter="symbols" aria-selected="false">일본어 기호</button>
+        <div class="character-category-tabs" role="group" aria-label="일본어 문자 검색">
+          <button type="button" data-category-filter="all" aria-pressed="true" class="is-active">전체</button>
+          <button type="button" data-category-filter="hiragana" aria-pressed="false">히라가나</button>
+          <button type="button" data-category-filter="katakana" aria-pressed="false">가타카나</button>
+          <button type="button" data-category-filter="halfwidth" aria-pressed="false">반각 가나</button>
+          <button type="button" data-category-filter="symbols" aria-pressed="false">일본어 기호</button>
         </div>
         <div class="character-results-meta"><span id="characterResultCount" data-template="{count}개 문자 표시"></span></div>
         <section class="recent-characters" aria-labelledby="recentCharactersTitle">

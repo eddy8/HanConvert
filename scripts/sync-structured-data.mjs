@@ -120,7 +120,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     /\n    <!-- seo-schema:start -->[\s\S]*?    <!-- seo-schema:end -->/,
     ""
   );
-  html = html.replace(/\/app\.js(?:\?[^"']*)?/, appAsset);
+  html = html.replace(/\/app(?:\.min)?\.js(?:\?[^"']*)?/, appAsset);
   html = html.replace("  </head>", `${buildSchema(html)}\n  </head>`);
   await writeFile(htmlPath, html);
 }

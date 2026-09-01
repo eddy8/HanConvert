@@ -147,7 +147,7 @@ ${alternates}
     <link rel="alternate" hreflang="x-default" href="${origin}${localizedPath("zh-CN", slug)}" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer/dist/hanzi-writer.min.js"></script>
     <script defer src="/vendor/pinyin-pro.js"></script>
     <script defer src="/stroke-order-tool.js"></script>

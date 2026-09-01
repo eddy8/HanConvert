@@ -337,7 +337,7 @@ function renderPage(locale) {
     ${alternates}
     <link rel="alternate" hreflang="x-default" href="${canonicalUrl("zh-CN")}" />
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <link rel="stylesheet" href="/photo-chinese-character-recognition.css" />
     <script defer src="/vendor/pinyin-pro.js"></script>
     <script defer src="/photo-chinese-character-recognition.js"></script>
@@ -370,7 +370,7 @@ function renderPage(locale) {
           <section class="photo-ocr-results" aria-labelledby="photoResultsTitle">
             <div class="photo-ocr-panel-head"><span class="photo-ocr-step" aria-hidden="true">02</span><div><h3 id="photoResultsTitle">${page.resultTitle}</h3><p>${page.resultHint}</p></div></div>
             <p class="photo-ocr-results-empty" id="photoResultsEmpty">${page.resultEmpty}</p>
-            <div class="photo-ocr-result-text" id="photoResultText" aria-live="polite" aria-label="${page.resultTitle}" hidden></div>
+            <div class="photo-ocr-result-text" id="photoResultText" role="region" aria-live="polite" aria-label="${page.resultTitle}" hidden></div>
             <div class="photo-ocr-result-actions" id="photoTextActions" hidden><output id="photoResultSummary"></output><a id="photoPinyinText" href="${localPath(locale, "chinese-to-pinyin")}" hidden>${page.textPinyin}</a><button id="photoCopyText" type="button">${page.copyText}</button></div>
             <article class="photo-ocr-character-detail" id="photoCharacterDetail" aria-labelledby="photoCharacterDetailTitle" hidden><h4 class="visually-hidden" id="photoCharacterDetailTitle">${page.detailTitle}</h4><output class="photo-ocr-result-character" id="photoResultCharacter"></output><dl class="photo-ocr-character-meta"><div><dt>${page.pinyin}</dt><dd id="photoResultPinyin">-</dd></div><div><dt>${page.strokes}</dt><dd id="photoResultStrokes">-</dd></div><div><dt>${page.unicode}</dt><dd id="photoResultUnicode">-</dd></div></dl><div class="photo-ocr-character-actions"><button id="photoCopyCharacter" type="button">${page.copyCharacter}</button><a id="photoStrokeLink" href="${localPath(locale, "chinese-stroke-order")}">${page.strokeLink}</a><a id="photoPinyinLink" href="${localPath(locale, "chinese-to-pinyin")}">${page.pinyinLink}</a><a id="photoStructureLink" href="${localPath(locale, "chinese-character-lookup")}">${page.structureLink}</a></div></article>
           </section>

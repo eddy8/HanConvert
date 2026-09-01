@@ -1,0 +1,13 @@
+{
+  "generatedBy": "esbuild@0.28.2",
+  "assets": [
+    {
+      "source": "styles.css",
+      "output": "styles.min.css",
+      "sourceBytes": 157901,
+      "outputBytes": 127848,
+      "sourceSha256": "8098050ccc83da3f137c277e7c39a90ca0570f2c1178665a2daf2ebb7d30684a",
+      "outputSha256": "2303a45c660483c0b2ca98654cd56db47aeb3c8b2c4f06819edaeac9ee4ecbaf"
+    }
+  ]
+}

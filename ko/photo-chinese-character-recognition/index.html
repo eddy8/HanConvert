@@ -12,7 +12,7 @@
     <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="en" href="https://jianfan.app/en/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/photo-chinese-character-recognition/" />
     <link rel="alternate" hreflang="x-default" href="https://jianfan.app/photo-chinese-character-recognition/" />
     <script src="/locale-redirect.js"></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.min.css" />
     <link rel="stylesheet" href="/photo-chinese-character-recognition.css" />
     <script defer src="/vendor/pinyin-pro.js"></script>
     <script defer src="/photo-chinese-character-recognition.js"></script>
@@ -154,7 +154,7 @@
           <section class="photo-ocr-results" aria-labelledby="photoResultsTitle">
             <div class="photo-ocr-panel-head"><span class="photo-ocr-step" aria-hidden="true">02</span><div><h3 id="photoResultsTitle">한자 인식 결과</h3><p>전체 텍스트를 복사하거나 강조된 한자를 눌러 상세 정보를 확인하세요.</p></div></div>
             <p class="photo-ocr-results-empty" id="photoResultsEmpty">이미지를 선택한 뒤 ‘이미지 속 한자 인식’을 누르세요.</p>
-            <div class="photo-ocr-result-text" id="photoResultText" aria-live="polite" aria-label="한자 인식 결과" hidden></div>
+            <div class="photo-ocr-result-text" id="photoResultText" role="region" aria-live="polite" aria-label="한자 인식 결과" hidden></div>
             <div class="photo-ocr-result-actions" id="photoTextActions" hidden><output id="photoResultSummary"></output><a id="photoPinyinText" href="/ko/chinese-to-pinyin/" hidden>전체 병음 변환</a><button id="photoCopyText" type="button">인식한 텍스트 복사</button></div>
             <article class="photo-ocr-character-detail" id="photoCharacterDetail" aria-labelledby="photoCharacterDetailTitle" hidden><h4 class="visually-hidden" id="photoCharacterDetailTitle">선택한 한자 정보</h4><output class="photo-ocr-result-character" id="photoResultCharacter"></output><dl class="photo-ocr-character-meta"><div><dt>중국어 병음</dt><dd id="photoResultPinyin">-</dd></div><div><dt>획수</dt><dd id="photoResultStrokes">-</dd></div><div><dt>Unicode</dt><dd id="photoResultUnicode">-</dd></div></dl><div class="photo-ocr-character-actions"><button id="photoCopyCharacter" type="button">한자 복사</button><a id="photoStrokeLink" href="/ko/chinese-stroke-order/">필순 보기</a><a id="photoPinyinLink" href="/ko/chinese-to-pinyin/">병음 확인</a><a id="photoStructureLink" href="/ko/chinese-character-lookup/">글자 구조 보기</a></div></article>
           </section>
