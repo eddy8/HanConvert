@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="免费在线文本格式化工具，整理从 PDF、PPT、CAJ 复制的多余空格、断行与标点，并检测去除零宽字符、特殊空格等可见的 AI 文本水印，全部在浏览器本地处理。" />
+    <title>文本格式化工具 - 在线清理空格换行与AI文本水印 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/text-formatter/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/text-formatter/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/text-formatter/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/text-formatter/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/text-formatter/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/text-formatter/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/text-formatter/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.min.css" />
+    <script defer src="/text-formatter.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/text-formatter/#webapp",
+            "name": "文本格式化工具 - 在线清理空格换行与AI文本水印",
+            "url": "https://jianfan.app/text-formatter/",
+            "description": "免费在线文本格式化工具，整理从 PDF、PPT、CAJ 复制的多余空格、断行与标点，并检测去除零宽字符、特殊空格等可见的 AI 文本水印，全部在浏览器本地处理。",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "zh-CN",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/text-formatter/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "网站首页",
+                "item": "https://jianfan.app/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "文本格式化工具 - 在线清理空格换行与AI文本水印",
+                "item": "https://jianfan.app/text-formatter/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/text-formatter/#howto",
+            "name": "如何在线格式化文本",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "粘贴文本或导入 TXT、MD、CSV、JSON 文件。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "选择换行、空格、标点和 Unicode 清理规则。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "点击开始格式化，查看处理前后的字符统计和检测明细。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "确认结果后复制、下载，或送回输入框继续调整。"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/text-formatter/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "什么是 AI 文本水印？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "本页所说的 AI 文本水印是可检测的 Unicode 编码痕迹，例如零宽字符、特殊空格、变体选择符和混合字母同形字符。它们与基于词语分布的统计型水印不是一回事。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "为什么不默认删除 U+200C、U+200D 和变体选择符？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "零宽连接符、零宽非连接符与变体选择符可能影响 emoji、阿拉伯文、印度文字或字形显示。默认删除会损坏正常文本，因此放在高风险选项中。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "可以整理从 PDF 复制的多余换行吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以。选择“合并段内断行”会保留空行分隔的段落，并按中英文边界连接行；需要时可开启英文断词连字符修复。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "文本会上传到服务器吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不会。文本格式化、不可见字符检测与 AI 文本水印清理全部使用浏览器内的 JavaScript 完成。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="text-formatter" data-page-slug="text-formatter" data-locale="zh-CN" data-message-idle="等待输入文本" data-message-pending="文本已修改，等待格式化" data-message-ready="格式化完成" data-message-unchanged="未发现需要修改的内容" data-message-copied="结果已复制" data-message-copy-failed="复制失败，请手动选择结果" data-message-too-long="文本超过 {limit} 个字符，请分批处理" data-message-file-too-large="文件超过 10 MB，请选择更小的文本文件" data-message-file-error="无法读取这个文本文件" data-category-basic-invisible="高置信隐藏字符" data-category-special-spaces="特殊空格" data-category-joiners="零宽连接符" data-category-variation-selectors="变体选择符" data-category-bidi-controls="双向控制符" data-category-tags="Unicode 标签" data-category-confusables="同形与全角字符">
+    <a class="skip-nav" href="#main">跳到主要内容</a>
+    <header class="site-header" aria-label="网站页眉"><a class="brand" href="/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">文</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="主要导航"><a class="nav-link" href="/">网站首页</a><label class="language-picker"><span>界面语言</span><select id="localeSelect" aria-label="界面语言"><option value="zh-CN" selected>简体中文</option><option value="zh-TW">繁體中文</option><option value="en">English</option><option value="ja">日本語</option><option value="ko">한국어</option></select></label></nav></header>
+    <main id="main">
+      <section class="tool-hero formatter-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">文本整理 · 隐藏字符检测 · 浏览器本地处理</p><h1 id="pageTitle">在线文本格式化工具</h1><p class="lede">整理从 PDF、PPT、CAJ 或网页复制的文本，清理多余空格与断行，并检测可见编码层面的 AI 文本水印。原文不会上传。</p></div><div class="formatter-hero-signal" aria-hidden="true"><span>U+200B</span><strong>TXT</strong><b>CLEAN</b></div></section>
+      <section class="standalone-tool text-formatter-tool" aria-labelledby="formatterToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">FORMAT / SCAN / CLEAN</p><h2 id="formatterToolTitle">粘贴文本，选择规则后格式化</h2></div><div class="status-pill" id="formatterStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>等待输入文本</span></div></div>
+        <div class="formatter-settings">
+          <fieldset><legend>常规格式化</legend><div class="formatter-option-grid"><label class="formatter-select-option" for="formatterLineMode"><span>换行处理</span><select id="formatterLineMode"><option value="keep">保留原换行</option><option value="join">合并段内断行</option><option value="remove">移除全部换行</option><option value="sentence">每句单独一行</option></select></label><label class="formatter-option"><input type="checkbox" data-formatter-option="trimLines" id="trimLines" checked /><span>清理每行首尾空格</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="collapseSpaces" id="collapseSpaces" checked /><span>合并连续空格与制表符</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="reduceBlankLines" id="reduceBlankLines" checked /><span>最多保留一个空行</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="repairHyphenation" id="repairHyphenation" disabled /><span>修复英文断词连字符</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeHanSpaces" id="removeHanSpaces" /><span>删除汉字之间的空格</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="addHanLatinSpaces" id="addHanLatinSpaces" /><span>中英文与数字之间加空格</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="fixEnglishQuotes" id="fixEnglishQuotes" checked /><span>修复英文弯引号</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="useCjkPunctuation" id="useCjkPunctuation" /><span>中文语境使用全角标点</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="decodeUrls" id="decodeUrls" /><span>安全解码 URL</span></label></div></fieldset>
+          <fieldset><legend>AI 水印与 Unicode 清理</legend><div class="formatter-option-grid formatter-watermark-options"><label class="formatter-option"><input type="checkbox" data-formatter-option="removeBasicInvisible" id="removeBasicInvisible" checked /><span>去除零宽空格等高置信隐藏字符</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="normalizeSpecialSpaces" id="normalizeSpecialSpaces" checked /><span>将特殊空格转换为普通空格</span></label></div><details class="formatter-risk-options"><summary>高风险 Unicode 清理选项</summary><p>这些字符可能参与 emoji、阿拉伯文、印度文字或字形变体的正常显示。只有确认它们是异常标记时才开启。</p><div class="formatter-option-grid"><label class="formatter-option"><input type="checkbox" data-formatter-option="removeJoiners" id="removeJoiners" /><span>删除零宽连接符与非连接符</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeVariationSelectors" id="removeVariationSelectors" /><span>删除变体选择符</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeBidiControls" id="removeBidiControls" /><span>删除双向文字控制符</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeTags" id="removeTags" /><span>删除 Unicode 标签字符</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="normalizeConfusables" id="normalizeConfusables" /><span>修正全角及混合字母同形字符</span></label></div></details></fieldset>
+        </div>
+        <div class="formatter-workspace">
+          <section class="formatter-text-panel" aria-labelledby="formatterInputTitle"><div class="panel-topline"><h3 id="formatterInputTitle">原始文本</h3><span><b id="formatterInputCount">0</b> / 3,000,000</span></div><textarea id="formatterInput" spellcheck="false" placeholder="在这里粘贴需要整理的文本..."></textarea><div class="formatter-panel-actions"><div><button class="text-button" id="formatterSample" type="button" data-sample="PDF 复制的文 本 可能带有多余换行。
+This sen-
+tence includes a hidden marker​ and https://example.com/a%20b.
+
+AI 文本也可能包含特殊空格 或不可见字符。">加载示例</button><button class="text-button" id="formatterClear" type="button">清空</button></div><label class="formatter-file-button" for="formatterFile">导入文本<input id="formatterFile" type="file" accept=".txt,.md,.csv,.json,text/plain,text/markdown,text/csv,application/json" /></label></div></section>
+          <section class="formatter-text-panel formatter-output-panel" aria-labelledby="formatterOutputTitle"><div class="panel-topline"><h3 id="formatterOutputTitle">格式化结果</h3><span id="formatterOutputCount">0</span></div><textarea id="formatterOutput" readonly spellcheck="false"></textarea><div class="formatter-panel-actions"><div><button class="text-button" id="formatterReuse" type="button">继续编辑</button><button class="text-button" id="formatterDownload" type="button">下载 TXT</button></div><button class="text-button" id="formatterCopy" type="button">复制结果</button></div></section>
+        </div>
+        <div class="formatter-run-row"><button class="primary-action" id="formatterRun" type="button">开始格式化</button><p>格式化与检测均在当前浏览器完成。工具只清理可检测的 Unicode 编码标记，不能判断作者身份，也不能识别或消除统计型 AI 水印。</p></div>
+        <div class="formatter-metrics"><article><span>输入字符</span><strong id="formatterInputMetric"><span aria-hidden="true">—</span></strong></article><article><span>输出字符</span><strong id="formatterOutputMetric"><span aria-hidden="true">—</span></strong></article><article><span>处理前可疑字符</span><strong id="formatterHiddenBefore">0</strong></article><article><span>处理后可疑字符</span><strong id="formatterHiddenAfter">0</strong></article></div>
+        <section class="formatter-report-panel" aria-labelledby="formatterReportTitle"><div class="panel-topline"><h3 id="formatterReportTitle">Unicode 检测明细</h3><span>UNICODE</span></div><p id="formatterReportEmpty">尚未检测到零宽字符、特殊空格、变体选择符或同形字符。</p><ul id="formatterReport"></ul></section>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="formatterFeatureTitle"><div class="section-heading"><p class="section-kicker">PDF 复制文本整理与隐藏字符清理</p><h2 id="formatterFeatureTitle">适合文档复制、排版与 AI 文本检查的格式化工具</h2><p class="seo-intro">在线文本格式化不只是删除空格和换行。工具会保护 URL、小数与常见英文内容，同时把不可见 Unicode 字符按风险分组，便于先检测再决定是否清理。</p></div><div class="seo-grid"><article><h3>修复 PDF 与 CAJ 复制断行</h3><p>合并段内硬换行时会区分中英文边界，并可单独修复英文单词跨行产生的连字符。</p></article><article><h3>避免破坏 URL 和小数</h3><p>标点转换与空格处理会避开网址、邮箱、行内代码和小数，不会把正常内容一并改坏。</p></article><article><h3>分级去除 AI 文本水印</h3><p>默认去除零宽空格等高置信标记；连接符、变体选择符和同形字符需要手动开启。</p></article></div><section class="word-howto" aria-labelledby="formatterHowTitle"><h2 id="formatterHowTitle">如何在线格式化文本</h2><ol><li>粘贴文本或导入 TXT、MD、CSV、JSON 文件。</li><li>选择换行、空格、标点和 Unicode 清理规则。</li><li>点击开始格式化，查看处理前后的字符统计和检测明细。</li><li>确认结果后复制、下载，或送回输入框继续调整。</li></ol></section><section class="pinyin-faq" aria-labelledby="formatterFaqTitle"><h2 id="formatterFaqTitle">文本格式化与 AI 水印常见问题</h2><details><summary>什么是 AI 文本水印？</summary><p>本页所说的 AI 文本水印是可检测的 Unicode 编码痕迹，例如零宽字符、特殊空格、变体选择符和混合字母同形字符。它们与基于词语分布的统计型水印不是一回事。</p></details><details><summary>为什么不默认删除 U+200C、U+200D 和变体选择符？</summary><p>零宽连接符、零宽非连接符与变体选择符可能影响 emoji、阿拉伯文、印度文字或字形显示。默认删除会损坏正常文本，因此放在高风险选项中。</p></details><details><summary>可以整理从 PDF 复制的多余换行吗？</summary><p>可以。选择“合并段内断行”会保留空行分隔的段落，并按中英文边界连接行；需要时可开启英文断词连字符修复。</p></details><details><summary>文本会上传到服务器吗？</summary><p>不会。文本格式化、不可见字符检测与 AI 文本水印清理全部使用浏览器内的 JavaScript 完成。</p></details></section><p class="section-kicker pinyin-related-kicker">相关文字工具</p><nav class="landing-links" aria-label="相关文字与文件工具"><a href="/text-formatter/" aria-current="page">文本格式化工具</a><a href="/character-counter/">在线字数统计</a><a href="/word-to-txt/">Word 转 TXT</a><a href="/file-text-converter/">文件文本简繁转换</a><a href="/simplified-to-traditional/">简体转繁体</a><a href="/traditional-to-simplified/">繁体转简体</a><a href="/chinese-to-pinyin/">汉字转拼音</a><a href="/chinese-character-lookup/">汉字查询与结构拆解</a></nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app 提供浏览器本地运行的中文转换、文本整理、字符统计与文档处理工具。</p><nav class="footer-links" aria-label="页脚"><a href="/about/">关于我们</a><a href="/contact/">联系我们</a><a href="/privacy/">隐私声明</a></nav></footer>
+  </body>
+</html>

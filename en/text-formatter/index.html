@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="Free text formatter to clean copied PDF text, spaces, line breaks and punctuation. Detect zero-width characters, Unicode marks and AI text watermarks locally." />
+    <title>Online Text Formatter - Clean PDF Text and AI Watermarks | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/en/text-formatter/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/text-formatter/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/text-formatter/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/text-formatter/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/text-formatter/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/text-formatter/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/text-formatter/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.min.css" />
+    <script defer src="/text-formatter.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/en/text-formatter/#webapp",
+            "name": "Online Text Formatter - Clean PDF Text and AI Watermarks",
+            "url": "https://jianfan.app/en/text-formatter/",
+            "description": "Free text formatter to clean copied PDF text, spaces, line breaks and punctuation. Detect zero-width characters, Unicode marks and AI text watermarks locally.",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "en",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/en/text-formatter/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://jianfan.app/en/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Online Text Formatter - Clean PDF Text and AI Watermarks",
+                "item": "https://jianfan.app/en/text-formatter/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/en/text-formatter/#howto",
+            "name": "How to format and clean text online",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "Paste text or import a TXT, MD, CSV or JSON file."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "Choose line break, spacing, punctuation and Unicode cleanup rules."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "Select Format text and review the before-and-after Unicode scan."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "Copy or download the result, or return it to the input for another pass."
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/en/text-formatter/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is an AI text watermark?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "On this page, it means detectable Unicode artifacts such as zero-width characters, special spaces, variation selectors and mixed-script lookalikes. Statistical token-choice watermarks are different."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why are U+200C, U+200D and variation selectors not removed by default?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "They can be required for emoji, Arabic, Indic scripts and glyph variants. Removing them automatically can damage legitimate text, so they are high-risk options."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can it clean line breaks from copied PDF text?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Join wrapped lines preserves paragraphs separated by blank lines and reconnects CJK or Latin line endings with suitable spacing."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is my text uploaded?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Text formatting, invisible character detection and Unicode AI watermark removal all run locally in your browser with JavaScript."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="text-formatter" data-page-slug="text-formatter" data-locale="en" data-message-idle="Waiting for text" data-message-pending="Text changed; ready to format" data-message-ready="Formatting complete" data-message-unchanged="No matching changes found" data-message-copied="Result copied" data-message-copy-failed="Copy failed; select the result manually" data-message-too-long="Text exceeds {limit} characters. Split it into sections." data-message-file-too-large="File exceeds 10 MB. Choose a smaller text file." data-message-file-error="This text file could not be read" data-category-basic-invisible="High-confidence hidden" data-category-special-spaces="Special spaces" data-category-joiners="Zero-width joiners" data-category-variation-selectors="Variation selectors" data-category-bidi-controls="Bidirectional controls" data-category-tags="Unicode tags" data-category-confusables="Lookalike and fullwidth">
+    <a class="skip-nav" href="#main">Skip to main content</a>
+    <header class="site-header" aria-label="Site header"><a class="brand" href="/en/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">文</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="Primary navigation"><a class="nav-link" href="/en/">Home</a><label class="language-picker"><span>Language</span><select id="localeSelect" aria-label="Language"><option value="zh-CN">简体中文</option><option value="zh-TW">繁體中文</option><option value="en" selected>English</option><option value="ja">日本語</option><option value="ko">한국어</option></select></label></nav></header>
+    <main id="main">
+      <section class="tool-hero formatter-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">TEXT CLEANUP · HIDDEN CHARACTER SCAN · LOCAL PROCESSING</p><h1 id="pageTitle">Online Text Formatter</h1><p class="lede">Clean text copied from PDF, PowerPoint, CAJ files or web pages. Fix unwanted spaces and line breaks, then detect removable Unicode-based AI text watermarks without uploading your text.</p></div><div class="formatter-hero-signal" aria-hidden="true"><span>U+200B</span><strong>TXT</strong><b>CLEAN</b></div></section>
+      <section class="standalone-tool text-formatter-tool" aria-labelledby="formatterToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">FORMAT / SCAN / CLEAN</p><h2 id="formatterToolTitle">Paste text, choose rules, and format</h2></div><div class="status-pill" id="formatterStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>Waiting for text</span></div></div>
+        <div class="formatter-settings">
+          <fieldset><legend>Text formatting</legend><div class="formatter-option-grid"><label class="formatter-select-option" for="formatterLineMode"><span>Line break handling</span><select id="formatterLineMode"><option value="keep">Keep line breaks</option><option value="join">Join wrapped lines</option><option value="remove">Remove all line breaks</option><option value="sentence">One sentence per line</option></select></label><label class="formatter-option"><input type="checkbox" data-formatter-option="trimLines" id="trimLines" checked /><span>Trim each line</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="collapseSpaces" id="collapseSpaces" checked /><span>Collapse repeated spaces and tabs</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="reduceBlankLines" id="reduceBlankLines" checked /><span>Keep at most one blank line</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="repairHyphenation" id="repairHyphenation" disabled /><span>Repair hyphenated line breaks</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeHanSpaces" id="removeHanSpaces" /><span>Remove spaces between Han characters</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="addHanLatinSpaces" id="addHanLatinSpaces" /><span>Space Han and Latin text</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="fixEnglishQuotes" id="fixEnglishQuotes" checked /><span>Repair English curly quotes</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="useCjkPunctuation" id="useCjkPunctuation" /><span>Use CJK punctuation in Han text</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="decodeUrls" id="decodeUrls" /><span>Safely decode URLs</span></label></div></fieldset>
+          <fieldset><legend>AI watermark and Unicode cleanup</legend><div class="formatter-option-grid formatter-watermark-options"><label class="formatter-option"><input type="checkbox" data-formatter-option="removeBasicInvisible" id="removeBasicInvisible" checked /><span>Remove high-confidence hidden characters</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="normalizeSpecialSpaces" id="normalizeSpecialSpaces" checked /><span>Convert special spaces to regular spaces</span></label></div><details class="formatter-risk-options"><summary>High-risk Unicode cleanup</summary><p>These characters can be required for emoji, Arabic, Indic scripts, bidirectional text or glyph variants. Enable them only when you know they are unwanted markers.</p><div class="formatter-option-grid"><label class="formatter-option"><input type="checkbox" data-formatter-option="removeJoiners" id="removeJoiners" /><span>Remove zero-width joiners and non-joiners</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeVariationSelectors" id="removeVariationSelectors" /><span>Remove variation selectors</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeBidiControls" id="removeBidiControls" /><span>Remove bidirectional controls</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeTags" id="removeTags" /><span>Remove Unicode tag characters</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="normalizeConfusables" id="normalizeConfusables" /><span>Fix fullwidth and mixed-script lookalikes</span></label></div></details></fieldset>
+        </div>
+        <div class="formatter-workspace">
+          <section class="formatter-text-panel" aria-labelledby="formatterInputTitle"><div class="panel-topline"><h3 id="formatterInputTitle">Original text</h3><span><b id="formatterInputCount">0</b> / 3,000,000</span></div><textarea id="formatterInput" spellcheck="false" placeholder="Paste the text you want to clean..."></textarea><div class="formatter-panel-actions"><div><button class="text-button" id="formatterSample" type="button" data-sample="PDF 复制的文 本 可能带有多余换行。
+This sen-
+tence includes a hidden marker​ and https://example.com/a%20b.
+
+AI 文本也可能包含特殊空格 或不可见字符。">Load sample</button><button class="text-button" id="formatterClear" type="button">Clear</button></div><label class="formatter-file-button" for="formatterFile">Import text<input id="formatterFile" type="file" accept=".txt,.md,.csv,.json,text/plain,text/markdown,text/csv,application/json" /></label></div></section>
+          <section class="formatter-text-panel formatter-output-panel" aria-labelledby="formatterOutputTitle"><div class="panel-topline"><h3 id="formatterOutputTitle">Formatted result</h3><span id="formatterOutputCount">0</span></div><textarea id="formatterOutput" readonly spellcheck="false"></textarea><div class="formatter-panel-actions"><div><button class="text-button" id="formatterReuse" type="button">Edit result</button><button class="text-button" id="formatterDownload" type="button">Download TXT</button></div><button class="text-button" id="formatterCopy" type="button">Copy result</button></div></section>
+        </div>
+        <div class="formatter-run-row"><button class="primary-action" id="formatterRun" type="button">Format text</button><p>Formatting and detection run in this browser. The tool removes detectable Unicode artifacts; it cannot identify an author or detect and erase statistical AI watermarks.</p></div>
+        <div class="formatter-metrics"><article><span>Input characters</span><strong id="formatterInputMetric"><span aria-hidden="true">—</span></strong></article><article><span>Output characters</span><strong id="formatterOutputMetric"><span aria-hidden="true">—</span></strong></article><article><span>Suspicious before</span><strong id="formatterHiddenBefore">0</strong></article><article><span>Suspicious after</span><strong id="formatterHiddenAfter">0</strong></article></div>
+        <section class="formatter-report-panel" aria-labelledby="formatterReportTitle"><div class="panel-topline"><h3 id="formatterReportTitle">Unicode scan details</h3><span>UNICODE</span></div><p id="formatterReportEmpty">No zero-width characters, special spaces, variation selectors or lookalike characters detected yet.</p><ul id="formatterReport"></ul></section>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="formatterFeatureTitle"><div class="section-heading"><p class="section-kicker">CLEAN COPIED PDF TEXT AND HIDDEN UNICODE</p><h2 id="formatterFeatureTitle">A text cleaner for documents, layout fixes and AI watermark checks</h2><p class="seo-intro">This online text formatter does more than remove spaces and line breaks. It protects URLs, decimals and common English text while grouping invisible Unicode characters by risk before you clean them.</p></div><div class="seo-grid"><article><h3>Repair copied PDF line breaks</h3><p>Join hard-wrapped lines inside each paragraph with language-aware spacing, and optionally repair English words split by a line-ending hyphen.</p></article><article><h3>Protect URLs and decimals</h3><p>Punctuation and spacing rules skip web addresses, email addresses, inline code and decimal numbers instead of corrupting them.</p></article><article><h3>Remove AI text watermarks by risk</h3><p>High-confidence zero-width markers are removed by default. Joiners, variation selectors and mixed-script lookalikes remain opt-in.</p></article></div><section class="word-howto" aria-labelledby="formatterHowTitle"><h2 id="formatterHowTitle">How to format and clean text online</h2><ol><li>Paste text or import a TXT, MD, CSV or JSON file.</li><li>Choose line break, spacing, punctuation and Unicode cleanup rules.</li><li>Select Format text and review the before-and-after Unicode scan.</li><li>Copy or download the result, or return it to the input for another pass.</li></ol></section><section class="pinyin-faq" aria-labelledby="formatterFaqTitle"><h2 id="formatterFaqTitle">Text formatting and AI watermark questions</h2><details><summary>What is an AI text watermark?</summary><p>On this page, it means detectable Unicode artifacts such as zero-width characters, special spaces, variation selectors and mixed-script lookalikes. Statistical token-choice watermarks are different.</p></details><details><summary>Why are U+200C, U+200D and variation selectors not removed by default?</summary><p>They can be required for emoji, Arabic, Indic scripts and glyph variants. Removing them automatically can damage legitimate text, so they are high-risk options.</p></details><details><summary>Can it clean line breaks from copied PDF text?</summary><p>Yes. Join wrapped lines preserves paragraphs separated by blank lines and reconnects CJK or Latin line endings with suitable spacing.</p></details><details><summary>Is my text uploaded?</summary><p>No. Text formatting, invisible character detection and Unicode AI watermark removal all run locally in your browser with JavaScript.</p></details></section><p class="section-kicker pinyin-related-kicker">Related text tools</p><nav class="landing-links" aria-label="Related text and document tools"><a href="/en/text-formatter/" aria-current="page">Online text formatter</a><a href="/en/character-counter/">CJK character counter</a><a href="/en/word-to-txt/">Word to text</a><a href="/en/file-text-converter/">Document Chinese converter</a><a href="/en/simplified-to-traditional/">Simplified to Traditional</a><a href="/en/traditional-to-simplified/">Traditional to Simplified</a><a href="/en/chinese-to-pinyin/">Chinese to Pinyin</a><a href="/en/chinese-character-lookup/">Chinese character lookup</a></nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app provides browser-local Chinese conversion, text formatting, character counting and document tools.</p><nav class="footer-links" aria-label="Footer"><a href="/en/about/">About</a><a href="/en/contact/">Contact</a><a href="/en/privacy/">Privacy Statement</a></nav></footer>
+  </body>
+</html>

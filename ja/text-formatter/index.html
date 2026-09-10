@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="無料のテキスト整形ツール。PDF・PPT・CAJからコピーした不要な改行、空白、句読点を整え、ゼロ幅文字や特殊スペースなど検出可能なAI文章の透かしをブラウザー内で削除します。" />
+    <title>テキスト整形ツール - 改行・空白とAI透かしを削除 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/ja/text-formatter/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/text-formatter/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/text-formatter/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/text-formatter/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/text-formatter/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/text-formatter/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/text-formatter/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.min.css" />
+    <script defer src="/text-formatter.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/ja/text-formatter/#webapp",
+            "name": "テキスト整形ツール - 改行・空白とAI透かしを削除",
+            "url": "https://jianfan.app/ja/text-formatter/",
+            "description": "無料のテキスト整形ツール。PDF・PPT・CAJからコピーした不要な改行、空白、句読点を整え、ゼロ幅文字や特殊スペースなど検出可能なAI文章の透かしをブラウザー内で削除します。",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "ja",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/ja/text-formatter/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "ホーム",
+                "item": "https://jianfan.app/ja/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "テキスト整形ツール - 改行・空白とAI透かしを削除",
+                "item": "https://jianfan.app/ja/text-formatter/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/ja/text-formatter/#howto",
+            "name": "オンラインでテキストを整形する方法",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "文章を貼り付けるか、TXT・MD・CSV・JSONを読み込みます。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "改行、空白、句読点、Unicodeの処理ルールを選びます。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "テキストを整形し、処理前後の検出結果を確認します。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "結果をコピー、保存、または入力欄へ戻して再調整します。"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/ja/text-formatter/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "AI文章の透かしとは何ですか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "このページでは、ゼロ幅文字、特殊スペース、異体字セレクター、混在文字の同形字など検出可能な Unicode の印を指します。単語選択による統計型透かしとは異なります。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "U+200C、U+200D、異体字セレクターを標準で消さない理由は？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "絵文字、アラビア文字、インド系文字、字形表示に必要なことがあり、自動削除すると正常な文章を壊すためです。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "PDFからコピーした改行を削除できますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "はい。「段落内の改行を結合」を選ぶと空行で分かれた段落を維持しながら、行末を自然につなぎます。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "文章はサーバーへ送信されますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "いいえ。テキスト整形、不可視文字の検出、Unicode AI透かしの削除はJavaScriptでブラウザー内処理されます。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="text-formatter" data-page-slug="text-formatter" data-locale="ja" data-message-idle="文章を入力してください" data-message-pending="文章が変更されました" data-message-ready="整形が完了しました" data-message-unchanged="変更対象は見つかりませんでした" data-message-copied="結果をコピーしました" data-message-copy-failed="コピーできません。手動で選択してください" data-message-too-long="{limit}文字を超えています。分割して処理してください。" data-message-file-too-large="10 MBを超えています。小さいファイルを選んでください。" data-message-file-error="このテキストファイルを読み込めません" data-category-basic-invisible="高確度の不可視文字" data-category-special-spaces="特殊スペース" data-category-joiners="ゼロ幅接合子" data-category-variation-selectors="異体字セレクター" data-category-bidi-controls="双方向制御文字" data-category-tags="Unicodeタグ" data-category-confusables="同形・全角文字">
+    <a class="skip-nav" href="#main">メインコンテンツへ移動</a>
+    <header class="site-header" aria-label="サイトヘッダー"><a class="brand" href="/ja/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">文</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="メインナビゲーション"><a class="nav-link" href="/ja/">ホーム</a><label class="language-picker"><span>表示言語</span><select id="localeSelect" aria-label="表示言語"><option value="zh-CN">简体中文</option><option value="zh-TW">繁體中文</option><option value="en">English</option><option value="ja" selected>日本語</option><option value="ko">한국어</option></select></label></nav></header>
+    <main id="main">
+      <section class="tool-hero formatter-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">文章整形 · 不可視文字チェック · ブラウザー内処理</p><h1 id="pageTitle">テキスト整形ツール</h1><p class="lede">PDF・PowerPoint・CAJ・Webページからコピーした文章の不要な改行や空白を整え、Unicodeに埋め込まれた検出可能なAI文章の透かしを削除します。文章は送信されません。</p></div><div class="formatter-hero-signal" aria-hidden="true"><span>U+200B</span><strong>TXT</strong><b>CLEAN</b></div></section>
+      <section class="standalone-tool text-formatter-tool" aria-labelledby="formatterToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">FORMAT / SCAN / CLEAN</p><h2 id="formatterToolTitle">文章を貼り付け、ルールを選んで整形</h2></div><div class="status-pill" id="formatterStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>文章を入力してください</span></div></div>
+        <div class="formatter-settings">
+          <fieldset><legend>テキスト整形</legend><div class="formatter-option-grid"><label class="formatter-select-option" for="formatterLineMode"><span>改行の処理</span><select id="formatterLineMode"><option value="keep">元の改行を維持</option><option value="join">段落内の改行を結合</option><option value="remove">すべての改行を削除</option><option value="sentence">一文ごとに改行</option></select></label><label class="formatter-option"><input type="checkbox" data-formatter-option="trimLines" id="trimLines" checked /><span>各行の前後の空白を削除</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="collapseSpaces" id="collapseSpaces" checked /><span>連続する空白とタブをまとめる</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="reduceBlankLines" id="reduceBlankLines" checked /><span>空行を1行までにする</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="repairHyphenation" id="repairHyphenation" disabled /><span>英文の行末ハイフンを修復</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeHanSpaces" id="removeHanSpaces" /><span>漢字間の空白を削除</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="addHanLatinSpaces" id="addHanLatinSpaces" /><span>漢字と英数字の間に空白を追加</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="fixEnglishQuotes" id="fixEnglishQuotes" checked /><span>英文の引用符を修正</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="useCjkPunctuation" id="useCjkPunctuation" /><span>漢字文脈の句読点を全角化</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="decodeUrls" id="decodeUrls" /><span>URLを安全にデコード</span></label></div></fieldset>
+          <fieldset><legend>AI透かし・Unicodeの整理</legend><div class="formatter-option-grid formatter-watermark-options"><label class="formatter-option"><input type="checkbox" data-formatter-option="removeBasicInvisible" id="removeBasicInvisible" checked /><span>高確度の不可視文字を削除</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="normalizeSpecialSpaces" id="normalizeSpecialSpaces" checked /><span>特殊スペースを通常の空白に変換</span></label></div><details class="formatter-risk-options"><summary>注意が必要な Unicode 削除</summary><p>絵文字、アラビア文字、インド系文字、双方向テキスト、字形の選択に必要な場合があります。不要な印だと確認できた場合だけ有効にしてください。</p><div class="formatter-option-grid"><label class="formatter-option"><input type="checkbox" data-formatter-option="removeJoiners" id="removeJoiners" /><span>ゼロ幅接合子・非接合子を削除</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeVariationSelectors" id="removeVariationSelectors" /><span>異体字セレクターを削除</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeBidiControls" id="removeBidiControls" /><span>双方向制御文字を削除</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeTags" id="removeTags" /><span>Unicodeタグ文字を削除</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="normalizeConfusables" id="normalizeConfusables" /><span>全角・混在文字の同形字を修正</span></label></div></details></fieldset>
+        </div>
+        <div class="formatter-workspace">
+          <section class="formatter-text-panel" aria-labelledby="formatterInputTitle"><div class="panel-topline"><h3 id="formatterInputTitle">整形前の文章</h3><span><b id="formatterInputCount">0</b> / 3,000,000</span></div><textarea id="formatterInput" spellcheck="false" placeholder="整形したい文章を貼り付けてください..."></textarea><div class="formatter-panel-actions"><div><button class="text-button" id="formatterSample" type="button" data-sample="PDF 复制的文 本 可能带有多余换行。
+This sen-
+tence includes a hidden marker​ and https://example.com/a%20b.
+
+AI 文本也可能包含特殊空格 或不可见字符。">サンプル</button><button class="text-button" id="formatterClear" type="button">クリア</button></div><label class="formatter-file-button" for="formatterFile">ファイルを開く<input id="formatterFile" type="file" accept=".txt,.md,.csv,.json,text/plain,text/markdown,text/csv,application/json" /></label></div></section>
+          <section class="formatter-text-panel formatter-output-panel" aria-labelledby="formatterOutputTitle"><div class="panel-topline"><h3 id="formatterOutputTitle">整形結果</h3><span id="formatterOutputCount">0</span></div><textarea id="formatterOutput" readonly spellcheck="false"></textarea><div class="formatter-panel-actions"><div><button class="text-button" id="formatterReuse" type="button">結果を再編集</button><button class="text-button" id="formatterDownload" type="button">TXTを保存</button></div><button class="text-button" id="formatterCopy" type="button">結果をコピー</button></div></section>
+        </div>
+        <div class="formatter-run-row"><button class="primary-action" id="formatterRun" type="button">テキストを整形</button><p>整形と検出はブラウザー内で行われます。削除できるのは検出可能な Unicode の印だけで、作者の判定や統計型 AI 透かしの検出・除去はできません。</p></div>
+        <div class="formatter-metrics"><article><span>入力文字数</span><strong id="formatterInputMetric"><span aria-hidden="true">—</span></strong></article><article><span>出力文字数</span><strong id="formatterOutputMetric"><span aria-hidden="true">—</span></strong></article><article><span>処理前の疑わしい文字</span><strong id="formatterHiddenBefore">0</strong></article><article><span>処理後の疑わしい文字</span><strong id="formatterHiddenAfter">0</strong></article></div>
+        <section class="formatter-report-panel" aria-labelledby="formatterReportTitle"><div class="panel-topline"><h3 id="formatterReportTitle">Unicode 検出結果</h3><span>UNICODE</span></div><p id="formatterReportEmpty">ゼロ幅文字、特殊スペース、異体字セレクター、同形文字はまだ検出されていません。</p><ul id="formatterReport"></ul></section>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="formatterFeatureTitle"><div class="section-heading"><p class="section-kicker">PDFコピー文章の改行・不可視文字を整理</p><h2 id="formatterFeatureTitle">文書のコピペ、文章整形、AI透かし確認に使えるツール</h2><p class="seo-intro">改行・空白削除だけでなく、URL、小数、一般的な英文を保護しながら整形します。不可視 Unicode 文字は危険度別に確認してから削除できます。</p></div><div class="seo-grid"><article><h3>PDF・CAJの不自然な改行を修正</h3><p>段落を残したまま行末を結合し、日本語と英語の境界に合った空白を入れます。英文の分割ハイフンも個別に修正できます。</p></article><article><h3>URLや小数を壊さずに整形</h3><p>句読点と空白の処理ではURL、メールアドレス、インラインコード、小数を保護します。</p></article><article><h3>AI文章の透かしを段階的に削除</h3><p>ゼロ幅空白など確度の高い印だけを標準で削除し、接合子や異体字セレクターは任意にします。</p></article></div><section class="word-howto" aria-labelledby="formatterHowTitle"><h2 id="formatterHowTitle">オンラインでテキストを整形する方法</h2><ol><li>文章を貼り付けるか、TXT・MD・CSV・JSONを読み込みます。</li><li>改行、空白、句読点、Unicodeの処理ルールを選びます。</li><li>テキストを整形し、処理前後の検出結果を確認します。</li><li>結果をコピー、保存、または入力欄へ戻して再調整します。</li></ol></section><section class="pinyin-faq" aria-labelledby="formatterFaqTitle"><h2 id="formatterFaqTitle">テキスト整形と AI 透かしのよくある質問</h2><details><summary>AI文章の透かしとは何ですか？</summary><p>このページでは、ゼロ幅文字、特殊スペース、異体字セレクター、混在文字の同形字など検出可能な Unicode の印を指します。単語選択による統計型透かしとは異なります。</p></details><details><summary>U+200C、U+200D、異体字セレクターを標準で消さない理由は？</summary><p>絵文字、アラビア文字、インド系文字、字形表示に必要なことがあり、自動削除すると正常な文章を壊すためです。</p></details><details><summary>PDFからコピーした改行を削除できますか？</summary><p>はい。「段落内の改行を結合」を選ぶと空行で分かれた段落を維持しながら、行末を自然につなぎます。</p></details><details><summary>文章はサーバーへ送信されますか？</summary><p>いいえ。テキスト整形、不可視文字の検出、Unicode AI透かしの削除はJavaScriptでブラウザー内処理されます。</p></details></section><p class="section-kicker pinyin-related-kicker">関連テキストツール</p><nav class="landing-links" aria-label="関連テキスト・文書ツール"><a href="/ja/text-formatter/" aria-current="page">テキスト整形ツール</a><a href="/ja/character-counter/">文字数カウント</a><a href="/ja/word-to-txt/">Word TXT 変換</a><a href="/ja/file-text-converter/">文書の中国語簡繁変換</a><a href="/ja/japanese-characters/">日本語文字コピー</a><a href="/ja/kanji-to-hiragana/">漢字をひらがなに変換</a><a href="/ja/japanese-kanji-dictionary/">漢字検索・漢字辞典</a><a href="/ja/han-character-worksheet/">漢字練習プリント</a></nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app はブラウザー内で動作する中国語変換、文章整形、文字数カウント、文書ツールを提供しています。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
+  </body>
+</html>

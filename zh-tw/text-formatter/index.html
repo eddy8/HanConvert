@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="免費線上文字格式化工具，整理從 PDF、PPT、CAJ 複製的多餘空格、斷行與標點，並偵測移除零寬字元、特殊空格等可辨識的 AI 文字浮水印，全程在瀏覽器本機處理。" />
+    <title>文字格式化工具 - 線上清理空格換行與AI文字浮水印 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/zh-tw/text-formatter/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/text-formatter/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/text-formatter/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/text-formatter/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/text-formatter/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/text-formatter/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/text-formatter/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.min.css" />
+    <script defer src="/text-formatter.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/zh-tw/text-formatter/#webapp",
+            "name": "文字格式化工具 - 線上清理空格換行與AI文字浮水印",
+            "url": "https://jianfan.app/zh-tw/text-formatter/",
+            "description": "免費線上文字格式化工具，整理從 PDF、PPT、CAJ 複製的多餘空格、斷行與標點，並偵測移除零寬字元、特殊空格等可辨識的 AI 文字浮水印，全程在瀏覽器本機處理。",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "zh-Hant",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/zh-tw/text-formatter/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "網站首頁",
+                "item": "https://jianfan.app/zh-tw/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "文字格式化工具 - 線上清理空格換行與AI文字浮水印",
+                "item": "https://jianfan.app/zh-tw/text-formatter/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/zh-tw/text-formatter/#howto",
+            "name": "如何在線上格式化文字",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "貼上文字或匯入 TXT、MD、CSV、JSON 檔案。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "選擇換行、空格、標點與 Unicode 清理規則。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "按下開始格式化，查看處理前後的字元統計及偵測明細。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "確認結果後複製、下載，或送回輸入欄繼續調整。"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/zh-tw/text-formatter/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "什麼是 AI 文字浮水印？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "本頁指的是可偵測的 Unicode 編碼痕跡，例如零寬字元、特殊空格、異體字選擇器和混合字母同形字元，不等同於基於詞語分布的統計型浮水印。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "為什麼不預設刪除 U+200C、U+200D 和異體字選擇器？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "這些字元可能影響 emoji、阿拉伯文、印度文字或字形顯示。預設刪除可能損壞正常文字，因此列在高風險選項。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "可以整理從 PDF 複製的多餘換行嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以。選擇「合併段內斷行」會保留空白行分隔的段落，並依中英文邊界連接各行。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "文字會上傳到伺服器嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不會。文字格式化、不可見字元偵測與 AI 文字浮水印清理都使用瀏覽器內的 JavaScript 完成。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="text-formatter" data-page-slug="text-formatter" data-locale="zh-TW" data-message-idle="等待輸入文字" data-message-pending="文字已修改，等待格式化" data-message-ready="格式化完成" data-message-unchanged="沒有需要修改的內容" data-message-copied="結果已複製" data-message-copy-failed="複製失敗，請手動選取結果" data-message-too-long="文字超過 {limit} 個字元，請分段處理" data-message-file-too-large="檔案超過 10 MB，請選擇較小的文字檔" data-message-file-error="無法讀取這個文字檔" data-category-basic-invisible="高可信隱藏字元" data-category-special-spaces="特殊空格" data-category-joiners="零寬連接符" data-category-variation-selectors="異體字選擇器" data-category-bidi-controls="雙向控制符" data-category-tags="Unicode 標籤" data-category-confusables="同形與全形字元">
+    <a class="skip-nav" href="#main">跳到主要內容</a>
+    <header class="site-header" aria-label="網站頁首"><a class="brand" href="/zh-tw/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">文</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="主要導覽"><a class="nav-link" href="/zh-tw/">網站首頁</a><label class="language-picker"><span>介面語言</span><select id="localeSelect" aria-label="介面語言"><option value="zh-CN">简体中文</option><option value="zh-TW" selected>繁體中文</option><option value="en">English</option><option value="ja">日本語</option><option value="ko">한국어</option></select></label></nav></header>
+    <main id="main">
+      <section class="tool-hero formatter-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">文字整理 · 隱藏字元偵測 · 瀏覽器本機處理</p><h1 id="pageTitle">線上文字格式化工具</h1><p class="lede">整理從 PDF、PPT、CAJ 或網頁複製的文字，清除多餘空格與斷行，並偵測編碼層級可辨識的 AI 文字浮水印。原文不會上傳。</p></div><div class="formatter-hero-signal" aria-hidden="true"><span>U+200B</span><strong>TXT</strong><b>CLEAN</b></div></section>
+      <section class="standalone-tool text-formatter-tool" aria-labelledby="formatterToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">FORMAT / SCAN / CLEAN</p><h2 id="formatterToolTitle">貼上文字，選擇規則後格式化</h2></div><div class="status-pill" id="formatterStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>等待輸入文字</span></div></div>
+        <div class="formatter-settings">
+          <fieldset><legend>一般格式化</legend><div class="formatter-option-grid"><label class="formatter-select-option" for="formatterLineMode"><span>換行處理</span><select id="formatterLineMode"><option value="keep">保留原換行</option><option value="join">合併段內斷行</option><option value="remove">移除全部換行</option><option value="sentence">每句獨立一行</option></select></label><label class="formatter-option"><input type="checkbox" data-formatter-option="trimLines" id="trimLines" checked /><span>清理每行前後空白</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="collapseSpaces" id="collapseSpaces" checked /><span>合併連續空格與定位字元</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="reduceBlankLines" id="reduceBlankLines" checked /><span>最多保留一個空白行</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="repairHyphenation" id="repairHyphenation" disabled /><span>修復英文斷字連字號</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeHanSpaces" id="removeHanSpaces" /><span>移除漢字之間的空格</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="addHanLatinSpaces" id="addHanLatinSpaces" /><span>中英文與數字之間加空格</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="fixEnglishQuotes" id="fixEnglishQuotes" checked /><span>修復英文彎引號</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="useCjkPunctuation" id="useCjkPunctuation" /><span>中文語境使用全形標點</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="decodeUrls" id="decodeUrls" /><span>安全解碼 URL</span></label></div></fieldset>
+          <fieldset><legend>AI 浮水印與 Unicode 清理</legend><div class="formatter-option-grid formatter-watermark-options"><label class="formatter-option"><input type="checkbox" data-formatter-option="removeBasicInvisible" id="removeBasicInvisible" checked /><span>移除零寬空格等高可信隱藏字元</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="normalizeSpecialSpaces" id="normalizeSpecialSpaces" checked /><span>將特殊空格轉成一般空格</span></label></div><details class="formatter-risk-options"><summary>高風險 Unicode 清理選項</summary><p>這些字元可能參與 emoji、阿拉伯文、印度文字或字形變體的正常顯示。只有確認是異常標記時才開啟。</p><div class="formatter-option-grid"><label class="formatter-option"><input type="checkbox" data-formatter-option="removeJoiners" id="removeJoiners" /><span>刪除零寬連接符與非連接符</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeVariationSelectors" id="removeVariationSelectors" /><span>刪除異體字選擇器</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeBidiControls" id="removeBidiControls" /><span>刪除雙向文字控制符</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="removeTags" id="removeTags" /><span>刪除 Unicode 標籤字元</span></label><label class="formatter-option"><input type="checkbox" data-formatter-option="normalizeConfusables" id="normalizeConfusables" /><span>修正全形及混合字母同形字元</span></label></div></details></fieldset>
+        </div>
+        <div class="formatter-workspace">
+          <section class="formatter-text-panel" aria-labelledby="formatterInputTitle"><div class="panel-topline"><h3 id="formatterInputTitle">原始文字</h3><span><b id="formatterInputCount">0</b> / 3,000,000</span></div><textarea id="formatterInput" spellcheck="false" placeholder="在這裡貼上需要整理的文字..."></textarea><div class="formatter-panel-actions"><div><button class="text-button" id="formatterSample" type="button" data-sample="PDF 复制的文 本 可能带有多余换行。
+This sen-
+tence includes a hidden marker​ and https://example.com/a%20b.
+
+AI 文本也可能包含特殊空格 或不可见字符。">載入範例</button><button class="text-button" id="formatterClear" type="button">清除</button></div><label class="formatter-file-button" for="formatterFile">匯入文字<input id="formatterFile" type="file" accept=".txt,.md,.csv,.json,text/plain,text/markdown,text/csv,application/json" /></label></div></section>
+          <section class="formatter-text-panel formatter-output-panel" aria-labelledby="formatterOutputTitle"><div class="panel-topline"><h3 id="formatterOutputTitle">格式化結果</h3><span id="formatterOutputCount">0</span></div><textarea id="formatterOutput" readonly spellcheck="false"></textarea><div class="formatter-panel-actions"><div><button class="text-button" id="formatterReuse" type="button">繼續編輯</button><button class="text-button" id="formatterDownload" type="button">下載 TXT</button></div><button class="text-button" id="formatterCopy" type="button">複製結果</button></div></section>
+        </div>
+        <div class="formatter-run-row"><button class="primary-action" id="formatterRun" type="button">開始格式化</button><p>格式化與偵測都在目前的瀏覽器完成。工具只清理可偵測的 Unicode 編碼標記，無法判斷作者身分，也不能辨識或消除統計型 AI 浮水印。</p></div>
+        <div class="formatter-metrics"><article><span>輸入字元</span><strong id="formatterInputMetric"><span aria-hidden="true">—</span></strong></article><article><span>輸出字元</span><strong id="formatterOutputMetric"><span aria-hidden="true">—</span></strong></article><article><span>處理前可疑字元</span><strong id="formatterHiddenBefore">0</strong></article><article><span>處理後可疑字元</span><strong id="formatterHiddenAfter">0</strong></article></div>
+        <section class="formatter-report-panel" aria-labelledby="formatterReportTitle"><div class="panel-topline"><h3 id="formatterReportTitle">Unicode 偵測明細</h3><span>UNICODE</span></div><p id="formatterReportEmpty">尚未偵測到零寬字元、特殊空格、異體字選擇器或同形字元。</p><ul id="formatterReport"></ul></section>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="formatterFeatureTitle"><div class="section-heading"><p class="section-kicker">PDF 複製文字整理與隱藏字元清理</p><h2 id="formatterFeatureTitle">適合文件複製、排版與 AI 文字檢查的格式化工具</h2><p class="seo-intro">線上文字格式化不只是移除空格和換行。工具會保護 URL、小數與常見英文內容，同時依風險整理不可見 Unicode 字元，方便先偵測再決定是否清除。</p></div><div class="seo-grid"><article><h3>修復 PDF 與 CAJ 複製斷行</h3><p>合併段內硬換行時會分辨中英文邊界，也能選擇是否修復英文單字跨行產生的連字號。</p></article><article><h3>避免破壞 URL 和小數</h3><p>標點轉換與空格處理會略過網址、電子郵件、行內程式碼和小數，保留正常內容。</p></article><article><h3>分級移除 AI 文字浮水印</h3><p>預設移除零寬空格等高可信標記；連接符、異體字選擇器與同形字元需手動開啟。</p></article></div><section class="word-howto" aria-labelledby="formatterHowTitle"><h2 id="formatterHowTitle">如何在線上格式化文字</h2><ol><li>貼上文字或匯入 TXT、MD、CSV、JSON 檔案。</li><li>選擇換行、空格、標點與 Unicode 清理規則。</li><li>按下開始格式化，查看處理前後的字元統計及偵測明細。</li><li>確認結果後複製、下載，或送回輸入欄繼續調整。</li></ol></section><section class="pinyin-faq" aria-labelledby="formatterFaqTitle"><h2 id="formatterFaqTitle">文字格式化與 AI 浮水印常見問題</h2><details><summary>什麼是 AI 文字浮水印？</summary><p>本頁指的是可偵測的 Unicode 編碼痕跡，例如零寬字元、特殊空格、異體字選擇器和混合字母同形字元，不等同於基於詞語分布的統計型浮水印。</p></details><details><summary>為什麼不預設刪除 U+200C、U+200D 和異體字選擇器？</summary><p>這些字元可能影響 emoji、阿拉伯文、印度文字或字形顯示。預設刪除可能損壞正常文字，因此列在高風險選項。</p></details><details><summary>可以整理從 PDF 複製的多餘換行嗎？</summary><p>可以。選擇「合併段內斷行」會保留空白行分隔的段落，並依中英文邊界連接各行。</p></details><details><summary>文字會上傳到伺服器嗎？</summary><p>不會。文字格式化、不可見字元偵測與 AI 文字浮水印清理都使用瀏覽器內的 JavaScript 完成。</p></details></section><p class="section-kicker pinyin-related-kicker">相關文字工具</p><nav class="landing-links" aria-label="相關文字與文件工具"><a href="/zh-tw/text-formatter/" aria-current="page">文字格式化工具</a><a href="/zh-tw/character-counter/">線上字數統計</a><a href="/zh-tw/word-to-txt/">DOCX 轉 TXT</a><a href="/zh-tw/file-text-converter/">文件文字簡繁轉換</a><a href="/zh-tw/simplified-to-traditional/">簡體轉繁體</a><a href="/zh-tw/traditional-to-simplified/">繁體轉簡體</a><a href="/zh-tw/chinese-to-pinyin/">漢字轉拼音</a><a href="/zh-tw/chinese-character-lookup/">漢字查詢與結構拆解</a></nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app 提供在瀏覽器本機執行的中文轉換、文字整理、字數統計與文件處理工具。</p><nav class="footer-links" aria-label="頁尾"><a href="/zh-tw/about/">關於我們</a><a href="/zh-tw/contact/">聯絡我們</a><a href="/zh-tw/privacy/">隱私聲明</a></nav></footer>
+  </body>
+</html>

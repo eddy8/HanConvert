@@ -310,11 +310,11 @@ const content = {
 };
 
 const relatedLabels = {
-  "zh-CN": [[slug, "Word 转 TXT"], ["character-counter", "在线字数统计"], ["file-text-converter", "文件文本简繁转换"], ["simplified-to-traditional", "简体转繁体"], ["traditional-to-simplified", "繁体转简体"], ["chinese-to-pinyin", "汉字转拼音"], ["chinese-stroke-order", "汉字笔顺查询"], ["japanese-chinese-kanji-converter", "日中汉字三体转换"], ["japanese-characters", "日文字符复制"]],
-  "zh-TW": [[slug, "DOCX 轉 TXT"], ["character-counter", "線上字數統計"], ["file-text-converter", "文件文字簡繁轉換"], ["simplified-to-traditional", "簡體轉繁體"], ["traditional-to-simplified", "繁體轉簡體"], ["chinese-to-pinyin", "漢字轉拼音"], ["chinese-stroke-order", "漢字筆順查詢"], ["japanese-chinese-kanji-converter", "日中漢字三體轉換"], ["japanese-characters", "日文字元複製"]],
-  en: [[slug, "Word to text"], ["character-counter", "CJK character counter"], ["file-text-converter", "Document Chinese converter"], ["simplified-to-traditional", "Simplified to Traditional"], ["traditional-to-simplified", "Traditional to Simplified"], ["chinese-to-pinyin", "Chinese to Pinyin"], ["chinese-stroke-order", "Chinese stroke order"], ["japanese-chinese-kanji-converter", "Japanese and Chinese Kanji"], ["japanese-characters", "Japanese character copy"]],
-  ja: [[slug, "Word TXT 変換"], ["character-counter", "文字数カウント"], ["file-text-converter", "文書の中国語簡繁変換"], ["simplified-to-traditional", "簡体字から繁体字"], ["traditional-to-simplified", "繁体字から簡体字"], ["chinese-to-pinyin", "中国語ピンイン変換"], ["chinese-stroke-order", "中国語漢字の筆順"], ["japanese-chinese-kanji-converter", "日中漢字3種類変換"], ["japanese-characters", "日本語文字コピー"]],
-  ko: [[slug, "DOCX TXT 변환"], ["character-counter", "글자수 세기"], ["file-text-converter", "문서 중국어 변환"], ["simplified-to-traditional", "간체를 번체로"], ["traditional-to-simplified", "번체를 간체로"], ["chinese-to-pinyin", "중국어 병음 변환"], ["chinese-stroke-order", "중국어 한자 필순"], ["japanese-chinese-kanji-converter", "일본·중국 한자 변환"], ["japanese-characters", "일본어 문자 복사"]]
+  "zh-CN": [[slug, "Word 转 TXT"], ["text-formatter", "文本格式化与 AI 水印清理"], ["character-counter", "在线字数统计"], ["file-text-converter", "文件文本简繁转换"], ["simplified-to-traditional", "简体转繁体"], ["traditional-to-simplified", "繁体转简体"], ["chinese-to-pinyin", "汉字转拼音"], ["chinese-stroke-order", "汉字笔顺查询"], ["japanese-chinese-kanji-converter", "日中汉字三体转换"], ["japanese-characters", "日文字符复制"]],
+  "zh-TW": [[slug, "DOCX 轉 TXT"], ["text-formatter", "文字格式化與 AI 浮水印清理"], ["character-counter", "線上字數統計"], ["file-text-converter", "文件文字簡繁轉換"], ["simplified-to-traditional", "簡體轉繁體"], ["traditional-to-simplified", "繁體轉簡體"], ["chinese-to-pinyin", "漢字轉拼音"], ["chinese-stroke-order", "漢字筆順查詢"], ["japanese-chinese-kanji-converter", "日中漢字三體轉換"], ["japanese-characters", "日文字元複製"]],
+  en: [[slug, "Word to text"], ["text-formatter", "Text formatter and AI watermark cleaner"], ["character-counter", "CJK character counter"], ["file-text-converter", "Document Chinese converter"], ["simplified-to-traditional", "Simplified to Traditional"], ["traditional-to-simplified", "Traditional to Simplified"], ["chinese-to-pinyin", "Chinese to Pinyin"], ["chinese-stroke-order", "Chinese stroke order"], ["japanese-chinese-kanji-converter", "Japanese and Chinese Kanji"], ["japanese-characters", "Japanese character copy"]],
+  ja: [[slug, "Word TXT 変換"], ["text-formatter", "テキスト整形・AI透かし削除"], ["character-counter", "文字数カウント"], ["file-text-converter", "文書の中国語簡繁変換"], ["simplified-to-traditional", "簡体字から繁体字"], ["traditional-to-simplified", "繁体字から簡体字"], ["chinese-to-pinyin", "中国語ピンイン変換"], ["chinese-stroke-order", "中国語漢字の筆順"], ["japanese-chinese-kanji-converter", "日中漢字3種類変換"], ["japanese-characters", "日本語文字コピー"]],
+  ko: [[slug, "DOCX TXT 변환"], ["text-formatter", "텍스트 정리·AI 워터마크 제거"], ["character-counter", "글자수 세기"], ["file-text-converter", "문서 중국어 변환"], ["simplified-to-traditional", "간체를 번체로"], ["traditional-to-simplified", "번체를 간체로"], ["chinese-to-pinyin", "중국어 병음 변환"], ["chinese-stroke-order", "중국어 한자 필순"], ["japanese-chinese-kanji-converter", "일본·중국 한자 변환"], ["japanese-characters", "일본어 문자 복사"]]
 };
 
 function escapeHtml(value) {
@@ -468,6 +468,18 @@ function preserveExistingNavigation(generatedHtml, existingHtml) {
   return generatedHtml;
 }
 
+function syncTextFormatterLink(html, locale) {
+  const label = relatedLabels[locale].find(([targetSlug]) => targetSlug === "text-formatter")?.[1];
+  const href = localizedPath(locale, "text-formatter");
+  const link = `          <a href="${href}">${label}</a>`;
+  const pattern = new RegExp(`\\s*<a href="${href.replaceAll("/", "\\/")}">[^<]*<\\/a>`);
+  if (pattern.test(html)) return html.replace(pattern, `\n${link}`);
+  return html.replace(
+    /(<nav class="landing-links"[^>]*>)/,
+    `$1\n${link}`
+  );
+}
+
 for (const locale of Object.keys(locales)) {
   const directory = path.join(projectRoot, locales[locale].prefix, slug);
   const destination = path.join(directory, "index.html");
@@ -478,6 +490,7 @@ for (const locale of Object.keys(locales)) {
   } catch (error) {
     if (error.code !== "ENOENT") throw error;
   }
+  html = syncTextFormatterLink(html, locale);
   const generated = `${html}\n`;
   if (checkOnly) {
     const existing = await readFile(destination, "utf8");
