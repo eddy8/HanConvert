@@ -11,7 +11,8 @@ export const SEO_TITLE_SUFFIX = " | JianFan.app";
 const managedSlugs = [
   "traditional-to-simplified",
   "chinese-handwriting-recognition",
-  "taiwan-traditional"
+  "taiwan-traditional",
+  "text-formatter"
 ];
 
 const localePrefixes = ["", "zh-tw/", "en/", "ja/", "ko/"];

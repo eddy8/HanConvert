@@ -80,7 +80,7 @@ if ([...sitemapHreflangs].sort().join("|") !== [...expectedHreflangs].sort().joi
   throw new Error(`sitemap.xml contains unexpected hreflang values: ${[...sitemapHreflangs].sort().join(", ")}`);
 }
 
-for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "han-character-worksheet.js", "handwriting-recognition.js", "handwriting-recognition-worker.js", "photo-chinese-character-recognition.js", "han-character-lookup-core.js", "han-character-lookup.js", "kanji-romaji-core.js", "kanji-to-romaji.js", "japanese-reading-client.js", "japanese-reading-worker.js", "kanji-to-hiragana.js", "japanese-stroke-order.js", "japanese-kanji-data.js", "japanese-kanji-dictionary.js", "japanese-handwriting-recognition.js", "korean-hanja-data.js", "korean-hanja-dictionary.js", "hangul-hanja-converter.js", "korean-name-hanja.js", "webmcp.js"]) {
+for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "text-formatter.js", "han-character-worksheet.js", "handwriting-recognition.js", "handwriting-recognition-worker.js", "photo-chinese-character-recognition.js", "han-character-lookup-core.js", "han-character-lookup.js", "kanji-romaji-core.js", "kanji-to-romaji.js", "japanese-reading-client.js", "japanese-reading-worker.js", "kanji-to-hiragana.js", "japanese-stroke-order.js", "japanese-kanji-data.js", "japanese-kanji-dictionary.js", "japanese-handwriting-recognition.js", "korean-hanja-data.js", "korean-hanja-dictionary.js", "hangul-hanja-converter.js", "korean-name-hanja.js", "webmcp.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
@@ -196,6 +196,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isStrokeOrderPage = html.includes('data-tool-page="stroke-order"');
   const isWordToTxtPage = html.includes('data-tool-page="word-to-txt"');
   const isCharacterCounterPage = html.includes('data-tool-page="character-counter"');
+  const isTextFormatterPage = html.includes('data-tool-page="text-formatter"');
   const isWorksheetPage = html.includes('data-tool-page="han-character-worksheet"');
   const isKanjiRomajiPage = html.includes('data-tool-page="kanji-to-romaji"');
   const isHandwritingPage = html.includes('data-tool-page="handwriting-recognition"');
@@ -382,10 +383,10 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     if (!webApplication || webApplication.url !== canonical) {
       throw new Error(`${relativePath}: invalid WebApplication schema`);
     }
-    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isKanjiRomajiPage || isHandwritingPage || isPhotoOcrPage || isHanLookupPage || isKoreanToolPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
+    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isTextFormatterPage || isWorksheetPage || isKanjiRomajiPage || isHandwritingPage || isPhotoOcrPage || isHanLookupPage || isKoreanToolPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
       throw new Error(`${relativePath}: missing tool FAQPage schema`);
     }
-    if ((isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isHandwritingPage || isPhotoOcrPage || isHanLookupPage || isKoreanToolPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
+    if ((isWordToTxtPage || isCharacterCounterPage || isTextFormatterPage || isWorksheetPage || isHandwritingPage || isPhotoOcrPage || isHanLookupPage || isKoreanToolPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
       throw new Error(`${relativePath}: missing tool HowTo schema`);
     }
   }
@@ -548,6 +549,34 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   }
   if (isCharacterCounterPage && (!html.includes('src="/character-counter.js"') || !html.includes('id="counterInput"'))) {
     throw new Error(`${relativePath}: missing character-counter assets or input`);
+  }
+  if ((isWordToTxtPage || isCharacterCounterPage) && !html.includes("text-formatter/")) {
+    throw new Error(`${relativePath}: missing related text-formatter link`);
+  }
+  if (isTextFormatterPage) {
+    for (const asset of ['src="/text-formatter.js"', 'id="formatterInput"', 'id="formatterOutput"', 'id="formatterRun"', 'id="formatterReport"']) {
+      if (!html.includes(asset)) throw new Error(`${relativePath}: missing text-formatter asset ${asset}`);
+    }
+  }
+  if (relativePath === path.join("text-formatter", "index.html")) {
+    for (const keyword of ["文本格式化工具", "PDF", "去除 AI 文本水印", "零宽字符", "不可见 Unicode 字符"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("en", "text-formatter", "index.html")) {
+    for (const keyword of ["Online Text Formatter", "copied PDF text", "AI text watermarks", "zero-width characters", "invisible character"]) {
+      if (!html.toLowerCase().includes(keyword.toLowerCase())) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("ja", "text-formatter", "index.html")) {
+    for (const keyword of ["テキスト整形ツール", "改行", "空白", "不可視文字", "ゼロ幅文字", "AI文章の透かし"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
+  }
+  if (relativePath === path.join("ko", "text-formatter", "index.html")) {
+    for (const keyword of ["텍스트 정리기", "공백", "줄바꿈", "보이지 않는 문자", "제로폭 문자", "AI 텍스트 워터마크"]) {
+      if (!html.includes(keyword)) throw new Error(`${relativePath}: missing target keyword ${keyword}`);
+    }
   }
   if (isCharacterCounterPage && !html.includes('src="/webmcp.js"')) {
     throw new Error(`${relativePath}: missing character-counter WebMCP registration`);
@@ -718,10 +747,10 @@ if (!notFound.includes('name="robots" content="noindex, follow"')) {
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
-if (standaloneToolPages !== 95) throw new Error(`expected 95 standalone tool pages, found ${standaloneToolPages}`);
+if (standaloneToolPages !== 100) throw new Error(`expected 100 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
 if (pseoPages !== 105) throw new Error(`expected 105 controlled pSEO pages, found ${pseoPages}`);
 if (blogPages !== 9) throw new Error(`expected 9 blog pages, found ${blogPages}`);
-if (sitemapUrls.length !== 260) throw new Error(`expected 260 sitemap URLs, found ${sitemapUrls.length}`);
+if (sitemapUrls.length !== 265) throw new Error(`expected 265 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, ${pseoPages} controlled pSEO pages, ${blogPages} blog pages, and ${sitemapUrls.length} sitemap URLs.`);

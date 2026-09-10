@@ -3040,6 +3040,68 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/stroke-order-worksheet/" />
   </url>
   <!-- scenario-pseo:end -->
+  <!-- text-formatter-tool:start -->
+  <url>
+    <loc>https://jianfan.app/text-formatter/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/text-formatter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/text-formatter/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/text-formatter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/text-formatter/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/text-formatter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/text-formatter/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/text-formatter/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/text-formatter/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/text-formatter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/text-formatter/" />
+  </url>
+  <!-- text-formatter-tool:end -->
   <!-- blog:start -->
   <url>
     <loc>https://jianfan.app/blog/</loc>
