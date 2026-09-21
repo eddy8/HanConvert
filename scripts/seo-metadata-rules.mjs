@@ -12,7 +12,8 @@ const managedSlugs = [
   "traditional-to-simplified",
   "chinese-handwriting-recognition",
   "taiwan-traditional",
-  "text-formatter"
+  "text-formatter",
+  "image-redaction"
 ];
 
 const localePrefixes = ["", "zh-tw/", "en/", "ja/", "ko/"];

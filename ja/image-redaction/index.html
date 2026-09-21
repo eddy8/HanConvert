@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="画像モザイク加工をオンラインで。黒塗り・ぼかしに対応し、AIが顔、電話番号、メール、IDなどの個人情報候補を検出。画像はブラウザ内で処理し、保存時にEXIF情報も削除します。" />
+    <title>画像モザイク加工 - AIで顔と個人情報を自動検出 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/ja/image-redaction/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/image-redaction/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/image-redaction/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/image-redaction/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/image-redaction/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/image-redaction/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/image-redaction/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.min.css" />
+    <script defer src="/image-redaction.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/ja/image-redaction/#webapp",
+            "name": "画像モザイク加工 - AIで顔と個人情報を自動検出",
+            "url": "https://jianfan.app/ja/image-redaction/",
+            "description": "画像モザイク加工をオンラインで。黒塗り・ぼかしに対応し、AIが顔、電話番号、メール、IDなどの個人情報候補を検出。画像はブラウザ内で処理し、保存時にEXIF情報も削除します。",
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript and browser image processing support",
+            "inLanguage": "ja",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/ja/image-redaction/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "ホーム",
+                "item": "https://jianfan.app/ja/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "画像モザイク加工 - AIで顔と個人情報を自動検出",
+                "item": "https://jianfan.app/ja/image-redaction/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/ja/image-redaction/#howto",
+            "name": "オンラインで画像にモザイクをかける方法",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "加工する画像を選択、ドロップ、または貼り付けます。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "手動で範囲を囲むか、AI検出を実行して候補を確認します。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "黒塗り、モザイク、ぼかしを選び、範囲と強さを調整します。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "元画像と比較して見落としを確認し、新しい画像を保存します。"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/ja/image-redaction/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "画像はサーバーに送信されますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "送信されません。画像の読み込み、編集、顔検出、OCR、保存はブラウザ内で行い、通信は初回のAIモデル取得だけに使います。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "モザイクやぼかしで文字を完全に隠せますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "保証できません。ID番号、カード番号、パスワード、アクセスキーなどには、余白を持たせた黒塗りを使用してください。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "AIは何を検出できますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "顔、電話番号、メール、ID、カード番号、URL、IP、ナンバープレート、氏名・住所ラベルを含む文字行を候補として表示します。必ず確認してください。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "保存後の画像に位置情報は残りますか？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "CanvasでJPG、PNG、WebPを新しく生成するため、通常は元画像のEXIF、GPS、端末名、撮影日時をコピーしません。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="image-redaction" data-page-slug="image-redaction" data-locale="ja">
+    <script type="application/json" id="imageRedactionMessages">{"invalidFile":"この画像を開けません。JPG、PNG、WebPなどを選択してください。","fileTooLarge":"画像が30 MBを超えています。圧縮してからお試しください。","loading":"画像を開いています…","waiting":"画像を選択してください","ready":"画像を開きました。隠したい範囲をドラッグしてください。","resized":"画像が大きいため、安定して処理できるサイズに縮小しました。","sampleReady":"サンプル画像を読み込みました","modelError":"端末内AIモデルを読み込めませんでした。通信を確認するか、手動加工を続けてください。","chooseDetection":"顔または個人情報の文字を選択してください。","loadingFaceModel":"顔検出モデルを読み込んでいます…","detectingFaces":"顔を検出しています…","loadingTextModel":"文字認識モデルを読み込んでいます…","detectingText":"端末内で文字を認識しています…","ocrProgress":"端末内で文字を認識しています… {percent}%","aiComplete":"確認候補が{count}件見つかりました","appliedSuggestions":"候補を{count}件適用しました","exported":"加工済み画像を保存しました","exportError":"保存画像を作成できませんでした。もう一度お試しください。","faceSuggestion":"顔の候補","textSuggestion":"個人情報の候補","categories":{"face":"顔","email":"メール","url":"URL","network":"IPアドレス","secret":"アクセスキー","id":"ID番号","card":"カード番号","phone":"電話番号","plate":"ナンバープレート","personal":"個人情報"}}</script>
+    <a class="skip-nav" href="#main">メインコンテンツへ移動</a>
+    <header class="site-header" aria-label="サイトヘッダー"><a class="brand" href="/ja/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">隐</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="メインナビゲーション"><a class="nav-link" href="/ja/">ホーム</a><label class="language-picker"><span>表示言語</span><select id="localeSelect" aria-label="表示言語"><option value="zh-CN">简体中文</option><option value="zh-TW">繁體中文</option><option value="en">English</option><option value="ja" selected>日本語</option><option value="ko">한국어</option></select></label></nav></header>
+    <main id="main">
+      <section class="tool-hero redaction-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">画像モザイク · AI顔検出 · ブラウザ内処理</p><h1 id="pageTitle">画像モザイク・ぼかし加工ツール</h1><p class="lede">写真やスクリーンショットの顔、氏名、電話番号、住所などを隠せます。手動で囲むほか、端末内AIの候補を確認してから適用できます。</p></div><div class="redaction-hero-signal" aria-hidden="true"><span>LOCAL</span><strong><i></i><i></i><i></i></strong><b>PRIVATE</b></div></section>
+      <section class="standalone-tool image-redaction-tool" aria-labelledby="redactionToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">REDACT / REVIEW / EXPORT</p><h2 id="redactionToolTitle">画像を開いて個人情報を隠す</h2></div><div class="status-pill" id="redactionStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>画像を選択してください</span></div></div>
+        <input class="visually-hidden" id="redactionFileInput" type="file" accept="image/jpeg,image/png,image/webp,image/avif,image/bmp" />
+        <div class="redaction-drop-zone" id="redactionDropZone"><div class="redaction-drop-visual" aria-hidden="true"><span></span><span></span><span></span></div><h3>画像をドロップ・貼り付け・選択</h3><p>JPG、PNG、WebPなど、ブラウザで開ける30 MB以下の画像に対応。画像はアップロードされません。</p><div><label class="primary-action" for="redactionFileInput">画像を選択</label><button class="text-button" id="redactionSample" type="button">サンプルで試す</button></div><small>Ctrl / Cmd + Vでスクリーンショットを貼り付けることもできます</small></div>
+        <div class="redaction-workspace" id="redactionWorkspace" hidden>
+          <div class="redaction-toolbar" role="toolbar" aria-label="隠し方">
+            <fieldset><legend>隠し方</legend><div class="redaction-segmented" role="radiogroup" aria-label="隠し方"><button class="is-active" type="button" data-redaction-effect="solid" role="radio" aria-checked="true">黒塗り</button><button type="button" data-redaction-effect="pixelate" role="radio" aria-checked="false">モザイク</button><button type="button" data-redaction-effect="blur" role="radio" aria-checked="false">ぼかし</button></div></fieldset>
+            <div class="redaction-range"><div><label for="redactionIntensity">効果の強さ</label> <output id="redactionIntensityValue">52</output></div><input id="redactionIntensity" type="range" min="10" max="90" value="52" /></div>
+            <fieldset class="redaction-colors"><legend>塗りつぶし色</legend><button class="is-active" type="button" data-redaction-color="#07120f" aria-label="濃色" title="濃色"></button><button type="button" data-redaction-color="#ffffff" aria-label="白" title="白"></button></fieldset>
+            <div class="redaction-tool-actions"><button id="redactionUndo" type="button" title="元に戻す" disabled>↶ <span>元に戻す</span></button><button id="redactionRedo" type="button" title="やり直す" disabled>↷ <span>やり直す</span></button><button id="redactionRemove" type="button" disabled>範囲を削除</button><button id="redactionCompare" type="button" aria-pressed="false">元画像を表示</button></div>
+          </div>
+          <div class="redaction-editor-grid">
+            <section class="redaction-canvas-panel" aria-labelledby="redactionCanvasTitle"><div class="redaction-file-row"><div><span>編集中の画像</span><strong id="redactionFileName">image</strong><small id="redactionFileMeta"></small></div><label for="redactionFileInput">画像を変更</label></div><h3 class="visually-hidden" id="redactionCanvasTitle">画像モザイク編集キャンバス</h3><p class="redaction-draw-hint">画像上をドラッグして範囲を追加します。選択した範囲は移動・サイズ変更・削除できます。</p><div class="redaction-canvas-frame" id="redactionCanvasFrame"><canvas id="redactionCanvas" tabindex="0" aria-label="画像モザイク編集キャンバス"></canvas></div><div class="redaction-zoom"><button id="redactionZoomOut" type="button" title="縮小" aria-label="縮小">−</button><output id="redactionZoomValue">100%</output><button id="redactionZoomIn" type="button" title="拡大" aria-label="拡大">+</button></div></section>
+            <aside class="redaction-side-panel">
+              <section class="redaction-ai-panel" aria-labelledby="redactionAiTitle"><div class="redaction-panel-heading"><span>AI</span><div><h3 id="redactionAiTitle">AIで自動検出</h3><p>AIは確認用の候補だけを表示します。選択した候補を適用するまで画像は変更しません。</p></div></div><div class="redaction-ai-options"><label><input id="redactionFaceScan" type="checkbox" checked /> <span>顔を検出</span></label><label><input id="redactionTextScan" type="checkbox" checked /> <span>個人情報の文字を検出</span></label><label class="redaction-ai-language"><span>文字の言語</span><select id="redactionOcrLanguage"><option value="jpn" selected>日本語</option><option value="eng">英語</option><option value="chi_sim">簡体字中国語 + 英語</option><option value="chi_tra">繁体字中国語 + 英語</option><option value="kor">韓国語</option></select></label></div><button class="redaction-ai-run" id="redactionAiRun" type="button">AI検出を開始</button><p class="redaction-ai-network">初回は認識モデルをダウンロードし、ブラウザにキャッシュされる場合があります。画像自体はサーバーへ送信されません。</p><div class="redaction-ai-progress" id="redactionAiProgress" hidden><span><span id="redactionAiProgressBar"></span></span><strong id="redactionAiProgressText"></strong></div><div class="redaction-suggestions-head"><h4>確認待ちの候補</h4><span>REVIEW</span></div><p class="redaction-suggestions-empty" id="redactionSuggestionsEmpty">検出した範囲がここに表示されます。</p><div class="redaction-suggestions" id="redactionSuggestions"></div><div class="redaction-suggestion-actions"><button id="redactionApplySuggestions" type="button" disabled>選択項目を適用</button><button id="redactionClearSuggestions" type="button" disabled>すべて無視</button></div></section>
+              <section class="redaction-export-panel" aria-labelledby="redactionExportTitle"><h3 id="redactionExportTitle">画像を書き出す</h3><p>加工結果を新しい画像に焼き込み、元画像のEXIF・GPSなどのメタデータを引き継がずに保存します。</p><div class="redaction-export-fields"><label><span>画像形式</span><select id="redactionExportFormat"><option value="image/png">PNG</option><option value="image/jpeg">JPG</option><option value="image/webp">WebP</option></select></label><div id="redactionExportQualityRow" hidden><div><label for="redactionExportQuality">保存品質</label> <output id="redactionExportQualityValue">92%</output></div><input id="redactionExportQuality" type="range" min="60" max="100" value="92" /></div></div><button class="primary-action" id="redactionDownload" type="button">加工済み画像を保存</button></section>
+            </aside>
+          </div>
+          <div class="redaction-workspace-footer"><p>機密性の高い文字には黒塗りを推奨します。弱いモザイクやぼかしは推測・復元される可能性があり、AIにも見落としがあります。</p><button id="redactionReset" type="button">最初からやり直す</button></div>
+        </div>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="redactionFeatureTitle"><div class="section-heading"><p class="section-kicker">写真の顔・文字・ナンバーを安全に隠す</p><h2 id="redactionFeatureTitle">手動加工、AI候補確認、メタデータ削除を一つに</h2><p class="seo-intro">画像全体をぼかすのではなく、指定範囲のピクセルだけを書き換えます。スクリーンショット、書類写真、チャット画面、SNS投稿前の確認に使えます。</p></div><div class="seo-grid"><article><h3>範囲を後から細かく調整</h3><p>複数の範囲を追加し、位置や大きさを修正してから、黒塗り・モザイク・ぼかしを個別に選べます。</p></article><article><h3>AIで顔と個人情報を候補表示</h3><p>端末内の顔検出とOCRで、電話番号、メール、ID、カード番号、URL、IP、ナンバープレートなどを探します。</p></article><article><h3>加工を画像のピクセルに固定</h3><p>Canvasで新しい画像を生成するため、外せるレイヤーではありません。元のEXIFやGPS情報も保存結果に引き継ぎません。</p></article></div><section class="redaction-use-cases" aria-labelledby="redactionCasesTitle"><h2 id="redactionCasesTitle">画像にモザイクをかける主な場面</h2><div><article><h3>スクリーンショットやチャット</h3><p>ユーザー名、アイコン、注文番号、メール、顧客情報、アクセスキーなどを隠してから共有します。</p></article><article><h3>身分証や書類の写真</h3><p>証明書番号、住所、署名、カード情報を黒塗りします。重要書類ではぼかしより黒塗りが安全です。</p></article><article><h3>写真やSNS投稿</h3><p>通行人や子どもの顔、車のナンバー、表札、背景の位置情報につながる文字を隠します。</p></article></div></section><section class="redaction-safety" aria-labelledby="redactionSafetyTitle"><h2 id="redactionSafetyTitle">AI検出後に目視確認が必要な理由</h2><p>傾き、反射、低画質、装飾文字、複雑な背景によって検出精度は変わります。自動検出は作業の補助であり、見落としがない保証ではありません。</p><p>保存前に画像全体を拡大し、四隅、反射、通知欄、背景の看板も確認してください。重要な文字は少し広めに黒塗りしてください。</p></section><section class="pinyin-howto" aria-labelledby="redactionHowTitle"><h2 id="redactionHowTitle">オンラインで画像にモザイクをかける方法</h2><ol><li>加工する画像を選択、ドロップ、または貼り付けます。</li><li>手動で範囲を囲むか、AI検出を実行して候補を確認します。</li><li>黒塗り、モザイク、ぼかしを選び、範囲と強さを調整します。</li><li>元画像と比較して見落としを確認し、新しい画像を保存します。</li></ol></section><section class="pinyin-faq" aria-labelledby="redactionFaqTitle"><h2 id="redactionFaqTitle">画像モザイク加工のよくある質問</h2><details><summary>画像はサーバーに送信されますか？</summary><p>送信されません。画像の読み込み、編集、顔検出、OCR、保存はブラウザ内で行い、通信は初回のAIモデル取得だけに使います。</p></details><details><summary>モザイクやぼかしで文字を完全に隠せますか？</summary><p>保証できません。ID番号、カード番号、パスワード、アクセスキーなどには、余白を持たせた黒塗りを使用してください。</p></details><details><summary>AIは何を検出できますか？</summary><p>顔、電話番号、メール、ID、カード番号、URL、IP、ナンバープレート、氏名・住所ラベルを含む文字行を候補として表示します。必ず確認してください。</p></details><details><summary>保存後の画像に位置情報は残りますか？</summary><p>CanvasでJPG、PNG、WebPを新しく生成するため、通常は元画像のEXIF、GPS、端末名、撮影日時をコピーしません。</p></details></section><p class="section-kicker pinyin-related-kicker">関連する画像・文字ツール</p><nav class="landing-links" aria-label="関連する画像プライバシー・漢字ツール"><a href="/ja/image-redaction/" aria-current="page">画像モザイク加工</a><a href="/ja/photo-chinese-character-recognition/">写真から中国語漢字を認識</a><a href="/ja/text-formatter/">テキスト整形</a><a href="/ja/file-text-converter/">文書の中国語変換</a><a href="/ja/japanese-kanji-dictionary/">漢字検索</a><a href="/ja/character-counter/">文字数カウント</a></nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.appはブラウザで使える中国語・日本語・韓国語・画像プライバシーツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
+    <dialog class="redaction-dialog" id="redactionDialog" aria-labelledby="redactionDialogTitle"><form method="dialog"><h2 id="redactionDialogTitle">処理を完了できませんでした</h2><p id="redactionDialogMessage"></p><button type="submit">閉じる</button></form></dialog>
+  </body>
+</html>

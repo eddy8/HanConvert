@@ -80,7 +80,7 @@ if ([...sitemapHreflangs].sort().join("|") !== [...expectedHreflangs].sort().joi
   throw new Error(`sitemap.xml contains unexpected hreflang values: ${[...sitemapHreflangs].sort().join(", ")}`);
 }
 
-for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "text-formatter.js", "han-character-worksheet.js", "handwriting-recognition.js", "handwriting-recognition-worker.js", "photo-chinese-character-recognition.js", "han-character-lookup-core.js", "han-character-lookup.js", "kanji-romaji-core.js", "kanji-to-romaji.js", "japanese-reading-client.js", "japanese-reading-worker.js", "kanji-to-hiragana.js", "japanese-stroke-order.js", "japanese-kanji-data.js", "japanese-kanji-dictionary.js", "japanese-handwriting-recognition.js", "korean-hanja-data.js", "korean-hanja-dictionary.js", "hangul-hanja-converter.js", "korean-name-hanja.js", "webmcp.js"]) {
+for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "text-formatter.js", "image-redaction.js", "han-character-worksheet.js", "handwriting-recognition.js", "handwriting-recognition-worker.js", "photo-chinese-character-recognition.js", "han-character-lookup-core.js", "han-character-lookup.js", "kanji-romaji-core.js", "kanji-to-romaji.js", "japanese-reading-client.js", "japanese-reading-worker.js", "kanji-to-hiragana.js", "japanese-stroke-order.js", "japanese-kanji-data.js", "japanese-kanji-dictionary.js", "japanese-handwriting-recognition.js", "korean-hanja-data.js", "korean-hanja-dictionary.js", "hangul-hanja-converter.js", "korean-name-hanja.js", "webmcp.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
@@ -197,6 +197,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isWordToTxtPage = html.includes('data-tool-page="word-to-txt"');
   const isCharacterCounterPage = html.includes('data-tool-page="character-counter"');
   const isTextFormatterPage = html.includes('data-tool-page="text-formatter"');
+  const isImageRedactionPage = html.includes('data-tool-page="image-redaction"');
   const isWorksheetPage = html.includes('data-tool-page="han-character-worksheet"');
   const isKanjiRomajiPage = html.includes('data-tool-page="kanji-to-romaji"');
   const isHandwritingPage = html.includes('data-tool-page="handwriting-recognition"');
@@ -220,6 +221,9 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   }
   if (localizedHomePages.has(relativePath) && !html.includes('data-route="photo-chinese-character-recognition"')) {
     throw new Error(`${relativePath}: missing photo Chinese-character-recognition link`);
+  }
+  if (localizedHomePages.has(relativePath) && !html.includes('data-route="image-redaction"')) {
+    throw new Error(`${relativePath}: missing image-redaction link`);
   }
   if (localizedHomePages.has(relativePath)) {
     const description = requireMatch(html, /<meta\s+name="description"\s+content="([^"]+)"/, "meta description", relativePath);
@@ -383,10 +387,10 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     if (!webApplication || webApplication.url !== canonical) {
       throw new Error(`${relativePath}: invalid WebApplication schema`);
     }
-    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isTextFormatterPage || isWorksheetPage || isKanjiRomajiPage || isHandwritingPage || isPhotoOcrPage || isHanLookupPage || isKoreanToolPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
+    if ((isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isTextFormatterPage || isImageRedactionPage || isWorksheetPage || isKanjiRomajiPage || isHandwritingPage || isPhotoOcrPage || isHanLookupPage || isKoreanToolPage) && !schema["@graph"]?.some((item) => item["@type"] === "FAQPage")) {
       throw new Error(`${relativePath}: missing tool FAQPage schema`);
     }
-    if ((isWordToTxtPage || isCharacterCounterPage || isTextFormatterPage || isWorksheetPage || isHandwritingPage || isPhotoOcrPage || isHanLookupPage || isKoreanToolPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
+    if ((isWordToTxtPage || isCharacterCounterPage || isTextFormatterPage || isImageRedactionPage || isWorksheetPage || isHandwritingPage || isPhotoOcrPage || isHanLookupPage || isKoreanToolPage) && !schema["@graph"]?.some((item) => item["@type"] === "HowTo")) {
       throw new Error(`${relativePath}: missing tool HowTo schema`);
     }
   }
@@ -469,6 +473,11 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (isPhotoOcrPage) {
     for (const asset of ['src="/photo-chinese-character-recognition.js"', 'href="/photo-chinese-character-recognition.css"', 'id="photoInput"', 'id="photoResultText"']) {
       if (!html.includes(asset)) throw new Error(`${relativePath}: missing photo OCR asset ${asset}`);
+    }
+  }
+  if (isImageRedactionPage) {
+    for (const asset of ['src="/image-redaction.js"', 'id="redactionCanvas"', 'id="redactionAiRun"', 'id="redactionDownload"']) {
+      if (!html.includes(asset)) throw new Error(`${relativePath}: missing image-redaction asset ${asset}`);
     }
   }
   if (isKoreanHandwritingPage) {
@@ -747,10 +756,10 @@ if (!notFound.includes('name="robots" content="noindex, follow"')) {
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
-if (standaloneToolPages !== 100) throw new Error(`expected 100 standalone tool pages, found ${standaloneToolPages}`);
+if (standaloneToolPages !== 105) throw new Error(`expected 105 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
 if (pseoPages !== 105) throw new Error(`expected 105 controlled pSEO pages, found ${pseoPages}`);
 if (blogPages !== 9) throw new Error(`expected 9 blog pages, found ${blogPages}`);
-if (sitemapUrls.length !== 265) throw new Error(`expected 265 sitemap URLs, found ${sitemapUrls.length}`);
+if (sitemapUrls.length !== 270) throw new Error(`expected 270 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, ${pseoPages} controlled pSEO pages, ${blogPages} blog pages, and ${sitemapUrls.length} sitemap URLs.`);

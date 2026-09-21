@@ -11,7 +11,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 test("keeps every static page above its page-type content floor", async () => {
   const { results, findings } = await auditStaticContent();
 
-  assert.equal(results.length, 265);
+  assert.equal(results.length, 270);
   assert.deepEqual(
     findings.map(({ relativePath, deficiencies }) => ({ relativePath, deficiencies })),
     []
