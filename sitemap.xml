@@ -3102,6 +3102,68 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/text-formatter/" />
   </url>
   <!-- text-formatter-tool:end -->
+  <!-- image-redaction-tool:start -->
+  <url>
+    <loc>https://jianfan.app/image-redaction/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/image-redaction/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/image-redaction/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/image-redaction/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/image-redaction/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/image-redaction/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/image-redaction/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/image-redaction/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/image-redaction/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/image-redaction/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/image-redaction/" />
+  </url>
+  <!-- image-redaction-tool:end -->
   <!-- blog:start -->
   <url>
     <loc>https://jianfan.app/blog/</loc>

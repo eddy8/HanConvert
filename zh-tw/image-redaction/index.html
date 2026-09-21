@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="免費線上圖片打馬賽克工具，支援純色遮蔽、馬賽克與模糊處理，可用 AI 自動辨識臉部及疑似電話、電子郵件、證件號等個資。圖片只在瀏覽器本機處理，匯出時移除 EXIF 中繼資料。" />
+    <title>線上圖片打馬賽克 - AI自動辨識臉部與個資遮蔽 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/zh-tw/image-redaction/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/image-redaction/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/image-redaction/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/image-redaction/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/image-redaction/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/image-redaction/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/image-redaction/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.min.css" />
+    <script defer src="/image-redaction.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/zh-tw/image-redaction/#webapp",
+            "name": "線上圖片打馬賽克 - AI自動辨識臉部與個資遮蔽",
+            "url": "https://jianfan.app/zh-tw/image-redaction/",
+            "description": "免費線上圖片打馬賽克工具，支援純色遮蔽、馬賽克與模糊處理，可用 AI 自動辨識臉部及疑似電話、電子郵件、證件號等個資。圖片只在瀏覽器本機處理，匯出時移除 EXIF 中繼資料。",
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript and browser image processing support",
+            "inLanguage": "zh-Hant",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/zh-tw/image-redaction/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "網站首頁",
+                "item": "https://jianfan.app/zh-tw/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "線上圖片打馬賽克 - AI自動辨識臉部與個資遮蔽",
+                "item": "https://jianfan.app/zh-tw/image-redaction/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/zh-tw/image-redaction/#howto",
+            "name": "如何在線上替圖片打馬賽克",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "選擇、拖入或貼上需要處理的圖片。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "手動框出遮蔽區域，或執行 AI 偵測並審核候選。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "選擇純色、馬賽克或模糊效果，調整範圍與強度。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "切換原圖檢查遺漏後，選擇格式並下載新圖片。"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/zh-tw/image-redaction/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "圖片會上傳到伺服器嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不會。圖片解碼、手動編輯、臉部偵測、OCR 與匯出都在目前瀏覽器完成；連線只用於首次下載 AI 模型。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "馬賽克和模糊能徹底隱藏文字嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "無法保證。身分證號、信用卡號、密碼或存取金鑰等重要文字，應使用純色遮蔽並多覆蓋一些範圍。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "AI 可以辨識哪些個資？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "工具會標示臉部，以及疑似電話、電子郵件、證件號、信用卡號、網址、IP、車牌與帶有姓名或地址標籤的文字行，仍需人工確認。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "匯出圖片還有拍攝位置嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "工具透過 Canvas 重新產生 JPG、PNG 或 WebP，正常情況下不會複製原圖中的 EXIF、GPS、裝置型號與拍攝時間。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="image-redaction" data-page-slug="image-redaction" data-locale="zh-TW">
+    <script type="application/json" id="imageRedactionMessages">{"invalidFile":"無法讀取這張圖片，請選擇 JPG、PNG 或 WebP 等常見格式。","fileTooLarge":"圖片超過 30 MB，請壓縮後再試。","loading":"正在開啟圖片…","waiting":"請選擇圖片開始遮蔽","ready":"圖片已就緒，請拖曳框出要隱藏的區域。","resized":"圖片尺寸較大，已等比例縮小以維持瀏覽器穩定。","sampleReady":"範例圖片已載入","modelError":"本機 AI 模型載入失敗，請檢查網路後重試，或繼續手動遮蔽。","chooseDetection":"請至少選擇偵測臉部或偵測個資文字。","loadingFaceModel":"正在載入臉部偵測模型…","detectingFaces":"正在辨識臉部…","loadingTextModel":"正在載入文字辨識模型…","detectingText":"正在本機辨識文字…","ocrProgress":"正在本機辨識文字… {percent}%","aiComplete":"找到 {count} 個待確認候選","appliedSuggestions":"已套用 {count} 個候選區域","exported":"已下載遮蔽後的圖片","exportError":"瀏覽器無法產生下載圖片，請再試一次。","faceSuggestion":"疑似臉部","textSuggestion":"疑似個資文字","categories":{"face":"臉部","email":"電子郵件","url":"網址","network":"IP 位址","secret":"存取金鑰","id":"證件號","card":"信用卡號","phone":"電話","plate":"車牌","personal":"個人資料"}}</script>
+    <a class="skip-nav" href="#main">跳到主要內容</a>
+    <header class="site-header" aria-label="網站頁首"><a class="brand" href="/zh-tw/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">隐</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="主要導覽"><a class="nav-link" href="/zh-tw/">網站首頁</a><label class="language-picker"><span>介面語言</span><select id="localeSelect" aria-label="介面語言"><option value="zh-CN">简体中文</option><option value="zh-TW" selected>繁體中文</option><option value="en">English</option><option value="ja">日本語</option><option value="ko">한국어</option></select></label></nav></header>
+    <main id="main">
+      <section class="tool-hero redaction-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">圖片馬賽克 · AI 個資偵測 · 本機處理</p><h1 id="pageTitle">線上圖片打馬賽克工具</h1><p class="lede">遮蔽照片、截圖與證件圖片中的臉部、姓名、電話、地址等個資。可手動框選，也可由本機 AI 先偵測再逐項確認。</p></div><div class="redaction-hero-signal" aria-hidden="true"><span>LOCAL</span><strong><i></i><i></i><i></i></strong><b>PRIVATE</b></div></section>
+      <section class="standalone-tool image-redaction-tool" aria-labelledby="redactionToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">REDACT / REVIEW / EXPORT</p><h2 id="redactionToolTitle">上傳圖片並遮蔽敏感資訊</h2></div><div class="status-pill" id="redactionStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>請選擇圖片開始遮蔽</span></div></div>
+        <input class="visually-hidden" id="redactionFileInput" type="file" accept="image/jpeg,image/png,image/webp,image/avif,image/bmp" />
+        <div class="redaction-drop-zone" id="redactionDropZone"><div class="redaction-drop-visual" aria-hidden="true"><span></span><span></span><span></span></div><h3>拖入、貼上或選擇一張圖片</h3><p>支援 JPG、PNG、WebP 等瀏覽器可讀取的圖片，單張不超過 30 MB。圖片不會上傳。</p><div><label class="primary-action" for="redactionFileInput">選擇圖片</label><button class="text-button" id="redactionSample" type="button">載入範例</button></div><small>也可以直接按 Ctrl / Cmd + V 貼上截圖</small></div>
+        <div class="redaction-workspace" id="redactionWorkspace" hidden>
+          <div class="redaction-toolbar" role="toolbar" aria-label="遮蔽方式">
+            <fieldset><legend>遮蔽方式</legend><div class="redaction-segmented" role="radiogroup" aria-label="遮蔽方式"><button class="is-active" type="button" data-redaction-effect="solid" role="radio" aria-checked="true">純色遮蔽</button><button type="button" data-redaction-effect="pixelate" role="radio" aria-checked="false">馬賽克</button><button type="button" data-redaction-effect="blur" role="radio" aria-checked="false">模糊</button></div></fieldset>
+            <div class="redaction-range"><div><label for="redactionIntensity">效果強度</label> <output id="redactionIntensityValue">52</output></div><input id="redactionIntensity" type="range" min="10" max="90" value="52" /></div>
+            <fieldset class="redaction-colors"><legend>遮蔽顏色</legend><button class="is-active" type="button" data-redaction-color="#07120f" aria-label="深色" title="深色"></button><button type="button" data-redaction-color="#ffffff" aria-label="白色" title="白色"></button></fieldset>
+            <div class="redaction-tool-actions"><button id="redactionUndo" type="button" title="復原" disabled>↶ <span>復原</span></button><button id="redactionRedo" type="button" title="重做" disabled>↷ <span>重做</span></button><button id="redactionRemove" type="button" disabled>刪除選取區</button><button id="redactionCompare" type="button" aria-pressed="false">查看原圖</button></div>
+          </div>
+          <div class="redaction-editor-grid">
+            <section class="redaction-canvas-panel" aria-labelledby="redactionCanvasTitle"><div class="redaction-file-row"><div><span>目前圖片</span><strong id="redactionFileName">image</strong><small id="redactionFileMeta"></small></div><label for="redactionFileInput">更換圖片</label></div><h3 class="visually-hidden" id="redactionCanvasTitle">圖片馬賽克編輯畫布</h3><p class="redaction-draw-hint">在圖片上拖曳框選；選取後可移動、縮放或刪除。</p><div class="redaction-canvas-frame" id="redactionCanvasFrame"><canvas id="redactionCanvas" tabindex="0" aria-label="圖片馬賽克編輯畫布"></canvas></div><div class="redaction-zoom"><button id="redactionZoomOut" type="button" title="縮小" aria-label="縮小">−</button><output id="redactionZoomValue">100%</output><button id="redactionZoomIn" type="button" title="放大" aria-label="放大">+</button></div></section>
+            <aside class="redaction-side-panel">
+              <section class="redaction-ai-panel" aria-labelledby="redactionAiTitle"><div class="redaction-panel-heading"><span>AI</span><div><h3 id="redactionAiTitle">AI 智慧偵測</h3><p>AI 只會提出候選區域，不會直接修改圖片。請檢查漏偵測與誤判後再套用。</p></div></div><div class="redaction-ai-options"><label><input id="redactionFaceScan" type="checkbox" checked /> <span>偵測臉部</span></label><label><input id="redactionTextScan" type="checkbox" checked /> <span>偵測個資文字</span></label><label class="redaction-ai-language"><span>文字語言</span><select id="redactionOcrLanguage"><option value="chi_tra" selected>繁體中文 + 英文</option><option value="chi_sim">簡體中文 + 英文</option><option value="eng">英文</option><option value="jpn">日文</option><option value="kor">韓文</option></select></label></div><button class="redaction-ai-run" id="redactionAiRun" type="button">開始 AI 偵測</button><p class="redaction-ai-network">首次偵測需連線下載辨識模型，之後可由瀏覽器快取；圖片本身不會傳送到伺服器。</p><div class="redaction-ai-progress" id="redactionAiProgress" hidden><span><span id="redactionAiProgressBar"></span></span><strong id="redactionAiProgressText"></strong></div><div class="redaction-suggestions-head"><h4>待確認候選</h4><span>REVIEW</span></div><p class="redaction-suggestions-empty" id="redactionSuggestionsEmpty">偵測結果會顯示在這裡。</p><div class="redaction-suggestions" id="redactionSuggestions"></div><div class="redaction-suggestion-actions"><button id="redactionApplySuggestions" type="button" disabled>套用所選</button><button id="redactionClearSuggestions" type="button" disabled>全部忽略</button></div></section>
+              <section class="redaction-export-panel" aria-labelledby="redactionExportTitle"><h3 id="redactionExportTitle">匯出圖片</h3><p>匯出會將遮蔽寫入新圖片，並移除 EXIF、GPS 等原圖中繼資料。</p><div class="redaction-export-fields"><label><span>圖片格式</span><select id="redactionExportFormat"><option value="image/png">PNG</option><option value="image/jpeg">JPG</option><option value="image/webp">WebP</option></select></label><div id="redactionExportQualityRow" hidden><div><label for="redactionExportQuality">匯出品質</label> <output id="redactionExportQualityValue">92%</output></div><input id="redactionExportQuality" type="range" min="60" max="100" value="92" /></div></div><button class="primary-action" id="redactionDownload" type="button">下載已遮蔽圖片</button></section>
+            </aside>
+          </div>
+          <div class="redaction-workspace-footer"><p>敏感文字建議使用純色遮蔽。輕度馬賽克或模糊仍可能被推測或還原，AI 偵測也無法保證找出所有個資。</p><button id="redactionReset" type="button">重新開始</button></div>
+        </div>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="redactionFeatureTitle"><div class="section-heading"><p class="section-kicker">照片馬賽克、臉部模糊與個資遮蔽</p><h2 id="redactionFeatureTitle">一次完成手動遮蔽、AI 偵測與安全匯出</h2><p class="seo-intro">這不是替整張照片套上模糊濾鏡，而是重寫指定敏感區域的像素。適合在分享截圖、證件照片、聊天記錄或社群圖片前進行個資檢查。</p></div><div class="seo-grid"><article><h3>手動框選並隨時調整</h3><p>可建立多個區域、拖曳位置與縮放邊界，再分別選擇純色、馬賽克或模糊效果。</p></article><article><h3>AI 先找、人再確認</h3><p>本機模型可偵測臉部，並透過 OCR 檢查電話、電子郵件、證件號、信用卡號、網址與 IP 等疑似個資。</p></article><article><h3>匯出時真正重寫像素</h3><p>結果由 Canvas 重新產生，不是覆蓋一層可移除的網頁物件，也不會沿用原圖的 EXIF 與 GPS 資訊。</p></article></div><section class="redaction-use-cases" aria-labelledby="redactionCasesTitle"><h2 id="redactionCasesTitle">常見圖片遮蔽情境</h2><div><article><h3>截圖與聊天記錄</h3><p>隱藏使用者名稱、頭像、訂單編號、電子郵件、存取金鑰及客戶資料後再分享。</p></article><article><h3>證件與文件照片</h3><p>遮蔽身分證號、護照號碼、住址、簽名與信用卡資料；正式敏感資料應優先使用純色遮蔽。</p></article><article><h3>照片與社群媒體</h3><p>對路人或兒童臉部、車牌、門牌與背景中的定位線索加上馬賽克或遮蔽。</p></article></div></section><section class="redaction-safety" aria-labelledby="redactionSafetyTitle"><h2 id="redactionSafetyTitle">為什麼 AI 候選一定要人工複核</h2><p>拍攝角度、反光、低畫質、特殊字型與複雜背景都會影響辨識。工具會盡量找出候選，但不能保證完全不漏。</p><p>匯出前請放大檢查整張圖片，特別是角落、反射畫面、通知列與背景招牌。真正機密的數字與文字應使用純色覆蓋並保留邊距。</p></section><section class="pinyin-howto" aria-labelledby="redactionHowTitle"><h2 id="redactionHowTitle">如何在線上替圖片打馬賽克</h2><ol><li>選擇、拖入或貼上需要處理的圖片。</li><li>手動框出遮蔽區域，或執行 AI 偵測並審核候選。</li><li>選擇純色、馬賽克或模糊效果，調整範圍與強度。</li><li>切換原圖檢查遺漏後，選擇格式並下載新圖片。</li></ol></section><section class="pinyin-faq" aria-labelledby="redactionFaqTitle"><h2 id="redactionFaqTitle">圖片馬賽克常見問題</h2><details><summary>圖片會上傳到伺服器嗎？</summary><p>不會。圖片解碼、手動編輯、臉部偵測、OCR 與匯出都在目前瀏覽器完成；連線只用於首次下載 AI 模型。</p></details><details><summary>馬賽克和模糊能徹底隱藏文字嗎？</summary><p>無法保證。身分證號、信用卡號、密碼或存取金鑰等重要文字，應使用純色遮蔽並多覆蓋一些範圍。</p></details><details><summary>AI 可以辨識哪些個資？</summary><p>工具會標示臉部，以及疑似電話、電子郵件、證件號、信用卡號、網址、IP、車牌與帶有姓名或地址標籤的文字行，仍需人工確認。</p></details><details><summary>匯出圖片還有拍攝位置嗎？</summary><p>工具透過 Canvas 重新產生 JPG、PNG 或 WebP，正常情況下不會複製原圖中的 EXIF、GPS、裝置型號與拍攝時間。</p></details></section><p class="section-kicker pinyin-related-kicker">相關圖片與文字工具</p><nav class="landing-links" aria-label="相關圖片隱私與漢字工具"><a href="/zh-tw/image-redaction/" aria-current="page">線上圖片打馬賽克</a><a href="/zh-tw/photo-chinese-character-recognition/">拍照辨識漢字</a><a href="/zh-tw/text-formatter/">文字格式化</a><a href="/zh-tw/file-text-converter/">文件文字轉換</a><a href="/zh-tw/chinese-character-lookup/">漢字查詢</a><a href="/zh-tw/character-counter/">字數統計</a></nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app 提供在瀏覽器本機執行的中文、日文、韓文與圖片隱私處理工具。</p><nav class="footer-links" aria-label="頁尾"><a href="/zh-tw/about/">關於我們</a><a href="/zh-tw/contact/">聯絡我們</a><a href="/zh-tw/privacy/">隱私聲明</a></nav></footer>
+    <dialog class="redaction-dialog" id="redactionDialog" aria-labelledby="redactionDialogTitle"><form method="dialog"><h2 id="redactionDialogTitle">無法完成操作</h2><p id="redactionDialogMessage"></p><button type="submit">關閉</button></form></dialog>
+  </body>
+</html>
