@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://cdn.jsdmirror.cn" crossorigin />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script defer src="https://cdn.jsdmirror.cn/npm/hanzi-writer/dist/hanzi-writer.min.js"></script>
     <script defer src="/vendor/pinyin-pro.js"></script>
     <script defer src="/stroke-order-tool.js"></script>
@@ -118,7 +119,7 @@
               <option value="en">English</option>
               <option value="ja">日本語</option>
               <option value="ko" selected>한국어</option>
-          </select></label></nav></header>
+          </select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
     <main id="main">
       <section class="tool-hero stroke-tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">중국어 한자 · 필순 · 쓰기 연습</p><h1 id="pageTitle">중국어 한자 필순·획순 조회</h1><p class="lede">중국어 한자를 입력하면 필순 애니메이션, 획수와 한 획씩 쓰는 순서를 확인하고 간체·번체 쓰기를 연습할 수 있습니다.</p></div><div class="tool-hero-glyphs" aria-hidden="true"><span>永</span><span>1→5</span><span>✎</span></div></section>
       <section class="standalone-tool stroke-order-tool" aria-labelledby="strokeToolTitle">

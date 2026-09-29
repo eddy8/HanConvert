@@ -184,6 +184,7 @@ ${alternates}
     <link rel="alternate" hreflang="x-default" href="${origin}${localizedPath("zh-CN", slug)}" />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script defer src="/image-redaction.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -194,7 +195,7 @@ ${schema}
   <body data-tool-page="image-redaction" data-page-slug="${slug}" data-locale="${locale}">
     <script type="application/json" id="imageRedactionMessages">${messages}</script>
     <a class="skip-nav" href="#main">${meta.skip}</a>
-    <header class="site-header" aria-label="${meta.header}"><a class="brand" href="${localizedPath(locale)}" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">隐</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="${meta.nav}"><a class="nav-link" href="${localizedPath(locale)}">${meta.home}</a><label class="language-picker"><span>${meta.language}</span><select id="localeSelect" aria-label="${meta.language}">${localeOptions}</select></label></nav></header>
+    <header class="site-header" aria-label="${meta.header}"><a class="brand" href="${localizedPath(locale)}" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">隐</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="${meta.nav}"><a class="nav-link" href="${localizedPath(locale)}">${meta.home}</a><label class="language-picker"><span>${meta.language}</span><select id="localeSelect" aria-label="${meta.language}">${localeOptions}</select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
     <main id="main">
       <section class="tool-hero redaction-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">${page.eyebrow}</p><h1 id="pageTitle">${page.heading}</h1><p class="lede">${page.lede}</p></div><div class="redaction-hero-signal" aria-hidden="true"><span>LOCAL</span><strong><i></i><i></i><i></i></strong><b>PRIVATE</b></div></section>
       <section class="standalone-tool image-redaction-tool" aria-labelledby="redactionToolTitle">

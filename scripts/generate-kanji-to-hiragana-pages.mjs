@@ -132,6 +132,7 @@ ${alternates}
     <link rel="alternate" hreflang="x-default" href="${siteOrigin}${localizedPath("zh-CN", slug)}" />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script defer src="/kanji-romaji-core.js"></script>
     <script defer src="/japanese-reading-client.js"></script>
     <script defer src="/kanji-to-hiragana.js"></script>
@@ -148,7 +149,7 @@ function buildHeader(locale) {
   return `    <a class="skip-nav" href="#main">${meta.skip}</a>
     <header class="site-header" aria-label="${meta.siteHeader}"><a class="brand" href="${localizedPath(locale)}" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">読</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="${meta.primary}"><a class="nav-link" href="${localizedPath(locale)}">${meta.home}</a><label class="language-picker"><span>${meta.language}</span><select id="localeSelect" aria-label="${meta.language}">
 ${options}
-          </select></label></nav></header>`;
+          </select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>`;
 }
 
 function buildPage(locale) {

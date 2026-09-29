@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://cdn.jsdmirror.cn" crossorigin />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script defer src="https://cdn.jsdmirror.cn/npm/mammoth/mammoth.browser.min.js"></script>
     <script defer src="https://cdn.jsdmirror.cn/npm/jszip/dist/jszip.min.js"></script>
     <script defer src="/word-to-txt-tool.js"></script>
@@ -140,7 +141,7 @@
               <option value="en">English</option>
               <option value="ja" selected>日本語</option>
               <option value="ko">한국어</option>
-          </select></label></nav></header>
+          </select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
     <main id="main">
       <section class="tool-hero word-txt-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">WORD をプレーンテキストへ · ブラウザー内処理</p><h1 id="pageTitle">WordをTXTに変換</h1><p class="lede">Word（DOCX）から書式や画像を除いたテキストを抽出し、編集して UTF-8 の TXT ファイルとして保存できます。文書はサーバーへ送信されません。</p></div><div class="word-format-flow" aria-hidden="true"><span>DOCX</span><b>→</b><span>TXT</span></div></section>
       <section class="standalone-tool word-to-txt-tool" aria-labelledby="wordToolTitle">

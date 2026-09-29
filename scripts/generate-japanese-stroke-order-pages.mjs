@@ -111,6 +111,7 @@ ${alternates}
     <link rel="preconnect" href="https://cdn.jsdmirror.cn" crossorigin />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script defer src="/japanese-stroke-order.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">${JSON.stringify(schema(locale, page))}</script>
@@ -118,7 +119,7 @@ ${alternates}
   </head>
   <body data-tool-page="japanese-stroke-order" data-page-slug="${slug}" data-locale="${locale}" data-initial-character="永" data-label-pause="${escapeHtml(page.pause)}" data-label-resume="${escapeHtml(page.resume)}" data-svg-label="${escapeHtml(page.svgLabel)}"${messages}>
     <a class="skip-nav" href="#main">${meta.skip}</a>
-    <header class="site-header" aria-label="${meta.header}"><a class="brand" href="${localPath(locale)}" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">漢</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="${meta.nav}"><a class="nav-link" href="${localPath(locale)}">${meta.home}</a><label class="language-picker"><span>${meta.language}</span><select id="localeSelect" aria-label="${meta.language}">${options}</select></label></nav></header>
+    <header class="site-header" aria-label="${meta.header}"><a class="brand" href="${localPath(locale)}" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">漢</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="${meta.nav}"><a class="nav-link" href="${localPath(locale)}">${meta.home}</a><label class="language-picker"><span>${meta.language}</span><select id="localeSelect" aria-label="${meta.language}">${options}</select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
     <main id="main">
       <section class="tool-hero stroke-tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">${page.eyebrow}</p><h1 id="pageTitle">${page.heading}</h1><p class="lede">${page.lede}</p></div><div class="tool-hero-glyphs japanese-stroke-glyphs" aria-hidden="true"><span>永</span><span>一 → 丨 → 丿</span><span>書</span></div></section>
       <section class="standalone-tool stroke-order-tool" aria-labelledby="jpStrokeToolTitle">

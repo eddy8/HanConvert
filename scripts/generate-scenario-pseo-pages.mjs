@@ -171,6 +171,7 @@ ${alternates(scenario.slug)}
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">${schema}</script>
     <!-- seo-schema:end -->
@@ -179,7 +180,7 @@ ${alternates(scenario.slug)}
     <a class="skip-nav" href="#main">${ui.skip}</a>
     <header class="site-header" aria-label="${ui.nav}">
       <a class="brand" href="/${metadata.prefix}" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">字</span><span class="brand-text">JianFan.app</span></a>
-      <nav class="top-actions" aria-label="${ui.nav}"><a class="nav-link" href="/${metadata.prefix}">${ui.home}</a>${buildLanguageMenu(locale, scenario)}</nav>
+      <nav class="top-actions" aria-label="${ui.nav}"><a class="nav-link" href="/${metadata.prefix}">${ui.home}</a>${buildLanguageMenu(locale, scenario)}<button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav>
     </header>
     <main id="main" class="scenario-page-main">
       <nav class="hanzi-breadcrumb" aria-label="${ui.breadcrumb}"><a href="/${metadata.prefix}">${ui.home}</a><span aria-hidden="true">/</span><a href="${parentRoute}">${categoryLabels[locale][scenario.category]}</a><span aria-hidden="true">/</span><span aria-current="page">${escapeHtml(page.name)}</span></nav>

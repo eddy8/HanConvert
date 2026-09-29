@@ -344,6 +344,7 @@ function renderPage(locale) {
     <link rel="alternate" hreflang="x-default" href="${canonicalUrl("zh-CN")}" />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <link rel="stylesheet" href="/photo-chinese-character-recognition.css" />
     <script defer src="/vendor/pinyin-pro.js"></script>
     <script defer src="/photo-chinese-character-recognition.js"></script>
@@ -354,7 +355,7 @@ function renderPage(locale) {
     <a class="skip-nav" href="#main">${meta.skip}</a>
     <header class="site-header" aria-label="${meta.header}">
       <a class="brand" href="${localPath(locale)}" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">拍</span><span>JianFan.app</span></a>
-      <nav class="top-actions" aria-label="${meta.nav}"><a class="nav-link" href="${localPath(locale)}">${meta.home}</a><label class="language-picker"><span>${meta.language}</span><select id="localeSelect" aria-label="${meta.language}">${localeOptions}</select></label></nav>
+      <nav class="top-actions" aria-label="${meta.nav}"><a class="nav-link" href="${localPath(locale)}">${meta.home}</a><label class="language-picker"><span>${meta.language}</span><select id="localeSelect" aria-label="${meta.language}">${localeOptions}</select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav>
     </header>
 
     <main id="main" class="photo-ocr-main">

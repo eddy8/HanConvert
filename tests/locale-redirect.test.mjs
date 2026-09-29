@@ -28,6 +28,14 @@ function mirrorBannerIsScheduled(languages, options = {}) {
     },
     document: {
       readyState: "loading",
+      head: { append() {} },
+      documentElement: { classList: { add() {}, remove() {} }, style: { setProperty() {}, removeProperty() {} }, append() {} },
+      getElementById() {
+        return null;
+      },
+      createElement() {
+        return { append() {}, setAttribute() {}, addEventListener() {} };
+      },
       addEventListener(type) {
         if (type === "DOMContentLoaded") scheduled = true;
       },

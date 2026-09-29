@@ -17,6 +17,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jianfan.app/kanji-to-hiragana/" />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script defer src="/kanji-romaji-core.js"></script>
     <script defer src="/japanese-reading-client.js"></script>
     <script defer src="/kanji-to-hiragana.js"></script>
@@ -115,7 +116,7 @@
               <option value="en">English</option>
               <option value="ja">日本語</option>
               <option value="ko">한국어</option>
-          </select></label></nav></header>
+          </select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
     <main id="main">
       <section class="tool-hero reading-tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">日語讀音 · 平假名 · 振假名 · Ruby 注音</p><h1 id="pageTitle">日文漢字轉平假名與振假名</h1><p class="lede">輸入日語句子，即可轉成純平假名、附振假名的日文或可複製的 Ruby HTML。常見漢字讀音會依單字與句子脈絡判斷。</p></div><div class="reading-hero-sample" aria-hidden="true"><ruby>日本語<rt>にほんご</rt></ruby><span>→</span><strong>にほんご</strong></div></section>
       <section class="standalone-tool hiragana-tool" aria-labelledby="hiraganaToolTitle">

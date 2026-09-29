@@ -17,6 +17,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jianfan.app/kanji-to-hiragana/" />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script defer src="/kanji-romaji-core.js"></script>
     <script defer src="/japanese-reading-client.js"></script>
     <script defer src="/kanji-to-hiragana.js"></script>
@@ -115,7 +116,7 @@
               <option value="en">English</option>
               <option value="ja" selected>日本語</option>
               <option value="ko">한국어</option>
-          </select></label></nav></header>
+          </select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
     <main id="main">
       <section class="tool-hero reading-tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">漢字の読み · ひらがな · ふりがな · ルビ</p><h1 id="pageTitle">漢字をひらがなに変換・ふりがなを自動作成</h1><p class="lede">漢字とかなが混在した文章を、ひらがな、ふりがな付き日本語、送り仮名を残した読み、Ruby HTMLへ変換できます。一般的な単語は文脈から読み方を判定します。</p></div><div class="reading-hero-sample" aria-hidden="true"><ruby>日本語<rt>にほんご</rt></ruby><span>→</span><strong>にほんご</strong></div></section>
       <section class="standalone-tool hiragana-tool" aria-labelledby="hiraganaToolTitle">
