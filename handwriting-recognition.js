@@ -211,6 +211,10 @@
     } else {
       window.addEventListener("resize", resizeCanvas);
     }
+    // Stroke colour follows the page theme, so redraw when the theme is toggled.
+    if (typeof MutationObserver === "function") {
+      new MutationObserver(redrawCanvas).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    }
   }
 
   function setupControls() {
@@ -349,11 +353,12 @@
     context.setTransform(1, 0, 0, 1, 0, 0);
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.setTransform(scaleX, 0, 0, scaleY, 0, 0);
-    context.strokeStyle = "#eefcf5";
+    const themeStyle = getComputedStyle(document.documentElement);
+    context.strokeStyle = themeStyle.getPropertyValue("--ink").trim() || "#eefcf5";
     context.lineWidth = 7;
     context.lineCap = "round";
     context.lineJoin = "round";
-    context.shadowColor = "rgba(64, 242, 176, 0.28)";
+    context.shadowColor = `rgba(${themeStyle.getPropertyValue("--ac").trim() || "64, 242, 176"}, 0.28)`;
     context.shadowBlur = 4;
     for (const stroke of currentStroke ? [...strokes, currentStroke] : strokes) drawStroke(stroke);
   }
