@@ -17,6 +17,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jianfan.app/kanji-to-hiragana/" />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script defer src="/kanji-romaji-core.js"></script>
     <script defer src="/japanese-reading-client.js"></script>
     <script defer src="/kanji-to-hiragana.js"></script>
@@ -107,7 +108,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body data-tool-page="kanji-to-hiragana" data-page-slug="kanji-to-hiragana" data-locale="en" data-dictionary-path="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/" data-dictionary-fallback-path="https://cdn.jsdmirror.cn/npm/kuromoji@0.1.2/dict/" data-message-idle="Waiting for Japanese text" data-message-components="Loading reading components {current}/{total}" data-message-dictionary="Loading Japanese dictionary {current}/{total}" data-message-initializing="Initializing Japanese dictionary" data-message-converting="Converting section {current}/{total}" data-message-complete="Preparing the result" data-message-ready="Japanese reading conversion complete" data-message-copied-text="Plain text copied" data-message-copied-html="Ruby HTML copied" data-message-copy-failed="Automatic copy failed. Select the output manually." data-message-component-error="The reading component failed to load. Refresh the page." data-message-dictionary-error="The Japanese dictionary failed to load. Check your connection and retry." data-message-not-japanese="Enter text containing Japanese kanji or kana" data-message-too-long="Text is limited to {limit} characters">
+  <body data-tool-page="kanji-to-hiragana" data-page-slug="kanji-to-hiragana" data-locale="en" data-dictionary-path="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/" data-dictionary-fallback-path="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/" data-message-idle="Waiting for Japanese text" data-message-components="Loading reading components {current}/{total}" data-message-dictionary="Loading Japanese dictionary {current}/{total}" data-message-initializing="Initializing Japanese dictionary" data-message-converting="Converting section {current}/{total}" data-message-complete="Preparing the result" data-message-ready="Japanese reading conversion complete" data-message-copied-text="Plain text copied" data-message-copied-html="Ruby HTML copied" data-message-copy-failed="Automatic copy failed. Select the output manually." data-message-component-error="The reading component failed to load. Refresh the page." data-message-dictionary-error="The Japanese dictionary failed to load. Check your connection and retry." data-message-not-japanese="Enter text containing Japanese kanji or kana" data-message-too-long="Text is limited to {limit} characters">
     <a class="skip-nav" href="#main">Skip to main content</a>
     <header class="site-header" aria-label="Site header"><a class="brand" href="/en/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">読</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="Primary navigation"><a class="nav-link" href="/en/">Home</a><label class="language-picker"><span>Language</span><select id="localeSelect" aria-label="Language">
               <option value="zh-CN">简体中文</option>
@@ -115,7 +116,7 @@
               <option value="en" selected>English</option>
               <option value="ja">日本語</option>
               <option value="ko">한국어</option>
-          </select></label></nav></header>
+          </select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
     <main id="main">
       <section class="tool-hero reading-tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">KANJI READING · HIRAGANA · FURIGANA · RUBY</p><h1 id="pageTitle">Kanji to Hiragana &amp; Furigana Converter</h1><p class="lede">Convert Japanese sentences to Hiragana, add Furigana above Kanji, keep Okurigana, or generate clean Ruby HTML. Common readings are resolved from words and sentence context.</p></div><div class="reading-hero-sample" aria-hidden="true"><ruby>日本語<rt>にほんご</rt></ruby><span>→</span><strong>にほんご</strong></div></section>
       <section class="standalone-tool hiragana-tool" aria-labelledby="hiraganaToolTitle">

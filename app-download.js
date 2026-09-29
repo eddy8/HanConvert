@@ -106,15 +106,19 @@
   });
   if (!target) return;
 
-  const navigation = document.querySelector(".top-actions");
-  const languagePicker = navigation?.querySelector(".language-picker");
-  if (!navigation || !languagePicker || navigation.querySelector(".app-download-link")) return;
+  // This script runs in <head>: flag support before first paint so the static link is shown without a layout shift.
+  document.documentElement.classList.add("has-app-download");
 
-  const link = document.createElement("a");
-  link.className = "nav-link app-download-link";
-  link.href = target.href;
-  link.download = target.fileName;
-  link.title = api.LINK_TITLE;
-  link.textContent = api.getLabel(document.documentElement.lang);
-  navigation.insertBefore(link, languagePicker);
+  const configureLink = () => {
+    const link = document.getElementById("appDownloadLink");
+    if (!link) return;
+    link.href = target.href;
+    link.download = target.fileName;
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", configureLink, { once: true });
+  } else {
+    configureLink();
+  }
 })();

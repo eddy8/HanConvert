@@ -17,6 +17,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jianfan.app/kanji-to-romaji/" />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script defer src="/kanji-romaji-core.js"></script>
     <script defer src="/japanese-reading-client.js"></script>
     <script defer src="/kanji-to-romaji.js"></script>
@@ -101,7 +102,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body data-tool-page="kanji-to-romaji" data-page-slug="kanji-to-romaji" data-locale="ko" data-dictionary-path="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/" data-dictionary-fallback-path="https://cdn.jsdmirror.cn/npm/kuromoji@0.1.2/dict/" data-message-idle="일본어 입력 대기" data-message-loading="처음 사용할 일본어 사전을 불러오는 중" data-message-converting="{total}개 중 {current}번째 구간 변환 중" data-message-ready="일본어 발음 변환 완료" data-message-copied="변환 결과를 복사했습니다" data-message-copy-failed="자동 복사에 실패했습니다. 직접 복사해 주세요." data-message-component-error="변환 기능을 불러오지 못했습니다. 페이지를 새로 고쳐 주세요." data-message-dictionary-error="일본어 사전을 불러오지 못했습니다. 네트워크를 확인하고 다시 시도해 주세요." data-message-not-japanese="일본 한자 또는 가나가 포함된 텍스트를 입력하세요" data-message-too-long="텍스트는 {limit}자까지 입력할 수 있습니다">
+  <body data-tool-page="kanji-to-romaji" data-page-slug="kanji-to-romaji" data-locale="ko" data-dictionary-path="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/" data-dictionary-fallback-path="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/" data-message-idle="일본어 입력 대기" data-message-loading="처음 사용할 일본어 사전을 불러오는 중" data-message-converting="{total}개 중 {current}번째 구간 변환 중" data-message-ready="일본어 발음 변환 완료" data-message-copied="변환 결과를 복사했습니다" data-message-copy-failed="자동 복사에 실패했습니다. 직접 복사해 주세요." data-message-component-error="변환 기능을 불러오지 못했습니다. 페이지를 새로 고쳐 주세요." data-message-dictionary-error="일본어 사전을 불러오지 못했습니다. 네트워크를 확인하고 다시 시도해 주세요." data-message-not-japanese="일본 한자 또는 가나가 포함된 텍스트를 입력하세요" data-message-too-long="텍스트는 {limit}자까지 입력할 수 있습니다">
     <a class="skip-nav" href="#main">주요 내용으로 이동</a>
     <header class="site-header" aria-label="사이트 헤더">
       <a class="brand" href="/ko/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">漢</span><span>JianFan.app</span></a>
@@ -111,7 +112,7 @@
               <option value="en">English</option>
               <option value="ja">日本語</option>
               <option value="ko" selected>한국어</option>
-          </select></label></nav>
+          </select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav>
     </header>
     <main id="main">
       <section class="tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">일본어 발음 · 로마자 · 히라가나 · 후리가나</p><h1 id="pageTitle">일본어 한자 로마자 변환기</h1><p class="lede">한자와 가나가 섞인 일본어 문장을 로마자, 히라가나, 가타카나 또는 후리가나로 변환합니다. 일반 단어와 문장 문맥을 바탕으로 읽는 법을 분석합니다.</p></div><div class="tool-hero-glyphs" aria-hidden="true"><span>漢</span><span>かな</span><span>A</span></div></section>

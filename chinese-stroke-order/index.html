@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/hanzi-writer/dist/hanzi-writer.min.js"></script>
     <script defer src="/vendor/pinyin-pro.js"></script>
     <script defer src="/stroke-order-tool.js"></script>
@@ -118,7 +119,7 @@
               <option value="en">English</option>
               <option value="ja">日本語</option>
               <option value="ko">한국어</option>
-          </select></label></nav></header>
+          </select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
     <main id="main">
       <section class="tool-hero stroke-tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">笔顺动画 · 逐笔演示 · 书写练习</p><h1 id="pageTitle">汉字笔顺查询与动画演示</h1><p class="lede">输入一个或多个汉字，查看笔画顺序、笔画数和动态书写过程，也可以在田字格中跟写练习。支持常见简体字和繁体字。</p></div><div class="tool-hero-glyphs" aria-hidden="true"><span>永</span><span>1→5</span><span>✎</span></div></section>
       <section class="standalone-tool stroke-order-tool" aria-labelledby="strokeToolTitle">

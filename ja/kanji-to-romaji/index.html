@@ -17,6 +17,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jianfan.app/kanji-to-romaji/" />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script defer src="/kanji-romaji-core.js"></script>
     <script defer src="/japanese-reading-client.js"></script>
     <script defer src="/kanji-to-romaji.js"></script>
@@ -101,7 +102,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body data-tool-page="kanji-to-romaji" data-page-slug="kanji-to-romaji" data-locale="ja" data-dictionary-path="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/" data-dictionary-fallback-path="https://cdn.jsdmirror.cn/npm/kuromoji@0.1.2/dict/" data-message-idle="日本語の入力待ち" data-message-loading="初回利用のため日本語辞書を読み込み中" data-message-converting="{total} 件中 {current} 件目を変換中" data-message-ready="日本語の読み方変換が完了しました" data-message-copied="変換結果をコピーしました" data-message-copy-failed="自動コピーに失敗しました。手動でコピーしてください。" data-message-component-error="変換機能を読み込めませんでした。ページを再読み込みしてください。" data-message-dictionary-error="日本語辞書を読み込めませんでした。通信環境を確認して再試行してください。" data-message-not-japanese="漢字またはかなを含む日本語を入力してください" data-message-too-long="テキストは {limit} 文字までです">
+  <body data-tool-page="kanji-to-romaji" data-page-slug="kanji-to-romaji" data-locale="ja" data-dictionary-path="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/" data-dictionary-fallback-path="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/" data-message-idle="日本語の入力待ち" data-message-loading="初回利用のため日本語辞書を読み込み中" data-message-converting="{total} 件中 {current} 件目を変換中" data-message-ready="日本語の読み方変換が完了しました" data-message-copied="変換結果をコピーしました" data-message-copy-failed="自動コピーに失敗しました。手動でコピーしてください。" data-message-component-error="変換機能を読み込めませんでした。ページを再読み込みしてください。" data-message-dictionary-error="日本語辞書を読み込めませんでした。通信環境を確認して再試行してください。" data-message-not-japanese="漢字またはかなを含む日本語を入力してください" data-message-too-long="テキストは {limit} 文字までです">
     <a class="skip-nav" href="#main">メインコンテンツへ移動</a>
     <header class="site-header" aria-label="サイトヘッダー">
       <a class="brand" href="/ja/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">漢</span><span>JianFan.app</span></a>
@@ -111,7 +112,7 @@
               <option value="en">English</option>
               <option value="ja" selected>日本語</option>
               <option value="ko">한국어</option>
-          </select></label></nav>
+          </select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav>
     </header>
     <main id="main">
       <section class="tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">漢字の読み方 · ローマ字 · ひらがな · ふりがな</p><h1 id="pageTitle">漢字をローマ字・ひらがなに変換</h1><p class="lede">漢字とかなが混在する日本語を入力すると、ローマ字、ひらがな、カタカナ、ふりがなへ変換できます。一般的な単語と文章の文脈から読み方を判定します。</p></div><div class="tool-hero-glyphs" aria-hidden="true"><span>漢</span><span>かな</span><span>A</span></div></section>

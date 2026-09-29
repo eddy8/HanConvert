@@ -390,6 +390,7 @@ ${alternates}
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/mammoth/mammoth.browser.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/jszip/dist/jszip.min.js"></script>
     <script defer src="/word-to-txt-tool.js"></script>
@@ -422,7 +423,7 @@ ${buildHead(locale, page)}
     <a class="skip-nav" href="#main">${meta.skip}</a>
     <header class="site-header" aria-label="${meta.header}"><a class="brand" href="${localizedPath(locale)}" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">文</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="${meta.nav}"><a class="nav-link" href="${localizedPath(locale)}">${meta.home}</a><label class="language-picker"><span>${meta.language}</span><select id="localeSelect" aria-label="${meta.language}">
 ${localeOptions}
-          </select></label></nav></header>
+          </select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
     <main id="main">
       <section class="tool-hero word-txt-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">${page.eyebrow}</p><h1 id="pageTitle">${page.heading}</h1><p class="lede">${page.lede}</p></div><div class="word-format-flow" aria-hidden="true"><span>DOCX</span><b>→</b><span>TXT</span></div></section>
       <section class="standalone-tool word-to-txt-tool" aria-labelledby="wordToolTitle">

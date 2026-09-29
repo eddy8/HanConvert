@@ -477,6 +477,7 @@ ${alternates}
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script defer src="/character-counter.js"></script>
     <script defer src="/webmcp.js"></script>
     <!-- seo-schema:start -->
@@ -518,7 +519,7 @@ ${buildHead(locale, page)}
     <a class="skip-nav" href="#main">${meta.skip}</a>
     <header class="site-header" aria-label="${meta.header}"><a class="brand" href="${localizedPath(locale)}" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">字</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="${meta.nav}"><a class="nav-link" href="${localizedPath(locale)}">${meta.home}</a><label class="language-picker"><span>${meta.language}</span><select id="localeSelect" aria-label="${meta.language}">
 ${localeOptions}
-          </select></label></nav></header>
+          </select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
     <main id="main">
       <section class="tool-hero counter-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">${page.eyebrow}</p><h1 id="pageTitle">${page.heading}</h1><p class="lede">${page.lede}</p></div><div class="counter-hero-readout" aria-hidden="true"><span><b>字</b>1,024</span><span><b>A</b>512</span><span><b>8</b>KB</span></div></section>
       <section class="standalone-tool character-counter-tool" aria-labelledby="counterToolTitle">

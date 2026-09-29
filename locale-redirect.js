@@ -8,6 +8,7 @@
     setupSegmentedRadioGroups();
 
     if (shouldShowMirrorBanner(normalizedLanguages)) {
+      reserveMirrorBannerSpace();
       showMirrorBanner();
     }
     return;
@@ -146,6 +147,20 @@
     });
   }
 
+  function reserveMirrorBannerSpace() {
+    // Reserve the banner height before first paint so the page does not jump when the banner is inserted.
+    const style = document.createElement("style");
+    style.id = "mirrorSpeedBannerSpace";
+    style.textContent = "html.has-mirror-banner body { padding-top: var(--mirror-banner-height, 52px); }";
+    document.head.append(style);
+    document.documentElement.classList.add("has-mirror-banner");
+  }
+
+  function releaseMirrorBannerSpace() {
+    document.documentElement.classList.remove("has-mirror-banner");
+    document.documentElement.style.removeProperty("--mirror-banner-height");
+  }
+
   function showMirrorBanner() {
     const renderBanner = () => {
       if (document.getElementById("mirrorSpeedBanner")) return;
@@ -153,8 +168,19 @@
       const style = document.createElement("style");
       style.textContent = `
         .mirror-speed-banner {
-          position: sticky;
+          --banner-bg: linear-gradient(90deg, #0d1c19, #12352c 55%, #1d1a0d);
+          --banner-ink: #eefcf5;
+          --banner-strong: #ffdd8f;
+          --banner-line: rgba(64, 242, 176, 0.3);
+          --banner-link-line: rgba(255, 204, 102, 0.72);
+          --banner-link-bg: rgba(255, 204, 102, 0.12);
+          --banner-close-line: rgba(238, 252, 245, 0.24);
+          --banner-close-bg: rgba(238, 252, 245, 0.08);
+          --banner-focus: rgba(255, 204, 102, 0.95);
+          position: fixed;
           top: 0;
+          right: 0;
+          left: 0;
           z-index: 50;
           display: flex;
           align-items: center;
@@ -162,26 +188,38 @@
           gap: 14px;
           min-height: 46px;
           padding: 9px 18px;
-          border-bottom: 1px solid rgba(64, 242, 176, 0.3);
-          background: linear-gradient(90deg, #07120f, #12352c 48%, #18130a);
-          color: #eefcf5;
-          box-shadow: 0 14px 44px rgba(0, 0, 0, 0.28);
+          border-bottom: 1px solid var(--banner-line);
+          background: var(--banner-bg);
+          color: var(--banner-ink);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
           font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif;
           font-size: 14px;
           line-height: 1.35;
         }
+        :root[data-theme="light"] .mirror-speed-banner {
+          --banner-bg: linear-gradient(90deg, #e6f3ed, #f1f7f3 55%, #f8f3e2);
+          --banner-ink: #12261f;
+          --banner-strong: #8a4f00;
+          --banner-line: rgba(13, 110, 84, 0.24);
+          --banner-link-line: rgba(138, 79, 0, 0.55);
+          --banner-link-bg: rgba(178, 106, 0, 0.1);
+          --banner-close-line: rgba(18, 38, 31, 0.24);
+          --banner-close-bg: rgba(18, 38, 31, 0.06);
+          --banner-focus: rgba(178, 106, 0, 0.9);
+          box-shadow: 0 8px 24px rgba(20, 60, 48, 0.12);
+        }
         .mirror-speed-banner strong {
-          color: #ffdd8f;
+          color: var(--banner-strong);
           font-weight: 800;
         }
         .mirror-speed-banner a {
           flex: 0 0 auto;
           min-height: 30px;
           padding: 6px 12px;
-          border: 1px solid rgba(255, 204, 102, 0.72);
+          border: 1px solid var(--banner-link-line);
           border-radius: 8px;
-          background: rgba(255, 204, 102, 0.12);
-          color: #ffdd8f;
+          background: var(--banner-link-bg);
+          color: var(--banner-strong);
           font-weight: 800;
           text-decoration: none;
         }
@@ -191,16 +229,16 @@
           width: 30px;
           height: 30px;
           place-items: center;
-          border: 1px solid rgba(238, 252, 245, 0.2);
+          border: 1px solid var(--banner-close-line);
           border-radius: 999px;
-          background: rgba(238, 252, 245, 0.08);
-          color: #eefcf5;
+          background: var(--banner-close-bg);
+          color: var(--banner-ink);
           cursor: pointer;
           font: inherit;
         }
         .mirror-speed-banner a:focus-visible,
         .mirror-speed-banner button:focus-visible {
-          outline: 3px solid rgba(255, 204, 102, 0.95);
+          outline: 3px solid var(--banner-focus);
           outline-offset: 2px;
         }
         @media (max-width: 680px) {
@@ -237,18 +275,34 @@
       closeButton.addEventListener("click", () => {
         localStorage.setItem("jianfan-mirror-banner-dismissed", "1");
         banner.remove();
+        releaseMirrorBannerSpace();
       });
 
       banner.append(message, link, closeButton);
       document.head.append(style);
-      document.body.prepend(banner);
+      // The head script runs before <body> exists; attach to <html> so the banner paints with the first frame.
+      if (document.body) document.body.prepend(banner);
+      else document.documentElement.append(banner);
+
+      const syncHeight = () => {
+        document.documentElement.style.setProperty("--mirror-banner-height", `${banner.offsetHeight}px`);
+      };
+      syncHeight();
+      if (typeof ResizeObserver === "function") new ResizeObserver(syncHeight).observe(banner);
     };
 
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", renderBanner, { once: true });
-      return;
-    }
-
     renderBanner();
+
+    if (document.readyState === "loading") {
+      // Move the banner into <body> once it is parsed so sibling selectors keep working.
+      document.addEventListener(
+        "DOMContentLoaded",
+        () => {
+          const banner = document.getElementById("mirrorSpeedBanner");
+          if (banner && document.body && banner.parentNode !== document.body) document.body.prepend(banner);
+        },
+        { once: true }
+      );
+    }
   }
 })();

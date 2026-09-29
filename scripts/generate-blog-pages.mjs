@@ -222,7 +222,7 @@ function renderHeader() {
       <nav class="top-actions" aria-label="主要导航">
         <a class="nav-link" href="/">网站首页</a>
         <a class="nav-link" href="/blog/" aria-current="page">使用指南</a>
-      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav>
     </header>`;
 }
 
@@ -279,6 +279,7 @@ ${articles.map(renderIndexCard).join("\n")}
 ${alternateLinks()}
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
 ${schema}
@@ -368,6 +369,7 @@ function renderArticlePage(article) {
 ${alternateLinks(article.slug)}
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
 ${schema}

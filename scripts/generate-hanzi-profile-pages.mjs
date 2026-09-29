@@ -144,6 +144,7 @@ ${buildAlternateLinks(suffix)}
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">${JSON.stringify(schema, null, 2)}</script>
     <!-- seo-schema:end -->
@@ -169,7 +170,7 @@ function buildHeader(locale, suffix = "") {
         <a class="nav-link" href="/${prefix}">${ui.home}</a>
         <a class="nav-link" href="${route(locale)}">${ui.dictionary}</a>
         ${buildLanguageMenu(locale, suffix)}
-      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav>
     </header>`;
 }
 

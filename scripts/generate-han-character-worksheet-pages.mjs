@@ -436,6 +436,7 @@ ${alternates}
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
 ${toolDependencies}
     <script defer src="/han-character-worksheet.js"></script>
     <!-- seo-schema:start -->
@@ -478,7 +479,7 @@ ${buildHead(locale, page)}
         <label class="language-picker"><span>${meta.language}</span><select id="localeSelect" aria-label="${meta.language}">
 ${localeOptions}
           </select></label>
-      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav>
     </header>
     <main id="main">
       <section class="tool-hero worksheet-tool-hero" aria-labelledby="pageTitle">

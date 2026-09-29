@@ -17,6 +17,7 @@
     <link rel="alternate" hreflang="x-default" href="https://jianfan.app/kanji-to-hiragana/" />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script defer src="/kanji-romaji-core.js"></script>
     <script defer src="/japanese-reading-client.js"></script>
     <script defer src="/kanji-to-hiragana.js"></script>
@@ -107,7 +108,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body data-tool-page="kanji-to-hiragana" data-page-slug="kanji-to-hiragana" data-locale="ja" data-dictionary-path="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/" data-dictionary-fallback-path="https://cdn.jsdmirror.cn/npm/kuromoji@0.1.2/dict/" data-message-idle="日本語の入力待ち" data-message-components="読み方変換を読み込み中 {current}/{total}" data-message-dictionary="日本語辞書を読み込み中 {current}/{total}" data-message-initializing="日本語辞書を初期化中" data-message-converting="{total}件中{current}件目を変換中" data-message-complete="変換結果を準備中" data-message-ready="読み方の変換が完了しました" data-message-copied-text="テキストをコピーしました" data-message-copied-html="Ruby HTMLをコピーしました" data-message-copy-failed="自動コピーに失敗しました。出力を選択してコピーしてください。" data-message-component-error="変換機能を読み込めませんでした。ページを再読み込みしてください。" data-message-dictionary-error="日本語辞書を読み込めませんでした。通信環境を確認して再試行してください。" data-message-not-japanese="漢字またはかなを含む日本語を入力してください" data-message-too-long="テキストは{limit}文字までです">
+  <body data-tool-page="kanji-to-hiragana" data-page-slug="kanji-to-hiragana" data-locale="ja" data-dictionary-path="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/" data-dictionary-fallback-path="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/" data-message-idle="日本語の入力待ち" data-message-components="読み方変換を読み込み中 {current}/{total}" data-message-dictionary="日本語辞書を読み込み中 {current}/{total}" data-message-initializing="日本語辞書を初期化中" data-message-converting="{total}件中{current}件目を変換中" data-message-complete="変換結果を準備中" data-message-ready="読み方の変換が完了しました" data-message-copied-text="テキストをコピーしました" data-message-copied-html="Ruby HTMLをコピーしました" data-message-copy-failed="自動コピーに失敗しました。出力を選択してコピーしてください。" data-message-component-error="変換機能を読み込めませんでした。ページを再読み込みしてください。" data-message-dictionary-error="日本語辞書を読み込めませんでした。通信環境を確認して再試行してください。" data-message-not-japanese="漢字またはかなを含む日本語を入力してください" data-message-too-long="テキストは{limit}文字までです">
     <a class="skip-nav" href="#main">メインコンテンツへ移動</a>
     <header class="site-header" aria-label="サイトヘッダー"><a class="brand" href="/ja/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">読</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="メインナビゲーション"><a class="nav-link" href="/ja/">ホーム</a><label class="language-picker"><span>表示言語</span><select id="localeSelect" aria-label="表示言語">
               <option value="zh-CN">简体中文</option>
@@ -115,7 +116,7 @@
               <option value="en">English</option>
               <option value="ja" selected>日本語</option>
               <option value="ko">한국어</option>
-          </select></label></nav></header>
+          </select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
     <main id="main">
       <section class="tool-hero reading-tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">漢字の読み · ひらがな · ふりがな · ルビ</p><h1 id="pageTitle">漢字をひらがなに変換・ふりがなを自動作成</h1><p class="lede">漢字とかなが混在した文章を、ひらがな、ふりがな付き日本語、送り仮名を残した読み、Ruby HTMLへ変換できます。一般的な単語は文脈から読み方を判定します。</p></div><div class="reading-hero-sample" aria-hidden="true"><ruby>日本語<rt>にほんご</rt></ruby><span>→</span><strong>にほんご</strong></div></section>
       <section class="standalone-tool hiragana-tool" aria-labelledby="hiraganaToolTitle">

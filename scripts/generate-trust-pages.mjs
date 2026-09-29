@@ -265,6 +265,7 @@ function buildPage(locale, slug, page, content) {
 ${buildAlternates(slug)}
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
 ${schema}
@@ -280,7 +281,7 @@ ${schema}
         <div class="language-picker privacy-language-links" role="group" aria-label="${meta.language}">
 ${buildLanguageLinks(locale, slug)}
         </div>
-      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav>
     </header>
     <main id="main">
       <section class="hero-shell trust-hero" aria-labelledby="pageTitle">

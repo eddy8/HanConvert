@@ -8,7 +8,7 @@ const checkOnly = process.argv.includes("--check");
 const slug = "kanji-to-romaji";
 const sampleText = "明日は東京で日本語を勉強します。";
 const dictionaryPath = "https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/";
-const dictionaryFallbackPath = "https://cdn.jsdmirror.cn/npm/kuromoji@0.1.2/dict/";
+const dictionaryFallbackPath = "https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/";
 
 const locales = {
   "zh-CN": { prefix: "", lang: "zh-CN", hreflang: "zh-Hans", label: "简体中文", home: "网站首页", skip: "跳到主要内容", language: "界面语言", siteHeader: "网站页眉", primary: "主要导航", footerAria: "页脚", about: "关于我们", contact: "联系我们", privacy: "隐私声明" },
@@ -346,6 +346,7 @@ ${alternates}
     <link rel="alternate" hreflang="x-default" href="${siteOrigin}${localizedPath("zh-CN", slug)}" />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script defer src="/kanji-romaji-core.js"></script>
     <script defer src="/japanese-reading-client.js"></script>
     <script defer src="/kanji-to-romaji.js"></script>
@@ -364,7 +365,7 @@ function buildHeader(locale) {
       <a class="brand" href="${localizedPath(locale)}" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">漢</span><span>JianFan.app</span></a>
       <nav class="top-actions" aria-label="${meta.primary}"><a class="nav-link" href="${localizedPath(locale)}">${meta.home}</a><label class="language-picker"><span>${meta.language}</span><select id="localeSelect" aria-label="${meta.language}">
 ${options}
-          </select></label></nav>
+          </select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav>
     </header>`;
 }
 

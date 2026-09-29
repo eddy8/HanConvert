@@ -603,6 +603,7 @@ ${alternates}
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <script src="/locale-redirect.js"></script>
     <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
     <script type="module" src="/japanese-tools.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -630,7 +631,7 @@ function buildHeader(locale) {
 ${options}
           </select>
         </label>
-      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav>
     </header>`;
 }
 
