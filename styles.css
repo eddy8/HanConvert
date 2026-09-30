@@ -9379,12 +9379,22 @@ html[lang="ko"] .worksheet-sheet {
     background: var(--paper);
   }
 
+  html.has-mirror-banner body {
+    padding-top: 0;
+  }
+
+  body::before {
+    display: none;
+  }
+
   body > .skip-nav,
   body > .site-header,
   body > .site-footer,
   main > .tool-hero,
   main > .seo-band,
   main > .tool-guide-strip,
+  main > .scenario-cluster,
+  .mirror-speed-banner,
   .worksheet-tool > .standalone-tool-head,
   .worksheet-controls,
   .worksheet-preview-head {
