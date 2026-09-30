@@ -117,6 +117,9 @@
     stepButton.addEventListener("click", playNextStroke);
     quizButton.addEventListener("click", startQuiz);
     resetButton.addEventListener("click", resetWriter);
+    if (typeof MutationObserver === "function") {
+      new MutationObserver(applyWriterTheme).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    }
     outlineToggle.addEventListener("change", () => {
       if (!writer) return;
       if (outlineToggle.checked) writer.showOutline({ duration: 180 });
@@ -162,10 +165,7 @@
           charDataLoader: loadCharacterData,
           showOutline: outlineToggle.checked,
           showCharacter: true,
-          strokeColor: "#f2f6f4",
-          outlineColor: "#31574d",
-          highlightColor: "#ffcc66",
-          drawingColor: "#40f2b0",
+          ...getWriterColors(),
           strokeAnimationSpeed: 1.15,
           strokeHighlightSpeed: 1.4,
           drawingWidth: 18,
@@ -188,6 +188,23 @@
       setStatus("missing", "error", { character });
       setControlsDisabled(true, true);
     }
+  }
+
+  function getWriterColors() {
+    const isLight = document.documentElement.getAttribute("data-theme") === "light";
+    return isLight
+      ? { strokeColor: "#12261f", outlineColor: "#b9cdc4", highlightColor: "#c26a00", drawingColor: "#0b7a58" }
+      : { strokeColor: "#f2f6f4", outlineColor: "#31574d", highlightColor: "#ffcc66", drawingColor: "#40f2b0" };
+  }
+
+  // HanziWriter keeps colours per rendered stroke, so rebuild it with the new palette when the theme changes.
+  async function applyWriterTheme() {
+    if (!writer) return;
+    writer.cancelQuiz();
+    await writer.pauseAnimation();
+    writerTarget.replaceChildren();
+    writer = undefined;
+    await showCharacter();
   }
 
   async function loadCharacterData(character) {
