@@ -130,9 +130,29 @@
     };
   }
 
+  // Layout model in CSS pixels at the widest preview width (760px, print is wider still), measured from the rendered sheet.
+  const SHEET_WIDTH = 760;
+  const SHEET_RATIOS = { a4: 297 / 210, letter: 11 / 8.5 };
+  const SHEET_CONTENT_WIDTH = SHEET_WIDTH * (1 - 0.104);
+  const SHEET_FIXED_HEIGHT = 109; // header, footer and vertical padding
+  const CONTENT_PADDING_TOP = 10;
+  const BLOCK_GAP = 12;
+  const HEADING_HEIGHT = 27;
+  const STROKE_ORDER_HEIGHT = 55;
+  const ROW_GAP = 4;
+  const CELL_GAP = 3;
+  const SAFETY_MARGIN = 6;
+
   function getCharactersPerPage(settings) {
-    const blockUnits = settings.rowsPerCharacter * 2 + (settings.showStrokeOrder ? 2 : 0) + 1;
-    return Math.max(1, Math.min(6, Math.floor(24 / blockUnits)));
+    const cell = (SHEET_CONTENT_WIDTH - (settings.columns - 1) * CELL_GAP) / settings.columns;
+    const blockHeight =
+      HEADING_HEIGHT +
+      (settings.showStrokeOrder ? STROKE_ORDER_HEIGHT : 0) +
+      settings.rowsPerCharacter * cell +
+      (settings.rowsPerCharacter - 1) * ROW_GAP;
+    const ratio = SHEET_RATIOS[settings.paperSize] || SHEET_RATIOS.a4;
+    const available = SHEET_WIDTH * ratio - SHEET_FIXED_HEIGHT - CONTENT_PADDING_TOP - SAFETY_MARGIN;
+    return Math.max(1, Math.floor((available + BLOCK_GAP) / (blockHeight + BLOCK_GAP)));
   }
 
   function buildPracticeRows(character, settings) {

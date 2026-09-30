@@ -147,3 +147,17 @@ test("Japanese worksheet ships localized static copy and Japanese reference data
   assert.match(japanesePage, /src="\/japanese-stroke-order\.js"/);
   assert.doesNotMatch(japanesePage, /pinyin-pro|hanzi-writer/i);
 });
+
+test("fits as many characters per page as the sheet geometry allows", () => {
+  const cases = [
+    [{ columns: 10, rowsPerCharacter: 2, showStrokeOrder: true }, 4],
+    [{ columns: 8, rowsPerCharacter: 2, showStrokeOrder: false }, 4],
+    [{ columns: 6, rowsPerCharacter: 3, showStrokeOrder: false }, 2],
+    [{ columns: 12, rowsPerCharacter: 1, showStrokeOrder: false }, 10],
+    [{ columns: 10, rowsPerCharacter: 2, showStrokeOrder: true, paperSize: "letter" }, 3],
+    [{ columns: 12, rowsPerCharacter: 3, showStrokeOrder: true }, 3]
+  ];
+  for (const [settings, expected] of cases) {
+    assert.equal(buildWorksheetPlan("天地玄黄", settings).charactersPerPage, expected, JSON.stringify(settings));
+  }
+});
