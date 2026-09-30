@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171918">
+  <meta name="description" content="一个可以离线玩的 2048 小游戏。滑动、合并，享受每一次恰到好处的相遇。">
+  <meta name="robots" content="noindex, nofollow">
+  <title>2048 · 数字游乐场</title>
+  <style>
+    /* 主题变量：布局、颜色与动效集中管理；所有资源都包含在本文件中。 */
+    :root {
+      color-scheme: dark;
+      --bg: #171918; --panel: #202321; --line: #343833;
+      --ink: #f3f0e7; --muted: #a3aaa0; --accent: #ffb46b;
+      --green: #c7df9a; --gap: 10px; --slide: 125ms;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); min-height: 100vh; }
+    button { font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    button, .board { outline-offset: 5px; }
+    :focus-visible { outline: 2px solid var(--accent); }
+    button:disabled { cursor: not-allowed; opacity: .4; }
+    button:enabled:active { transform: translateY(1px); }
+    [hidden] { display: none !important; }
+    .shell { width: min(100% - 64px, 1020px); margin: auto; }
+    .topbar { min-height: 80px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 650; letter-spacing: .04em; }
+    .mark { display: grid; grid-template-columns: repeat(2, 9px); gap: 3px; transform: rotate(-8deg); }
+    .mark i { width: 9px; height: 9px; background: var(--accent); border-radius: 2px; }
+    .mark i:last-child { background: var(--green); }
+    .offline { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
+    .offline::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+    main { display: grid; grid-template-columns: 1fr 420px; align-items: center; gap: 68px; padding: 32px 0 24px; }
+    .eyebrow { color: var(--green); font-size: 11px; letter-spacing: .2em; font-weight: 650; }
+    h1 { margin: 13px 0 12px -6px; font-size: clamp(84px, 10vw, 128px); line-height: 1; letter-spacing: -.085em; font-weight: 800; }
+    h1 span { color: var(--accent); }
+    .tagline { font-size: 28px; line-height: 1.55; letter-spacing: -.04em; margin: 24px 0 13px; font-weight: 600; }
+    .intro { max-width: 320px; color: var(--muted); font-size: 14px; line-height: 1.9; margin: 0; }
+    .instructions { margin-top: 34px; display: flex; gap: 13px; align-items: center; color: var(--muted); font-size: 12px; line-height: 1.8; }
+    .keys { display: grid; grid-template-columns: repeat(3, 23px); gap: 4px; flex-shrink: 0; }
+    kbd { border: 1px solid #454a42; border-bottom-width: 2px; border-radius: 5px; text-align: center; font-family: inherit; font-size: 14px; line-height: 22px; color: #d6dace; }
+    kbd:first-child { grid-column: 2; }
+    kbd:nth-child(2) { grid-column: 1; }
+    .feature { margin-top: 34px; padding-top: 23px; border-top: 1px solid var(--line); max-width: 320px; }
+    .feature-title { font-size: 13px; font-weight: 600; }
+    .feature-title span { margin-left: 9px; color: var(--green); font-size: 10px; letter-spacing: .1em; }
+    .feature p { color: var(--muted); font-size: 12px; line-height: 1.85; margin: 8px 0 0; }
+    .game { min-width: 0; }
+    .scoreboard { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+    .score-card { position: relative; min-width: 0; background: var(--panel); padding: 15px 19px; border: 1px solid var(--line); border-radius: 12px; }
+    .score-label { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 7px; }
+    .score-number { display: block; font-variant-numeric: tabular-nums; font-size: 29px; font-weight: 700; margin-top: 5px; letter-spacing: -.04em; overflow-wrap: anywhere; }
+    .best .score-number { color: var(--accent); }
+    .score-label svg { width: 13px; height: 13px; }
+    .board { position: relative; padding: var(--gap); aspect-ratio: 1; border-radius: 16px; background: #2b302b; box-shadow: 0 18px 48px #0003, inset 0 1px #ffffff0b; touch-action: none; user-select: none; -webkit-user-select: none; }
+    .cells { height: 100%; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr); gap: var(--gap); }
+    .cell { border-radius: 9px; background: #353b34; }
+    .tiles { position: absolute; inset: var(--gap); pointer-events: none; }
+    /* 外层只负责移动，内层负责弹出：两种 transform 动画互不覆盖。 */
+    .tile { position: absolute; width: calc((100% - 3 * var(--gap)) / 4); height: calc((100% - 3 * var(--gap)) / 4); left: 0; top: 0; transition: transform var(--slide) cubic-bezier(.2,.75,.25,1); }
+    .tile-face { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; border-radius: 9px; color: var(--tile-ink, #f5f1e7); background: var(--tile-bg, #525d46); box-shadow: inset 0 1px #ffffff12; font-size: clamp(26px, 4vw, 40px); font-weight: 750; font-variant-numeric: tabular-nums; letter-spacing: -.04em; }
+    .tile[data-value="2"] { --tile-bg: #525d46; }
+    .tile[data-value="4"] { --tile-bg: #697451; }
+    .tile[data-value="8"] { --tile-bg: #b68a55; --tile-ink: #171b15; }
+    .tile[data-value="16"] { --tile-bg: #d69255; --tile-ink: #24180e; }
+    .tile[data-value="32"] { --tile-bg: #eb975f; --tile-ink: #2b180e; }
+    .tile[data-value="64"] { --tile-bg: #f67f51; --tile-ink: #2a130a; }
+    .tile[data-value="128"] { --tile-bg: #e9b658; --tile-ink: #2a210a; }
+    .tile[data-value="256"] { --tile-bg: #f2c664; --tile-ink: #29200a; }
+    .tile[data-value="512"] { --tile-bg: #f7d777; --tile-ink: #30240b; }
+    .tile[data-value="1024"] { --tile-bg: #f6e294; --tile-ink: #30280b; }
+    .tile[data-value="2048"] { --tile-bg: #e2f2a6; --tile-ink: #223015; }
+    .tile.large .tile-face { font-size: clamp(21px, 3.4vw, 31px); }
+    .tile.super { --tile-bg: #b6eacc; --tile-ink: #153b2c; }
+    .tile.super .tile-face { font-size: clamp(18px, 3vw, 27px); box-shadow: 0 0 22px #b6eacc33; }
+    .tile.new .tile-face { animation: appear 200ms ease-out both; }
+    .tile.merged .tile-face { animation: pop 240ms ease-out both; }
+    .gain { position: absolute; right: 20px; top: 36px; font-weight: 750; font-size: 21px; color: var(--green); pointer-events: none; animation: float-up 800ms ease-out forwards; }
+    @keyframes appear { from { opacity: 0; transform: scale(.5); } to { opacity: 1; transform: scale(1); } }
+    @keyframes pop { 0% { transform: scale(.88); } 45% { transform: scale(1.13); } 100% { transform: scale(1); } }
+    @keyframes float-up { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-48px); } }
+    .progress-row { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--muted); margin-top: 18px; }
+    .progress-row strong { color: var(--ink); font-weight: 600; }
+    progress { width: 100%; height: 4px; display: block; margin: 9px 0 20px; border: 0; border-radius: 9px; overflow: hidden; appearance: none; background: #353b34; accent-color: var(--green); }
+    progress::-webkit-progress-bar { background: #353b34; }
+    progress::-webkit-progress-value { background: var(--green); transition: width 220ms ease; }
+    progress::-moz-progress-bar { background: var(--green); }
+    .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .button { border: 1px solid #454b42; border-radius: 9px; padding: 13px 12px; min-height: 46px; background: transparent; color: var(--ink); font-size: 13px; font-weight: 600; display: inline-flex; justify-content: center; align-items: center; gap: 8px; transition: background 160ms; }
+    .button:enabled:hover { background: #30362e; }
+    .button.primary { background: var(--accent); border-color: var(--accent); color: #2a2118; }
+    .button.primary:hover { background: #ffc48c; }
+    .button svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .count { color: var(--muted); font-variant-numeric: tabular-nums; }
+    .status { min-height: 19px; margin: 12px 0 0; font-size: 11px; text-align: center; color: var(--muted); }
+    footer { border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 15px; padding: 20px 0 24px; color: var(--muted); font-size: 11px; letter-spacing: .02em; }
+    footer span:last-child { color: var(--green); }
+    dialog { width: min(360px, calc(100% - 40px)); padding: 34px 26px 26px; border: 1px solid #545e48; border-radius: 18px; background: #252a23; color: var(--ink); text-align: center; box-shadow: 0 25px 100px #0008; }
+    dialog::backdrop { background: #111713b8; backdrop-filter: blur(6px); }
+    .dialog-icon { font-size: 46px; color: var(--accent); font-weight: 800; letter-spacing: -.06em; }
+    dialog h2 { font-size: 25px; margin: 17px 0 10px; }
+    dialog p { color: #bac2b3; font-size: 13px; line-height: 1.8; }
+    .dialog-actions { display: grid; gap: 10px; margin-top: 24px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    noscript { display: block; padding: 20px; color: var(--accent); text-align: center; }
+    @media (max-width: 850px) {
+      .shell { width: min(100% - 40px, 700px); }
+      main { grid-template-columns: 1fr 380px; gap: 30px; }
+      h1 { font-size: 86px; }
+      .tagline { font-size: 23px; }
+    }
+    @media (min-width: 681px) and (max-height: 820px) {
+      .topbar { min-height: 64px; }
+      main { grid-template-columns: 1fr 380px; padding: 20px 0 12px; }
+      .scoreboard { margin-bottom: 12px; }
+      .score-card { padding: 10px 16px; }
+      .score-number { font-size: 26px; margin-top: 3px; }
+      .progress-row { margin-top: 14px; }
+      progress { margin-bottom: 14px; }
+      .instructions, .feature { margin-top: 25px; }
+    }
+    @media (max-width: 680px) {
+      :root { --gap: 9px; }
+      .shell { width: min(100% - 32px, 440px); }
+      .topbar { min-height: 64px; }
+      main { display: flex; flex-direction: column; align-items: stretch; gap: 20px; padding: 22px 0 18px; }
+      .about { display: grid; grid-template-columns: auto 1fr; column-gap: 20px; align-items: center; }
+      .eyebrow, .intro, .instructions { display: none; }
+      h1 { grid-column: 1; margin: 0 0 0 -3px; font-size: 67px; }
+      .tagline { grid-column: 2; grid-row: 1; margin: 0; font-size: 18px; line-height: 1.55; }
+      .feature { grid-column: 1 / -1; max-width: none; margin-top: 18px; padding-top: 14px; }
+      .feature p { margin-top: 5px; font-size: 11px; }
+      .scoreboard { margin-bottom: 12px; gap: 10px; }
+      .score-card { padding: 10px 15px; }
+      .score-number { font-size: 25px; margin-top: 2px; }
+      .tile-face { font-size: 34px; }
+      .tile.large .tile-face { font-size: 27px; }
+      .tile.super .tile-face { font-size: 23px; }
+      .progress-row { margin-top: 14px; }
+      progress { margin-bottom: 16px; }
+      footer { padding-top: 17px; font-size: 10px; }
+    }
+    @media (max-width: 360px) {
+      .shell { width: calc(100% - 24px); }
+      h1 { font-size: 58px; }
+      .tagline { font-size: 16px; }
+      .tile-face { font-size: 29px; }
+      .tile.large .tile-face { font-size: 23px; }
+      .tile.super .tile-face { font-size: 19px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>数字游乐场</div>
+      <span class="offline">随时离线玩</span>
+    </header>
+    <main>
+      <section class="about" aria-labelledby="title">
+        <div class="eyebrow">A LITTLE PLAY, EVERY DAY</div>
+        <h1 id="title">20<span>48</span></h1>
+        <p class="tagline">小小方格。<br>无限可能。</p>
+        <p class="intro">让相同的数字相遇，一步一步合成 2048。<br>不用赶时间，下一步或许就有惊喜。</p>
+        <div class="instructions"><div class="keys" aria-hidden="true"><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd></div><span>方向键移动 · 手机滑动<br>相同数字碰撞，即可合并</span></div>
+        <aside class="feature">
+          <div class="feature-title">↶ 给灵感一次反悔的机会<span>小彩蛋</span></div>
+          <p>每局可回退 3 次。救回一次手滑，也试试另一条路，让大胆的尝试多一点余地。</p>
+        </aside>
+      </section>
+      <section class="game" aria-label="2048 游戏">
+        <div class="scoreboard">
+          <div class="score-card" id="score-card"><span class="score-label">本局得分</span><span class="score-number" id="score">0</span></div>
+          <div class="score-card best"><span class="score-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 3h8v7a4 4 0 0 1-8 0V3Zm0 2H4v3a4 4 0 0 0 4 4m8-7h4v3a4 4 0 0 1-4 4m-4 2v5m-4 2h8"/></svg>历史最高</span><span class="score-number" id="best">0</span></div>
+        </div>
+        <div class="board" id="board" tabindex="0" role="group" aria-label="2048 棋盘" aria-describedby="board-help">
+          <div class="cells" aria-hidden="true"></div>
+          <div class="tiles" id="tiles" aria-hidden="true"></div>
+          <table class="sr-only" aria-label="当前棋盘"><tbody id="accessible-board"></tbody></table>
+        </div>
+        <p id="board-help" class="sr-only">使用方向键或 W A S D 移动，触屏可向四个方向滑动。按 Z 回退一步。</p>
+        <div class="progress-row"><span>下一站 <strong id="target">8</strong></span><span>最大数字 <strong id="largest">2</strong> / 2048</span></div>
+        <progress id="progress" value="1" max="11" aria-label="距离合成 2048 的进度"></progress>
+        <div class="controls">
+          <button class="button" id="undo" disabled title="回退一步（Z），每局最多 3 次"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5 3 10l5 5M3 10h11a6 6 0 0 1 0 12" transform="translate(1 -2)"/></svg>回退一步 <span class="count" id="undo-count">3/3</span></button>
+          <button class="button primary" id="restart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 8a8 8 0 1 0 1 7M19 3v5h-5"/></svg>新的一局</button>
+        </div>
+        <p class="status" id="status" role="status" aria-live="polite">方向键或滑动：相同数字相碰即可合并。</p>
+        <p class="status" id="storage-note" hidden>浏览器未允许本地保存；关闭页面后最高分可能丢失。</p>
+      </section>
+    </main>
+    <footer><span>合并数字，也放空一下思绪。</span><span>4 × 4 · 慢慢来，比较快</span></footer>
+  </div>
+  <dialog id="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-text">
+    <div class="dialog-icon" id="dialog-icon" aria-hidden="true">2048</div>
+    <h2 id="dialog-title">漂亮，合成 2048！</h2>
+    <p id="dialog-text"></p>
+    <div class="dialog-actions"><button class="button primary" id="dialog-primary"></button><button class="button" id="dialog-secondary"></button></div>
+  </dialog>
+  <noscript>请在浏览器设置中启用 JavaScript，随后重新打开这个文件即可开始游戏。</noscript>
+  <script>
+    'use strict';
+
+    // 一、纯规则引擎。每个方向都从最前端扫描，每块数字每步最多合并一次。
+    const SIZE = 4;
+    const BEST_KEY = 'number-playground.2048.best.v1';
+    const DIRECTIONS = { left: [0, -1], right: [0, 1], up: [-1, 0], down: [1, 0] };
+    const $ = id => document.getElementById(id);
+    const clone = grid => grid.map(row => row.slice());
+
+    function slide(grid, direction) {
+      const next = Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
+      const motions = [], merges = [];
+      let gained = 0;
+      for (let line = 0; line < SIZE; line++) {
+        const positions = Array.from({ length: SIZE }, (_, step) => {
+          if (direction === 'left') return [line, step];
+          if (direction === 'right') return [line, SIZE - 1 - step];
+          if (direction === 'up') return [step, line];
+          return [SIZE - 1 - step, line];
+        });
+        const numbers = positions.filter(([r, c]) => grid[r][c]);
+        let destination = 0;
+        for (let i = 0; i < numbers.length; i++) {
+          const [r, c] = numbers[i];
+          const [nr, nc] = positions[destination++];
+          let value = grid[r][c];
+          motions.push({ from: [r, c], to: [nr, nc] });
+          const partner = numbers[i + 1];
+          if (partner && grid[partner[0]][partner[1]] === value) {
+            value *= 2;
+            gained += value;
+            motions.push({ from: partner, to: [nr, nc] });
+            merges.push(`${nr},${nc}`);
+            i++;
+          }
+          next[nr][nc] = value;
+        }
+      }
+      const changed = next.some((row, r) => row.some((value, c) => value !== grid[r][c]));
+      return { grid: next, motions, merges, gained, changed };
+    }
+
+    function hasMoves(grid) {
+      return grid.some((row, r) => row.some((value, c) => !value ||
+        (c < SIZE - 1 && value === row[c + 1]) ||
+        (r < SIZE - 1 && value === grid[r + 1][c])));
+    }
+
+    // 二、游戏状态。保存随机数状态，回退后重复同一步不会重新抽取新数字。
+    class Game2048 {
+      constructor() {
+        this.best = 0;
+        try {
+          const stored = Number(localStorage.getItem(BEST_KEY));
+          if (Number.isSafeInteger(stored) && stored >= 0) this.best = stored;
+        } catch { $('storage-note').hidden = false; }
+        this.board = $('board');
+        this.layer = $('tiles');
+        this.dialog = $('dialog');
+        this.reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+        document.querySelector('.cells').replaceChildren(...Array.from({ length: 16 }, () => {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          return cell;
+        }));
+        this.bindEvents();
+        this.start();
+      }
+
+      random() {
+        let value = this.seed;
+        value ^= value << 13; value ^= value >>> 17; value ^= value << 5;
+        this.seed = value >>> 0;
+        return this.seed / 4294967296;
+      }
+
+      spawn() {
+        const empty = [];
+        this.grid.forEach((row, r) => row.forEach((value, c) => { if (!value) empty.push([r, c]); }));
+        if (!empty.length) return null;
+        const [r, c] = empty[Math.floor(this.random() * empty.length)];
+        this.grid[r][c] = this.random() < .9 ? 2 : 4;
+        return `${r},${c}`;
+      }
+
+      start() {
+        // 序号使旧的动画回调失效，重新开局不受未完成的移动影响。
+        this.turn = (this.turn || 0) + 1;
+        this.dialog.close();
+        this.seed = (globalThis.crypto?.getRandomValues(new Uint32Array(1))[0] || Date.now()) >>> 0 || 1;
+        this.grid = Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
+        this.score = 0; this.moves = 0; this.usedUndos = 0;
+        this.history = []; this.won = false; this.over = false; this.busy = false;
+        const fresh = [this.spawn(), this.spawn()];
+        document.querySelectorAll('.gain').forEach(node => node.remove());
+        this.render(fresh);
+        this.announce('方向键或滑动：相同数字相碰即可合并。');
+      }
+
+      async move(direction) {
+        if (!DIRECTIONS[direction] || this.busy || this.dialog.open || this.over) return;
+        const result = slide(this.grid, direction);
+        if (!result.changed) {
+          if (!hasMoves(this.grid)) this.finish();
+          else this.announce('这个方向暂时走不动，换个方向试试。');
+          return;
+        }
+        this.history.push({ grid: clone(this.grid), score: this.score, moves: this.moves, won: this.won, seed: this.seed });
+        if (this.history.length > 3) this.history.shift();
+        this.busy = true;
+        this.updateButtons();
+        const turn = ++this.turn;
+        // 先移动旧方块，再替换为合并后的方块，避免数字瞬间跳到终点。
+        result.motions.forEach(({ from, to }) => {
+          const tile = this.layer.querySelector(`[data-position="${from.join(',')}"]`);
+          if (tile) this.position(tile, to[0], to[1]);
+        });
+        await new Promise(resolve => setTimeout(resolve, this.reducedMotion.matches ? 0 : 135));
+        if (turn !== this.turn) return;
+        this.grid = result.grid;
+        this.score += result.gained;
+        this.moves++;
+        const fresh = this.spawn();
+        this.saveBest();
+        this.busy = false;
+        this.render([fresh], result.merges);
+        if (result.gained) this.floatScore(result.gained);
+        this.announce(`第 ${this.moves} 步${result.gained ? `，合并 +${result.gained} 分` : ''}。`);
+        this.finish();
+      }
+
+      undo() {
+        if (this.busy || !this.history.length || this.usedUndos >= 3) return;
+        this.dialog.close();
+        Object.assign(this, this.history.pop());
+        this.usedUndos++;
+        this.turn++;
+        this.over = false;
+        document.querySelectorAll('.gain').forEach(node => node.remove());
+        this.render();
+        this.announce(`已回退一步。还剩 ${3 - this.usedUndos} 次，试试另一个方向。`);
+        this.board.focus({ preventScroll: true });
+      }
+
+      saveBest() {
+        if (this.score <= this.best) return;
+        this.best = this.score;
+        try {
+          const otherBest = Number(localStorage.getItem(BEST_KEY));
+          if (Number.isSafeInteger(otherBest)) this.best = Math.max(this.best, otherBest);
+          localStorage.setItem(BEST_KEY, String(this.best));
+        } catch { $('storage-note').hidden = false; }
+      }
+
+      finish() {
+        this.over = !hasMoves(this.grid);
+        if (!this.won && this.grid.some(row => row.some(value => value >= 2048))) {
+          this.won = true;
+          this.showDialog('win');
+        } else if (this.over) this.showDialog('over');
+      }
+
+      // 三、视图与动画。棋盘以百分比定位，窗口缩放时无需重新计算像素坐标。
+      position(tile, r, c) {
+        tile.style.transform = `translate(calc(${c * 100}% + ${c} * var(--gap)), calc(${r * 100}% + ${r} * var(--gap)))`;
+      }
+
+      render(fresh = [], merges = []) {
+        const fragment = document.createDocumentFragment();
+        this.grid.forEach((row, r) => row.forEach((value, c) => {
+          if (!value) return;
+          const tile = document.createElement('div');
+          const key = `${r},${c}`;
+          tile.className = `tile${fresh.includes(key) ? ' new' : ''}${merges.includes(key) ? ' merged' : ''}${value >= 128 ? ' large' : ''}${value > 2048 ? ' super' : ''}`;
+          tile.dataset.position = key;
+          tile.dataset.value = value;
+          const face = document.createElement('div');
+          face.className = 'tile-face'; face.textContent = value;
+          tile.append(face); this.position(tile, r, c); fragment.append(tile);
+        }));
+        this.layer.replaceChildren(fragment);
+        $('score').textContent = this.score.toLocaleString('zh-CN');
+        $('best').textContent = this.best.toLocaleString('zh-CN');
+        const largest = Math.max(...this.grid.flat());
+        $('largest').textContent = largest;
+        $('target').textContent = Math.max(8, largest * 2);
+        $('progress').value = Math.min(11, Math.log2(largest));
+        $('progress').setAttribute('aria-valuetext', `最大数字 ${largest}，目标 2048`);
+        // 提供可被屏幕阅读器逐行读取的棋盘，动画层不重复播报。
+        $('accessible-board').replaceChildren(...this.grid.map(row => {
+          const tr = document.createElement('tr');
+          row.forEach(value => { const td = document.createElement('td'); td.textContent = value || '空'; tr.append(td); });
+          return tr;
+        }));
+        this.updateButtons();
+      }
+
+      updateButtons() {
+        $('undo').disabled = this.busy || !this.history.length || this.usedUndos >= 3;
+        $('undo-count').textContent = `${3 - this.usedUndos}/3`;
+        $('restart').disabled = this.busy;
+      }
+
+      announce(text) { $('status').textContent = text; }
+
+      floatScore(points) {
+        const gain = document.createElement('span');
+        gain.className = 'gain'; gain.textContent = `+${points}`; gain.setAttribute('aria-hidden', 'true');
+        $('score-card').append(gain);
+        gain.addEventListener('animationend', () => gain.remove(), { once: true });
+      }
+
+      showDialog(kind) {
+        const canUndo = this.history.length > 0 && this.usedUndos < 3;
+        const restart = () => { this.start(); this.board.focus({ preventScroll: true }); };
+        const resume = () => { this.dialog.close(); this.board.focus({ preventScroll: true }); };
+        let primary, secondary;
+        if (kind === 'win') {
+          $('dialog-icon').textContent = '2048';
+          $('dialog-title').textContent = '漂亮，合成 2048！';
+          $('dialog-text').textContent = `用了 ${this.moves} 步，收获 ${this.score.toLocaleString('zh-CN')} 分。再向 4096 出发？`;
+          primary = ['继续挑战', () => { resume(); if (this.over) this.showDialog('over'); }];
+          secondary = ['新的一局', restart];
+        } else if (kind === 'over') {
+          $('dialog-icon').textContent = '↗';
+          $('dialog-title').textContent = '这次，也很不错。';
+          $('dialog-text').textContent = `没有可以移动的方格了。本局得分 ${this.score.toLocaleString('zh-CN')}。${canUndo ? '回退一步，也许还有转机。' : '带着刚才的灵感，再来一局。'}`;
+          primary = ['再来一局', restart];
+          secondary = canUndo ? [`回退一步 · 还剩 ${3 - this.usedUndos} 次`, () => this.undo()] : ['看看棋盘', resume];
+        } else {
+          $('dialog-icon').textContent = '↻';
+          $('dialog-title').textContent = '重新开始一局？';
+          $('dialog-text').textContent = '本局进度将被清空，历史最高分会保留。';
+          primary = ['继续本局', resume];
+          secondary = ['重新开始', restart];
+        }
+        $('dialog-primary').textContent = primary[0]; $('dialog-primary').onclick = primary[1];
+        $('dialog-secondary').textContent = secondary[0]; $('dialog-secondary').onclick = secondary[1];
+        if (!this.dialog.open) this.dialog.showModal();
+        $('dialog-primary').focus();
+      }
+
+      // 四、输入。一次按键或完整滑动仅产生一步；输入锁避免动画期间状态交错。
+      bindEvents() {
+        const keys = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down', a: 'left', d: 'right', w: 'up', s: 'down' };
+        document.addEventListener('keydown', event => {
+          if (event.ctrlKey || event.metaKey || event.altKey || this.dialog.open) return;
+          if (event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+          const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
+          if (keys[key]) { event.preventDefault(); this.move(keys[key]); }
+          else if (key === 'z' && !event.repeat) { event.preventDefault(); this.undo(); }
+        });
+        let gesture = null;
+        this.board.addEventListener('pointerdown', event => {
+          if (!event.isPrimary || event.button !== 0 || this.busy || this.dialog.open) { gesture = null; return; }
+          gesture = { id: event.pointerId, x: event.clientX, y: event.clientY };
+          this.board.setPointerCapture(event.pointerId);
+          this.board.focus({ preventScroll: true });
+        });
+        this.board.addEventListener('pointerup', event => {
+          if (!gesture || gesture.id !== event.pointerId) return;
+          const dx = event.clientX - gesture.x, dy = event.clientY - gesture.y;
+          gesture = null;
+          if (Math.max(Math.abs(dx), Math.abs(dy)) < 24) return;
+          this.move(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
+        });
+        this.board.addEventListener('pointercancel', () => { gesture = null; });
+        this.board.addEventListener('lostpointercapture', () => { gesture = null; });
+        $('undo').addEventListener('click', () => this.undo());
+        $('restart').addEventListener('click', () => this.moves ? this.showDialog('restart') : this.start());
+        this.dialog.addEventListener('close', () => this.board.focus({ preventScroll: true }));
+        window.addEventListener('storage', event => {
+          const value = Number(event.newValue);
+          if (event.key === BEST_KEY && Number.isSafeInteger(value) && value > this.best) {
+            this.best = value; $('best').textContent = value.toLocaleString('zh-CN');
+          }
+        });
+      }
+    }
+
+    const game = new Game2048();
+  </script>
+</body>
+</html>
