@@ -3164,6 +3164,58 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/image-redaction/" />
   </url>
   <!-- image-redaction-tool:end -->
+  <!-- password-generator-tool:start -->
+  <url>
+    <loc>https://jianfan.app/password-generator/</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/password-generator/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/password-generator/</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/password-generator/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/password-generator/</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/password-generator/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/password-generator/</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/password-generator/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/password-generator/</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/password-generator/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/password-generator/" />
+  </url>
+  <!-- password-generator-tool:end -->
   <!-- blog:start -->
   <url>
     <loc>https://jianfan.app/blog/</loc>

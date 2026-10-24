@@ -26,6 +26,7 @@
 
   function labelFor(theme) {
     var lang = (root.lang || "zh-CN").toLowerCase();
+    if (lang === "zh-hant" || lang.startsWith("zh-hant-")) lang = "zh-tw";
     var set = labels[lang] || labels[lang.split("-")[0]] || labels["zh-cn"];
     return theme === "light" ? set[1] : set[0];
   }

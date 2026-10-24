@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <title>パスワード生成 - 記号指定・文字除外でランダムに一括作成 | JianFan.app</title>
+    <meta name="description" content="パスワード生成ツールで桁数、大文字・小文字・数字・記号を自由に指定。使う記号の編集、紛らわしい文字や連続重複の除外、一括作成とコピーに対応。ブラウザ内で生成し、送信しません。" />
+    <link rel="canonical" href="https://jianfan.app/ja/password-generator/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/password-generator/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/password-generator/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/password-generator/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/password-generator/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/password-generator/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/password-generator/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.min.css" />
+    <link rel="stylesheet" href="/password-generator.css" />
+    <script src="/theme.js"></script>
+    <script defer src="/password-generator.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://jianfan.app/ja/password-generator/#webapp",
+      "name": "パスワード生成 - 記号指定・文字除外でランダムに一括作成",
+      "url": "https://jianfan.app/ja/password-generator/",
+      "description": "パスワード生成ツールで桁数、大文字・小文字・数字・記号を自由に指定。使う記号の編集、紛らわしい文字や連続重複の除外、一括作成とコピーに対応。ブラウザ内で生成し、送信しません。",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript and Web Crypto",
+      "inLanguage": "ja",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://jianfan.app/#website",
+        "name": "JianFan.app",
+        "url": "https://jianfan.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://jianfan.app/ja/password-generator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://jianfan.app/ja/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "パスワード生成 - 記号指定・文字除外でランダムに一括作成",
+          "item": "https://jianfan.app/ja/password-generator/"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://jianfan.app/ja/password-generator/#howto",
+      "name": "パスワードの作成手順",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "text": "文字数と生成数を決め、使用する文字の種類を選びます。"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "text": "必要に応じて記号や除外文字を指定し、紛らわしい文字・連続重複の設定を変更します。"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "text": "生成したパスワードをコピーし、自分のパスワード管理ツールに保存します。"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://jianfan.app/ja/password-generator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "生成したパスワードは保存・送信されますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "生成処理はブラウザ内で完結し、サーバーへの送信やブラウザストレージへの保存は行いません。再読み込み・移動・消去後に履歴は残しませんが、コピーやダウンロードを行うとクリップボードや保存先のファイルに残ります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "選んだ文字の種類は必ず含まれますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。4種類すべてを選ぶと、大文字・小文字・数字・記号を各1文字以上含めます。文字数が足りない場合や、ある種類が除外で空になった場合は、設定の変更を案内します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "紛らわしい文字と連続重複の違いは？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "紛らわしい文字の除外対象はIl1O0o|です。連続重複の除外はaaや11のような同じ文字の隣り合いだけを禁止します。離れた位置での再使用やabc・123のような並びは許可されます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "条件を増やすほど安全になりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "除外条件は入力のしやすさやサイトの規則に合わせるもので、使用可能な組み合わせを減らします。組み合わせの強度は有効なランダム出力の数を基にした目安で、解読時間やアカウントの安全性を保証するものではありません。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "数字だけや特定の記号だけでも作れますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。数字だけを選べば数字のみの文字列になります。記号欄では許可される記号を指定できます。生成数より組み合わせが少ないときは、文字数・文字種類を増やすか、生成数を減らしてください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "生成後のパスワードはどう管理しますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "アカウントごとに別のパスワードを使い、利用先の条件内で十分な長さにして、信頼できる管理ツールに保存してください。TXTは平文です。また、別々の一括生成の間で同じ結果が出る可能性はあります。"
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="password-generator" data-page-slug="password-generator" data-locale="ja">
+    <script type="application/json" id="passwordMessages">{"changed":"条件を変更しました。再生成してください。","generated":"{count}個のパスワードを生成しました","failed":"生成条件を確認してください","cleared":"結果を消去しました","noResults":"まだ生成されていません","summary":"{count}個 · 各{length}文字 · 使用可能な文字{pool}種類","resultLabel":"パスワード{index}","copyOne":"パスワード{index}をコピー","copiedOne":"パスワード{index}をコピーしました","copiedAll":"すべてコピーしました","copyFailed":"自動コピーできません。文字を選択してコピーしてください。","downloaded":"TXTを保存しました","hide":"パスワードを隠す","show":"パスワードを表示","strengthLabel":"組み合わせの強度：{level}","strength":["低い","中程度","高い","非常に高い"],"errors":{"invalidLength":"文字数は1〜128の整数で入力してください。","invalidCount":"生成数は1〜100の整数で入力してください。","invalidSymbols":"空白・英数字・結合文字を除く、表示可能な記号を256種類以内で入力してください。","noGroups":"文字の種類を1つ以上選んでください。","emptyGroup":"「{group}」に使える文字がありません。記号や除外条件を見直してください。","tooShort":"選んだ種類を含めるには{minimum}文字以上が必要です。","impossibleRepeat":"この文字集合では連続重複を避けられません。文字を増やすか設定を解除してください。","notEnoughCombinations":"有効な組み合わせは{available}通りです。生成数を減らすか、文字数や種類を増やしてください。","cryptoUnavailable":"安全な乱数を利用できません。新しいブラウザでお試しください。","randomFailed":"安全な乱数の生成に失敗しました。もう一度お試しください。","unexpected":"生成できませんでした。条件を確認して再度お試しください。"},"groups":{"uppercase":"英大文字","lowercase":"英小文字","numbers":"数字","symbols":"記号"}}</script>
+    <a class="skip-nav" href="#main">メインコンテンツへ移動</a>
+    <header class="site-header"><a class="brand" href="/ja/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true"><svg class="password-icon" data-icon="key" aria-hidden="true"><use href="/password-icons.svg#key" /></svg></span><span>JianFan.app</span></a><nav class="top-actions" aria-label="メインナビゲーション"><a class="nav-link" href="/ja/">ホーム</a><label class="language-picker"><span>表示言語</span><select id="localeSelect" aria-label="表示言語"><option value="zh-CN">简体中文</option><option value="zh-TW">繁體中文</option><option value="en">English</option><option value="ja" selected>日本語</option><option value="ko">한국어</option></select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
+    <main id="main" class="password-main">
+      <section class="password-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">ランダム生成 · 記号を指定 · ブラウザ内処理</p><h1 id="pageTitle">パスワード生成ツール</h1><p class="lede">サイトの条件に合わせてランダムなパスワードを作成。文字の種類や記号、除外する文字を指定し、まとめて生成できます。</p></div><span class="password-local"><svg class="password-icon" data-icon="shield" aria-hidden="true"><use href="/password-icons.svg#shield" /></svg>このブラウザ内で生成</span></section>
+      <div class="password-workspace">
+        <form id="passwordForm" class="password-settings" novalidate autocomplete="off" aria-labelledby="passwordSettingsTitle">
+          <div class="password-section-head"><h2 id="passwordSettingsTitle">生成条件</h2><span class="password-step" aria-hidden="true">01</span></div>
+          <div class="password-numbers"><div><label for="passwordLength">文字数</label><input id="passwordLength" name="length" type="number" min="1" max="128" value="20" inputmode="numeric" aria-describedby="passwordLengthHint" /><small id="passwordLengthHint">1〜128文字</small></div><div><label for="passwordCount">生成数</label><input id="passwordCount" name="count" type="number" min="1" max="100" value="3" inputmode="numeric" aria-describedby="passwordCountHint" /><small id="passwordCountHint">1〜100個。同じ一括生成内で重複なし</small></div></div>
+          <input id="passwordLengthRange" type="range" min="1" max="128" value="20" aria-label="パスワードの文字数を調整" />
+          <div class="password-presets" role="group" aria-label="かんたん設定"><button type="button" data-password-preset="standard">標準20文字</button><button type="button" data-password-preset="long">長めの32文字</button><button type="button" data-password-preset="readable">書き写しやすい</button></div>
+          <fieldset class="password-types"><legend>使用する文字</legend><div><label class="password-check"><input type="checkbox" name="uppercase" checked /><span>英大文字</span><code>A–Z</code></label><label class="password-check"><input type="checkbox" name="lowercase" checked /><span>英小文字</span><code>a–z</code></label><label class="password-check"><input type="checkbox" name="numbers" checked /><span>数字</span><code>0–9</code></label><label class="password-check"><input type="checkbox" name="symbols" checked /><span>記号</span><code>!@#$</code></label></div><p>選んだ文字の種類を必ず1文字以上含めます。</p></fieldset>
+          <div class="password-custom-fields"><div class="password-field"><div class="password-field-label"><label for="passwordSymbols">使用する記号</label><button id="passwordDefaultSymbols" class="password-icon-button" type="button" title="記号を初期値に戻す" aria-label="記号を初期値に戻す"><svg class="password-icon" data-icon="refresh" aria-hidden="true"><use href="/password-icons.svg#refresh" /></svg></button></div><input id="passwordSymbols" name="specialCharacters" type="text" value="!@#$%^&amp;*()-_=+[]{};:,.?" maxlength="512" spellcheck="false" autocapitalize="off" aria-describedby="passwordSymbolsHint" /><small id="passwordSymbolsHint">空白・英数字を除く記号を入力してください。同じ記号は1種類として扱います。</small></div>
+          <div class="password-field"><label for="passwordExcluded">除外する文字</label><input id="passwordExcluded" name="excludedCharacters" type="text" placeholder="例：{}[]/\" maxlength="512" spellcheck="false" autocapitalize="off" aria-describedby="passwordExcludedHint" /><small id="passwordExcludedHint">大文字・小文字を区別します。区切り文字は不要です。</small></div></div>
+          <div class="password-filters"><label><input type="checkbox" name="excludeSimilar" /><span>紛らわしい文字を除外<small><code>Il1O0o|</code></small></span></label><label><input type="checkbox" name="noAdjacentRepeat" /><span>同じ文字の連続を除外<small>aa・11を除外。a…aは使用可</small></span></label></div>
+          <p id="passwordError" class="password-error" role="alert" hidden></p>
+          <button class="password-generate" type="submit"><svg class="password-icon" data-icon="refresh" aria-hidden="true"><use href="/password-icons.svg#refresh" /></svg><span>パスワードを生成</span></button>
+        </form>
+        <section class="password-output" aria-labelledby="passwordResultsTitle">
+          <div class="password-section-head"><h2 id="passwordResultsTitle">生成したパスワード</h2><div class="password-output-actions"><button class="password-icon-button" id="passwordVisibility" type="button" aria-pressed="false" title="パスワードを隠す" aria-label="パスワードを隠す" disabled><svg class="password-icon" data-icon="eye" aria-hidden="true" hidden><use href="/password-icons.svg#eye" /></svg><svg class="password-icon" data-icon="eye-off" aria-hidden="true"><use href="/password-icons.svg#eye-off" /></svg></button><button id="passwordClear" class="password-text-button" type="button" disabled>結果を消去</button></div></div>
+          <p id="passwordSummary" class="password-summary">まだ生成されていません</p>
+          <div class="password-strength-row"><span id="passwordStrengthLabel"></span><meter id="passwordStrength" min="0" max="128" low="50" high="80" optimum="128" value="0" aria-label="組み合わせの強度" hidden></meter></div>
+          <div id="passwordResults" class="password-results"></div><p id="passwordEmpty" class="password-empty"><svg class="password-icon" data-icon="key" aria-hidden="true"><use href="/password-icons.svg#key" /></svg>条件を選び、パスワードを生成してください。</p>
+          <div class="password-export"><button id="passwordCopyAll" type="button" disabled><svg class="password-icon" data-icon="copy" aria-hidden="true"><use href="/password-icons.svg#copy" /></svg>すべてコピー</button><button id="passwordDownload" type="button" disabled><svg class="password-icon" data-icon="download" aria-hidden="true"><use href="/password-icons.svg#download" /></svg>TXTを保存</button></div>
+          <p id="passwordStatus" class="password-status" role="status" aria-live="polite">パスワードを準備中</p>
+          <div class="password-local-note"><svg class="password-icon" data-icon="shield" aria-hidden="true"><use href="/password-icons.svg#shield" /></svg><p>パスワードは送信せず、ブラウザにも保存しません。<small>TXTは暗号化されていません。保存先と取り扱いにご注意ください。</small></p></div>
+          <noscript><p class="password-error">ブラウザ内で生成するにはJavaScriptを有効にしてください。</p></noscript>
+        </section>
+      </div>
+      <template id="passwordResultTemplate"><div class="password-result"><span class="password-result-index" aria-hidden="true"></span><input type="text" readonly autocomplete="off" spellcheck="false" data-lpignore="true" data-1p-ignore /><button type="button" class="password-icon-button" title="パスワードをコピー" aria-label="パスワードをコピー"><svg class="password-icon" data-icon="copy" aria-hidden="true"><use href="/password-icons.svg#copy" /></svg></button></div></template>
+      <section class="seo-band standalone-info password-info" aria-labelledby="passwordFeatureTitle"><div class="section-heading"><h2 id="passwordFeatureTitle">サイトの条件に合わせてパスワードを自動生成</h2><p class="seo-intro">新規登録、ログイン情報の変更、複数アカウントの初期パスワード作成などに利用できます。まず利用先の文字数と使用可能な記号を確認してください。初期設定は20文字で、記号を外せば英数字のみのランダム文字列も作れます。</p></div><div class="seo-grid"><article><h3>文字の種類を組み合わせる</h3><p>英大文字・英小文字・数字・記号を個別に選択できます。選んだ種類は各パスワードに必ず含まれるため、必要な種類が偶然抜けることはありません。</p></article><article><h3>使える記号だけに限定</h3><p>利用先で認められる記号を直接入力できます。使用できない文字は除外欄で指定でき、大文字・小文字を区別して全種類に適用されます。</p></article><article><h3>最大100個を一括作成</h3><p>同じ一括生成内で重複しないパスワードを最大100個作成します。個別・一括コピーと1行1件のTXT保存に対応し、結果は現在のページだけに保持します。</p></article></div><section class="pinyin-howto" aria-labelledby="passwordHowTitle"><h2 id="passwordHowTitle">パスワードの作成手順</h2><ol><li>文字数と生成数を決め、使用する文字の種類を選びます。</li><li>必要に応じて記号や除外文字を指定し、紛らわしい文字・連続重複の設定を変更します。</li><li>生成したパスワードをコピーし、自分のパスワード管理ツールに保存します。</li></ol></section><section class="pinyin-faq" aria-labelledby="passwordFaqTitle"><h2 id="passwordFaqTitle">パスワード生成のよくある質問</h2><details><summary>生成したパスワードは保存・送信されますか？</summary><p>生成処理はブラウザ内で完結し、サーバーへの送信やブラウザストレージへの保存は行いません。再読み込み・移動・消去後に履歴は残しませんが、コピーやダウンロードを行うとクリップボードや保存先のファイルに残ります。</p></details><details><summary>選んだ文字の種類は必ず含まれますか？</summary><p>はい。4種類すべてを選ぶと、大文字・小文字・数字・記号を各1文字以上含めます。文字数が足りない場合や、ある種類が除外で空になった場合は、設定の変更を案内します。</p></details><details><summary>紛らわしい文字と連続重複の違いは？</summary><p>紛らわしい文字の除外対象はIl1O0o|です。連続重複の除外はaaや11のような同じ文字の隣り合いだけを禁止します。離れた位置での再使用やabc・123のような並びは許可されます。</p></details><details><summary>条件を増やすほど安全になりますか？</summary><p>除外条件は入力のしやすさやサイトの規則に合わせるもので、使用可能な組み合わせを減らします。組み合わせの強度は有効なランダム出力の数を基にした目安で、解読時間やアカウントの安全性を保証するものではありません。</p></details><details><summary>数字だけや特定の記号だけでも作れますか？</summary><p>はい。数字だけを選べば数字のみの文字列になります。記号欄では許可される記号を指定できます。生成数より組み合わせが少ないときは、文字数・文字種類を増やすか、生成数を減らしてください。</p></details><details><summary>生成後のパスワードはどう管理しますか？</summary><p>アカウントごとに別のパスワードを使い、利用先の条件内で十分な長さにして、信頼できる管理ツールに保存してください。TXTは平文です。また、別々の一括生成の間で同じ結果が出る可能性はあります。</p></details></section><p class="section-kicker pinyin-related-kicker">関連ツール</p><nav class="landing-links" aria-label="関連ツール"><a href="/ja/text-formatter/">テキスト整形</a><a href="/ja/character-counter/">文字数カウント</a><a href="/ja/image-redaction/">画像モザイク加工</a><a href="/ja/file-text-converter/">ファイルの文字変換</a></nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app は文字変換、漢字学習、ブラウザで使える便利なツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
+  </body>
+</html>

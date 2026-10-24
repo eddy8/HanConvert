@@ -14,6 +14,7 @@ for (const script of [
   "scripts/generate-word-to-txt-pages.mjs",
   "scripts/generate-text-formatter-pages.mjs",
   "scripts/generate-image-redaction-pages.mjs",
+  "scripts/generate-password-generator-pages.mjs",
   "scripts/generate-blog-pages.mjs",
   "scripts/sync-standalone-page-semantics.mjs"
 ]) {

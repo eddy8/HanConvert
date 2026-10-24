@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <title>密码生成器 - 在线随机密码、字符自定义与批量生成 | JianFan.app</title>
+    <meta name="description" content="免费在线密码生成器，自定义密码长度及大小写字母、数字、特殊字符组合，支持自定义符号、排除指定与相似字符、禁止连续重复。浏览器本地生成随机密码，可批量复制或下载。" />
+    <link rel="canonical" href="https://jianfan.app/password-generator/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/password-generator/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/password-generator/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/password-generator/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/password-generator/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/password-generator/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/password-generator/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.min.css" />
+    <link rel="stylesheet" href="/password-generator.css" />
+    <script src="/theme.js"></script>
+    <script defer src="/password-generator.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://jianfan.app/password-generator/#webapp",
+      "name": "密码生成器 - 在线随机密码、字符自定义与批量生成",
+      "url": "https://jianfan.app/password-generator/",
+      "description": "免费在线密码生成器，自定义密码长度及大小写字母、数字、特殊字符组合，支持自定义符号、排除指定与相似字符、禁止连续重复。浏览器本地生成随机密码，可批量复制或下载。",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript and Web Crypto",
+      "inLanguage": "zh-CN",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://jianfan.app/#website",
+        "name": "JianFan.app",
+        "url": "https://jianfan.app/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://jianfan.app/password-generator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "网站首页",
+          "item": "https://jianfan.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "密码生成器 - 在线随机密码、字符自定义与批量生成",
+          "item": "https://jianfan.app/password-generator/"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://jianfan.app/password-generator/#howto",
+      "name": "如何生成符合要求的密码",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "text": "设置密码长度和数量，勾选网站允许的字符类型。"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "text": "按需要修改特殊字符、排除指定字符或开启相似字符与连续重复过滤。"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "text": "点击生成，复制所需密码并保存到自己的密码管理器。"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://jianfan.app/password-generator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "在线生成的密码会保存或上传吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "生成在当前浏览器中完成，不向服务器发送密码，也不将密码写入本地存储。刷新、离开页面或清空结果后，本页不提供历史记录；复制或下载会将结果保存到你选择的剪贴板或文件中。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "是否保证包含所有勾选的字符类型？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "是，这是默认规则。例如勾选四种类型时，每组密码至少包含一个大写字母、一个小写字母、一个数字和一个符号。长度不足或某类字符被全部排除时，会提示你调整设置。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "排除相似字符和排除连续重复有什么区别？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "相似字符选项会排除 Il1O0o|，方便人工抄写。连续重复选项只禁止相邻的相同字符，例如 aa 或 11；同一字符仍可出现在不同位置，不会禁止 abc、123 这样的递增序列。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "密码越复杂就一定越安全吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "长度和随机性都很重要。相似字符与重复限制是为了适配输入习惯或网站规则，不会自动提高安全性。页面的组合强度参考依据有效随机组合数量，不是实际破解时间或账号安全保证。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "可以生成纯数字密码或自定义符号密码吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "可以，只勾选数字即可生成纯数字字符串；只勾选特殊字符可使用自己的符号集。若规则下可用组合少于批量数量，会要求增加长度、扩大字符集或减少数量。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "生成的密码应该如何使用？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "为不同账号分别生成密码，按照目标网站要求选择足够的长度，并保存到可信任的密码管理器。不要把 TXT 当作长期密码保险箱；批量生成不代表这些密码与历史批次永不重复。"
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="password-generator" data-page-slug="password-generator" data-locale="zh-CN">
+    <script type="application/json" id="passwordMessages">{"changed":"设置已更改，请生成新密码。","generated":"已生成 {count} 组密码","failed":"请调整生成规则","cleared":"已清空本页结果","noResults":"尚未生成密码","summary":"{count} 组 · 每组 {length} 字符 · {pool} 个可用字符","resultLabel":"第 {index} 组密码","copyOne":"复制第 {index} 组密码","copiedOne":"已复制第 {index} 组密码","copiedAll":"已复制全部密码","copyFailed":"无法自动复制，请选中文字手动复制。","downloaded":"TXT 文件已下载","hide":"隐藏密码","show":"显示密码","strengthLabel":"组合强度参考：{level}","strength":["较低","中等","高","很高"],"errors":{"invalidLength":"密码长度请输入 1–128 之间的整数。","invalidCount":"生成数量请输入 1–100 之间的整数。","invalidSymbols":"特殊字符仅支持可见符号，不含空白、字母、数字或组合标记，最多 256 种。","noGroups":"请至少选择一种字符类型。","emptyGroup":"“{group}”没有可用字符，请调整字符集或排除规则。","tooShort":"包含所有已选类型至少需要 {minimum} 个字符。","impossibleRepeat":"当前字符集无法避免连续重复，请增加可用字符或关闭该选项。","notEnoughCombinations":"当前规则只有 {available} 种组合，请减少数量、增加长度或扩大字符集。","cryptoUnavailable":"浏览器无法提供安全随机数，请使用新版浏览器后重试。","randomFailed":"安全随机数生成失败，请重试。","unexpected":"无法生成密码，请检查设置后重试。"},"groups":{"uppercase":"大写字母","lowercase":"小写字母","numbers":"数字","symbols":"特殊字符"}}</script>
+    <a class="skip-nav" href="#main">跳到主要内容</a>
+    <header class="site-header"><a class="brand" href="/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true"><svg class="password-icon" data-icon="key" aria-hidden="true"><use href="/password-icons.svg#key" /></svg></span><span>JianFan.app</span></a><nav class="top-actions" aria-label="主要导航"><a class="nav-link" href="/">网站首页</a><label class="language-picker"><span>界面语言</span><select id="localeSelect" aria-label="界面语言"><option value="zh-CN" selected>简体中文</option><option value="zh-TW">繁體中文</option><option value="en">English</option><option value="ja">日本語</option><option value="ko">한국어</option></select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
+    <main id="main" class="password-main">
+      <section class="password-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">随机密码 · 自定义字符 · 本地生成</p><h1 id="pageTitle">密码生成器</h1><p class="lede">按网站要求生成随机密码，自由组合大小写字母、数字与符号，支持排除字符和批量生成。</p></div><span class="password-local"><svg class="password-icon" data-icon="shield" aria-hidden="true"><use href="/password-icons.svg#shield" /></svg>仅在当前浏览器生成</span></section>
+      <div class="password-workspace">
+        <form id="passwordForm" class="password-settings" novalidate autocomplete="off" aria-labelledby="passwordSettingsTitle">
+          <div class="password-section-head"><h2 id="passwordSettingsTitle">生成规则</h2><span class="password-step" aria-hidden="true">01</span></div>
+          <div class="password-numbers"><div><label for="passwordLength">密码长度</label><input id="passwordLength" name="length" type="number" min="1" max="128" value="20" inputmode="numeric" aria-describedby="passwordLengthHint" /><small id="passwordLengthHint">1–128 个字符</small></div><div><label for="passwordCount">生成数量</label><input id="passwordCount" name="count" type="number" min="1" max="100" value="3" inputmode="numeric" aria-describedby="passwordCountHint" /><small id="passwordCountHint">1–100 组，本批结果互不重复</small></div></div>
+          <input id="passwordLengthRange" type="range" min="1" max="128" value="20" aria-label="调整密码长度" />
+          <div class="password-presets" role="group" aria-label="快速设置"><button type="button" data-password-preset="standard">常用 20 位</button><button type="button" data-password-preset="long">加长 32 位</button><button type="button" data-password-preset="readable">便于抄写</button></div>
+          <fieldset class="password-types"><legend>包含字符</legend><div><label class="password-check"><input type="checkbox" name="uppercase" checked /><span>大写字母</span><code>A–Z</code></label><label class="password-check"><input type="checkbox" name="lowercase" checked /><span>小写字母</span><code>a–z</code></label><label class="password-check"><input type="checkbox" name="numbers" checked /><span>数字</span><code>0–9</code></label><label class="password-check"><input type="checkbox" name="symbols" checked /><span>特殊字符</span><code>!@#$</code></label></div><p>每种已选字符至少包含一个。</p></fieldset>
+          <div class="password-custom-fields"><div class="password-field"><div class="password-field-label"><label for="passwordSymbols">自定义特殊字符</label><button id="passwordDefaultSymbols" class="password-icon-button" type="button" title="恢复默认符号" aria-label="恢复默认符号"><svg class="password-icon" data-icon="refresh" aria-hidden="true"><use href="/password-icons.svg#refresh" /></svg></button></div><input id="passwordSymbols" name="specialCharacters" type="text" value="!@#$%^&amp;*()-_=+[]{};:,.?" maxlength="512" spellcheck="false" autocapitalize="off" aria-describedby="passwordSymbolsHint" /><small id="passwordSymbolsHint">仅输入允许的符号，不含空格、字母或数字；重复符号只计一次。</small></div>
+          <div class="password-field"><label for="passwordExcluded">排除指定字符</label><input id="passwordExcluded" name="excludedCharacters" type="text" placeholder="例如：{}[]/\" maxlength="512" spellcheck="false" autocapitalize="off" aria-describedby="passwordExcludedHint" /><small id="passwordExcludedHint">逐字符排除，区分大小写，无需用逗号分隔。</small></div></div>
+          <div class="password-filters"><label><input type="checkbox" name="excludeSimilar" /><span>排除相似字符<small><code>Il1O0o|</code></small></span></label><label><input type="checkbox" name="noAdjacentRepeat" /><span>排除连续重复字符<small>排除 aa、11，允许 a…a</small></span></label></div>
+          <p id="passwordError" class="password-error" role="alert" hidden></p>
+          <button class="password-generate" type="submit"><svg class="password-icon" data-icon="refresh" aria-hidden="true"><use href="/password-icons.svg#refresh" /></svg><span>生成密码</span></button>
+        </form>
+        <section class="password-output" aria-labelledby="passwordResultsTitle">
+          <div class="password-section-head"><h2 id="passwordResultsTitle">生成的密码</h2><div class="password-output-actions"><button class="password-icon-button" id="passwordVisibility" type="button" aria-pressed="false" title="隐藏密码" aria-label="隐藏密码" disabled><svg class="password-icon" data-icon="eye" aria-hidden="true" hidden><use href="/password-icons.svg#eye" /></svg><svg class="password-icon" data-icon="eye-off" aria-hidden="true"><use href="/password-icons.svg#eye-off" /></svg></button><button id="passwordClear" class="password-text-button" type="button" disabled>清空结果</button></div></div>
+          <p id="passwordSummary" class="password-summary">尚未生成密码</p>
+          <div class="password-strength-row"><span id="passwordStrengthLabel"></span><meter id="passwordStrength" min="0" max="128" low="50" high="80" optimum="128" value="0" aria-label="组合强度参考" hidden></meter></div>
+          <div id="passwordResults" class="password-results"></div><p id="passwordEmpty" class="password-empty"><svg class="password-icon" data-icon="key" aria-hidden="true"><use href="/password-icons.svg#key" /></svg>选择生成规则，生成新密码。</p>
+          <div class="password-export"><button id="passwordCopyAll" type="button" disabled><svg class="password-icon" data-icon="copy" aria-hidden="true"><use href="/password-icons.svg#copy" /></svg>复制全部</button><button id="passwordDownload" type="button" disabled><svg class="password-icon" data-icon="download" aria-hidden="true"><use href="/password-icons.svg#download" /></svg>下载 TXT</button></div>
+          <p id="passwordStatus" class="password-status" role="status" aria-live="polite">正在准备密码</p>
+          <div class="password-local-note"><svg class="password-icon" data-icon="shield" aria-hidden="true"><use href="/password-icons.svg#shield" /></svg><p>密码不上传，也不写入浏览器存储。<small>TXT 为明文文件，使用后请妥善处理。</small></p></div>
+          <noscript><p class="password-error">请启用 JavaScript 以在浏览器中生成密码。</p></noscript>
+        </section>
+      </div>
+      <template id="passwordResultTemplate"><div class="password-result"><span class="password-result-index" aria-hidden="true"></span><input type="text" readonly autocomplete="off" spellcheck="false" data-lpignore="true" data-1p-ignore /><button type="button" class="password-icon-button" title="复制密码" aria-label="复制密码"><svg class="password-icon" data-icon="copy" aria-hidden="true"><use href="/password-icons.svg#copy" /></svg></button></div></template>
+      <section class="seo-band standalone-info password-info" aria-labelledby="passwordFeatureTitle"><div class="section-heading"><h2 id="passwordFeatureTitle">满足不同网站要求的随机密码生成工具</h2><p class="seo-intro">注册账号、修改登录密码或准备多组初始密码时，可以先按目标网站的规则确定长度和允许字符，再生成一批候选。默认使用 20 位混合字符；关闭特殊字符后也可生成纯字母数字密码。</p></div><div class="seo-grid"><article><h3>自定义密码字符组合</h3><p>分别选择大写字母、小写字母、数字和特殊字符。每个已选类别都会出现，避免生成后因缺少某类字符而被网站拒绝。</p></article><article><h3>精确控制可用符号</h3><p>网站只接受部分特殊字符时，直接修改符号列表；某些字符不允许使用时，填入排除栏。排除规则对所有已选类别都生效。</p></article><article><h3>批量生成与复制</h3><p>一次生成最多 100 组互不重复的密码，可逐条复制、复制全部或下载为每行一组的 TXT 文件。生成结果仅在本页暂存。</p></article></div><section class="pinyin-howto" aria-labelledby="passwordHowTitle"><h2 id="passwordHowTitle">如何生成符合要求的密码</h2><ol><li>设置密码长度和数量，勾选网站允许的字符类型。</li><li>按需要修改特殊字符、排除指定字符或开启相似字符与连续重复过滤。</li><li>点击生成，复制所需密码并保存到自己的密码管理器。</li></ol></section><section class="pinyin-faq" aria-labelledby="passwordFaqTitle"><h2 id="passwordFaqTitle">密码生成常见问题</h2><details><summary>在线生成的密码会保存或上传吗？</summary><p>生成在当前浏览器中完成，不向服务器发送密码，也不将密码写入本地存储。刷新、离开页面或清空结果后，本页不提供历史记录；复制或下载会将结果保存到你选择的剪贴板或文件中。</p></details><details><summary>是否保证包含所有勾选的字符类型？</summary><p>是，这是默认规则。例如勾选四种类型时，每组密码至少包含一个大写字母、一个小写字母、一个数字和一个符号。长度不足或某类字符被全部排除时，会提示你调整设置。</p></details><details><summary>排除相似字符和排除连续重复有什么区别？</summary><p>相似字符选项会排除 Il1O0o|，方便人工抄写。连续重复选项只禁止相邻的相同字符，例如 aa 或 11；同一字符仍可出现在不同位置，不会禁止 abc、123 这样的递增序列。</p></details><details><summary>密码越复杂就一定越安全吗？</summary><p>长度和随机性都很重要。相似字符与重复限制是为了适配输入习惯或网站规则，不会自动提高安全性。页面的组合强度参考依据有效随机组合数量，不是实际破解时间或账号安全保证。</p></details><details><summary>可以生成纯数字密码或自定义符号密码吗？</summary><p>可以，只勾选数字即可生成纯数字字符串；只勾选特殊字符可使用自己的符号集。若规则下可用组合少于批量数量，会要求增加长度、扩大字符集或减少数量。</p></details><details><summary>生成的密码应该如何使用？</summary><p>为不同账号分别生成密码，按照目标网站要求选择足够的长度，并保存到可信任的密码管理器。不要把 TXT 当作长期密码保险箱；批量生成不代表这些密码与历史批次永不重复。</p></details></section><p class="section-kicker pinyin-related-kicker">相关工具</p><nav class="landing-links" aria-label="相关工具"><a href="/text-formatter/">文本格式化</a><a href="/character-counter/">字数统计</a><a href="/image-redaction/">图片隐私打码</a><a href="/file-text-converter/">文件文本转换</a></nav></section>
+    </main>
+    <footer class="site-footer"><p>JianFan.app 提供文字转换、汉字学习与浏览器实用工具。</p><nav class="footer-links" aria-label="页脚"><a href="/about/">关于我们</a><a href="/contact/">联系我们</a><a href="/privacy/">隐私声明</a></nav></footer>
+  </body>
+</html>
