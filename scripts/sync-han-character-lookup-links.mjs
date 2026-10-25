@@ -45,7 +45,13 @@ for (const filePath of await findIndexFiles(projectRoot)) {
   const meta = localeMeta[locale];
   const href = `/${meta.prefix}${slug}/`;
   const block = `${markerStart}\n          <a href="${href}" data-route="${slug}">${meta.label}</a>\n${markerEnd}`;
-  const withoutOldBlock = source.replace(new RegExp(`${markerStart}[\\s\\S]*?${markerEnd}\\n?`, "g"), "");
+  const existingBlock = new RegExp(`${markerStart}[\\s\\S]*?${markerEnd}`);
+  if (existingBlock.test(source)) {
+    const refreshed = source.replace(existingBlock, block);
+    if (refreshed !== source) { await writeFile(filePath, refreshed); changed += 1; }
+    continue;
+  }
+  const withoutOldBlock = source;
   if (withoutOldBlock.includes(`href="${href}"`)) continue;
   const updated = withoutOldBlock.replace(
     /(<nav class="landing-links"[^>]*>)([\s\S]*?)(\s*<\/nav>)/,

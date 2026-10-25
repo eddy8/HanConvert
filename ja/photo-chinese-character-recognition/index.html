@@ -147,7 +147,7 @@
         <div class="photo-ocr-workspace">
           <section class="photo-ocr-panel" aria-labelledby="photoSourceTitle">
             <div class="photo-ocr-panel-head"><span class="photo-ocr-step" aria-hidden="true">01</span><div><h3 id="photoSourceTitle">漢字が写った画像を選択</h3><p>文字全体が鮮明に写るようにし、反射、強い傾き、複雑な背景を避けてください。</p></div></div>
-            <div class="photo-ocr-capture-row"><button class="photo-ocr-capture" id="photoCapture" type="button">撮影または画像を選択</button><input class="visually-hidden" id="photoInput" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,.heic,.heif" capture="environment" /><button class="photo-ocr-secondary" id="photoReset" type="button" disabled>選び直す</button></div>
+            <div class="photo-ocr-capture-row"><button class="photo-ocr-capture" id="photoCapture" type="button">撮影または画像を選択</button><input class="visually-hidden" id="photoInput" aria-labelledby="photoCapture" tabindex="-1" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,.heic,.heif" capture="environment" /><button class="photo-ocr-secondary" id="photoReset" type="button" disabled>選び直す</button></div>
             <button class="photo-ocr-recognize" id="photoRecognize" type="button" disabled>画像の漢字を認識</button>
             <div class="photo-ocr-canvas-frame is-empty" id="photoSourceFrame"><canvas id="photoSourceCanvas" aria-label="漢字が写った画像を選択"></canvas><div class="photo-ocr-empty" id="photoSourceEmpty"><strong>撮影または画像を選択</strong><span>PNG、JPEG、WebP、HEIC、HEIFに対応</span></div></div>
           </section>

@@ -148,7 +148,7 @@
         <div class="photo-ocr-workspace">
           <section class="photo-ocr-panel" aria-labelledby="photoSourceTitle">
             <div class="photo-ocr-panel-head"><span class="photo-ocr-step" aria-hidden="true">01</span><div><h3 id="photoSourceTitle">選擇漢字圖片</h3><p>保持文字清晰完整，盡量避免反光、傾斜與複雜背景。</p></div></div>
-            <div class="photo-ocr-capture-row"><button class="photo-ocr-capture" id="photoCapture" type="button">拍照或選擇圖片</button><input class="visually-hidden" id="photoInput" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,.heic,.heif" capture="environment" /><button class="photo-ocr-secondary" id="photoReset" type="button" disabled>重新選擇</button></div>
+            <div class="photo-ocr-capture-row"><button class="photo-ocr-capture" id="photoCapture" type="button">拍照或選擇圖片</button><input class="visually-hidden" id="photoInput" aria-labelledby="photoCapture" tabindex="-1" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,.heic,.heif" capture="environment" /><button class="photo-ocr-secondary" id="photoReset" type="button" disabled>重新選擇</button></div>
             <button class="photo-ocr-recognize" id="photoRecognize" type="button" disabled>辨識圖片中的漢字</button>
             <div class="photo-ocr-canvas-frame is-empty" id="photoSourceFrame"><canvas id="photoSourceCanvas" aria-label="選擇漢字圖片"></canvas><div class="photo-ocr-empty" id="photoSourceEmpty"><strong>拍照或選擇圖片</strong><span>支援 PNG、JPEG、WebP、HEIC 和 HEIF</span></div></div>
           </section>

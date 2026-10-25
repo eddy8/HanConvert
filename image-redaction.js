@@ -732,7 +732,7 @@
 
   function setAiProgress(value, label) {
     elements.aiProgress.hidden = false;
-    elements.aiProgressBar.style.width = `${Math.max(2, Math.round(value * 100))}%`;
+    elements.aiProgressBar.style.transform = `scaleX(${Math.min(1, Math.max(0.02, value))})`;
     elements.aiProgressText.textContent = label;
   }
 

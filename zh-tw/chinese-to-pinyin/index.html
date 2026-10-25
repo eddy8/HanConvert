@@ -132,8 +132,8 @@
           <div class="pinyin-switches"><label><input id="preserveNonChinese" type="checkbox" checked /><span>保留標點與字母</span></label><label><input id="surnameMode" type="checkbox" /><span>姓名讀音模式</span></label></div>
         </div>
         <div class="pinyin-converter-grid">
-          <section class="pinyin-text-panel input-variant" aria-labelledby="pinyinInputTitle"><div class="panel-topline"><h3 id="pinyinInputTitle">漢字文字</h3><span id="pinyinInputCount">0</span></div><textarea id="pinyinInput" spellcheck="false" placeholder="輸入或貼上需要轉換的簡體或繁體中文..."></textarea><div class="panel-actions"><button class="text-button" id="pinyinSample" type="button" data-sample="重庆银行的音乐会在长安举行，行人走过快乐的街道。">範例</button><button class="text-button" id="pinyinClear" type="button">清空</button><button class="primary-action" id="pinyinConvert" type="button">轉換拼音</button></div></section>
-          <section class="pinyin-text-panel output-variant" aria-labelledby="pinyinOutputTitle"><div class="panel-topline"><h3 id="pinyinOutputTitle">拼音結果</h3><span id="pinyinOutputCount">0</span></div><textarea id="pinyinOutput" readonly spellcheck="false" placeholder="轉換後的拼音會顯示在這裡"></textarea><div class="panel-actions"><button class="text-button" id="pinyinCopy" type="button">複製結果</button></div></section>
+          <section class="pinyin-text-panel input-variant" aria-labelledby="pinyinInputTitle"><div class="panel-topline"><h3 id="pinyinInputTitle">漢字文字</h3><span id="pinyinInputCount">0</span></div><textarea id="pinyinInput" aria-labelledby="pinyinInputTitle" spellcheck="false" placeholder="輸入或貼上需要轉換的簡體或繁體中文..."></textarea><div class="panel-actions"><button class="text-button" id="pinyinSample" type="button" data-sample="重庆银行的音乐会在长安举行，行人走过快乐的街道。">範例</button><button class="text-button" id="pinyinClear" type="button">清空</button><button class="primary-action" id="pinyinConvert" type="button">轉換拼音</button></div></section>
+          <section class="pinyin-text-panel output-variant" aria-labelledby="pinyinOutputTitle"><div class="panel-topline"><h3 id="pinyinOutputTitle">拼音結果</h3><span id="pinyinOutputCount">0</span></div><textarea id="pinyinOutput" aria-labelledby="pinyinOutputTitle" readonly spellcheck="false" placeholder="轉換後的拼音會顯示在這裡"></textarea><div class="panel-actions"><button class="text-button" id="pinyinCopy" type="button">複製結果</button></div></section>
         </div>
         <div class="pinyin-detail-grid">
           <section class="pinyin-annotation-panel" aria-labelledby="pinyinAnnotationTitle"><div><p class="section-kicker">RUBY</p><h3 id="pinyinAnnotationTitle">逐字拼音標註</h3></div><p id="pinyinAnnotationEmpty" class="pinyin-empty">輸入漢字後，這裡會顯示逐字注音預覽。</p><div id="pinyinAnnotation" class="pinyin-annotation" hidden></div><p class="pinyin-preview-note">長文字只預覽前 500 個字元，完整拼音結果不受影響。</p></section>
@@ -159,17 +159,13 @@
           <a href="/zh-tw/japanese-chinese-kanji-converter/">日中漢字三體轉換</a>
           <a href="/zh-tw/japanese-characters/">日文字元複製</a>
           <a href="/zh-tw/kanji-to-romaji/">日文漢字轉羅馬字</a>
-          <a href="/zh-tw/han-character-worksheet/">國字練習紙</a>
-          <a href="/zh-tw/chinese-handwriting-recognition/">手寫漢字辨識</a>
           <!-- han-character-lookup-link:start -->
           <a href="/zh-tw/chinese-character-lookup/" data-route="chinese-character-lookup">漢字查詢與結構拆解</a>
           <!-- han-character-lookup-link:end -->
+          <a href="/zh-tw/han-character-worksheet/">國字練習紙</a>
+          <a href="/zh-tw/chinese-handwriting-recognition/">手寫漢字辨識</a>
         </nav></section>
     </main>
-    <footer class="site-footer"><p>JianFan.app 提供在瀏覽器本機運行的中文文字轉換與拼音工具。</p><nav class="footer-links" aria-label="Footer">
-        <a href="/zh-tw/about/">關於我們</a>
-        <a href="/zh-tw/contact/">聯絡我們</a>
-        <a href="/zh-tw/privacy/">隱私聲明</a>
-      </nav></footer>
+    <footer class="site-footer"><p>JianFan.app 提供在瀏覽器本機運行的中文文字轉換與拼音工具。</p><nav class="footer-links" aria-label="頁尾"><a href="/zh-tw/about/">關於我們</a><a href="/zh-tw/contact/">聯絡我們</a><a href="/zh-tw/privacy/">隱私聲明</a></nav></footer>
   </body>
 </html>

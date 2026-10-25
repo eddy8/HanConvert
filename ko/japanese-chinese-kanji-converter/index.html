@@ -163,7 +163,7 @@
         <div class="triple-converter-grid">
           <section class="triple-text-panel input-variant" aria-labelledby="tripleInputTitle">
             <div class="panel-topline"><h3 id="tripleInputTitle">입력 텍스트</h3><span id="tripleInputCount">0</span></div>
-            <textarea id="tripleInput" spellcheck="false" placeholder="일본 한자, 간체 또는 번체 텍스트를 붙여 넣으세요..."></textarea>
+            <textarea id="tripleInput" aria-labelledby="tripleInputTitle" spellcheck="false" placeholder="일본 한자, 간체 또는 번체 텍스트를 붙여 넣으세요..."></textarea>
             <div class="panel-actions">
               <button class="text-button" id="tripleSample" type="button" data-sample="日本語の国と学、芸術と図書館の漢字表記を比較します。">예시</button>
               <button class="text-button" id="tripleClear" type="button">지우기</button>
@@ -172,17 +172,17 @@
           </section>
           <section class="triple-text-panel output-variant japanese" aria-labelledby="japaneseOutputTitle">
             <div class="panel-topline"><h3 id="japaneseOutputTitle">일본 한자</h3><span id="japaneseOutputCount">0</span></div>
-            <textarea id="japaneseOutput" readonly spellcheck="false"></textarea>
+            <textarea id="japaneseOutput" aria-labelledby="japaneseOutputTitle" readonly spellcheck="false"></textarea>
             <div class="panel-actions"><button class="text-button" type="button" data-copy-output="japanese">복사</button></div>
           </section>
           <section class="triple-text-panel output-variant simplified" aria-labelledby="simplifiedOutputTitle">
             <div class="panel-topline"><h3 id="simplifiedOutputTitle">중국어 간체</h3><span id="simplifiedOutputCount">0</span></div>
-            <textarea id="simplifiedOutput" readonly spellcheck="false"></textarea>
+            <textarea id="simplifiedOutput" aria-labelledby="simplifiedOutputTitle" readonly spellcheck="false"></textarea>
             <div class="panel-actions"><button class="text-button" type="button" data-copy-output="simplified">복사</button></div>
           </section>
           <section class="triple-text-panel output-variant traditional" aria-labelledby="traditionalOutputTitle">
             <div class="panel-topline"><h3 id="traditionalOutputTitle">중국어 번체</h3><span id="traditionalOutputCount">0</span></div>
-            <textarea id="traditionalOutput" readonly spellcheck="false"></textarea>
+            <textarea id="traditionalOutput" aria-labelledby="traditionalOutputTitle" readonly spellcheck="false"></textarea>
             <div class="panel-actions"><button class="text-button" type="button" data-copy-output="traditional">복사</button></div>
           </section>
         </div>

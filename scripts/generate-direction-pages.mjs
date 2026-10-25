@@ -2,6 +2,8 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { labelConverterFields } from "./static-localization-lib.mjs";
+
 import { SEO_DESCRIPTIONS } from "./seo-descriptions.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -306,7 +308,7 @@ function preparePage(source, slug, locale, page) {
       .replace('<option value="t2s" data-i18n="modeT2S">', '<option value="t2s" data-i18n="modeT2S" selected>');
   }
 
-  return html;
+  return labelConverterFields(html);
 }
 
 for (const [slug, page] of Object.entries(pages)) {

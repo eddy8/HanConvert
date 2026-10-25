@@ -1,3 +1,4 @@
+import { preserveToolLinks } from "./static-tool-links.mjs";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -527,7 +528,7 @@ ${localeOptions}
         <div class="counter-workspace">
           <section class="counter-input-panel" aria-labelledby="counterInputTitle">
             <div class="panel-topline"><h3 id="counterInputTitle">${page.inputTitle}</h3><span id="counterInputCount">0 / 3,000,000</span></div>
-            <textarea id="counterInput" spellcheck="false" placeholder="${escapeHtml(page.inputPlaceholder)}"></textarea>
+            <textarea id="counterInput" aria-labelledby="counterInputTitle" spellcheck="false" placeholder="${escapeHtml(page.inputPlaceholder)}"></textarea>
             <div class="counter-input-actions">
               <div><button class="text-button" id="counterSample" type="button" data-sample="${escapeHtml(sampleText)}">${page.sample}</button><button class="text-button" id="counterClear" type="button">${page.clear}</button></div>
               <label class="counter-file-action" id="counterFileLabel" for="counterFileInput"><span>${page.importFile}</span><input id="counterFileInput" type="file" accept=".txt,.md,.csv,.json,.docx,text/plain,text/markdown,text/csv,application/json,application/vnd.openxmlformats-officedocument.wordprocessingml.document" /></label>
@@ -577,7 +578,7 @@ ${related}
 for (const locale of Object.keys(locales)) {
   const directory = path.join(projectRoot, locales[locale].prefix, slug);
   await mkdir(directory, { recursive: true });
-  await writeFile(path.join(directory, "index.html"), `${buildPage(locale)}\n`);
+  await writeFile(path.join(directory, "index.html"), await preserveToolLinks(`${buildPage(locale)}\n`, path.join(directory, "index.html")));
 }
 
 console.log("Generated 5 multilingual character-counter pages.");

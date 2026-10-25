@@ -1,5 +1,62 @@
+/* Hallmark · checked: 2026-10-25 · genre: modern-minimal · scope: app · built: the project · redesign: polish · v2.0.0 */
+/* Hallmark · finish-review: subagent · 2 findings · 2 resolved · gap: none */
 /* After editing this source file, run: node scripts/minify-static-assets.mjs */
 :root {
+  --font-ui: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Noto Sans CJK TC", "Noto Sans JP", "Noto Sans KR", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-kaiti: KaiTi, STKaiti, BiauKai, serif;
+  --font-print-sc: "Noto Sans CJK SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-print-tc: "Noto Sans CJK TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-print-ja: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+  --font-print-ko: "Noto Sans CJK KR", "Apple SD Gothic Neo", sans-serif;
+  --font-handwriting-ja: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", serif;
+  --font-handwriting: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", "Batang", serif;
+  --font-hanja: Batang, "Noto Serif CJK KR", "Source Han Serif K", serif;
+  --font-serif: Georgia, serif;
+  --mask-ink: rgba(0, 0, 0, 0.9);
+  --danger-border: rgba(255, 107, 112, 0.48);
+  --info-border: rgba(121, 182, 255, 0.3);
+  --glyph-outline: #31574d;
+  --error-action-border: rgba(255, 116, 116, 0.28);
+  --counter-field: rgba(2, 9, 8, 0.68);
+  --counter-field-strong: rgba(2, 9, 8, 0.7);
+  --accent-info: #79b6ff;
+  --paper-preview: #f8faf7;
+  --paper-preview-shadow: rgba(0, 0, 0, 0.3);
+  --paper-preview-line: rgba(17, 24, 39, 0.35);
+  --paper-ink: #111827;
+  --paper-preview-guide: rgba(17, 24, 39, 0.16);
+  --paper-accent: #0d7f60;
+  --preview-surface: rgba(1, 7, 6, 0.56);
+  --paper-grid: rgba(64, 78, 75, 0.46);
+  --paper: #fff;
+  --paper-shadow: rgba(0, 0, 0, 0.42);
+  --paper-rule: #1f2937;
+  --paper-muted: #4b5563;
+  --paper-secondary: #6b7280;
+  --paper-reading: #374151;
+  --paper-line: #d1d5db;
+  --paper-stroke-surface: #f8fafc;
+  --paper-stroke-guide: #e5e7eb;
+  --paper-grid-axis: rgba(96, 111, 108, 0.25);
+  --paper-grid-diagonal: rgba(96, 111, 108, 0.18);
+  --paper-footer: #9ca3af;
+  --board-shadow: rgba(0, 0, 0, 0.24);
+  --glyph-paper: #f7faf8;
+  --glyph-ink: #102822;
+  --danger-strong-border: rgba(255, 125, 139, 0.5);
+  --light-grid-horizontal: rgba(13, 110, 84, 0.07);
+  --light-grid-vertical: rgba(13, 110, 84, 0.05);
+  --light-focus: rgba(178, 106, 0, 0.9);
+  --redaction-ink: #07120f;
+  --canvas-shadow: rgba(0, 0, 0, 0.34);
+  --dialog-shadow: rgba(0, 0, 0, 0.55);
+  --dialog-backdrop: rgba(0, 0, 0, 0.72);
+  --field-line: #5b8474;
+  --focus: rgba(var(--ac2), 0.9);
+  --line-strong: var(--field-line);
+  --accent-2-ink: var(--accent-2);
+  --accent-ink: var(--accent);
   color-scheme: dark;
   --bg: #07120f;
   --bg-2: #0d1c19;
@@ -31,20 +88,24 @@
   --radius: 14px;
   --radius-lg: 22px;
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Noto Sans CJK SC", "Noto Sans CJK TC", "Noto Sans JP", "Noto Sans KR", sans-serif;
+  font-family: var(--font-ui);
 }
 
 * {
   box-sizing: border-box;
 }
 
+[hidden]:not([hidden="until-found"]) {
+  display: none !important;
+}
+
 html {
+  overflow-x: clip;
   scroll-behavior: smooth;
 }
 
 body {
+  overflow-x: clip;
   min-width: 0;
   margin: 0;
   background:
@@ -59,12 +120,12 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  content: "";
+  content: none;
   background-image:
     linear-gradient(rgba(var(--ln), 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(var(--ln), 0.06) 1px, transparent 1px);
   background-size: 72px 72px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 78%);
+  mask-image: linear-gradient(to bottom, var(--mask-ink), transparent 78%);
 }
 
 a {
@@ -87,8 +148,10 @@ button:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
 input:focus-visible,
-a:focus-visible {
-  outline: 3px solid rgba(var(--ac2), 0.9);
+summary:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--focus);
   outline-offset: 3px;
 }
 
@@ -144,7 +207,7 @@ main,
   border: 1px solid var(--line);
   border-radius: 50%;
   background: linear-gradient(145deg, rgba(var(--ac), 0.18), rgba(var(--ac2), 0.08));
-  box-shadow: inset 0 0 24px rgba(var(--ac), 0.16);
+  box-shadow: none;
   font-weight: 800;
 }
 
@@ -184,7 +247,7 @@ html.has-app-download .app-download-link {
 }
 
 .app-download-link::before {
-  color: var(--accent);
+  color: var(--accent-ink);
   content: "↓";
   font-family: var(--font-mono);
   font-weight: 800;
@@ -198,10 +261,10 @@ html.has-app-download .app-download-link {
 .language-picker {
   gap: 8px;
   font-size: 0.9rem;
+  border-color: var(--field-line);
 }
 
-.language-picker select,
-.advanced-grid select {
+.language-picker select {
   min-height: 32px;
   border: 0;
   background: transparent;
@@ -216,7 +279,7 @@ html.has-app-download .app-download-link {
 
 .hero-shell {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 188px;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   gap: 14px;
   min-height: 96px;
@@ -226,11 +289,11 @@ html.has-app-download .app-download-link {
 .eyebrow,
 .section-kicker {
   margin: 0 0 10px;
-  color: var(--accent);
+  color: var(--muted);
   font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 h1,
@@ -238,6 +301,14 @@ h2,
 h3,
 p {
   margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  min-width: 0;
+  overflow-wrap: break-word;
+  text-wrap: balance;
 }
 
 h1 {
@@ -257,6 +328,7 @@ h1 {
 }
 
 .signal-panel {
+  display: none;
   position: relative;
   overflow: hidden;
   min-height: 88px;
@@ -307,7 +379,7 @@ h1 {
 
 .glyph-lanes span:nth-child(2n) {
   animation-delay: 700ms;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
 }
 
 .signal-readout {
@@ -318,7 +390,7 @@ h1 {
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   color: var(--muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.68rem;
 }
 
@@ -333,6 +405,8 @@ h1 {
 
 .converter {
   padding: clamp(12px, 1.55vw, 18px);
+  border: 0;
+  box-shadow: none;
 }
 
 .converter-head,
@@ -349,6 +423,34 @@ h1 {
   margin-bottom: 10px;
 }
 
+.converter-head > div {
+  min-width: 0;
+}
+
+.processing-note,
+.workspace-note {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.converter-secondary {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.converter-home .text-panel {
+  min-height: 380px;
+}
+
+.converter-home .text-panel textarea {
+  min-height: 260px;
+}
+
 .converter h2,
 .feature-band h2 {
   margin-bottom: 0;
@@ -358,18 +460,22 @@ h1 {
 .status-pill {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
+  min-width: 0;
+  max-width: 100%;
   min-height: 34px;
   padding: 6px 10px;
   border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--muted);
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .status-dot {
+  flex: 0 0 9px;
   width: 9px;
   height: 9px;
-  margin-right: 8px;
+  margin-right: 0;
   border-radius: 999px;
   background: var(--accent-2);
   box-shadow: 0 0 14px var(--accent-2);
@@ -390,6 +496,10 @@ h1 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 6px;
   margin-bottom: 8px;
+}
+
+.mode-label-compact {
+  display: none;
 }
 
 .mode-card {
@@ -419,7 +529,7 @@ h1 {
 
 .advanced-options {
   margin-bottom: 0;
-  border: 1px solid var(--line);
+  border: 1px solid var(--field-line);
   border-radius: var(--radius);
   background: rgba(var(--pn), 0.44);
 }
@@ -444,10 +554,12 @@ h1 {
 
 #configSelect {
   min-height: 40px;
+  min-width: 0;
   padding: 0 10px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--field-line);
   border-radius: var(--radius-sm);
-  background: rgba(var(--w), 0.04);
+  background: var(--field);
+  color: var(--ink);
 }
 
 .toggle-row input {
@@ -482,8 +594,8 @@ h1 {
 .custom-dictionary-count {
   float: right;
   margin-left: 14px;
-  color: var(--accent);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
   font-size: 0.78rem;
 }
 
@@ -522,21 +634,21 @@ h1 {
   width: 100%;
   min-height: 40px;
   padding: 7px 10px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--field-line);
   border-radius: var(--radius-sm);
   background: rgba(var(--w), 0.04);
   color: var(--ink);
 }
 
 .custom-dictionary-form input::placeholder {
-  color: rgba(var(--muted-rgb), 0.58);
+  color: var(--muted);
 }
 
 .custom-dictionary-arrow {
   display: grid;
   min-height: 40px;
   place-items: center;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
 }
 
 .custom-dictionary-add {
@@ -602,7 +714,7 @@ h1 {
 }
 
 .custom-dictionary-entry-arrow {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
 }
 
 .custom-dictionary-remove {
@@ -618,7 +730,7 @@ h1 {
 }
 
 .custom-dictionary-remove:hover {
-  border-color: rgba(255, 107, 112, 0.48);
+  border-color: var(--danger-border);
   color: var(--danger);
 }
 
@@ -694,6 +806,11 @@ h1 {
   transform: translateY(-1px);
 }
 
+.file-drop:focus-within {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
 .file-drop span {
   font-weight: 800;
 }
@@ -735,9 +852,25 @@ h1 {
   display: flex;
   min-height: 430px;
   flex-direction: column;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: rgba(var(--pn), 0.52);
+  border: 0;
+  background: transparent;
+}
+
+.text-panel .panel-topline {
+  min-height: 36px;
+  padding-inline: 0;
+  border: 0;
+}
+
+.text-panel textarea {
+  border: 1px solid var(--field-line);
+  border-radius: var(--radius-sm);
+  background: var(--field);
+}
+
+.text-panel .panel-actions {
+  padding-inline: 0;
+  border: 0;
 }
 
 .panel-topline {
@@ -753,7 +886,7 @@ h1 {
 
 .panel-topline span {
   color: var(--muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
 }
 
 textarea {
@@ -770,7 +903,7 @@ textarea {
 }
 
 textarea::placeholder {
-  color: rgba(var(--muted-rgb), 0.58);
+  color: var(--muted);
 }
 
 .panel-actions {
@@ -964,7 +1097,7 @@ textarea::placeholder {
 }
 
 .japanese-comparison-glyph.is-target {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-weight: 800;
 }
 
@@ -992,6 +1125,10 @@ textarea::placeholder {
 .seo-band {
   margin-top: 16px;
   padding: clamp(18px, 3vw, 30px);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .privacy-band {
@@ -1037,8 +1174,8 @@ textarea::placeholder {
 .feature-index {
   display: block;
   margin-bottom: 26px;
-  color: var(--accent-2);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--accent-2-ink);
+  font-family: var(--font-mono);
 }
 
 .feature-grid h3,
@@ -1145,7 +1282,7 @@ textarea::placeholder {
 }
 
 .privacy-language-links a[aria-current] {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .trust-hero {
@@ -1216,21 +1353,21 @@ textarea::placeholder {
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   background: rgba(var(--pn), 0.78);
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 1.45rem;
   font-weight: 800;
 }
 
 .tool-hero-glyphs span:nth-child(2) {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .standalone-tool {
   padding: clamp(12px, 1.4vw, 18px);
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: var(--radius-sm);
   background: var(--surface);
-  box-shadow: var(--shadow);
+  box-shadow: none;
 }
 
 .standalone-tool-head {
@@ -1293,7 +1430,7 @@ textarea::placeholder {
 }
 
 .triple-text-panel.output-variant.japanese {
-  border-color: rgba(121, 182, 255, 0.3);
+  border-color: var(--info-border);
 }
 
 .triple-text-panel.output-variant.simplified {
@@ -1530,7 +1667,7 @@ textarea::placeholder {
 }
 
 .pinyin-format-control small {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 0.67rem;
 }
 
@@ -1672,7 +1809,7 @@ textarea::placeholder {
 }
 
 .pinyin-ruby-item rt {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 0.58rem;
   font-weight: 700;
 }
@@ -1706,7 +1843,7 @@ textarea::placeholder {
   border: 1px solid rgba(var(--ac), 0.36);
   border-radius: var(--radius-sm);
   background: rgba(var(--ac), 0.09);
-  color: var(--accent);
+  color: var(--accent-ink);
   font-weight: 800;
 }
 
@@ -1766,7 +1903,7 @@ textarea::placeholder {
 }
 
 .hanzi-language-menu summary::after {
-  color: var(--accent);
+  color: var(--accent-ink);
   content: "▾";
   font-size: 0.72rem;
 }
@@ -1831,7 +1968,7 @@ textarea::placeholder {
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   background: rgba(var(--pn), 0.78);
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-weight: 800;
 }
 
@@ -1840,7 +1977,7 @@ textarea::placeholder {
 }
 
 .hanzi-directory-signal span:nth-child(2n) {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .hanzi-directory-tool {
@@ -1930,7 +2067,7 @@ textarea::placeholder {
   border: 1px solid rgba(var(--ac2), 0.3);
   border-radius: var(--radius-sm);
   background: var(--field);
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 2rem;
   font-weight: 800;
 }
@@ -1946,8 +2083,8 @@ textarea::placeholder {
 }
 
 .hanzi-directory-card-copy small {
-  color: var(--accent);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--accent-ink);
+  font-family: var(--font-ui);
 }
 
 .hanzi-directory-card-copy > span {
@@ -1980,14 +2117,14 @@ textarea::placeholder {
 
 .hanzi-profile-hero-glyph {
   width: 104px;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 4rem;
-  box-shadow: inset 0 0 32px rgba(var(--ac), 0.08);
+  box-shadow: none;
 }
 
 .hanzi-profile-code {
-  color: var(--accent);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
   font-size: 0.82rem;
 }
 
@@ -2015,7 +2152,7 @@ textarea::placeholder {
 
 .hanzi-profile-primary strong {
   margin-top: 12px;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 1.08rem;
 }
 
@@ -2162,9 +2299,10 @@ textarea::placeholder {
 
 .hanzi-profile-table .hanzi-profile-table-glyph {
   width: 18%;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 1.5rem;
   font-weight: 800;
+  font-variant-numeric: tabular-nums;
 }
 
 .hanzi-profile-copy-grid {
@@ -2398,7 +2536,7 @@ textarea::placeholder {
 }
 
 .romaji-furigana-output rt {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 0.6rem;
   font-weight: 750;
 }
@@ -2480,7 +2618,7 @@ textarea::placeholder {
 }
 
 .stroke-character-tabs button.is-active {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .stroke-workspace {
@@ -2583,7 +2721,7 @@ textarea::placeholder {
 }
 
 .stroke-character-summary > strong {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 4.5rem;
   font-weight: 800;
   line-height: 1;
@@ -2652,7 +2790,7 @@ textarea::placeholder {
 
 .stroke-actions button > span:first-child {
   min-width: 18px;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-weight: 800;
 }
 
@@ -2722,7 +2860,7 @@ textarea::placeholder {
 }
 
 .kanjivg-outlines path {
-  stroke: #31574d;
+  stroke: var(--glyph-outline);
   stroke-width: 3;
 }
 
@@ -2733,7 +2871,7 @@ textarea::placeholder {
 
 .kanjivg-numbers {
   fill: var(--accent-2);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 8px;
   font-weight: 800;
 }
@@ -2777,7 +2915,7 @@ textarea::placeholder {
 }
 
 .stroke-data-note a {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
 }
 
 .kanji-dictionary-hero {
@@ -2798,7 +2936,7 @@ textarea::placeholder {
 
 .kanji-dictionary-hero-sample strong {
   grid-row: 1 / 3;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 4.6rem;
   line-height: 1;
   text-align: center;
@@ -2875,10 +3013,12 @@ textarea::placeholder {
 
 .kanji-dictionary-progress > span > span {
   display: block;
-  width: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
   height: 100%;
   background: var(--accent);
-  transition: width 120ms linear;
+  transition: transform 120ms linear;
 }
 
 .kanji-dictionary-workspace {
@@ -2932,7 +3072,7 @@ textarea::placeholder {
 }
 
 .kanji-dictionary-result > strong {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 2.7rem;
   line-height: 1;
   text-align: center;
@@ -2977,7 +3117,7 @@ textarea::placeholder {
 }
 
 .kanji-dictionary-detail > strong {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 6.5rem;
   line-height: 1;
   text-align: center;
@@ -3061,7 +3201,7 @@ textarea::placeholder {
 }
 
 .kanji-dictionary-source a {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
 }
 
 .word-format-flow {
@@ -3078,14 +3218,14 @@ textarea::placeholder {
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   background: rgba(var(--pn), 0.78);
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 1rem;
   font-weight: 850;
 }
 
 .word-format-flow span:last-child {
   border-color: rgba(var(--ac), 0.46);
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .word-format-flow b {
@@ -3151,7 +3291,7 @@ textarea::placeholder {
 }
 
 .word-drop-mark {
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 1.35rem;
   font-weight: 900;
 }
@@ -3258,7 +3398,7 @@ textarea::placeholder {
 }
 
 .word-file-item.is-error button {
-  border-color: rgba(255, 116, 116, 0.28);
+  border-color: var(--error-action-border);
   color: var(--danger);
 }
 
@@ -3400,7 +3540,7 @@ textarea::placeholder {
   position: absolute;
   top: 10px;
   left: 12px;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 1.05rem;
   font-weight: 900;
   content: "0" counter(word-step);
@@ -3422,18 +3562,18 @@ textarea::placeholder {
   border-radius: var(--radius-sm);
   background: rgba(var(--pn), 0.78);
   color: var(--muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
 }
 
 .counter-hero-readout b {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-family: inherit;
   font-size: 1.2rem;
 }
 
 .counter-hero-readout span:nth-child(2) b {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .counter-workspace {
@@ -3473,7 +3613,7 @@ textarea::placeholder {
 .counter-input-panel .panel-topline span,
 .counter-summary-panel .panel-topline span {
   color: var(--muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.68rem;
 }
 
@@ -3484,14 +3624,14 @@ textarea::placeholder {
   resize: vertical;
   border: 1px solid rgba(var(--ac2), 0.28);
   border-radius: var(--radius-sm);
-  background: rgba(2, 9, 8, 0.68);
+  background: var(--counter-field);
   color: var(--ink);
   font-size: 0.93rem;
   line-height: 1.65;
 }
 
 #counterInput::placeholder {
-  color: rgba(var(--muted-rgb), 0.72);
+  color: var(--muted);
 }
 
 .counter-input-actions,
@@ -3543,7 +3683,7 @@ textarea::placeholder {
 }
 
 .counter-file-action:focus-within {
-  outline: 3px solid rgba(var(--ac2), 0.9);
+  outline: 3px solid var(--focus);
   outline-offset: 3px;
 }
 
@@ -3565,7 +3705,7 @@ textarea::placeholder {
 .counter-file-meta strong {
   max-width: 42%;
   overflow: hidden;
-  color: var(--accent);
+  color: var(--accent-ink);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -3650,7 +3790,7 @@ textarea::placeholder {
   padding: 4px 7px;
   border: 1px solid var(--line);
   border-radius: 5px;
-  background: rgba(2, 9, 8, 0.7);
+  background: var(--counter-field-strong);
   color: var(--ink);
 }
 
@@ -3676,9 +3816,11 @@ textarea::placeholder {
 }
 
 .counter-target-track span {
-  width: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  transition: width 180ms var(--ease);
+  transition: transform 180ms var(--ease);
 }
 
 .counter-detail-grid {
@@ -3755,9 +3897,11 @@ textarea::placeholder {
 }
 
 .counter-category-bar span {
-  width: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
   background: var(--accent);
-  transition: width 180ms var(--ease);
+  transition: transform 180ms var(--ease);
 }
 
 .counter-category-list li:nth-child(3n + 2) .counter-category-bar span {
@@ -3765,7 +3909,7 @@ textarea::placeholder {
 }
 
 .counter-category-list li:nth-child(3n) .counter-category-bar span {
-  background: #79b6ff;
+  background: var(--accent-info);
 }
 
 .counter-category-list strong,
@@ -3839,7 +3983,7 @@ textarea::placeholder {
 }
 
 .counter-frequency-track span {
-  background: linear-gradient(90deg, #79b6ff, var(--accent));
+  background: linear-gradient(90deg, var(--accent-info), var(--accent));
 }
 
 .counter-frequency-list strong {
@@ -3873,8 +4017,8 @@ textarea::placeholder {
   margin-left: auto;
   border: 1px solid rgba(var(--ink-rgb), 0.28);
   border-radius: var(--radius-sm);
-  background: #f8faf7;
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.3);
+  background: var(--paper-preview);
+  box-shadow: 0 18px 44px var(--paper-preview-shadow);
   transform: rotate(1.5deg);
 }
 
@@ -3885,12 +4029,12 @@ textarea::placeholder {
   width: 48px;
   aspect-ratio: 1;
   place-items: center;
-  border: 1px solid rgba(17, 24, 39, 0.35);
-  color: #111827;
+  border: 1px solid var(--paper-preview-line);
+  color: var(--paper-ink);
 }
 
 .worksheet-hero-sheet span {
-  font-family: KaiTi, STKaiti, BiauKai, serif;
+  font-family: var(--font-kaiti);
   font-size: 2rem;
   font-style: normal;
 }
@@ -3900,7 +4044,7 @@ textarea::placeholder {
 .worksheet-hero-sheet i::before,
 .worksheet-hero-sheet i::after {
   position: absolute;
-  background: rgba(17, 24, 39, 0.16);
+  background: var(--paper-preview-guide);
   content: "";
 }
 
@@ -3924,7 +4068,7 @@ textarea::placeholder {
   position: absolute;
   right: 10px;
   bottom: 8px;
-  color: #0d7f60;
+  color: var(--paper-accent);
   font-family: var(--font-mono);
   font-size: 0.58rem;
   letter-spacing: 0;
@@ -3967,9 +4111,9 @@ textarea::placeholder {
 
 .worksheet-input-head output,
 .worksheet-range-value {
-  color: var(--accent);
+  color: var(--accent-ink);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: 0.8125rem;
   font-variant-numeric: tabular-nums;
 }
 
@@ -3977,6 +4121,12 @@ textarea::placeholder {
   width: 100%;
   min-height: 112px;
   resize: vertical;
+  border: 1px solid var(--field-line);
+  border-radius: var(--radius-sm);
+  background: var(--field);
+  padding: 12px;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .worksheet-input-actions {
@@ -3985,21 +4135,42 @@ textarea::placeholder {
 }
 
 .worksheet-input-actions button {
-  min-height: 30px;
-  padding: 5px 10px;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid var(--field-line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-strong);
+  color: var(--ink);
+  font-size: 0.875rem;
+}
+
+.worksheet-input-actions button:hover {
+  border-color: var(--accent);
+  background: rgba(var(--ac), 0.08);
+}
+
+.worksheet-input-actions button:active {
+  transform: translateY(1px);
 }
 
 .worksheet-field {
   display: grid;
   gap: 5px;
   color: var(--muted);
-  font-size: 0.69rem;
+  font-size: 0.8125rem;
 }
 
 .worksheet-field input,
 .worksheet-field select {
   width: 100%;
-  min-height: 34px;
+  min-height: 40px;
+  min-width: 0;
+  padding: 6px 10px;
+  border: 1px solid var(--field-line);
+  border-radius: var(--radius-sm);
+  background: var(--field);
+  color: var(--ink);
+  font-size: 1rem;
 }
 
 .worksheet-settings {
@@ -4015,7 +4186,7 @@ textarea::placeholder {
 .worksheet-settings legend {
   padding: 0 7px;
   color: var(--ink);
-  font-size: 0.72rem;
+  font-size: 0.8125rem;
   font-weight: 800;
 }
 
@@ -4029,10 +4200,10 @@ textarea::placeholder {
 
 .worksheet-range {
   display: grid;
-  grid-template-columns: minmax(106px, 1fr) 42px minmax(110px, 1.25fr);
+  grid-template-columns: minmax(0, 1fr) 38px minmax(80px, 1fr);
   min-height: 28px;
   color: var(--muted);
-  font-size: 0.68rem;
+  font-size: 0.8125rem;
 }
 
 .worksheet-range-value {
@@ -4058,7 +4229,7 @@ textarea::placeholder {
   gap: 7px;
   min-height: 28px;
   color: var(--muted);
-  font-size: 0.67rem;
+  font-size: 0.8125rem;
 }
 
 .worksheet-switches input {
@@ -4072,13 +4243,13 @@ textarea::placeholder {
 .worksheet-privacy {
   margin: 10px 2px 0;
   color: var(--muted);
-  font-size: 0.66rem;
+  font-size: 0.75rem;
   line-height: 1.55;
 }
 
 .worksheet-preview-panel {
   min-width: 0;
-  background: rgba(1, 7, 6, 0.56);
+  background: var(--preview-surface);
 }
 
 .worksheet-preview-head {
@@ -4093,9 +4264,9 @@ textarea::placeholder {
 }
 
 .worksheet-preview-head span {
-  color: var(--accent);
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
 }
 
 .worksheet-preview-head h3 {
@@ -4133,8 +4304,8 @@ textarea::placeholder {
   aspect-ratio: 1;
   place-items: center;
   border: 1px solid var(--line-strong);
-  color: var(--accent);
-  font-family: KaiTi, STKaiti, BiauKai, serif;
+  color: var(--accent-ink);
+  font-family: var(--font-kaiti);
   font-size: 3.4rem;
 }
 
@@ -4145,17 +4316,17 @@ textarea::placeholder {
 }
 
 .worksheet-sheet {
-  --worksheet-grid-color: rgba(64, 78, 75, 0.46);
+  --worksheet-grid-color: var(--paper-grid);
   display: grid;
   grid-template-rows: auto 1fr auto;
   width: min(100%, 760px);
   min-width: 620px;
   aspect-ratio: 210 / 297;
   padding: 4.8% 5.2% 3.2%;
-  color: #111827;
-  background: #fff;
-  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.42);
-  font-family: "Noto Sans CJK SC", "Microsoft YaHei", system-ui, sans-serif;
+  color: var(--paper-ink);
+  background: var(--paper);
+  box-shadow: 0 22px 54px var(--paper-shadow);
+  font-family: var(--font-print-sc);
 }
 
 .worksheet-sheet.is-letter {
@@ -4163,15 +4334,15 @@ textarea::placeholder {
 }
 
 html[lang="zh-Hant"] .worksheet-sheet {
-  font-family: "Noto Sans CJK TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  font-family: var(--font-print-tc);
 }
 
 html[lang="ja"] .worksheet-sheet {
-  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+  font-family: var(--font-print-ja);
 }
 
 html[lang="ko"] .worksheet-sheet {
-  font-family: "Noto Sans CJK KR", "Apple SD Gothic Neo", sans-serif;
+  font-family: var(--font-print-ko);
 }
 
 .worksheet-sheet-header {
@@ -4181,7 +4352,7 @@ html[lang="ko"] .worksheet-sheet {
   gap: 20px;
   min-height: 44px;
   padding-bottom: 8px;
-  border-bottom: 2px solid #1f2937;
+  border-bottom: 2px solid var(--paper-rule);
 }
 
 .worksheet-sheet-title {
@@ -4197,14 +4368,14 @@ html[lang="ko"] .worksheet-sheet {
   grid-template-columns: auto 70px auto 70px;
   align-items: end;
   gap: 5px;
-  color: #4b5563;
-  font-size: 0.56rem;
+  color: var(--paper-muted);
+  font-size: 0.75rem;
 }
 
 .worksheet-sheet-fields i {
   display: block;
   height: 1px;
-  border-bottom: 1px solid #6b7280;
+  border-bottom: 1px solid var(--paper-secondary);
 }
 
 .worksheet-sheet-content {
@@ -4227,22 +4398,22 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .worksheet-character-heading > strong {
-  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", serif;
+  font-family: var(--font-handwriting-ja);
   font-size: 1.2rem;
   line-height: 1;
 }
 
 .worksheet-character-pinyin {
   min-width: 0;
-  color: #374151;
-  font-size: 0.65rem;
+  color: var(--paper-reading);
+  font-size: 0.75rem;
   font-weight: 700;
 }
 
 .worksheet-stroke-count {
   margin-left: auto;
-  color: #6b7280;
-  font-size: 0.52rem;
+  color: var(--paper-secondary);
+  font-size: 0.75rem;
 }
 
 .worksheet-stroke-order {
@@ -4253,14 +4424,14 @@ html[lang="ko"] .worksheet-sheet {
   overflow: hidden;
   margin-bottom: 5px;
   padding: 3px 5px;
-  border: 1px solid #d1d5db;
-  background: #f8fafc;
+  border: 1px solid var(--paper-line);
+  background: var(--paper-stroke-surface);
 }
 
 .worksheet-stroke-order.is-missing,
 .worksheet-stroke-loading {
-  color: #6b7280;
-  font-size: 0.56rem;
+  color: var(--paper-secondary);
+  font-size: 0.75rem;
 }
 
 .worksheet-stroke-step {
@@ -4270,11 +4441,11 @@ html[lang="ko"] .worksheet-sheet {
   min-width: 27px;
   max-width: 42px;
   aspect-ratio: 1;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--paper-line);
   background:
-    linear-gradient(90deg, transparent calc(50% - 0.5px), #e5e7eb 50%, transparent calc(50% + 0.5px)),
-    linear-gradient(transparent calc(50% - 0.5px), #e5e7eb 50%, transparent calc(50% + 0.5px)),
-    #fff;
+    linear-gradient(90deg, transparent calc(50% - 0.5px), var(--paper-stroke-guide) 50%, transparent calc(50% + 0.5px)),
+    linear-gradient(transparent calc(50% - 0.5px), var(--paper-stroke-guide) 50%, transparent calc(50% + 0.5px)),
+    var(--paper);
 }
 
 .worksheet-stroke-step svg {
@@ -4287,14 +4458,14 @@ html[lang="ko"] .worksheet-sheet {
   position: absolute;
   right: 1px;
   bottom: 0;
-  color: #6b7280;
-  font-size: 0.38rem;
+  color: var(--paper-secondary);
+  font-size: 0.6875rem;
   line-height: 1;
 }
 
 .worksheet-stroke-ellipsis {
-  color: #6b7280;
-  font-size: 0.72rem;
+  color: var(--paper-secondary);
+  font-size: 0.75rem;
 }
 
 .worksheet-practice-rows {
@@ -4315,38 +4486,38 @@ html[lang="ko"] .worksheet-sheet {
   place-items: center;
   overflow: hidden;
   border: 1px solid var(--worksheet-grid-color);
-  background-color: #fff;
+  background-color: var(--paper);
 }
 
 .worksheet-grid-cell.is-tian,
 .worksheet-grid-cell.is-mi {
   background-image:
-    linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(96, 111, 108, 0.25) 50%, transparent calc(50% + 0.5px)),
-    linear-gradient(transparent calc(50% - 0.5px), rgba(96, 111, 108, 0.25) 50%, transparent calc(50% + 0.5px));
+    linear-gradient(90deg, transparent calc(50% - 0.5px), var(--paper-grid-axis) 50%, transparent calc(50% + 0.5px)),
+    linear-gradient(transparent calc(50% - 0.5px), var(--paper-grid-axis) 50%, transparent calc(50% + 0.5px));
 }
 
 .worksheet-grid-cell.is-mi {
   background-image:
-    linear-gradient(45deg, transparent calc(50% - 0.5px), rgba(96, 111, 108, 0.18) 50%, transparent calc(50% + 0.5px)),
-    linear-gradient(-45deg, transparent calc(50% - 0.5px), rgba(96, 111, 108, 0.18) 50%, transparent calc(50% + 0.5px)),
-    linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(96, 111, 108, 0.25) 50%, transparent calc(50% + 0.5px)),
-    linear-gradient(transparent calc(50% - 0.5px), rgba(96, 111, 108, 0.25) 50%, transparent calc(50% + 0.5px));
+    linear-gradient(45deg, transparent calc(50% - 0.5px), var(--paper-grid-diagonal) 50%, transparent calc(50% + 0.5px)),
+    linear-gradient(-45deg, transparent calc(50% - 0.5px), var(--paper-grid-diagonal) 50%, transparent calc(50% + 0.5px)),
+    linear-gradient(90deg, transparent calc(50% - 0.5px), var(--paper-grid-axis) 50%, transparent calc(50% + 0.5px)),
+    linear-gradient(transparent calc(50% - 0.5px), var(--paper-grid-axis) 50%, transparent calc(50% + 0.5px));
 }
 
 .worksheet-grid-character {
   position: relative;
   z-index: 1;
-  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", "Batang", serif;
+  font-family: var(--font-handwriting);
   font-size: 1.7rem;
   line-height: 1;
 }
 
 .worksheet-grid-cell.is-model .worksheet-grid-character {
-  color: #111827;
+  color: var(--paper-ink);
 }
 
 .worksheet-grid-cell.is-trace .worksheet-grid-character {
-  color: #111827;
+  color: var(--paper-ink);
 }
 
 .worksheet-sheet-footer {
@@ -4354,9 +4525,9 @@ html[lang="ko"] .worksheet-sheet {
   align-items: end;
   justify-content: space-between;
   padding-top: 6px;
-  border-top: 1px solid #d1d5db;
-  color: #9ca3af;
-  font-size: 0.46rem;
+  border-top: 1px solid var(--paper-line);
+  color: var(--paper-muted);
+  font-size: 0.75rem;
 }
 
 .handwriting-tool-hero {
@@ -4374,7 +4545,7 @@ html[lang="ko"] .worksheet-sheet {
   border: 1px solid rgba(var(--ac), 0.3);
   border-radius: var(--radius-sm);
   background: var(--field);
-  box-shadow: inset 0 0 42px rgba(var(--ac), 0.1);
+  box-shadow: none;
 }
 
 .handwriting-hero-signal::before,
@@ -4397,14 +4568,14 @@ html[lang="ko"] .worksheet-sheet {
 .handwriting-hero-signal span,
 .handwriting-hero-signal strong {
   position: absolute;
-  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-family: var(--font-handwriting);
   line-height: 1;
 }
 
 .handwriting-hero-signal span {
   top: 14px;
   left: 16px;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-family: var(--font-mono);
   font-size: 1.1rem;
 }
@@ -4473,9 +4644,7 @@ html[lang="ko"] .worksheet-sheet {
   border: 1px solid rgba(var(--ac), 0.34);
   border-radius: var(--radius-sm);
   background: var(--field);
-  box-shadow:
-    inset 0 0 50px rgba(var(--ac), 0.06),
-    0 18px 52px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 8px 24px var(--board-shadow);
 }
 
 .handwriting-grid-line {
@@ -4593,7 +4762,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .handwriting-actions button > span:first-child {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-family: var(--font-mono);
   font-size: 1.15rem;
 }
@@ -4620,7 +4789,7 @@ html[lang="ko"] .worksheet-sheet {
   min-height: 40px;
   padding: 0;
   place-items: center;
-  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-family: var(--font-handwriting);
   font-size: 1.25rem;
 }
 
@@ -4666,10 +4835,12 @@ html[lang="ko"] .worksheet-sheet {
 
 .japanese-handwriting-progress > span > span {
   display: block;
-  width: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
   height: 100%;
   background: var(--accent);
-  transition: width 120ms linear;
+  transition: transform 120ms linear;
 }
 
 .handwriting-match-panel {
@@ -4694,7 +4865,7 @@ html[lang="ko"] .worksheet-sheet {
   border-radius: var(--radius-sm);
   background: var(--field);
   color: var(--ink);
-  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-family: var(--font-handwriting);
   font-size: clamp(2rem, 3vw, 3rem);
   line-height: 1;
   transition:
@@ -4749,7 +4920,7 @@ html[lang="ko"] .worksheet-sheet {
   padding: 5px 0;
   border: 0;
   background: transparent;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -4762,7 +4933,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .handwriting-remote-action button:hover {
-  color: var(--accent);
+  color: var(--accent-ink);
   text-decoration-color: currentColor;
 }
 
@@ -4772,7 +4943,9 @@ html[lang="ko"] .worksheet-sheet {
 
 .handwriting-remote-action button:disabled {
   cursor: wait;
-  opacity: 0.55;
+  color: var(--muted);
+  background: var(--field);
+  border-color: var(--line);
 }
 
 .handwriting-result {
@@ -4795,9 +4968,9 @@ html[lang="ko"] .worksheet-sheet {
   place-items: center;
   border: 1px solid rgba(var(--ac2), 0.28);
   border-radius: var(--radius-sm);
-  background: #f7faf8;
-  color: #102822;
-  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  background: var(--glyph-paper);
+  color: var(--glyph-ink);
+  font-family: var(--font-handwriting);
   font-size: clamp(5rem, 9vw, 8rem);
   line-height: 1;
 }
@@ -4861,7 +5034,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .handwriting-source-note a {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .han-lookup-hero {
@@ -4886,20 +5059,20 @@ html[lang="ko"] .worksheet-sheet {
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   background: var(--field);
-  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-family: var(--font-handwriting);
   font-size: 2.2rem;
 }
 
 .han-lookup-hero-equation span:first-child {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .han-lookup-hero-equation span:nth-of-type(2) {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
 }
 
 .han-lookup-hero-equation strong {
-  border-color: rgba(255, 125, 139, 0.5);
+  border-color: var(--danger-strong-border);
   color: var(--danger-soft);
 }
 
@@ -4989,7 +5162,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .han-lookup-form input::placeholder {
-  color: rgba(var(--muted-rgb), 0.58);
+  color: var(--muted);
 }
 
 .han-lookup-form button {
@@ -5027,7 +5200,7 @@ html[lang="ko"] .worksheet-sheet {
   border-radius: var(--radius-sm);
   background: var(--field);
   color: var(--ink);
-  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-family: var(--font-handwriting);
   font-size: 1.2rem;
 }
 
@@ -5144,7 +5317,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 #hanLookupGlyphFallback {
-  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-family: var(--font-handwriting);
   font-size: clamp(8rem, 14vw, 12rem);
   line-height: 1;
 }
@@ -5220,7 +5393,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .han-lookup-tree-character strong {
-  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-family: var(--font-handwriting);
   font-size: 1.75rem;
   line-height: 1;
 }
@@ -5262,7 +5435,8 @@ html[lang="ko"] .worksheet-sheet {
 
 .han-lookup-tree-operator:disabled {
   cursor: default;
-  opacity: 1;
+  color: var(--muted);
+  background: transparent;
 }
 
 .han-lookup-tree-children {
@@ -5315,8 +5489,8 @@ html[lang="ko"] .worksheet-sheet {
   place-items: center;
   border: 1px solid rgba(var(--ac2), 0.35);
   border-radius: var(--radius-sm);
-  color: var(--accent-2);
-  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  color: var(--accent-2-ink);
+  font-family: var(--font-handwriting);
   font-size: 2.25rem;
 }
 
@@ -5436,7 +5610,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .han-lookup-source-note a {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .han-component-workspace {
@@ -5497,13 +5671,13 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .han-component-input-row input {
-  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-family: var(--font-handwriting);
   font-size: 1.2rem;
 }
 
 .han-component-input-row input::placeholder {
-  color: rgba(var(--muted-rgb), 0.58);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--muted);
+  font-family: var(--font-ui);
   font-size: 0.82rem;
 }
 
@@ -5524,13 +5698,15 @@ html[lang="ko"] .worksheet-sheet {
   padding: 3px 8px;
   border: 0;
   background: transparent;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 0.72rem;
 }
 
 .han-component-selected-head button:disabled {
   color: var(--muted);
-  opacity: 0.45;
+  background: var(--field);
+  border-color: var(--line);
+  cursor: not-allowed;
 }
 
 .han-component-selected {
@@ -5566,7 +5742,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .han-component-selected strong {
-  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-family: var(--font-handwriting);
   font-size: 1.18rem;
 }
 
@@ -5604,13 +5780,13 @@ html[lang="ko"] .worksheet-sheet {
   border-radius: var(--radius-sm);
   background: var(--field);
   color: var(--ink);
-  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-family: var(--font-handwriting);
   font-size: 1.13rem;
 }
 
 .han-component-common button:hover {
   border-color: rgba(var(--ac2), 0.55);
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
 }
 
 .han-component-filters {
@@ -5673,7 +5849,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .han-component-result strong {
-  font-family: KaiTi, STKaiti, BiauKai, "Yu Kyokasho", Batang, serif;
+  font-family: var(--font-handwriting);
   font-size: 2.35rem;
   font-weight: 600;
   line-height: 1;
@@ -5691,7 +5867,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .han-component-result span {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
 }
 
 .han-component-empty {
@@ -5816,7 +5992,7 @@ html[lang="ko"] .worksheet-sheet {
   }
 
   .counter-workspace {
-    grid-template-columns: minmax(420px, 1.08fr) minmax(360px, 0.92fr);
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .counter-metric-grid {
@@ -5832,11 +6008,18 @@ html[lang="ko"] .worksheet-sheet {
   }
 
   .worksheet-builder {
-    grid-template-columns: minmax(280px, 0.65fr) minmax(520px, 1.35fr);
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .handwriting-workspace {
-    grid-template-columns: minmax(340px, 0.75fr) minmax(470px, 1.25fr);
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .worksheet-controls,
+  .counter-input-panel,
+  .handwriting-draw-panel {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
   }
 
   .kanji-dictionary-hero {
@@ -5879,12 +6062,90 @@ html[lang="ko"] .worksheet-sheet {
     width: min(100% - 28px, 1560px);
   }
 
-  .site-header,
   .converter-head,
-  .japanese-comparison-head,
-  .top-actions {
+  .japanese-comparison-head {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .site-header {
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .top-actions {
+    width: 100%;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .top-actions .nav-link,
+  .top-actions .language-picker,
+  .top-actions .theme-toggle {
+    min-height: 44px;
+  }
+
+  .top-actions .language-picker {
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: center;
+    padding-inline: 8px;
+  }
+
+  .top-actions .language-picker > span {
+    display: none;
+  }
+
+  .top-actions .language-picker select {
+    min-width: 0;
+    max-width: 100%;
+    font-size: 1rem;
+  }
+
+  .top-actions .nav-link {
+    white-space: nowrap;
+  }
+
+  .converter-home .hero-shell {
+    padding-block: 10px;
+  }
+
+  .converter-home .mode-card {
+    min-height: 44px;
+    font-size: 0.875rem;
+  }
+
+  .converter-home .mode-label-full {
+    display: none;
+  }
+
+  .converter-home .mode-label-compact {
+    display: inline;
+    white-space: nowrap;
+  }
+
+  .converter-home .workspace-note {
+    margin-top: 4px;
+  }
+
+  .converter-home .text-panel {
+    min-height: 300px;
+  }
+
+  .converter-home .text-panel textarea {
+    min-height: 190px;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .worksheet-input-actions button,
+  .password-presets button {
+    min-height: 44px;
   }
 
   .language-picker,
@@ -5893,7 +6154,7 @@ html[lang="ko"] .worksheet-sheet {
   }
 
   .mode-strip {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .advanced-grid,
@@ -6334,7 +6595,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .reading-hero-sample strong {
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 27px;
   font-weight: 700;
 }
@@ -6393,7 +6654,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .reading-visual-output rt {
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 12px;
   font-weight: 650;
 }
@@ -6450,7 +6711,7 @@ html[lang="ko"] .worksheet-sheet {
 
 .korean-hero-signal strong {
   color: var(--ink);
-  font-family: Batang, "Noto Serif CJK KR", "Source Han Serif K", serif;
+  font-family: var(--font-hanja);
   font-size: 3.25rem;
   line-height: 1.08;
 }
@@ -6482,7 +6743,7 @@ html[lang="ko"] .worksheet-sheet {
 
 .korean-hanja-result > strong,
 .korean-name-result > strong {
-  font-family: Batang, "Noto Serif CJK KR", "Source Han Serif K", serif;
+  font-family: var(--font-hanja);
 }
 
 .korean-converter-tool {
@@ -6564,16 +6825,15 @@ html[lang="ko"] .worksheet-sheet {
   resize: vertical;
   border: 1px solid rgba(var(--ac), 0.24);
   border-radius: var(--radius-sm);
-  outline: none;
   background: var(--field);
   color: var(--ink);
   font-size: 1.02rem;
   line-height: 1.75;
 }
 
-.korean-converter-editors textarea:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(var(--ac), 0.12);
+.korean-converter-editors textarea:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
 }
 
 .korean-converter-editors textarea[readonly] {
@@ -6622,8 +6882,8 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .korean-converter-dictionary > summary span:last-child {
-  color: var(--accent);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   font-variant-numeric: tabular-nums;
 }
@@ -6680,12 +6940,12 @@ html[lang="ko"] .worksheet-sheet {
   display: grid;
   min-height: 42px;
   place-items: center;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
 }
 
 #koreanConverterDictionaryStatus {
   min-height: 1.2em;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
 }
 
 #koreanConverterDictionaryEmpty {
@@ -6747,7 +7007,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .korean-converter-dictionary-pair span {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
 }
 
 .korean-converter-dictionary-remove,
@@ -6766,7 +7026,7 @@ html[lang="ko"] .worksheet-sheet {
 
 .korean-converter-dictionary-remove:hover,
 #koreanConverterDictionaryClear:hover {
-  border-color: rgba(255, 107, 112, 0.48);
+  border-color: var(--danger-border);
   color: var(--danger);
 }
 
@@ -6805,7 +7065,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .korean-converter-choice-header strong {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 1.08rem;
 }
 
@@ -6844,7 +7104,7 @@ html[lang="ko"] .worksheet-sheet {
   padding: 2px 4px;
   border-radius: 3px;
   background: rgba(var(--ac), 0.18);
-  color: var(--accent);
+  color: var(--accent-ink);
   font-weight: 800;
 }
 
@@ -6884,7 +7144,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .korean-converter-choice-candidates button {
-  font-family: Batang, "Noto Serif CJK KR", serif;
+  font-family: var(--font-hanja);
   font-size: 0.94rem;
 }
 
@@ -6910,7 +7170,7 @@ html[lang="ko"] .worksheet-sheet {
 .korean-converter-candidate-summary {
   overflow-wrap: anywhere;
   color: var(--muted);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
   font-size: 0.68rem;
   line-height: 1.45;
 }
@@ -6930,7 +7190,7 @@ html[lang="ko"] .worksheet-sheet {
   margin-left: auto;
   place-items: center;
   color: var(--muted);
-  font-family: Georgia, serif;
+  font-family: var(--font-serif);
   font-size: 0.76rem;
   font-weight: 700;
   cursor: pointer;
@@ -6958,8 +7218,8 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .korean-converter-candidate-detail-body strong {
-  color: var(--accent-2);
-  font-family: Batang, "Noto Serif CJK KR", serif;
+  color: var(--accent-2-ink);
+  font-family: var(--font-hanja);
   font-size: 0.86rem;
 }
 
@@ -6978,13 +7238,15 @@ html[lang="ko"] .worksheet-sheet {
 
 .korean-converter-choice button:disabled {
   cursor: default;
-  opacity: 0.38;
+  color: var(--muted);
+  background: var(--field);
+  border-color: var(--line);
 }
 
 .korean-converter-choice button.is-active {
   border-color: var(--accent);
   background: rgba(var(--ac), 0.12);
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .korean-converter-choice-candidates .korean-converter-choice-expand {
@@ -7049,13 +7311,13 @@ html[lang="ko"] .worksheet-sheet {
 .korean-market-example-pair strong {
   display: block;
   overflow-wrap: anywhere;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 1rem;
   line-height: 1.5;
 }
 
 .korean-market-example-pair > b {
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 1rem;
 }
 
@@ -7125,7 +7387,7 @@ html[lang="ko"] .worksheet-sheet {
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   background: var(--field);
-  color: var(--accent-2);
+  color: var(--ink);
   font-weight: 800;
 }
 
@@ -7215,12 +7477,12 @@ html[lang="ko"] .worksheet-sheet {
   border: 1px solid rgba(var(--ac2), 0.36);
   border-radius: var(--radius-sm);
   background: var(--field);
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 2.45rem;
 }
 
 .korean-name-result b {
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 0.92rem;
 }
 
@@ -7427,7 +7689,7 @@ html[lang="ko"] .worksheet-sheet {
   position: relative;
   z-index: 1;
   max-width: 90%;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: clamp(1.3rem, 3vw, 2.5rem);
   font-weight: 800;
   text-align: center;
@@ -7501,7 +7763,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .scenario-fact-grid article > span {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 0.74rem;
   font-weight: 800;
 }
@@ -7534,7 +7796,7 @@ html[lang="ko"] .worksheet-sheet {
 
 .scenario-tool-banner strong {
   flex: none;
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .scenario-how ol {
@@ -7569,7 +7831,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .scenario-faq details p {
-  max-width: 88ch;
+  max-width: 70ch;
   margin: -4px 4px 20px;
   color: var(--muted);
   line-height: 1.75;
@@ -7620,7 +7882,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .scenario-cluster-links small {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 0.72rem;
   font-weight: 800;
 }
@@ -7746,7 +8008,7 @@ html[lang="ko"] .worksheet-sheet {
   border-radius: var(--radius-sm);
   background: rgba(var(--pn), 0.72);
   color: var(--ink);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 1.35rem;
   font-weight: 800;
   text-align: center;
@@ -7755,7 +8017,7 @@ html[lang="ko"] .worksheet-sheet {
 .blog-signal span:nth-child(2n),
 .blog-article-signal span:nth-child(2n) {
   border-color: rgba(var(--ac2), 0.32);
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
 }
 
 .blog-category-nav {
@@ -7783,7 +8045,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .blog-category-nav strong {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .blog-category-nav span {
@@ -7823,7 +8085,7 @@ html[lang="ko"] .worksheet-sheet {
 .blog-section-heading > a {
   min-height: 44px;
   align-content: center;
-  color: var(--accent);
+  color: var(--accent-ink);
   text-underline-offset: 4px;
 }
 
@@ -7853,7 +8115,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .blog-card-meta span:first-child {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-weight: 800;
 }
 
@@ -7869,7 +8131,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .blog-card h3 a:hover {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .blog-card p {
@@ -7890,7 +8152,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .blog-card-link span {
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 1.3rem;
 }
 
@@ -8030,7 +8292,7 @@ html[lang="ko"] .worksheet-sheet {
 
 .blog-table-wrap caption {
   padding: 14px 0;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-size: 0.82rem;
   font-weight: 800;
   text-align: start;
@@ -8077,10 +8339,10 @@ html[lang="ko"] .worksheet-sheet {
   place-items: center;
   border: 1px solid var(--line);
   border-radius: 50%;
-  color: var(--accent);
+  color: var(--accent-ink);
   content: counter(blog-step, decimal-leading-zero);
   counter-increment: blog-step;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 800;
 }
@@ -8093,7 +8355,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .blog-note strong {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
 }
 
 .blog-note p {
@@ -8139,7 +8401,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .blog-sources a {
-  color: var(--accent);
+  color: var(--accent-ink);
   font-weight: 800;
   text-underline-offset: 4px;
 }
@@ -8213,7 +8475,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .tool-guide-strip p:not(.section-kicker) {
-  max-width: 78ch;
+  max-width: 70ch;
   margin-bottom: 0;
   color: var(--muted);
   line-height: 1.65;
@@ -8235,7 +8497,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .tool-guide-strip > a span {
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 1.2rem;
 }
 
@@ -8248,7 +8510,7 @@ html[lang="ko"] .worksheet-sheet {
   width: 230px;
   grid-template-columns: 1fr 1fr;
   gap: 6px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--font-mono);
 }
 
 .formatter-hero-signal > * {
@@ -8262,11 +8524,11 @@ html[lang="ko"] .worksheet-sheet {
 
 .formatter-hero-signal span {
   grid-column: 1 / -1;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
 }
 
 .formatter-hero-signal strong {
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 1rem;
 }
 
@@ -8345,7 +8607,8 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .formatter-option input:disabled + span {
-  opacity: 0.48;
+  color: var(--muted);
+  cursor: not-allowed;
 }
 
 .formatter-select-option {
@@ -8370,7 +8633,7 @@ html[lang="ko"] .worksheet-sheet {
 
 .formatter-risk-options summary {
   padding: 8px 5px 4px;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   cursor: pointer;
   font-size: 0.78rem;
   font-weight: 800;
@@ -8505,8 +8768,8 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .formatter-metrics strong {
-  color: var(--accent);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
   font-size: 1rem;
 }
 
@@ -8564,7 +8827,7 @@ html[lang="ko"] .worksheet-sheet {
 .formatter-report-panel li small {
   overflow: hidden;
   color: var(--muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--font-ui);
   font-size: 0.65rem;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -8572,8 +8835,8 @@ html[lang="ko"] .worksheet-sheet {
 
 .formatter-report-panel li b {
   flex: 0 0 auto;
-  color: var(--accent-2);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--accent-2-ink);
+  font-family: var(--font-mono);
   font-size: 0.74rem;
 }
 
@@ -8801,6 +9064,13 @@ html[lang="ko"] .worksheet-sheet {
 
 /* Light theme: toggled by theme.js via html[data-theme="light"] */
 :root[data-theme="light"] {
+  --field-line: #6b8278;
+  --focus: var(--light-focus);
+  --counter-field: #ffffff;
+  --counter-field-strong: #ffffff;
+  --accent-2-ink: #875100;
+  --accent-ink: #086448;
+  --preview-surface: var(--bg-2);
   color-scheme: light;
   --bg: #f4f8f6;
   --bg-2: #e9f1ed;
@@ -8832,8 +9102,8 @@ html[lang="ko"] .worksheet-sheet {
 
 :root[data-theme="light"] body::before {
   background-image:
-    linear-gradient(rgba(13, 110, 84, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(13, 110, 84, 0.05) 1px, transparent 1px);
+    linear-gradient(var(--light-grid-horizontal) 1px, transparent 1px),
+    linear-gradient(90deg, var(--light-grid-vertical) 1px, transparent 1px);
 }
 
 :root[data-theme="light"] button:focus-visible,
@@ -8841,7 +9111,7 @@ html[lang="ko"] .worksheet-sheet {
 :root[data-theme="light"] textarea:focus-visible,
 :root[data-theme="light"] input:focus-visible,
 :root[data-theme="light"] a:focus-visible {
-  outline-color: rgba(178, 106, 0, 0.9);
+  outline-color: var(--light-focus);
 }
 
 .theme-toggle {
@@ -8887,7 +9157,7 @@ html[lang="ko"] .worksheet-sheet {
   body {
     width: 100%;
     margin: 0;
-    background: #fff;
+    background: var(--paper);
   }
 
   body > .skip-nav,
@@ -8914,7 +9184,7 @@ html[lang="ko"] .worksheet-sheet {
     margin: 0;
     padding: 0;
     border: 0;
-    background: #fff;
+    background: var(--paper);
     box-shadow: none;
   }
 
@@ -9007,7 +9277,7 @@ html[lang="ko"] .worksheet-sheet {
 
 .redaction-hero-signal > b {
   align-self: end;
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   grid-column: 2;
 }
 
@@ -9017,7 +9287,7 @@ html[lang="ko"] .worksheet-sheet {
   width: 86px;
   height: 62px;
   border: 2px solid var(--accent);
-  color: var(--accent);
+  color: var(--accent-ink);
   grid-column: 1 / -1;
   justify-self: center;
 }
@@ -9164,7 +9434,7 @@ html[lang="ko"] .worksheet-sheet {
 
 .redaction-drop-zone small {
   margin-top: 14px;
-  color: rgba(var(--muted-rgb), 0.72);
+  color: var(--muted);
   font-size: 0.78rem;
 }
 
@@ -9208,7 +9478,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .redaction-range output {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-family: var(--font-mono);
 }
 
@@ -9241,7 +9511,7 @@ html[lang="ko"] .worksheet-sheet {
 .redaction-segmented button.is-active {
   border-color: rgba(var(--ac), 0.35);
   background: rgba(var(--ac), 0.12);
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .redaction-range input {
@@ -9269,8 +9539,8 @@ html[lang="ko"] .worksheet-sheet {
   cursor: pointer;
 }
 
-.redaction-colors button:first-of-type { background-color: #07120f; }
-.redaction-colors button:last-of-type { background-color: #fff; }
+.redaction-colors button:first-of-type { background-color: var(--redaction-ink); }
+.redaction-colors button:last-of-type { background-color: var(--paper); }
 .redaction-colors button.is-active { border-color: var(--accent-2); }
 
 .redaction-tool-actions {
@@ -9291,7 +9561,7 @@ html[lang="ko"] .worksheet-sheet {
 
 .redaction-tool-actions button.is-active {
   border-color: rgba(var(--ac2), 0.52);
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
 }
 
 .redaction-tool-actions button:disabled,
@@ -9345,7 +9615,7 @@ html[lang="ko"] .worksheet-sheet {
 
 .redaction-file-row label {
   flex: 0 0 auto;
-  color: var(--accent);
+  color: var(--accent-ink);
   cursor: pointer;
   font-size: 0.78rem;
   font-weight: 760;
@@ -9378,7 +9648,7 @@ html[lang="ko"] .worksheet-sheet {
   display: block;
   max-width: none;
   border: 1px solid rgba(var(--w), 0.12);
-  box-shadow: 0 16px 46px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 16px 46px var(--canvas-shadow);
   cursor: crosshair;
   touch-action: none;
 }
@@ -9439,7 +9709,7 @@ html[lang="ko"] .worksheet-sheet {
   min-width: 34px;
   height: 34px;
   border: 1px solid rgba(var(--ac2), 0.42);
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 800;
@@ -9515,7 +9785,7 @@ html[lang="ko"] .worksheet-sheet {
   border: 1px solid rgba(var(--ac2), 0.5);
   border-radius: var(--radius-sm);
   background: rgba(var(--ac2), 0.1);
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   cursor: pointer;
   font: inherit;
   font-weight: 800;
@@ -9523,7 +9793,9 @@ html[lang="ko"] .worksheet-sheet {
 
 .redaction-ai-run:disabled {
   cursor: wait;
-  opacity: 0.58;
+  color: var(--muted);
+  background: var(--field);
+  border-color: var(--line);
 }
 
 .redaction-ai-network {
@@ -9545,10 +9817,12 @@ html[lang="ko"] .worksheet-sheet {
 
 .redaction-ai-progress > span > span {
   display: block;
-  width: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
   height: 100%;
   background: var(--accent);
-  transition: width 180ms ease;
+  transition: transform 180ms ease;
 }
 
 .redaction-ai-progress strong {
@@ -9573,7 +9847,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .redaction-suggestions-head span {
-  color: var(--accent-2);
+  color: var(--accent-2-ink);
   font-family: var(--font-mono);
   font-size: 0.63rem;
 }
@@ -9622,7 +9896,7 @@ html[lang="ko"] .worksheet-sheet {
 .redaction-suggestion-item small {
   overflow: hidden;
   color: var(--muted);
-  font-family: var(--font-mono);
+  font-family: var(--font-ui);
   font-size: 0.66rem;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -9643,7 +9917,7 @@ html[lang="ko"] .worksheet-sheet {
 
 .redaction-suggestion-actions button:first-child {
   border-color: rgba(var(--ac), 0.38);
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .redaction-export-panel > p {
@@ -9766,11 +10040,11 @@ html[lang="ko"] .worksheet-sheet {
   border-radius: var(--radius-sm);
   background: var(--field);
   color: var(--ink);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 24px 80px var(--dialog-shadow);
 }
 
 .redaction-dialog::backdrop {
-  background: rgba(0, 0, 0, 0.72);
+  background: var(--dialog-backdrop);
 }
 
 .redaction-dialog form {
@@ -9793,7 +10067,7 @@ html[lang="ko"] .worksheet-sheet {
   min-height: 40px;
   padding: 8px 14px;
   border-color: rgba(var(--ac), 0.4);
-  color: var(--accent);
+  color: var(--accent-ink);
   justify-self: end;
 }
 
@@ -9930,4 +10204,48 @@ html[lang="ko"] .worksheet-sheet {
   .redaction-suggestion-actions {
     grid-template-columns: 1fr;
   }
+}
+
+/* Keep disclosure and upload controls visible and comfortable with keyboard/touch. */
+.pinyin-faq summary,
+.scenario-faq summary,
+.blog-faq summary {
+  min-height: 36px;
+  align-content: center;
+}
+.formatter-file-button:focus-within,
+#redactionFileInput:focus-visible ~ .redaction-drop-zone label[for="redactionFileInput"],
+#redactionFileInput:focus-visible ~ .redaction-workspace label[for="redactionFileInput"] {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+@media (max-width: 680px) {
+  .pinyin-faq summary,
+  .scenario-faq summary,
+  .blog-faq summary { min-height: 44px; }
+}
+
+.formatter-select-option select,
+.formatter-text-panel textarea {
+  border: 1px solid var(--field-line);
+}
+
+input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+#counterInput,
+.counter-target input,
+.counter-target select {
+  border-color: var(--field-line);
+}
+
+.redaction-range input[type="range"],
+.redaction-export-fields input[type="range"] {
+  min-height: 24px;
+}
+@media (max-width: 680px) {
+  .redaction-range input[type="range"],
+  .redaction-export-fields input[type="range"] { min-height: 44px; }
 }

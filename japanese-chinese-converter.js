@@ -1,6 +1,15 @@
 export const JAPANESE_CHINESE_SOURCE_TYPES = ["japanese", "simplified", "traditional"];
 export const DEFAULT_THREE_WAY_COMPARISON_LIMIT = 200;
 
+export function createConversionQueue() {
+  let pending = Promise.resolve();
+  return (task) => {
+    const result = pending.then(task);
+    pending = result.catch(() => {});
+    return result;
+  };
+}
+
 export async function convertJapaneseChineseText(inputValue, sourceType, convert) {
   const input = String(inputValue ?? "");
   if (!JAPANESE_CHINESE_SOURCE_TYPES.includes(sourceType)) {

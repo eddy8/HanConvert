@@ -1,3 +1,4 @@
+import { preserveToolLinks } from "./static-tool-links.mjs";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -177,8 +178,8 @@ ${formats}
         </div></fieldset>
         <p class="romaji-resource-note">${escapeHtml(page.resourceNote)}</p>
         <div class="pinyin-converter-grid reading-converter-grid">
-          <section class="pinyin-text-panel input-variant" aria-labelledby="hiraganaInputTitle"><div class="panel-topline"><h3 id="hiraganaInputTitle">${escapeHtml(page.inputTitle)}</h3><span id="hiraganaInputCount">0</span></div><textarea id="hiraganaInput" spellcheck="false" placeholder="${escapeHtml(page.inputPlaceholder)}"></textarea><div class="panel-actions"><button class="text-button" id="hiraganaSample" type="button" data-sample="${sampleText}">${escapeHtml(page.sample)}</button><button class="text-button" id="hiraganaClear" type="button">${escapeHtml(page.clear)}</button><button class="primary-action" id="hiraganaConvert" type="button">${escapeHtml(page.convert)}</button></div></section>
-          <section class="pinyin-text-panel output-variant" aria-labelledby="hiraganaOutputTitle"><div class="panel-topline"><h3 id="hiraganaOutputTitle">${escapeHtml(page.formats[0][3])}</h3><span id="hiraganaOutputCount">0</span></div><textarea id="hiraganaPlainOutput" readonly spellcheck="false" placeholder="${escapeHtml(page.formats[0][4])}"></textarea><div id="hiraganaVisualOutput" class="romaji-furigana-output reading-visual-output" hidden><p id="hiraganaVisualEmpty" class="pinyin-empty">${escapeHtml(page.visualEmpty)}</p></div><div class="panel-actions"><button class="text-button" id="hiraganaRetry" type="button" hidden>${escapeHtml(page.retry)}</button><button class="text-button" id="hiraganaCopyText" type="button" disabled>${escapeHtml(page.copyText)}</button><button class="text-button" id="hiraganaCopyHtml" type="button" disabled>${escapeHtml(page.copyHtml)}</button></div></section>
+          <section class="pinyin-text-panel input-variant" aria-labelledby="hiraganaInputTitle"><div class="panel-topline"><h3 id="hiraganaInputTitle">${escapeHtml(page.inputTitle)}</h3><span id="hiraganaInputCount">0</span></div><textarea id="hiraganaInput" aria-labelledby="hiraganaInputTitle" spellcheck="false" placeholder="${escapeHtml(page.inputPlaceholder)}"></textarea><div class="panel-actions"><button class="text-button" id="hiraganaSample" type="button" data-sample="${sampleText}">${escapeHtml(page.sample)}</button><button class="text-button" id="hiraganaClear" type="button">${escapeHtml(page.clear)}</button><button class="primary-action" id="hiraganaConvert" type="button">${escapeHtml(page.convert)}</button></div></section>
+          <section class="pinyin-text-panel output-variant" aria-labelledby="hiraganaOutputTitle"><div class="panel-topline"><h3 id="hiraganaOutputTitle">${escapeHtml(page.formats[0][3])}</h3><span id="hiraganaOutputCount">0</span></div><textarea id="hiraganaPlainOutput" aria-labelledby="hiraganaOutputTitle" readonly spellcheck="false" placeholder="${escapeHtml(page.formats[0][4])}"></textarea><div id="hiraganaVisualOutput" class="romaji-furigana-output reading-visual-output" hidden><p id="hiraganaVisualEmpty" class="pinyin-empty">${escapeHtml(page.visualEmpty)}</p></div><div class="panel-actions"><button class="text-button" id="hiraganaRetry" type="button" hidden>${escapeHtml(page.retry)}</button><button class="text-button" id="hiraganaCopyText" type="button" disabled>${escapeHtml(page.copyText)}</button><button class="text-button" id="hiraganaCopyHtml" type="button" disabled>${escapeHtml(page.copyHtml)}</button></div></section>
         </div>
         <p class="tool-disclaimer">${escapeHtml(page.disclaimer)}</p>
       </section>
@@ -201,7 +202,7 @@ ${related}
 for (const locale of Object.keys(locales)) {
   const directory = path.join(projectRoot, locales[locale].prefix, slug);
   await mkdir(directory, { recursive: true });
-  await writeFile(path.join(directory, "index.html"), buildPage(locale));
+  await writeFile(path.join(directory, "index.html"), await preserveToolLinks(buildPage(locale), path.join(directory, "index.html")));
 }
 
 console.log("Generated 5 multilingual Kanji-to-Hiragana pages.");

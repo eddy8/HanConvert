@@ -1,3 +1,4 @@
+import { preserveToolLinks } from "./static-tool-links.mjs";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -231,8 +232,8 @@ ${caseButtons}
           <div class="pinyin-switches"><label><input id="preserveNonChinese" type="checkbox" checked /><span>${page.preserve}</span></label><label><input id="surnameMode" type="checkbox" /><span>${page.surname}</span></label></div>
         </div>
         <div class="pinyin-converter-grid">
-          <section class="pinyin-text-panel input-variant" aria-labelledby="pinyinInputTitle"><div class="panel-topline"><h3 id="pinyinInputTitle">${page.inputTitle}</h3><span id="pinyinInputCount">0</span></div><textarea id="pinyinInput" spellcheck="false" placeholder="${escapeHtml(page.inputPlaceholder)}"></textarea><div class="panel-actions"><button class="text-button" id="pinyinSample" type="button" data-sample="${sampleText}">${page.sample}</button><button class="text-button" id="pinyinClear" type="button">${page.clear}</button><button class="primary-action" id="pinyinConvert" type="button">${page.convert}</button></div></section>
-          <section class="pinyin-text-panel output-variant" aria-labelledby="pinyinOutputTitle"><div class="panel-topline"><h3 id="pinyinOutputTitle">${page.outputTitle}</h3><span id="pinyinOutputCount">0</span></div><textarea id="pinyinOutput" readonly spellcheck="false" placeholder="${escapeHtml(page.outputPlaceholder)}"></textarea><div class="panel-actions"><button class="text-button" id="pinyinCopy" type="button">${page.copy}</button></div></section>
+          <section class="pinyin-text-panel input-variant" aria-labelledby="pinyinInputTitle"><div class="panel-topline"><h3 id="pinyinInputTitle">${page.inputTitle}</h3><span id="pinyinInputCount">0</span></div><textarea id="pinyinInput" aria-labelledby="pinyinInputTitle" spellcheck="false" placeholder="${escapeHtml(page.inputPlaceholder)}"></textarea><div class="panel-actions"><button class="text-button" id="pinyinSample" type="button" data-sample="${sampleText}">${page.sample}</button><button class="text-button" id="pinyinClear" type="button">${page.clear}</button><button class="primary-action" id="pinyinConvert" type="button">${page.convert}</button></div></section>
+          <section class="pinyin-text-panel output-variant" aria-labelledby="pinyinOutputTitle"><div class="panel-topline"><h3 id="pinyinOutputTitle">${page.outputTitle}</h3><span id="pinyinOutputCount">0</span></div><textarea id="pinyinOutput" aria-labelledby="pinyinOutputTitle" readonly spellcheck="false" placeholder="${escapeHtml(page.outputPlaceholder)}"></textarea><div class="panel-actions"><button class="text-button" id="pinyinCopy" type="button">${page.copy}</button></div></section>
         </div>
         <div class="pinyin-detail-grid">
           <section class="pinyin-annotation-panel" aria-labelledby="pinyinAnnotationTitle"><div><p class="section-kicker">RUBY</p><h3 id="pinyinAnnotationTitle">${page.annotationTitle}</h3></div><p id="pinyinAnnotationEmpty" class="pinyin-empty">${page.annotationEmpty}</p><div id="pinyinAnnotation" class="pinyin-annotation" hidden></div><p class="pinyin-preview-note">${page.annotationNote}</p></section>
@@ -256,7 +257,7 @@ ${links}
 for (const locale of Object.keys(locales)) {
   const directory = path.join(projectRoot, locales[locale].prefix, slug);
   await mkdir(directory, { recursive: true });
-  await writeFile(path.join(directory, "index.html"), `${buildPage(locale)}\n`);
+  await writeFile(path.join(directory, "index.html"), await preserveToolLinks(`${buildPage(locale)}\n`, path.join(directory, "index.html")));
 }
 
 console.log("Generated 5 multilingual Chinese-to-Pinyin pages.");

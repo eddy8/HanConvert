@@ -1,3 +1,4 @@
+import { preserveToolLinks } from "./static-tool-links.mjs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -321,8 +322,8 @@ ${schema}
           <fieldset><legend>${page.watermarkTitle}</legend><div class="formatter-option-grid formatter-watermark-options">${option(locale, "removeBasicInvisible", true)}${option(locale, "normalizeSpecialSpaces", true)}</div><details class="formatter-risk-options"><summary>${page.advancedTitle}</summary><p>${page.advancedWarning}</p><div class="formatter-option-grid">${option(locale, "removeJoiners")}${option(locale, "removeVariationSelectors")}${option(locale, "removeBidiControls")}${option(locale, "removeTags")}${option(locale, "normalizeConfusables")}</div></details></fieldset>
         </div>
         <div class="formatter-workspace">
-          <section class="formatter-text-panel" aria-labelledby="formatterInputTitle"><div class="panel-topline"><h3 id="formatterInputTitle">${page.inputTitle}</h3><span><b id="formatterInputCount">0</b> / 3,000,000</span></div><textarea id="formatterInput" spellcheck="false" placeholder="${escapeHtml(page.placeholder)}"></textarea><div class="formatter-panel-actions"><div><button class="text-button" id="formatterSample" type="button" data-sample="${sample}">${page.sample}</button><button class="text-button" id="formatterClear" type="button">${page.clear}</button></div><label class="formatter-file-button" for="formatterFile">${page.importFile}<input id="formatterFile" type="file" accept=".txt,.md,.csv,.json,text/plain,text/markdown,text/csv,application/json" /></label></div></section>
-          <section class="formatter-text-panel formatter-output-panel" aria-labelledby="formatterOutputTitle"><div class="panel-topline"><h3 id="formatterOutputTitle">${page.outputTitle}</h3><span id="formatterOutputCount">0</span></div><textarea id="formatterOutput" readonly spellcheck="false"></textarea><div class="formatter-panel-actions"><div><button class="text-button" id="formatterReuse" type="button">${page.reuse}</button><button class="text-button" id="formatterDownload" type="button">${page.download}</button></div><button class="text-button" id="formatterCopy" type="button">${page.copy}</button></div></section>
+          <section class="formatter-text-panel" aria-labelledby="formatterInputTitle"><div class="panel-topline"><h3 id="formatterInputTitle">${page.inputTitle}</h3><span><b id="formatterInputCount">0</b> / 3,000,000</span></div><textarea id="formatterInput" aria-labelledby="formatterInputTitle" spellcheck="false" placeholder="${escapeHtml(page.placeholder)}"></textarea><div class="formatter-panel-actions"><div><button class="text-button" id="formatterSample" type="button" data-sample="${sample}">${page.sample}</button><button class="text-button" id="formatterClear" type="button">${page.clear}</button></div><label class="formatter-file-button" for="formatterFile">${page.importFile}<input id="formatterFile" type="file" accept=".txt,.md,.csv,.json,text/plain,text/markdown,text/csv,application/json" /></label></div></section>
+          <section class="formatter-text-panel formatter-output-panel" aria-labelledby="formatterOutputTitle"><div class="panel-topline"><h3 id="formatterOutputTitle">${page.outputTitle}</h3><span id="formatterOutputCount">0</span></div><textarea id="formatterOutput" aria-labelledby="formatterOutputTitle" readonly spellcheck="false"></textarea><div class="formatter-panel-actions"><div><button class="text-button" id="formatterReuse" type="button">${page.reuse}</button><button class="text-button" id="formatterDownload" type="button">${page.download}</button></div><button class="text-button" id="formatterCopy" type="button">${page.copy}</button></div></section>
         </div>
         <div class="formatter-run-row"><button class="primary-action" id="formatterRun" type="button">${page.run}</button><p>${page.localNote}</p></div>
         <div class="formatter-metrics">${page.metrics.map((label, index) => `<article><span>${label}</span><strong id="${["formatterInputMetric", "formatterOutputMetric", "formatterHiddenBefore", "formatterHiddenAfter"][index] || ""}">${index < 2 ? '<span aria-hidden="true">—</span>' : "0"}</strong></article>`).join("")}</div>
@@ -378,7 +379,7 @@ async function writeOrCheck(filePath, expected) {
 }
 
 for (const locale of Object.keys(locales)) {
-  await writeOrCheck(path.join(projectRoot, locales[locale].prefix, slug, "index.html"), `${buildPage(locale)}\n`);
+  await writeOrCheck(path.join(projectRoot, locales[locale].prefix, slug, "index.html"), await preserveToolLinks(`${buildPage(locale)}\n`, path.join(projectRoot, locales[locale].prefix, slug, "index.html")));
   const homepagePath = path.join(projectRoot, locales[locale].prefix, "index.html");
   const homepage = await readFile(homepagePath, "utf8");
   await writeOrCheck(homepagePath, syncHomeLink(homepage, locale));

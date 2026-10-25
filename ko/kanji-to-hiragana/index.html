@@ -129,8 +129,8 @@
         </div></fieldset>
         <p class="romaji-resource-note">첫 변환 때 공개 일본어 사전을 원격으로 불러옵니다. 이후에는 이 페이지에서 계속 사용할 수 있습니다.</p>
         <div class="pinyin-converter-grid reading-converter-grid">
-          <section class="pinyin-text-panel input-variant" aria-labelledby="hiraganaInputTitle"><div class="panel-topline"><h3 id="hiraganaInputTitle">일본어 텍스트</h3><span id="hiraganaInputCount">0</span></div><textarea id="hiraganaInput" spellcheck="false" placeholder="일본 한자, 히라가나 또는 가타카나를 입력하거나 붙여 넣으세요..."></textarea><div class="panel-actions"><button class="text-button" id="hiraganaSample" type="button" data-sample="明日は東京で日本語を勉強します。">예시</button><button class="text-button" id="hiraganaClear" type="button">지우기</button><button class="primary-action" id="hiraganaConvert" type="button">읽기 변환</button></div></section>
-          <section class="pinyin-text-panel output-variant" aria-labelledby="hiraganaOutputTitle"><div class="panel-topline"><h3 id="hiraganaOutputTitle">히라가나 결과</h3><span id="hiraganaOutputCount">0</span></div><textarea id="hiraganaPlainOutput" readonly spellcheck="false" placeholder="변환한 히라가나가 여기에 표시됩니다"></textarea><div id="hiraganaVisualOutput" class="romaji-furigana-output reading-visual-output" hidden><p id="hiraganaVisualEmpty" class="pinyin-empty">변환하면 후리가나가 있는 일본어가 여기에 표시됩니다.</p></div><div class="panel-actions"><button class="text-button" id="hiraganaRetry" type="button" hidden>다시 불러오기</button><button class="text-button" id="hiraganaCopyText" type="button" disabled>텍스트 복사</button><button class="text-button" id="hiraganaCopyHtml" type="button" disabled>Ruby HTML 복사</button></div></section>
+          <section class="pinyin-text-panel input-variant" aria-labelledby="hiraganaInputTitle"><div class="panel-topline"><h3 id="hiraganaInputTitle">일본어 텍스트</h3><span id="hiraganaInputCount">0</span></div><textarea id="hiraganaInput" aria-labelledby="hiraganaInputTitle" spellcheck="false" placeholder="일본 한자, 히라가나 또는 가타카나를 입력하거나 붙여 넣으세요..."></textarea><div class="panel-actions"><button class="text-button" id="hiraganaSample" type="button" data-sample="明日は東京で日本語を勉強します。">예시</button><button class="text-button" id="hiraganaClear" type="button">지우기</button><button class="primary-action" id="hiraganaConvert" type="button">읽기 변환</button></div></section>
+          <section class="pinyin-text-panel output-variant" aria-labelledby="hiraganaOutputTitle"><div class="panel-topline"><h3 id="hiraganaOutputTitle">히라가나 결과</h3><span id="hiraganaOutputCount">0</span></div><textarea id="hiraganaPlainOutput" aria-labelledby="hiraganaOutputTitle" readonly spellcheck="false" placeholder="변환한 히라가나가 여기에 표시됩니다"></textarea><div id="hiraganaVisualOutput" class="romaji-furigana-output reading-visual-output" hidden><p id="hiraganaVisualEmpty" class="pinyin-empty">변환하면 후리가나가 있는 일본어가 여기에 표시됩니다.</p></div><div class="panel-actions"><button class="text-button" id="hiraganaRetry" type="button" hidden>다시 불러오기</button><button class="text-button" id="hiraganaCopyText" type="button" disabled>텍스트 복사</button><button class="text-button" id="hiraganaCopyHtml" type="button" disabled>Ruby HTML 복사</button></div></section>
         </div>
         <p class="tool-disclaimer">일본 한자는 음독, 훈독과 특수 독음이 있습니다. 인명, 지명, 작품명, 희귀 단어와 전문 용어는 신뢰할 수 있는 자료로 확인하세요.</p>
       </section>
@@ -156,10 +156,10 @@
           <a href="/ko/han-character-worksheet/">한자 쓰기 연습장</a>
           <a href="/ko/character-counter/">글자수 세기</a>
           <a href="/ko/japanese-kanji-converter/">일본 신자체·구자체 변환</a>
-          <a href="/ko/chinese-handwriting-recognition/">한자 필기 인식</a>
           <!-- han-character-lookup-link:start -->
           <a href="/ko/chinese-character-lookup/" data-route="chinese-character-lookup">한자 부수·구성요소 검색</a>
           <!-- han-character-lookup-link:end -->
+          <a href="/ko/chinese-handwriting-recognition/">한자 필기 인식</a>
         </nav><p class="reading-source-note">읽기 변환에는 Kuroshiro와 Kuromoji.js의 공개 일본어 사전을 사용하며 입력 문장은 사전 제공처로 전송하지 않습니다.</p></section>
     </main>
     <footer class="site-footer"><p>JianFan.app는 브라우저에서 사용하는 일본어 읽기, 한자 학습 및 중국어 변환 도구를 제공합니다.</p><nav class="footer-links" aria-label="바닥글"><a href="/ko/about/">소개</a><a href="/ko/contact/">문의</a><a href="/ko/privacy/">개인정보 보호 안내</a></nav></footer>
