@@ -132,8 +132,8 @@
           <div class="pinyin-switches"><label><input id="preserveNonChinese" type="checkbox" checked /><span>句読点と英字を残す</span></label><label><input id="surnameMode" type="checkbox" /><span>人名読みモード</span></label></div>
         </div>
         <div class="pinyin-converter-grid">
-          <section class="pinyin-text-panel input-variant" aria-labelledby="pinyinInputTitle"><div class="panel-topline"><h3 id="pinyinInputTitle">中国語テキスト</h3><span id="pinyinInputCount">0</span></div><textarea id="pinyinInput" spellcheck="false" placeholder="簡体字または繁体字の中国語を入力・貼り付け..."></textarea><div class="panel-actions"><button class="text-button" id="pinyinSample" type="button" data-sample="重庆银行的音乐会在长安举行，行人走过快乐的街道。">サンプル</button><button class="text-button" id="pinyinClear" type="button">クリア</button><button class="primary-action" id="pinyinConvert" type="button">ピンインへ変換</button></div></section>
-          <section class="pinyin-text-panel output-variant" aria-labelledby="pinyinOutputTitle"><div class="panel-topline"><h3 id="pinyinOutputTitle">ピンイン結果</h3><span id="pinyinOutputCount">0</span></div><textarea id="pinyinOutput" readonly spellcheck="false" placeholder="変換後のピンインがここに表示されます"></textarea><div class="panel-actions"><button class="text-button" id="pinyinCopy" type="button">結果をコピー</button></div></section>
+          <section class="pinyin-text-panel input-variant" aria-labelledby="pinyinInputTitle"><div class="panel-topline"><h3 id="pinyinInputTitle">中国語テキスト</h3><span id="pinyinInputCount">0</span></div><textarea id="pinyinInput" aria-labelledby="pinyinInputTitle" spellcheck="false" placeholder="簡体字または繁体字の中国語を入力・貼り付け..."></textarea><div class="panel-actions"><button class="text-button" id="pinyinSample" type="button" data-sample="重庆银行的音乐会在长安举行，行人走过快乐的街道。">サンプル</button><button class="text-button" id="pinyinClear" type="button">クリア</button><button class="primary-action" id="pinyinConvert" type="button">ピンインへ変換</button></div></section>
+          <section class="pinyin-text-panel output-variant" aria-labelledby="pinyinOutputTitle"><div class="panel-topline"><h3 id="pinyinOutputTitle">ピンイン結果</h3><span id="pinyinOutputCount">0</span></div><textarea id="pinyinOutput" aria-labelledby="pinyinOutputTitle" readonly spellcheck="false" placeholder="変換後のピンインがここに表示されます"></textarea><div class="panel-actions"><button class="text-button" id="pinyinCopy" type="button">結果をコピー</button></div></section>
         </div>
         <div class="pinyin-detail-grid">
           <section class="pinyin-annotation-panel" aria-labelledby="pinyinAnnotationTitle"><div><p class="section-kicker">RUBY</p><h3 id="pinyinAnnotationTitle">1文字ずつのピンイン表示</h3></div><p id="pinyinAnnotationEmpty" class="pinyin-empty">中国語を入力すると、文字別の読み方がここに表示されます。</p><div id="pinyinAnnotation" class="pinyin-annotation" hidden></div><p class="pinyin-preview-note">長文は先頭500文字のみプレビューし、上の完全な結果には影響しません。</p></section>
@@ -159,17 +159,13 @@
           <a href="/ja/japanese-chinese-kanji-converter/">日中漢字3種類変換</a>
           <a href="/ja/japanese-characters/">日本語文字コピー</a>
           <a href="/ja/kanji-to-romaji/">漢字・ローマ字変換</a>
-          <a href="/ja/han-character-worksheet/">漢字練習プリント</a>
-          <a href="/ja/chinese-handwriting-recognition/">漢字手書き検索</a>
           <!-- han-character-lookup-link:start -->
           <a href="/ja/chinese-character-lookup/" data-route="chinese-character-lookup">漢字の構成・部首検索</a>
           <!-- han-character-lookup-link:end -->
+          <a href="/ja/han-character-worksheet/">漢字練習プリント</a>
+          <a href="/ja/chinese-handwriting-recognition/">漢字手書き検索</a>
         </nav></section>
     </main>
-    <footer class="site-footer"><p>JianFan.app はブラウザー内で動作する中国語文字変換・ピンインツールを提供します。</p><nav class="footer-links" aria-label="Footer">
-        <a href="/ja/about/">JianFan.app について</a>
-        <a href="/ja/contact/">お問い合わせ</a>
-        <a href="/ja/privacy/">プライバシー声明</a>
-      </nav></footer>
+    <footer class="site-footer"><p>JianFan.app はブラウザー内で動作する中国語文字変換・ピンインツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
   </body>
 </html>

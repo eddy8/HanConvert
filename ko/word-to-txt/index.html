@@ -156,7 +156,7 @@
           <section class="word-preview-pane" aria-labelledby="wordPreviewTitle">
             <div class="panel-topline"><div><p class="section-kicker">PLAIN TEXT</p><h3 id="wordPreviewTitle">TXT 미리보기</h3></div><span id="wordCharacterCount">0 자</span></div>
             <div class="word-preview-empty" id="wordPreviewEmpty"><strong>추출한 텍스트가 여기에 표시됩니다</strong><p>DOCX를 선택하면 파일별 일반 텍스트를 확인하고 편집할 수 있습니다.</p></div>
-            <div class="word-editor-pane" id="wordEditorPane" hidden><div class="word-selected-file"><strong id="wordSelectedName"></strong><span id="wordSelectedMeta"></span></div><textarea id="wordTextEditor" spellcheck="false"></textarea><div class="panel-actions"><button class="text-button" id="wordCopyButton" type="button">텍스트 복사</button><button class="primary-action" id="wordDownloadButton" type="button">TXT 다운로드</button></div></div>
+            <div class="word-editor-pane" id="wordEditorPane" hidden><div class="word-selected-file"><strong id="wordSelectedName"></strong><span id="wordSelectedMeta"></span></div><textarea id="wordTextEditor" aria-labelledby="wordPreviewTitle wordSelectedName" spellcheck="false"></textarea><div class="panel-actions"><button class="text-button" id="wordCopyButton" type="button">텍스트 복사</button><button class="primary-action" id="wordDownloadButton" type="button">TXT 다운로드</button></div></div>
           </section>
         </div>
         <p class="word-privacy-note">DOCX 내용은 현재 브라우저에서만 읽습니다. 공개 문서 분석 코드를 불러오지만 파일을 원격 서버로 전송하지 않습니다.</p>

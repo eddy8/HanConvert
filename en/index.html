@@ -60,7 +60,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body>
+  <body class="converter-home">
     <a class="skip-nav" href="#main" data-i18n="skip">Skip to main content</a>
 
     <header class="site-header" aria-label="Site header">
@@ -88,9 +88,9 @@
     <main id="main">
       <section class="hero-shell" aria-labelledby="pageTitle">
         <div class="hero-copy">
-          <p class="eyebrow" data-i18n="eyebrow">Local browser conversion</p>
           <h1 id="pageTitle" data-i18n="title">Simplified to Traditional Chinese Converter</h1>
           <p class="lede" data-i18n="lede">Paste text and convert instantly. Use JianFan.app as a traditional to simplified Chinese converter, Chinese character converter, and regional wording tool without exposing technical settings.</p>
+          <p class="processing-note" data-i18n="eyebrow">Local browser conversion</p>
         </div>
 
         <div class="signal-panel" aria-hidden="true">
@@ -105,8 +105,8 @@
       <section class="converter" aria-labelledby="converterTitle">
         <div class="converter-head">
           <div>
-            <p class="section-kicker" data-i18n="workspaceKicker">Conversion workspace</p>
             <h2 id="converterTitle" data-i18n="workspaceTitle">Input, choose a direction, copy the result</h2>
+            <p class="workspace-note" data-i18n="workspaceKicker">Conversion workspace</p>
           </div>
           <div class="status-pill" id="engineStatus" role="status" aria-live="polite">
             <span class="status-dot"></span>
@@ -115,116 +115,23 @@
         </div>
 
         <div class="mode-strip" role="radiogroup" aria-label="Conversion direction">
-          <button class="mode-card is-active" type="button" data-config="s2t" role="radio" aria-checked="true">
-            <span data-i18n="modeS2T">Simplified → Traditional</span>
+          <button class="mode-card is-active" type="button" data-config="s2t" role="radio" aria-checked="true" data-i18n-attr="aria-label:modeS2T" aria-label="Simplified → Traditional">
+            <span class="mode-label-full" data-i18n="modeS2T">Simplified → Traditional</span>
+            <span class="mode-label-compact" aria-hidden="true" data-i18n="modeS2TShort">To traditional</span>
           </button>
-          <button class="mode-card" type="button" data-config="t2s" role="radio" aria-checked="false">
-            <span data-i18n="modeT2S">Traditional → Simplified</span>
+          <button class="mode-card" type="button" data-config="t2s" role="radio" aria-checked="false" data-i18n-attr="aria-label:modeT2S" aria-label="Traditional → Simplified">
+            <span class="mode-label-full" data-i18n="modeT2S">Traditional → Simplified</span>
+            <span class="mode-label-compact" aria-hidden="true" data-i18n="modeT2SShort">To simplified</span>
           </button>
-          <button class="mode-card" type="button" data-config="s2tw" role="radio" aria-checked="false">
-            <span data-i18n="modeS2TW">Simplified → Taiwan</span>
+          <button class="mode-card" type="button" data-config="s2tw" role="radio" aria-checked="false" data-i18n-attr="aria-label:modeS2TW" aria-label="Simplified → Taiwan">
+            <span class="mode-label-full" data-i18n="modeS2TW">Simplified → Taiwan</span>
+            <span class="mode-label-compact" aria-hidden="true" data-i18n="modeS2TWShort">To Taiwan</span>
           </button>
-          <button class="mode-card" type="button" data-config="s2hk" role="radio" aria-checked="false">
-            <span data-i18n="modeS2HK">Simplified → Hong Kong</span>
+          <button class="mode-card" type="button" data-config="s2hk" role="radio" aria-checked="false" data-i18n-attr="aria-label:modeS2HK" aria-label="Simplified → Hong Kong">
+            <span class="mode-label-full" data-i18n="modeS2HK">Simplified → Hong Kong</span>
+            <span class="mode-label-compact" aria-hidden="true" data-i18n="modeS2HKShort">To Hong Kong</span>
           </button>
         </div>
-
-        <div class="converter-option-grid">
-          <details class="advanced-options">
-            <summary data-i18n="advancedSummary">More regional and specialist options</summary>
-            <div class="advanced-grid">
-              <label>
-                <span data-i18n="configLabel">Conversion mode</span>
-                <select id="configSelect">
-                  <option value="s2t" data-i18n="modeS2T" selected="selected">Simplified → Traditional</option>
-                  <option value="t2s" data-i18n="modeT2S">Traditional → Simplified</option>
-                  <option value="s2tw" data-i18n="modeS2TW">Simplified → Taiwan</option>
-                  <option value="s2twp" data-i18n="modeS2TWP">Simplified → Taiwan phrases</option>
-                  <option value="s2hk" data-i18n="modeS2HK">Simplified → Hong Kong</option>
-                  <option value="s2hkp" data-i18n="modeS2HKP">Simplified → Hong Kong phrases</option>
-                  <option value="tw2s" data-i18n="modeTW2S">Taiwan → Simplified</option>
-                  <option value="tw2sp" data-i18n="modeTW2SP">Taiwan → Simplified phrases</option>
-                  <option value="hk2s" data-i18n="modeHK2S">Hong Kong → Simplified</option>
-                  <option value="hk2sp" data-i18n="modeHK2SP">Hong Kong → Simplified phrases</option>
-                  <option value="t2tw" data-i18n="modeT2TW">Traditional → Taiwan</option>
-                  <option value="tw2t" data-i18n="modeTW2T">Taiwan → Traditional</option>
-                  <option value="t2hk" data-i18n="modeT2HK">Traditional → Hong Kong</option>
-                  <option value="hk2t" data-i18n="modeHK2T">Hong Kong → Traditional</option>
-                  <option value="jp2t" data-i18n="modeJP2T">Japanese Shinjitai → Kyujitai</option>
-                  <option value="t2jp" data-i18n="modeT2JP">Kyujitai → Japanese Shinjitai</option>
-                </select>
-              </label>
-              <label class="toggle-row">
-                <input id="autoConvert" type="checkbox" checked />
-                <span data-i18n="autoConvert">Convert while typing</span>
-              </label>
-            </div>
-          </details>
-
-          <!-- custom-dictionary:start -->
-          <details class="custom-dictionary" id="customDictionary">
-            <summary>
-              <span data-i18n="customDictionarySummary">Custom dictionary</span>
-              <span class="custom-dictionary-count" id="customDictionaryCount" aria-live="polite">0/0 enabled</span>
-            </summary>
-            <div class="custom-dictionary-body">
-              <p class="custom-dictionary-note" data-i18n="customDictionaryLocalNote">Entries stay in this browser. Use identical text to protect brand names and proper nouns.</p>
-              <form class="custom-dictionary-form" id="customDictionaryForm" novalidate>
-                <label>
-                  <span data-i18n="customDictionarySourceLabel">Before conversion</span>
-                  <input
-                    id="customDictionarySource"
-                    type="text"
-                    maxlength="200"
-                    autocomplete="off"
-                    data-i18n-attr="placeholder:customDictionarySourcePlaceholder"
-                    placeholder="Example: 软件"
-                  />
-                </label>
-                <span class="custom-dictionary-arrow" aria-hidden="true">→</span>
-                <label>
-                  <span data-i18n="customDictionaryTargetLabel">After conversion</span>
-                  <input
-                    id="customDictionaryTarget"
-                    type="text"
-                    maxlength="200"
-                    autocomplete="off"
-                    data-i18n-attr="placeholder:customDictionaryTargetPlaceholder"
-                    placeholder="Example: 軟體"
-                  />
-                </label>
-                <button class="text-button custom-dictionary-add" type="submit" data-i18n="customDictionaryAdd">Add entry</button>
-              </form>
-              <p class="custom-dictionary-empty" id="customDictionaryEmpty" data-i18n="customDictionaryEmpty">No custom entries yet</p>
-              <ul class="custom-dictionary-list" id="customDictionaryList"></ul>
-              <div class="custom-dictionary-footer">
-                <p id="customDictionaryStatus" role="status" aria-live="polite"></p>
-                <button
-                  class="text-button custom-dictionary-clear"
-                  id="customDictionaryClear"
-                  type="button"
-                  data-i18n="customDictionaryClear"
-                  hidden
-                >Clear dictionary</button>
-              </div>
-            </div>
-          </details>
-          <!-- custom-dictionary:end -->
-        </div>
-
-        <section class="file-import" aria-labelledby="fileImportTitle">
-          <div>
-            <p class="section-kicker" data-i18n="fileKicker">File conversion</p>
-            <h3 id="fileImportTitle" data-i18n="fileTitle">Upload files and extract text locally in your browser</h3>
-            <p data-i18n="fileBody">Supports TXT, CSV, DOCX, PDF, and Excel files. Content is read only in this browser and is not uploaded.</p>
-          </div>
-          <label class="file-drop" id="fileDrop" for="fileInput">
-            <span data-i18n="fileDropTitle">Choose or drop files</span>
-            <small data-i18n="fileDropBody">Multiple files are supported and will be converted after text extraction</small>
-            <input id="fileInput" type="file" multiple accept=".txt,.md,.csv,.docx,.pdf,.xlsx,.xls" />
-          </label>
-          <p class="file-status" id="fileImportStatus" role="status" aria-live="polite"></p>
-        </section>
 
         <div class="editor-grid">
           <section class="text-panel" aria-labelledby="inputTitle">
@@ -232,7 +139,7 @@
               <h3 id="inputTitle" data-i18n="inputTitle">Original</h3>
               <span id="inputCount">0</span>
             </div>
-            <textarea id="inputText" spellcheck="false" data-i18n-attr="placeholder:inputPlaceholder" placeholder="Paste or type Chinese text here..."></textarea>
+            <textarea id="inputText" aria-labelledby="inputTitle" spellcheck="false" data-i18n-attr="placeholder:inputPlaceholder" placeholder="Paste or type Chinese text here..."></textarea>
             <div class="panel-actions">
               <button class="text-button" id="sampleButton" type="button" data-i18n="sample">Sample</button>
               <button class="text-button" id="clearButton" type="button" data-i18n="clear">Clear</button>
@@ -251,11 +158,110 @@
               <h3 id="outputTitle" data-i18n="outputTitle">Result</h3>
               <span id="outputCount">0</span>
             </div>
-            <textarea id="outputText" readonly spellcheck="false" data-i18n-attr="placeholder:outputPlaceholder" placeholder="Converted text appears here"></textarea>
+            <textarea id="outputText" aria-labelledby="outputTitle" readonly spellcheck="false" data-i18n-attr="placeholder:outputPlaceholder" placeholder="Converted text appears here"></textarea>
             <div class="panel-actions">
               <button class="text-button" id="copyButton" type="button" data-i18n="copy">Copy</button>
               <button class="text-button" id="downloadButton" type="button" data-i18n="download">Download TXT</button>
             </div>
+          </section>
+        </div>
+
+        <div class="converter-secondary">
+          <div class="converter-option-grid">
+            <details class="advanced-options">
+              <summary data-i18n="advancedSummary">More regional and specialist options</summary>
+              <div class="advanced-grid">
+                <label>
+                  <span data-i18n="configLabel">Conversion mode</span>
+                  <select id="configSelect">
+                    <option value="s2t" data-i18n="modeS2T" selected="selected">Simplified → Traditional</option>
+                    <option value="t2s" data-i18n="modeT2S">Traditional → Simplified</option>
+                    <option value="s2tw" data-i18n="modeS2TW">Simplified → Taiwan</option>
+                    <option value="s2twp" data-i18n="modeS2TWP">Simplified → Taiwan phrases</option>
+                    <option value="s2hk" data-i18n="modeS2HK">Simplified → Hong Kong</option>
+                    <option value="s2hkp" data-i18n="modeS2HKP">Simplified → Hong Kong phrases</option>
+                    <option value="tw2s" data-i18n="modeTW2S">Taiwan → Simplified</option>
+                    <option value="tw2sp" data-i18n="modeTW2SP">Taiwan → Simplified phrases</option>
+                    <option value="hk2s" data-i18n="modeHK2S">Hong Kong → Simplified</option>
+                    <option value="hk2sp" data-i18n="modeHK2SP">Hong Kong → Simplified phrases</option>
+                    <option value="t2tw" data-i18n="modeT2TW">Traditional → Taiwan</option>
+                    <option value="tw2t" data-i18n="modeTW2T">Taiwan → Traditional</option>
+                    <option value="t2hk" data-i18n="modeT2HK">Traditional → Hong Kong</option>
+                    <option value="hk2t" data-i18n="modeHK2T">Hong Kong → Traditional</option>
+                    <option value="jp2t" data-i18n="modeJP2T">Japanese Shinjitai → Kyujitai</option>
+                    <option value="t2jp" data-i18n="modeT2JP">Kyujitai → Japanese Shinjitai</option>
+                  </select>
+                </label>
+                <label class="toggle-row">
+                  <input id="autoConvert" type="checkbox" checked />
+                  <span data-i18n="autoConvert">Convert while typing</span>
+                </label>
+              </div>
+            </details>
+
+            <!-- custom-dictionary:start -->
+            <details class="custom-dictionary" id="customDictionary">
+              <summary>
+                <span data-i18n="customDictionarySummary">Custom dictionary</span>
+                <span class="custom-dictionary-count" id="customDictionaryCount" aria-live="polite">0/0 enabled</span>
+              </summary>
+              <div class="custom-dictionary-body">
+                <p class="custom-dictionary-note" data-i18n="customDictionaryLocalNote">Entries stay in this browser. Use identical text to protect brand names and proper nouns.</p>
+                <form class="custom-dictionary-form" id="customDictionaryForm" novalidate>
+                  <label>
+                    <span data-i18n="customDictionarySourceLabel">Before conversion</span>
+                    <input
+                      id="customDictionarySource"
+                      type="text"
+                      maxlength="200"
+                      autocomplete="off"
+                      data-i18n-attr="placeholder:customDictionarySourcePlaceholder"
+                      placeholder="Example: 软件"
+                    />
+                  </label>
+                  <span class="custom-dictionary-arrow" aria-hidden="true">→</span>
+                  <label>
+                    <span data-i18n="customDictionaryTargetLabel">After conversion</span>
+                    <input
+                      id="customDictionaryTarget"
+                      type="text"
+                      maxlength="200"
+                      autocomplete="off"
+                      data-i18n-attr="placeholder:customDictionaryTargetPlaceholder"
+                      placeholder="Example: 軟體"
+                    />
+                  </label>
+                  <button class="text-button custom-dictionary-add" type="submit" data-i18n="customDictionaryAdd">Add entry</button>
+                </form>
+                <p class="custom-dictionary-empty" id="customDictionaryEmpty" data-i18n="customDictionaryEmpty">No custom entries yet</p>
+                <ul class="custom-dictionary-list" id="customDictionaryList"></ul>
+                <div class="custom-dictionary-footer">
+                  <p id="customDictionaryStatus" role="status" aria-live="polite"></p>
+                  <button
+                    class="text-button custom-dictionary-clear"
+                    id="customDictionaryClear"
+                    type="button"
+                    data-i18n="customDictionaryClear"
+                    hidden
+                  >Clear dictionary</button>
+                </div>
+              </div>
+            </details>
+            <!-- custom-dictionary:end -->
+          </div>
+
+          <section class="file-import" aria-labelledby="fileImportTitle">
+            <div>
+              <p class="section-kicker" data-i18n="fileKicker">File conversion</p>
+              <h3 id="fileImportTitle" data-i18n="fileTitle">Upload files and extract text locally in your browser</h3>
+              <p data-i18n="fileBody">Supports TXT, CSV, DOCX, PDF, and Excel files. Content is read only in this browser and is not uploaded.</p>
+            </div>
+            <label class="file-drop" id="fileDrop" for="fileInput">
+              <span data-i18n="fileDropTitle">Choose or drop files</span>
+              <small data-i18n="fileDropBody">Multiple files are supported and will be converted after text extraction</small>
+              <input id="fileInput" type="file" multiple accept=".txt,.md,.csv,.docx,.pdf,.xlsx,.xls" />
+            </label>
+            <p class="file-status" id="fileImportStatus" role="status" aria-live="polite"></p>
           </section>
         </div>
       </section>
@@ -289,7 +295,7 @@
         <div class="section-heading">
           <p class="section-kicker" data-i18n="seoKicker">Common conversion needs</p>
           <h2 id="seoTitle" data-i18n="seoTitle">Built for everyday Chinese character conversion</h2>
-          <p class="seo-intro" data-i18n="seoIntro">JianFan.app covers simplified to traditional Chinese converter, traditional to simplified Chinese converter, Chinese character converter, and convert Chinese traditional to simplified online search intent in one focused workspace.</p>
+          <p class="seo-intro" data-i18n="seoIntro">Convert Chinese traditional to simplified online, or convert simplified text to traditional characters. Choose Taiwan or Hong Kong wording, then copy or download the result.</p>
         </div>
 
         <div class="seo-grid">

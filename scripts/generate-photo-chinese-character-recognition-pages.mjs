@@ -1,3 +1,4 @@
+import { preserveToolLinks } from "./static-tool-links.mjs";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -369,7 +370,7 @@ function renderPage(locale) {
         <div class="photo-ocr-workspace">
           <section class="photo-ocr-panel" aria-labelledby="photoSourceTitle">
             <div class="photo-ocr-panel-head"><span class="photo-ocr-step" aria-hidden="true">01</span><div><h3 id="photoSourceTitle">${page.sourceTitle}</h3><p>${page.sourceHint}</p></div></div>
-            <div class="photo-ocr-capture-row"><button class="photo-ocr-capture" id="photoCapture" type="button">${page.capture}</button><input class="visually-hidden" id="photoInput" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,.heic,.heif" capture="environment" /><button class="photo-ocr-secondary" id="photoReset" type="button" disabled>${page.reset}</button></div>
+            <div class="photo-ocr-capture-row"><button class="photo-ocr-capture" id="photoCapture" type="button">${page.capture}</button><input class="visually-hidden" id="photoInput" aria-labelledby="photoCapture" tabindex="-1" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,.heic,.heif" capture="environment" /><button class="photo-ocr-secondary" id="photoReset" type="button" disabled>${page.reset}</button></div>
             <button class="photo-ocr-recognize" id="photoRecognize" type="button" disabled>${page.recognize}</button>
             <div class="photo-ocr-canvas-frame is-empty" id="photoSourceFrame"><canvas id="photoSourceCanvas" aria-label="${page.sourceTitle}"></canvas><div class="photo-ocr-empty" id="photoSourceEmpty"><strong>${page.emptyPreviewTitle}</strong><span>${page.emptyPreviewBody}</span></div></div>
           </section>
@@ -405,7 +406,7 @@ ${locale === "zh-CN" ? blogGuide : ""}
 for (const locale of Object.keys(locales)) {
   const outputDirectory = path.join(projectRoot, locales[locale].prefix, slug);
   await mkdir(outputDirectory, { recursive: true });
-  await writeFile(path.join(outputDirectory, "index.html"), renderPage(locale), "utf8");
+  await writeFile(path.join(outputDirectory, "index.html"), await preserveToolLinks(renderPage(locale), path.join(outputDirectory, "index.html")), "utf8");
 }
 
 console.log(`Generated ${Object.keys(locales).length} ${slug} pages.`);

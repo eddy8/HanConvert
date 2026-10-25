@@ -4,6 +4,7 @@ import { filterJapaneseCharacters } from "/japanese-character-data.js";
 import {
   buildThreeWayComparison,
   convertJapaneseChineseText,
+  createConversionQueue,
   DEFAULT_THREE_WAY_COMPARISON_LIMIT
 } from "/japanese-chinese-converter.js";
 
@@ -24,7 +25,7 @@ const messages = {
     copied: "已复制",
     copiedCount: "已复制 {count} 个字符",
     copyFailed: "无法自动复制，请手动复制",
-    error: "转换失败，请缩短文本后重试",
+    error: "转换失败，请检查网络连接后重试",
     tooLong: "文本不能超过 300 万字符",
     noDifferences: "三种结果中没有检测到字形差异。",
     comparison: "共发现 {changes} 处差异，合并为 {pairs} 组字形。",
@@ -39,7 +40,7 @@ const messages = {
     copied: "已複製",
     copiedCount: "已複製 {count} 個字符",
     copyFailed: "無法自動複製，請手動複製",
-    error: "轉換失敗，請縮短文字後重試",
+    error: "轉換失敗，請檢查網路連線後重試",
     tooLong: "文字不能超過 300 萬字符",
     noDifferences: "三種結果中沒有偵測到字形差異。",
     comparison: "共發現 {changes} 處差異，合併為 {pairs} 組字形。",
@@ -54,7 +55,7 @@ const messages = {
     copied: "Copied",
     copiedCount: "Copied {count} characters",
     copyFailed: "Automatic copy failed. Please copy manually.",
-    error: "Conversion failed. Try a shorter text.",
+    error: "Conversion failed. Check your connection and try again.",
     tooLong: "Text is limited to 3 million characters",
     noDifferences: "No glyph differences were found in the three results.",
     comparison: "Found {changes} changes, grouped into {pairs} glyph sets.",
@@ -69,7 +70,7 @@ const messages = {
     copied: "コピーしました",
     copiedCount: "{count} 文字をコピーしました",
     copyFailed: "自動コピーに失敗しました。手動でコピーしてください。",
-    error: "変換に失敗しました。テキストを短くして再試行してください。",
+    error: "変換に失敗しました。ネットワーク接続を確認して再試行してください。",
     tooLong: "テキストは300万文字までです",
     noDifferences: "3つの結果に字形の違いは見つかりませんでした。",
     comparison: "{changes} 箇所の違いを {pairs} 組の字形にまとめました。",
@@ -84,7 +85,7 @@ const messages = {
     copied: "복사했습니다",
     copiedCount: "{count}개 문자를 복사했습니다",
     copyFailed: "자동 복사에 실패했습니다. 직접 복사해 주세요.",
-    error: "변환에 실패했습니다. 텍스트를 줄여 다시 시도하세요.",
+    error: "변환에 실패했습니다. 네트워크 연결을 확인하고 다시 시도하세요.",
     tooLong: "텍스트는 300만 자까지 입력할 수 있습니다",
     noDifferences: "세 결과에서 글자 모양 차이를 찾지 못했습니다.",
     comparison: "{changes}곳의 차이를 {pairs}개 글자 조합으로 정리했습니다.",
@@ -138,6 +139,7 @@ function setupKanjiConverter() {
   let sourceType = sourceButtons.find((button) => button.classList.contains("is-active"))?.dataset.sourceType || "japanese";
   let timer;
   let conversionToken = 0;
+  const enqueueConversion = createConversionQueue();
 
   setStatus("idle");
   updateCounts();
@@ -184,6 +186,7 @@ function setupKanjiConverter() {
   async function convert() {
     const value = input.value;
     const token = ++conversionToken;
+    const source = sourceType;
     if (!value) {
       Object.values(outputFields).forEach((field) => { field.value = ""; });
       clearComparison();
@@ -201,16 +204,19 @@ function setupKanjiConverter() {
 
     setStatus("loading");
     try {
-      const results = await convertJapaneseChineseText(value, sourceType, (config, text) => (
-        convertInChunks(config, text, token, () => conversionToken)
-      ));
+      const results = await enqueueConversion(() => {
+        if (token !== conversionToken) throw new DOMException("Conversion superseded", "AbortError");
+        return convertJapaneseChineseText(value, source, (config, text) => (
+          convertInChunks(config, text, token, () => conversionToken)
+        ));
+      });
       if (token !== conversionToken) return;
       for (const [id, result] of Object.entries(results)) outputFields[id].value = result;
       updateCounts();
       renderComparison(buildThreeWayComparison(results));
       setStatus("ready", "ready");
     } catch (error) {
-      if (error.name === "AbortError") return;
+      if (error.name === "AbortError" || token !== conversionToken) return;
       console.error(error);
       setStatus("error", "error");
     }

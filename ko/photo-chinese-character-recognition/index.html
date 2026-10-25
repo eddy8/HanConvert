@@ -147,7 +147,7 @@
         <div class="photo-ocr-workspace">
           <section class="photo-ocr-panel" aria-labelledby="photoSourceTitle">
             <div class="photo-ocr-panel-head"><span class="photo-ocr-step" aria-hidden="true">01</span><div><h3 id="photoSourceTitle">한자가 있는 이미지 선택</h3><p>글자가 선명하고 온전히 보이게 촬영하고 반사, 심한 기울기와 복잡한 배경은 피하세요.</p></div></div>
-            <div class="photo-ocr-capture-row"><button class="photo-ocr-capture" id="photoCapture" type="button">촬영하거나 이미지 선택</button><input class="visually-hidden" id="photoInput" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,.heic,.heif" capture="environment" /><button class="photo-ocr-secondary" id="photoReset" type="button" disabled>다시 선택</button></div>
+            <div class="photo-ocr-capture-row"><button class="photo-ocr-capture" id="photoCapture" type="button">촬영하거나 이미지 선택</button><input class="visually-hidden" id="photoInput" aria-labelledby="photoCapture" tabindex="-1" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,.heic,.heif" capture="environment" /><button class="photo-ocr-secondary" id="photoReset" type="button" disabled>다시 선택</button></div>
             <button class="photo-ocr-recognize" id="photoRecognize" type="button" disabled>이미지 속 한자 인식</button>
             <div class="photo-ocr-canvas-frame is-empty" id="photoSourceFrame"><canvas id="photoSourceCanvas" aria-label="한자가 있는 이미지 선택"></canvas><div class="photo-ocr-empty" id="photoSourceEmpty"><strong>촬영하거나 이미지 선택</strong><span>PNG, JPEG, WebP, HEIC, HEIF 지원</span></div></div>
           </section>

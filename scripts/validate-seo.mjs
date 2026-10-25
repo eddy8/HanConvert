@@ -15,6 +15,7 @@ import {
   visibleTitleContentLength
 } from "./seo-metadata-rules.mjs";
 import { getPageContext, loadLocalizationData, localizeConverterHtml } from "./static-localization-lib.mjs";
+import { experimentMetadataFindings, isExperimentPage } from "./static-page-policy.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteOrigin = "https://jianfan.app";
@@ -178,6 +179,12 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (!canonical.startsWith(`${siteOrigin}/`)) throw new Error(`${relativePath}: canonical is not absolute`);
   if (canonicalUrls.has(canonical)) throw new Error(`${relativePath}: duplicate canonical ${canonical}`);
   canonicalUrls.add(canonical);
+  if (isExperimentPage(html)) {
+    const findings = experimentMetadataFindings(relativePath, html);
+    if (findings.length) throw new Error(`${relativePath}: ${findings.join(", ")}`);
+    if (uniqueSitemapUrls.has(canonical)) throw new Error(`${relativePath}: noindex experiment must not be in sitemap.xml`);
+    continue;
+  }
   if (!uniqueSitemapUrls.has(canonical)) throw new Error(`${relativePath}: canonical is missing from sitemap.xml`);
   if (/(?:src|href)="\/[^"]+\?(?:v|version)=/i.test(html)) {
     throw new Error(`${relativePath}: static asset URL contains a version query`);

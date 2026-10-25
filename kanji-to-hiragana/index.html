@@ -129,8 +129,8 @@
         </div></fieldset>
         <p class="romaji-resource-note">首次转换需要远程加载公开日语词典；加载完成后可在当前页面连续使用。</p>
         <div class="pinyin-converter-grid reading-converter-grid">
-          <section class="pinyin-text-panel input-variant" aria-labelledby="hiraganaInputTitle"><div class="panel-topline"><h3 id="hiraganaInputTitle">日语文本</h3><span id="hiraganaInputCount">0</span></div><textarea id="hiraganaInput" spellcheck="false" placeholder="输入或粘贴包含汉字、平假名或片假名的日语..."></textarea><div class="panel-actions"><button class="text-button" id="hiraganaSample" type="button" data-sample="明日は東京で日本語を勉強します。">示例</button><button class="text-button" id="hiraganaClear" type="button">清空</button><button class="primary-action" id="hiraganaConvert" type="button">转换读音</button></div></section>
-          <section class="pinyin-text-panel output-variant" aria-labelledby="hiraganaOutputTitle"><div class="panel-topline"><h3 id="hiraganaOutputTitle">平假名转换结果</h3><span id="hiraganaOutputCount">0</span></div><textarea id="hiraganaPlainOutput" readonly spellcheck="false" placeholder="转换后的平假名会显示在这里"></textarea><div id="hiraganaVisualOutput" class="romaji-furigana-output reading-visual-output" hidden><p id="hiraganaVisualEmpty" class="pinyin-empty">转换后会在这里显示带振假名的日语文本。</p></div><div class="panel-actions"><button class="text-button" id="hiraganaRetry" type="button" hidden>重试加载</button><button class="text-button" id="hiraganaCopyText" type="button" disabled>复制文本</button><button class="text-button" id="hiraganaCopyHtml" type="button" disabled>复制 Ruby HTML</button></div></section>
+          <section class="pinyin-text-panel input-variant" aria-labelledby="hiraganaInputTitle"><div class="panel-topline"><h3 id="hiraganaInputTitle">日语文本</h3><span id="hiraganaInputCount">0</span></div><textarea id="hiraganaInput" aria-labelledby="hiraganaInputTitle" spellcheck="false" placeholder="输入或粘贴包含汉字、平假名或片假名的日语..."></textarea><div class="panel-actions"><button class="text-button" id="hiraganaSample" type="button" data-sample="明日は東京で日本語を勉強します。">示例</button><button class="text-button" id="hiraganaClear" type="button">清空</button><button class="primary-action" id="hiraganaConvert" type="button">转换读音</button></div></section>
+          <section class="pinyin-text-panel output-variant" aria-labelledby="hiraganaOutputTitle"><div class="panel-topline"><h3 id="hiraganaOutputTitle">平假名转换结果</h3><span id="hiraganaOutputCount">0</span></div><textarea id="hiraganaPlainOutput" aria-labelledby="hiraganaOutputTitle" readonly spellcheck="false" placeholder="转换后的平假名会显示在这里"></textarea><div id="hiraganaVisualOutput" class="romaji-furigana-output reading-visual-output" hidden><p id="hiraganaVisualEmpty" class="pinyin-empty">转换后会在这里显示带振假名的日语文本。</p></div><div class="panel-actions"><button class="text-button" id="hiraganaRetry" type="button" hidden>重试加载</button><button class="text-button" id="hiraganaCopyText" type="button" disabled>复制文本</button><button class="text-button" id="hiraganaCopyHtml" type="button" disabled>复制 Ruby HTML</button></div></section>
         </div>
         <p class="tool-disclaimer">日语汉字可能有音读、训读和特殊读法。一般词语可结合上下文判断，人名、地名、作品名和生僻词仍建议人工确认。</p>
       </section>
@@ -156,10 +156,10 @@
           <a href="/han-character-worksheet/">汉字练习纸</a>
           <a href="/character-counter/">在线字数统计</a>
           <a href="/japanese-kanji-converter/">日文新旧字体转换</a>
-          <a href="/chinese-handwriting-recognition/">手写汉字识别</a>
           <!-- han-character-lookup-link:start -->
           <a href="/chinese-character-lookup/" data-route="chinese-character-lookup">汉字查询与结构拆解</a>
           <!-- han-character-lookup-link:end -->
+          <a href="/chinese-handwriting-recognition/">手写汉字识别</a>
         </nav><p class="reading-source-note">读音转换基于 Kuroshiro 与 Kuromoji.js 的公开日语词典，输入文本不会发送给词典来源。</p></section>
       <!-- blog-guide-links:start -->
       <section class="tool-guide-strip" aria-labelledby="blogGuideTitle">

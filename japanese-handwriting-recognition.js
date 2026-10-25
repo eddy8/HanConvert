@@ -83,7 +83,7 @@
       chunks.push(value);
       loaded += value.byteLength;
       const percent = total ? Math.min(99, Math.round((loaded / total) * 100)) : 0;
-      elements.progressBar.style.width = `${percent}%`;
+      elements.progressBar.style.transform = `scaleX(${percent / 100})`;
       elements.progressText.textContent = total
         ? message("loadingProgress", { percent })
         : message("loadingPatterns");
@@ -129,7 +129,7 @@
         if (core.bytesToHex(digest) !== core.PATTERN_SHA256) throw new Error("Pattern integrity check failed");
         await executePatternScript(bytes);
         if (!globalThis.KanjiCanvas?.refPatterns?.length) throw new Error("Pattern data is empty");
-        elements.progressBar.style.width = "100%";
+        elements.progressBar.style.transform = "scaleX(1)";
         elements.progressText.textContent = message("patternsReady");
         window.setTimeout(() => { elements.progress.hidden = true; }, 500);
         setStatus("drawReady", "ready");

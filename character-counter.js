@@ -230,7 +230,7 @@
       const count = result.categories[element.dataset.counterCategory] || 0;
       const percent = classifiedTotal ? Math.round((count / classifiedTotal) * 100) : 0;
       element.querySelector("strong").textContent = formatNumber(count);
-      element.querySelector(".counter-category-bar span").style.width = `${percent}%`;
+      element.querySelector(".counter-category-bar span").style.transform = `scaleX(${percent / 100})`;
       element.querySelector("small").textContent = `${percent}%`;
     }
 
@@ -242,7 +242,7 @@
     elements.targetValue.textContent = formatNumber(target);
     elements.targetUnit.textContent = selectedMode.dataset.unit || "";
     elements.targetPercent.textContent = `${progress}%`;
-    elements.targetBar.style.width = `${progress}%`;
+    elements.targetBar.style.transform = `scaleX(${progress / 100})`;
     renderFrequency();
   }
 

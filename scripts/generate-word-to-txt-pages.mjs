@@ -438,7 +438,7 @@ ${localeOptions}
           <section class="word-preview-pane" aria-labelledby="wordPreviewTitle">
             <div class="panel-topline"><div><p class="section-kicker">PLAIN TEXT</p><h3 id="wordPreviewTitle">${page.previewTitle}</h3></div><span id="wordCharacterCount">0 ${page.messages.characters}</span></div>
             <div class="word-preview-empty" id="wordPreviewEmpty"><strong>${page.emptyTitle}</strong><p>${page.emptyBody}</p></div>
-            <div class="word-editor-pane" id="wordEditorPane" hidden><div class="word-selected-file"><strong id="wordSelectedName"></strong><span id="wordSelectedMeta"></span></div><textarea id="wordTextEditor" spellcheck="false"></textarea><div class="panel-actions"><button class="text-button" id="wordCopyButton" type="button">${page.copy}</button><button class="primary-action" id="wordDownloadButton" type="button">${page.download}</button></div></div>
+            <div class="word-editor-pane" id="wordEditorPane" hidden><div class="word-selected-file"><strong id="wordSelectedName"></strong><span id="wordSelectedMeta"></span></div><textarea id="wordTextEditor" aria-labelledby="wordPreviewTitle wordSelectedName" spellcheck="false"></textarea><div class="panel-actions"><button class="text-button" id="wordCopyButton" type="button">${page.copy}</button><button class="primary-action" id="wordDownloadButton" type="button">${page.download}</button></div></div>
           </section>
         </div>
         <p class="word-privacy-note">${page.privacyNote}</p>

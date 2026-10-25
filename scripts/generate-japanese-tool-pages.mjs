@@ -1,3 +1,4 @@
+import { preserveToolLinks } from "./static-tool-links.mjs";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -739,7 +740,7 @@ ${sourceTypes.map(([id, label]) => {
         <div class="triple-converter-grid">
           <section class="triple-text-panel input-variant" aria-labelledby="tripleInputTitle">
             <div class="panel-topline"><h3 id="tripleInputTitle">${content.inputTitle}</h3><span id="tripleInputCount">0</span></div>
-            <textarea id="tripleInput" spellcheck="false" placeholder="${escapeHtml(content.inputPlaceholder)}"></textarea>
+            <textarea id="tripleInput" aria-labelledby="tripleInputTitle" spellcheck="false" placeholder="${escapeHtml(content.inputPlaceholder)}"></textarea>
             <div class="panel-actions">
               <button class="text-button" id="tripleSample" type="button" data-sample="${escapeHtml(content.sampleText)}">${content.sample}</button>
               <button class="text-button" id="tripleClear" type="button">${content.clear}</button>
@@ -748,7 +749,7 @@ ${sourceTypes.map(([id, label]) => {
           </section>
 ${[["japanese", content.outputJapanese], ["simplified", content.outputSimplified], ["traditional", content.outputTraditional]].map(([id, label]) => `          <section class="triple-text-panel output-variant ${id}" aria-labelledby="${id}OutputTitle">
             <div class="panel-topline"><h3 id="${id}OutputTitle">${label}</h3><span id="${id}OutputCount">0</span></div>
-            <textarea id="${id}Output" readonly spellcheck="false"></textarea>
+            <textarea id="${id}Output" aria-labelledby="${id}OutputTitle" readonly spellcheck="false"></textarea>
             <div class="panel-actions"><button class="text-button" type="button" data-copy-output="${id}">${content.copy}</button></div>
           </section>`).join("\n")}
         </div>
@@ -830,7 +831,7 @@ for (const [slug, tool] of Object.entries(tools)) {
     const html = slug === "japanese-chinese-kanji-converter"
       ? buildConverterPage(locale, slug, content)
       : buildCharacterPage(locale, slug, content);
-    await writeFile(path.join(outputDirectory, "index.html"), `${html}\n`);
+    await writeFile(path.join(outputDirectory, "index.html"), await preserveToolLinks(`${html}\n`, path.join(outputDirectory, "index.html")));
   }
 }
 

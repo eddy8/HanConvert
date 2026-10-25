@@ -4,12 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0d1017">
-<title>2048</title>
-<style>
+<meta name="description" content="在浏览器中玩 2048 数字合并游戏，使用方向键、WASD 或触屏滑动移动方块，合并相同数字并挑战 2048。支持撤销操作、重开游戏和本地保存，无需注册即可开始。" />
+<link rel="canonical" href="https://jianfan.app/2048/claude/" />
+<meta name="robots" content="noindex, nofollow" />
+<title>2048 数字合并游戏 - 键盘、触屏与撤销操作 | JianFan.app</title>
+<style>/* Hallmark · checked: 2026-10-25 · scope: app · built: the project · redesign: polish · v2.0.0 */
+/* Preserve the existing game layout and palette; improve readable text and keyboard focus. */
 /* =========================================================
    1. 设计变量：颜色 + 棋盘尺寸（全部基于 --board 自适应）
    ========================================================= */
 :root {
+  --focus: #ffd166;
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto, sans-serif;
   --bg: #0d1017;
   --panel: #161b26;
   --board-bg: #1a202c;
@@ -22,10 +28,78 @@
   --cell: calc((var(--board) - var(--gap) * 5) / 4);/* 单格边长 */
   --radius: calc(var(--cell) * 0.13);
   --slide: 110ms;                                   /* 移动动画时长（与 JS 的 ANIM_MS 一致） */
+
+  --palette-231c48: #231c48;
+  --palette-0e2c3c: #0e2c3c;
+  --palette-ffe259: #ffe259;
+  --palette-ff7a18: #ff7a18;
+  --palette-ff2e63: #ff2e63;
+  --palette-255-120-40-0p25: rgba(255, 120, 40, 0.25);
+  --palette-255-255-255-0p06: rgba(255, 255, 255, 0.06);
+  --palette-255-209-102-0: rgba(255, 209, 102, 0);
+  --palette-255-209-102-0p7: rgba(255, 209, 102, 0.7);
+  --palette-255-209-102-0p5: rgba(255, 209, 102, 0.5);
+  --palette-255-200-80-0p5: rgba(255, 200, 80, 0.5);
+  --palette-7cf5c8: #7cf5c8;
+  --palette-80-255-190-0p5: rgba(80, 255, 190, 0.5);
+  --palette-fff: #fff;
+  --palette-8b5cf6: #8b5cf6;
+  --palette-6366f1: #6366f1;
+  --palette-99-102-241-0p35: rgba(99, 102, 241, 0.35);
+  --palette-255-255-255-0p08: rgba(255, 255, 255, 0.08);
+  --palette-1a1300: #1a1300;
+  --palette-0-0-0-0p45: rgba(0, 0, 0, 0.45);
+  --palette-255-255-255-0p05: rgba(255, 255, 255, 0.05);
+  --palette-255-255-255-0p04: rgba(255, 255, 255, 0.04);
+  --palette-255-255-255-0p14: rgba(255, 255, 255, 0.14);
+  --palette-0-0-0-0p16: rgba(0, 0, 0, 0.16);
+  --palette-255-255-255-0p35: rgba(255, 255, 255, 0.35);
+  --palette-2a3142: #2a3142;
+  --palette-c9d2e3: #c9d2e3;
+  --palette-3a4460: #3a4460;
+  --palette-e8ecf5: #e8ecf5;
+  --palette-ffb35c: #ffb35c;
+  --palette-ff8a1f: #ff8a1f;
+  --palette-255-140-40-0p28: rgba(255, 140, 40, 0.28);
+  --palette-ff8a4c: #ff8a4c;
+  --palette-ff5a2e: #ff5a2e;
+  --palette-255-100-50-0p32: rgba(255, 100, 50, 0.32);
+  --palette-ff5f6d: #ff5f6d;
+  --palette-ff2e4d: #ff2e4d;
+  --palette-255-60-80-0p36: rgba(255, 60, 80, 0.36);
+  --palette-c2185b: #c2185b;
+  --palette-255-40-110-0p42: rgba(255, 40, 110, 0.42);
+  --palette-d38cff: #d38cff;
+  --palette-a445ff: #a445ff;
+  --palette-180-90-255-0p5: rgba(180, 90, 255, 0.5);
+  --palette-9d8bff: #9d8bff;
+  --palette-6a5cff: #6a5cff;
+  --palette-120-100-255-0p55: rgba(120, 100, 255, 0.55);
+  --palette-5fb8ff: #5fb8ff;
+  --palette-2f7bff: #2f7bff;
+  --palette-60-140-255-0p6: rgba(60, 140, 255, 0.6);
+  --palette-3ff5d4: #3ff5d4;
+  --palette-00b4d8: #00b4d8;
+  --palette-04232b: #04232b;
+  --palette-40-230-220-0p65: rgba(40, 230, 220, 0.65);
+  --palette-fff6a8: #fff6a8;
+  --palette-ffd23f: #ffd23f;
+  --palette-ff9f1c: #ff9f1c;
+  --palette-3a2500: #3a2500;
+  --palette-255-210-60-0p8: rgba(255, 210, 60, 0.8);
+  --palette-ff0080: #ff0080;
+  --palette-7928ca: #7928ca;
+  --palette-2afadf: #2afadf;
+  --palette-190-80-255-0p8: rgba(190, 80, 255, 0.8);
+  --palette-13-16-23-0p74: rgba(13, 16, 23, 0.74);
+  --palette-ffb020: #ffb020;
+  --palette-255-255-255-0p1: rgba(255, 255, 255, 0.1);
+
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; }
+html, body { height: 100%; overflow-x: clip; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
 
 body {
   min-height: 100vh;
@@ -34,14 +108,13 @@ body {
   align-items: center;
   justify-content: center;
   padding: 16px;
-  overflow-x: hidden;
+  overflow-x: clip;
   color: var(--text);
   background:
-    radial-gradient(1200px 600px at 15% -10%, #231c48 0%, transparent 60%),
-    radial-gradient(900px 500px at 110% 110%, #0e2c3c 0%, transparent 55%),
+    radial-gradient(1200px 600px at 15% -10%, var(--palette-231c48) 0%, transparent 60%),
+    radial-gradient(900px 500px at 110% 110%, var(--palette-0e2c3c) 0%, transparent 55%),
     var(--bg);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
-               "Hiragino Sans GB", "Microsoft YaHei", Roboto, sans-serif;
+  font-family: var(--font-ui);
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
   user-select: none;
@@ -69,11 +142,11 @@ body {
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.04em;
-  background: linear-gradient(135deg, #ffe259, #ff7a18 45%, #ff2e63);
+  background: linear-gradient(135deg, var(--palette-ffe259), var(--palette-ff7a18) 45%, var(--palette-ff2e63));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 4px 18px rgba(255, 120, 40, 0.25));
+  filter: drop-shadow(0 4px 18px var(--palette-255-120-40-0p25));
 }
 
 .tagline {
@@ -90,13 +163,13 @@ body {
   padding: 8px 12px;
   text-align: center;
   background: var(--panel);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--palette-255-255-255-0p06);
   border-radius: 12px;
 }
 
 .score-box .label {
   font-size: 11px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   color: var(--muted);
 }
 
@@ -110,8 +183,8 @@ body {
 .score-box.record { animation: record 1s ease; }
 
 @keyframes record {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 209, 102, 0); }
-  30%      { box-shadow: 0 0 0 3px rgba(255, 209, 102, 0.7), 0 0 24px rgba(255, 209, 102, 0.5); }
+  0%, 100% { box-shadow: 0 0 0 0 var(--palette-255-209-102-0); }
+  30%      { box-shadow: 0 0 0 3px var(--palette-255-209-102-0p7), 0 0 24px var(--palette-255-209-102-0p5); }
 }
 
 /* 得分上浮提示（+N） */
@@ -122,14 +195,14 @@ body {
   z-index: 10;
   font-size: 18px;
   font-weight: 800;
-  color: #ffd166;
+  color: var(--focus);
   white-space: nowrap;
   pointer-events: none;
-  text-shadow: 0 2px 10px rgba(255, 200, 80, 0.5);
+  text-shadow: 0 2px 10px var(--palette-255-200-80-0p5);
   animation: float-up 800ms ease-out forwards;
 }
 
-.float-text.reward { color: #7cf5c8; text-shadow: 0 2px 10px rgba(80, 255, 190, 0.5); }
+.float-text.reward { color: var(--palette-7cf5c8); text-shadow: 0 2px 10px var(--palette-80-255-190-0p5); }
 
 @keyframes float-up {
   0%   { opacity: 0; transform: translate(-50%, 0) scale(0.8); }
@@ -163,7 +236,7 @@ body {
   font: inherit;
   font-size: 14px;
   font-weight: 700;
-  color: #fff;
+  color: var(--palette-fff);
   cursor: pointer;
   transition: transform 0.12s, filter 0.15s, opacity 0.15s;
 }
@@ -174,13 +247,13 @@ body {
 .btn svg { width: 16px; height: 16px; }
 
 .btn.primary {
-  background: linear-gradient(135deg, #8b5cf6, #6366f1);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
+  background: linear-gradient(135deg, var(--palette-8b5cf6), var(--palette-6366f1));
+  box-shadow: 0 6px 20px var(--palette-99-102-241-0p35);
 }
 
 .btn.ghost {
   background: var(--panel);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--palette-255-255-255-0p08);
   color: var(--text);
 }
 
@@ -192,8 +265,8 @@ body {
   padding: 0 6px;
   border-radius: 10px;
   font-size: 12px;
-  background: #ffd166;
-  color: #1a1300;
+  background: var(--focus);
+  color: var(--palette-1a1300);
 }
 
 /* =========================================================
@@ -207,9 +280,9 @@ body {
   background: var(--board-bg);
   border-radius: calc(var(--radius) * 1.6);
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(255, 255, 255, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    0 20px 60px var(--palette-0-0-0-0p45),
+    0 0 0 1px var(--palette-255-255-255-0p05),
+    inset 0 1px 0 var(--palette-255-255-255-0p04);
   touch-action: none; /* 禁止棋盘上的浏览器滚动/缩放，留给滑动手势 */
 }
 
@@ -272,8 +345,8 @@ body {
   background: var(--tile-bg);
   box-shadow:
     0 0 var(--glow-size, 0px) var(--glow, transparent),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.16);
+    inset 0 1px 0 var(--palette-255-255-255-0p14),
+    inset 0 -2px 0 var(--palette-0-0-0-0p16);
 }
 
 /* 位数越多字号越小 */
@@ -299,7 +372,7 @@ body {
   position: absolute;
   inset: 0;
   border-radius: var(--radius);
-  border: 2px solid var(--glow, rgba(255, 255, 255, 0.35));
+  border: 2px solid var(--glow, var(--palette-255-255-255-0p35));
   opacity: 0;
   pointer-events: none;
   animation: ring 480ms ease-out var(--slide);
@@ -322,21 +395,21 @@ body {
 }
 
 /* ---- 方块配色：数字越大越亮、光晕越强 ---- */
-.t2    { --tile-bg: #2a3142; --tile-fg: #c9d2e3; }
-.t4    { --tile-bg: #3a4460; --tile-fg: #e8ecf5; }
-.t8    { --tile-bg: linear-gradient(135deg, #ffb35c, #ff8a1f); --tile-fg: #fff; --glow: rgba(255, 140, 40, 0.28); --glow-size: 8px; }
-.t16   { --tile-bg: linear-gradient(135deg, #ff8a4c, #ff5a2e); --tile-fg: #fff; --glow: rgba(255, 100, 50, 0.32); --glow-size: 10px; }
-.t32   { --tile-bg: linear-gradient(135deg, #ff5f6d, #ff2e4d); --tile-fg: #fff; --glow: rgba(255, 60, 80, 0.36); --glow-size: 12px; }
-.t64   { --tile-bg: linear-gradient(135deg, #ff2e63, #c2185b); --tile-fg: #fff; --glow: rgba(255, 40, 110, 0.42); --glow-size: 14px; }
-.t128  { --tile-bg: linear-gradient(135deg, #d38cff, #a445ff); --tile-fg: #fff; --glow: rgba(180, 90, 255, 0.5);  --glow-size: 18px; }
-.t256  { --tile-bg: linear-gradient(135deg, #9d8bff, #6a5cff); --tile-fg: #fff; --glow: rgba(120, 100, 255, 0.55); --glow-size: 20px; }
-.t512  { --tile-bg: linear-gradient(135deg, #5fb8ff, #2f7bff); --tile-fg: #fff; --glow: rgba(60, 140, 255, 0.6);  --glow-size: 22px; }
-.t1024 { --tile-bg: linear-gradient(135deg, #3ff5d4, #00b4d8); --tile-fg: #04232b; --glow: rgba(40, 230, 220, 0.65); --glow-size: 26px; }
-.t2048 { --tile-bg: linear-gradient(135deg, #fff6a8, #ffd23f 40%, #ff9f1c); --tile-fg: #3a2500; --glow: rgba(255, 210, 60, 0.8); --glow-size: 34px; }
+.t2    { --tile-bg: var(--palette-2a3142); --tile-fg: var(--palette-c9d2e3); }
+.t4    { --tile-bg: var(--palette-3a4460); --tile-fg: var(--palette-e8ecf5); }
+.t8    { --tile-bg: linear-gradient(135deg, var(--palette-ffb35c), var(--palette-ff8a1f)); --tile-fg: var(--palette-fff); --glow: var(--palette-255-140-40-0p28); --glow-size: 8px; }
+.t16   { --tile-bg: linear-gradient(135deg, var(--palette-ff8a4c), var(--palette-ff5a2e)); --tile-fg: var(--palette-fff); --glow: var(--palette-255-100-50-0p32); --glow-size: 10px; }
+.t32   { --tile-bg: linear-gradient(135deg, var(--palette-ff5f6d), var(--palette-ff2e4d)); --tile-fg: var(--palette-fff); --glow: var(--palette-255-60-80-0p36); --glow-size: 12px; }
+.t64   { --tile-bg: linear-gradient(135deg, var(--palette-ff2e63), var(--palette-c2185b)); --tile-fg: var(--palette-fff); --glow: var(--palette-255-40-110-0p42); --glow-size: 14px; }
+.t128  { --tile-bg: linear-gradient(135deg, var(--palette-d38cff), var(--palette-a445ff)); --tile-fg: var(--palette-fff); --glow: var(--palette-180-90-255-0p5);  --glow-size: 18px; }
+.t256  { --tile-bg: linear-gradient(135deg, var(--palette-9d8bff), var(--palette-6a5cff)); --tile-fg: var(--palette-fff); --glow: var(--palette-120-100-255-0p55); --glow-size: 20px; }
+.t512  { --tile-bg: linear-gradient(135deg, var(--palette-5fb8ff), var(--palette-2f7bff)); --tile-fg: var(--palette-fff); --glow: var(--palette-60-140-255-0p6);  --glow-size: 22px; }
+.t1024 { --tile-bg: linear-gradient(135deg, var(--palette-3ff5d4), var(--palette-00b4d8)); --tile-fg: var(--palette-04232b); --glow: var(--palette-40-230-220-0p65); --glow-size: 26px; }
+.t2048 { --tile-bg: linear-gradient(135deg, var(--palette-fff6a8), var(--palette-ffd23f) 40%, var(--palette-ff9f1c)); --tile-fg: var(--palette-3a2500); --glow: var(--palette-255-210-60-0p8); --glow-size: 34px; }
 .tsuper {
-  --tile-bg: linear-gradient(135deg, #ff0080, #7928ca 50%, #2afadf);
-  --tile-fg: #fff;
-  --glow: rgba(190, 80, 255, 0.8);
+  --tile-bg: linear-gradient(135deg, var(--palette-ff0080), var(--palette-7928ca) 50%, var(--palette-2afadf));
+  --tile-fg: var(--palette-fff);
+  --glow: var(--palette-190-80-255-0p8);
   --glow-size: 36px;
 }
 
@@ -363,7 +436,7 @@ body {
   padding: 20px;
   text-align: center;
   border-radius: inherit;
-  background: rgba(13, 16, 23, 0.74);
+  background: var(--palette-13-16-23-0p74);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   opacity: 0;
@@ -380,7 +453,7 @@ body {
 }
 
 .overlay.win h2 {
-  background: linear-gradient(135deg, #fff6a8, #ffb020);
+  background: linear-gradient(135deg, var(--palette-fff6a8), var(--palette-ffb020));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -412,7 +485,7 @@ body {
   font-family: inherit;
   font-size: 11px;
   background: var(--panel);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--palette-255-255-255-0p1);
 }
 
 @media (max-width: 400px) {
@@ -428,7 +501,7 @@ body {
 }
 </style>
 </head>
-<body>
+<body data-experiment-page="2048">
 <main class="app">
   <!-- 标题与分数 -->
   <header class="header">
@@ -453,7 +526,7 @@ body {
     <div class="stat">最大方块 <b id="maxTile">2</b></div>
     <div class="btns">
       <button class="btn ghost" id="undoBtn" type="button" title="撤销 (Z)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>
         撤销 <span class="badge" id="undoCount">3</span>
       </button>
       <button class="btn primary" id="newBtn" type="button">新游戏</button>
@@ -461,10 +534,10 @@ body {
   </div>
 
   <!-- 棋盘：背景格 + 方块层 + 遮罩 -->
-  <div class="board" id="board">
+  <div class="board" id="board" tabindex="0" role="group" aria-label="2048 棋盘，使用方向键移动方块">
     <div class="grid-bg" id="gridBg"></div>
     <div class="tile-layer" id="tiles"></div>
-    <div class="overlay" id="overlay">
+    <div class="overlay" id="overlay" role="region" aria-labelledby="overlayTitle" aria-hidden="true">
       <h2 id="overlayTitle"></h2>
       <p id="overlayText"></p>
       <div class="btns" id="overlayBtns"></div>
@@ -920,6 +993,8 @@ body {
           '<button class="btn primary" data-action="new" type="button">再来一局</button>';
       }
       overlayEl.className = 'overlay show ' + mode;
+      overlayEl.setAttribute('aria-hidden', 'false');
+      overlayBtns.querySelector('button')?.focus({ preventScroll: true });
     }, delay);
   }
 
@@ -927,6 +1002,8 @@ body {
     clearTimeout(overlayTimer);
     overlayMode = null;
     overlayEl.className = 'overlay';
+    overlayEl.setAttribute('aria-hidden', 'true');
+    boardEl.focus({ preventScroll: true });
   }
 
   overlayBtns.addEventListener('click', (e) => {

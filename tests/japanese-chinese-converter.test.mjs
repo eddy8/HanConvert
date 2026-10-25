@@ -3,7 +3,8 @@ import test from "node:test";
 
 import {
   buildThreeWayComparison,
-  convertJapaneseChineseText
+  convertJapaneseChineseText,
+  createConversionQueue
 } from "../japanese-chinese-converter.js";
 
 const characterMaps = {
@@ -70,4 +71,32 @@ test("reports alignment limits when a conversion changes character count", () =>
   const unequal = buildThreeWayComparison({ japanese: "一", simplified: "一个", traditional: "一" });
   assert.equal(unequal.alignmentLimited, true);
   assert.deepEqual(unequal.rows, []);
+});
+
+
+test("serializes overlapping conversion requests during lazy WASM initialization", async () => {
+  const enqueue = createConversionQueue();
+  const events = [];
+  let releaseFirst;
+  const firstReady = new Promise((resolve) => { releaseFirst = resolve; });
+  const first = enqueue(async () => {
+    events.push("first start");
+    await firstReady;
+    events.push("first end");
+    return "first";
+  });
+  const second = enqueue(async () => { events.push("second"); return "second"; });
+  await Promise.resolve();
+  assert.deepEqual(events, ["first start"]);
+  releaseFirst();
+  assert.deepEqual(await Promise.all([first, second]), ["first", "second"]);
+  assert.deepEqual(events, ["first start", "first end", "second"]);
+});
+
+test("a failed conversion does not block later requests", async () => {
+  const enqueue = createConversionQueue();
+  const failed = enqueue(() => { throw new Error("dictionary unavailable"); });
+  const retry = enqueue(() => "converted");
+  await assert.rejects(failed, /dictionary unavailable/);
+  assert.equal(await retry, "converted");
 });

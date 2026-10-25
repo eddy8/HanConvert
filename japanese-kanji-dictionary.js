@@ -59,14 +59,14 @@
       payload = await core.load({
         onProgress(progress) {
           const percent = progress.total ? progress.percent : 0;
-          elements.progressBar.style.width = `${percent}%`;
+          elements.progressBar.style.transform = `scaleX(${percent / 100})`;
           elements.progressText.textContent = progress.total
             ? message("loadingProgress", { percent })
             : message("loading");
         }
       });
       populateRadicals(payload.radicals);
-      elements.progressBar.style.width = "100%";
+      elements.progressBar.style.transform = "scaleX(1)";
       elements.progressText.textContent = message("loaded", { count: payload.meta.recordCount.toLocaleString(body.dataset.locale) });
       window.setTimeout(() => { elements.progress.hidden = true; }, 500);
       return payload;

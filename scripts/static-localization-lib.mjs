@@ -139,7 +139,15 @@ function localizedPath(locale, slug = "") {
   return `/${prefix}${slug ? `${slug}/` : ""}`;
 }
 
+export function labelConverterFields(html) {
+  for (const [field, heading] of [["inputText", "inputTitle"], ["outputText", "outputTitle"]]) {
+    html = setAttributeById(html, field, "aria-labelledby", heading);
+  }
+  return html;
+}
+
 export function localizeConverterHtml(source, relativePath, data) {
+  source = labelConverterFields(source);
   const { locale, slug } = getPageContext(relativePath);
   const base = data.translations[locale];
   if (!base) throw new Error(`${relativePath}: unsupported locale ${locale}`);

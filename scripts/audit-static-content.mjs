@@ -1,11 +1,13 @@
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { experimentMetadataFindings, isExperimentPage } from "./static-page-policy.mjs";
 
 const SCRIPT_PATH = fileURLToPath(import.meta.url);
 const DEFAULT_PROJECT_ROOT = path.resolve(path.dirname(SCRIPT_PATH), "..");
 
 const REQUIREMENTS = {
+  experiment: { h1: 1, paragraphs: 2, buttons: 2 },
   converter: { h1: 1, h2: 3, paragraphs: 15, details: 2, links: 15 },
   standalone: { h1: 1, h2: 3, paragraphs: 12, details: 3, links: 6 },
   scenario: { h1: 1, h2: 4, paragraphs: 10, details: 3, links: 5 },
@@ -43,11 +45,13 @@ function contentMetrics(source) {
     paragraphs: count(source, /<p\b/gi),
     details: count(source, /<details\b/gi),
     articles: count(source, /<article\b/gi),
+    buttons: count(source, /<button\b/gi),
     links: count(source, /<a\b[^>]*\bhref=["'][^"']+["']/gi)
   };
 }
 
 function classify(relativePath, html) {
+  if (isExperimentPage(html)) return "experiment";
   if (relativePath === path.join("word-spelling", "index.html")) return "word-spelling";
   if (html.includes('data-blog-page="index"')) return "blog-index";
   if (html.includes('data-blog-page="article"')) return "blog-article";
@@ -78,12 +82,13 @@ export async function auditStaticContent(projectRoot = DEFAULT_PROJECT_ROOT) {
     const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] || "";
     const category = classify(relativePath, html);
     const bodyMetrics = contentMetrics(body);
-    const metrics = category === "word-spelling"
+    const metrics = category === "word-spelling" || category === "experiment"
       ? bodyMetrics
       : { ...contentMetrics(main), links: bodyMetrics.links };
     const deficiencies = category === "unknown"
       ? ["unclassified page"]
       : findDeficiencies(metrics, REQUIREMENTS[category]);
+    if (category === "experiment") deficiencies.push(...experimentMetadataFindings(relativePath, html));
 
     results.push({ relativePath, category, metrics, deficiencies });
   }

@@ -11,7 +11,15 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 test("keeps every static page above its page-type content floor", async () => {
   const { results, findings } = await auditStaticContent();
 
-  assert.equal(results.length, 275);
+  const sitemap = await readFile(path.join(projectRoot, "sitemap.xml"), "utf8");
+  const indexedPaths = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
+    .map(([, url]) => `${new URL(url).pathname.slice(1)}index.html`)
+    .sort();
+  assert.deepEqual(
+    results.filter(({ category }) => category !== "experiment").map(({ relativePath }) => relativePath).sort(),
+    indexedPaths,
+    "Every indexed page must be audited; explicitly non-indexed experiments have their own requirements."
+  );
   assert.deepEqual(
     findings.map(({ relativePath, deficiencies }) => ({ relativePath, deficiencies })),
     []

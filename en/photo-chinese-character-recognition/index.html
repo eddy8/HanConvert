@@ -147,7 +147,7 @@
         <div class="photo-ocr-workspace">
           <section class="photo-ocr-panel" aria-labelledby="photoSourceTitle">
             <div class="photo-ocr-panel-head"><span class="photo-ocr-step" aria-hidden="true">01</span><div><h3 id="photoSourceTitle">Choose a Chinese text image</h3><p>Keep the characters sharp and complete. Avoid glare, steep angles and busy backgrounds.</p></div></div>
-            <div class="photo-ocr-capture-row"><button class="photo-ocr-capture" id="photoCapture" type="button">Take or choose a photo</button><input class="visually-hidden" id="photoInput" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,.heic,.heif" capture="environment" /><button class="photo-ocr-secondary" id="photoReset" type="button" disabled>Choose again</button></div>
+            <div class="photo-ocr-capture-row"><button class="photo-ocr-capture" id="photoCapture" type="button">Take or choose a photo</button><input class="visually-hidden" id="photoInput" aria-labelledby="photoCapture" tabindex="-1" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,.heic,.heif" capture="environment" /><button class="photo-ocr-secondary" id="photoReset" type="button" disabled>Choose again</button></div>
             <button class="photo-ocr-recognize" id="photoRecognize" type="button" disabled>Recognize Chinese characters</button>
             <div class="photo-ocr-canvas-frame is-empty" id="photoSourceFrame"><canvas id="photoSourceCanvas" aria-label="Choose a Chinese text image"></canvas><div class="photo-ocr-empty" id="photoSourceEmpty"><strong>Take or choose a photo</strong><span>PNG, JPEG, WebP, HEIC and HEIF supported</span></div></div>
           </section>
