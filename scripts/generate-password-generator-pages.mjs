@@ -20,7 +20,7 @@ function schema(locale, page) {
   const url = origin + localPath(locale, slug);
   const name = page.title.replace(/ \| JianFan\.app$/u, "");
   return { "@context": "https://schema.org", "@graph": [
-    { "@type": "WebApplication", "@id": `${url}#webapp`, name: page.title.replace(/ \| JianFan\.app$/u, ""), url, description: page.description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", browserRequirements: "Requires JavaScript and Web Crypto", inLanguage: locales[locale].lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, isPartOf: { "@type": "WebSite", "@id": `${origin}/#website`, name: "JianFan.app", url: `${origin}/` } },
+    { "@type": "WebApplication", "@id": `${url}#webapp`, name, url, description: page.description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", browserRequirements: "Requires JavaScript and Web Crypto", inLanguage: locales[locale].lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, isPartOf: { "@type": "WebSite", "@id": `${origin}/#website`, name: "JianFan.app", url: `${origin}/` } },
     { "@type": "BreadcrumbList", "@id": `${url}#breadcrumb`, itemListElement: [{ "@type": "ListItem", position: 1, name: locales[locale].home, item: origin + localPath(locale) }, { "@type": "ListItem", position: 2, name, item: url }] },
     { "@type": "HowTo", "@id": `${url}#howto`, name: page.howTitle, step: page.steps.map((text, index) => ({ "@type": "HowToStep", position: index + 1, text })) },
     { "@type": "FAQPage", "@id": `${url}#faq`, mainEntity: page.faqs.map(([name, text]) => ({ "@type": "Question", name, acceptedAnswer: { "@type": "Answer", text } })) }
@@ -109,8 +109,24 @@ async function writeOrCheck(target, output) {
   }
 }
 
+function localDate(date = new Date()) {
+  return [date.getFullYear(), String(date.getMonth() + 1).padStart(2, "0"), String(date.getDate()).padStart(2, "0")].join("-");
+}
+
+const sitemapPath = path.join(root, "sitemap.xml");
+const sitemap = await readFile(sitemapPath, "utf8");
+const today = localDate();
+const lastModified = {};
+
 for (const locale of Object.keys(locales)) {
-  await writeOrCheck(path.join(root, locales[locale].prefix, slug, "index.html"), buildPage(locale));
+  const pagePath = path.join(root, locales[locale].prefix, slug, "index.html");
+  const page = buildPage(locale);
+  // Keep the published lastmod while the page is unchanged; a changed page is dated today.
+  const previousPage = await readFile(pagePath, "utf8").catch(() => null);
+  const pageUrl = `${origin}${localPath(locale, slug)}`;
+  const previousLastmod = sitemap.match(new RegExp(`<loc>${pageUrl.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&")}</loc>\\s*<lastmod>(\\d{4}-\\d{2}-\\d{2})</lastmod>`, "u"))?.[1];
+  lastModified[locale] = previousPage === page && previousLastmod ? previousLastmod : today;
+  await writeOrCheck(pagePath, page);
   const homepagePath = path.join(root, locales[locale].prefix, "index.html");
   const source = await readFile(homepagePath, "utf8");
   const block = `          <!-- password-generator-link:start -->\n          <a href="${localPath(locale, slug)}" data-route="${slug}">${content[locale].heading}</a>\n          <!-- password-generator-link:end -->`;
@@ -119,10 +135,8 @@ for (const locale of Object.keys(locales)) {
   const output = source.includes("<!-- password-generator-link:start -->") ? source.replace(/          <!-- password-generator-link:start -->[\s\S]*?          <!-- password-generator-link:end -->/u, block) : source.replace(marker, `${marker}\n${block}`);
   await writeOrCheck(homepagePath, output);
 }
-const sitemapPath = path.join(root, "sitemap.xml");
-const sitemap = await readFile(sitemapPath, "utf8");
 const alternates = Object.entries(locales).map(([locale, meta]) => `    <xhtml:link rel="alternate" hreflang="${meta.hreflang}" href="${origin}${localPath(locale, slug)}" />`).join("\n");
-const section = `  <!-- password-generator-tool:start -->\n${Object.keys(locales).map((locale) => `  <url>\n    <loc>${origin}${localPath(locale, slug)}</loc>\n    <lastmod>2026-10-24</lastmod>\n${alternates}\n    <xhtml:link rel="alternate" hreflang="x-default" href="${origin}/${slug}/" />\n  </url>`).join("\n")}\n  <!-- password-generator-tool:end -->`;
+const section = `  <!-- password-generator-tool:start -->\n${Object.keys(locales).map((locale) => `  <url>\n    <loc>${origin}${localPath(locale, slug)}</loc>\n    <lastmod>${lastModified[locale]}</lastmod>\n${alternates}\n    <xhtml:link rel="alternate" hreflang="x-default" href="${origin}/${slug}/" />\n  </url>`).join("\n")}\n  <!-- password-generator-tool:end -->`;
 if (!sitemap.includes("  <!-- blog:start -->")) throw new Error("Sitemap anchor missing");
 await writeOrCheck(sitemapPath, sitemap.includes("<!-- password-generator-tool:start -->") ? sitemap.replace(/  <!-- password-generator-tool:start -->[\s\S]*?  <!-- password-generator-tool:end -->/u, section) : sitemap.replace("  <!-- blog:start -->", `${section}\n  <!-- blog:start -->`));
 console.log(`${check ? "Checked" : "Generated"} five password generator pages, homepage links and sitemap entries.`);
