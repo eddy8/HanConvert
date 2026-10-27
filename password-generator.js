@@ -172,6 +172,7 @@
     if (Number.isInteger(length) && length >= 1 && length <= 128) lengthRange.value = String(length);
   }
   function clearResults(message) {
+    cancelScheduled();
     revision += 1;
     passwords = [];
     list.replaceChildren();
@@ -182,10 +183,23 @@
     for (const button of [copyAll, download, visibility, clear]) button.disabled = true;
     status.textContent = message;
   }
-  function invalidate() {
-    syncFields();
-    errorBox.hidden = true;
-    clearResults(messages.changed);
+  // Settings regenerate automatically: toggles at once, the slider once per frame, typed fields after a pause.
+  const TYPING_DELAY = 300;
+  const TYPED_FIELDS = new Set(["length", "count", "specialCharacters", "excludedCharacters"]);
+  let typingTimer = 0;
+  let frameRequest = 0;
+  function cancelScheduled() {
+    clearTimeout(typingTimer);
+    typingTimer = 0;
+    if (frameRequest) cancelAnimationFrame(frameRequest);
+    frameRequest = 0;
+  }
+  function scheduleAfterTyping() {
+    clearTimeout(typingTimer);
+    typingTimer = setTimeout(generate, TYPING_DELAY);
+  }
+  function scheduleNextFrame() {
+    if (!frameRequest) frameRequest = requestAnimationFrame(generate);
   }
   function renderResults() {
     list.replaceChildren();
@@ -206,10 +220,12 @@
     visibility.setAttribute("aria-pressed", String(hidden));
     visibility.setAttribute("aria-label", hidden ? messages.show : messages.hide);
     visibility.title = hidden ? messages.show : messages.hide;
-    visibility.querySelector("[data-icon='eye']").hidden = !hidden;
-    visibility.querySelector("[data-icon='eye-off']").hidden = hidden;
+    // SVG elements have no `hidden` property, so toggle the attribute that the CSS targets.
+    visibility.querySelector("[data-icon='eye']").toggleAttribute("hidden", !hidden);
+    visibility.querySelector("[data-icon='eye-off']").toggleAttribute("hidden", hidden);
   }
   function generate() {
+    cancelScheduled();
     errorBox.hidden = true;
     syncFields();
     try {
@@ -230,23 +246,52 @@
       showError(error);
     }
   }
+  // Fallback for browsers or non-secure pages without the async Clipboard API.
+  function legacyCopy(value) {
+    const previousFocus = document.activeElement;
+    const area = document.createElement("textarea");
+    area.value = value;
+    area.readOnly = true;
+    area.setAttribute("aria-hidden", "true");
+    area.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;";
+    document.body.append(area);
+    area.select();
+    let copied = false;
+    try {
+      copied = document.execCommand("copy");
+    } catch {
+      copied = false;
+    }
+    area.remove();
+    if (previousFocus instanceof HTMLElement) previousFocus.focus();
+    return copied;
+  }
   async function copyText(value, index) {
     const currentRevision = revision;
+    let copied = false;
     try {
       if (!navigator.clipboard?.writeText) throw new Error("clipboardUnavailable");
       await navigator.clipboard.writeText(value);
-      if (currentRevision === revision) status.textContent = index === undefined ? messages.copiedAll : format(messages.copiedOne, { index: index + 1 });
+      copied = true;
     } catch {
       if (currentRevision !== revision) return;
-      status.textContent = messages.copyFailed;
-      if (index !== undefined) {
-        hidden = false;
-        renderResults();
-        const input = list.querySelectorAll("input")[index];
-        input.focus();
-        input.select();
-      }
+      copied = legacyCopy(value);
     }
+    if (currentRevision !== revision) return;
+    if (copied) {
+      status.textContent = index === undefined ? messages.copiedAll : format(messages.copiedOne, { index: index + 1 });
+      return;
+    }
+    if (index === undefined) {
+      status.textContent = messages.copyAllFailed;
+      return;
+    }
+    // Reveal only the row being copied so the user can select it; the other rows keep their visibility.
+    status.textContent = messages.copyFailed;
+    const input = list.querySelectorAll("input")[index];
+    input.type = "text";
+    input.focus();
+    input.select();
   }
   function exportPasswords() {
     if (!passwords.length) return;
@@ -262,12 +307,24 @@
   }
   form.addEventListener("submit", (event) => { event.preventDefault(); generate(); });
   form.addEventListener("input", (event) => {
-    if (event.target === lengthRange) field("length").value = lengthRange.value;
-    invalidate();
+    if (event.target === lengthRange) {
+      field("length").value = lengthRange.value;
+      scheduleNextFrame();
+    } else if (TYPED_FIELDS.has(event.target.name)) {
+      syncFields();
+      scheduleAfterTyping();
+    } else {
+      generate();
+    }
+  });
+  // Leaving a typed field (or using a number spinner) applies a pending edit at once. Without a pending
+  // edit nothing happens, so moving focus to a copy button does not replace the passwords being copied.
+  form.addEventListener("change", (event) => {
+    if (TYPED_FIELDS.has(event.target.name) && typingTimer) generate();
   });
   document.querySelector("#passwordDefaultSymbols").addEventListener("click", () => {
     field("specialCharacters").value = core.DEFAULT_SYMBOLS;
-    invalidate();
+    generate();
   });
   document.querySelectorAll("[data-password-preset]").forEach((button) => button.addEventListener("click", () => {
     const preset = button.dataset.passwordPreset;
