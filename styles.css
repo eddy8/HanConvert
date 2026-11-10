@@ -8743,6 +8743,193 @@ html[lang="ko"] .worksheet-sheet {
   line-height: 1.45;
 }
 
+.formatter-diff-panel {
+  min-width: 0;
+  padding: 9px 10px 10px;
+  border: 1px solid rgba(var(--ac), 0.32);
+  border-radius: var(--radius-sm);
+  background: rgba(var(--pn), 0.38);
+}
+
+.formatter-diff-panel .panel-topline {
+  min-height: 30px;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding: 0 0 7px;
+  border-bottom: 0;
+}
+
+.formatter-diff-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.formatter-diff-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: inherit;
+}
+
+.formatter-diff-view del,
+.formatter-diff-view ins,
+.formatter-diff-panel del,
+.formatter-diff-panel ins {
+  padding: 1px 2px;
+  border-radius: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.formatter-diff-view del,
+.formatter-diff-panel del {
+  background: rgba(255, 107, 112, 0.18);
+  color: var(--danger-soft);
+}
+
+.formatter-diff-view ins,
+.formatter-diff-panel ins {
+  background: rgba(var(--ac), 0.18);
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+.formatter-diff-code {
+  display: inline-block;
+  margin-inline: 1px;
+  padding: 0 4px;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.68em;
+  font-weight: 700;
+  line-height: 1.5;
+  vertical-align: 0.1em;
+}
+
+.formatter-diff-legend .formatter-diff-code {
+  color: var(--danger-soft);
+  font-size: 0.66rem;
+}
+
+#formatterDiffSummary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+#formatterDiffRules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#formatterDiffRules:not(:empty) {
+  margin-top: 7px;
+}
+
+#formatterDiffRules li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(var(--w), 0.025);
+  color: var(--ink);
+  font-size: 0.72rem;
+}
+
+#formatterDiffRules b {
+  color: var(--accent-2-ink);
+  font-family: var(--font-mono);
+}
+
+.formatter-diff-view {
+  min-height: 210px;
+  height: 0;
+  flex: 1 1 0;
+  padding: 12px;
+  overflow: auto;
+  border: 1px solid var(--field-line);
+  background: rgba(var(--ac), 0.025);
+  color: var(--ink);
+  font-size: 0.94rem;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.formatter-diff-view[hidden],
+.formatter-text-panel textarea[hidden] {
+  display: none;
+}
+
+.formatter-view-toggle {
+  display: inline-flex;
+  flex: 0 0 auto;
+  margin-inline-start: auto;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.formatter-view-toggle button {
+  min-height: 28px;
+  padding: 0 11px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.formatter-view-toggle button + button {
+  border-inline-start: 1px solid var(--line);
+}
+
+.formatter-view-toggle button[aria-pressed="true"] {
+  background: rgba(var(--ac), 0.16);
+  color: var(--accent-ink);
+}
+
+.formatter-view-toggle button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.formatter-view-toggle button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: -3px;
+}
+
+.formatter-diff-view:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.formatter-diff-gap {
+  display: block;
+  margin: 6px 0;
+  padding: 2px 8px;
+  border-block: 1px dashed var(--line);
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-align: center;
+  white-space: normal;
+}
+
 .formatter-metrics {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
