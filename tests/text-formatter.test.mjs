@@ -118,3 +118,80 @@ test("links the formatter from every localized homepage and sitemap", async () =
   const sitemap = await readFile(path.join(projectRoot, "sitemap.xml"), "utf8");
   assert.equal((sitemap.match(/<loc>https:\/\/jianfan\.app\/(?:zh-tw\/|en\/|ja\/|ko\/)?text-formatter\/<\/loc>/gu) || []).length, 5);
 });
+
+function rebuild(diff, skippedType) {
+  return diff.ops.filter((op) => op.type !== skippedType).map((op) => op.text).join("");
+}
+
+test("reports how many places each applied rule changed", () => {
+  const result = core.formatText("A​​B C  d   \nx");
+  assert.deepEqual(result.steps, [
+    { rule: "removeBasicInvisible", count: 2 },
+    { rule: "normalizeSpecialSpaces", count: 1 },
+    { rule: "trimLines", count: 1 },
+    { rule: "collapseSpaces", count: 1 }
+  ]);
+  assert.deepEqual(core.formatText("already clean").steps, []);
+});
+
+test("diffs the original and formatted text character by character", () => {
+  const diff = core.diffText("中 文​字", "中文字");
+  assert.deepEqual(diff.ops, [
+    { type: "equal", text: "中" },
+    { type: "delete", text: " " },
+    { type: "equal", text: "文" },
+    { type: "delete", text: "​" },
+    { type: "equal", text: "字" }
+  ]);
+  assert.equal(diff.removed, 2);
+  assert.equal(diff.added, 0);
+  assert.equal(diff.changes, 2);
+});
+
+test("shows replacements as a removal followed by an insertion", () => {
+  const diff = core.diffText("中文,好吗", "中文，好吗");
+  assert.deepEqual(diff.ops.map((op) => op.type), ["equal", "delete", "insert", "equal"]);
+  assert.equal(diff.changes, 1);
+  assert.deepEqual(core.diffText("same", "same"), { ops: [{ type: "equal", text: "same" }], removed: 0, added: 0, changes: 0 });
+});
+
+test("diff output always rebuilds both texts and never splits surrogate pairs", () => {
+  const samples = [
+    ["tag\u{E0041}\u{E0042}😀x 😀\u{E0100}y", { removeTags: true, removeVariationSelectors: true }],
+    ["A para-\r\ngraph  wraps here.\r\n\r\n\r\n中\n文 字,好吗? https://example.com/%E4%B8%AD%E6%96%87 “quoted” text", { lineMode: "join", repairHyphenation: true, removeHanSpaces: true, addHanLatinSpaces: true, useCjkPunctuation: true, decodeUrls: true }],
+    ["One. Two!  Three?\tpаypal ＡＢＣ ‮end", { lineMode: "sentence", normalizeConfusables: true, removeBidiControls: true }],
+    ["", {}],
+    ["​​​", {}]
+  ];
+  for (const [input, options] of samples) {
+    const before = core.normalizeLineEndings(input);
+    const after = core.formatText(input, options).text;
+    const diff = core.diffText(before, after);
+    assert.equal(rebuild(diff, "insert"), before);
+    assert.equal(rebuild(diff, "delete"), after);
+    for (const op of diff.ops) assert.equal(op.text.isWellFormed(), true);
+    assert.equal(diff.removed, Array.from(rebuild(diff, "insert")).length - Array.from(diff.ops.filter((op) => op.type === "equal").map((op) => op.text).join("")).length);
+  }
+});
+
+test("joins and diffs a very long wrapped document in bounded time", () => {
+  const input = "这是一段 很长的文本​，with  spaces and\nline breaks. ".repeat(20000);
+  const started = Date.now();
+  const result = core.formatText(input, { lineMode: "join" });
+  const diff = core.diffText(input, result.text);
+  assert.ok(Date.now() - started < 5000);
+  assert.equal(rebuild(diff, "delete"), result.text);
+  assert.equal(result.text.includes("\n"), false);
+});
+
+test("ships the before-and-after comparison panel in every locale", async () => {
+  for (const relativePath of ["text-formatter/index.html", "zh-tw/text-formatter/index.html", "en/text-formatter/index.html", "ja/text-formatter/index.html", "ko/text-formatter/index.html"]) {
+    const html = await readFile(path.join(projectRoot, relativePath), "utf8");
+    for (const id of ["formatterDiff", "formatterDiffSummary", "formatterDiffRules", "formatterDiffTitle", "formatterViewResult", "formatterViewDiff"]) {
+      assert.match(html, new RegExp(`id="${id}"`, "u"));
+    }
+    for (const attribute of ["data-message-diff-summary", "data-message-diff-same", "data-message-diff-gap", "data-message-diff-truncated"]) {
+      assert.match(html, new RegExp(`${attribute}="[^"]+"`, "u"));
+    }
+  }
+});

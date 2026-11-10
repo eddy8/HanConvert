@@ -15,6 +15,9 @@
   const BIDI_CONTROLS = /[\u061c\u200e\u200f\u202a-\u202e\u2066-\u2069]/gu;
   const VARIATION_SELECTORS = /[\ufe00-\ufe0f]|[\u{e0100}-\u{e01ef}]/gu;
   const TAG_CHARACTERS = /[\u{e0000}-\u{e007f}]/gu;
+  const DIFF_SEARCH_WINDOW = 4096;
+  const DIFF_SYNC_LENGTH = 6;
+  const JOIN_TAIL_LENGTH = 32;
   const URL_OR_LITERAL = /(?:https?:\/\/|www\.)[^\s<>"']+|[\p{L}\p{N}._%+-]+@[\p{L}\p{N}.-]+\.[\p{L}]{2,}|`[^`\n]*`|\b\d+(?:[.,]\d+)+\b/giu;
 
   const CONFUSABLES = new Map(Object.entries({
@@ -65,6 +68,17 @@
     return matches;
   }
 
+  function classifyCharacter(character) {
+    if (matchesCharacter(BASIC_INVISIBLE, character)) return "basicInvisible";
+    if (matchesCharacter(SPECIAL_SPACES, character)) return "specialSpaces";
+    if (matchesCharacter(JOINERS, character)) return "joiners";
+    if (matchesCharacter(VARIATION_SELECTORS, character)) return "variationSelectors";
+    if (matchesCharacter(BIDI_CONTROLS, character)) return "bidiControls";
+    if (matchesCharacter(TAG_CHARACTERS, character)) return "tags";
+    if (isFullwidthAscii(character)) return "confusables";
+    return "";
+  }
+
   function scanSuspiciousUnicode(value) {
     const text = String(value || "");
     const categories = {
@@ -78,14 +92,7 @@
     };
 
     for (const character of text) {
-      let key = "";
-      if (matchesCharacter(BASIC_INVISIBLE, character)) key = "basicInvisible";
-      else if (matchesCharacter(SPECIAL_SPACES, character)) key = "specialSpaces";
-      else if (matchesCharacter(JOINERS, character)) key = "joiners";
-      else if (matchesCharacter(VARIATION_SELECTORS, character)) key = "variationSelectors";
-      else if (matchesCharacter(BIDI_CONTROLS, character)) key = "bidiControls";
-      else if (matchesCharacter(TAG_CHARACTERS, character)) key = "tags";
-      else if (isFullwidthAscii(character)) key = "confusables";
+      const key = classifyCharacter(character);
       if (!key) continue;
       const item = categories[key];
       item.count += 1;
@@ -210,12 +217,29 @@
     return `${current}${shouldJoinWithoutSpace(current, next) ? "" : " "}${next}`;
   }
 
+  // Only the tail of the joined text decides how the next line attaches, so
+  // settled text is moved aside to keep very long paragraphs linear.
+  function joinLines(lines, repairHyphenation) {
+    const settled = [];
+    let tail = "";
+    for (const line of lines) {
+      const current = tail.trimEnd();
+      if (current.length > JOIN_TAIL_LENGTH * 8) {
+        settled.push(current.slice(0, -JOIN_TAIL_LENGTH));
+        tail = joinLinePair(current.slice(-JOIN_TAIL_LENGTH), line, repairHyphenation);
+      } else {
+        tail = joinLinePair(tail, line, repairHyphenation);
+      }
+    }
+    settled.push(tail);
+    return settled.join("");
+  }
+
   function joinWrappedLines(text, repairHyphenation, preserveParagraphs = true) {
     const groups = preserveParagraphs ? text.split(/\n[ \t]*\n+/u) : [text];
-    return groups.map((group) => {
-      const lines = group.split(/\n/u);
-      return lines.reduce((output, line) => joinLinePair(output, line, repairHyphenation), "");
-    }).join(preserveParagraphs ? "\n\n" : "");
+    return groups
+      .map((group) => joinLines(group.split(/\n/u), repairHyphenation))
+      .join(preserveParagraphs ? "\n\n" : "");
   }
 
   function splitSentences(text, locale) {
@@ -242,37 +266,209 @@
     return text;
   }
 
+  function countMatches(text, pattern) {
+    pattern.lastIndex = 0;
+    let count = 0;
+    while (pattern.exec(text)) count += 1;
+    pattern.lastIndex = 0;
+    return count;
+  }
+
+  function countLineBreaks(text) {
+    let count = 0;
+    for (let index = text.indexOf("\n"); index !== -1; index = text.indexOf("\n", index + 1)) count += 1;
+    return count;
+  }
+
+  function countDifferentPositions(before, after) {
+    if (before.length !== after.length) return Math.abs(before.length - after.length);
+    let count = 0;
+    for (let index = 0; index < before.length; index += 1) {
+      if (before.charCodeAt(index) !== after.charCodeAt(index)) count += 1;
+    }
+    return count;
+  }
+
+  function countChangedLines(before, after) {
+    const beforeLines = before.split("\n");
+    const afterLines = after.split("\n");
+    let count = 0;
+    for (let index = 0; index < beforeLines.length; index += 1) {
+      if (beforeLines[index] !== afterLines[index]) count += 1;
+    }
+    return count;
+  }
+
+  function countChangedUrls(before) {
+    let count = 0;
+    before.replace(/(?:https?:\/\/|www\.)[^\s<>"']+/giu, (url) => {
+      if (decodeUrlsSafely(url) !== url) count += 1;
+      return url;
+    });
+    return count;
+  }
+
+  function normalizeLineEndings(value) {
+    return String(value || "").replace(/\r\n?/gu, "\n");
+  }
+
   function formatText(value, rawOptions = {}) {
     const options = { ...DEFAULT_OPTIONS, ...rawOptions };
     const input = String(value || "");
     const scanBefore = scanSuspiciousUnicode(input);
+    const steps = [];
     let text = input.replace(/\r\n?|\u2028|\u2029/gu, "\n");
 
-    if (options.removeBasicInvisible) text = replacePattern(text, BASIC_INVISIBLE, "");
-    if (options.normalizeSpecialSpaces) text = replacePattern(text, SPECIAL_SPACES, " ");
-    if (options.removeJoiners) text = replacePattern(text, JOINERS, "");
-    if (options.removeVariationSelectors) text = replacePattern(text, VARIATION_SELECTORS, "");
-    if (options.removeBidiControls) text = replacePattern(text, BIDI_CONTROLS, "");
-    if (options.removeTags) text = replacePattern(text, TAG_CHARACTERS, "");
-    if (options.normalizeConfusables) text = normalizeMixedScriptConfusables(text);
+    // Each rule reports how many places it touched so the UI can explain the result.
+    const apply = (rule, next, count) => {
+      if (next === text) return;
+      steps.push({ rule, count: Math.max(1, count(text, next)) });
+      text = next;
+    };
+    const removalRules = [
+      ["removeBasicInvisible", BASIC_INVISIBLE, ""],
+      ["normalizeSpecialSpaces", SPECIAL_SPACES, " "],
+      ["removeJoiners", JOINERS, ""],
+      ["removeVariationSelectors", VARIATION_SELECTORS, ""],
+      ["removeBidiControls", BIDI_CONTROLS, ""],
+      ["removeTags", TAG_CHARACTERS, ""]
+    ];
+    for (const [rule, pattern, replacement] of removalRules) {
+      if (options[rule]) apply(rule, replacePattern(text, pattern, replacement), (before) => countMatches(before, pattern));
+    }
+    if (options.normalizeConfusables) apply("normalizeConfusables", normalizeMixedScriptConfusables(text), countDifferentPositions);
 
-    if (options.trimLines) text = text.split("\n").map((line) => line.trim()).join("\n");
-    if (options.collapseSpaces) text = text.replace(/[^\S\r\n]+/gu, " ");
-    if (options.reduceBlankLines) text = text.replace(/\n[ \t]*\n(?:[ \t]*\n)+/gu, "\n\n");
-    text = applyLineMode(text, options);
-    if (options.removeHanSpaces) text = removeSpacesBetweenHan(text);
-    if (options.addHanLatinSpaces) text = addSpacesBetweenHanAndLatin(text);
-    if (options.fixEnglishQuotes) text = fixEnglishQuotes(text);
-    if (options.useCjkPunctuation) text = useCjkPunctuation(text);
-    if (options.decodeUrls) text = decodeUrlsSafely(text);
-    if (options.lineMode === "sentence") text = splitSentences(text, options.locale);
+    if (options.trimLines) apply("trimLines", text.split("\n").map((line) => line.trim()).join("\n"), countChangedLines);
+    if (options.collapseSpaces) {
+      apply("collapseSpaces", text.replace(/[^\S\r\n]+/gu, " "), (before) => {
+        let count = 0;
+        for (const match of before.matchAll(/[^\S\r\n]+/gu)) if (match[0] !== " ") count += 1;
+        return count;
+      });
+    }
+    if (options.reduceBlankLines) {
+      const blankLines = /\n[ \t]*\n(?:[ \t]*\n)+/gu;
+      apply("reduceBlankLines", text.replace(blankLines, "\n\n"), (before) => countMatches(before, blankLines));
+    }
+    const countLineChange = (before, after) => Math.abs(countLineBreaks(before) - countLineBreaks(after));
+    apply("lineMode", applyLineMode(text, options), countLineChange);
+    if (options.removeHanSpaces) apply("removeHanSpaces", removeSpacesBetweenHan(text), countDifferentPositions);
+    if (options.addHanLatinSpaces) apply("addHanLatinSpaces", addSpacesBetweenHanAndLatin(text), countDifferentPositions);
+    if (options.fixEnglishQuotes) apply("fixEnglishQuotes", fixEnglishQuotes(text), countDifferentPositions);
+    if (options.useCjkPunctuation) apply("useCjkPunctuation", useCjkPunctuation(text), countDifferentPositions);
+    if (options.decodeUrls) apply("decodeUrls", decodeUrlsSafely(text), countChangedUrls);
+    if (options.lineMode === "sentence") apply("lineMode", splitSentences(text, options.locale), countLineChange);
 
     return {
       text,
       changed: text !== input,
+      steps,
       scanBefore,
       scanAfter: scanSuspiciousUnicode(text)
     };
+  }
+
+  function isHighSurrogate(code) {
+    return code >= 0xd800 && code <= 0xdbff;
+  }
+
+  function splitsSurrogatePair(text, index) {
+    if (index <= 0 || index >= text.length) return false;
+    const code = text.charCodeAt(index);
+    return code >= 0xdc00 && code <= 0xdfff && isHighSurrogate(text.charCodeAt(index - 1));
+  }
+
+  function countCodePoints(text) {
+    let count = text.length;
+    for (let index = 0; index < text.length; index += 1) {
+      if (isHighSurrogate(text.charCodeAt(index))) count -= 1;
+    }
+    return count;
+  }
+
+  function matchLength(before, beforeIndex, after, afterIndex, limit) {
+    let length = 0;
+    while (length < limit) {
+      const beforeEnded = beforeIndex + length >= before.length;
+      const afterEnded = afterIndex + length >= after.length;
+      if (beforeEnded || afterEnded) return beforeEnded && afterEnded ? limit : length;
+      if (before.charCodeAt(beforeIndex + length) !== after.charCodeAt(afterIndex + length)) return length;
+      length += 1;
+    }
+    return length;
+  }
+
+  // Formatting edits are local, so the nearest point where both texts agree
+  // again is found with a bounded search instead of a quadratic full diff.
+  function findResync(before, beforeIndex, after, afterIndex) {
+    const beforeLeft = before.length - beforeIndex;
+    const afterLeft = after.length - afterIndex;
+    const maxSum = Math.min(DIFF_SEARCH_WINDOW, beforeLeft + afterLeft);
+    for (let sum = 1; sum <= maxSum; sum += 1) {
+      let best = null;
+      let bestLength = 0;
+      for (let skipBefore = Math.min(sum, beforeLeft); skipBefore >= 0; skipBefore -= 1) {
+        const skipAfter = sum - skipBefore;
+        if (skipAfter > afterLeft) break;
+        if (splitsSurrogatePair(before, beforeIndex + skipBefore) || splitsSurrogatePair(after, afterIndex + skipAfter)) continue;
+        const length = matchLength(before, beforeIndex + skipBefore, after, afterIndex + skipAfter, DIFF_SYNC_LENGTH);
+        if (length > bestLength) {
+          best = { skipBefore, skipAfter };
+          bestLength = length;
+          if (length === DIFF_SYNC_LENGTH) break;
+        }
+      }
+      if (best) return best;
+    }
+    return { skipBefore: beforeLeft, skipAfter: afterLeft };
+  }
+
+  function diffText(beforeValue, afterValue) {
+    const before = String(beforeValue || "");
+    const after = String(afterValue || "");
+    const ops = [];
+    let removed = 0;
+    let added = 0;
+    let changes = 0;
+    let beforeIndex = 0;
+    let afterIndex = 0;
+
+    const push = (type, text) => {
+      if (!text) return;
+      const last = ops[ops.length - 1];
+      if (last?.type === type) last.text += text;
+      else ops.push({ type, text });
+    };
+
+    while (beforeIndex < before.length || afterIndex < after.length) {
+      const start = beforeIndex;
+      while (beforeIndex < before.length && afterIndex < after.length) {
+        const code = before.charCodeAt(beforeIndex);
+        if (code !== after.charCodeAt(afterIndex)) break;
+        if (isHighSurrogate(code)) {
+          if (before.charCodeAt(beforeIndex + 1) !== after.charCodeAt(afterIndex + 1)) break;
+          beforeIndex += 1;
+          afterIndex += 1;
+        }
+        beforeIndex += 1;
+        afterIndex += 1;
+      }
+      push("equal", before.slice(start, beforeIndex));
+      if (beforeIndex >= before.length && afterIndex >= after.length) break;
+
+      const { skipBefore, skipAfter } = findResync(before, beforeIndex, after, afterIndex);
+      const deleted = before.slice(beforeIndex, beforeIndex + skipBefore);
+      const inserted = after.slice(afterIndex, afterIndex + skipAfter);
+      if (ops[ops.length - 1]?.type === "equal" || ops.length === 0) changes += 1;
+      removed += countCodePoints(deleted);
+      added += countCodePoints(inserted);
+      push("delete", deleted);
+      push("insert", inserted);
+      beforeIndex += skipBefore;
+      afterIndex += skipAfter;
+    }
+
+    return { ops, removed, added, changes };
   }
 
   return {
@@ -280,9 +476,12 @@
     MAX_FILE_SIZE_BYTES,
     MAX_INPUT_CHARACTERS,
     addSpacesBetweenHanAndLatin,
+    classifyCharacter,
     decodeUrlsSafely,
+    diffText,
     formatText,
     joinWrappedLines,
+    normalizeLineEndings,
     normalizeMixedScriptConfusables,
     removeSpacesBetweenHan,
     scanSuspiciousUnicode,
@@ -322,8 +521,24 @@
     hiddenBefore: document.querySelector("#formatterHiddenBefore"),
     hiddenAfter: document.querySelector("#formatterHiddenAfter"),
     report: document.querySelector("#formatterReport"),
-    reportEmpty: document.querySelector("#formatterReportEmpty")
+    reportEmpty: document.querySelector("#formatterReportEmpty"),
+    diff: document.querySelector("#formatterDiff"),
+    diffSummary: document.querySelector("#formatterDiffSummary"),
+    diffRules: document.querySelector("#formatterDiffRules"),
+    viewResult: document.querySelector("#formatterViewResult"),
+    viewDiff: document.querySelector("#formatterViewDiff")
   };
+  const viewKey = "jianfan.textFormatter.view.v1";
+  const AUTO_RUN_LIMIT = 200000;
+  const AUTO_RUN_DELAY = 250;
+  const DIFF_CONTEXT_LENGTH = 160;
+  const DIFF_MAX_RENDERED_CHANGES = 2000;
+  const INVISIBLE_CATEGORIES = new Set(["basicInvisible", "specialSpaces", "joiners", "variationSelectors", "bidiControls", "tags"]);
+  const OTHER_INVISIBLE = /[\p{Cc}\p{Cf}\p{Zs}\p{Zl}\p{Zp}]/u;
+  const diffHint = elements.diffSummary.textContent;
+  let autoRunTimer = 0;
+  let preferredView = "diff";
+  let hasDiff = false;
   const localePrefixes = { "zh-CN": "", "zh-TW": "zh-tw/", en: "en/", ja: "ja/", ko: "ko/" };
   const settingsKey = "jianfan.textFormatter.settings.v1";
 
@@ -399,17 +614,181 @@
     }
   }
 
+  function categoryLabel(category) {
+    return body.dataset[`category${category[0].toUpperCase()}${category.slice(1)}`] || "";
+  }
+
+  function ruleLabel(rule) {
+    if (rule === "lineMode") return elements.lineMode.selectedOptions[0]?.textContent || rule;
+    return document.getElementById(rule)?.nextElementSibling?.textContent || rule;
+  }
+
+  // Changed text keeps whitespace and invisible characters readable: spaces,
+  // tabs and line breaks get a visible glyph, hidden characters a code point chip.
+  function appendChangedText(parent, text, keepLineBreaks) {
+    let buffer = "";
+    const flush = () => {
+      if (buffer) parent.append(buffer);
+      buffer = "";
+    };
+    for (const character of text) {
+      if (character === " ") buffer += "·";
+      else if (character === "\t") buffer += "→";
+      else if (character === "\n") buffer += keepLineBreaks ? "↵\n" : "↵";
+      else {
+        const category = core.classifyCharacter(character);
+        if (INVISIBLE_CATEGORIES.has(category) || OTHER_INVISIBLE.test(character)) {
+          flush();
+          const chip = document.createElement("span");
+          chip.className = "formatter-diff-code";
+          chip.textContent = `U+${character.codePointAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
+          if (categoryLabel(category)) chip.title = categoryLabel(category);
+          parent.append(chip);
+        } else {
+          buffer += character;
+        }
+      }
+    }
+    flush();
+  }
+
+  function sliceAtCharacterBoundary(text, index) {
+    const code = text.charCodeAt(index);
+    return code >= 0xdc00 && code <= 0xdfff ? index + 1 : index;
+  }
+
+  function appendUnchangedText(parent, text, isFirst, isLast) {
+    if (text.length <= DIFF_CONTEXT_LENGTH * 2 + 80) {
+      parent.append(text);
+      return;
+    }
+    const headEnd = isFirst ? 0 : sliceAtCharacterBoundary(text, DIFF_CONTEXT_LENGTH);
+    const tailStart = isLast ? text.length : sliceAtCharacterBoundary(text, text.length - DIFF_CONTEXT_LENGTH);
+    const gap = document.createElement("span");
+    gap.className = "formatter-diff-gap";
+    gap.textContent = message("diffGap", { count: formatNumber(Array.from(text.slice(headEnd, tailStart)).length) });
+    parent.append(text.slice(0, headEnd), gap, text.slice(tailStart));
+  }
+
+  // The comparison replaces the plain result in place, next to the original,
+  // whenever there is something to compare and the user has not opted out.
+  function syncView() {
+    const showDiff = hasDiff && preferredView === "diff";
+    elements.diff.hidden = !showDiff;
+    elements.output.hidden = showDiff;
+    elements.viewDiff.disabled = !hasDiff;
+    elements.viewDiff.setAttribute("aria-pressed", String(showDiff));
+    elements.viewResult.setAttribute("aria-pressed", String(!showDiff));
+  }
+
+  function chooseView(view) {
+    preferredView = view;
+    try {
+      localStorage.setItem(viewKey, view);
+    } catch {
+      // The choice simply lasts for this visit when storage is unavailable.
+    }
+    syncView();
+  }
+
+  function clearDiff() {
+    elements.diff.replaceChildren();
+    elements.diffRules.replaceChildren();
+    elements.diffSummary.textContent = diffHint;
+    hasDiff = false;
+    syncView();
+  }
+
+  function renderDiff(result) {
+    const diff = core.diffText(core.normalizeLineEndings(elements.input.value), result.text);
+    elements.diff.replaceChildren();
+    elements.diffRules.replaceChildren();
+    hasDiff = diff.changes > 0;
+    if (!hasDiff) {
+      elements.diffSummary.textContent = message("diffSame");
+      syncView();
+      return;
+    }
+
+    elements.diffSummary.textContent = message("diffSummary", {
+      changes: formatNumber(diff.changes),
+      removed: formatNumber(diff.removed),
+      added: formatNumber(diff.added)
+    });
+    for (const step of result.steps) {
+      const item = document.createElement("li");
+      const count = document.createElement("b");
+      count.textContent = `× ${formatNumber(step.count)}`;
+      item.append(ruleLabel(step.rule), count);
+      elements.diffRules.append(item);
+    }
+
+    const fragment = document.createDocumentFragment();
+    let renderedChanges = 0;
+    let truncated = false;
+    diff.ops.forEach((op, index) => {
+      if (truncated) return;
+      if (op.type === "equal") {
+        if (renderedChanges >= DIFF_MAX_RENDERED_CHANGES) {
+          truncated = true;
+          return;
+        }
+        appendUnchangedText(fragment, op.text, index === 0, index === diff.ops.length - 1);
+        return;
+      }
+      if (diff.ops[index - 1]?.type === "equal" || index === 0) renderedChanges += 1;
+      const mark = document.createElement(op.type === "delete" ? "del" : "ins");
+      appendChangedText(mark, op.text, op.type === "insert");
+      fragment.append(mark);
+    });
+    if (truncated) {
+      const note = document.createElement("span");
+      note.className = "formatter-diff-gap";
+      note.textContent = message("diffTruncated", { count: formatNumber(diff.changes - renderedChanges) });
+      fragment.append(note);
+    }
+    elements.diff.append(fragment);
+    syncView();
+    elements.diff.scrollTop = 0;
+  }
+
+  function clearResults() {
+    elements.output.value = "";
+    elements.report.replaceChildren();
+    elements.reportEmpty.hidden = false;
+    clearDiff();
+    renderCounts();
+  }
+
   function runFormatter() {
+    clearTimeout(autoRunTimer);
     const length = Array.from(elements.input.value).length;
     if (length > core.MAX_INPUT_CHARACTERS) {
       setStatus("tooLong", "error", { limit: formatNumber(core.MAX_INPUT_CHARACTERS) });
+      return;
+    }
+    if (length === 0) {
+      clearResults();
+      setStatus("idle");
       return;
     }
     const result = core.formatText(elements.input.value, readOptions());
     elements.output.value = result.text;
     renderCounts(result);
     renderReport(result);
+    renderDiff(result);
     setStatus(result.changed ? "ready" : "unchanged", "ready");
+  }
+
+  // Short text is formatted as it changes; long text waits for the button so
+  // typing and rule changes never block on a multi-megabyte pass.
+  function scheduleFormatter(delay = AUTO_RUN_DELAY) {
+    clearTimeout(autoRunTimer);
+    if (elements.input.value.length > AUTO_RUN_LIMIT) {
+      setStatus("pending");
+      return;
+    }
+    autoRunTimer = setTimeout(runFormatter, delay);
   }
 
   async function copyOutput() {
@@ -418,6 +797,7 @@
       await navigator.clipboard.writeText(elements.output.value);
       setStatus("copied", "ready");
     } catch {
+      chooseView("result");
       elements.output.focus();
       elements.output.select();
       setStatus("copyFailed", "error");
@@ -452,6 +832,13 @@
   }
 
   loadOptions();
+  try {
+    if (localStorage.getItem(viewKey) === "result") preferredView = "result";
+  } catch {
+    // Storage may be blocked; the comparison stays the default view.
+  }
+  elements.viewResult.addEventListener("click", () => chooseView("result"));
+  elements.viewDiff.addEventListener("click", () => chooseView("diff"));
   syncHyphenationState();
   renderCounts();
   elements.format.addEventListener("click", runFormatter);
@@ -460,19 +847,19 @@
     runFormatter();
   });
   elements.clear.addEventListener("click", () => {
+    clearTimeout(autoRunTimer);
     elements.input.value = "";
-    elements.output.value = "";
-    elements.report.replaceChildren();
-    elements.reportEmpty.hidden = false;
-    renderCounts();
+    clearResults();
     setStatus("idle");
     elements.input.focus();
   });
   elements.copy.addEventListener("click", copyOutput);
   elements.reuse.addEventListener("click", () => {
+    if (!elements.output.value) return;
+    clearTimeout(autoRunTimer);
     elements.input.value = elements.output.value;
-    elements.output.value = "";
-    renderCounts();
+    clearResults();
+    setStatus("pending");
     elements.input.focus();
   });
   elements.download.addEventListener("click", downloadOutput);
@@ -480,12 +867,15 @@
   elements.input.addEventListener("input", () => {
     elements.inputCount.textContent = formatNumber(Array.from(elements.input.value).length);
     setStatus("pending");
+    scheduleFormatter();
   });
-  elements.lineMode.addEventListener("change", () => {
+  const onOptionChange = () => {
     syncHyphenationState();
     saveOptions();
-  });
-  for (const input of elements.optionInputs) input.addEventListener("change", saveOptions);
+    if (elements.input.value) scheduleFormatter(0);
+  };
+  elements.lineMode.addEventListener("change", onOptionChange);
+  for (const input of elements.optionInputs) input.addEventListener("change", onOptionChange);
   elements.localeSelect.addEventListener("change", () => {
     const prefix = localePrefixes[elements.localeSelect.value] ?? "";
     window.location.href = `/${prefix}${body.dataset.pageSlug}/`;

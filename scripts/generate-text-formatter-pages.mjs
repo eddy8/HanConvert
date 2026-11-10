@@ -40,6 +40,8 @@ const content = {
     localNote: "格式化与检测均在当前浏览器完成。工具只清理可检测的 Unicode 编码标记，不能判断作者身份，也不能识别或消除统计型 AI 水印。",
     status: { idle: "等待输入文本", pending: "文本已修改，等待格式化", ready: "格式化完成", unchanged: "未发现需要修改的内容", copied: "结果已复制", copyFailed: "复制失败，请手动选择结果", tooLong: "文本超过 {limit} 个字符，请分批处理", fileTooLarge: "文件超过 10 MB，请选择更小的文本文件", fileError: "无法读取这个文本文件" },
     metrics: ["输入字符", "输出字符", "处理前可疑字符", "处理后可疑字符"],
+    diffTitle: "格式化前后对比", viewLabels: ["结果", "对比"], diffLegend: ["已删除", "新增", "隐藏字符"], diffHint: "格式化后，这里会逐字标出被删除、替换和新增的内容，隐藏字符以 U+ 编码显示。",
+    diffMessages: { diffSummary: "共 {changes} 处改动：删除 {removed} 个字符，新增 {added} 个字符", diffSame: "格式化前后内容一致，没有字符被改动。", diffGap: "省略 {count} 个未改动字符", diffTruncated: "改动较多，其余 {count} 处未在对比中展开" },
     reportTitle: "Unicode 检测明细", reportEmpty: "尚未检测到零宽字符、特殊空格、变体选择符或同形字符。",
     categories: { basicInvisible: "高置信隐藏字符", specialSpaces: "特殊空格", joiners: "零宽连接符", variationSelectors: "变体选择符", bidiControls: "双向控制符", tags: "Unicode 标签", confusables: "同形与全角字符" },
     seoKicker: "PDF 复制文本整理与隐藏字符清理",
@@ -50,12 +52,13 @@ const content = {
       ["避免破坏 URL 和小数", "标点转换与空格处理会避开网址、邮箱、行内代码和小数，不会把正常内容一并改坏。"],
       ["分级去除 AI 文本水印", "默认去除零宽空格等高置信标记；连接符、变体选择符和同形字符需要手动开启。"]
     ],
-    howTitle: "如何在线格式化文本", steps: ["粘贴文本或导入 TXT、MD、CSV、JSON 文件。", "选择换行、空格、标点和 Unicode 清理规则。", "点击开始格式化，查看处理前后的字符统计和检测明细。", "确认结果后复制、下载，或送回输入框继续调整。"],
+    howTitle: "如何在线格式化文本", steps: ["粘贴文本或导入 TXT、MD、CSV、JSON 文件。", "选择换行、空格、标点和 Unicode 清理规则。", "点击开始格式化，在前后对比中逐字查看被删除和新增的内容，并核对字符统计与检测明细。", "确认结果后复制、下载，或送回输入框继续调整。"],
     faqTitle: "文本格式化与 AI 水印常见问题",
     faqs: [
       ["什么是 AI 文本水印？", "本页所说的 AI 文本水印是可检测的 Unicode 编码痕迹，例如零宽字符、特殊空格、变体选择符和混合字母同形字符。它们与基于词语分布的统计型水印不是一回事。"],
       ["为什么不默认删除 U+200C、U+200D 和变体选择符？", "零宽连接符、零宽非连接符与变体选择符可能影响 emoji、阿拉伯文、印度文字或字形显示。默认删除会损坏正常文本，因此放在高风险选项中。"],
       ["可以整理从 PDF 复制的多余换行吗？", "可以。选择“合并段内断行”会保留空行分隔的段落，并按中英文边界连接行；需要时可开启英文断词连字符修复。"],
+      ["怎样知道格式化删掉或改了哪些内容？", "格式化后，结果下方的前后对比会用红色删除线标出被删除的字符，用绿色标出新增的字符；零宽字符、特殊空格等看不见的字符以 U+ 编码显示，并按规则汇总改动次数。"],
       ["文本会上传到服务器吗？", "不会。文本格式化、不可见字符检测与 AI 文本水印清理全部使用浏览器内的 JavaScript 完成。"]
     ],
     related: "相关文字工具", relatedAria: "相关文字与文件工具",
@@ -83,6 +86,8 @@ const content = {
     localNote: "格式化與偵測都在目前的瀏覽器完成。工具只清理可偵測的 Unicode 編碼標記，無法判斷作者身分，也不能辨識或消除統計型 AI 浮水印。",
     status: { idle: "等待輸入文字", pending: "文字已修改，等待格式化", ready: "格式化完成", unchanged: "沒有需要修改的內容", copied: "結果已複製", copyFailed: "複製失敗，請手動選取結果", tooLong: "文字超過 {limit} 個字元，請分段處理", fileTooLarge: "檔案超過 10 MB，請選擇較小的文字檔", fileError: "無法讀取這個文字檔" },
     metrics: ["輸入字元", "輸出字元", "處理前可疑字元", "處理後可疑字元"],
+    diffTitle: "格式化前後對照", viewLabels: ["結果", "對照"], diffLegend: ["已刪除", "新增", "隱藏字元"], diffHint: "格式化後，這裡會逐字標出被刪除、取代和新增的內容，隱藏字元以 U+ 碼位顯示。",
+    diffMessages: { diffSummary: "共 {changes} 處變更：刪除 {removed} 個字元，新增 {added} 個字元", diffSame: "格式化前後內容相同，沒有字元被更動。", diffGap: "省略 {count} 個未變更字元", diffTruncated: "變更較多，其餘 {count} 處未在對照中展開" },
     reportTitle: "Unicode 偵測明細", reportEmpty: "尚未偵測到零寬字元、特殊空格、異體字選擇器或同形字元。",
     categories: { basicInvisible: "高可信隱藏字元", specialSpaces: "特殊空格", joiners: "零寬連接符", variationSelectors: "異體字選擇器", bidiControls: "雙向控制符", tags: "Unicode 標籤", confusables: "同形與全形字元" },
     seoKicker: "PDF 複製文字整理與隱藏字元清理",
@@ -93,12 +98,13 @@ const content = {
       ["避免破壞 URL 和小數", "標點轉換與空格處理會略過網址、電子郵件、行內程式碼和小數，保留正常內容。"],
       ["分級移除 AI 文字浮水印", "預設移除零寬空格等高可信標記；連接符、異體字選擇器與同形字元需手動開啟。"]
     ],
-    howTitle: "如何在線上格式化文字", steps: ["貼上文字或匯入 TXT、MD、CSV、JSON 檔案。", "選擇換行、空格、標點與 Unicode 清理規則。", "按下開始格式化，查看處理前後的字元統計及偵測明細。", "確認結果後複製、下載，或送回輸入欄繼續調整。"],
+    howTitle: "如何在線上格式化文字", steps: ["貼上文字或匯入 TXT、MD、CSV、JSON 檔案。", "選擇換行、空格、標點與 Unicode 清理規則。", "按下開始格式化，在前後對照中逐字查看被刪除與新增的內容，並核對字元統計及偵測明細。", "確認結果後複製、下載，或送回輸入欄繼續調整。"],
     faqTitle: "文字格式化與 AI 浮水印常見問題",
     faqs: [
       ["什麼是 AI 文字浮水印？", "本頁指的是可偵測的 Unicode 編碼痕跡，例如零寬字元、特殊空格、異體字選擇器和混合字母同形字元，不等同於基於詞語分布的統計型浮水印。"],
       ["為什麼不預設刪除 U+200C、U+200D 和異體字選擇器？", "這些字元可能影響 emoji、阿拉伯文、印度文字或字形顯示。預設刪除可能損壞正常文字，因此列在高風險選項。"],
       ["可以整理從 PDF 複製的多餘換行嗎？", "可以。選擇「合併段內斷行」會保留空白行分隔的段落，並依中英文邊界連接各行。"],
+      ["怎麼知道格式化刪除或修改了哪些內容？", "格式化後，結果下方的前後對照會以紅色刪除線標出被刪除的字元，以綠色標出新增的字元；零寬字元、特殊空格等看不見的字元會以 U+ 碼位顯示，並依規則彙整變更次數。"],
       ["文字會上傳到伺服器嗎？", "不會。文字格式化、不可見字元偵測與 AI 文字浮水印清理都使用瀏覽器內的 JavaScript 完成。"]
     ],
     related: "相關文字工具", relatedAria: "相關文字與文件工具",
@@ -126,6 +132,8 @@ const content = {
     localNote: "Formatting and detection run in this browser. The tool removes detectable Unicode artifacts; it cannot identify an author or detect and erase statistical AI watermarks.",
     status: { idle: "Waiting for text", pending: "Text changed; ready to format", ready: "Formatting complete", unchanged: "No matching changes found", copied: "Result copied", copyFailed: "Copy failed; select the result manually", tooLong: "Text exceeds {limit} characters. Split it into sections.", fileTooLarge: "File exceeds 10 MB. Choose a smaller text file.", fileError: "This text file could not be read" },
     metrics: ["Input characters", "Output characters", "Suspicious before", "Suspicious after"],
+    diffTitle: "Before and after comparison", viewLabels: ["Result", "Compare"], diffLegend: ["Removed", "Added", "Hidden character"], diffHint: "After formatting, every removed, replaced and added character is marked here. Hidden characters appear as U+ code points.",
+    diffMessages: { diffSummary: "{changes} changes: {removed} characters removed, {added} added", diffSame: "The text is identical before and after formatting.", diffGap: "{count} unchanged characters hidden", diffTruncated: "Too many changes to display; {count} more are not expanded" },
     reportTitle: "Unicode scan details", reportEmpty: "No zero-width characters, special spaces, variation selectors or lookalike characters detected yet.",
     categories: { basicInvisible: "High-confidence hidden", specialSpaces: "Special spaces", joiners: "Zero-width joiners", variationSelectors: "Variation selectors", bidiControls: "Bidirectional controls", tags: "Unicode tags", confusables: "Lookalike and fullwidth" },
     seoKicker: "CLEAN COPIED PDF TEXT AND HIDDEN UNICODE",
@@ -136,12 +144,13 @@ const content = {
       ["Protect URLs and decimals", "Punctuation and spacing rules skip web addresses, email addresses, inline code and decimal numbers instead of corrupting them."],
       ["Remove AI text watermarks by risk", "High-confidence zero-width markers are removed by default. Joiners, variation selectors and mixed-script lookalikes remain opt-in."]
     ],
-    howTitle: "How to format and clean text online", steps: ["Paste text or import a TXT, MD, CSV or JSON file.", "Choose line break, spacing, punctuation and Unicode cleanup rules.", "Select Format text and review the before-and-after Unicode scan.", "Copy or download the result, or return it to the input for another pass."],
+    howTitle: "How to format and clean text online", steps: ["Paste text or import a TXT, MD, CSV or JSON file.", "Choose line break, spacing, punctuation and Unicode cleanup rules.", "Select Format text, then review the before-and-after comparison, character counts and Unicode scan.", "Copy or download the result, or return it to the input for another pass."],
     faqTitle: "Text formatting and AI watermark questions",
     faqs: [
       ["What is an AI text watermark?", "On this page, it means detectable Unicode artifacts such as zero-width characters, special spaces, variation selectors and mixed-script lookalikes. Statistical token-choice watermarks are different."],
       ["Why are U+200C, U+200D and variation selectors not removed by default?", "They can be required for emoji, Arabic, Indic scripts and glyph variants. Removing them automatically can damage legitimate text, so they are high-risk options."],
       ["Can it clean line breaks from copied PDF text?", "Yes. Join wrapped lines preserves paragraphs separated by blank lines and reconnects CJK or Latin line endings with suitable spacing."],
+      ["How can I see what the formatter removed or changed?", "The before-and-after comparison below the result strikes through removed characters in red and highlights added ones in green. Invisible characters such as zero-width and special spaces are shown as U+ code points, with a change count per rule."],
       ["Is my text uploaded?", "No. Text formatting, invisible character detection and Unicode AI watermark removal all run locally in your browser with JavaScript."]
     ],
     related: "Related text tools", relatedAria: "Related text and document tools",
@@ -169,6 +178,8 @@ const content = {
     localNote: "整形と検出はブラウザー内で行われます。削除できるのは検出可能な Unicode の印だけで、作者の判定や統計型 AI 透かしの検出・除去はできません。",
     status: { idle: "文章を入力してください", pending: "文章が変更されました", ready: "整形が完了しました", unchanged: "変更対象は見つかりませんでした", copied: "結果をコピーしました", copyFailed: "コピーできません。手動で選択してください", tooLong: "{limit}文字を超えています。分割して処理してください。", fileTooLarge: "10 MBを超えています。小さいファイルを選んでください。", fileError: "このテキストファイルを読み込めません" },
     metrics: ["入力文字数", "出力文字数", "処理前の疑わしい文字", "処理後の疑わしい文字"],
+    diffTitle: "整形前後の比較", viewLabels: ["結果", "比較"], diffLegend: ["削除", "追加", "不可視文字"], diffHint: "整形すると、削除・置換・追加された文字をここに1文字単位で表示します。不可視文字は U+ のコードポイントで示します。",
+    diffMessages: { diffSummary: "変更 {changes} か所：{removed} 文字を削除、{added} 文字を追加", diffSame: "整形前後で内容は同じです。変更された文字はありません。", diffGap: "変更のない {count} 文字を省略", diffTruncated: "変更が多いため、残り {count} か所は表示していません" },
     reportTitle: "Unicode 検出結果", reportEmpty: "ゼロ幅文字、特殊スペース、異体字セレクター、同形文字はまだ検出されていません。",
     categories: { basicInvisible: "高確度の不可視文字", specialSpaces: "特殊スペース", joiners: "ゼロ幅接合子", variationSelectors: "異体字セレクター", bidiControls: "双方向制御文字", tags: "Unicodeタグ", confusables: "同形・全角文字" },
     seoKicker: "PDFコピー文章の改行・不可視文字を整理",
@@ -179,12 +190,13 @@ const content = {
       ["URLや小数を壊さずに整形", "句読点と空白の処理ではURL、メールアドレス、インラインコード、小数を保護します。"],
       ["AI文章の透かしを段階的に削除", "ゼロ幅空白など確度の高い印だけを標準で削除し、接合子や異体字セレクターは任意にします。"]
     ],
-    howTitle: "オンラインでテキストを整形する方法", steps: ["文章を貼り付けるか、TXT・MD・CSV・JSONを読み込みます。", "改行、空白、句読点、Unicodeの処理ルールを選びます。", "テキストを整形し、処理前後の検出結果を確認します。", "結果をコピー、保存、または入力欄へ戻して再調整します。"],
+    howTitle: "オンラインでテキストを整形する方法", steps: ["文章を貼り付けるか、TXT・MD・CSV・JSONを読み込みます。", "改行、空白、句読点、Unicodeの処理ルールを選びます。", "テキストを整形し、整形前後の比較で削除・追加された文字と検出結果を確認します。", "結果をコピー、保存、または入力欄へ戻して再調整します。"],
     faqTitle: "テキスト整形と AI 透かしのよくある質問",
     faqs: [
       ["AI文章の透かしとは何ですか？", "このページでは、ゼロ幅文字、特殊スペース、異体字セレクター、混在文字の同形字など検出可能な Unicode の印を指します。単語選択による統計型透かしとは異なります。"],
       ["U+200C、U+200D、異体字セレクターを標準で消さない理由は？", "絵文字、アラビア文字、インド系文字、字形表示に必要なことがあり、自動削除すると正常な文章を壊すためです。"],
       ["PDFからコピーした改行を削除できますか？", "はい。「段落内の改行を結合」を選ぶと空行で分かれた段落を維持しながら、行末を自然につなぎます。"],
+      ["整形で削除・変更された箇所を確認できますか？", "はい。結果の下にある整形前後の比較で、削除された文字は赤い取り消し線、追加された文字は緑で表示されます。ゼロ幅文字や特殊スペースなどの見えない文字は U+ のコードポイントで示し、ルールごとの変更回数もまとめます。"],
       ["文章はサーバーへ送信されますか？", "いいえ。テキスト整形、不可視文字の検出、Unicode AI透かしの削除はJavaScriptでブラウザー内処理されます。"]
     ],
     related: "関連テキストツール", relatedAria: "関連テキスト・文書ツール",
@@ -212,6 +224,8 @@ const content = {
     localNote: "정리와 검사는 브라우저에서 실행됩니다. 감지 가능한 Unicode 표식만 제거하며 작성자를 판별하거나 통계 방식의 AI 워터마크를 감지·제거할 수는 없습니다.",
     status: { idle: "텍스트를 입력하세요", pending: "텍스트가 변경되었습니다", ready: "텍스트 정리를 마쳤습니다", unchanged: "바꿀 항목을 찾지 못했습니다", copied: "결과를 복사했습니다", copyFailed: "복사하지 못했습니다. 결과를 직접 선택하세요.", tooLong: "{limit}자를 초과했습니다. 나눠서 처리해 주세요.", fileTooLarge: "10 MB를 초과했습니다. 더 작은 파일을 선택하세요.", fileError: "이 텍스트 파일을 읽을 수 없습니다" },
     metrics: ["입력 글자", "출력 글자", "처리 전 의심 문자", "처리 후 의심 문자"],
+    diffTitle: "정리 전후 비교", viewLabels: ["결과", "비교"], diffLegend: ["삭제됨", "추가됨", "숨은 문자"], diffHint: "정리하면 삭제·교체·추가된 글자를 여기에 한 글자씩 표시합니다. 숨은 문자는 U+ 코드 포인트로 보여 줍니다.",
+    diffMessages: { diffSummary: "변경 {changes}곳: {removed}자 삭제, {added}자 추가", diffSame: "정리 전후 내용이 같습니다. 바뀐 글자가 없습니다.", diffGap: "바뀌지 않은 {count}자 생략", diffTruncated: "변경이 많아 나머지 {count}곳은 펼치지 않았습니다" },
     reportTitle: "Unicode 검사 결과", reportEmpty: "제로폭 문자, 특수 공백, 변형 선택자 또는 닮은꼴 문자가 아직 감지되지 않았습니다.",
     categories: { basicInvisible: "확실한 숨은 문자", specialSpaces: "특수 공백", joiners: "제로폭 연결자", variationSelectors: "변형 선택자", bidiControls: "양방향 제어 문자", tags: "Unicode 태그", confusables: "닮은꼴·전각 문자" },
     seoKicker: "PDF 복사 텍스트와 숨은 Unicode 정리",
@@ -222,12 +236,13 @@ const content = {
       ["URL과 소수를 보존", "문장부호와 공백을 바꿀 때 웹 주소, 이메일, 인라인 코드와 소수는 처리 대상에서 제외합니다."],
       ["AI 텍스트 워터마크 단계별 제거", "제로폭 공백처럼 확실한 표식은 기본 제거하고 연결자, 변형 선택자, 혼합 문자 닮은꼴은 직접 선택하게 합니다."]
     ],
-    howTitle: "온라인에서 텍스트 정리하는 방법", steps: ["텍스트를 붙여 넣거나 TXT, MD, CSV, JSON 파일을 불러옵니다.", "줄바꿈, 공백, 문장부호와 Unicode 정리 규칙을 선택합니다.", "텍스트 정리를 누르고 처리 전후 Unicode 검사 결과를 확인합니다.", "결과를 복사·저장하거나 입력 칸으로 돌려 다시 조정합니다."],
+    howTitle: "온라인에서 텍스트 정리하는 방법", steps: ["텍스트를 붙여 넣거나 TXT, MD, CSV, JSON 파일을 불러옵니다.", "줄바꿈, 공백, 문장부호와 Unicode 정리 규칙을 선택합니다.", "텍스트 정리를 누르고 정리 전후 비교에서 삭제·추가된 글자와 Unicode 검사 결과를 확인합니다.", "결과를 복사·저장하거나 입력 칸으로 돌려 다시 조정합니다."],
     faqTitle: "텍스트 정리와 AI 워터마크 FAQ",
     faqs: [
       ["AI 텍스트 워터마크란 무엇인가요?", "이 페이지에서는 제로폭 문자, 특수 공백, 변형 선택자, 혼합 문자 닮은꼴처럼 감지할 수 있는 Unicode 표식을 뜻합니다. 단어 선택 기반 통계 워터마크와는 다릅니다."],
       ["U+200C, U+200D와 변형 선택자를 기본 삭제하지 않는 이유는 무엇인가요?", "이모지, 아랍 문자, 인도계 문자와 글리프 표시에 필요할 수 있어 자동 삭제하면 정상 텍스트를 손상할 수 있기 때문입니다."],
       ["PDF에서 복사한 줄바꿈을 정리할 수 있나요?", "네. ‘문단 안 줄바꿈 합치기’를 선택하면 빈 줄로 구분된 문단을 유지하면서 각 줄을 자연스럽게 연결합니다."],
+      ["정리하면서 무엇이 삭제되거나 바뀌었는지 볼 수 있나요?", "네. 결과 아래의 정리 전후 비교에서 삭제된 글자는 빨간 취소선, 추가된 글자는 초록색으로 표시됩니다. 제로폭 문자와 특수 공백처럼 보이지 않는 문자는 U+ 코드 포인트로 보여 주고 규칙별 변경 횟수도 함께 정리합니다."],
       ["텍스트가 서버로 전송되나요?", "아니요. 텍스트 정리, 보이지 않는 문자 검사와 Unicode AI 워터마크 제거는 모두 브라우저의 JavaScript로 처리됩니다."]
     ],
     related: "관련 텍스트 도구", relatedAria: "관련 텍스트 및 문서 도구",
@@ -280,7 +295,7 @@ function buildPage(locale) {
   const canonical = `${origin}${localizedPath(locale, slug)}`;
   const alternates = Object.entries(locales).map(([targetLocale, item]) => `    <link rel="alternate" hreflang="${item.hreflang}" href="${origin}${localizedPath(targetLocale, slug)}" />`).join("\n");
   const localeOptions = Object.entries(locales).map(([value, item]) => `<option value="${value}"${value === locale ? " selected" : ""}>${item.label}</option>`).join("");
-  const statusData = Object.entries(page.status).map(([key, value]) => ` data-message-${key.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)}="${escapeHtml(value)}"`).join("");
+  const statusData = Object.entries({ ...page.status, ...page.diffMessages }).map(([key, value]) => ` data-message-${key.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)}="${escapeHtml(value)}"`).join("");
   const categoryData = Object.entries(page.categories).map(([key, value]) => ` data-category-${key.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)}="${escapeHtml(value)}"`).join("");
   const related = relatedLabels[locale].map(([targetSlug, label]) => `<a href="${localizedPath(locale, targetSlug)}"${targetSlug === slug ? ' aria-current="page"' : ""}>${label}</a>`).join("");
   const lineModes = Object.entries(page.lineModes).map(([value, label]) => `<option value="${value}">${label}</option>`).join("");
@@ -323,9 +338,10 @@ ${schema}
         </div>
         <div class="formatter-workspace">
           <section class="formatter-text-panel" aria-labelledby="formatterInputTitle"><div class="panel-topline"><h3 id="formatterInputTitle">${page.inputTitle}</h3><span><b id="formatterInputCount">0</b> / 3,000,000</span></div><textarea id="formatterInput" aria-labelledby="formatterInputTitle" spellcheck="false" placeholder="${escapeHtml(page.placeholder)}"></textarea><div class="formatter-panel-actions"><div><button class="text-button" id="formatterSample" type="button" data-sample="${sample}">${page.sample}</button><button class="text-button" id="formatterClear" type="button">${page.clear}</button></div><label class="formatter-file-button" for="formatterFile">${page.importFile}<input id="formatterFile" type="file" accept=".txt,.md,.csv,.json,text/plain,text/markdown,text/csv,application/json" /></label></div></section>
-          <section class="formatter-text-panel formatter-output-panel" aria-labelledby="formatterOutputTitle"><div class="panel-topline"><h3 id="formatterOutputTitle">${page.outputTitle}</h3><span id="formatterOutputCount">0</span></div><textarea id="formatterOutput" aria-labelledby="formatterOutputTitle" readonly spellcheck="false"></textarea><div class="formatter-panel-actions"><div><button class="text-button" id="formatterReuse" type="button">${page.reuse}</button><button class="text-button" id="formatterDownload" type="button">${page.download}</button></div><button class="text-button" id="formatterCopy" type="button">${page.copy}</button></div></section>
+          <section class="formatter-text-panel formatter-output-panel" aria-labelledby="formatterOutputTitle"><div class="panel-topline"><h3 id="formatterOutputTitle">${page.outputTitle}</h3><div class="formatter-view-toggle" role="group" aria-label="${page.diffTitle}"><button type="button" id="formatterViewResult" aria-pressed="true">${page.viewLabels[0]}</button><button type="button" id="formatterViewDiff" aria-pressed="false" disabled>${page.viewLabels[1]}</button></div><span id="formatterOutputCount">0</span></div><textarea id="formatterOutput" aria-labelledby="formatterOutputTitle" readonly spellcheck="false"></textarea><div class="formatter-diff-view" id="formatterDiff" role="region" aria-labelledby="formatterDiffTitle" tabindex="0" hidden></div><div class="formatter-panel-actions"><div><button class="text-button" id="formatterReuse" type="button">${page.reuse}</button><button class="text-button" id="formatterDownload" type="button">${page.download}</button></div><button class="text-button" id="formatterCopy" type="button">${page.copy}</button></div></section>
         </div>
         <div class="formatter-run-row"><button class="primary-action" id="formatterRun" type="button">${page.run}</button><p>${page.localNote}</p></div>
+        <section class="formatter-diff-panel" aria-labelledby="formatterDiffTitle"><div class="panel-topline"><h3 id="formatterDiffTitle">${page.diffTitle}</h3><p class="formatter-diff-legend"><del>${page.diffLegend[0]}</del><ins>${page.diffLegend[1]}</ins><span><b class="formatter-diff-code">U+200B</b>${page.diffLegend[2]}</span></p></div><p id="formatterDiffSummary" role="status">${page.diffHint}</p><ul id="formatterDiffRules"></ul></section>
         <div class="formatter-metrics">${page.metrics.map((label, index) => `<article><span>${label}</span><strong id="${["formatterInputMetric", "formatterOutputMetric", "formatterHiddenBefore", "formatterHiddenAfter"][index] || ""}">${index < 2 ? '<span aria-hidden="true">—</span>' : "0"}</strong></article>`).join("")}</div>
         <section class="formatter-report-panel" aria-labelledby="formatterReportTitle"><div class="panel-topline"><h3 id="formatterReportTitle">${page.reportTitle}</h3><span>UNICODE</span></div><p id="formatterReportEmpty">${page.reportEmpty}</p><ul id="formatterReport"></ul></section>
       </section>
@@ -354,7 +370,7 @@ function syncHomeLink(source, locale) {
 function buildSitemapSection() {
   const localeEntries = Object.entries(locales);
   const alternates = localeEntries.map(([locale, item]) => `    <xhtml:link rel="alternate" hreflang="${item.hreflang}" href="${origin}${localizedPath(locale, slug)}" />`).join("\n");
-  const urls = localeEntries.map(([locale]) => `  <url>\n    <loc>${origin}${localizedPath(locale, slug)}</loc>\n    <lastmod>2026-09-10</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>${locale === "zh-CN" ? "0.9" : "0.8"}</priority>\n${alternates}\n    <xhtml:link rel="alternate" hreflang="x-default" href="${origin}${localizedPath("zh-CN", slug)}" />\n  </url>`).join("\n");
+  const urls = localeEntries.map(([locale]) => `  <url>\n    <loc>${origin}${localizedPath(locale, slug)}</loc>\n    <lastmod>2026-11-10</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>${locale === "zh-CN" ? "0.9" : "0.8"}</priority>\n${alternates}\n    <xhtml:link rel="alternate" hreflang="x-default" href="${origin}${localizedPath("zh-CN", slug)}" />\n  </url>`).join("\n");
   return `  <!-- text-formatter-tool:start -->\n${urls}\n  <!-- text-formatter-tool:end -->`;
 }
 
