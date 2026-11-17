@@ -72,6 +72,52 @@
                 "item": "https://jianfan.app/traditional-to-simplified/"
               }
             ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/traditional-to-simplified/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "台湾、香港的繁体都能转成简体吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "能，但建议选择对应来源。默认的「繁体 → 简体」会把「裏面、説話」转成「里面、说话」，却可能保留「衞生、著急」等地区字形；香港文本请选「香港繁体 → 简体」，台湾文本请选「台湾正体 → 简体」，结果更完整。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "能把台湾用语换成大陆常用词吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "选择「台湾正体 → 简体（含用词）」：軟體→软件、滑鼠→鼠标、伺服器→服务器、計程車→出租车、影片→视频、印表機→打印机、記憶體→内存、部落格→博客、網路→网络。默认模式只转字形，不改词汇。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "繁体转简体后还能转回原来的繁体吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不一定。多个繁体字会合并为同一个简体字：頭髮/發展→头发/发展，乾杯/幹活/樹幹→干杯/干活/树干，後面/皇后→后面/皇后，颱風/臺灣→台风/台湾。再转回繁体时依靠词组判断，常见词能恢复，少见搭配需要对照原文。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "繁体转简体会翻译或改写粤语吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不会。转换只改变字形和可选的地区词汇，不翻译语义，也不改写语法。粤语口语词会保留，例如「的士」转为简体后仍是「的士」。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "转换的文字会上传吗？能转多长？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不会上传，转换在浏览器本地分段完成。单次最多可转换 300 万字符，也可以导入 10 MB 以内的 TXT、DOCX、PDF、Excel 或 CSV 文件提取文字。"
+                }
+              }
+            ]
           }
         ]
       }
@@ -361,6 +407,17 @@
           <!-- korean-hanja-tool-links:end -->
         </nav>
       </section>
+      <!-- converter-faq:start -->
+      <section class="pinyin-faq converter-faq" aria-labelledby="converterFaqTitle">
+        <h2 id="converterFaqTitle">繁体转简体常见问题</h2>
+        <p class="converter-faq-lead">繁体转简体是把台湾、香港或通用繁体文字转换为中国大陆使用的简体字。这是多对一转换，例如「頭髮」和「發展」中的不同字形都会变成「发」。</p>
+        <details><summary>台湾、香港的繁体都能转成简体吗？</summary><p>能，但建议选择对应来源。默认的「繁体 → 简体」会把「裏面、説話」转成「里面、说话」，却可能保留「衞生、著急」等地区字形；香港文本请选「香港繁体 → 简体」，台湾文本请选「台湾正体 → 简体」，结果更完整。</p></details>
+        <details><summary>能把台湾用语换成大陆常用词吗？</summary><p>选择「台湾正体 → 简体（含用词）」：軟體→软件、滑鼠→鼠标、伺服器→服务器、計程車→出租车、影片→视频、印表機→打印机、記憶體→内存、部落格→博客、網路→网络。默认模式只转字形，不改词汇。</p></details>
+        <details><summary>繁体转简体后还能转回原来的繁体吗？</summary><p>不一定。多个繁体字会合并为同一个简体字：頭髮/發展→头发/发展，乾杯/幹活/樹幹→干杯/干活/树干，後面/皇后→后面/皇后，颱風/臺灣→台风/台湾。再转回繁体时依靠词组判断，常见词能恢复，少见搭配需要对照原文。</p></details>
+        <details><summary>繁体转简体会翻译或改写粤语吗？</summary><p>不会。转换只改变字形和可选的地区词汇，不翻译语义，也不改写语法。粤语口语词会保留，例如「的士」转为简体后仍是「的士」。</p></details>
+        <details><summary>转换的文字会上传吗？能转多长？</summary><p>不会上传，转换在浏览器本地分段完成。单次最多可转换 300 万字符，也可以导入 10 MB 以内的 TXT、DOCX、PDF、Excel 或 CSV 文件提取文字。</p></details>
+      </section>
+      <!-- converter-faq:end -->
     </main>
 
     <footer class="site-footer">

@@ -1877,6 +1877,19 @@ textarea::placeholder {
   color: var(--muted);
 }
 
+/* Answer-first FAQ on the Simplified/Traditional converter pages. */
+.converter-faq {
+  margin-top: 16px;
+  padding-inline: clamp(18px, 3vw, 30px);
+}
+
+.converter-faq .converter-faq-lead {
+  margin: 0 0 10px;
+  max-width: 72ch;
+  color: var(--ink);
+  line-height: 1.7;
+}
+
 /* Controlled pSEO character directory and static Hanzi profiles. */
 .hanzi-language-menu {
   position: relative;

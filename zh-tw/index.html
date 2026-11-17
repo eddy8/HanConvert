@@ -54,6 +54,52 @@
               "name": "JianFan.app",
               "url": "https://jianfan.app/"
             }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/zh-tw/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "簡體字和繁體字有什麼不同？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "簡體字是中國大陸推行的規範漢字，現行標準是 2013 年公布的《通用規範漢字表》，收字 8105 個；繁體字通行於台灣、香港和澳門。兩者讀音與文法相同，主要差在字形，部分常用詞在各地的說法也不同。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "簡繁轉換為什麼不能逐字替換？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "部分簡體字是由多個繁體字合併而來。本工具以 OpenCC 為基礎，先比對詞組再轉單字：理发→理髮、出发→出發、然后→然後、皇后→皇后、干杯→乾杯、干活→幹活、树干→樹幹、台风→颱風。人名、新詞和單獨的字仍可能出錯，正式文件請再校對。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "該選通用繁體、台灣正體還是香港繁體？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "讀者在台灣請選台灣正體，在香港請選香港繁體，不確定時用通用繁體。三者字形不同：「里面、着急、为什么、床」在通用繁體為「裏面、着急、爲什麼、牀」，台灣正體為「裡面、著急、為什麼、床」，香港繁體為「裏面、着急、為什麼、牀」。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "可以同時轉換地區用詞嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以。選擇「簡體 → 台灣正體（含用詞）」會把软件→軟體、鼠标→滑鼠、出租车→計程車、视频→影片、内存→記憶體；「台灣正體 → 簡體（含用詞）」則能把這些台灣用語換回中國大陸常用詞。只轉字形的模式會保留原本的詞彙。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "轉換的文字會上傳嗎？可以轉多長？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不會上傳，轉換在瀏覽器本機分段完成。單次最多可轉換 300 萬字元，也能匯入 10 MB 以內的 TXT、DOCX、PDF、Excel 或 CSV 檔案擷取文字。"
+                }
+              }
+            ]
           }
         ]
       }
@@ -360,6 +406,17 @@
           <!-- korean-hanja-tool-links:end -->
         </nav>
       </section>
+      <!-- converter-faq:start -->
+      <section class="pinyin-faq converter-faq" aria-labelledby="converterFaqTitle">
+        <h2 id="converterFaqTitle">簡繁轉換常見問題</h2>
+        <p class="converter-faq-lead">簡繁轉換是在中國大陸使用的簡體字與台灣、香港、澳門使用的繁體字之間互相轉換。由於一個簡體字可能對應多個繁體字，可靠的轉換要依詞語判斷，而不是逐字替換。</p>
+        <details><summary>簡體字和繁體字有什麼不同？</summary><p>簡體字是中國大陸推行的規範漢字，現行標準是 2013 年公布的《通用規範漢字表》，收字 8105 個；繁體字通行於台灣、香港和澳門。兩者讀音與文法相同，主要差在字形，部分常用詞在各地的說法也不同。</p></details>
+        <details><summary>簡繁轉換為什麼不能逐字替換？</summary><p>部分簡體字是由多個繁體字合併而來。本工具以 OpenCC 為基礎，先比對詞組再轉單字：理发→理髮、出发→出發、然后→然後、皇后→皇后、干杯→乾杯、干活→幹活、树干→樹幹、台风→颱風。人名、新詞和單獨的字仍可能出錯，正式文件請再校對。</p></details>
+        <details><summary>該選通用繁體、台灣正體還是香港繁體？</summary><p>讀者在台灣請選台灣正體，在香港請選香港繁體，不確定時用通用繁體。三者字形不同：「里面、着急、为什么、床」在通用繁體為「裏面、着急、爲什麼、牀」，台灣正體為「裡面、著急、為什麼、床」，香港繁體為「裏面、着急、為什麼、牀」。</p></details>
+        <details><summary>可以同時轉換地區用詞嗎？</summary><p>可以。選擇「簡體 → 台灣正體（含用詞）」會把软件→軟體、鼠标→滑鼠、出租车→計程車、视频→影片、内存→記憶體；「台灣正體 → 簡體（含用詞）」則能把這些台灣用語換回中國大陸常用詞。只轉字形的模式會保留原本的詞彙。</p></details>
+        <details><summary>轉換的文字會上傳嗎？可以轉多長？</summary><p>不會上傳，轉換在瀏覽器本機分段完成。單次最多可轉換 300 萬字元，也能匯入 10 MB 以內的 TXT、DOCX、PDF、Excel 或 CSV 檔案擷取文字。</p></details>
+      </section>
+      <!-- converter-faq:end -->
     </main>
 
     <footer class="site-footer">

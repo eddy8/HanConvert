@@ -54,6 +54,52 @@
               "name": "JianFan.app",
               "url": "https://jianfan.app/"
             }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/en/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the difference between Simplified and Traditional Chinese?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Simplified characters are the standard in mainland China, defined today by the 2013 Table of General Standard Chinese Characters (8,105 characters). Traditional characters are used in Taiwan, Hong Kong, and Macau. Pronunciation and grammar are the same; the main differences are character forms and some regional vocabulary."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why can't Chinese be converted character by character?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Some Simplified characters merged several Traditional ones. This tool uses OpenCC, which matches whole words before single characters: 理发→理髮 (haircut), 出发→出發 (depart), 然后→然後, 皇后→皇后, 干杯→乾杯, 干活→幹活, 树干→樹幹, 台风→颱風. Names, new words, and isolated characters can still be wrong, so proofread important text."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Should I choose standard Traditional, Taiwan, or Hong Kong?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Choose Taiwan for readers in Taiwan, Hong Kong for readers in Hong Kong, and standard Traditional when the audience is unknown. Their character forms differ: 里面, 着急, 为什么, and 床 become 裏面, 着急, 爲什麼, 牀 in standard Traditional; 裡面, 著急, 為什麼, 床 in Taiwan; and 裏面, 着急, 為什麼, 牀 in Hong Kong."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can it convert regional vocabulary too?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. “Simplified → Taiwan phrases” turns 软件 into 軟體, 鼠标 into 滑鼠, 出租车 into 計程車, 视频 into 影片, and 内存 into 記憶體. “Taiwan → Simplified phrases” converts those Taiwan terms back to mainland usage. Modes without phrases change only character forms."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is my text uploaded, and how much can I convert?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Conversion runs locally in your browser in chunks. One conversion can handle up to 3 million characters, and you can import TXT, DOCX, PDF, Excel, or CSV files up to 10 MB."
+                }
+              }
+            ]
           }
         ]
       }
@@ -360,6 +406,17 @@
           <!-- korean-hanja-tool-links:end -->
         </nav>
       </section>
+      <!-- converter-faq:start -->
+      <section class="pinyin-faq converter-faq" aria-labelledby="converterFaqTitle">
+        <h2 id="converterFaqTitle">Chinese converter FAQ</h2>
+        <p class="converter-faq-lead">Chinese conversion switches text between Simplified Chinese, used in mainland China, and Traditional Chinese, used in Taiwan, Hong Kong, and Macau. One Simplified character can map to several Traditional characters, so reliable conversion works on whole words rather than single characters.</p>
+        <details><summary>What is the difference between Simplified and Traditional Chinese?</summary><p>Simplified characters are the standard in mainland China, defined today by the 2013 Table of General Standard Chinese Characters (8,105 characters). Traditional characters are used in Taiwan, Hong Kong, and Macau. Pronunciation and grammar are the same; the main differences are character forms and some regional vocabulary.</p></details>
+        <details><summary>Why can't Chinese be converted character by character?</summary><p>Some Simplified characters merged several Traditional ones. This tool uses OpenCC, which matches whole words before single characters: 理发→理髮 (haircut), 出发→出發 (depart), 然后→然後, 皇后→皇后, 干杯→乾杯, 干活→幹活, 树干→樹幹, 台风→颱風. Names, new words, and isolated characters can still be wrong, so proofread important text.</p></details>
+        <details><summary>Should I choose standard Traditional, Taiwan, or Hong Kong?</summary><p>Choose Taiwan for readers in Taiwan, Hong Kong for readers in Hong Kong, and standard Traditional when the audience is unknown. Their character forms differ: 里面, 着急, 为什么, and 床 become 裏面, 着急, 爲什麼, 牀 in standard Traditional; 裡面, 著急, 為什麼, 床 in Taiwan; and 裏面, 着急, 為什麼, 牀 in Hong Kong.</p></details>
+        <details><summary>Can it convert regional vocabulary too?</summary><p>Yes. “Simplified → Taiwan phrases” turns 软件 into 軟體, 鼠标 into 滑鼠, 出租车 into 計程車, 视频 into 影片, and 内存 into 記憶體. “Taiwan → Simplified phrases” converts those Taiwan terms back to mainland usage. Modes without phrases change only character forms.</p></details>
+        <details><summary>Is my text uploaded, and how much can I convert?</summary><p>No. Conversion runs locally in your browser in chunks. One conversion can handle up to 3 million characters, and you can import TXT, DOCX, PDF, Excel, or CSV files up to 10 MB.</p></details>
+      </section>
+      <!-- converter-faq:end -->
     </main>
 
     <footer class="site-footer">

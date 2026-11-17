@@ -1,0 +1,87 @@
+# JianFan.app
+
+> Free browser-based tools for Chinese, Japanese, and Korean characters: Simplified ↔ Traditional Chinese conversion (including Taiwan and Hong Kong forms and regional vocabulary, based on OpenCC), handwriting and photo character recognition, Pinyin, stroke order, character lookup, kanji readings, Korean Hanja, and printable practice worksheets.
+
+Every tool is available in five languages with the same path: Simplified Chinese at the site root (/<tool>/), Traditional Chinese at /zh-tw/<tool>/, English at /en/<tool>/, Japanese at /ja/<tool>/, and Korean at /ko/<tool>/. Links below use the English pages.
+
+Text conversion, counting, formatting, and most lookups run locally in the browser. Photo OCR uploads the processed image to the JianFan.app OCR service, and Korean Hanja handwriting falls back to online recognition only when local matching finds no result. Each tool page states how it processes data.
+
+## Chinese conversion
+
+- [Simplified to Traditional Chinese Converter Online](https://jianfan.app/en/simplified-to-traditional/): Convert Simplified Chinese to Traditional Chinese online, with Taiwan and Hong Kong wording, custom terms, change highlights and private in-browser processing.
+- [Traditional to Simplified Chinese Converter Online](https://jianfan.app/en/traditional-to-simplified/): Convert Traditional Chinese to Simplified Chinese online, including Taiwan and Hong Kong text, custom terms, highlights, TXT downloads, and browser processing.
+- [Taiwan Traditional Chinese Converter - Regional Wording](https://jianfan.app/en/taiwan-traditional/): Convert Simplified Chinese to Taiwan Traditional Chinese online with regional wording, custom terms, change highlights, TXT downloads, and browser processing.
+- [Hong Kong Traditional Chinese Converter](https://jianfan.app/en/hong-kong-traditional/): Convert Simplified Chinese to Hong Kong Traditional Chinese online with regional characters, phrase wording, custom terms and private browser-based processing.
+- [Chinese Document Converter - Word, PDF, TXT, Excel](https://jianfan.app/en/file-text-converter/): Convert Chinese text from Word, PDF, TXT and Excel files between Simplified, Traditional, Taiwan and Hong Kong forms locally in your browser. Copy results.
+- [Word Chinese Converter for DOCX Files Online](https://jianfan.app/en/word-chinese-converter/): Extract Chinese text from DOCX Word files and convert it between Simplified, Traditional, Taiwan, or Hong Kong forms locally in your browser, free online.
+- [PDF Chinese Text Converter Online for Free](https://jianfan.app/en/pdf-chinese-converter/): Extract selectable Chinese text from PDF files and convert it to Simplified, Traditional, Taiwan, or Hong Kong forms locally in your browser, free online.
+- [Excel Chinese Converter for XLSX Files Online](https://jianfan.app/en/excel-chinese-converter/): Extract cell text from XLSX or XLS spreadsheets and convert Chinese to Simplified, Traditional, Taiwan, or Hong Kong forms locally in your browser online.
+- [CSV Chinese Text Converter for Table Data](https://jianfan.app/en/csv-chinese-converter/): Open CSV table data and convert Chinese fields to Simplified, Traditional, Taiwan, or Hong Kong forms locally in your browser while retaining separators online.
+- [TXT Chinese Text Converter for Large Files](https://jianfan.app/en/txt-chinese-converter/): Open TXT or Markdown files and convert Chinese to Simplified, Traditional, Taiwan, or Hong Kong forms locally, with chunked processing for long text online.
+
+## Chinese characters
+
+- [Chinese Handwriting Recognition - Draw and Look Up Hanzi](https://jianfan.app/en/chinese-handwriting-recognition/): Draw a Chinese character online with a mouse, finger, or pen to find matching Hanzi, Pinyin, stroke count, and stroke order with browser-based recognition.
+- [Chinese OCR Online - Image to Text & Hanzi Lookup](https://jianfan.app/en/photo-chinese-character-recognition/): Recognize Chinese characters from photos with a Chinese OCR online tool. Convert images, screenshots and scans to text, then check Pinyin and stroke order.
+- [Chinese Character Lookup & Component Search](https://jianfan.app/en/chinese-character-lookup/): Look up and decompose Chinese characters by Pinyin, radical, strokes and variants, or find an unknown Hanzi by combining components and filtering stroke count.
+- [Chinese Stroke Order - Animation and Writing Practice](https://jianfan.app/en/chinese-stroke-order/): Look up Chinese character stroke order with animations, step controls, stroke counts, Pinyin and handwriting practice for Simplified and Traditional Hanzi.
+- [Chinese to Pinyin Converter with Tones](https://jianfan.app/en/chinese-to-pinyin/): Convert Simplified or Traditional Chinese characters to Pinyin with tone marks, tone numbers or no tones, plus ruby annotations and single-character lookup.
+- [Chinese Character Counter - CJK Text & Word Count](https://jianfan.app/en/character-counter/): Free CJK character counter for words, sentences, UTF-8 bytes, Hanzi, Kanji, Kana, Hangul, Hanja, spaces, text frequency, all files and writing targets.
+- [Chinese Character Dictionary: Pinyin, Radicals, Strokes](https://jianfan.app/en/hanzi/): Browse common Chinese characters by Pinyin, meaning, radical, strokes and structure. Compare variants, readings, stroke order and printable practice sheets.
+
+## Printable worksheets
+
+- [Chinese Practice Sheet Generator - Printable Hanzi](https://jianfan.app/en/han-character-worksheet/): Free Chinese practice sheet generator for printable Hanzi worksheets with tracing, Pinyin, stroke order, Tian Zi Ge or Mi Zi Ge grids, A4 and PDF output.
+- [Tian Zi Ge worksheet generator Online and Printable](https://jianfan.app/en/tian-zi-ge-worksheet/): Create printable Tian Zi Ge Chinese worksheets with centre guides, tracing, Pinyin, and stroke order. Adjust the layout, then print or save a PDF for free.
+- [Mi Zi Ge worksheet generator Online and Printable](https://jianfan.app/en/mi-zi-ge-worksheet/): Create printable Mi Zi Ge Chinese worksheets with diagonal guides, tracing, Pinyin, and stroke order. Adjust the layout, then print or save a PDF for free.
+- [Chinese Tracing Worksheet Generator Online](https://jianfan.app/en/hanzi-tracing-worksheet/): Create printable Chinese character tracing sheets with faded models, blank practice boxes, Pinyin, and grids. Adjust the layout, then print or save a PDF free.
+- [Pinyin and Hanzi Worksheet Generator Online](https://jianfan.app/en/pinyin-hanzi-worksheet/): Create printable Pinyin and Hanzi worksheets with readings, tracing boxes, custom grids, and polyphonic characters. Print or save each sheet as a PDF free.
+- [Chinese Stroke Order Worksheet Generator](https://jianfan.app/en/stroke-order-worksheet/): Create printable Chinese stroke order worksheets with step diagrams, tracing, Pinyin, and practice grids. Adjust the layout, then print or save a PDF free.
+
+## Japanese
+
+- [Japanese Kanji Handwriting Recognition & Lookup](https://jianfan.app/en/japanese-handwriting-recognition/): Draw a Japanese Kanji to get handwriting recognition candidates, then check On and Kun readings, radical, stroke count, components, meaning, and stroke order.
+- [Japanese Kanji Dictionary - Radical & Stroke Search](https://jianfan.app/en/japanese-kanji-dictionary/): Search a Japanese Kanji dictionary by character, Kana reading, English meaning, radical, stroke count, or school grade, with On and Kun readings and components.
+- [Japanese Kanji Stroke Order Animation](https://jianfan.app/en/japanese-stroke-order/): Look up Japanese Kanji stroke order with KanjiVG animations, numbered strokes, step controls, stroke counts, schoolbook glyphs, and adjustable playback speed.
+- [Kanji to Hiragana - Furigana & Ruby Generator](https://jianfan.app/en/kanji-to-hiragana/): Convert Japanese Kanji to Hiragana, automatically add Furigana or Ruby markup, and copy text or HTML with context-aware readings processed in your browser.
+- [Kanji to Romaji Converter - Japanese to Alphabet](https://jianfan.app/en/kanji-to-romaji/): Convert Japanese kanji, hiragana, and katakana to Romaji, Hiragana, Katakana, or Furigana with context-aware readings and three Japanese romanization systems.
+- [Chinese to Japanese Kanji Converter](https://jianfan.app/en/japanese-chinese-kanji-converter/): Convert Chinese to Japanese kanji and compare Japanese, Simplified Chinese, and Traditional Chinese in three columns with a changed-glyph table in your browser.
+- [Chinese and Japanese Kanji Comparison Converter Online](https://jianfan.app/en/chinese-japanese-kanji-comparison/): Compare modern Japanese Kanji, Simplified Chinese, and Traditional Chinese online. Paste text, copy all three results, and review only the glyphs that differ.
+- [Japanese Shinjitai Kyujitai Converter](https://jianfan.app/en/japanese-kanji-converter/): Convert Japanese Shinjitai and Kyujitai both ways, highlight changed kanji, compare old and modern forms, and process text privately in your browser online.
+- [Simplified Chinese to Japanese Kanji Converter Online](https://jianfan.app/en/simplified-chinese-to-japanese-kanji/): Convert Simplified Chinese to Japanese Kanji online. Compare Japanese, Simplified, and Traditional forms side by side, copy results, and review glyph changes.
+- [Traditional Chinese to Japanese Kanji Converter Online](https://jianfan.app/en/traditional-chinese-to-japanese-kanji/): Convert Traditional Chinese to Japanese Kanji online. Compare Japanese, Simplified, and Traditional forms side by side, copy results, and review glyph changes.
+- [Japanese Kanji to Simplified Chinese Converter Online](https://jianfan.app/en/japanese-kanji-to-simplified-chinese/): Convert Japanese Kanji to Simplified Chinese online. Compare Japanese, Simplified, and Traditional forms side by side, copy results, and review glyph changes.
+- [Japanese Kanji to Traditional Chinese Converter Online](https://jianfan.app/en/japanese-kanji-to-traditional-chinese/): Convert Japanese Kanji to Traditional Chinese online. Compare Japanese, Simplified, and Traditional forms side by side, copy results, and review glyph changes.
+- [Japanese Character Copy - Hiragana, Katakana, Symbols](https://jianfan.app/en/japanese-characters/): Find and copy Hiragana, Katakana, half-width Kana, small Kana, voiced characters, and Japanese symbols online with category filters, details, and Romaji search.
+
+## Korean
+
+- [Hangul Hanja Converter - Korean Text Conversion](https://jianfan.app/en/hangul-hanja-converter/): Convert Korean text between Hangul and Hanja with phrase-first matching. Choose ambiguous Hanja, add parenthetical readings, and keep text in your browser.
+- [Korean Hanja Dictionary - Radical & Stroke Search](https://jianfan.app/en/korean-hanja-dictionary/): Search Korean Hanja by character, Hangul reading, meaning, radical or total strokes. Filter personal-name Hanja and view readings, definitions and Unicode.
+- [Korean Hanja Handwriting - Draw and Find](https://jianfan.app/en/korean-hanja-handwriting-recognition/): Draw Korean Hanja to find similar characters without knowing the reading. See Hangul readings, strokes and Unicode, then open the dictionary or name checker.
+- [Korean Name Hanja - Personal Name Character Search](https://jianfan.app/en/korean-name-hanja/): Search Korean personal-name Hanja by Hangul reading, character or gloss. Check court readings, copy Unicode forms, and verify choices before registration.
+
+## Text and privacy utilities
+
+- [Online Text Formatter - Clean PDF Text and AI Watermarks](https://jianfan.app/en/text-formatter/): Free text formatter to clean copied PDF text, spaces, line breaks and punctuation. Detect zero-width characters, Unicode marks and AI text watermarks locally.
+- [Word to Text Converter - DOCX to TXT Online](https://jianfan.app/en/word-to-txt/): Convert Word to text online. Extract plain text from DOCX files locally in your browser, then preview, edit, copy, or batch-download UTF-8 TXT files.
+- [Image Redaction Tool - Blur Faces and Sensitive Data Online](https://jianfan.app/en/image-redaction/): Redact images online with black boxes, pixelation or blur. Local AI finds faces and sensitive text; photos stay in the browser and export without EXIF.
+- [Password Generator - Random Passwords with Custom Symbols](https://jianfan.app/en/password-generator/): Generate random passwords with custom length, letters, numbers and symbols. Exclude lookalikes or repeats, then copy or download a batch. Runs in your browser.
+
+## Guides (Simplified Chinese)
+
+- [简体字和繁体字有什么区别 - 台湾与香港转换指南](https://jianfan.app/blog/simplified-traditional-chinese-differences/): 说明简体字、通用繁体、台湾正体和香港繁体在字形与地区用词上的区别，并用软件、出租车、方便面等例子介绍如何选择正确的简繁转换模式及校对方法。
+- [Word、PDF、Excel和TXT文件简繁转换完整指南](https://jianfan.app/blog/convert-word-pdf-excel-txt-chinese/): 介绍如何在浏览器中提取 Word、PDF、Excel、TXT 文件文字并转换简繁体，比较不同格式的处理方式、下载结果、文件限制以及转换后校对重点。
+- [不认识的汉字怎么查 - 部首、手写与拍照查字方法](https://jianfan.app/blog/find-chinese-character-methods/): 遇到不会读、不能输入的汉字时，可按部首和部件查询，也可手写或拍照识别。本文比较三种查字方法、适用场景、操作步骤、常见失败原因与核对技巧。
+- [拍照识字和手写汉字识别有什么区别 - 选择指南](https://jianfan.app/blog/photo-vs-handwriting-chinese-recognition/): 比较拍照识字与手写汉字识别的输入方式、识别范围、隐私处理和使用限制，帮助你根据纸面文字、截图或未知单字选择合适的在线识字工具并提高成功率。
+- [汉字笔顺怎么查 - 简体、繁体与日本汉字书写区别](https://jianfan.app/blog/chinese-japanese-stroke-order-differences/): 介绍在线查询汉字笔顺的方法，说明简体、繁体和日本汉字在字形、笔画与书写顺序上可能存在的差别，并给出选择笔顺数据、核对标准和练习方式的建议。
+- [田字格字帖怎么制作 - 描红与汉字练习纸打印指南](https://jianfan.app/blog/chinese-character-worksheet-guide/): 介绍如何在线生成田字格、米字格、描红和带拼音或笔顺的汉字练习纸，并说明临摹、空白练习、多音字处理、打印设置及不同学习阶段的版式选择。
+- [中文汉字和日文汉字有什么区别 - 字形转换与对照](https://jianfan.app/blog/chinese-japanese-kanji-differences/): 比较中文简体字、繁体字和日本新字体的字形关系，说明同形异义、日本国字与转换限制，并介绍如何使用中日汉字转换、三栏对照工具和校对方法。
+- [日文汉字怎么转平假名、罗马字和振假名 - 使用指南](https://jianfan.app/blog/kanji-reading-hiragana-romaji-furigana/): 说明日文汉字转平假名、片假名、罗马字和振假名的区别，介绍自动标注读音的操作步骤、多音词处理、罗马字体系选择、结果校对方法及常见错误。
+
+## Optional
+
+- [About JianFan.app - Chinese and Japanese Character Tools](https://jianfan.app/en/about/): Learn what JianFan.app provides, how browser-local processing works, its OpenCC foundation, maintenance principles, and contact details.
+- [Privacy Statement](https://jianfan.app/en/privacy/): JianFan.app privacy statement for browser-local Chinese conversion, file text extraction, preferences, custom dictionary entries, and third-party resources.
+- [Contact JianFan.app - Feedback and Issue Reports](https://jianfan.app/en/contact/): Contact JianFan.app at admin@jianfan.app about conversion issues, feature suggestions, privacy, security, accessibility, or copyright.
+- [Sitemap](https://jianfan.app/sitemap.xml): Every canonical URL with hreflang alternates and last-modified dates.

@@ -72,6 +72,52 @@
                 "item": "https://jianfan.app/en/traditional-to-simplified/"
               }
             ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/en/traditional-to-simplified/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Can it convert both Taiwan and Hong Kong Traditional Chinese?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, but choose the matching source mode. The default “Traditional → Simplified” turns 裏面 and 説話 into 里面 and 说话 but can leave regional forms such as 衞生 and 著急 unchanged. Use “Hong Kong → Simplified” for Hong Kong text and a Taiwan mode for Taiwan text to get complete results."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can it replace Taiwan terms with mainland vocabulary?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Choose “Taiwan → Simplified phrases”: 軟體→软件 (software), 滑鼠→鼠标 (mouse), 伺服器→服务器 (server), 計程車→出租车 (taxi), 影片→视频 (video), 印表機→打印机 (printer), 記憶體→内存 (memory), 部落格→博客 (blog), 網路→网络 (network). The default mode changes only character forms."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I convert the result back to the original Traditional text?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Not always. Several Traditional characters merge into one Simplified character: 頭髮/發展→头发/发展, 乾杯/幹活/樹幹→干杯/干活/树干, 後面/皇后→后面/皇后, 颱風/臺灣→台风/台湾. Converting back relies on word context, so common words return correctly but rare combinations need checking against the original."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does it translate or rewrite Cantonese?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Conversion changes only character forms and optional regional vocabulary. It does not translate meaning or change grammar. Cantonese words stay as they are; for example, 的士 (taxi) remains 的士 in Simplified Chinese."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is my text uploaded, and how much can I convert?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Conversion runs locally in your browser in chunks. One conversion can handle up to 3 million characters, and you can import TXT, DOCX, PDF, Excel, or CSV files up to 10 MB."
+                }
+              }
+            ]
           }
         ]
       }
@@ -361,6 +407,17 @@
           <!-- korean-hanja-tool-links:end -->
         </nav>
       </section>
+      <!-- converter-faq:start -->
+      <section class="pinyin-faq converter-faq" aria-labelledby="converterFaqTitle">
+        <h2 id="converterFaqTitle">Traditional to Simplified Chinese FAQ</h2>
+        <p class="converter-faq-lead">Traditional to Simplified conversion rewrites Taiwan, Hong Kong, or standard Traditional Chinese in the Simplified characters used in mainland China. It is a many-to-one conversion: for example, the different characters in 頭髮 (hair) and 發展 (develop) both become 发.</p>
+        <details><summary>Can it convert both Taiwan and Hong Kong Traditional Chinese?</summary><p>Yes, but choose the matching source mode. The default “Traditional → Simplified” turns 裏面 and 説話 into 里面 and 说话 but can leave regional forms such as 衞生 and 著急 unchanged. Use “Hong Kong → Simplified” for Hong Kong text and a Taiwan mode for Taiwan text to get complete results.</p></details>
+        <details><summary>Can it replace Taiwan terms with mainland vocabulary?</summary><p>Choose “Taiwan → Simplified phrases”: 軟體→软件 (software), 滑鼠→鼠标 (mouse), 伺服器→服务器 (server), 計程車→出租车 (taxi), 影片→视频 (video), 印表機→打印机 (printer), 記憶體→内存 (memory), 部落格→博客 (blog), 網路→网络 (network). The default mode changes only character forms.</p></details>
+        <details><summary>Can I convert the result back to the original Traditional text?</summary><p>Not always. Several Traditional characters merge into one Simplified character: 頭髮/發展→头发/发展, 乾杯/幹活/樹幹→干杯/干活/树干, 後面/皇后→后面/皇后, 颱風/臺灣→台风/台湾. Converting back relies on word context, so common words return correctly but rare combinations need checking against the original.</p></details>
+        <details><summary>Does it translate or rewrite Cantonese?</summary><p>No. Conversion changes only character forms and optional regional vocabulary. It does not translate meaning or change grammar. Cantonese words stay as they are; for example, 的士 (taxi) remains 的士 in Simplified Chinese.</p></details>
+        <details><summary>Is my text uploaded, and how much can I convert?</summary><p>No. Conversion runs locally in your browser in chunks. One conversion can handle up to 3 million characters, and you can import TXT, DOCX, PDF, Excel, or CSV files up to 10 MB.</p></details>
+      </section>
+      <!-- converter-faq:end -->
     </main>
 
     <footer class="site-footer">

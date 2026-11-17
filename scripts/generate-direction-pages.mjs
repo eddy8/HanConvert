@@ -232,7 +232,7 @@ function updateStructuredData(html, slug, locale, content) {
   application.description = content.description;
 
   structuredData["@graph"] = [
-    ...graph.filter((entry) => entry["@type"] !== "BreadcrumbList"),
+    ...graph.filter((entry) => !["BreadcrumbList", "FAQPage"].includes(entry["@type"])),
     {
       "@type": "BreadcrumbList",
       "@id": `${pageUrl}#breadcrumb`,
@@ -240,7 +240,9 @@ function updateStructuredData(html, slug, locale, content) {
         { "@type": "ListItem", position: 1, name: locales[locale].home, item: localizedUrl(locale) },
         { "@type": "ListItem", position: 2, name: pageName, item: pageUrl }
       ]
-    }
+    },
+    // The answer-first FAQ node is owned by sync-converter-faq.mjs and always stays last.
+    ...graph.filter((entry) => entry["@type"] === "FAQPage")
   ];
 
   const formatted = JSON.stringify(structuredData, null, 2)

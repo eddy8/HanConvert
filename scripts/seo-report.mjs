@@ -157,6 +157,24 @@ if (weekly) {
   out.push(table(["page", "lastmod", "impr./week", "CTR", "weeks after"], rowsForTable.slice(0, 60)));
 }
 
+// 7. GEO: citations in Copilot and partner AI answers (Bing AI Performance).
+const ai = current.ai;
+if (ai?.queries?.length || ai?.pages?.length) {
+  const before = previous?.ai?.totals;
+  out.push("## 7. AI answer citations (Bing AI Performance)\n");
+  if (ai.totals) out.push(`- ${num(ai.totals.citations)} citations${delta(ai.totals.citations, before?.citations)}, ${ai.totals.citedPages ?? "?"} cited pages, ${ai.totals.groundingQueries ?? "?"} grounding queries\n`);
+  const previousShare = new Map((previous?.ai?.queries ?? []).map((row) => [row.query, row.share]));
+  const lowShare = ai.queries.filter((row) => row.citations >= 150 && row.share < 0.1).sort((a, b) => b.citations - a.citations);
+  out.push("Queries where AI answers often cite the site but give it a small share: add direct answers, concrete examples, and comparison facts on the cited page.\n");
+  out.push(table(["grounding query", "citations", "share", "share before"], lowShare.map((row) => [row.query, num(row.citations), pct(row.share), previousShare.has(row.query) ? pct(previousShare.get(row.query)) : "-"])));
+  const cited = await Promise.all(ai.pages.slice(0, 15).map(async (row) => {
+    const html = await readFile(path.join(projectRoot, locToFile(row.url)), "utf8").catch(() => "");
+    return [short(row.url), num(row.citations), html.includes('"FAQPage"') ? "yes" : "**no**", lastmods.get(row.url) ?? "-"];
+  }));
+  out.push("Most-cited pages. Pages without an FAQ give answer engines little quotable text.\n");
+  out.push(table(["page", "citations", "FAQ", "lastmod"], cited));
+}
+
 const report = out.join("\n");
 const reportPath = path.join(dataRoot, current.date, "report.md");
 await writeFile(reportPath, report);

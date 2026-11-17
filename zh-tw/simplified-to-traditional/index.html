@@ -72,6 +72,52 @@
                 "item": "https://jianfan.app/zh-tw/simplified-to-traditional/"
               }
             ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/zh-tw/simplified-to-traditional/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "簡體轉繁體會把「发、后、干」轉錯嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "常見詞能自動區分。轉換先比對詞組再轉單字：头发→頭髮、出发→出發、发票→發票、后天→後天、皇后→皇后、干净→乾淨、干活→幹活、只有一只猫→只有一隻貓、钟表→鐘錶。人名、新詞和單獨的字缺少上下文，發佈前仍建議校對。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "為什麼轉出來是「爲、裏、牀」，和台灣常見寫法不同？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "預設的通用繁體採用 OpenCC 標準字形：为什么→爲什麼、里面→裏面、床铺→牀鋪、面包→麪包。讀者在台灣請選擇「簡體 → 台灣正體」，會得到「為什麼、裡面、床鋪、麵包」；面向香港請選擇香港繁體。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "可以把软件、视频等詞換成台灣說法嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "選擇「簡體 → 台灣正體（含用詞）」即可：软件→軟體、鼠标→滑鼠、服务器→伺服器、出租车→計程車、视频→影片、打印机→印表機、内存→記憶體、博客→部落格、激光→雷射。只轉字形的模式會保留「軟件、視頻」等原詞。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "品牌名稱或專有名詞被轉錯怎麼辦？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "開啟「自訂詞庫」，填寫轉換前和轉換後的寫法即可固定結果；兩邊填寫相同內容可讓品牌名稱保持不變。詞條只儲存在目前的瀏覽器中。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "轉換的文字會上傳嗎？可以轉多長？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不會上傳，轉換在瀏覽器本機分段完成。單次最多可轉換 300 萬字元，也能匯入 10 MB 以內的 TXT、DOCX、PDF、Excel 或 CSV 檔案擷取文字。"
+                }
+              }
+            ]
           }
         ]
       }
@@ -361,6 +407,17 @@
           <!-- korean-hanja-tool-links:end -->
         </nav>
       </section>
+      <!-- converter-faq:start -->
+      <section class="pinyin-faq converter-faq" aria-labelledby="converterFaqTitle">
+        <h2 id="converterFaqTitle">簡體轉繁體常見問題</h2>
+        <p class="converter-faq-lead">簡體轉繁體是把簡體中文轉換成繁體字形。本頁預設輸出通用繁體（OpenCC 標準字形），也可以切換為台灣正體或香港繁體，並視需要替換地區用詞。</p>
+        <details><summary>簡體轉繁體會把「发、后、干」轉錯嗎？</summary><p>常見詞能自動區分。轉換先比對詞組再轉單字：头发→頭髮、出发→出發、发票→發票、后天→後天、皇后→皇后、干净→乾淨、干活→幹活、只有一只猫→只有一隻貓、钟表→鐘錶。人名、新詞和單獨的字缺少上下文，發佈前仍建議校對。</p></details>
+        <details><summary>為什麼轉出來是「爲、裏、牀」，和台灣常見寫法不同？</summary><p>預設的通用繁體採用 OpenCC 標準字形：为什么→爲什麼、里面→裏面、床铺→牀鋪、面包→麪包。讀者在台灣請選擇「簡體 → 台灣正體」，會得到「為什麼、裡面、床鋪、麵包」；面向香港請選擇香港繁體。</p></details>
+        <details><summary>可以把软件、视频等詞換成台灣說法嗎？</summary><p>選擇「簡體 → 台灣正體（含用詞）」即可：软件→軟體、鼠标→滑鼠、服务器→伺服器、出租车→計程車、视频→影片、打印机→印表機、内存→記憶體、博客→部落格、激光→雷射。只轉字形的模式會保留「軟件、視頻」等原詞。</p></details>
+        <details><summary>品牌名稱或專有名詞被轉錯怎麼辦？</summary><p>開啟「自訂詞庫」，填寫轉換前和轉換後的寫法即可固定結果；兩邊填寫相同內容可讓品牌名稱保持不變。詞條只儲存在目前的瀏覽器中。</p></details>
+        <details><summary>轉換的文字會上傳嗎？可以轉多長？</summary><p>不會上傳，轉換在瀏覽器本機分段完成。單次最多可轉換 300 萬字元，也能匯入 10 MB 以內的 TXT、DOCX、PDF、Excel 或 CSV 檔案擷取文字。</p></details>
+      </section>
+      <!-- converter-faq:end -->
     </main>
 
     <footer class="site-footer">
