@@ -16,7 +16,8 @@ for (const script of [
   "scripts/generate-image-redaction-pages.mjs",
   "scripts/generate-password-generator-pages.mjs",
   "scripts/generate-blog-pages.mjs",
-  "scripts/sync-standalone-page-semantics.mjs"
+  "scripts/sync-standalone-page-semantics.mjs",
+  "scripts/sync-sitemap-lastmod.mjs"
 ]) {
   test(`${script} preserves current canonical URLs, structured data, and navigation`, async () => {
     const result = await execFileAsync(process.execPath, [script, "--check"], { cwd: projectRoot });

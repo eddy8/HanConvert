@@ -2,6 +2,7 @@ import { preserveToolLinks } from "./static-tool-links.mjs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { preserveExistingLastmods } from "./sitemap-lastmod.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
@@ -403,6 +404,6 @@ for (const locale of Object.keys(locales)) {
 
 const sitemapPath = path.join(projectRoot, "sitemap.xml");
 const sitemap = await readFile(sitemapPath, "utf8");
-await writeOrCheck(sitemapPath, syncSitemap(sitemap));
+await writeOrCheck(sitemapPath, preserveExistingLastmods(sitemap, syncSitemap(sitemap)));
 
 console.log(`${checkOnly ? "Checked" : "Generated"} 5 multilingual text-formatter pages, homepage links, and sitemap entries.`);

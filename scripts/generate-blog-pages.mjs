@@ -15,6 +15,7 @@ import {
   visibleMetadataLength,
   visibleTitleContentLength
 } from "./seo-metadata-rules.mjs";
+import { preserveExistingLastmods } from "./sitemap-lastmod.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
@@ -464,7 +465,7 @@ async function syncSitemap() {
   const output = source.includes(sitemapMarkerStart)
     ? source.replace(new RegExp(`${sitemapMarkerStart}[\\s\\S]*?${sitemapMarkerEnd}`, "u"), section)
     : source.replace("</urlset>", `${section}\n</urlset>`);
-  await writeOrCheck(sitemapPath, output);
+  await writeOrCheck(sitemapPath, preserveExistingLastmods(source, output));
 }
 
 validateMetadata(BLOG_INDEX, "blog index");

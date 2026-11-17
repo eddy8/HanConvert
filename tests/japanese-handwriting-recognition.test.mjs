@@ -3,6 +3,8 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import vm from "node:vm";
 
+import { isDescriptionLengthInRange } from "../scripts/seo-metadata-rules.mjs";
+
 const source = await readFile(new URL("../japanese-handwriting-recognition.js", import.meta.url), "utf8");
 const context = {};
 context.globalThis = context;
@@ -43,7 +45,7 @@ for (const [path, lang, heading] of pages) {
     assert.ok(html.includes('integrity="sha384-'));
     assert.ok(html.includes('href="https://github.com/barionleg/okanjirec"'));
     assert.ok(html.includes('hreflang="x-default"'));
-    assert.ok([...description].length >= 150 && [...description].length <= 160);
+    assert.ok(isDescriptionLengthInRange(html, description));
     assert.doesNotMatch(html, /(?:src|href)="[^"]+\?v=/u);
   });
 }
