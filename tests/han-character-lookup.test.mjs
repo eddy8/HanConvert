@@ -4,6 +4,8 @@ import path from "node:path";
 import test from "node:test";
 import vm from "node:vm";
 
+import { getMetadataLengthRange, visibleMetadataLength } from "../scripts/seo-metadata-rules.mjs";
+
 const projectRoot = path.resolve(import.meta.dirname, "..");
 const coreSource = await readFile(path.join(projectRoot, "han-character-lookup-core.js"), "utf8");
 const context = {};
@@ -79,7 +81,9 @@ test("all localized pages contain static copy, hreflang, schemas and browser ass
   for (const [locale, relativePath, heading, componentHeading] of localizedPages) {
     const html = await readFile(path.join(projectRoot, relativePath), "utf8");
     const description = html.match(/<meta name="description" content="([^"]+)"/u)?.[1] || "";
-    assert.ok([...description].length >= 150 && [...description].length <= 160, `${locale} description length`);
+    const [descriptionMin, descriptionMax] = getMetadataLengthRange(locale, "description");
+    const descriptionLength = visibleMetadataLength(description);
+    assert.ok(descriptionLength >= descriptionMin && descriptionLength <= descriptionMax, `${locale} description length ${descriptionLength}`);
     assert.match(html, new RegExp(`<h1 id="pageTitle">${heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}</h1>`));
     assert.match(html, /data-tool-page="han-character-lookup"/);
     assert.match(html, /src="\/han-character-lookup-core\.js"/);

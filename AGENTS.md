@@ -19,10 +19,11 @@
 
 - Every public tool must have complete localized pages for all five supported locales unless the owner explicitly limits its market.
 - Add or verify the canonical URL, all `hreflang` alternates, `x-default`, localized structured data, sitemap entry, and crawlable internal links. Use `zh-Hans` for Simplified Chinese and `zh-Hant` for Traditional Chinese; reserve `zh-CN` for HTML `lang`, application locale identifiers, and structured-data language values where appropriate.
-- Apply these localized `<title>` length ranges:
-  - English: 50-65 characters.
-  - Simplified Chinese, Traditional Chinese, and Japanese: 22-35 characters.
-  - Korean: 22-35 Hangul/Hanja characters.
+- Apply these localized `<title>` length ranges (sized so the core term stays visible before search engines truncate the title at roughly 600px):
+  - English: 30-60 characters.
+  - Simplified Chinese, Traditional Chinese, and Japanese: 10-30 characters.
+  - Korean: 10-34 characters, because word spaces render narrower than Hangul.
+- Treat the minimum as a floor against empty titles, not a target. A short, exact title such as `簡体字 繁体字 変換ツール` is better than a padded one.
 - Measure these localized `<title>` ranges only from the page-specific text before the fixed ` | JianFan.app` suffix. The brand suffix does not consume the localized title-length budget.
 - Keep the complete `<title>`, including the brand suffix, at no more than 90 visible Unicode characters.
 - Derive every new or modified page title in this order:
@@ -36,6 +37,17 @@
   - Simplified Chinese, Traditional Chinese, and Japanese: 65-90 characters.
   - Korean: 65-90 Hangul/Hanja characters.
 - Measure metadata length from the final visible Unicode text with `[...value].length`, including spaces and punctuation. Do not pad copy unnaturally merely to reach a range.
+- Put the core search term and the main reason to click (free, no upload, the specific result the user gets) in the first 50 characters of a CJK description or the first 100 characters of an English description, because search engines truncate snippets.
+- Write the sitemap `<lastmod>` only from the date a page's visible content actually changed. Never bulk-refresh it, and never leave it stale after a real content change.
+
+## Data-Driven SEO Workflow
+
+- Base keyword and page decisions on real data, in this order: Google Search Console and Bing Webmaster Tools query and page data for this site, then competitor pages that rank for the target query, then keyword tools. Bing currently sends far more traffic than Google, and its data also reflects Copilot and ChatGPT search visibility.
+- Study the pages that rank above JianFan.app for a target query. Identify the user pain points they answer and the ones they miss, and cover the missing ones with working tool features or concrete answers, not paraphrased copy.
+- Serve long-tail and audience-specific queries in the existing page's overview and FAQ first. Create a new page only when the intent is clearly distinct (a different task, audience, or result), search data shows demand, and the page can provide unique, useful content beyond a template swap.
+- Gate page growth on indexing health. While Google indexes fewer than about half of the sitemap URLs, do not add batches of generated pages. Improve, merge, or `noindex` thin pages first.
+- Every generated page must pass a uniqueness bar: a distinct primary query, a distinct overview, at least several page-specific FAQ answers, and working examples that match the page's intent.
+- Review search data regularly. Prioritize pages with high impressions and low CTR (snippet problem) and pages ranking in positions 4-15 (content and internal-link problem). Diagnose pages that are crawled but not indexed or discovered but not indexed, then improve, consolidate, or remove them.
 - Preserve useful existing keywords when optimizing a page. Add missing search intent naturally instead of replacing established coverage or stuffing keywords.
 - Keep Title, meta description, H1, introductory copy, FAQ, and structured data aligned with the page's actual primary function.
 - After adding a feature, review whether related pages, navigation, sitemap, structured data, or SEO copy also need updates.
