@@ -4,6 +4,7 @@
 // Files in the snapshot folder (paths may be site-relative, such as /ja/ or /blog/x/):
 //   meta.json                        { date, window, bing.totals, google.totals, google.indexed }
 //   bing-pages.tsv / google-pages.tsv      path  impressions  clicks  position
+//   bing-weekly.json                       optional per-page weekly series from seo-fetch-bing.mjs
 //   bing-queries.tsv                       query impressions  clicks  position
 //   google-indexed.txt                     one path per line
 //   google-crawled-not-indexed.txt, google-redirect.txt, google-duplicate-canonical.txt, ...
@@ -54,7 +55,12 @@ if (!notIndexed["discovered-not-indexed"]) {
 const snapshot = {
   date: meta.date ?? date,
   window: meta.window,
-  bing: { totals: meta.bing?.totals, pages: await rows("bing-pages.tsv", "url"), queries: await rows("bing-queries.tsv", "query") },
+  bing: {
+    totals: meta.bing?.totals,
+    pages: await rows("bing-pages.tsv", "url"),
+    queries: await rows("bing-queries.tsv", "query"),
+    weekly: JSON.parse(await readFile(path.join(folder, "bing-weekly.json"), "utf8").catch(() => "null"))
+  },
   google: {
     totals: meta.google?.totals,
     pages: await rows("google-pages.tsv", "url"),
