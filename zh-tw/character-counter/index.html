@@ -95,6 +95,30 @@
             "mainEntity": [
               {
                 "@type": "Question",
+                "name": "標點符號和空格算字數嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "「字元數」包含標點、空格和換行；「不含空白」會去掉空格與換行。頁面也會另外列出標點符號數量，用不含空白的字數減去標點數，就能得到純文字字數。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "表情符號或有聲調的拼音算幾個字？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "依畫面上看到的字元計算：一個表情符號（如 👍🏽）或一個有聲調的拼音字母（如 ǎ）都算 1 個字元，不會因內部由多個編碼組成而重複計算。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "為什麼和 Word 的字數統計不一樣？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Word 的「字數」通常把一個英文單字計為 1，而這裡的字元數會把單字中的每個字母都算進去。純中文文字兩者通常接近，中英文混排時可對照本頁的「漢字數」和「詞語數」。"
+                }
+              },
+              {
+                "@type": "Question",
                 "name": "字元數和漢字數有什麼不同？",
                 "acceptedAnswer": {
                   "@type": "Answer",
@@ -209,6 +233,9 @@ CJK text analysis 2026.">載入範例</button><button class="text-button" id="co
           <li>即時查看字元數、詞語、句子、段落、行數與 UTF-8 位元組。</li>
           <li>依需要檢查文字組成、字元頻率及目標字數進度。</li>
         </ol></section><section class="pinyin-faq" aria-labelledby="counterFaqTitle"><h2 id="counterFaqTitle">字數統計常見問題</h2>
+          <details><summary>標點符號和空格算字數嗎？</summary><p>「字元數」包含標點、空格和換行；「不含空白」會去掉空格與換行。頁面也會另外列出標點符號數量，用不含空白的字數減去標點數，就能得到純文字字數。</p></details>
+          <details><summary>表情符號或有聲調的拼音算幾個字？</summary><p>依畫面上看到的字元計算：一個表情符號（如 👍🏽）或一個有聲調的拼音字母（如 ǎ）都算 1 個字元，不會因內部由多個編碼組成而重複計算。</p></details>
+          <details><summary>為什麼和 Word 的字數統計不一樣？</summary><p>Word 的「字數」通常把一個英文單字計為 1，而這裡的字元數會把單字中的每個字母都算進去。純中文文字兩者通常接近，中英文混排時可對照本頁的「漢字數」和「詞語數」。</p></details>
           <details><summary>字元數和漢字數有什麼不同？</summary><p>字元數包含漢字、字母、數字、標點、空白與換行；漢字數只計算 Unicode 漢字。正體、簡體、日文漢字與韓文漢字可能共用碼位，因此統一列入漢字。</p></details>
           <details><summary>為什麼字元數和位元組數不同？</summary><p>字元是畫面上看到的文字單位，位元組是編碼後的儲存大小。UTF-8 中英文字母通常為 1 位元組，常見漢字通常為 3 位元組。</p></details>
           <details><summary>Word 文件會上傳嗎？</summary><p>不會。DOCX 文件只在瀏覽器內提取文字，不會傳送到 JianFan.app 或第三方轉檔伺服器。</p></details>

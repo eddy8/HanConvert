@@ -40,7 +40,7 @@
     "lastmod": "2026-08-29"
   },
   "character-counter/index.html": {
-    "hash": "44348817e477c90b",
+    "hash": "261f425ec23fcfa5",
     "lastmod": "2026-11-17"
   },
   "chinese-character-lookup/index.html": {
@@ -48,8 +48,8 @@
     "lastmod": "2026-11-17"
   },
   "chinese-handwriting-recognition/index.html": {
-    "hash": "3814cc93959781dc",
-    "lastmod": "2026-08-28"
+    "hash": "b99bb826081e6fed",
+    "lastmod": "2026-11-17"
   },
   "chinese-japanese-kanji-comparison/index.html": {
     "hash": "a58ac1e73b0c4b43",
@@ -76,16 +76,16 @@
     "lastmod": "2026-07-21"
   },
   "en/character-counter/index.html": {
-    "hash": "ba4f17ce8301e08c",
-    "lastmod": "2026-09-10"
+    "hash": "0b59a5602108c5d2",
+    "lastmod": "2026-11-17"
   },
   "en/chinese-character-lookup/index.html": {
     "hash": "53646d30f2a4874c",
     "lastmod": "2026-08-27"
   },
   "en/chinese-handwriting-recognition/index.html": {
-    "hash": "5efb7ac35949f0df",
-    "lastmod": "2026-08-28"
+    "hash": "26a617441d9975aa",
+    "lastmod": "2026-11-17"
   },
   "en/chinese-japanese-kanji-comparison/index.html": {
     "hash": "0b15decd4c3fc932",
@@ -120,8 +120,8 @@
     "lastmod": "2026-08-27"
   },
   "en/hangul-hanja-converter/index.html": {
-    "hash": "2ffe0dc0e8a2274b",
-    "lastmod": "2026-08-26"
+    "hash": "b0b1a8d38fb0aa5e",
+    "lastmod": "2026-11-17"
   },
   "en/hanzi-tracing-worksheet/index.html": {
     "hash": "166428b63e0355de",
@@ -172,8 +172,8 @@
     "lastmod": "2026-08-27"
   },
   "en/japanese-handwriting-recognition/index.html": {
-    "hash": "9de296e872a4ec46",
-    "lastmod": "2026-08-02"
+    "hash": "d6dfe1aafc347b41",
+    "lastmod": "2026-11-17"
   },
   "en/japanese-kanji-converter/index.html": {
     "hash": "4baebe9e151fdd1a",
@@ -204,16 +204,16 @@
     "lastmod": "2026-08-02"
   },
   "en/korean-hanja-dictionary/index.html": {
-    "hash": "4cf9bb1d8da4f7ab",
-    "lastmod": "2026-08-02"
+    "hash": "84aa4203e08e45a5",
+    "lastmod": "2026-11-17"
   },
   "en/korean-hanja-handwriting-recognition/index.html": {
-    "hash": "ad64e11b9e824ca7",
-    "lastmod": "2026-08-26"
+    "hash": "8f6487dd9fb84ad3",
+    "lastmod": "2026-11-17"
   },
   "en/korean-name-hanja/index.html": {
-    "hash": "170ff93ded110dda",
-    "lastmod": "2026-08-26"
+    "hash": "256497d4739e011d",
+    "lastmod": "2026-11-17"
   },
   "en/mi-zi-ge-worksheet/index.html": {
     "hash": "067714dc9d0bfcfa",
@@ -296,7 +296,7 @@
     "lastmod": "2026-11-17"
   },
   "hangul-hanja-converter/index.html": {
-    "hash": "5f65d8c5c377f5c6",
+    "hash": "d0bc1559fc06a5e5",
     "lastmod": "2026-11-17"
   },
   "hanzi-tracing-worksheet/index.html": {
@@ -344,7 +344,7 @@
     "lastmod": "2026-08-28"
   },
   "ja/character-counter/index.html": {
-    "hash": "5c698efb8303eee1",
+    "hash": "c469a494ed83f74c",
     "lastmod": "2026-11-17"
   },
   "ja/chinese-character-lookup/index.html": {
@@ -352,8 +352,8 @@
     "lastmod": "2026-11-17"
   },
   "ja/chinese-handwriting-recognition/index.html": {
-    "hash": "054cb2f4b367250b",
-    "lastmod": "2026-08-28"
+    "hash": "c065233103bea359",
+    "lastmod": "2026-11-17"
   },
   "ja/chinese-japanese-kanji-comparison/index.html": {
     "hash": "bc7fb35d20c25fa0",
@@ -388,7 +388,7 @@
     "lastmod": "2026-11-17"
   },
   "ja/hangul-hanja-converter/index.html": {
-    "hash": "799ba309e5ae829a",
+    "hash": "289a91e4db1ff2a4",
     "lastmod": "2026-11-17"
   },
   "ja/hanzi-tracing-worksheet/index.html": {
@@ -440,7 +440,7 @@
     "lastmod": "2026-11-17"
   },
   "ja/japanese-handwriting-recognition/index.html": {
-    "hash": "171f0e9ddf89fdda",
+    "hash": "ed99f3d6f3664d8a",
     "lastmod": "2026-11-17"
   },
   "ja/japanese-kanji-converter/index.html": {
@@ -472,15 +472,15 @@
     "lastmod": "2026-08-02"
   },
   "ja/korean-hanja-dictionary/index.html": {
-    "hash": "ead65eb0e0c449c2",
+    "hash": "92aeaa056944ccab",
     "lastmod": "2026-11-17"
   },
   "ja/korean-hanja-handwriting-recognition/index.html": {
-    "hash": "5c3603a5b33f7c51",
+    "hash": "e26e2dfb6d5e42e2",
     "lastmod": "2026-11-17"
   },
   "ja/korean-name-hanja/index.html": {
-    "hash": "bdb8bb19655c70aa",
+    "hash": "e7c191372d55c960",
     "lastmod": "2026-11-17"
   },
   "ja/mi-zi-ge-worksheet/index.html": {
@@ -560,7 +560,7 @@
     "lastmod": "2026-11-17"
   },
   "japanese-handwriting-recognition/index.html": {
-    "hash": "5f1d70b0dd70c0b9",
+    "hash": "def1f519ea2b3859",
     "lastmod": "2026-11-17"
   },
   "japanese-kanji-converter/index.html": {
@@ -596,7 +596,7 @@
     "lastmod": "2026-07-21"
   },
   "ko/character-counter/index.html": {
-    "hash": "601e8a4aa2d0117d",
+    "hash": "96cf71e0b158513c",
     "lastmod": "2026-11-17"
   },
   "ko/chinese-character-lookup/index.html": {
@@ -604,8 +604,8 @@
     "lastmod": "2026-11-17"
   },
   "ko/chinese-handwriting-recognition/index.html": {
-    "hash": "9ac7bca15cd762fd",
-    "lastmod": "2026-08-28"
+    "hash": "a61b962edf3d8627",
+    "lastmod": "2026-11-17"
   },
   "ko/chinese-japanese-kanji-comparison/index.html": {
     "hash": "fa10f19a017e9e80",
@@ -640,7 +640,7 @@
     "lastmod": "2026-11-17"
   },
   "ko/hangul-hanja-converter/index.html": {
-    "hash": "a584ab92cb35ffb9",
+    "hash": "36a6086757f8f67d",
     "lastmod": "2026-11-17"
   },
   "ko/hanzi-tracing-worksheet/index.html": {
@@ -692,7 +692,7 @@
     "lastmod": "2026-11-17"
   },
   "ko/japanese-handwriting-recognition/index.html": {
-    "hash": "cddd89de5f93e7b2",
+    "hash": "c54c708cfc07328f",
     "lastmod": "2026-11-17"
   },
   "ko/japanese-kanji-converter/index.html": {
@@ -724,15 +724,15 @@
     "lastmod": "2026-08-02"
   },
   "ko/korean-hanja-dictionary/index.html": {
-    "hash": "08225f3653607adb",
+    "hash": "699690a1f9198664",
     "lastmod": "2026-11-17"
   },
   "ko/korean-hanja-handwriting-recognition/index.html": {
-    "hash": "0cf6b69492288046",
+    "hash": "d24171edfeee7dcd",
     "lastmod": "2026-11-17"
   },
   "ko/korean-name-hanja/index.html": {
-    "hash": "268ac0f19a151bf1",
+    "hash": "ab7860b2bca1c9a8",
     "lastmod": "2026-11-17"
   },
   "ko/mi-zi-ge-worksheet/index.html": {
@@ -804,15 +804,15 @@
     "lastmod": "2026-09-10"
   },
   "korean-hanja-dictionary/index.html": {
-    "hash": "a8b006332c861c5c",
+    "hash": "81754da898ecf283",
     "lastmod": "2026-11-17"
   },
   "korean-hanja-handwriting-recognition/index.html": {
-    "hash": "1a9bc44e362eeb30",
+    "hash": "dbdc4f7753f5bed8",
     "lastmod": "2026-11-17"
   },
   "korean-name-hanja/index.html": {
-    "hash": "d4bddb4a5b9f692c",
+    "hash": "344cc23e411db63a",
     "lastmod": "2026-11-17"
   },
   "mi-zi-ge-worksheet/index.html": {
@@ -892,7 +892,7 @@
     "lastmod": "2026-08-28"
   },
   "zh-tw/character-counter/index.html": {
-    "hash": "f04f521b2f24beed",
+    "hash": "84a30b0635b56dfe",
     "lastmod": "2026-11-17"
   },
   "zh-tw/chinese-character-lookup/index.html": {
@@ -900,8 +900,8 @@
     "lastmod": "2026-11-17"
   },
   "zh-tw/chinese-handwriting-recognition/index.html": {
-    "hash": "9a4cbf340c26b68f",
-    "lastmod": "2026-08-28"
+    "hash": "757561ebb90926fc",
+    "lastmod": "2026-11-17"
   },
   "zh-tw/chinese-japanese-kanji-comparison/index.html": {
     "hash": "719207de8b911ddb",
@@ -936,7 +936,7 @@
     "lastmod": "2026-11-17"
   },
   "zh-tw/hangul-hanja-converter/index.html": {
-    "hash": "f95228347fe21d6d",
+    "hash": "20279c8d346e62a6",
     "lastmod": "2026-11-17"
   },
   "zh-tw/hanzi-tracing-worksheet/index.html": {
@@ -988,7 +988,7 @@
     "lastmod": "2026-11-17"
   },
   "zh-tw/japanese-handwriting-recognition/index.html": {
-    "hash": "ad55b3a7b5a61e22",
+    "hash": "3dd9a40a9360cfb3",
     "lastmod": "2026-11-17"
   },
   "zh-tw/japanese-kanji-converter/index.html": {
@@ -1020,15 +1020,15 @@
     "lastmod": "2026-08-28"
   },
   "zh-tw/korean-hanja-dictionary/index.html": {
-    "hash": "6db7c6caa0838672",
+    "hash": "5a0d6dcccb96200f",
     "lastmod": "2026-11-17"
   },
   "zh-tw/korean-hanja-handwriting-recognition/index.html": {
-    "hash": "8321d1a24fb0b982",
+    "hash": "46ac2a61f9cf3bfc",
     "lastmod": "2026-11-17"
   },
   "zh-tw/korean-name-hanja/index.html": {
-    "hash": "f14766cc0e0d10b9",
+    "hash": "02739cbaddb9c34e",
     "lastmod": "2026-11-17"
   },
   "zh-tw/mi-zi-ge-worksheet/index.html": {

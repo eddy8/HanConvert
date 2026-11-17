@@ -95,6 +95,30 @@
             "mainEntity": [
               {
                 "@type": "Question",
+                "name": "띄어쓰기와 문장부호도 글자수에 포함되나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "‘공백 포함’은 띄어쓰기, 줄바꿈, 문장부호를 모두 세고 ‘공백 제외’는 띄어쓰기와 줄바꿈을 뺍니다. 문장부호 수도 따로 보여 주므로 빼서 계산할 수 있습니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "자기소개서 바이트는 어떻게 계산하나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "UTF-8 바이트와 함께 한글 2바이트 기준(영문·숫자·공백 1바이트) 바이트를 보여 줍니다. 채용 사이트마다 기준이 다를 수 있으니 제출처의 기준도 확인하세요."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "이모지는 몇 글자로 세나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "화면에 보이는 한 글자로 셉니다. 👍🏽처럼 내부적으로 여러 코드로 이루어진 이모지도 1글자입니다."
+                }
+              },
+              {
+                "@type": "Question",
                 "name": "공백 포함과 공백 제외는 어떻게 다른가요?",
                 "acceptedAnswer": {
                   "@type": "Answer",
@@ -209,6 +233,9 @@ CJK text analysis 2026.">예시 불러오기</button><button class="text-button"
           <li>공백 포함·제외 글자수, 단어, 문장, 문단, 줄 수와 UTF-8 바이트를 확인합니다.</li>
           <li>문자 구성, 자주 쓴 글자와 목표 글자수 진행률을 함께 점검합니다.</li>
         </ol></section><section class="pinyin-faq" aria-labelledby="counterFaqTitle"><h2 id="counterFaqTitle">글자수 세기 자주 묻는 질문</h2>
+          <details><summary>띄어쓰기와 문장부호도 글자수에 포함되나요?</summary><p>‘공백 포함’은 띄어쓰기, 줄바꿈, 문장부호를 모두 세고 ‘공백 제외’는 띄어쓰기와 줄바꿈을 뺍니다. 문장부호 수도 따로 보여 주므로 빼서 계산할 수 있습니다.</p></details>
+          <details><summary>자기소개서 바이트는 어떻게 계산하나요?</summary><p>UTF-8 바이트와 함께 한글 2바이트 기준(영문·숫자·공백 1바이트) 바이트를 보여 줍니다. 채용 사이트마다 기준이 다를 수 있으니 제출처의 기준도 확인하세요.</p></details>
+          <details><summary>이모지는 몇 글자로 세나요?</summary><p>화면에 보이는 한 글자로 셉니다. 👍🏽처럼 내부적으로 여러 코드로 이루어진 이모지도 1글자입니다.</p></details>
           <details><summary>공백 포함과 공백 제외는 어떻게 다른가요?</summary><p>공백 포함은 띄어쓰기, 탭과 줄바꿈도 글자수에 넣습니다. 공백 제외는 이 항목을 빼고 계산합니다. 지원서나 입력 폼이 요구하는 기준을 확인하세요.</p></details>
           <details><summary>바이트 수가 사이트마다 다른 이유는 무엇인가요?</summary><p>UTF-8에서는 한글이 보통 3바이트지만 일부 국내 채용·공공기관 입력폼은 한글과 한자를 2바이트로 계산합니다. 이 페이지에서 두 기준을 함께 확인할 수 있습니다.</p></details>
           <details><summary>Word 파일이 서버로 전송되나요?</summary><p>아니요. DOCX 텍스트는 브라우저에서 추출하며 JianFan.app이나 외부 변환 서버로 전송하지 않습니다.</p></details>

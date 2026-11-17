@@ -95,6 +95,30 @@
             "mainEntity": [
               {
                 "@type": "Question",
+                "name": "Do spaces and punctuation count as characters?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "“Characters” includes punctuation, spaces, and line breaks, while “without spaces” removes spaces and line breaks. Punctuation is also counted separately, so you can subtract it to get a letters-only count."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How are emoji and accented letters counted?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Each visible character counts once: an emoji such as 👍🏽 or an accented letter such as é is 1 character, even when it is stored as several code points."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How are words counted in Chinese or Japanese text?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Words are split with your browser's built-in word segmentation (Intl.Segmenter), which recognizes Chinese and Japanese words without spaces. Results can differ slightly from manual counts or from Microsoft Word."
+                }
+              },
+              {
+                "@type": "Question",
                 "name": "What is the difference between characters and Han characters?",
                 "acceptedAnswer": {
                   "@type": "Answer",
@@ -209,6 +233,9 @@ CJK text analysis 2026.">Load sample</button><button class="text-button" id="cou
           <li>Review characters, words, sentences, paragraphs, lines and UTF-8 bytes.</li>
           <li>Use the script breakdown, frequency list and target progress for a closer check.</li>
         </ol></section><section class="pinyin-faq" aria-labelledby="counterFaqTitle"><h2 id="counterFaqTitle">Character counter questions</h2>
+          <details><summary>Do spaces and punctuation count as characters?</summary><p>“Characters” includes punctuation, spaces, and line breaks, while “without spaces” removes spaces and line breaks. Punctuation is also counted separately, so you can subtract it to get a letters-only count.</p></details>
+          <details><summary>How are emoji and accented letters counted?</summary><p>Each visible character counts once: an emoji such as 👍🏽 or an accented letter such as é is 1 character, even when it is stored as several code points.</p></details>
+          <details><summary>How are words counted in Chinese or Japanese text?</summary><p>Words are split with your browser's built-in word segmentation (Intl.Segmenter), which recognizes Chinese and Japanese words without spaces. Results can differ slightly from manual counts or from Microsoft Word.</p></details>
           <details><summary>What is the difference between characters and Han characters?</summary><p>Characters include letters, numbers, punctuation, whitespace and line breaks. Han characters count only Unicode Han ideographs shared across Chinese, Japanese and Korean writing systems.</p></details>
           <details><summary>Why is the byte count different from the character count?</summary><p>Characters describe visible text units. Bytes describe encoded storage. In UTF-8, an English letter is usually 1 byte while a common Han character is usually 3 bytes.</p></details>
           <details><summary>Are imported Word files uploaded?</summary><p>No. DOCX text is extracted in your browser and is not sent to JianFan.app or a third-party conversion server.</p></details>

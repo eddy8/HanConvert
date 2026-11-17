@@ -1877,6 +1877,20 @@ textarea::placeholder {
   color: var(--muted);
 }
 
+/* Step-by-step answer on the Japanese handwriting lookup page. */
+.handwriting-howto {
+  margin: 18px 0 6px;
+}
+
+.handwriting-howto h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.handwriting-howto .blog-steps {
+  margin: 12px 0 0;
+}
+
 /* Answer-first FAQ on the Simplified/Traditional converter pages. */
 .converter-faq {
   margin-top: 16px;
