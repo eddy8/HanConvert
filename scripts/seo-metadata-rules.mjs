@@ -1,9 +1,9 @@
 export const SEO_METADATA_LENGTH_RANGES = Object.freeze({
-  "zh-CN": Object.freeze({ title: Object.freeze([22, 35]), description: Object.freeze([65, 90]) }),
-  "zh-TW": Object.freeze({ title: Object.freeze([22, 35]), description: Object.freeze([65, 90]) }),
-  en: Object.freeze({ title: Object.freeze([50, 65]), description: Object.freeze([120, 160]) }),
-  ja: Object.freeze({ title: Object.freeze([22, 35]), description: Object.freeze([65, 90]) }),
-  ko: Object.freeze({ title: Object.freeze([22, 35]), description: Object.freeze([65, 90]) })
+  "zh-CN": Object.freeze({ title: Object.freeze([10, 30]), description: Object.freeze([65, 90]) }),
+  "zh-TW": Object.freeze({ title: Object.freeze([10, 30]), description: Object.freeze([65, 90]) }),
+  en: Object.freeze({ title: Object.freeze([30, 60]), description: Object.freeze([120, 160]) }),
+  ja: Object.freeze({ title: Object.freeze([10, 30]), description: Object.freeze([65, 90]) }),
+  ko: Object.freeze({ title: Object.freeze([10, 34]), description: Object.freeze([65, 90]) })
 });
 
 export const SEO_TITLE_SUFFIX = " | JianFan.app";
@@ -31,7 +31,19 @@ export const LOCALIZED_METADATA_PATHS = new Set([
   "en/japanese-characters/index.html"
 ]);
 
-export const LOCALIZED_SEO_DESCRIPTION_SLUGS = new Set(["traditional-to-simplified"]);
+export const LOCALIZED_SEO_DESCRIPTION_SLUGS = new Set([
+  "photo-chinese-character-recognition",
+  "file-text-converter",
+  "japanese-chinese-kanji-converter",
+  "simplified-to-traditional",
+  "hong-kong-traditional",
+  "traditional-to-simplified",
+  "japanese-kanji-converter",
+  "character-counter",
+  "chinese-stroke-order",
+  "chinese-character-lookup",
+  "han-character-worksheet"
+]);
 
 export function decodeHtmlText(value) {
   const namedEntities = { amp: "&", apos: "'", gt: ">", lt: "<", nbsp: " ", quot: '"' };
