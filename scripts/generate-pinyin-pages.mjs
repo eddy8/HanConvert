@@ -67,7 +67,7 @@ const content = {
   },
   en: {
     title: "Chinese to Pinyin Converter with Tones | JianFan.app",
-    description: "Convert Simplified or Traditional Chinese characters to Pinyin with tone marks, tone numbers, no tones, initials, ruby annotations, and single-character pronunciation lookup.",
+    description: "Convert Simplified or Traditional Chinese characters to Pinyin with tone marks, tone numbers or no tones, plus ruby annotations and single-character lookup.",
     eyebrow: "Mandarin Pinyin · Tones · Polyphonic Characters",
     heading: "Chinese to Pinyin Converter",
     lede: "Convert Chinese characters, words, or paragraphs to Pinyin instantly. Choose tone marks, tone numbers, plain Pinyin, or initials and look up common readings for a single Han character.",

@@ -3,6 +3,8 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import vm from "node:vm";
 
+import { isDescriptionLengthInRange } from "../scripts/seo-metadata-rules.mjs";
+
 const source = await readFile(new URL("../japanese-stroke-order.js", import.meta.url), "utf8");
 const context = {};
 context.globalThis = context;
@@ -42,7 +44,7 @@ for (const [path, lang, heading] of pages) {
     assert.ok(html.includes('href="https://kanjivg.tagaini.net/"'));
     assert.ok(html.includes('"@type":"WebApplication"'));
     assert.ok(html.includes('hreflang="x-default"'));
-    assert.ok([...description].length >= 150 && [...description].length <= 160);
+    assert.ok(isDescriptionLengthInRange(html, description));
     assert.doesNotMatch(html, /(?:src|href)="[^"]+\?v=/u);
   });
 }

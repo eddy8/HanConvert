@@ -18,7 +18,7 @@ const locales = {
 const content = {
   "zh-CN": {
     title: "日本汉字笔顺查询 - 日文汉字书写顺序动画 | JianFan.app",
-    description: "免费日本汉字笔顺与书写顺序查询工具，输入一个或多个日文汉字即可查看 KanjiVG 动画、逐笔演示、笔画编号、总笔画数和书写字形。数据采用日本学校字形及日文标准笔顺，可调播放速度、显示轮廓并逐字切换，适合日语学习、假名与汉字教学、作业核对和在线书写参考；笔顺数据按需远程加载，浏览器端可直接播放使用。",
+    description: "免费日本汉字笔顺查询，输入日文汉字即可看 KanjiVG 笔顺动画、逐笔演示、笔画编号和总画数，采用日本学校字形与标准笔顺，适合日语学习和作业核对。",
     eyebrow: "日本汉字 · 书写顺序 · KanjiVG", heading: "日本汉字笔顺与书写顺序查询", lede: "输入日文汉字，按日本学校字形查看完整动画、逐笔顺序、笔画编号和总笔画数。日本笔顺与中文规范可能不同，本页使用专门的日文数据。",
     toolTitle: "输入日文汉字，查看日本标准书写顺序", searchLabel: "要查询的日文汉字", placeholder: "输入日文汉字，最多 8 个", search: "查询笔顺", quick: "常用汉字", list: "待查询汉字", previous: "上一字", next: "下一字", play: "播放全部", pause: "暂停", resume: "继续", step: "下一笔", reset: "重置", outline: "显示字形轮廓", numbers: "显示笔画编号", speed: "播放速度", speedOptions: [["0.7", "较慢"], ["1", "正常"], ["1.5", "较快"], ["2", "快速"]], strokes: "总笔画", position: "当前位置", unicode: "Unicode", standard: "字形标准", standardValue: "日本",
     messages: { idle: "等待输入日文汉字", loading: "正在加载日本笔顺数据", ready: "已加载“{character}”的日本笔顺", playing: "正在播放完整笔顺", paused: "动画已暂停", step: "正在演示第 {current} / {total} 笔", missing: "KanjiVG 暂未收录“{character}”", invalid: "请输入至少一个日文汉字" }, svgLabel: "“{character}”的日本笔顺动画",
@@ -29,7 +29,7 @@ const content = {
   },
   "zh-TW": {
     title: "日本漢字筆順查詢 - 日文漢字書寫順序動畫 | JianFan.app",
-    description: "免費日本漢字筆順與書寫順序查詢工具，輸入一個或多個日文漢字即可查看 KanjiVG 動畫、逐筆示範、筆畫編號、總筆畫數和書寫字形。資料採用日本學校字形及日文標準筆順，可調整播放速度、顯示輪廓並逐字切換，適合日語學習、漢字教學、作業核對和線上書寫參考；筆順資料按需從遠端載入並可在瀏覽器中免費播放使用。",
+    description: "免費日本漢字筆順查詢，輸入日文漢字即可看 KanjiVG 筆順動畫、逐筆示範、筆畫編號和總畫數，採用日本學校字形與標準筆順，適合日語學習和作業核對。",
     eyebrow: "日本漢字 · 書寫順序 · KanjiVG", heading: "日本漢字筆順與書寫順序查詢", lede: "輸入日文漢字，依日本學校字形查看完整動畫、逐筆順序、筆畫編號與總筆畫數。日本筆順可能與中文規範不同，本頁使用專門的日文資料。",
     toolTitle: "輸入日文漢字，查看日本標準書寫順序", searchLabel: "要查詢的日文漢字", placeholder: "輸入日文漢字，最多 8 個", search: "查詢筆順", quick: "常用漢字", list: "待查詢漢字", previous: "上一字", next: "下一字", play: "播放全部", pause: "暫停", resume: "繼續", step: "下一筆", reset: "重設", outline: "顯示字形輪廓", numbers: "顯示筆畫編號", speed: "播放速度", speedOptions: [["0.7", "較慢"], ["1", "正常"], ["1.5", "較快"], ["2", "快速"]], strokes: "總筆畫", position: "目前位置", unicode: "Unicode", standard: "字形標準", standardValue: "日本",
     messages: { idle: "等待輸入日文漢字", loading: "正在載入日本筆順資料", ready: "已載入「{character}」的日本筆順", playing: "正在播放完整筆順", paused: "動畫已暫停", step: "正在示範第 {current} / {total} 筆", missing: "KanjiVG 暫未收錄「{character}」", invalid: "請至少輸入一個日文漢字" }, svgLabel: "「{character}」的日本筆順動畫", note: "字形與筆順來自 KanjiVG，採用日本學校字形。查詢時只會遠端載入目前漢字的公開向量資料。", source: "KanjiVG 資料說明與授權",
@@ -45,7 +45,7 @@ const content = {
   },
   ja: {
     title: "漢字の書き順・筆順検索 - 無料アニメーション | JianFan.app",
-    description: "漢字の書き順・筆順をアニメーションで確認できるオンラインツールです。日本の学校字形に基づくKanjiVGデータを使い、1画ずつの表示、画数、筆順番号、輪郭表示、再生速度の変更、複数漢字の切り替えに対応。漢字学習、書き取り、宿題の確認、授業教材に利用でき、必要な公開データだけをリモートから読み込みブラウザーで再生します。",
+    description: "漢字の書き順をアニメーションで確認できる無料ツール。日本の学校字形に基づき、1画ずつの表示、画数、筆順番号を表示します。漢字学習や宿題の確認、授業の教材に。",
     eyebrow: "漢字 · 書き順 · 筆順アニメーション", heading: "漢字の書き順・筆順検索", lede: "漢字を入力すると、日本の学校字形による筆順アニメーション、1画ずつの書き方、画数、筆順番号を確認できます。中国語用ではなく、日本語学習向けのデータを使用します。",
     toolTitle: "漢字を入力して正しい書き順を確認", searchLabel: "調べる漢字", placeholder: "漢字を8文字まで入力", search: "書き順を検索", quick: "よく使う漢字", list: "確認する漢字", previous: "前の字", next: "次の字", play: "すべて再生", pause: "一時停止", resume: "再開", step: "次の画", reset: "リセット", outline: "字形の輪郭を表示", numbers: "筆順番号を表示", speed: "再生速度", speedOptions: [["0.7", "ゆっくり"], ["1", "標準"], ["1.5", "やや速い"], ["2", "速い"]], strokes: "画数", position: "位置", unicode: "Unicode", standard: "字形基準", standardValue: "日本",
     messages: { idle: "漢字の入力待ち", loading: "日本の筆順データを読み込み中", ready: "「{character}」の書き順を表示しています", playing: "筆順を最初から再生中", paused: "アニメーションを一時停止しました", step: "第 {current} / {total} 画を表示中", missing: "KanjiVGに「{character}」のデータがありません", invalid: "漢字を1文字以上入力してください" }, svgLabel: "「{character}」の書き順アニメーション", note: "字形と筆順は日本の学校字形に基づくKanjiVGを使用しています。選択した漢字の公開ベクターデータだけをリモートから取得します。", source: "KanjiVGのデータとライセンス",
@@ -53,7 +53,7 @@ const content = {
   },
   ko: {
     title: "일본 한자 필순·획순 애니메이션 | JianFan.app",
-    description: "일본 한자 필순과 획순을 KanjiVG 애니메이션으로 확인하는 도구입니다. 일본 학교 글자체의 쓰기 순서와 획수, 획 번호를 제공하며 한 획씩 보기와 재생 속도 조절을 지원합니다. 일본어 한자 학습과 숙제 확인에 활용하고 필요한 공개 데이터만 원격으로 불러와 브라우저에서 재생합니다.",
+    description: "일본 한자 필순과 획순을 애니메이션으로 확인하세요. 일본 학교 글자체 기준으로 한 획씩 보기, 획수와 획 번호를 보여 주어 한자 학습과 숙제 확인에 좋습니다.",
     eyebrow: "일본 한자 · 필순 · KANJIVG", heading: "일본 한자 필순·획순 조회", lede: "일본 한자를 입력하면 학교 글자체에 맞는 필순 애니메이션, 한 획씩 보기, 획 번호와 총 획수를 확인할 수 있습니다. 중국어용이 아닌 일본어 학습용 데이터를 사용합니다.",
     toolTitle: "일본 한자를 입력해 올바른 쓰기 순서 확인", searchLabel: "조회할 일본 한자", placeholder: "한자를 최대 8자 입력", search: "필순 조회", quick: "자주 쓰는 한자", list: "확인할 한자", previous: "이전 글자", next: "다음 글자", play: "전체 재생", pause: "일시 정지", resume: "계속", step: "다음 획", reset: "초기화", outline: "글자 윤곽 표시", numbers: "획 번호 표시", speed: "재생 속도", speedOptions: [["0.7", "느리게"], ["1", "보통"], ["1.5", "조금 빠르게"], ["2", "빠르게"]], strokes: "총 획수", position: "위치", unicode: "Unicode", standard: "글자 기준", standardValue: "일본",
     messages: { idle: "일본 한자 입력 대기", loading: "일본 필순 데이터 불러오는 중", ready: "{character}의 일본 필순을 표시합니다", playing: "전체 필순 재생 중", paused: "애니메이션 일시 정지", step: "{current} / {total}번째 획 표시 중", missing: "KanjiVG에 {character} 데이터가 없습니다", invalid: "일본 한자를 한 글자 이상 입력하세요" }, svgLabel: "{character} 일본 필순 애니메이션", note: "글자체와 필순은 일본 학교 글자체 기반 KanjiVG를 사용합니다. 선택한 한자의 공개 벡터 데이터만 원격으로 불러옵니다.", source: "KanjiVG 데이터와 라이선스",

@@ -17,7 +17,7 @@ const locales = {
 const content = {
   "zh-CN": {
     title: "日本汉字查询 - 日文汉字字典、部首与画数搜索 | JianFan.app",
-    description: "免费日本汉字查询与在线日文汉字字典，可按汉字、平假名或片假名读音、英文释义、部首、总笔画数和日本学校年级筛选。查询结果显示音读、训读、名乘读法、部首编号、画数、构成部件与常见英文含义，并可直接查看日本标准笔顺动画或生成汉字练习纸。收录 KANJIDIC2 的 13,000 多个汉字，字典索引在浏览器中按需加载。",
+    description: "免费日本汉字查询字典，可按汉字、假名读音、英文释义、部首、笔画或年级搜索，查看音读、训读、部首和构成部件，收录 KANJIDIC2 的 13,000 多个汉字。",
     eyebrow: "日本汉字 · 读音 · 部首 · 画数", heading: "日本汉字查询与在线字典", lede: "输入汉字、假名读音或英文含义，也可组合部首、总画数和日本学校年级筛选。结果提供音读、训读、名乘读法、构成部件和日本笔顺入口。",
     toolTitle: "按已知线索查找日本汉字", queryLabel: "汉字、读音或英文含义", queryPlaceholder: "例如：永、ながい、water", radical: "部首", allRadicals: "全部部首", strokes: "总画数", allStrokes: "全部画数", grade: "日本学校年级", allGrades: "全部年级", primaryGrade: "小学 {grade} 年", secondary: "中学常用", nameUse: "人名用", otherGrade: "表外字", search: "查询汉字", clear: "清空", resultsTitle: "查询结果", resultEmpty: "输入查询条件后，会在这里列出符合条件的日本汉字。", detailTitle: "汉字详情", detailEmpty: "选择一个查询结果，查看读音、部首、画数和构成。", labels: { on: "音读", kun: "训读", nanori: "名乘读法", radical: "部首", strokes: "总画数", grade: "年级 / 类别", meanings: "英文含义", components: "构成部件" }, strokeLink: "查看日本笔顺", worksheetLink: "生成练习纸", source: "汉字资料来自 KANJIDIC2 与 KRADFILE（EDRDG，CC BY-SA 4.0），按许可要求注明来源并定期更新。", sourceLink: "资料与许可说明",
     messages: { idle: "等待查询条件", loading: "正在加载日本汉字字典", loadingProgress: "正在加载字典（{percent}%）", loaded: "已加载 {count} 个汉字", ready: "查询完成", noResults: "没有找到符合条件的汉字", results: "显示 {count} 个结果", resultMeta: "部首 {radical} · {strokes} 画", invalid: "请输入汉字、读音或选择至少一个筛选条件", error: "字典加载失败，请刷新页面后重试" },
@@ -25,7 +25,7 @@ const content = {
   },
   "zh-TW": {
     title: "日本漢字查詢 - 日文漢字字典、部首與畫數搜尋 | JianFan.app",
-    description: "免費日本漢字查詢與線上日文漢字字典，可依漢字、平假名或片假名讀音、英文釋義、部首、總筆畫數和日本學校年級篩選。查詢結果顯示音讀、訓讀、名乘讀法、部首編號、畫數、構成部件與常見英文含義，並可直接查看日本標準筆順動畫或產生漢字練習紙。收錄 KANJIDIC2 的 13,000 多個漢字，字典索引在瀏覽器中按需載入。",
+    description: "免費日本漢字查詢字典，可依漢字、假名讀音、英文釋義、部首、筆畫或年級搜尋，查看音讀、訓讀、部首和構成部件，收錄 KANJIDIC2 的 13,000 多個漢字。",
     eyebrow: "日本漢字 · 讀音 · 部首 · 畫數", heading: "日本漢字查詢與線上字典", lede: "輸入漢字、假名讀音或英文含義，也可組合部首、總畫數與日本學校年級篩選。結果提供音讀、訓讀、名乘讀法、構成部件和日本筆順入口。",
     toolTitle: "依已知線索查找日本漢字", queryLabel: "漢字、讀音或英文含義", queryPlaceholder: "例如：永、ながい、water", radical: "部首", allRadicals: "全部部首", strokes: "總畫數", allStrokes: "全部畫數", grade: "日本學校年級", allGrades: "全部年級", primaryGrade: "小學 {grade} 年", secondary: "中學常用", nameUse: "人名用", otherGrade: "表外字", search: "查詢漢字", clear: "清除", resultsTitle: "查詢結果", resultEmpty: "輸入查詢條件後，這裡會列出符合條件的日本漢字。", detailTitle: "漢字詳情", detailEmpty: "選擇一個查詢結果，查看讀音、部首、畫數與構成。", labels: { on: "音讀", kun: "訓讀", nanori: "名乘讀法", radical: "部首", strokes: "總畫數", grade: "年級 / 類別", meanings: "英文含義", components: "構成部件" }, strokeLink: "查看日本筆順", worksheetLink: "產生練習紙", source: "漢字資料來自 KANJIDIC2 與 KRADFILE（EDRDG，CC BY-SA 4.0），依授權要求標示來源並定期更新。", sourceLink: "資料與授權說明",
     messages: { idle: "等待查詢條件", loading: "正在載入日本漢字字典", loadingProgress: "正在載入字典（{percent}%）", loaded: "已載入 {count} 個漢字", ready: "查詢完成", noResults: "找不到符合條件的漢字", results: "顯示 {count} 個結果", resultMeta: "部首 {radical} · {strokes} 畫", invalid: "請輸入漢字、讀音或選擇至少一個篩選條件", error: "字典載入失敗，請重新整理後再試" },
@@ -41,7 +41,7 @@ const content = {
   },
   ja: {
     title: "漢字検索・漢字辞典 - 部首・画数・読み方から調べる | JianFan.app",
-    description: "漢字検索・漢字辞典を無料で利用できます。漢字、読み方、英語の意味、部首、画数、小学校の学年から検索し、音読み、訓読み、名乗り、部首番号、構成部品を確認。日本の書き順アニメーションや漢字練習プリントにも移動できます。KANJIDIC2収録の13,000字以上を対象に、辞典データは必要なときだけブラウザーへ読み込みます。",
+    description: "漢字検索・漢字辞典を無料で。漢字、読み方、意味、部首、画数、学年から検索し、音読み・訓読み・名乗り・構成部品を確認できます。KANJIDIC2収録の13,000字以上に対応。",
     eyebrow: "漢字検索 · 読み方 · 部首 · 画数", heading: "漢字検索・オンライン漢字辞典", lede: "漢字、ひらがな・カタカナの読み、英語の意味から検索。部首、総画数、小学校の学年も組み合わせ、音読み・訓読み・名乗り・構成部品を確認できます。",
     toolTitle: "分かる手がかりから漢字を探す", queryLabel: "漢字・読み方・英語の意味", queryPlaceholder: "例：永、ながい、water", radical: "部首", allRadicals: "すべての部首", strokes: "総画数", allStrokes: "すべての画数", grade: "習う学年", allGrades: "すべての学年", primaryGrade: "小学{grade}年", secondary: "中学校で習う常用漢字", nameUse: "人名用漢字", otherGrade: "表外字", search: "漢字を検索", clear: "クリア", resultsTitle: "検索結果", resultEmpty: "漢字、読み方、部首、画数などを指定すると、候補がここに表示されます。", detailTitle: "漢字の情報", detailEmpty: "検索結果を選ぶと、読み方・部首・画数・構成を確認できます。", labels: { on: "音読み", kun: "訓読み", nanori: "名乗り", radical: "部首", strokes: "総画数", grade: "学年・区分", meanings: "英語の意味", components: "構成部品" }, strokeLink: "書き順・筆順を見る", worksheetLink: "練習プリントを作る", source: "漢字情報はEDRDGのKANJIDIC2・KRADFILE（CC BY-SA 4.0）を使用し、出典表示と定期更新を行っています。", sourceLink: "データ資料とライセンス",
     messages: { idle: "検索条件を入力してください", loading: "漢字辞典データを読み込み中", loadingProgress: "漢字辞典を読み込み中（{percent}%）", loaded: "{count}字を読み込みました", ready: "検索が完了しました", noResults: "条件に一致する漢字がありません", results: "{count}件を表示", resultMeta: "部首 {radical} · {strokes}画", invalid: "漢字・読み方を入力するか、部首・画数・学年を選んでください", error: "漢字辞典を読み込めませんでした。再読み込みしてください。" },
@@ -49,7 +49,7 @@ const content = {
   },
   ko: {
     title: "일본 한자 검색 - 부수·획수·읽기 사전 | JianFan.app",
-    description: "일본 한자 검색과 온라인 한자 사전입니다. 한자, 가나 읽기, 영어 뜻, 부수와 총 획수로 검색하고 음독, 훈독, 이름 읽기, 부수 번호와 구성 요소를 확인합니다. 일본 필순 애니메이션과 한자 연습지로 이동할 수 있으며 KANJIDIC2의 13,000자 이상을 브라우저로 불러옵니다.",
+    description: "일본 한자 검색과 온라인 한자 사전입니다. 한자, 가나 읽기, 뜻, 부수, 획수로 찾고 음독, 훈독, 부수와 구성 요소를 확인하세요. 13,000자 이상 수록.",
     eyebrow: "일본 한자 · 읽기 · 부수 · 획수", heading: "일본 한자 검색·온라인 사전", lede: "한자, 히라가나·가타카나 읽기 또는 영어 뜻으로 검색하고 부수, 총 획수와 일본 학교 학년을 함께 선택하세요. 음독, 훈독, 이름 읽기와 구성 요소를 확인할 수 있습니다.",
     toolTitle: "알고 있는 단서로 일본 한자 찾기", queryLabel: "한자·가나 읽기·영어 뜻", queryPlaceholder: "예: 永, ながい, water", radical: "부수", allRadicals: "모든 부수", strokes: "총 획수", allStrokes: "모든 획수", grade: "일본 학교 학년", allGrades: "모든 학년", primaryGrade: "초등 {grade}학년", secondary: "중학교 상용 한자", nameUse: "인명용 한자", otherGrade: "표외자", search: "한자 검색", clear: "지우기", resultsTitle: "검색 결과", resultEmpty: "검색어나 조건을 지정하면 일본 한자 후보가 표시됩니다.", detailTitle: "한자 정보", detailEmpty: "결과를 선택해 읽기, 부수, 획수와 구성 요소를 확인하세요.", labels: { on: "음독", kun: "훈독", nanori: "이름 읽기", radical: "부수", strokes: "총 획수", grade: "학년 / 구분", meanings: "영어 뜻", components: "구성 요소" }, strokeLink: "일본 필순 보기", worksheetLink: "연습지 만들기", source: "한자 정보는 EDRDG KANJIDIC2·KRADFILE(CC BY-SA 4.0)을 사용하며 출처 표시와 정기 업데이트를 따릅니다.", sourceLink: "데이터 문서와 라이선스",
     messages: { idle: "검색 조건을 입력하세요", loading: "일본 한자 사전 불러오는 중", loadingProgress: "사전 불러오는 중({percent}%)", loaded: "한자 {count}자 불러옴", ready: "검색 완료", noResults: "조건에 맞는 한자가 없습니다", results: "결과 {count}개", resultMeta: "부수 {radical} · {strokes}획", invalid: "한자나 읽기를 입력하거나 부수·획수·학년을 선택하세요", error: "한자 사전을 불러오지 못했습니다. 새로 고쳐 주세요." },

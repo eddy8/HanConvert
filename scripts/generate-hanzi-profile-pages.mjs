@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 
 import { HANZI_LOCALES, HANZI_PROFILES, HANZI_UI } from "./hanzi-profile-data.mjs";
 import { getMetadataLengthRange, visibleMetadataLength } from "./seo-metadata-rules.mjs";
+import { preserveExistingLastmods } from "./sitemap-lastmod.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
@@ -518,7 +519,7 @@ async function updateSitemap() {
   const updated = source.includes(sitemapMarkerStart)
     ? source.replace(new RegExp(`${sitemapMarkerStart}[\\s\\S]*?${sitemapMarkerEnd}`), section)
     : source.replace("</urlset>", `${section}\n</urlset>`);
-  await writeFile(sitemapPath, updated);
+  await writeFile(sitemapPath, preserveExistingLastmods(source, updated));
 }
 
 const profileRecords = [];

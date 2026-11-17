@@ -3,6 +3,8 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import vm from "node:vm";
 
+import { isDescriptionLengthInRange } from "../scripts/seo-metadata-rules.mjs";
+
 const source = await readFile(new URL("../kanji-to-hiragana.js", import.meta.url), "utf8");
 const context = {};
 context.globalThis = context;
@@ -41,7 +43,7 @@ for (const [path, lang, heading] of pages) {
     assert.ok(html.includes('rel="canonical"'));
     assert.ok(html.includes('hreflang="x-default"'));
     assert.ok(html.includes('"@type": "WebApplication"'));
-    assert.ok([...description].length >= 150 && [...description].length <= 160);
+    assert.ok(isDescriptionLengthInRange(html, description));
     assert.doesNotMatch(html, /(?:src|href)="[^"]+\?v=/u);
   });
 }

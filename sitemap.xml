@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://jianfan.app/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/" />
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/" />
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/" />
@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/" />
@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/" />
@@ -63,7 +63,7 @@
 
   <url>
     <loc>https://jianfan.app/simplified-to-traditional/</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/simplified-to-traditional/" />
@@ -75,7 +75,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/simplified-to-traditional/</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/simplified-to-traditional/" />
@@ -87,7 +87,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/simplified-to-traditional/</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/simplified-to-traditional/" />
@@ -99,7 +99,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/simplified-to-traditional/</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/simplified-to-traditional/" />
@@ -111,7 +111,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/simplified-to-traditional/</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/simplified-to-traditional/" />
@@ -124,7 +124,7 @@
 
   <url>
     <loc>https://jianfan.app/traditional-to-simplified/</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/traditional-to-simplified/" />
@@ -136,7 +136,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/traditional-to-simplified/</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/traditional-to-simplified/" />
@@ -148,7 +148,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/traditional-to-simplified/</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/traditional-to-simplified/" />
@@ -160,7 +160,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/traditional-to-simplified/</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/traditional-to-simplified/" />
@@ -172,7 +172,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/traditional-to-simplified/</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/traditional-to-simplified/" />
@@ -185,7 +185,7 @@
 
   <url>
     <loc>https://jianfan.app/taiwan-traditional/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/taiwan-traditional/" />
@@ -197,7 +197,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/taiwan-traditional/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/taiwan-traditional/" />
@@ -209,7 +209,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/taiwan-traditional/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/taiwan-traditional/" />
@@ -221,7 +221,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/taiwan-traditional/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/taiwan-traditional/" />
@@ -233,7 +233,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/taiwan-traditional/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/taiwan-traditional/" />
@@ -246,7 +246,7 @@
 
   <url>
     <loc>https://jianfan.app/hong-kong-traditional/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hong-kong-traditional/" />
@@ -258,7 +258,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/hong-kong-traditional/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hong-kong-traditional/" />
@@ -270,7 +270,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/hong-kong-traditional/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hong-kong-traditional/" />
@@ -282,7 +282,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/hong-kong-traditional/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hong-kong-traditional/" />
@@ -294,7 +294,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/hong-kong-traditional/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hong-kong-traditional/" />
@@ -307,7 +307,7 @@
 
   <url>
     <loc>https://jianfan.app/file-text-converter/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/file-text-converter/" />
@@ -319,7 +319,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/file-text-converter/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/file-text-converter/" />
@@ -331,7 +331,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/file-text-converter/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/file-text-converter/" />
@@ -343,7 +343,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/file-text-converter/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/file-text-converter/" />
@@ -355,7 +355,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/file-text-converter/</loc>
-    <lastmod>2026-07-18</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/file-text-converter/" />
@@ -368,7 +368,7 @@
 
   <url>
     <loc>https://jianfan.app/japanese-kanji-converter/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-converter/" />
@@ -380,7 +380,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/japanese-kanji-converter/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-converter/" />
@@ -392,7 +392,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/japanese-kanji-converter/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-converter/" />
@@ -404,7 +404,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/japanese-kanji-converter/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-converter/" />
@@ -416,7 +416,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/japanese-kanji-converter/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-converter/" />
@@ -429,7 +429,7 @@
 
   <url>
     <loc>https://jianfan.app/privacy/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/privacy/" />
@@ -441,7 +441,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/privacy/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/privacy/" />
@@ -453,7 +453,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/privacy/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/privacy/" />
@@ -465,7 +465,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/privacy/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/privacy/" />
@@ -477,7 +477,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/privacy/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/privacy/" />
@@ -491,7 +491,7 @@
   <!-- japanese-tools:start -->
   <url>
     <loc>https://jianfan.app/japanese-chinese-kanji-converter/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-chinese-kanji-converter/" />
@@ -503,7 +503,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/japanese-chinese-kanji-converter/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-chinese-kanji-converter/" />
@@ -515,7 +515,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/japanese-chinese-kanji-converter/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-chinese-kanji-converter/" />
@@ -527,7 +527,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/japanese-chinese-kanji-converter/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-chinese-kanji-converter/" />
@@ -539,7 +539,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/japanese-chinese-kanji-converter/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-chinese-kanji-converter/" />
@@ -551,7 +551,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/japanese-characters/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-characters/" />
@@ -563,7 +563,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/japanese-characters/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-characters/" />
@@ -575,7 +575,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/japanese-characters/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-characters/" />
@@ -587,7 +587,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/japanese-characters/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-characters/" />
@@ -599,7 +599,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/japanese-characters/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-characters/" />
@@ -611,7 +611,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/kanji-to-romaji/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/kanji-to-romaji/" />
@@ -623,7 +623,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/kanji-to-romaji/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/kanji-to-romaji/" />
@@ -635,7 +635,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/kanji-to-romaji/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/kanji-to-romaji/" />
@@ -647,7 +647,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/kanji-to-romaji/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/kanji-to-romaji/" />
@@ -659,7 +659,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/kanji-to-romaji/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/kanji-to-romaji/" />
@@ -671,7 +671,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/kanji-to-hiragana/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/kanji-to-hiragana/" />
@@ -683,7 +683,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/kanji-to-hiragana/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/kanji-to-hiragana/" />
@@ -695,7 +695,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/kanji-to-hiragana/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/kanji-to-hiragana/" />
@@ -707,7 +707,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/kanji-to-hiragana/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/kanji-to-hiragana/" />
@@ -719,7 +719,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/kanji-to-hiragana/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/kanji-to-hiragana/" />
@@ -731,7 +731,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/japanese-stroke-order/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-stroke-order/" />
@@ -743,7 +743,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/japanese-stroke-order/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-stroke-order/" />
@@ -755,7 +755,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/japanese-stroke-order/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-stroke-order/" />
@@ -767,7 +767,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/japanese-stroke-order/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-stroke-order/" />
@@ -779,7 +779,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/japanese-stroke-order/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-stroke-order/" />
@@ -791,7 +791,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/japanese-kanji-dictionary/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-dictionary/" />
@@ -803,7 +803,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/japanese-kanji-dictionary/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-dictionary/" />
@@ -815,7 +815,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/japanese-kanji-dictionary/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-dictionary/" />
@@ -827,7 +827,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/japanese-kanji-dictionary/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-dictionary/" />
@@ -839,7 +839,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/japanese-kanji-dictionary/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-kanji-dictionary/" />
@@ -851,7 +851,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/japanese-handwriting-recognition/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-handwriting-recognition/" />
@@ -863,7 +863,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/japanese-handwriting-recognition/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-handwriting-recognition/" />
@@ -875,7 +875,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/japanese-handwriting-recognition/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-handwriting-recognition/" />
@@ -887,7 +887,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/japanese-handwriting-recognition/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-handwriting-recognition/" />
@@ -899,7 +899,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/japanese-handwriting-recognition/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/japanese-handwriting-recognition/" />
@@ -925,7 +925,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/about/</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/about/" />
@@ -949,7 +949,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/about/</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/about/" />
@@ -985,7 +985,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/contact/</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/contact/" />
@@ -1009,7 +1009,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/contact/</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/contact/" />
@@ -1035,7 +1035,7 @@
   <!-- pinyin-tool:start -->
   <url>
     <loc>https://jianfan.app/chinese-to-pinyin/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-to-pinyin/" />
@@ -1047,7 +1047,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/chinese-to-pinyin/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-to-pinyin/" />
@@ -1059,7 +1059,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/chinese-to-pinyin/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-to-pinyin/" />
@@ -1071,7 +1071,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/chinese-to-pinyin/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-to-pinyin/" />
@@ -1083,7 +1083,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/chinese-to-pinyin/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-to-pinyin/" />
@@ -1097,7 +1097,7 @@
   <!-- stroke-order-tool:start -->
   <url>
     <loc>https://jianfan.app/chinese-stroke-order/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-stroke-order/" />
@@ -1109,7 +1109,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/chinese-stroke-order/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-stroke-order/" />
@@ -1121,7 +1121,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/chinese-stroke-order/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-stroke-order/" />
@@ -1133,7 +1133,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/chinese-stroke-order/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-stroke-order/" />
@@ -1145,7 +1145,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/chinese-stroke-order/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-stroke-order/" />
@@ -1159,7 +1159,7 @@
   <!-- word-to-txt-tool:start -->
   <url>
     <loc>https://jianfan.app/word-to-txt/</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/word-to-txt/" />
@@ -1171,7 +1171,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/word-to-txt/</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/word-to-txt/" />
@@ -1183,7 +1183,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/word-to-txt/</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/word-to-txt/" />
@@ -1195,7 +1195,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/word-to-txt/</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/word-to-txt/" />
@@ -1207,7 +1207,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/word-to-txt/</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/word-to-txt/" />
@@ -1221,7 +1221,7 @@
   <!-- character-counter-tool:start -->
   <url>
     <loc>https://jianfan.app/character-counter/</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/character-counter/" />
@@ -1233,7 +1233,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/character-counter/</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/character-counter/" />
@@ -1245,7 +1245,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/character-counter/</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/character-counter/" />
@@ -1257,7 +1257,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/character-counter/</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/character-counter/" />
@@ -1269,7 +1269,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/character-counter/</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/character-counter/" />
@@ -1283,7 +1283,7 @@
   <!-- han-character-worksheet-tool:start -->
   <url>
     <loc>https://jianfan.app/han-character-worksheet/</loc>
-    <lastmod>2026-07-24</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/han-character-worksheet/" />
@@ -1295,7 +1295,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/han-character-worksheet/</loc>
-    <lastmod>2026-07-24</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/han-character-worksheet/" />
@@ -1307,7 +1307,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/han-character-worksheet/</loc>
-    <lastmod>2026-07-24</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/han-character-worksheet/" />
@@ -1319,7 +1319,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/han-character-worksheet/</loc>
-    <lastmod>2026-07-24</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/han-character-worksheet/" />
@@ -1331,7 +1331,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/han-character-worksheet/</loc>
-    <lastmod>2026-07-24</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/han-character-worksheet/" />
@@ -1345,7 +1345,7 @@
   <!-- handwriting-recognition-tool:start -->
   <url>
     <loc>https://jianfan.app/chinese-handwriting-recognition/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-handwriting-recognition/" />
@@ -1357,7 +1357,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/chinese-handwriting-recognition/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-handwriting-recognition/" />
@@ -1369,7 +1369,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/chinese-handwriting-recognition/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-handwriting-recognition/" />
@@ -1381,7 +1381,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/chinese-handwriting-recognition/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-handwriting-recognition/" />
@@ -1393,7 +1393,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/chinese-handwriting-recognition/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-handwriting-recognition/" />
@@ -1407,7 +1407,7 @@
   <!-- han-character-lookup-tool:start -->
   <url>
     <loc>https://jianfan.app/chinese-character-lookup/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-character-lookup/" />
@@ -1419,7 +1419,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/chinese-character-lookup/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-character-lookup/" />
@@ -1431,7 +1431,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/chinese-character-lookup/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-character-lookup/" />
@@ -1443,7 +1443,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/chinese-character-lookup/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-character-lookup/" />
@@ -1455,7 +1455,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/chinese-character-lookup/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-character-lookup/" />
@@ -1475,7 +1475,7 @@
   <!-- korean-hanja-tools:start -->
   <url>
     <loc>https://jianfan.app/korean-hanja-dictionary/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/korean-hanja-dictionary/" />
@@ -1487,7 +1487,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/korean-hanja-dictionary/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/korean-hanja-dictionary/" />
@@ -1511,7 +1511,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/korean-hanja-dictionary/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/korean-hanja-dictionary/" />
@@ -1523,7 +1523,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/korean-hanja-dictionary/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/korean-hanja-dictionary/" />
@@ -1535,7 +1535,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/korean-hanja-handwriting-recognition/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/korean-hanja-handwriting-recognition/" />
@@ -1547,7 +1547,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/korean-hanja-handwriting-recognition/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/korean-hanja-handwriting-recognition/" />
@@ -1559,7 +1559,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/korean-hanja-handwriting-recognition/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/korean-hanja-handwriting-recognition/" />
@@ -1571,7 +1571,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/korean-hanja-handwriting-recognition/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/korean-hanja-handwriting-recognition/" />
@@ -1583,7 +1583,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/korean-hanja-handwriting-recognition/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/korean-hanja-handwriting-recognition/" />
@@ -1595,7 +1595,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/hangul-hanja-converter/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hangul-hanja-converter/" />
@@ -1607,7 +1607,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/hangul-hanja-converter/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hangul-hanja-converter/" />
@@ -1619,7 +1619,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/hangul-hanja-converter/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hangul-hanja-converter/" />
@@ -1631,7 +1631,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/hangul-hanja-converter/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hangul-hanja-converter/" />
@@ -1643,7 +1643,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/hangul-hanja-converter/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/hangul-hanja-converter/" />
@@ -1655,7 +1655,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/korean-name-hanja/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/korean-name-hanja/" />
@@ -1667,7 +1667,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/korean-name-hanja/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/korean-name-hanja/" />
@@ -1679,7 +1679,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/korean-name-hanja/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/korean-name-hanja/" />
@@ -1691,7 +1691,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/korean-name-hanja/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/korean-name-hanja/" />
@@ -1703,7 +1703,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/korean-name-hanja/</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/korean-name-hanja/" />
@@ -1717,7 +1717,7 @@
   <!-- photo-chinese-character-recognition:start -->
   <url>
     <loc>https://jianfan.app/photo-chinese-character-recognition/</loc>
-    <lastmod>2026-08-13</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/photo-chinese-character-recognition/" />
@@ -1729,7 +1729,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/photo-chinese-character-recognition/</loc>
-    <lastmod>2026-08-13</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/photo-chinese-character-recognition/" />
@@ -1741,7 +1741,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/photo-chinese-character-recognition/</loc>
-    <lastmod>2026-08-13</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/photo-chinese-character-recognition/" />
@@ -1753,7 +1753,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/photo-chinese-character-recognition/</loc>
-    <lastmod>2026-08-13</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/photo-chinese-character-recognition/" />
@@ -1765,7 +1765,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/photo-chinese-character-recognition/</loc>
-    <lastmod>2026-08-13</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/photo-chinese-character-recognition/" />
@@ -3167,7 +3167,7 @@
   <!-- password-generator-tool:start -->
   <url>
     <loc>https://jianfan.app/password-generator/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/password-generator/" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/password-generator/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/password-generator/" />
@@ -3177,7 +3177,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/zh-tw/password-generator/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/password-generator/" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/password-generator/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/password-generator/" />
@@ -3187,7 +3187,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/en/password-generator/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/password-generator/" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/password-generator/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/password-generator/" />
@@ -3197,7 +3197,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ja/password-generator/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/password-generator/" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/password-generator/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/password-generator/" />
@@ -3207,7 +3207,7 @@
   </url>
   <url>
     <loc>https://jianfan.app/ko/password-generator/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/password-generator/" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/password-generator/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/password-generator/" />

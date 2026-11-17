@@ -1,0 +1,1102 @@
+{
+  "about/index.html": {
+    "hash": "d2840ba6b0a338ad",
+    "lastmod": "2026-07-21"
+  },
+  "blog/chinese-character-worksheet-guide/index.html": {
+    "hash": "fd108e96c69bb46b",
+    "lastmod": "2026-08-29"
+  },
+  "blog/chinese-japanese-kanji-differences/index.html": {
+    "hash": "3e28585cd31ab07a",
+    "lastmod": "2026-08-29"
+  },
+  "blog/chinese-japanese-stroke-order-differences/index.html": {
+    "hash": "5ff783f67f3dc22d",
+    "lastmod": "2026-08-29"
+  },
+  "blog/convert-word-pdf-excel-txt-chinese/index.html": {
+    "hash": "d01a213ca2f76e17",
+    "lastmod": "2026-08-29"
+  },
+  "blog/find-chinese-character-methods/index.html": {
+    "hash": "3758a3afbf525615",
+    "lastmod": "2026-08-29"
+  },
+  "blog/index.html": {
+    "hash": "010187a75025aafe",
+    "lastmod": "2026-08-29"
+  },
+  "blog/kanji-reading-hiragana-romaji-furigana/index.html": {
+    "hash": "86afec0b39ec519a",
+    "lastmod": "2026-08-29"
+  },
+  "blog/photo-vs-handwriting-chinese-recognition/index.html": {
+    "hash": "9608bc0c55fe4533",
+    "lastmod": "2026-08-29"
+  },
+  "blog/simplified-traditional-chinese-differences/index.html": {
+    "hash": "72d383fb1a716db5",
+    "lastmod": "2026-08-29"
+  },
+  "character-counter/index.html": {
+    "hash": "44348817e477c90b",
+    "lastmod": "2026-11-17"
+  },
+  "chinese-character-lookup/index.html": {
+    "hash": "80a2c7db028659a7",
+    "lastmod": "2026-11-17"
+  },
+  "chinese-handwriting-recognition/index.html": {
+    "hash": "3814cc93959781dc",
+    "lastmod": "2026-08-28"
+  },
+  "chinese-japanese-kanji-comparison/index.html": {
+    "hash": "a58ac1e73b0c4b43",
+    "lastmod": "2026-08-27"
+  },
+  "chinese-stroke-order/index.html": {
+    "hash": "785daa288e3c756b",
+    "lastmod": "2026-11-17"
+  },
+  "chinese-to-pinyin/index.html": {
+    "hash": "bf97e8d2b8f3f074",
+    "lastmod": "2026-10-25"
+  },
+  "contact/index.html": {
+    "hash": "f9d713c0a382504c",
+    "lastmod": "2026-07-21"
+  },
+  "csv-chinese-converter/index.html": {
+    "hash": "cb703792b3bcd6a3",
+    "lastmod": "2026-08-27"
+  },
+  "en/about/index.html": {
+    "hash": "acb57ca772df1432",
+    "lastmod": "2026-07-21"
+  },
+  "en/character-counter/index.html": {
+    "hash": "ba4f17ce8301e08c",
+    "lastmod": "2026-09-10"
+  },
+  "en/chinese-character-lookup/index.html": {
+    "hash": "53646d30f2a4874c",
+    "lastmod": "2026-08-27"
+  },
+  "en/chinese-handwriting-recognition/index.html": {
+    "hash": "5efb7ac35949f0df",
+    "lastmod": "2026-08-28"
+  },
+  "en/chinese-japanese-kanji-comparison/index.html": {
+    "hash": "0b15decd4c3fc932",
+    "lastmod": "2026-08-27"
+  },
+  "en/chinese-stroke-order/index.html": {
+    "hash": "cea4b6f2c123610e",
+    "lastmod": "2026-08-03"
+  },
+  "en/chinese-to-pinyin/index.html": {
+    "hash": "3ce13a48c5424d05",
+    "lastmod": "2026-11-17"
+  },
+  "en/contact/index.html": {
+    "hash": "ecb2ae18336cdc93",
+    "lastmod": "2026-07-21"
+  },
+  "en/csv-chinese-converter/index.html": {
+    "hash": "13dd38ad4ba57d07",
+    "lastmod": "2026-08-27"
+  },
+  "en/excel-chinese-converter/index.html": {
+    "hash": "793ebcb3a8e6906e",
+    "lastmod": "2026-08-27"
+  },
+  "en/file-text-converter/index.html": {
+    "hash": "8a00f1bc4188db2c",
+    "lastmod": "2026-10-25"
+  },
+  "en/han-character-worksheet/index.html": {
+    "hash": "ef24912007fb42bf",
+    "lastmod": "2026-08-27"
+  },
+  "en/hangul-hanja-converter/index.html": {
+    "hash": "2ffe0dc0e8a2274b",
+    "lastmod": "2026-08-26"
+  },
+  "en/hanzi-tracing-worksheet/index.html": {
+    "hash": "166428b63e0355de",
+    "lastmod": "2026-08-27"
+  },
+  "en/hanzi/ai/index.html": {
+    "hash": "2ba86b6339f48af1",
+    "lastmod": "2026-08-27"
+  },
+  "en/hanzi/guo/index.html": {
+    "hash": "662524902dbe9af8",
+    "lastmod": "2026-08-27"
+  },
+  "en/hanzi/index.html": {
+    "hash": "299f04ff2f56f94a",
+    "lastmod": "2026-08-27"
+  },
+  "en/hanzi/ren/index.html": {
+    "hash": "19015ea5bcb14327",
+    "lastmod": "2026-08-27"
+  },
+  "en/hanzi/sun/index.html": {
+    "hash": "aed3e471b9449557",
+    "lastmod": "2026-08-27"
+  },
+  "en/hanzi/xue/index.html": {
+    "hash": "403111e4c4160bdb",
+    "lastmod": "2026-08-27"
+  },
+  "en/hong-kong-traditional/index.html": {
+    "hash": "08ff4063f0e56ab7",
+    "lastmod": "2026-10-25"
+  },
+  "en/image-redaction/index.html": {
+    "hash": "7dc94ba58a50e060",
+    "lastmod": "2026-09-21"
+  },
+  "en/index.html": {
+    "hash": "ba285bc0bc865bf2",
+    "lastmod": "2026-10-25"
+  },
+  "en/japanese-characters/index.html": {
+    "hash": "6234a3fdc3a2c73d",
+    "lastmod": "2026-08-28"
+  },
+  "en/japanese-chinese-kanji-converter/index.html": {
+    "hash": "fac3bcdb090ce0fc",
+    "lastmod": "2026-08-27"
+  },
+  "en/japanese-handwriting-recognition/index.html": {
+    "hash": "9de296e872a4ec46",
+    "lastmod": "2026-08-02"
+  },
+  "en/japanese-kanji-converter/index.html": {
+    "hash": "4baebe9e151fdd1a",
+    "lastmod": "2026-10-25"
+  },
+  "en/japanese-kanji-dictionary/index.html": {
+    "hash": "21469cd849fbb30f",
+    "lastmod": "2026-08-02"
+  },
+  "en/japanese-kanji-to-simplified-chinese/index.html": {
+    "hash": "bb48b13298d8f41d",
+    "lastmod": "2026-08-27"
+  },
+  "en/japanese-kanji-to-traditional-chinese/index.html": {
+    "hash": "2142113d723d7c56",
+    "lastmod": "2026-08-27"
+  },
+  "en/japanese-stroke-order/index.html": {
+    "hash": "f957ff329e91c59e",
+    "lastmod": "2026-08-02"
+  },
+  "en/kanji-to-hiragana/index.html": {
+    "hash": "410fdacdd6d1da51",
+    "lastmod": "2026-10-25"
+  },
+  "en/kanji-to-romaji/index.html": {
+    "hash": "32a10d57fb7ff7a3",
+    "lastmod": "2026-08-02"
+  },
+  "en/korean-hanja-dictionary/index.html": {
+    "hash": "4cf9bb1d8da4f7ab",
+    "lastmod": "2026-08-02"
+  },
+  "en/korean-hanja-handwriting-recognition/index.html": {
+    "hash": "ad64e11b9e824ca7",
+    "lastmod": "2026-08-26"
+  },
+  "en/korean-name-hanja/index.html": {
+    "hash": "170ff93ded110dda",
+    "lastmod": "2026-08-26"
+  },
+  "en/mi-zi-ge-worksheet/index.html": {
+    "hash": "067714dc9d0bfcfa",
+    "lastmod": "2026-08-27"
+  },
+  "en/password-generator/index.html": {
+    "hash": "82e83c29cfd7c1dd",
+    "lastmod": "2026-10-24"
+  },
+  "en/pdf-chinese-converter/index.html": {
+    "hash": "54401a6b09aeb499",
+    "lastmod": "2026-08-27"
+  },
+  "en/photo-chinese-character-recognition/index.html": {
+    "hash": "a3dffe63bb80674e",
+    "lastmod": "2026-09-21"
+  },
+  "en/pinyin-hanzi-worksheet/index.html": {
+    "hash": "89793627a0ecf840",
+    "lastmod": "2026-08-27"
+  },
+  "en/privacy/index.html": {
+    "hash": "dc6258c2eccc3676",
+    "lastmod": "2026-07-21"
+  },
+  "en/simplified-chinese-to-japanese-kanji/index.html": {
+    "hash": "c7d40c379f5dadbd",
+    "lastmod": "2026-08-27"
+  },
+  "en/simplified-to-traditional/index.html": {
+    "hash": "0a824b7bc4266212",
+    "lastmod": "2026-08-02"
+  },
+  "en/stroke-order-worksheet/index.html": {
+    "hash": "b17f39c5885528a1",
+    "lastmod": "2026-08-27"
+  },
+  "en/taiwan-traditional/index.html": {
+    "hash": "44bc7017d1d8d60d",
+    "lastmod": "2026-10-25"
+  },
+  "en/text-formatter/index.html": {
+    "hash": "0009d05fbd6222bb",
+    "lastmod": "2026-11-10"
+  },
+  "en/tian-zi-ge-worksheet/index.html": {
+    "hash": "94a0b2b25f1774c5",
+    "lastmod": "2026-08-27"
+  },
+  "en/traditional-chinese-to-japanese-kanji/index.html": {
+    "hash": "1adee1c102cccad5",
+    "lastmod": "2026-08-27"
+  },
+  "en/traditional-to-simplified/index.html": {
+    "hash": "f47f5a56c2e44ca6",
+    "lastmod": "2026-08-28"
+  },
+  "en/txt-chinese-converter/index.html": {
+    "hash": "656112012eac7201",
+    "lastmod": "2026-08-27"
+  },
+  "en/word-chinese-converter/index.html": {
+    "hash": "29b00be5e2423ed1",
+    "lastmod": "2026-08-27"
+  },
+  "en/word-to-txt/index.html": {
+    "hash": "971f7994fc2c074c",
+    "lastmod": "2026-09-10"
+  },
+  "excel-chinese-converter/index.html": {
+    "hash": "ffce1def3703cdda",
+    "lastmod": "2026-08-27"
+  },
+  "file-text-converter/index.html": {
+    "hash": "cc74bf87ae0ffbd6",
+    "lastmod": "2026-11-17"
+  },
+  "han-character-worksheet/index.html": {
+    "hash": "90c9d3ba6190c2e4",
+    "lastmod": "2026-11-17"
+  },
+  "hangul-hanja-converter/index.html": {
+    "hash": "5f65d8c5c377f5c6",
+    "lastmod": "2026-11-17"
+  },
+  "hanzi-tracing-worksheet/index.html": {
+    "hash": "16b59211ac25b43c",
+    "lastmod": "2026-08-27"
+  },
+  "hanzi/ai/index.html": {
+    "hash": "2c2dd9eba52fdd28",
+    "lastmod": "2026-08-27"
+  },
+  "hanzi/guo/index.html": {
+    "hash": "2a0e3c9f6c27c102",
+    "lastmod": "2026-08-27"
+  },
+  "hanzi/index.html": {
+    "hash": "cedcb9593a8ee59f",
+    "lastmod": "2026-08-27"
+  },
+  "hanzi/ren/index.html": {
+    "hash": "36aeed247ef00294",
+    "lastmod": "2026-08-27"
+  },
+  "hanzi/sun/index.html": {
+    "hash": "681b3e5d5f04a60f",
+    "lastmod": "2026-08-27"
+  },
+  "hanzi/xue/index.html": {
+    "hash": "9078aa757ff79b21",
+    "lastmod": "2026-08-27"
+  },
+  "hong-kong-traditional/index.html": {
+    "hash": "3d45239ce60bb25a",
+    "lastmod": "2026-11-17"
+  },
+  "image-redaction/index.html": {
+    "hash": "e1de0be0c713f4de",
+    "lastmod": "2026-09-21"
+  },
+  "index.html": {
+    "hash": "372a3a2c08b140dc",
+    "lastmod": "2026-11-17"
+  },
+  "ja/about/index.html": {
+    "hash": "cf75709dc5ee7d3b",
+    "lastmod": "2026-08-28"
+  },
+  "ja/character-counter/index.html": {
+    "hash": "5c698efb8303eee1",
+    "lastmod": "2026-11-17"
+  },
+  "ja/chinese-character-lookup/index.html": {
+    "hash": "bccdafa7979ad6b9",
+    "lastmod": "2026-11-17"
+  },
+  "ja/chinese-handwriting-recognition/index.html": {
+    "hash": "054cb2f4b367250b",
+    "lastmod": "2026-08-28"
+  },
+  "ja/chinese-japanese-kanji-comparison/index.html": {
+    "hash": "bc7fb35d20c25fa0",
+    "lastmod": "2026-08-27"
+  },
+  "ja/chinese-stroke-order/index.html": {
+    "hash": "6af7e5eae0ba5431",
+    "lastmod": "2026-11-17"
+  },
+  "ja/chinese-to-pinyin/index.html": {
+    "hash": "689f60000aa7d3fb",
+    "lastmod": "2026-10-25"
+  },
+  "ja/contact/index.html": {
+    "hash": "dfa2fecb38bd1a93",
+    "lastmod": "2026-08-28"
+  },
+  "ja/csv-chinese-converter/index.html": {
+    "hash": "af3ce50aa5635de2",
+    "lastmod": "2026-08-27"
+  },
+  "ja/excel-chinese-converter/index.html": {
+    "hash": "43f25e64138812e6",
+    "lastmod": "2026-08-27"
+  },
+  "ja/file-text-converter/index.html": {
+    "hash": "9b5d75b0b2308fa0",
+    "lastmod": "2026-11-17"
+  },
+  "ja/han-character-worksheet/index.html": {
+    "hash": "64b9672fb92cbe86",
+    "lastmod": "2026-11-17"
+  },
+  "ja/hangul-hanja-converter/index.html": {
+    "hash": "799ba309e5ae829a",
+    "lastmod": "2026-11-17"
+  },
+  "ja/hanzi-tracing-worksheet/index.html": {
+    "hash": "84b7081b542c4b4c",
+    "lastmod": "2026-08-27"
+  },
+  "ja/hanzi/ai/index.html": {
+    "hash": "a97ef59e0fe5cfad",
+    "lastmod": "2026-08-27"
+  },
+  "ja/hanzi/guo/index.html": {
+    "hash": "9917c98c9e96e062",
+    "lastmod": "2026-08-27"
+  },
+  "ja/hanzi/index.html": {
+    "hash": "90507bf8881f9952",
+    "lastmod": "2026-08-27"
+  },
+  "ja/hanzi/ren/index.html": {
+    "hash": "f4fa688194c9cc5f",
+    "lastmod": "2026-08-27"
+  },
+  "ja/hanzi/sun/index.html": {
+    "hash": "22c79a4d22d3f649",
+    "lastmod": "2026-08-27"
+  },
+  "ja/hanzi/xue/index.html": {
+    "hash": "e0e153faf1c05397",
+    "lastmod": "2026-08-27"
+  },
+  "ja/hong-kong-traditional/index.html": {
+    "hash": "4df37c83706b27ad",
+    "lastmod": "2026-11-17"
+  },
+  "ja/image-redaction/index.html": {
+    "hash": "6ad1bca06fe956c0",
+    "lastmod": "2026-09-21"
+  },
+  "ja/index.html": {
+    "hash": "1b9255def9324c4b",
+    "lastmod": "2026-11-17"
+  },
+  "ja/japanese-characters/index.html": {
+    "hash": "05473a0f6fa6b31f",
+    "lastmod": "2026-08-28"
+  },
+  "ja/japanese-chinese-kanji-converter/index.html": {
+    "hash": "16aa55c9086bc5d9",
+    "lastmod": "2026-11-17"
+  },
+  "ja/japanese-handwriting-recognition/index.html": {
+    "hash": "171f0e9ddf89fdda",
+    "lastmod": "2026-11-17"
+  },
+  "ja/japanese-kanji-converter/index.html": {
+    "hash": "f7f4e8f3f61ba5e5",
+    "lastmod": "2026-11-17"
+  },
+  "ja/japanese-kanji-dictionary/index.html": {
+    "hash": "95a4315d5d6a756d",
+    "lastmod": "2026-11-17"
+  },
+  "ja/japanese-kanji-to-simplified-chinese/index.html": {
+    "hash": "fa287683b6131674",
+    "lastmod": "2026-08-27"
+  },
+  "ja/japanese-kanji-to-traditional-chinese/index.html": {
+    "hash": "02af15f77c59ad68",
+    "lastmod": "2026-08-27"
+  },
+  "ja/japanese-stroke-order/index.html": {
+    "hash": "bc1e762310bafa3f",
+    "lastmod": "2026-11-17"
+  },
+  "ja/kanji-to-hiragana/index.html": {
+    "hash": "b8cc5ed0a9f0a810",
+    "lastmod": "2026-11-17"
+  },
+  "ja/kanji-to-romaji/index.html": {
+    "hash": "4eac68dab09b4c31",
+    "lastmod": "2026-08-02"
+  },
+  "ja/korean-hanja-dictionary/index.html": {
+    "hash": "ead65eb0e0c449c2",
+    "lastmod": "2026-11-17"
+  },
+  "ja/korean-hanja-handwriting-recognition/index.html": {
+    "hash": "5c3603a5b33f7c51",
+    "lastmod": "2026-11-17"
+  },
+  "ja/korean-name-hanja/index.html": {
+    "hash": "bdb8bb19655c70aa",
+    "lastmod": "2026-11-17"
+  },
+  "ja/mi-zi-ge-worksheet/index.html": {
+    "hash": "2bb07476934e68b8",
+    "lastmod": "2026-08-27"
+  },
+  "ja/password-generator/index.html": {
+    "hash": "4a4fa8e3dd203689",
+    "lastmod": "2026-10-24"
+  },
+  "ja/pdf-chinese-converter/index.html": {
+    "hash": "753aaf6ef5c1ae27",
+    "lastmod": "2026-08-27"
+  },
+  "ja/photo-chinese-character-recognition/index.html": {
+    "hash": "85c66ec1a0c3089a",
+    "lastmod": "2026-11-17"
+  },
+  "ja/pinyin-hanzi-worksheet/index.html": {
+    "hash": "42701176c559a47d",
+    "lastmod": "2026-08-27"
+  },
+  "ja/privacy/index.html": {
+    "hash": "f137e7faf5c0091f",
+    "lastmod": "2026-07-21"
+  },
+  "ja/simplified-chinese-to-japanese-kanji/index.html": {
+    "hash": "0c4238034269f1f4",
+    "lastmod": "2026-08-27"
+  },
+  "ja/simplified-to-traditional/index.html": {
+    "hash": "55078a18bd9b57f2",
+    "lastmod": "2026-11-17"
+  },
+  "ja/stroke-order-worksheet/index.html": {
+    "hash": "9641968b7840b2f0",
+    "lastmod": "2026-08-27"
+  },
+  "ja/taiwan-traditional/index.html": {
+    "hash": "c1bc15ff3c23a85f",
+    "lastmod": "2026-08-28"
+  },
+  "ja/text-formatter/index.html": {
+    "hash": "a99a47af18fd6e8b",
+    "lastmod": "2026-11-10"
+  },
+  "ja/tian-zi-ge-worksheet/index.html": {
+    "hash": "cfc477c16d1196e8",
+    "lastmod": "2026-08-27"
+  },
+  "ja/traditional-chinese-to-japanese-kanji/index.html": {
+    "hash": "a21d8375d9525f84",
+    "lastmod": "2026-08-27"
+  },
+  "ja/traditional-to-simplified/index.html": {
+    "hash": "d9435d789e70d33a",
+    "lastmod": "2026-08-28"
+  },
+  "ja/txt-chinese-converter/index.html": {
+    "hash": "4df2338717e17c11",
+    "lastmod": "2026-08-27"
+  },
+  "ja/word-chinese-converter/index.html": {
+    "hash": "1623c9457197a037",
+    "lastmod": "2026-08-27"
+  },
+  "ja/word-to-txt/index.html": {
+    "hash": "b6c6d41b1bedac5b",
+    "lastmod": "2026-09-10"
+  },
+  "japanese-characters/index.html": {
+    "hash": "6a493594365ee50b",
+    "lastmod": "2026-11-17"
+  },
+  "japanese-chinese-kanji-converter/index.html": {
+    "hash": "cad7486b2f915425",
+    "lastmod": "2026-11-17"
+  },
+  "japanese-handwriting-recognition/index.html": {
+    "hash": "5f1d70b0dd70c0b9",
+    "lastmod": "2026-11-17"
+  },
+  "japanese-kanji-converter/index.html": {
+    "hash": "ff7d7e8aaee79f4e",
+    "lastmod": "2026-11-17"
+  },
+  "japanese-kanji-dictionary/index.html": {
+    "hash": "f293282c0cff2c2b",
+    "lastmod": "2026-11-17"
+  },
+  "japanese-kanji-to-simplified-chinese/index.html": {
+    "hash": "8953ef1bee3607ea",
+    "lastmod": "2026-08-27"
+  },
+  "japanese-kanji-to-traditional-chinese/index.html": {
+    "hash": "f8a63ac58d218807",
+    "lastmod": "2026-08-27"
+  },
+  "japanese-stroke-order/index.html": {
+    "hash": "c612d3efbae9b482",
+    "lastmod": "2026-11-17"
+  },
+  "kanji-to-hiragana/index.html": {
+    "hash": "98d6cf56aa1caaee",
+    "lastmod": "2026-11-17"
+  },
+  "kanji-to-romaji/index.html": {
+    "hash": "093427dfb25c2aee",
+    "lastmod": "2026-11-17"
+  },
+  "ko/about/index.html": {
+    "hash": "9f824b27ae906092",
+    "lastmod": "2026-07-21"
+  },
+  "ko/character-counter/index.html": {
+    "hash": "601e8a4aa2d0117d",
+    "lastmod": "2026-11-17"
+  },
+  "ko/chinese-character-lookup/index.html": {
+    "hash": "2ccd6a7a1f16437d",
+    "lastmod": "2026-11-17"
+  },
+  "ko/chinese-handwriting-recognition/index.html": {
+    "hash": "9ac7bca15cd762fd",
+    "lastmod": "2026-08-28"
+  },
+  "ko/chinese-japanese-kanji-comparison/index.html": {
+    "hash": "fa10f19a017e9e80",
+    "lastmod": "2026-08-27"
+  },
+  "ko/chinese-stroke-order/index.html": {
+    "hash": "70d149b0aa8e41e0",
+    "lastmod": "2026-11-17"
+  },
+  "ko/chinese-to-pinyin/index.html": {
+    "hash": "06983b7f6a1f1ea5",
+    "lastmod": "2026-10-25"
+  },
+  "ko/contact/index.html": {
+    "hash": "8a27acdbd19b493a",
+    "lastmod": "2026-07-21"
+  },
+  "ko/csv-chinese-converter/index.html": {
+    "hash": "28fc1e2ce14b6823",
+    "lastmod": "2026-08-27"
+  },
+  "ko/excel-chinese-converter/index.html": {
+    "hash": "5a0c084a4008963c",
+    "lastmod": "2026-08-27"
+  },
+  "ko/file-text-converter/index.html": {
+    "hash": "cd09ef52c8c374cd",
+    "lastmod": "2026-11-17"
+  },
+  "ko/han-character-worksheet/index.html": {
+    "hash": "157e52a08b9c4293",
+    "lastmod": "2026-11-17"
+  },
+  "ko/hangul-hanja-converter/index.html": {
+    "hash": "a584ab92cb35ffb9",
+    "lastmod": "2026-11-17"
+  },
+  "ko/hanzi-tracing-worksheet/index.html": {
+    "hash": "b166d8f5d8dc8776",
+    "lastmod": "2026-08-27"
+  },
+  "ko/hanzi/ai/index.html": {
+    "hash": "b51f20b7e8f4f93f",
+    "lastmod": "2026-08-27"
+  },
+  "ko/hanzi/guo/index.html": {
+    "hash": "d4d721bcca2b379e",
+    "lastmod": "2026-08-27"
+  },
+  "ko/hanzi/index.html": {
+    "hash": "f06ae4110d31bf7c",
+    "lastmod": "2026-08-27"
+  },
+  "ko/hanzi/ren/index.html": {
+    "hash": "6603f963e38d8747",
+    "lastmod": "2026-08-27"
+  },
+  "ko/hanzi/sun/index.html": {
+    "hash": "d86e4df9d34b43ea",
+    "lastmod": "2026-08-27"
+  },
+  "ko/hanzi/xue/index.html": {
+    "hash": "209decb89676a663",
+    "lastmod": "2026-08-27"
+  },
+  "ko/hong-kong-traditional/index.html": {
+    "hash": "25c155e5b9b1bf9f",
+    "lastmod": "2026-11-17"
+  },
+  "ko/image-redaction/index.html": {
+    "hash": "0dadd3dc1a7bcf0c",
+    "lastmod": "2026-09-21"
+  },
+  "ko/index.html": {
+    "hash": "fee90455e87ba0aa",
+    "lastmod": "2026-11-17"
+  },
+  "ko/japanese-characters/index.html": {
+    "hash": "ccf700e265064b6c",
+    "lastmod": "2026-08-28"
+  },
+  "ko/japanese-chinese-kanji-converter/index.html": {
+    "hash": "93fc9a8a066b9b08",
+    "lastmod": "2026-11-17"
+  },
+  "ko/japanese-handwriting-recognition/index.html": {
+    "hash": "cddd89de5f93e7b2",
+    "lastmod": "2026-11-17"
+  },
+  "ko/japanese-kanji-converter/index.html": {
+    "hash": "a9ae124a2c32c807",
+    "lastmod": "2026-11-17"
+  },
+  "ko/japanese-kanji-dictionary/index.html": {
+    "hash": "d931284054319082",
+    "lastmod": "2026-11-17"
+  },
+  "ko/japanese-kanji-to-simplified-chinese/index.html": {
+    "hash": "c53c0f20339ba470",
+    "lastmod": "2026-08-27"
+  },
+  "ko/japanese-kanji-to-traditional-chinese/index.html": {
+    "hash": "002274c5401c5383",
+    "lastmod": "2026-08-27"
+  },
+  "ko/japanese-stroke-order/index.html": {
+    "hash": "efbee3599fce7706",
+    "lastmod": "2026-11-17"
+  },
+  "ko/kanji-to-hiragana/index.html": {
+    "hash": "5cc374d43917ef7e",
+    "lastmod": "2026-11-17"
+  },
+  "ko/kanji-to-romaji/index.html": {
+    "hash": "dfd30ad0baf27634",
+    "lastmod": "2026-08-02"
+  },
+  "ko/korean-hanja-dictionary/index.html": {
+    "hash": "08225f3653607adb",
+    "lastmod": "2026-11-17"
+  },
+  "ko/korean-hanja-handwriting-recognition/index.html": {
+    "hash": "0cf6b69492288046",
+    "lastmod": "2026-11-17"
+  },
+  "ko/korean-name-hanja/index.html": {
+    "hash": "268ac0f19a151bf1",
+    "lastmod": "2026-11-17"
+  },
+  "ko/mi-zi-ge-worksheet/index.html": {
+    "hash": "55d1208f2a0edfab",
+    "lastmod": "2026-08-27"
+  },
+  "ko/password-generator/index.html": {
+    "hash": "8a29a5a3ed9bfc64",
+    "lastmod": "2026-10-24"
+  },
+  "ko/pdf-chinese-converter/index.html": {
+    "hash": "b6e9a406cb849de1",
+    "lastmod": "2026-08-27"
+  },
+  "ko/photo-chinese-character-recognition/index.html": {
+    "hash": "2f5131b196ef0471",
+    "lastmod": "2026-11-17"
+  },
+  "ko/pinyin-hanzi-worksheet/index.html": {
+    "hash": "49c10e8d4967d9c7",
+    "lastmod": "2026-08-27"
+  },
+  "ko/privacy/index.html": {
+    "hash": "c8450e66e097e328",
+    "lastmod": "2026-07-21"
+  },
+  "ko/simplified-chinese-to-japanese-kanji/index.html": {
+    "hash": "f2971751564f2ac9",
+    "lastmod": "2026-08-27"
+  },
+  "ko/simplified-to-traditional/index.html": {
+    "hash": "d2d780c4fa8e6e76",
+    "lastmod": "2026-11-17"
+  },
+  "ko/stroke-order-worksheet/index.html": {
+    "hash": "cc100e99d63a2298",
+    "lastmod": "2026-08-27"
+  },
+  "ko/taiwan-traditional/index.html": {
+    "hash": "61a855c3776d9d2e",
+    "lastmod": "2026-10-25"
+  },
+  "ko/text-formatter/index.html": {
+    "hash": "a9272f05f7311f29",
+    "lastmod": "2026-11-10"
+  },
+  "ko/tian-zi-ge-worksheet/index.html": {
+    "hash": "dbca309b27fb5bc2",
+    "lastmod": "2026-08-27"
+  },
+  "ko/traditional-chinese-to-japanese-kanji/index.html": {
+    "hash": "fc929b76fd9b1908",
+    "lastmod": "2026-08-27"
+  },
+  "ko/traditional-to-simplified/index.html": {
+    "hash": "5ec3afb5df38c4c7",
+    "lastmod": "2026-08-28"
+  },
+  "ko/txt-chinese-converter/index.html": {
+    "hash": "85226e111011f42d",
+    "lastmod": "2026-08-27"
+  },
+  "ko/word-chinese-converter/index.html": {
+    "hash": "f20a90e84d4eb0ae",
+    "lastmod": "2026-08-27"
+  },
+  "ko/word-to-txt/index.html": {
+    "hash": "e8f97d745604be0a",
+    "lastmod": "2026-09-10"
+  },
+  "korean-hanja-dictionary/index.html": {
+    "hash": "a8b006332c861c5c",
+    "lastmod": "2026-11-17"
+  },
+  "korean-hanja-handwriting-recognition/index.html": {
+    "hash": "1a9bc44e362eeb30",
+    "lastmod": "2026-11-17"
+  },
+  "korean-name-hanja/index.html": {
+    "hash": "d4bddb4a5b9f692c",
+    "lastmod": "2026-11-17"
+  },
+  "mi-zi-ge-worksheet/index.html": {
+    "hash": "a25c0e5b378c548d",
+    "lastmod": "2026-08-27"
+  },
+  "password-generator/index.html": {
+    "hash": "73e60f43387701dd",
+    "lastmod": "2026-10-24"
+  },
+  "pdf-chinese-converter/index.html": {
+    "hash": "36974805795c9924",
+    "lastmod": "2026-08-27"
+  },
+  "photo-chinese-character-recognition/index.html": {
+    "hash": "31dcb145cd244275",
+    "lastmod": "2026-11-17"
+  },
+  "pinyin-hanzi-worksheet/index.html": {
+    "hash": "538e8ab81b5f31d5",
+    "lastmod": "2026-08-27"
+  },
+  "privacy/index.html": {
+    "hash": "2077d67be48378ef",
+    "lastmod": "2026-08-28"
+  },
+  "simplified-chinese-to-japanese-kanji/index.html": {
+    "hash": "094bfe41d2d9e2ca",
+    "lastmod": "2026-08-27"
+  },
+  "simplified-to-traditional/index.html": {
+    "hash": "3e373775591486ec",
+    "lastmod": "2026-11-17"
+  },
+  "stroke-order-worksheet/index.html": {
+    "hash": "2131d4966a5bd6ad",
+    "lastmod": "2026-08-27"
+  },
+  "taiwan-traditional/index.html": {
+    "hash": "20f6967f0db0d0d7",
+    "lastmod": "2026-10-25"
+  },
+  "text-formatter/index.html": {
+    "hash": "7d09b1e1168b2f12",
+    "lastmod": "2026-11-10"
+  },
+  "tian-zi-ge-worksheet/index.html": {
+    "hash": "a72be2805ef23346",
+    "lastmod": "2026-08-27"
+  },
+  "traditional-chinese-to-japanese-kanji/index.html": {
+    "hash": "79f7b07185b6aa05",
+    "lastmod": "2026-08-27"
+  },
+  "traditional-to-simplified/index.html": {
+    "hash": "4d1bd74fac8f8c06",
+    "lastmod": "2026-08-28"
+  },
+  "txt-chinese-converter/index.html": {
+    "hash": "d36bd00f7056b90a",
+    "lastmod": "2026-08-27"
+  },
+  "word-chinese-converter/index.html": {
+    "hash": "990b1359a33b3d6c",
+    "lastmod": "2026-08-27"
+  },
+  "word-spelling/index.html": {
+    "hash": "851da056d33dda6b",
+    "lastmod": "2026-08-01"
+  },
+  "word-to-txt/index.html": {
+    "hash": "3019eaf0f1cdf937",
+    "lastmod": "2026-09-10"
+  },
+  "zh-tw/about/index.html": {
+    "hash": "261e69e63dc34ba9",
+    "lastmod": "2026-08-28"
+  },
+  "zh-tw/character-counter/index.html": {
+    "hash": "f04f521b2f24beed",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/chinese-character-lookup/index.html": {
+    "hash": "636dda2d0b6762cb",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/chinese-handwriting-recognition/index.html": {
+    "hash": "9a4cbf340c26b68f",
+    "lastmod": "2026-08-28"
+  },
+  "zh-tw/chinese-japanese-kanji-comparison/index.html": {
+    "hash": "719207de8b911ddb",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/chinese-stroke-order/index.html": {
+    "hash": "314d2793d2ce2e01",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/chinese-to-pinyin/index.html": {
+    "hash": "cb8ba6c6c690e718",
+    "lastmod": "2026-10-25"
+  },
+  "zh-tw/contact/index.html": {
+    "hash": "d16e615a198712e6",
+    "lastmod": "2026-08-28"
+  },
+  "zh-tw/csv-chinese-converter/index.html": {
+    "hash": "b2b3eebe9e5ec866",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/excel-chinese-converter/index.html": {
+    "hash": "3f96332b518b0e12",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/file-text-converter/index.html": {
+    "hash": "0a269fd58049983b",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/han-character-worksheet/index.html": {
+    "hash": "671e0ff05bb64ca9",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/hangul-hanja-converter/index.html": {
+    "hash": "f95228347fe21d6d",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/hanzi-tracing-worksheet/index.html": {
+    "hash": "270fa19a25d7f930",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/hanzi/ai/index.html": {
+    "hash": "88fc2133221764c6",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/hanzi/guo/index.html": {
+    "hash": "6afae70302007e9f",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/hanzi/index.html": {
+    "hash": "482f2da963ba15b4",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/hanzi/ren/index.html": {
+    "hash": "63795dc6b18f3939",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/hanzi/sun/index.html": {
+    "hash": "343ff47d1ed34ec1",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/hanzi/xue/index.html": {
+    "hash": "9c6b95918a5b6f94",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/hong-kong-traditional/index.html": {
+    "hash": "a9de5516b5f8ecff",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/image-redaction/index.html": {
+    "hash": "aa3f11daff985445",
+    "lastmod": "2026-09-21"
+  },
+  "zh-tw/index.html": {
+    "hash": "ca575de5be520385",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/japanese-characters/index.html": {
+    "hash": "7b811a49daed7dbc",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/japanese-chinese-kanji-converter/index.html": {
+    "hash": "361fb3066f9404c7",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/japanese-handwriting-recognition/index.html": {
+    "hash": "ad55b3a7b5a61e22",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/japanese-kanji-converter/index.html": {
+    "hash": "c9ef0479499331ee",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/japanese-kanji-dictionary/index.html": {
+    "hash": "8d995e0d635f4390",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/japanese-kanji-to-simplified-chinese/index.html": {
+    "hash": "2400c6c617f075d3",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/japanese-kanji-to-traditional-chinese/index.html": {
+    "hash": "534aeed42bfba070",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/japanese-stroke-order/index.html": {
+    "hash": "218305c398297134",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/kanji-to-hiragana/index.html": {
+    "hash": "65bf3ef3c223275f",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/kanji-to-romaji/index.html": {
+    "hash": "cb451048765262de",
+    "lastmod": "2026-08-28"
+  },
+  "zh-tw/korean-hanja-dictionary/index.html": {
+    "hash": "6db7c6caa0838672",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/korean-hanja-handwriting-recognition/index.html": {
+    "hash": "8321d1a24fb0b982",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/korean-name-hanja/index.html": {
+    "hash": "f14766cc0e0d10b9",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/mi-zi-ge-worksheet/index.html": {
+    "hash": "ee47746c4df4adff",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/password-generator/index.html": {
+    "hash": "40066a411c853761",
+    "lastmod": "2026-10-24"
+  },
+  "zh-tw/pdf-chinese-converter/index.html": {
+    "hash": "8db573dd86ee3c02",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/photo-chinese-character-recognition/index.html": {
+    "hash": "56eababd279fc65f",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/pinyin-hanzi-worksheet/index.html": {
+    "hash": "1a69c6bef2124d82",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/privacy/index.html": {
+    "hash": "bf9c3edc388eab2c",
+    "lastmod": "2026-07-21"
+  },
+  "zh-tw/simplified-chinese-to-japanese-kanji/index.html": {
+    "hash": "207801740611930f",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/simplified-to-traditional/index.html": {
+    "hash": "808c77eb07b5cc68",
+    "lastmod": "2026-11-17"
+  },
+  "zh-tw/stroke-order-worksheet/index.html": {
+    "hash": "8319151f4754322a",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/taiwan-traditional/index.html": {
+    "hash": "ddb981f5b59b340b",
+    "lastmod": "2026-08-28"
+  },
+  "zh-tw/text-formatter/index.html": {
+    "hash": "3773e9e3ce044c1f",
+    "lastmod": "2026-11-10"
+  },
+  "zh-tw/tian-zi-ge-worksheet/index.html": {
+    "hash": "a7ef5c8510dadb5e",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/traditional-chinese-to-japanese-kanji/index.html": {
+    "hash": "713ce98421954d9f",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/traditional-to-simplified/index.html": {
+    "hash": "a98447681aa92963",
+    "lastmod": "2026-08-28"
+  },
+  "zh-tw/txt-chinese-converter/index.html": {
+    "hash": "0c7027db40e0bac5",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/word-chinese-converter/index.html": {
+    "hash": "9a724ea53dd02e00",
+    "lastmod": "2026-08-27"
+  },
+  "zh-tw/word-to-txt/index.html": {
+    "hash": "3f5ebdd53e60a243",
+    "lastmod": "2026-09-10"
+  }
+}

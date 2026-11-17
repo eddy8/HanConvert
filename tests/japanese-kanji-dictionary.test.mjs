@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
+import { isDescriptionLengthInRange } from "../scripts/seo-metadata-rules.mjs";
+
 const pages = [
   ["../japanese-kanji-dictionary/index.html", "zh-CN", "日本汉字查询与在线字典"],
   ["../zh-tw/japanese-kanji-dictionary/index.html", "zh-Hant", "日本漢字查詢與線上字典"],
@@ -21,7 +23,7 @@ for (const [path, lang, heading] of pages) {
     assert.ok(html.includes('href="https://www.edrdg.org/edrdg/licence.html"'));
     assert.ok(html.includes('"@type":"WebApplication"'));
     assert.ok(html.includes('hreflang="x-default"'));
-    assert.ok([...description].length >= 150 && [...description].length <= 160);
+    assert.ok(isDescriptionLengthInRange(html, description));
     assert.doesNotMatch(html, /(?:src|href)="[^"]+\?v=/u);
   });
 }

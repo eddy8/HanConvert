@@ -10,6 +10,7 @@ import {
 } from "./scenario-pseo-data.mjs";
 import { buildScenarioCluster } from "./scenario-pseo-links.mjs";
 import { getMetadataLengthRange, visibleMetadataLength } from "./seo-metadata-rules.mjs";
+import { preserveExistingLastmods } from "./sitemap-lastmod.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
@@ -239,13 +240,14 @@ ${sitemapAlternates(scenario)}
 
 async function syncSitemap() {
   let sitemap = await readFile(sitemapPath, "utf8");
+  const previousSitemap = sitemap;
   const section = buildSitemapSection();
   if (sitemap.includes(sitemapMarkerStart)) {
     sitemap = sitemap.replace(new RegExp(`${sitemapMarkerStart}[\\s\\S]*?${sitemapMarkerEnd}`, "u"), section);
   } else {
     sitemap = sitemap.replace("</urlset>", `${section}\n</urlset>`);
   }
-  await writeFile(sitemapPath, sitemap, "utf8");
+  await writeFile(sitemapPath, preserveExistingLastmods(previousSitemap, sitemap), "utf8");
 }
 
 async function syncParentPages() {

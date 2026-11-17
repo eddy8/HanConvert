@@ -7,6 +7,7 @@ import { SEO_DESCRIPTIONS, TARGET_META_DESCRIPTION_LENGTH } from "./seo-descript
 import {
   decodeHtmlText,
   getMetadataLengthRange,
+  getMetadataLocaleFromHtml,
   getTitleContent,
   LOCALIZED_METADATA_PATHS,
   LOCALIZED_SEO_DESCRIPTION_SLUGS,
@@ -238,9 +239,10 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   }
   if (localizedHomePages.has(relativePath)) {
     const description = requireMatch(html, /<meta\s+name="description"\s+content="([^"]+)"/, "meta description", relativePath);
-    const descriptionLength = [...description].length;
-    if (descriptionLength < TARGET_META_DESCRIPTION_LENGTH.min || descriptionLength > TARGET_META_DESCRIPTION_LENGTH.max) {
-      throw new Error(`${relativePath}: home meta description length ${descriptionLength} is outside ${TARGET_META_DESCRIPTION_LENGTH.min}-${TARGET_META_DESCRIPTION_LENGTH.max}`);
+    const descriptionLength = visibleMetadataLength(description);
+    const [descriptionMin, descriptionMax] = getMetadataLengthRange(getMetadataLocaleFromHtml(html), "description");
+    if (descriptionLength < descriptionMin || descriptionLength > descriptionMax) {
+      throw new Error(`${relativePath}: home meta description length ${descriptionLength} is outside ${descriptionMin}-${descriptionMax}`);
     }
     if (!html.includes(`"description": ${JSON.stringify(description)}`)) {
       throw new Error(`${relativePath}: structured data description is out of sync with home meta description`);
@@ -273,8 +275,11 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
     if (description !== expectedDescription) {
       throw new Error(`${relativePath}: meta description is out of sync with seo-descriptions.mjs`);
     }
-    if (!LOCALIZED_SEO_DESCRIPTION_SLUGS.has(slug) && (descriptionLength < TARGET_META_DESCRIPTION_LENGTH.min || descriptionLength > TARGET_META_DESCRIPTION_LENGTH.max)) {
-      throw new Error(`${relativePath}: meta description length ${descriptionLength} is outside ${TARGET_META_DESCRIPTION_LENGTH.min}-${TARGET_META_DESCRIPTION_LENGTH.max}`);
+    const [descriptionMin, descriptionMax] = LOCALIZED_SEO_DESCRIPTION_SLUGS.has(slug)
+      ? getMetadataLengthRange(getMetadataLocaleFromHtml(html), "description")
+      : [TARGET_META_DESCRIPTION_LENGTH.min, TARGET_META_DESCRIPTION_LENGTH.max];
+    if (descriptionLength < descriptionMin || descriptionLength > descriptionMax) {
+      throw new Error(`${relativePath}: meta description length ${descriptionLength} is outside ${descriptionMin}-${descriptionMax}`);
     }
     if (!html.includes(`"description": ${JSON.stringify(expectedDescription)}`)) {
       throw new Error(`${relativePath}: structured data description is out of sync with meta description`);
@@ -282,9 +287,10 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   }
   if (isKoreanToolPage) {
     const description = requireMatch(html, /<meta\s+name="description"\s+content="([^"]+)"/, "meta description", relativePath);
-    const descriptionLength = [...description].length;
-    if (descriptionLength < TARGET_META_DESCRIPTION_LENGTH.min || descriptionLength > TARGET_META_DESCRIPTION_LENGTH.max) {
-      throw new Error(`${relativePath}: meta description length ${descriptionLength} is outside ${TARGET_META_DESCRIPTION_LENGTH.min}-${TARGET_META_DESCRIPTION_LENGTH.max}`);
+    const descriptionLength = visibleMetadataLength(description);
+    const [descriptionMin, descriptionMax] = getMetadataLengthRange(getMetadataLocaleFromHtml(html), "description");
+    if (descriptionLength < descriptionMin || descriptionLength > descriptionMax) {
+      throw new Error(`${relativePath}: meta description length ${descriptionLength} is outside ${descriptionMin}-${descriptionMax}`);
     }
     if (!html.includes(`"description":${JSON.stringify(description)}`)) {
       throw new Error(`${relativePath}: structured data description is out of sync with meta description`);

@@ -48,6 +48,8 @@
 - Gate page growth on indexing health. While Google indexes fewer than about half of the sitemap URLs, do not add batches of generated pages. Improve, merge, or `noindex` thin pages first.
 - Every generated page must pass a uniqueness bar: a distinct primary query, a distinct overview, at least several page-specific FAQ answers, and working examples that match the page's intent.
 - Review search data regularly. Prioritize pages with high impressions and low CTR (snippet problem) and pages ranking in positions 4-15 (content and internal-link problem). Diagnose pages that are crawled but not indexed or discovered but not indexed, then improve, consolidate, or remove them.
+- Keep search-data snapshots in the git-ignored `.seo-data/<YYYY-MM-DD>/` folder, never in published paths. Save the raw Bing and Search Console tables there in the formats described in `scripts/seo-import-snapshot.mjs`, then run `node scripts/seo-import-snapshot.mjs <date>` and `node scripts/seo-report.mjs`. The report lists snippet fixes, striking-distance queries, pages proven on Bing but missing from Google, sections with no visibility, and before/after metrics for pages changed since the previous snapshot.
+- After deploying content changes, run `node scripts/submit-indexnow.mjs --dry-run`, then submit without `--dry-run` so Bing and other IndexNow engines recrawl the changed URLs. Never change or remove the root IndexNow key file.
 - Preserve useful existing keywords when optimizing a page. Add missing search intent naturally instead of replacing established coverage or stuffing keywords.
 - Keep Title, meta description, H1, introductory copy, FAQ, and structured data aligned with the page's actual primary function.
 - After adding a feature, review whether related pages, navigation, sitemap, structured data, or SEO copy also need updates.
@@ -78,6 +80,8 @@
 - Run `node --check <edited-file.js>` for each edited JavaScript entry file.
 - Run the complete repository test suite with `node --test`.
 - Run `node scripts/validate-seo.mjs` after changing HTML, routes, localization, metadata, structured data, internal links, or the sitemap.
+- Run `node scripts/sync-sitemap-lastmod.mjs` after changing any page's title, meta description, or main content. It dates only pages whose indexable content changed; `node --test` runs its `--check`.
+- For metadata-only changes, edit the source module and replace the exact old text in the affected HTML instead of rerunning full generators, because most generators and sync scripts do not reproduce the committed formatting. Only scripts that document `--check` can verify themselves.
 - Run `node scripts/audit-static-content.mjs` after adding, removing, or substantially changing static page content.
 - Run `git diff --check` before finishing.
 - For UI or interaction changes, test the actual page in a browser at desktop and mobile widths. Check the console, text wrapping, overflow, layout stability, and the complete primary workflow.

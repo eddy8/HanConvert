@@ -74,3 +74,18 @@ export function getMetadataLengthRange(locale, field) {
   if (!range) throw new Error(`Missing SEO metadata length range for ${locale}/${field}`);
   return range;
 }
+
+const htmlLangToMetadataLocale = { "zh-CN": "zh-CN", "zh-Hans": "zh-CN", "zh-TW": "zh-TW", "zh-Hant": "zh-TW", en: "en", ja: "ja", ko: "ko" };
+
+export function getMetadataLocaleFromHtml(html) {
+  const lang = String(html).match(/<html lang="([^"]+)"/)?.[1];
+  const locale = htmlLangToMetadataLocale[lang];
+  if (!locale) throw new Error(`Unsupported or missing <html lang>: ${lang}`);
+  return locale;
+}
+
+export function isDescriptionLengthInRange(html, description) {
+  const [min, max] = getMetadataLengthRange(getMetadataLocaleFromHtml(html), "description");
+  const length = visibleMetadataLength(description ?? "");
+  return length >= min && length <= max;
+}

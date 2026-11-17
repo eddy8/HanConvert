@@ -1,6 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { preserveExistingLastmods } from "./sitemap-lastmod.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const sitemapPath = path.join(projectRoot, "sitemap.xml");
@@ -59,5 +60,5 @@ if (source.includes(markerStart)) {
 } else {
   updated = source.replace("</urlset>", `${section}\n</urlset>`);
 }
-await writeFile(sitemapPath, updated);
+await writeFile(sitemapPath, preserveExistingLastmods(source, updated));
 console.log(`Added ${blocks.length} Japanese tool URLs to sitemap.xml.`);

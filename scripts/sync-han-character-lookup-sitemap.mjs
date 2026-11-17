@@ -1,6 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { preserveExistingLastmods } from "./sitemap-lastmod.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const sitemapPath = path.join(projectRoot, "sitemap.xml");
@@ -40,5 +41,5 @@ const updated = source.includes(markerStart)
   ? source.replace(new RegExp(`${markerStart}[\\s\\S]*?${markerEnd}`), section)
   : source.replace("</urlset>", `${section}\n</urlset>`);
 
-await writeFile(sitemapPath, updated);
+await writeFile(sitemapPath, preserveExistingLastmods(source, updated));
 console.log("Added 5 Han-character lookup URLs to sitemap.xml.");
