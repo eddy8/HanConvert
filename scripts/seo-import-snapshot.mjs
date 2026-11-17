@@ -6,6 +6,8 @@
 //   bing-pages.tsv / google-pages.tsv      path  impressions  clicks  position
 //   bing-weekly.json                       optional per-page weekly series from seo-fetch-bing.mjs
 //   bing-queries.tsv                       query impressions  clicks  position
+//   bing-ai-queries.tsv                    grounding query  citations  share%   (Bing AI Performance)
+//   bing-ai-pages.tsv                      path  citations
 //   google-indexed.txt                     one path per line
 //   google-crawled-not-indexed.txt, google-redirect.txt, google-duplicate-canonical.txt, ...
 //                                          one path per line; the file name becomes the reason
@@ -60,6 +62,18 @@ const snapshot = {
     pages: await rows("bing-pages.tsv", "url"),
     queries: await rows("bing-queries.tsv", "query"),
     weekly: JSON.parse(await readFile(path.join(folder, "bing-weekly.json"), "utf8").catch(() => "null"))
+  },
+  // Bing Webmaster "AI Performance": citations of this site in Microsoft Copilot and partner answers.
+  ai: {
+    totals: meta.bingAi ?? null,
+    queries: (await lines("bing-ai-queries.tsv")).map((line) => {
+      const [query, citations, share] = line.split("\t");
+      return { query, citations: Number(citations), share: Number.parseFloat(share) / 100 };
+    }),
+    pages: (await lines("bing-ai-pages.tsv")).map((line) => {
+      const [label, citations] = line.split("\t");
+      return { url: absolute(label), citations: Number(citations) };
+    })
   },
   google: {
     totals: meta.google?.totals,

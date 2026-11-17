@@ -69,6 +69,52 @@
                 "item": "https://jianfan.app/taiwan-traditional/"
               }
             ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/taiwan-traditional/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "台湾正体和通用繁体有什么区别？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "多个常用字写法不同：里面→裡面（通用繁体为裏面）、着急→著急（着急）、为什么→為什麼（爲什麼）、床铺→床鋪（牀鋪）、面包→麵包（麪包）。在台湾发布的内容建议使用台湾正体。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "「含用词」和不含用词有什么不同？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不含用词只转字形，「软件」会变成「軟件」；含用词还会替换为台湾常用说法：软件→軟體、鼠标→滑鼠、服务器→伺服器、出租车→計程車、视频→影片、打印机→印表機、内存→記憶體、博客→部落格、自行车→腳踏車、激光→雷射。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "为什么「台湾」被转成了「臺灣」？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "台湾的标准字形是「臺」，所以结果为「臺灣、舞臺」，「台风」则转为「颱風」。日常书写也常用「台」；如需保留，可在自定义词库中把「台湾」固定为「台灣」。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "台湾正体能转回简体吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以。选择「台湾正体 → 简体（含用词）」会把軟體、滑鼠、伺服器、計程車等换回软件、鼠标、服务器、出租车。注意多个繁体字可能合并为同一个简体字，例如頭髮/發展→头发/发展，转回后不一定逐字还原。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "转换的文字会上传吗？能转多长？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不会上传，转换在浏览器本地分段完成。单次最多可转换 300 万字符，也可以导入 10 MB 以内的 TXT、DOCX、PDF、Excel 或 CSV 文件提取文字。"
+                }
+              }
+            ]
           }
         ]
       }
@@ -354,6 +400,17 @@
           <!-- korean-hanja-tool-links:end -->
         </nav>
       </section>
+      <!-- converter-faq:start -->
+      <section class="pinyin-faq converter-faq" aria-labelledby="converterFaqTitle">
+        <h2 id="converterFaqTitle">台湾繁体转换常见问题</h2>
+        <p class="converter-faq-lead">台湾繁体（台湾正体）转换是把简体中文转换为台湾使用的标准字形。本页默认使用「简体 → 台湾正体（含用词）」，会同时把大陆用词换成台湾常用说法。</p>
+        <details><summary>台湾正体和通用繁体有什么区别？</summary><p>多个常用字写法不同：里面→裡面（通用繁体为裏面）、着急→著急（着急）、为什么→為什麼（爲什麼）、床铺→床鋪（牀鋪）、面包→麵包（麪包）。在台湾发布的内容建议使用台湾正体。</p></details>
+        <details><summary>「含用词」和不含用词有什么不同？</summary><p>不含用词只转字形，「软件」会变成「軟件」；含用词还会替换为台湾常用说法：软件→軟體、鼠标→滑鼠、服务器→伺服器、出租车→計程車、视频→影片、打印机→印表機、内存→記憶體、博客→部落格、自行车→腳踏車、激光→雷射。</p></details>
+        <details><summary>为什么「台湾」被转成了「臺灣」？</summary><p>台湾的标准字形是「臺」，所以结果为「臺灣、舞臺」，「台风」则转为「颱風」。日常书写也常用「台」；如需保留，可在自定义词库中把「台湾」固定为「台灣」。</p></details>
+        <details><summary>台湾正体能转回简体吗？</summary><p>可以。选择「台湾正体 → 简体（含用词）」会把軟體、滑鼠、伺服器、計程車等换回软件、鼠标、服务器、出租车。注意多个繁体字可能合并为同一个简体字，例如頭髮/發展→头发/发展，转回后不一定逐字还原。</p></details>
+        <details><summary>转换的文字会上传吗？能转多长？</summary><p>不会上传，转换在浏览器本地分段完成。单次最多可转换 300 万字符，也可以导入 10 MB 以内的 TXT、DOCX、PDF、Excel 或 CSV 文件提取文字。</p></details>
+      </section>
+      <!-- converter-faq:end -->
     </main>
 
     <footer class="site-footer">

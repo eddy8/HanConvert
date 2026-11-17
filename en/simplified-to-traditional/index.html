@@ -72,6 +72,52 @@
                 "item": "https://jianfan.app/en/simplified-to-traditional/"
               }
             ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/en/simplified-to-traditional/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Will characters like 发, 后, and 干 be converted wrongly?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Common words are handled from context, because whole words are matched first: 头发→頭髮 (hair), 出发→出發 (depart), 发票→發票, 后天→後天, 皇后→皇后 (empress), 干净→乾淨, 干活→幹活, 只有一只猫→只有一隻貓, 钟表→鐘錶. Names, new words, and isolated characters lack context, so proofread before publishing."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why does the result use 爲, 裏, and 牀 instead of the usual Taiwan forms?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The default standard Traditional output uses OpenCC standard forms: 为什么→爲什麼, 里面→裏面, 床铺→牀鋪, 面包→麪包. For readers in Taiwan, choose “Simplified → Taiwan” to get 為什麼, 裡面, 床鋪, 麵包. For Hong Kong readers, choose the Hong Kong mode."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can it replace mainland terms with Taiwan vocabulary?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Choose “Simplified → Taiwan phrases”: 软件→軟體 (software), 鼠标→滑鼠 (mouse), 服务器→伺服器 (server), 出租车→計程車 (taxi), 视频→影片 (video), 打印机→印表機 (printer), 内存→記憶體 (memory), 博客→部落格 (blog), 激光→雷射 (laser). Modes without phrases keep words such as 軟件 and 視頻."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What if a brand name or proper noun converts wrongly?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Open the custom dictionary and enter the text before and after conversion to lock the result. Enter the same text on both sides to keep a brand name unchanged. Entries are stored only in your current browser."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is my text uploaded, and how much can I convert?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Conversion runs locally in your browser in chunks. One conversion can handle up to 3 million characters, and you can import TXT, DOCX, PDF, Excel, or CSV files up to 10 MB."
+                }
+              }
+            ]
           }
         ]
       }
@@ -361,6 +407,17 @@
           <!-- korean-hanja-tool-links:end -->
         </nav>
       </section>
+      <!-- converter-faq:start -->
+      <section class="pinyin-faq converter-faq" aria-labelledby="converterFaqTitle">
+        <h2 id="converterFaqTitle">Simplified to Traditional Chinese FAQ</h2>
+        <p class="converter-faq-lead">Simplified to Traditional conversion rewrites Simplified Chinese in Traditional character forms. This page outputs standard Traditional Chinese (OpenCC standard forms) by default, and you can switch to Taiwan or Hong Kong forms and regional vocabulary.</p>
+        <details><summary>Will characters like 发, 后, and 干 be converted wrongly?</summary><p>Common words are handled from context, because whole words are matched first: 头发→頭髮 (hair), 出发→出發 (depart), 发票→發票, 后天→後天, 皇后→皇后 (empress), 干净→乾淨, 干活→幹活, 只有一只猫→只有一隻貓, 钟表→鐘錶. Names, new words, and isolated characters lack context, so proofread before publishing.</p></details>
+        <details><summary>Why does the result use 爲, 裏, and 牀 instead of the usual Taiwan forms?</summary><p>The default standard Traditional output uses OpenCC standard forms: 为什么→爲什麼, 里面→裏面, 床铺→牀鋪, 面包→麪包. For readers in Taiwan, choose “Simplified → Taiwan” to get 為什麼, 裡面, 床鋪, 麵包. For Hong Kong readers, choose the Hong Kong mode.</p></details>
+        <details><summary>Can it replace mainland terms with Taiwan vocabulary?</summary><p>Choose “Simplified → Taiwan phrases”: 软件→軟體 (software), 鼠标→滑鼠 (mouse), 服务器→伺服器 (server), 出租车→計程車 (taxi), 视频→影片 (video), 打印机→印表機 (printer), 内存→記憶體 (memory), 博客→部落格 (blog), 激光→雷射 (laser). Modes without phrases keep words such as 軟件 and 視頻.</p></details>
+        <details><summary>What if a brand name or proper noun converts wrongly?</summary><p>Open the custom dictionary and enter the text before and after conversion to lock the result. Enter the same text on both sides to keep a brand name unchanged. Entries are stored only in your current browser.</p></details>
+        <details><summary>Is my text uploaded, and how much can I convert?</summary><p>No. Conversion runs locally in your browser in chunks. One conversion can handle up to 3 million characters, and you can import TXT, DOCX, PDF, Excel, or CSV files up to 10 MB.</p></details>
+      </section>
+      <!-- converter-faq:end -->
     </main>
 
     <footer class="site-footer">

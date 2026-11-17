@@ -69,6 +69,52 @@
                 "item": "https://jianfan.app/en/taiwan-traditional/"
               }
             ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/en/taiwan-traditional/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How is Taiwan Traditional different from standard Traditional Chinese?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Several common characters differ: 里面→裡面 (standard Traditional: 裏面), 着急→著急 (着急), 为什么→為什麼 (爲什麼), 床铺→床鋪 (牀鋪), 面包→麵包 (麪包). Use Taiwan Traditional for content published in Taiwan."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the difference between the modes with and without phrases?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Without phrases, only character forms change, so 软件 becomes 軟件. With phrases, words are also replaced with Taiwan usage: 软件→軟體 (software), 鼠标→滑鼠 (mouse), 服务器→伺服器 (server), 出租车→計程車 (taxi), 视频→影片 (video), 打印机→印表機 (printer), 内存→記憶體 (memory), 博客→部落格 (blog), 自行车→腳踏車 (bicycle), 激光→雷射 (laser)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why does 台湾 become 臺灣?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "臺 is the standard form in Taiwan, so the result is 臺灣 and 舞臺, while 台风 (typhoon) becomes 颱風. 台 is also common in everyday writing; to keep it, add a custom dictionary entry that fixes 台湾 as 台灣."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can Taiwan Traditional be converted back to Simplified?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. “Taiwan → Simplified phrases” turns 軟體, 滑鼠, 伺服器, and 計程車 back into 软件, 鼠标, 服务器, and 出租车. Several Traditional characters can merge into one Simplified character, as in 頭髮/發展→头发/发展, so a round trip may not restore every character."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is my text uploaded, and how much can I convert?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Conversion runs locally in your browser in chunks. One conversion can handle up to 3 million characters, and you can import TXT, DOCX, PDF, Excel, or CSV files up to 10 MB."
+                }
+              }
+            ]
           }
         ]
       }
@@ -354,6 +400,17 @@
           <!-- korean-hanja-tool-links:end -->
         </nav>
       </section>
+      <!-- converter-faq:start -->
+      <section class="pinyin-faq converter-faq" aria-labelledby="converterFaqTitle">
+        <h2 id="converterFaqTitle">Taiwan Traditional Chinese FAQ</h2>
+        <p class="converter-faq-lead">Taiwan Traditional Chinese conversion rewrites Simplified Chinese in the standard character forms used in Taiwan. This page defaults to “Simplified → Taiwan phrases”, which also replaces mainland vocabulary with common Taiwan terms.</p>
+        <details><summary>How is Taiwan Traditional different from standard Traditional Chinese?</summary><p>Several common characters differ: 里面→裡面 (standard Traditional: 裏面), 着急→著急 (着急), 为什么→為什麼 (爲什麼), 床铺→床鋪 (牀鋪), 面包→麵包 (麪包). Use Taiwan Traditional for content published in Taiwan.</p></details>
+        <details><summary>What is the difference between the modes with and without phrases?</summary><p>Without phrases, only character forms change, so 软件 becomes 軟件. With phrases, words are also replaced with Taiwan usage: 软件→軟體 (software), 鼠标→滑鼠 (mouse), 服务器→伺服器 (server), 出租车→計程車 (taxi), 视频→影片 (video), 打印机→印表機 (printer), 内存→記憶體 (memory), 博客→部落格 (blog), 自行车→腳踏車 (bicycle), 激光→雷射 (laser).</p></details>
+        <details><summary>Why does 台湾 become 臺灣?</summary><p>臺 is the standard form in Taiwan, so the result is 臺灣 and 舞臺, while 台风 (typhoon) becomes 颱風. 台 is also common in everyday writing; to keep it, add a custom dictionary entry that fixes 台湾 as 台灣.</p></details>
+        <details><summary>Can Taiwan Traditional be converted back to Simplified?</summary><p>Yes. “Taiwan → Simplified phrases” turns 軟體, 滑鼠, 伺服器, and 計程車 back into 软件, 鼠标, 服务器, and 出租车. Several Traditional characters can merge into one Simplified character, as in 頭髮/發展→头发/发展, so a round trip may not restore every character.</p></details>
+        <details><summary>Is my text uploaded, and how much can I convert?</summary><p>No. Conversion runs locally in your browser in chunks. One conversion can handle up to 3 million characters, and you can import TXT, DOCX, PDF, Excel, or CSV files up to 10 MB.</p></details>
+      </section>
+      <!-- converter-faq:end -->
     </main>
 
     <footer class="site-footer">
