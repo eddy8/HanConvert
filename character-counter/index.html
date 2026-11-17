@@ -95,6 +95,30 @@
             "mainEntity": [
               {
                 "@type": "Question",
+                "name": "标点符号和空格算字数吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "“字符数”包含标点、空格和换行；“不含空白”会去掉空格与换行。页面还单独列出标点符号的数量，用不含空白的字数减去标点数，就能得到纯文字字数。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "表情符号或带声调的拼音算几个字？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "按屏幕上看到的字符计算：一个表情符号（如 👍🏽）或一个带声调的拼音字母（如 ǎ）都算 1 个字符，不会因内部由多个编码组成而重复计算。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "为什么和 Word 的字数统计不一样？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Word 的“字数”通常把一个英文单词计为 1，而这里的字符数会把单词中的每个字母都计入。纯中文文本两者通常接近，中英文混排时可对照本页的“汉字数”和“词语数”。"
+                }
+              },
+              {
+                "@type": "Question",
                 "name": "字符数和汉字数有什么区别？",
                 "acceptedAnswer": {
                   "@type": "Answer",
@@ -209,6 +233,9 @@ CJK text analysis 2026.">加载示例</button><button class="text-button" id="co
           <li>实时查看字符数、词语、句子、段落、行数与 UTF-8 字节。</li>
           <li>根据需要检查文字构成、字符频次和目标字数进度。</li>
         </ol></section><section class="pinyin-faq" aria-labelledby="counterFaqTitle"><h2 id="counterFaqTitle">在线字数统计常见问题</h2>
+          <details><summary>标点符号和空格算字数吗？</summary><p>“字符数”包含标点、空格和换行；“不含空白”会去掉空格与换行。页面还单独列出标点符号的数量，用不含空白的字数减去标点数，就能得到纯文字字数。</p></details>
+          <details><summary>表情符号或带声调的拼音算几个字？</summary><p>按屏幕上看到的字符计算：一个表情符号（如 👍🏽）或一个带声调的拼音字母（如 ǎ）都算 1 个字符，不会因内部由多个编码组成而重复计算。</p></details>
+          <details><summary>为什么和 Word 的字数统计不一样？</summary><p>Word 的“字数”通常把一个英文单词计为 1，而这里的字符数会把单词中的每个字母都计入。纯中文文本两者通常接近，中英文混排时可对照本页的“汉字数”和“词语数”。</p></details>
           <details><summary>字符数和汉字数有什么区别？</summary><p>字符数包含汉字、字母、数字、标点、空格与换行；汉字数只统计 Unicode 汉字。简体、繁体、日文汉字和韩文汉字可能共享同一码位，因此统一计入汉字。</p></details>
           <details><summary>为什么字符数和字节数不同？</summary><p>字符是用户看到的文字单位，字节是编码后的存储大小。UTF-8 中英文通常占 1 字节，常见汉字通常占 3 字节。</p></details>
           <details><summary>Word 文件会上传吗？</summary><p>不会。DOCX 文档在浏览器内提取文字，内容不会发送到 JianFan.app 或第三方转换服务器。</p></details>

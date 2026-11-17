@@ -83,6 +83,9 @@ const content = {
     steps: ["输入或粘贴要统计的文本，也可以导入 TXT、DOCX 等文件。", "实时查看字符数、词语、句子、段落、行数与 UTF-8 字节。", "根据需要检查文字构成、字符频次和目标字数进度。"],
     faqTitle: "在线字数统计常见问题",
     faqs: [
+      ["标点符号和空格算字数吗？", "“字符数”包含标点、空格和换行；“不含空白”会去掉空格与换行。页面还单独列出标点符号的数量，用不含空白的字数减去标点数，就能得到纯文字字数。"],
+      ["表情符号或带声调的拼音算几个字？", "按屏幕上看到的字符计算：一个表情符号（如 👍🏽）或一个带声调的拼音字母（如 ǎ）都算 1 个字符，不会因内部由多个编码组成而重复计算。"],
+      ["为什么和 Word 的字数统计不一样？", "Word 的“字数”通常把一个英文单词计为 1，而这里的字符数会把单词中的每个字母都计入。纯中文文本两者通常接近，中英文混排时可对照本页的“汉字数”和“词语数”。"],
       ["字符数和汉字数有什么区别？", "字符数包含汉字、字母、数字、标点、空格与换行；汉字数只统计 Unicode 汉字。简体、繁体、日文汉字和韩文汉字可能共享同一码位，因此统一计入汉字。"],
       ["为什么字符数和字节数不同？", "字符是用户看到的文字单位，字节是编码后的存储大小。UTF-8 中英文通常占 1 字节，常见汉字通常占 3 字节。"],
       ["Word 文件会上传吗？", "不会。DOCX 文档在浏览器内提取文字，内容不会发送到 JianFan.app 或第三方转换服务器。"],
@@ -157,6 +160,9 @@ const content = {
     steps: ["輸入或貼上要統計的文字，也可以匯入 TXT、DOCX 等檔案。", "即時查看字元數、詞語、句子、段落、行數與 UTF-8 位元組。", "依需要檢查文字組成、字元頻率及目標字數進度。"],
     faqTitle: "字數統計常見問題",
     faqs: [
+      ["標點符號和空格算字數嗎？", "「字元數」包含標點、空格和換行；「不含空白」會去掉空格與換行。頁面也會另外列出標點符號數量，用不含空白的字數減去標點數，就能得到純文字字數。"],
+      ["表情符號或有聲調的拼音算幾個字？", "依畫面上看到的字元計算：一個表情符號（如 👍🏽）或一個有聲調的拼音字母（如 ǎ）都算 1 個字元，不會因內部由多個編碼組成而重複計算。"],
+      ["為什麼和 Word 的字數統計不一樣？", "Word 的「字數」通常把一個英文單字計為 1，而這裡的字元數會把單字中的每個字母都算進去。純中文文字兩者通常接近，中英文混排時可對照本頁的「漢字數」和「詞語數」。"],
       ["字元數和漢字數有什麼不同？", "字元數包含漢字、字母、數字、標點、空白與換行；漢字數只計算 Unicode 漢字。正體、簡體、日文漢字與韓文漢字可能共用碼位，因此統一列入漢字。"],
       ["為什麼字元數和位元組數不同？", "字元是畫面上看到的文字單位，位元組是編碼後的儲存大小。UTF-8 中英文字母通常為 1 位元組，常見漢字通常為 3 位元組。"],
       ["Word 文件會上傳嗎？", "不會。DOCX 文件只在瀏覽器內提取文字，不會傳送到 JianFan.app 或第三方轉檔伺服器。"],
@@ -231,6 +237,9 @@ const content = {
     steps: ["Type or paste text, or import a supported text or DOCX file.", "Review characters, words, sentences, paragraphs, lines and UTF-8 bytes.", "Use the script breakdown, frequency list and target progress for a closer check."],
     faqTitle: "Character counter questions",
     faqs: [
+      ["Do spaces and punctuation count as characters?", "“Characters” includes punctuation, spaces, and line breaks, while “without spaces” removes spaces and line breaks. Punctuation is also counted separately, so you can subtract it to get a letters-only count."],
+      ["How are emoji and accented letters counted?", "Each visible character counts once: an emoji such as 👍🏽 or an accented letter such as é is 1 character, even when it is stored as several code points."],
+      ["How are words counted in Chinese or Japanese text?", "Words are split with your browser's built-in word segmentation (Intl.Segmenter), which recognizes Chinese and Japanese words without spaces. Results can differ slightly from manual counts or from Microsoft Word."],
       ["What is the difference between characters and Han characters?", "Characters include letters, numbers, punctuation, whitespace and line breaks. Han characters count only Unicode Han ideographs shared across Chinese, Japanese and Korean writing systems."],
       ["Why is the byte count different from the character count?", "Characters describe visible text units. Bytes describe encoded storage. In UTF-8, an English letter is usually 1 byte while a common Han character is usually 3 bytes."],
       ["Are imported Word files uploaded?", "No. DOCX text is extracted in your browser and is not sent to JianFan.app or a third-party conversion server."],
@@ -307,6 +316,9 @@ const content = {
     steps: ["文章を入力・貼り付けるか、TXTやDOCXなどのファイルを読み込みます。", "空白あり・空白なしの文字数、原稿用紙換算、行、バイト数を確認します。", "必要に応じて文字種、使用頻度、目標文字数まで確認します。"],
     faqTitle: "文字数カウントのよくある質問",
     faqs: [
+      ["句読点や空白は文字数に含まれますか？", "「空白あり」は句読点・空白・改行を含み、「空白なし」は空白と改行を除いた文字数です。句読点・記号の数も別に表示されるので、差し引けば本文だけの文字数も分かります。"],
+      ["絵文字は何文字と数えますか？", "画面に見える1文字として数えます。👍🏽のように内部では複数の符号でできている絵文字も1文字です。"],
+      ["原稿用紙の枚数はどう計算していますか？", "空白を除いた文字数を400字で割り、切り上げた枚数を表示します。最後の1枚に何文字入るかも確認できます。"],
       ["空白ありと空白なしの違いは何ですか？", "空白ありはスペースや改行も1文字として含めます。空白なしはスペース、タブ、改行を除いた文字数です。応募フォームなどでは指定された数え方を確認してください。"],
       ["400字詰め原稿用紙の枚数はどう計算しますか？", "空白なし文字数を400で割り、途中の用紙も1枚として切り上げます。実際の原稿用紙では改行や段落によって使用マス数が変わるため、目安としてご利用ください。"],
       ["日本語の単語数はどのように数えますか？", "ブラウザーの言語別単語分割機能を使います。形態素解析とは異なるため、用途によって他サービスと結果が少し異なる場合があります。"],
@@ -382,6 +394,9 @@ const content = {
     steps: ["텍스트를 입력하거나 붙여 넣고, 필요하면 TXT나 DOCX 파일을 불러옵니다.", "공백 포함·제외 글자수, 단어, 문장, 문단, 줄 수와 UTF-8 바이트를 확인합니다.", "문자 구성, 자주 쓴 글자와 목표 글자수 진행률을 함께 점검합니다."],
     faqTitle: "글자수 세기 자주 묻는 질문",
     faqs: [
+      ["띄어쓰기와 문장부호도 글자수에 포함되나요?", "‘공백 포함’은 띄어쓰기, 줄바꿈, 문장부호를 모두 세고 ‘공백 제외’는 띄어쓰기와 줄바꿈을 뺍니다. 문장부호 수도 따로 보여 주므로 빼서 계산할 수 있습니다."],
+      ["자기소개서 바이트는 어떻게 계산하나요?", "UTF-8 바이트와 함께 한글 2바이트 기준(영문·숫자·공백 1바이트) 바이트를 보여 줍니다. 채용 사이트마다 기준이 다를 수 있으니 제출처의 기준도 확인하세요."],
+      ["이모지는 몇 글자로 세나요?", "화면에 보이는 한 글자로 셉니다. 👍🏽처럼 내부적으로 여러 코드로 이루어진 이모지도 1글자입니다."],
       ["공백 포함과 공백 제외는 어떻게 다른가요?", "공백 포함은 띄어쓰기, 탭과 줄바꿈도 글자수에 넣습니다. 공백 제외는 이 항목을 빼고 계산합니다. 지원서나 입력 폼이 요구하는 기준을 확인하세요."],
       ["바이트 수가 사이트마다 다른 이유는 무엇인가요?", "UTF-8에서는 한글이 보통 3바이트지만 일부 국내 채용·공공기관 입력폼은 한글과 한자를 2바이트로 계산합니다. 이 페이지에서 두 기준을 함께 확인할 수 있습니다."],
       ["Word 파일이 서버로 전송되나요?", "아니요. DOCX 텍스트는 브라우저에서 추출하며 JianFan.app이나 외부 변환 서버로 전송하지 않습니다."],
