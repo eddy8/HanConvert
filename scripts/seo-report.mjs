@@ -132,6 +132,31 @@ if (previous) {
   })));
 }
 
+// 6. Weekly before/after: Bing reports weekly buckets, so compare each changed page's
+// four weeks before its lastmod with the complete weeks after it.
+const weekly = current.bing?.weekly;
+if (weekly) {
+  const rowsForTable = [];
+  for (const url of sitemapUrls) {
+    const lastmod = lastmods.get(url);
+    const series = weekly[url];
+    if (!series?.length) continue;
+    const before = series.filter((week) => week.week < lastmod).slice(-4);
+    const after = series.filter((week) => week.week >= lastmod);
+    if (!before.length) continue;
+    const sum = (weeks) => weeks.reduce((total, week) => ({ impressions: total.impressions + week.impressions, clicks: total.clicks + week.clicks }), { impressions: 0, clicks: 0 });
+    const b = sum(before);
+    const a = sum(after);
+    const avg = (total, count) => (count ? Math.round(total / count) : null);
+    const ctr = (total) => (total.impressions ? pct(total.clicks / total.impressions) : "-");
+    rowsForTable.push([short(url), lastmod, `${num(avg(b.impressions, before.length))} → ${after.length ? num(avg(a.impressions, after.length)) : "pending"}`, `${ctr(b)} → ${after.length ? ctr(a) : "pending"}`, String(after.length)]);
+  }
+  rowsForTable.sort((x, y) => y[1].localeCompare(x[1]));
+  out.push("## 6. Weekly before/after each page's last content change (Bing)\n");
+  out.push("Average weekly impressions and CTR over the 4 weeks before lastmod vs. complete weeks since. Wait for at least 3 weeks after a change before judging it.\n");
+  out.push(table(["page", "lastmod", "impr./week", "CTR", "weeks after"], rowsForTable.slice(0, 60)));
+}
+
 const report = out.join("\n");
 const reportPath = path.join(dataRoot, current.date, "report.md");
 await writeFile(reportPath, report);
