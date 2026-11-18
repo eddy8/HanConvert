@@ -121,7 +121,7 @@ test("all five formal pages contain static localized primary headings", async ()
     ["../photo-chinese-character-recognition/index.html", "在线拍照识字、图片识字"],
     ["../zh-tw/photo-chinese-character-recognition/index.html", "線上拍照漢字辨識"],
     ["../en/photo-chinese-character-recognition/index.html", "Chinese OCR: Image to Text with Pinyin"],
-    ["../ja/photo-chinese-character-recognition/index.html", "中国語画像OCR：写真の漢字をテキスト化"],
+    ["../ja/photo-chinese-character-recognition/index.html", "中国語OCR：画像の漢字を文字起こし"],
     ["../ko/photo-chinese-character-recognition/index.html", "사진으로 중국 한자 인식"]
   ];
   for (const [path, heading] of pages) {
@@ -193,5 +193,30 @@ test("every locale answers paste, Pinyin, limits and accuracy questions in its F
       assert.ok(source.slice(source.indexOf("<main")).includes(term), `${path} visible FAQ is missing ${term}`);
       assert.ok(faqSchema.includes(term), `${path} FAQPage schema is missing ${term}`);
     }
+  }
+});
+
+test("recognized text can be read aloud with a Mandarin browser voice", () => {
+  assert.match(browserSource, /new window\.SpeechSynthesisUtterance\(chunk\)/);
+  assert.match(browserSource, /voice\.localService \? 0 : 1/);
+  assert.match(browserSource, /hk\|yue\|mo/);
+  assert.match(browserSource, /speech\.cancel\(\)/);
+  assert.match(pageSource, /id="photoSpeakText" type="button" aria-pressed="false" hidden>朗读<\/button>/);
+  assert.match(pageSource, /id="photoSpeakCharacter" type="button" hidden>朗读这个字<\/button>/);
+  assert.match(pageSource, /"speechUnavailable":"此设备或浏览器没有可用的中文朗读语音"/);
+});
+
+test("every locale discloses that online speech voices receive the text", async () => {
+  const pages = [
+    ["../photo-chinese-character-recognition/index.html", "要朗读的文字会发送给浏览器厂商的语音服务"],
+    ["../zh-tw/photo-chinese-character-recognition/index.html", "要朗讀的文字會傳送給瀏覽器廠商的語音服務"],
+    ["../en/photo-chinese-character-recognition/index.html", "the text being read is sent to the browser vendor's speech service"],
+    ["../ja/photo-chinese-character-recognition/index.html", "読み上げる文字はブラウザー提供元の音声サービスへ送信されます"],
+    ["../ko/photo-chinese-character-recognition/index.html", "읽을 텍스트가 브라우저 제공업체의 음성 서비스로 전송됩니다"]
+  ];
+  for (const [path, disclosure] of pages) {
+    const source = await readFile(new URL(path, import.meta.url), "utf8");
+    const privacy = source.match(/<p class="photo-ocr-privacy">([^<]*)<\/p>/)?.[1] || "";
+    assert.ok(privacy.includes(disclosure.replaceAll("'", "&#39;")) || privacy.includes(disclosure), `${path} privacy note is missing the speech disclosure`);
   }
 });

@@ -42,7 +42,10 @@
 
 ## Data-Driven SEO Workflow
 
-- Base keyword and page decisions on real data, in this order: Google Search Console and Bing Webmaster Tools query and page data for this site, then competitor pages that rank for the target query, then keyword tools. Bing currently sends far more traffic than Google, and its data also reflects Copilot and ChatGPT search visibility.
+- Base keyword and page decisions on real data, and use each source for what it can show:
+  - Market demand decides which terms a page should target. Find it with search-engine autocomplete and related searches (Baidu, Bing, Google, Naver, and Yahoo! JAPAN for each market), keyword tools, and the wording of competitor pages that rank for the target query.
+  - Google Search Console and Bing Webmaster Tools data for this site decide priorities and measure results: snippet fixes, striking-distance queries, and before/after attribution. Bing currently sends far more traffic than Google, and its data also reflects Copilot and ChatGPT search visibility.
+- Search-console data shows only queries the site already ranks for. A term missing from it is not evidence that nobody searches for it. The page may be unindexed, the term may be absent from the Title and copy, or the page may rank too low to receive impressions. Never drop a term with clear demand elsewhere, or decline to target it, only because the site's own data lacks it.
 - Study the pages that rank above JianFan.app for a target query. Identify the user pain points they answer and the ones they miss, and cover the missing ones with working tool features or concrete answers, not paraphrased copy.
 - Serve long-tail and audience-specific queries in the existing page's overview and FAQ first. Create a new page only when the intent is clearly distinct (a different task, audience, or result), search data shows demand, and the page can provide unique, useful content beyond a template swap.
 - Gate page growth on indexing health. While Google indexes fewer than about half of the sitemap URLs, do not add batches of generated pages. Improve, merge, or `noindex` thin pages first.
