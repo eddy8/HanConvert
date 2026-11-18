@@ -165,6 +165,8 @@
   const STROKE_DATA_ORIGIN = "https://cdn.jsdelivr.net/npm/hanzi-writer-data";
   const HAN_PATTERN = /^\p{Script=Han}$/u;
   const PINYIN_PREFERENCE_KEY = "jianfan-photo-ocr-pinyin";
+  const SPEECH_RATE = 0.9;
+  const SPEECH_CHUNK_CHARACTERS = 120;
   const localePaths = {
     "zh-CN": "/",
     "zh-TW": "/zh-tw/",
@@ -209,6 +211,8 @@
   const pinyinToggle = document.querySelector("#photoPinyinToggle");
   const copyPinyinButton = document.querySelector("#photoCopyPinyin");
   const sourcePanel = document.querySelector("#photoSourcePanel");
+  const speakTextButton = document.querySelector("#photoSpeakText");
+  const speakCharacterButton = document.querySelector("#photoSpeakCharacter");
   const characterDetail = document.querySelector("#photoCharacterDetail");
   const resultCharacter = document.querySelector("#photoResultCharacter");
   const resultPinyin = document.querySelector("#photoResultPinyin");
@@ -232,6 +236,12 @@
   let detailRequestId = 0;
   let dragDepth = 0;
   let showPinyin = readPinyinPreference();
+  const speech = typeof window.speechSynthesis === "object" && typeof window.SpeechSynthesisUtterance === "function"
+    ? window.speechSynthesis
+    : null;
+  const speakTextLabel = speakTextButton?.textContent || "";
+  let speechVoices = [];
+  let speechRunId = 0;
 
   setupLocaleSelector();
   input.addEventListener("change", () => selectImageFile(input.files?.[0]));
@@ -248,6 +258,7 @@
   document.addEventListener("paste", handlePaste);
   setupDropTarget();
   setPinyinVisible(showPinyin, false);
+  setupSpeech();
 
   function readMessages() {
     try {
@@ -718,6 +729,110 @@
       .trim();
   }
 
+  // Read-aloud uses the browser's own speech synthesis. Voices are cached so speak() runs
+  // synchronously inside the click, which iOS Safari requires.
+  function setupSpeech() {
+    if (!speech || !speakTextButton || !speakCharacterButton) return;
+    speakTextButton.hidden = false;
+    speakCharacterButton.hidden = false;
+    const loadVoices = () => {
+      speechVoices = speech.getVoices();
+    };
+    loadVoices();
+    speech.addEventListener?.("voiceschanged", loadVoices);
+    speakTextButton.addEventListener("click", () => {
+      if (speakTextButton.getAttribute("aria-pressed") === "true") stopSpeaking(true);
+      else speak(recognizedText, true);
+    });
+    speakCharacterButton.addEventListener("click", () => speak(selectedCharacter, false));
+    window.addEventListener("pagehide", () => stopSpeaking(false));
+  }
+
+  function voiceTag(voice) {
+    return voice.lang.toLowerCase().replace(/_/g, "-").replace(/^cmn-hans/, "zh-cn").replace(/^cmn-hant/, "zh-tw").replace(/^cmn/, "zh");
+  }
+
+  // Prefer Mandarin voices for the page's script, then on-device voices over online ones.
+  // Cantonese voices (zh-HK, yue) are skipped because the readings shown are Mandarin Pinyin.
+  function chineseVoice() {
+    if (!speechVoices.length) speechVoices = speech.getVoices();
+    const preferred = locale === "zh-TW" ? ["zh-tw", "zh-cn"] : ["zh-cn", "zh-tw"];
+    const rank = (voice) => {
+      const index = preferred.findIndex((tag) => voiceTag(voice).startsWith(tag));
+      return (index < 0 ? preferred.length : index) * 2 + (voice.localService ? 0 : 1);
+    };
+    return speechVoices
+      .filter((voice) => /^zh/.test(voiceTag(voice)) && !/hk|yue|mo/.test(voiceTag(voice)))
+      .sort((first, second) => rank(first) - rank(second))[0] || null;
+  }
+
+  function speechChunks(text) {
+    return text
+      .split(/\n+|(?<=[。！？!?；;])/u)
+      .map((part) => part.trim())
+      .filter((part) => /\p{Script=Han}/u.test(part))
+      .flatMap((part) => {
+        const characters = [...part];
+        const chunks = [];
+        for (let index = 0; index < characters.length; index += SPEECH_CHUNK_CHARACTERS) {
+          chunks.push(characters.slice(index, index + SPEECH_CHUNK_CHARACTERS).join(""));
+        }
+        return chunks;
+      });
+  }
+
+  function speak(text, wholeText) {
+    if (!speech || !text) return;
+    stopSpeaking(false);
+    const runId = ++speechRunId;
+    const voice = chineseVoice();
+    // With a loaded voice list and no Mandarin voice, speaking would use a non-Chinese voice.
+    if (!voice && speechVoices.length) {
+      setStatus(message("speechUnavailable"), "error");
+      return;
+    }
+    const chunks = wholeText ? speechChunks(text) : [text];
+    if (!chunks.length) return;
+    setSpeaking(wholeText);
+    setStatus(message("speaking"));
+    chunks.forEach((chunk, index) => {
+      const utterance = new window.SpeechSynthesisUtterance(chunk);
+      utterance.lang = voice?.lang || (locale === "zh-TW" ? "zh-TW" : "zh-CN");
+      if (voice) utterance.voice = voice;
+      utterance.rate = SPEECH_RATE;
+      utterance.addEventListener("error", (event) => {
+        if (runId !== speechRunId || event.error === "canceled" || event.error === "interrupted") return;
+        speechRunId += 1;
+        speech.cancel();
+        setSpeaking(false);
+        setStatus(message("speechUnavailable"), "error");
+      });
+      if (index === chunks.length - 1) {
+        utterance.addEventListener("end", () => {
+          if (runId !== speechRunId) return;
+          setSpeaking(false);
+          setStatus(message("speechFinished"), "ready");
+        });
+      }
+      speech.speak(utterance);
+    });
+  }
+
+  function stopSpeaking(announce) {
+    if (!speech) return;
+    const wasSpeaking = speech.speaking || speech.pending;
+    speechRunId += 1;
+    speech.cancel();
+    setSpeaking(false);
+    if (announce && wasSpeaking) setStatus(message("speechStopped"), "ready");
+  }
+
+  function setSpeaking(active) {
+    if (!speakTextButton) return;
+    speakTextButton.setAttribute("aria-pressed", String(active));
+    speakTextButton.textContent = active ? message("stopSpeaking") : speakTextLabel;
+  }
+
   function readPinyinPreference() {
     try {
       const saved = localStorage.getItem(PINYIN_PREFERENCE_KEY);
@@ -780,6 +895,7 @@
   }
 
   function clearRecognitionResult() {
+    stopSpeaking(false);
     recognizedText = "";
     selectedCharacter = "";
     detailRequestId += 1;

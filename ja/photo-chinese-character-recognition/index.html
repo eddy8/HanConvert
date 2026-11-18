@@ -6,8 +6,8 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="description" content="中国語画像OCRで写真やスクショの簡体字・繁体字を無料でテキスト化。Ctrl+Vで貼り付けでき、各漢字の上にピンインを表示、タップで画数や筆順も確認できます。" />
-    <title>中国語画像OCR - 写真の漢字をテキスト化・ピンイン表示 | JianFan.app</title>
+    <meta name="description" content="中国語OCRで写真やスクショの簡体字・繁体字を無料で文字起こし。Ctrl+Vで貼り付けでき、各漢字の上にピンインを表示、タップで画数や筆順も確認できます。" />
+    <title>中国語OCR - 画像の漢字を文字起こし・ピンイン表示 | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/ja/photo-chinese-character-recognition/" />
     <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="en" href="https://jianfan.app/en/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/photo-chinese-character-recognition/" />
     <link rel="alternate" hreflang="x-default" href="https://jianfan.app/photo-chinese-character-recognition/" />
@@ -22,16 +22,18 @@
   "@graph": [
     {
       "@type": "WebApplication",
-      "name": "中国語画像OCR：写真の漢字をテキスト化",
+      "name": "中国語OCR：画像の漢字を文字起こし",
       "alternateName": [
+        "中国語OCR",
         "中国語画像OCR",
+        "中国語 画像 文字起こし",
         "写真から漢字を認識",
         "画像の漢字を文字に変換",
         "中国語画像テキスト化",
         "画像から中国語テキスト抽出"
       ],
       "url": "https://jianfan.app/ja/photo-chinese-character-recognition/",
-      "description": "中国語画像OCRで写真やスクショの簡体字・繁体字を無料でテキスト化。Ctrl+Vで貼り付けでき、各漢字の上にピンインを表示、タップで画数や筆順も確認できます。",
+      "description": "中国語OCRで写真やスクショの簡体字・繁体字を無料で文字起こし。Ctrl+Vで貼り付けでき、各漢字の上にピンインを表示、タップで画数や筆順も確認できます。",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Any",
       "browserRequirements": "Requires JavaScript and image upload support",
@@ -53,7 +55,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "中国語画像OCR：写真の漢字をテキスト化",
+          "name": "中国語OCR：画像の漢字を文字起こし",
           "item": "https://jianfan.app/ja/photo-chinese-character-recognition/"
         }
       ]
@@ -61,7 +63,7 @@
     {
       "@type": "HowTo",
       "name": "写真から中国語漢字を認識する方法",
-      "description": "中国語画像OCRで写真やスクショの簡体字・繁体字を無料でテキスト化。Ctrl+Vで貼り付けでき、各漢字の上にピンインを表示、タップで画数や筆順も確認できます。",
+      "description": "中国語OCRで写真やスクショの簡体字・繁体字を無料で文字起こし。Ctrl+Vで貼り付けでき、各漢字の上にピンインを表示、タップで画数や筆順も確認できます。",
       "step": [
         {
           "@type": "HowToStep",
@@ -76,7 +78,7 @@
         {
           "@type": "HowToStep",
           "position": 3,
-          "text": "全文やピンインをコピーするか、漢字を選んで筆順や字形構成を調べます。"
+          "text": "全文やピンインをコピーしたり読み上げを聞いたりし、漢字を選んで筆順や字形構成を調べます。"
         }
       ]
     },
@@ -162,6 +164,22 @@
             "@type": "Answer",
             "text": "無料で、登録は不要です。不正利用を防ぐため、短時間に多数のリクエストを送ると、しばらく待ってから再試行するよう表示されます。"
           }
+        },
+        {
+          "@type": "Question",
+          "name": "認識した中国語を読み上げできますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。「読み上げ」を押すとブラウザーまたはOS標準の中国語（普通話）音声で全文を読み上げ、もう一度押すと止まります。漢字を選んで「この字を発音」を押すと1文字だけ聞けます。端末内の音声を優先し、オンライン音声しかない場合は読み上げる文字がブラウザー提供元の音声サービスへ送信されます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "OCRとは何の略ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "OCRは Optical Character Recognition（光学文字認識）の略で、画像に写った文字を読み取り、編集できるテキストに変換する技術です。このページは中国語の漢字に特化したWeb版OCRで、認識した簡体字・繁体字をコピーし、ピンインを付けて1文字ずつ調べられます。"
+          }
         }
       ]
     }
@@ -169,7 +187,7 @@
 }</script><!-- seo-schema:end -->
   </head>
   <body data-tool-page="photo-chinese-character-recognition" data-page-slug="photo-chinese-character-recognition" data-locale="ja">
-    <script type="application/json" id="photoOcrMessages">{"waiting":"画像を選択してください","processingImage":"画像をトリミング・圧縮しています","imageReady":"画像の準備ができました","compressionFailed":"処理後の画像が2 MBを超えています。撮り直すか、別の画像を選んでください","emptyImage":"画像が空です。別の画像を選んでください","sourceTooLarge":"元画像は24 MB以下にしてください","unsupportedImage":"PNG、JPEG、WebP、HEIC、HEIF画像を使用してください","imageSelected":"画像を選択しました","emptyPreviewTitle":"撮影または画像を選択","emptyPreviewBody":"カメラ、写真ライブラリ、パソコンの画像に対応","uploading":"画像を送信して認識しています","recognizing":"画像の漢字を認識しています…","recognizedCharacter":"「{character}」と認識しました","recognizedText":"中国語テキストを認識しました","noText":"利用できる漢字テキストが返されませんでした","timeout":"認識がタイムアウトしました。通信を確認してもう一度お試しください","networkError":"認識サービスに接続できません。通信を確認してもう一度お試しください","authError":"認識サービスの認証に失敗しました","uploadTooLarge":"処理後の画像が2 MBを超えています。撮り直すか、別の画像を選んでください","rateLimited":"認識回数が上限に達しました。しばらくしてからもう一度お試しください","serviceUnavailable":"認識サービスを一時的に利用できません。後でもう一度お試しください","resultEmpty":"画像を選び、「画像の漢字を認識」を押してください。","resultSummary":"漢字を {count} 文字認識しました","selectCharacter":"漢字「{character}」を調べる","copiedText":"認識結果をコピーしました","copiedCharacter":"「{character}」をコピーしました","copiedPinyin":"ピンインをコピーしました","copyFailed":"自動コピーに失敗しました。文字を選択してコピーしてください","recognitionFailed":"認識に失敗しました"}</script>
+    <script type="application/json" id="photoOcrMessages">{"waiting":"画像を選択してください","processingImage":"画像をトリミング・圧縮しています","imageReady":"画像の準備ができました","compressionFailed":"処理後の画像が2 MBを超えています。撮り直すか、別の画像を選んでください","emptyImage":"画像が空です。別の画像を選んでください","sourceTooLarge":"元画像は24 MB以下にしてください","unsupportedImage":"PNG、JPEG、WebP、HEIC、HEIF画像を使用してください","imageSelected":"画像を選択しました","emptyPreviewTitle":"撮影または画像を選択","emptyPreviewBody":"カメラ、写真ライブラリ、パソコンの画像に対応","uploading":"画像を送信して認識しています","recognizing":"画像の漢字を認識しています…","recognizedCharacter":"「{character}」と認識しました","recognizedText":"中国語テキストを認識しました","noText":"利用できる漢字テキストが返されませんでした","timeout":"認識がタイムアウトしました。通信を確認してもう一度お試しください","networkError":"認識サービスに接続できません。通信を確認してもう一度お試しください","authError":"認識サービスの認証に失敗しました","uploadTooLarge":"処理後の画像が2 MBを超えています。撮り直すか、別の画像を選んでください","rateLimited":"認識回数が上限に達しました。しばらくしてからもう一度お試しください","serviceUnavailable":"認識サービスを一時的に利用できません。後でもう一度お試しください","resultEmpty":"画像を選び、「画像の漢字を認識」を押してください。","resultSummary":"漢字を {count} 文字認識しました","selectCharacter":"漢字「{character}」を調べる","copiedText":"認識結果をコピーしました","copiedCharacter":"「{character}」をコピーしました","copiedPinyin":"ピンインをコピーしました","speaking":"読み上げ中","speechFinished":"読み上げが終わりました","speechStopped":"読み上げを停止しました","speechUnavailable":"このブラウザーまたは端末で使える中国語の音声がありません","stopSpeaking":"読み上げを停止","copyFailed":"自動コピーに失敗しました。文字を選択してコピーしてください","recognitionFailed":"認識に失敗しました"}</script>
     <a class="skip-nav" href="#main">メインコンテンツへ移動</a>
     <header class="site-header" aria-label="サイトヘッダー">
       <a class="brand" href="/ja/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">拍</span><span>JianFan.app</span></a>
@@ -178,7 +196,7 @@
 
     <main id="main" class="photo-ocr-main">
       <section class="tool-hero photo-ocr-hero" aria-labelledby="pageTitle">
-        <div><p class="section-kicker">中国語OCR · スクショ貼り付け · ピンイン表示</p><h1 id="pageTitle">中国語画像OCR：写真の漢字をテキスト化</h1><p class="lede">中国語の漢字が写った写真、スクリーンショット、スキャン画像を撮影・選択・貼り付けすると、通常数秒でコピーできるテキストに変換します。各漢字の上にピンインを表示でき、漢字を選べば画数、筆順、字形構成も確認できます。</p></div>
+        <div><p class="section-kicker">中国語OCR · スクショ貼り付け · ピンイン表示</p><h1 id="pageTitle">中国語OCR：画像の漢字を文字起こし</h1><p class="lede">中国語の漢字が写った写真、スクリーンショット、スキャン画像を撮影・選択・貼り付けすると、通常数秒でコピーできるテキストに変換します。各漢字の上にピンインを表示したり読み上げを聞いたりでき、漢字を選べば画数、筆順、字形構成も確認できます。</p></div>
         <div class="photo-ocr-signal" aria-hidden="true"><span>PHOTO</span><strong>字</strong><b>OCR</b></div>
       </section>
 
@@ -196,18 +214,18 @@
             <div class="photo-ocr-panel-head"><span class="photo-ocr-step" aria-hidden="true">02</span><div><h3 id="photoResultsTitle">文字認識の結果</h3><p>全文コピーやピンイン表示ができます。ハイライトされた漢字を選ぶと詳細を確認できます。</p></div></div>
             <p class="photo-ocr-results-empty" id="photoResultsEmpty">画像を選び、「画像の漢字を認識」を押してください。</p>
             <div class="photo-ocr-result-text" id="photoResultText" role="region" aria-live="polite" aria-label="文字認識の結果" hidden></div>
-            <div class="photo-ocr-result-actions" id="photoTextActions" hidden><output id="photoResultSummary"></output><button class="photo-ocr-pinyin-toggle" id="photoPinyinToggle" type="button" aria-pressed="false">ピンインを表示</button><button id="photoCopyPinyin" type="button" hidden>ピンインをコピー</button><a id="photoPinyinText" href="/ja/chinese-to-pinyin/" hidden>全文をピンインに変換</a><button id="photoCopyText" type="button">認識結果をコピー</button></div>
-            <article class="photo-ocr-character-detail" id="photoCharacterDetail" aria-labelledby="photoCharacterDetailTitle" hidden><h4 class="visually-hidden" id="photoCharacterDetailTitle">選択した漢字の情報</h4><output class="photo-ocr-result-character" id="photoResultCharacter"></output><dl class="photo-ocr-character-meta"><div><dt>中国語ピンイン</dt><dd id="photoResultPinyin">-</dd></div><div><dt>画数</dt><dd id="photoResultStrokes">-</dd></div><div><dt>Unicode</dt><dd id="photoResultUnicode">-</dd></div></dl><div class="photo-ocr-character-actions"><button id="photoCopyCharacter" type="button">漢字をコピー</button><a id="photoStrokeLink" href="/ja/chinese-stroke-order/">筆順を見る</a><a id="photoPinyinLink" href="/ja/chinese-to-pinyin/">ピンインを調べる</a><a id="photoStructureLink" href="/ja/chinese-character-lookup/">字形構成を見る</a></div></article>
+            <div class="photo-ocr-result-actions" id="photoTextActions" hidden><output id="photoResultSummary"></output><button class="photo-ocr-pinyin-toggle" id="photoPinyinToggle" type="button" aria-pressed="false">ピンインを表示</button><button id="photoCopyPinyin" type="button" hidden>ピンインをコピー</button><button class="photo-ocr-speak" id="photoSpeakText" type="button" aria-pressed="false" hidden>読み上げ</button><a id="photoPinyinText" href="/ja/chinese-to-pinyin/" hidden>全文をピンインに変換</a><button id="photoCopyText" type="button">認識結果をコピー</button></div>
+            <article class="photo-ocr-character-detail" id="photoCharacterDetail" aria-labelledby="photoCharacterDetailTitle" hidden><h4 class="visually-hidden" id="photoCharacterDetailTitle">選択した漢字の情報</h4><output class="photo-ocr-result-character" id="photoResultCharacter"></output><dl class="photo-ocr-character-meta"><div><dt>中国語ピンイン</dt><dd id="photoResultPinyin">-</dd></div><div><dt>画数</dt><dd id="photoResultStrokes">-</dd></div><div><dt>Unicode</dt><dd id="photoResultUnicode">-</dd></div></dl><div class="photo-ocr-character-actions"><button id="photoCopyCharacter" type="button">漢字をコピー</button><button id="photoSpeakCharacter" type="button" hidden>この字を発音</button><a id="photoStrokeLink" href="/ja/chinese-stroke-order/">筆順を見る</a><a id="photoPinyinLink" href="/ja/chinese-to-pinyin/">ピンインを調べる</a><a id="photoStructureLink" href="/ja/chinese-character-lookup/">字形構成を見る</a></div></article>
           </section>
         </div>
-        <p class="photo-ocr-privacy">画像はブラウザーで自動的にトリミング・圧縮されます。認識を開始すると、処理済み画像が JianFan.app OCR サービスへ送信されます。個人情報、身分証明書など機密情報を含む画像はアップロードしないでください。</p>
+        <p class="photo-ocr-privacy">画像はブラウザーで自動的にトリミング・圧縮されます。認識を開始すると、処理済み画像が JianFan.app OCR サービスへ送信されます。個人情報、身分証明書など機密情報を含む画像はアップロードしないでください。読み上げにはブラウザーまたはOS標準の音声を使います。オンライン音声しかない場合、読み上げる文字はブラウザー提供元の音声サービスへ送信されます。</p>
       </section>
 
       <section class="seo-band standalone-info" aria-labelledby="photoFeatureTitle">
         <div class="section-heading"><p class="section-kicker">中国語画像OCR・画像テキスト化</p><h2 id="photoFeatureTitle">写真から中国語テキストを抽出し、漢字を検索</h2><p class="seo-intro">中国語画像OCRは、写真やスクリーンショットに写った中国語の漢字をコピーできるテキストに変換する機能です。このページでは撮影・アップロード・貼り付けのあと認識ボタンを押すと通常数秒で結果が返り、ピンイン表示や1文字ずつの筆順検索もできます。書籍、メニュー、看板、学習プリント、SNSのスクショなど、中国語の画像から文字起こししたいときに使えます。</p></div>
         <div class="seo-grid"><article><h3>撮影・アップロード・貼り付け</h3><p>スマートフォンではカメラや写真ライブラリを開けます。パソコンではファイル選択、プレビューへのドラッグ、Ctrl+V（Macは⌘V）でのスクショ貼り付けに対応します。</p></article><article><h3>認識結果にピンインを表示</h3><p>「ピンインを表示」をオンにすると、各漢字の上に声調付きピンインが付きます。多音字は語に合わせて判定され、重要は zhòng、重庆は chóng と表示されます。</p></article><article><h3>漢字を選んで検索</h3><p>結果の漢字を選ぶと中国語ピンイン、画数、Unicodeを表示し、筆順アニメーションや構成検索へ進めます。</p></article></div>
-        <section class="pinyin-howto" aria-labelledby="photoHowTitle"><h2 id="photoHowTitle">写真から中国語漢字を認識する方法</h2><ol><li>漢字を撮影するか画像を選びます。パソコンでは画像をドラッグするか、Ctrl+V でスクショを貼り付けることもできます。</li><li>自動トリミングされたプレビューを確認し、「画像の漢字を認識」を押すと通常数秒で結果が出ます。</li><li>全文やピンインをコピーするか、漢字を選んで筆順や字形構成を調べます。</li></ol></section>
-        <section class="pinyin-faq" aria-labelledby="photoFaqTitle"><h2 id="photoFaqTitle">中国語画像OCRのよくある質問</h2><details><summary>複数の漢字を一度に認識できますか？</summary><p>はい。1文字、単語、複数行の画像に対応します。結果全体をコピーするほか、各漢字を選んで詳しく調べられます。</p></details><details><summary>簡体字と繁体字に対応していますか？</summary><p>一般的な簡体字・繁体字に対応します。ぼけ、装飾文字、反射、強い傾き、複雑な背景は認識精度を下げる場合があります。</p></details><details><summary>画像認識はブラウザー内だけで行われますか？</summary><p>いいえ。トリミングと圧縮はブラウザー内で行い、処理済み画像を JianFan.app OCR サービスへ送信して認識します。</p></details><details><summary>手書き漢字検索との違いは？</summary><p>このページは写真やスクリーンショットを読み取ります。手書き検索はマスに1画ずつ書いた筆跡から漢字候補を探します。</p></details><details><summary>中国語の画像をテキスト化できますか？</summary><p>はい。中国語画像OCRとして、写真、スクリーンショット、スキャン画像から簡体字・繁体字を抽出できます。結果全体をコピーするほか、漢字ごとの検索も可能です。</p></details><details><summary>スクリーンショットを貼り付けて認識できますか？</summary><p>はい。Windows の Win+Shift+S や Mac の Control+Shift+Command+4 でスクショを撮り、このページで Ctrl+V（Macは⌘V）を押すと読み込めます。画像ファイルをプレビューにドラッグすることもできます。</p></details><details><summary>画像の中国語にピンインを付けられますか？</summary><p>はい。認識後に「ピンインを表示」を押すと各漢字の上に声調付きピンインが表示され、「ピンインをコピー」でテキストとしてコピーできます。多音字は語に合わせて判定しますが、人名や珍しい語の読みは確認してください。</p></details><details><summary>対応する画像形式とサイズは？</summary><p>PNG、JPEG、WebP、HEIC、HEIF の24 MBまでの画像に対応します。送信前にブラウザーで余白を切り取り、必要に応じて長辺1600ピクセル以内・2 MB未満に圧縮します。</p></details><details><summary>ぼやけた写真でうまく認識できないときは？</summary><p>文字を画面いっぱいに写し、正面から均一な明るさで撮影してください。画面上の文字は撮影せずスクショにすると正確です。1文字だけ調べたい場合は大きく切り抜くか、手書き検索を使ってください。</p></details><details><summary>無料ですか？登録は必要ですか？</summary><p>無料で、登録は不要です。不正利用を防ぐため、短時間に多数のリクエストを送ると、しばらく待ってから再試行するよう表示されます。</p></details></section>
+        <section class="pinyin-howto" aria-labelledby="photoHowTitle"><h2 id="photoHowTitle">写真から中国語漢字を認識する方法</h2><ol><li>漢字を撮影するか画像を選びます。パソコンでは画像をドラッグするか、Ctrl+V でスクショを貼り付けることもできます。</li><li>自動トリミングされたプレビューを確認し、「画像の漢字を認識」を押すと通常数秒で結果が出ます。</li><li>全文やピンインをコピーしたり読み上げを聞いたりし、漢字を選んで筆順や字形構成を調べます。</li></ol></section>
+        <section class="pinyin-faq" aria-labelledby="photoFaqTitle"><h2 id="photoFaqTitle">中国語画像OCRのよくある質問</h2><details><summary>複数の漢字を一度に認識できますか？</summary><p>はい。1文字、単語、複数行の画像に対応します。結果全体をコピーするほか、各漢字を選んで詳しく調べられます。</p></details><details><summary>簡体字と繁体字に対応していますか？</summary><p>一般的な簡体字・繁体字に対応します。ぼけ、装飾文字、反射、強い傾き、複雑な背景は認識精度を下げる場合があります。</p></details><details><summary>画像認識はブラウザー内だけで行われますか？</summary><p>いいえ。トリミングと圧縮はブラウザー内で行い、処理済み画像を JianFan.app OCR サービスへ送信して認識します。</p></details><details><summary>手書き漢字検索との違いは？</summary><p>このページは写真やスクリーンショットを読み取ります。手書き検索はマスに1画ずつ書いた筆跡から漢字候補を探します。</p></details><details><summary>中国語の画像をテキスト化できますか？</summary><p>はい。中国語画像OCRとして、写真、スクリーンショット、スキャン画像から簡体字・繁体字を抽出できます。結果全体をコピーするほか、漢字ごとの検索も可能です。</p></details><details><summary>スクリーンショットを貼り付けて認識できますか？</summary><p>はい。Windows の Win+Shift+S や Mac の Control+Shift+Command+4 でスクショを撮り、このページで Ctrl+V（Macは⌘V）を押すと読み込めます。画像ファイルをプレビューにドラッグすることもできます。</p></details><details><summary>画像の中国語にピンインを付けられますか？</summary><p>はい。認識後に「ピンインを表示」を押すと各漢字の上に声調付きピンインが表示され、「ピンインをコピー」でテキストとしてコピーできます。多音字は語に合わせて判定しますが、人名や珍しい語の読みは確認してください。</p></details><details><summary>対応する画像形式とサイズは？</summary><p>PNG、JPEG、WebP、HEIC、HEIF の24 MBまでの画像に対応します。送信前にブラウザーで余白を切り取り、必要に応じて長辺1600ピクセル以内・2 MB未満に圧縮します。</p></details><details><summary>ぼやけた写真でうまく認識できないときは？</summary><p>文字を画面いっぱいに写し、正面から均一な明るさで撮影してください。画面上の文字は撮影せずスクショにすると正確です。1文字だけ調べたい場合は大きく切り抜くか、手書き検索を使ってください。</p></details><details><summary>無料ですか？登録は必要ですか？</summary><p>無料で、登録は不要です。不正利用を防ぐため、短時間に多数のリクエストを送ると、しばらく待ってから再試行するよう表示されます。</p></details><details><summary>認識した中国語を読み上げできますか？</summary><p>はい。「読み上げ」を押すとブラウザーまたはOS標準の中国語（普通話）音声で全文を読み上げ、もう一度押すと止まります。漢字を選んで「この字を発音」を押すと1文字だけ聞けます。端末内の音声を優先し、オンライン音声しかない場合は読み上げる文字がブラウザー提供元の音声サービスへ送信されます。</p></details><details><summary>OCRとは何の略ですか？</summary><p>OCRは Optical Character Recognition（光学文字認識）の略で、画像に写った文字を読み取り、編集できるテキストに変換する技術です。このページは中国語の漢字に特化したWeb版OCRで、認識した簡体字・繁体字をコピーし、ピンインを付けて1文字ずつ調べられます。</p></details></section>
         <p class="section-kicker pinyin-related-kicker">関連する漢字ツール</p><nav class="landing-links" aria-label="関連する中国語漢字ツール"><a href="/ja/image-redaction/" data-route="image-redaction">画像モザイク加工</a><a href="/ja/chinese-handwriting-recognition/" data-route="chinese-handwriting-recognition">中国語の手書き漢字検索</a><a href="/ja/chinese-character-lookup/" data-route="chinese-character-lookup">漢字の構成・部首検索</a><a href="/ja/chinese-stroke-order/" data-route="chinese-stroke-order">中国語漢字の筆順</a><a href="/ja/chinese-to-pinyin/" data-route="chinese-to-pinyin">中国語ピンイン変換</a><a href="/ja/han-character-worksheet/" data-route="han-character-worksheet">漢字練習プリント</a></nav>
       </section>
 

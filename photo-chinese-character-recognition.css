@@ -387,14 +387,16 @@ body {
   display: ruby-text;
 }
 
-.photo-ocr-result-actions .photo-ocr-pinyin-toggle[aria-pressed="true"] {
+.photo-ocr-result-actions .photo-ocr-pinyin-toggle[aria-pressed="true"],
+.photo-ocr-result-actions .photo-ocr-speak[aria-pressed="true"] {
   border-color: rgba(var(--ac), 0.65);
   background: rgba(var(--ac), 0.14);
   color: var(--accent-2-ink);
 }
 
 .photo-ocr-result-actions button[hidden],
-.photo-ocr-result-actions a[hidden] {
+.photo-ocr-result-actions a[hidden],
+.photo-ocr-character-actions button[hidden] {
   display: none;
 }
 

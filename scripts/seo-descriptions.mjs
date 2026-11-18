@@ -5,10 +5,10 @@ export const TARGET_META_DESCRIPTION_LENGTH = Object.freeze({
 
 export const SEO_DESCRIPTIONS = Object.freeze({
   "photo-chinese-character-recognition": Object.freeze({
-    "zh-CN": "拍照识字、图片识字在线工具：拍照、上传或 Ctrl+V 粘贴截图即可提取简繁汉字，可复制文字并标注拼音，点选任一字查笔画和笔顺，免费无需安装。",
-    "zh-TW": "線上拍照漢字辨識工具：拍照、上傳或 Ctrl+V 貼上截圖即可擷取正簡體字，可複製文字並標注拼音，點選任一字查筆畫與筆順，免費免安裝。",
+    "zh-CN": "拍照识字、图片识字在线工具：用中文 OCR 识别照片和截图中的简繁汉字，支持 Ctrl+V 粘贴截图，可复制文字、标注拼音并朗读，点选任一字查笔顺，免费无需安装。",
+    "zh-TW": "線上拍照漢字辨識工具：用中文 OCR 辨識照片和截圖中的正簡體字，支援 Ctrl+V 貼上截圖，可複製文字、標注拼音並朗讀，點選任一字查筆順，免費免安裝。",
     en: "Free Chinese OCR online: copy Chinese text from a photo or screenshot, show Pinyin above each character, and check stroke order. Paste with Ctrl+V, no sign-up.",
-    ja: "中国語画像OCRで写真やスクショの簡体字・繁体字を無料でテキスト化。Ctrl+Vで貼り付けでき、各漢字の上にピンインを表示、タップで画数や筆順も確認できます。",
+    ja: "中国語OCRで写真やスクショの簡体字・繁体字を無料で文字起こし。Ctrl+Vで貼り付けでき、各漢字の上にピンインを表示、タップで画数や筆順も確認できます。",
     ko: "중국어 이미지 OCR로 사진·스크린샷 속 간체자와 번체자를 무료로 텍스트 추출하세요. Ctrl+V로 붙여넣고 병음을 표시하며 한자별 획수와 필순도 확인합니다."
   }),
   "file-text-converter": Object.freeze({
