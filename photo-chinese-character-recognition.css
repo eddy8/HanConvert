@@ -202,6 +202,29 @@ body {
   display: none;
 }
 
+.photo-ocr-canvas-frame.is-empty {
+  cursor: pointer;
+}
+
+.photo-ocr-empty .photo-ocr-paste-hint {
+  margin-top: 4px;
+  color: var(--accent-ink);
+  font-size: 0.76rem;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.photo-ocr-panel.is-dragover .photo-ocr-canvas-frame {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(var(--ac), 0.22);
+}
+
+@media (hover: none) {
+  .photo-ocr-empty .photo-ocr-paste-hint {
+    display: none;
+  }
+}
+
 .photo-ocr-capture-row {
   display: grid;
   width: min(100%, 430px);
@@ -337,13 +360,52 @@ body {
   box-shadow: inset 0 -2px 0 var(--accent);
 }
 
+.photo-ocr-text-character ruby {
+  ruby-position: over;
+}
+
+.photo-ocr-text-character rt {
+  display: none;
+  color: var(--accent-ink);
+  font-family: var(--font-ui);
+  font-size: 0.5em;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.photo-ocr-result-text.show-pinyin {
+  line-height: 2.6;
+}
+
+.photo-ocr-result-text.show-pinyin .photo-ocr-text-character {
+  min-height: 46px;
+  padding-top: 4px;
+}
+
+.photo-ocr-result-text.show-pinyin .photo-ocr-text-character rt {
+  display: ruby-text;
+}
+
+.photo-ocr-result-actions .photo-ocr-pinyin-toggle[aria-pressed="true"] {
+  border-color: rgba(var(--ac), 0.65);
+  background: rgba(var(--ac), 0.14);
+  color: var(--accent-2-ink);
+}
+
+.photo-ocr-result-actions button[hidden],
+.photo-ocr-result-actions a[hidden] {
+  display: none;
+}
+
 .photo-ocr-result-actions {
   display: flex;
   min-height: 52px;
   margin-top: 12px;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
-  gap: 12px;
+  gap: 8px 12px;
 }
 
 .photo-ocr-result-actions[hidden] {

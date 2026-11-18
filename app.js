@@ -615,7 +615,7 @@ const translations = {
     privacyLink: "プライバシー声明"
   },
   ko: {
-    pageTitle: "간체 번체 변환기 | JianFan.app",
+    pageTitle: "간체 번체 변환기 - 중국어 번체 간체 변환 | JianFan.app",
     pageDescription:
       "중국어 간체와 번체를 한 번에 바꾸는 무료 변환기입니다. 대만·홍콩 번체를 지원하고 브라우저에서 처리하며, 병음, 필순, 손글씨 한자 찾기도 제공합니다.",
     skip: "본문으로 건너뛰기",
@@ -1172,7 +1172,7 @@ const landingPages = {
     defaultConfig: "s2t",
     content: {
       "zh-CN": {
-        pageTitle: "Word/PDF/TXT/Excel 简繁转换 - 文件文本在线转换 | JianFan.app",
+        pageTitle: "Word/PDF/TXT/Excel 文件简繁转换 | JianFan.app",
         pageDescription: "把 Word、PDF、TXT、Excel 文件上传到 JianFan.app，在浏览器端提取文本并基于 OpenCC 进行简繁转换。",
         eyebrow: "文件文本转换",
         title: "Word、PDF、TXT、Excel 文本简繁转换",
@@ -1192,7 +1192,7 @@ const landingPages = {
         seoUseCaseBody: "支持多选文件并合并提取文本；复杂排版仍建议转换后人工复核格式。"
       },
       "zh-TW": {
-        pageTitle: "Word/PDF/TXT/Excel 簡繁轉換 - 文件文字線上轉換 | JianFan.app",
+        pageTitle: "Word/PDF/TXT/Excel 檔案簡繁轉換 | JianFan.app",
         pageDescription: "把 Word、PDF、TXT、Excel 文件上傳到 JianFan.app，在瀏覽器端提取文字並基於 OpenCC 進行簡繁轉換。",
         eyebrow: "文件文字轉換",
         title: "Word、PDF、TXT、Excel 文字簡繁轉換",

@@ -47,3 +47,34 @@ export function buildFaqSchemaNode(canonical, faq) {
     }))
   };
 }
+
+// Home pages define the WebSite entity that every tool page references through isPartOf,
+// and name the existing Organization (fully described on the About and Contact pages) as publisher.
+export function buildSiteEntityNodes() {
+  return [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_ORIGIN}/#website`,
+      name: "JianFan.app",
+      url: `${SITE_ORIGIN}/`,
+      inLanguage: ["zh-CN", "zh-Hant", "en", "ja", "ko"],
+      publisher: { "@id": `${SITE_ORIGIN}/#organization` }
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_ORIGIN}/#organization`,
+      name: "JianFan.app",
+      url: `${SITE_ORIGIN}/`,
+      logo: `${SITE_ORIGIN}/apple-touch-icon.png`
+    }
+  ];
+}
+
+export function arrangeConverterGraph(graph, page) {
+  const managed = new Set(["FAQPage", ...(page.slug === "" ? ["WebSite", "Organization"] : [])]);
+  return [
+    ...graph.filter((entry) => !managed.has(entry["@type"])),
+    ...(page.slug === "" ? buildSiteEntityNodes() : []),
+    buildFaqSchemaNode(page.canonical, page.faq)
+  ];
+}
