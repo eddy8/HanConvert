@@ -6,8 +6,8 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="description" content="Recognize Chinese characters from photos with a Chinese OCR online tool. Convert images, screenshots and scans to text, then check Pinyin and stroke order." />
-    <title>Chinese OCR Online - Image to Text &amp; Hanzi Lookup | JianFan.app</title>
+    <meta name="description" content="Free Chinese OCR online: copy Chinese text from a photo or screenshot, show Pinyin above each character, and check stroke order. Paste with Ctrl+V, no sign-up." />
+    <title>Chinese OCR Online - Image to Text with Pinyin | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/en/photo-chinese-character-recognition/" />
     <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="en" href="https://jianfan.app/en/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/photo-chinese-character-recognition/" /><link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/photo-chinese-character-recognition/" />
     <link rel="alternate" hreflang="x-default" href="https://jianfan.app/photo-chinese-character-recognition/" />
@@ -22,16 +22,18 @@
   "@graph": [
     {
       "@type": "WebApplication",
-      "name": "Chinese Character Recognition from Photo",
+      "name": "Chinese OCR: Image to Text with Pinyin",
       "alternateName": [
         "Chinese photo OCR",
         "Recognize Chinese characters from image",
         "Hanzi image to text",
         "Chinese OCR online",
-        "Chinese image to text"
+        "Chinese image to text",
+        "Chinese image to Pinyin",
+        "Copy Chinese text from image"
       ],
       "url": "https://jianfan.app/en/photo-chinese-character-recognition/",
-      "description": "Recognize Chinese characters from photos with a Chinese OCR online tool. Convert images, screenshots and scans to text, then check Pinyin and stroke order.",
+      "description": "Free Chinese OCR online: copy Chinese text from a photo or screenshot, show Pinyin above each character, and check stroke order. Paste with Ctrl+V, no sign-up.",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Any",
       "browserRequirements": "Requires JavaScript and image upload support",
@@ -53,7 +55,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Chinese Character Recognition from Photo",
+          "name": "Chinese OCR: Image to Text with Pinyin",
           "item": "https://jianfan.app/en/photo-chinese-character-recognition/"
         }
       ]
@@ -61,22 +63,22 @@
     {
       "@type": "HowTo",
       "name": "How to recognize Chinese characters from a photo",
-      "description": "Recognize Chinese characters from photos with a Chinese OCR online tool. Convert images, screenshots and scans to text, then check Pinyin and stroke order.",
+      "description": "Free Chinese OCR online: copy Chinese text from a photo or screenshot, show Pinyin above each character, and check stroke order. Paste with Ctrl+V, no sign-up.",
       "step": [
         {
           "@type": "HowToStep",
           "position": 1,
-          "text": "Photograph the Chinese text, or choose a photo, screenshot or scan from your device."
+          "text": "Photograph the Chinese text or choose an image. On a computer you can also drag in an image or paste a screenshot with Ctrl+V."
         },
         {
           "@type": "HowToStep",
           "position": 2,
-          "text": "Check the automatically cropped preview, then start recognition and wait for the text result."
+          "text": "Check the automatically cropped preview, select “Recognize Chinese characters” and wait a few seconds."
         },
         {
           "@type": "HowToStep",
           "position": 3,
-          "text": "Copy the full text, or tap a Hanzi to check its Pinyin, stroke order and structure."
+          "text": "Copy the text or its Pinyin, or tap a Hanzi to check its stroke order and structure."
         }
       ]
     },
@@ -122,6 +124,54 @@
             "@type": "Answer",
             "text": "Yes. Upload a photo, screenshot or scan containing Simplified or Traditional Chinese. The Chinese image-to-text result can be copied in full, or you can tap a Hanzi to look it up."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I paste a screenshot instead of saving a file?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Take a screenshot with Win+Shift+S on Windows or Control+Shift+Command+4 on a Mac, return to this page and press Ctrl+V (⌘V). You can also drag an image file onto the preview."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it show Pinyin for Chinese text in a picture?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. After recognition, select Show Pinyin to add tone-marked Pinyin above each character, or Copy Pinyin to copy it as text. Polyphonic characters follow the word, for example 重要 zhòng yào and 重庆 chóng qìng, but check names and rare words."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I read Chinese from a blurry photo or an old document?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fill the frame with the text, shoot straight on in even light, and take a screenshot of on-screen text instead of photographing the screen. For one unclear character, crop it large and recognize it alone, or draw it in the handwriting tool."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I convert recognized Traditional Chinese to Simplified?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Copy the result and paste it into the Traditional to Simplified converter, which converts by word, for example 頭髮 to 头发 and 軟體 to 软件."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What image formats and sizes are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PNG, JPEG, WebP, HEIC and HEIF up to 24 MB. The browser trims empty borders and, when needed, scales the longer side to 1,600 pixels and compresses the image below 2 MB before upload."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it free, and do I need an account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is free and needs no sign-up. To prevent abuse, sending many requests in a short time shows a message asking you to try again later."
+          }
         }
       ]
     }
@@ -129,7 +179,7 @@
 }</script><!-- seo-schema:end -->
   </head>
   <body data-tool-page="photo-chinese-character-recognition" data-page-slug="photo-chinese-character-recognition" data-locale="en">
-    <script type="application/json" id="photoOcrMessages">{"waiting":"Waiting for an image","processingImage":"Cropping and compressing the image","imageReady":"Image ready for recognition","compressionFailed":"The processed image is larger than 2 MB. Take another photo or choose a different image","emptyImage":"The image is empty. Choose another file","sourceTooLarge":"The original image must be 24 MB or smaller","unsupportedImage":"Use a PNG, JPEG, WebP, HEIC or HEIF image","imageSelected":"Image selected","emptyPreviewTitle":"Take or choose a photo","emptyPreviewBody":"Use the camera, photo library or a desktop image","uploading":"Uploading and recognizing the image","recognizing":"Recognizing Chinese characters…","recognizedCharacter":"Recognized as “{character}”","recognizedText":"Chinese text recognized","noText":"No usable Chinese text was returned","timeout":"Recognition timed out. Check your connection and try again","networkError":"Could not reach the recognition service. Check your connection and try again","authError":"Recognition service authorization failed","uploadTooLarge":"The processed image is larger than 2 MB. Take another photo or choose a different image","rateLimited":"Too many recognition requests. Try again later","serviceUnavailable":"Recognition is temporarily unavailable. Try again later","resultEmpty":"Choose an image, then select “Recognize Chinese characters”.","resultSummary":"{count} Chinese characters recognized","selectCharacter":"Look up Chinese character {character}","copiedText":"Extracted text copied","copiedCharacter":"Copied “{character}”","copyFailed":"Automatic copy failed. Select and copy the text directly","recognitionFailed":"Recognition failed"}</script>
+    <script type="application/json" id="photoOcrMessages">{"waiting":"Waiting for an image","processingImage":"Cropping and compressing the image","imageReady":"Image ready for recognition","compressionFailed":"The processed image is larger than 2 MB. Take another photo or choose a different image","emptyImage":"The image is empty. Choose another file","sourceTooLarge":"The original image must be 24 MB or smaller","unsupportedImage":"Use a PNG, JPEG, WebP, HEIC or HEIF image","imageSelected":"Image selected","emptyPreviewTitle":"Take or choose a photo","emptyPreviewBody":"Use the camera, photo library or a desktop image","uploading":"Uploading and recognizing the image","recognizing":"Recognizing Chinese characters…","recognizedCharacter":"Recognized as “{character}”","recognizedText":"Chinese text recognized","noText":"No usable Chinese text was returned","timeout":"Recognition timed out. Check your connection and try again","networkError":"Could not reach the recognition service. Check your connection and try again","authError":"Recognition service authorization failed","uploadTooLarge":"The processed image is larger than 2 MB. Take another photo or choose a different image","rateLimited":"Too many recognition requests. Try again later","serviceUnavailable":"Recognition is temporarily unavailable. Try again later","resultEmpty":"Choose an image, then select “Recognize Chinese characters”.","resultSummary":"{count} Chinese characters recognized","selectCharacter":"Look up Chinese character {character}","copiedText":"Extracted text copied","copiedCharacter":"Copied “{character}”","copiedPinyin":"Pinyin copied","copyFailed":"Automatic copy failed. Select and copy the text directly","recognitionFailed":"Recognition failed"}</script>
     <a class="skip-nav" href="#main">Skip to main content</a>
     <header class="site-header" aria-label="Site header">
       <a class="brand" href="/en/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">拍</span><span>JianFan.app</span></a>
@@ -138,25 +188,25 @@
 
     <main id="main" class="photo-ocr-main">
       <section class="tool-hero photo-ocr-hero" aria-labelledby="pageTitle">
-        <div><p class="section-kicker">PHOTO OCR · EXTRACT HANZI · LOOK UP</p><h1 id="pageTitle">Chinese Character Recognition from Photo</h1><p class="lede">Take or upload a photo, screenshot or scan containing Chinese characters. Copy the extracted text, or tap any Hanzi to check its Pinyin, stroke count, order and structure.</p></div>
+        <div><p class="section-kicker">CHINESE OCR · SCREENSHOT PASTE · PINYIN</p><h1 id="pageTitle">Chinese OCR: Image to Text with Pinyin</h1><p class="lede">Take, upload or paste a photo, screenshot or scan with Chinese characters. In a few seconds you get copyable text with optional Pinyin above every Hanzi, and you can tap any character for its stroke count, order and structure.</p></div>
         <div class="photo-ocr-signal" aria-hidden="true"><span>PHOTO</span><strong>字</strong><b>OCR</b></div>
       </section>
 
       <section class="standalone-tool photo-ocr-tool" aria-labelledby="photoToolTitle">
         <div class="standalone-tool-head"><div><p class="section-kicker">PHOTO / OCR</p><h2 id="photoToolTitle">Recognize Chinese characters in an image</h2></div><div class="status-pill" id="photoOcrStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>Waiting for an image</span></div></div>
         <div class="photo-ocr-workspace">
-          <section class="photo-ocr-panel" aria-labelledby="photoSourceTitle">
-            <div class="photo-ocr-panel-head"><span class="photo-ocr-step" aria-hidden="true">01</span><div><h3 id="photoSourceTitle">Choose a Chinese text image</h3><p>Keep the characters sharp and complete. Avoid glare, steep angles and busy backgrounds.</p></div></div>
+          <section class="photo-ocr-panel" id="photoSourcePanel" aria-labelledby="photoSourceTitle">
+            <div class="photo-ocr-panel-head"><span class="photo-ocr-step" aria-hidden="true">01</span><div><h3 id="photoSourceTitle">Choose a Chinese text image</h3><p>Sharp, complete characters work best. On a computer you can also drop an image here or press Ctrl+V to paste a screenshot.</p></div></div>
             <div class="photo-ocr-capture-row"><button class="photo-ocr-capture" id="photoCapture" type="button">Take or choose a photo</button><input class="visually-hidden" id="photoInput" aria-labelledby="photoCapture" tabindex="-1" type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,.heic,.heif" capture="environment" /><button class="photo-ocr-secondary" id="photoReset" type="button" disabled>Choose again</button></div>
             <button class="photo-ocr-recognize" id="photoRecognize" type="button" disabled>Recognize Chinese characters</button>
-            <div class="photo-ocr-canvas-frame is-empty" id="photoSourceFrame"><canvas id="photoSourceCanvas" aria-label="Choose a Chinese text image"></canvas><div class="photo-ocr-empty" id="photoSourceEmpty"><strong>Take or choose a photo</strong><span>PNG, JPEG, WebP, HEIC and HEIF supported</span></div></div>
+            <div class="photo-ocr-canvas-frame is-empty" id="photoSourceFrame"><canvas id="photoSourceCanvas" aria-label="Choose a Chinese text image"></canvas><div class="photo-ocr-empty" id="photoSourceEmpty"><strong>Take or choose a photo</strong><span>PNG, JPEG, WebP, HEIC and HEIF supported</span><em class="photo-ocr-paste-hint">Or drop an image, or paste a screenshot with Ctrl+V / ⌘V</em></div></div>
           </section>
 
           <section class="photo-ocr-results" aria-labelledby="photoResultsTitle">
-            <div class="photo-ocr-panel-head"><span class="photo-ocr-step" aria-hidden="true">02</span><div><h3 id="photoResultsTitle">OCR result</h3><p>Copy all extracted text, or tap a highlighted Hanzi for character details.</p></div></div>
+            <div class="photo-ocr-panel-head"><span class="photo-ocr-step" aria-hidden="true">02</span><div><h3 id="photoResultsTitle">OCR result</h3><p>Copy the text, show Pinyin, or tap a highlighted Hanzi for details.</p></div></div>
             <p class="photo-ocr-results-empty" id="photoResultsEmpty">Choose an image, then select “Recognize Chinese characters”.</p>
             <div class="photo-ocr-result-text" id="photoResultText" role="region" aria-live="polite" aria-label="OCR result" hidden></div>
-            <div class="photo-ocr-result-actions" id="photoTextActions" hidden><output id="photoResultSummary"></output><a id="photoPinyinText" href="/en/chinese-to-pinyin/" hidden>Convert all to Pinyin</a><button id="photoCopyText" type="button">Copy extracted text</button></div>
+            <div class="photo-ocr-result-actions" id="photoTextActions" hidden><output id="photoResultSummary"></output><button class="photo-ocr-pinyin-toggle" id="photoPinyinToggle" type="button" aria-pressed="false">Show Pinyin</button><button id="photoCopyPinyin" type="button" hidden>Copy Pinyin</button><a id="photoPinyinText" href="/en/chinese-to-pinyin/" hidden>Convert all to Pinyin</a><button id="photoCopyText" type="button">Copy extracted text</button></div>
             <article class="photo-ocr-character-detail" id="photoCharacterDetail" aria-labelledby="photoCharacterDetailTitle" hidden><h4 class="visually-hidden" id="photoCharacterDetailTitle">Selected character details</h4><output class="photo-ocr-result-character" id="photoResultCharacter"></output><dl class="photo-ocr-character-meta"><div><dt>Pinyin</dt><dd id="photoResultPinyin">-</dd></div><div><dt>Stroke count</dt><dd id="photoResultStrokes">-</dd></div><div><dt>Unicode</dt><dd id="photoResultUnicode">-</dd></div></dl><div class="photo-ocr-character-actions"><button id="photoCopyCharacter" type="button">Copy character</button><a id="photoStrokeLink" href="/en/chinese-stroke-order/">View stroke order</a><a id="photoPinyinLink" href="/en/chinese-to-pinyin/">Check Pinyin</a><a id="photoStructureLink" href="/en/chinese-character-lookup/">View structure</a></div></article>
           </section>
         </div>
@@ -164,11 +214,11 @@
       </section>
 
       <section class="seo-band standalone-info" aria-labelledby="photoFeatureTitle">
-        <div class="section-heading"><p class="section-kicker">Chinese OCR · Image to text · Hanzi lookup</p><h2 id="photoFeatureTitle">Extract Chinese text from images, then inspect each Hanzi</h2><p class="seo-intro">Use this Chinese OCR online and image-to-text tool for books, menus, signs, study sheets, screenshots and scanned pages. It extracts Simplified or Traditional Chinese text from images and connects each recognized Hanzi to Pinyin, stroke order and character structure.</p></div>
-        <div class="seo-grid"><article><h3>Photos, screenshots and scans</h3><p>Open the phone camera or photo library, or upload an existing image from a desktop browser.</p></article><article><h3>Automatic image preparation</h3><p>Before upload, the browser finds the content area, trims excess borders and compresses the image to reduce transfer time.</p></article><article><h3>Tap a Hanzi to look it up</h3><p>Select any Chinese character in the result to see Pinyin, stroke count and Unicode, then open stroke-order or structure lookup.</p></article></div>
-        <section class="pinyin-howto" aria-labelledby="photoHowTitle"><h2 id="photoHowTitle">How to recognize Chinese characters from a photo</h2><ol><li>Photograph the Chinese text, or choose a photo, screenshot or scan from your device.</li><li>Check the automatically cropped preview, then start recognition and wait for the text result.</li><li>Copy the full text, or tap a Hanzi to check its Pinyin, stroke order and structure.</li></ol></section>
-        <section class="pinyin-faq" aria-labelledby="photoFaqTitle"><h2 id="photoFaqTitle">Chinese photo OCR questions</h2><details><summary>Can it recognize more than one Chinese character?</summary><p>Yes. An image may contain one Hanzi, a phrase or several lines. Copy the complete result or tap any recognized character to look it up.</p></details><details><summary>Does it support Simplified and Traditional Chinese?</summary><p>It supports common Simplified and Traditional characters. Blur, stylized lettering, glare, steep angles and busy backgrounds can reduce OCR accuracy.</p></details><details><summary>Does recognition run entirely in my browser?</summary><p>No. Cropping and compression run in your browser, then the processed image is uploaded to the JianFan.app OCR service for recognition.</p></details><details><summary>How is photo OCR different from handwriting recognition?</summary><p>This page reads Chinese text from a photo or screenshot. The handwriting tool matches one character from strokes drawn in its writing grid.</p></details><details><summary>Can this Chinese OCR convert an image to editable text?</summary><p>Yes. Upload a photo, screenshot or scan containing Simplified or Traditional Chinese. The Chinese image-to-text result can be copied in full, or you can tap a Hanzi to look it up.</p></details></section>
-        <p class="section-kicker pinyin-related-kicker">Related Chinese tools</p><nav class="landing-links" aria-label="Related Chinese character and text tools"><a href="/en/image-redaction/" data-route="image-redaction">Image redaction tool</a><a href="/en/chinese-handwriting-recognition/" data-route="chinese-handwriting-recognition">Chinese handwriting recognition</a><a href="/en/chinese-character-lookup/" data-route="chinese-character-lookup">Chinese character lookup</a><a href="/en/chinese-stroke-order/" data-route="chinese-stroke-order">Chinese stroke order</a><a href="/en/chinese-to-pinyin/" data-route="chinese-to-pinyin">Chinese to Pinyin</a><a href="/en/han-character-worksheet/" data-route="han-character-worksheet">Chinese worksheet generator</a></nav>
+        <div class="section-heading"><p class="section-kicker">Chinese character recognition · Image to text · Pinyin</p><h2 id="photoFeatureTitle">Extract Chinese text from images, then inspect each Hanzi</h2><p class="seo-intro">Chinese OCR turns the Chinese characters in a photo, screenshot or scan into text you can copy. Take, upload or paste an image here, start recognition and you usually get the result within seconds, with Pinyin above each character when you want it. Use this free Chinese OCR online as an image-to-text tool for books, menus, signs, worksheets, chat screenshots and printed documents in Simplified or Traditional Chinese.</p></div>
+        <div class="seo-grid"><article><h3>Take, upload or paste</h3><p>Open the phone camera or photo library. On a computer, choose a file, drag an image onto the preview, or paste a fresh screenshot with Ctrl+V (⌘V on a Mac).</p></article><article><h3>Pinyin above every character</h3><p>Turn on Show Pinyin to see tone-marked Pinyin over each Hanzi, chosen from the surrounding word: 重 reads zhòng in 重要 and chóng in 重庆. Copy all of the Pinyin in one click.</p></article><article><h3>Tap a Hanzi to look it up</h3><p>Select any character in the result to see its Pinyin, stroke count and Unicode code point, then open the stroke-order animation or component lookup.</p></article></div>
+        <section class="pinyin-howto" aria-labelledby="photoHowTitle"><h2 id="photoHowTitle">How to recognize Chinese characters from a photo</h2><ol><li>Photograph the Chinese text or choose an image. On a computer you can also drag in an image or paste a screenshot with Ctrl+V.</li><li>Check the automatically cropped preview, select “Recognize Chinese characters” and wait a few seconds.</li><li>Copy the text or its Pinyin, or tap a Hanzi to check its stroke order and structure.</li></ol></section>
+        <section class="pinyin-faq" aria-labelledby="photoFaqTitle"><h2 id="photoFaqTitle">Chinese photo OCR questions</h2><details><summary>Can it recognize more than one Chinese character?</summary><p>Yes. An image may contain one Hanzi, a phrase or several lines. Copy the complete result or tap any recognized character to look it up.</p></details><details><summary>Does it support Simplified and Traditional Chinese?</summary><p>It supports common Simplified and Traditional characters. Blur, stylized lettering, glare, steep angles and busy backgrounds can reduce OCR accuracy.</p></details><details><summary>Does recognition run entirely in my browser?</summary><p>No. Cropping and compression run in your browser, then the processed image is uploaded to the JianFan.app OCR service for recognition.</p></details><details><summary>How is photo OCR different from handwriting recognition?</summary><p>This page reads Chinese text from a photo or screenshot. The handwriting tool matches one character from strokes drawn in its writing grid.</p></details><details><summary>Can this Chinese OCR convert an image to editable text?</summary><p>Yes. Upload a photo, screenshot or scan containing Simplified or Traditional Chinese. The Chinese image-to-text result can be copied in full, or you can tap a Hanzi to look it up.</p></details><details><summary>Can I paste a screenshot instead of saving a file?</summary><p>Yes. Take a screenshot with Win+Shift+S on Windows or Control+Shift+Command+4 on a Mac, return to this page and press Ctrl+V (⌘V). You can also drag an image file onto the preview.</p></details><details><summary>Can it show Pinyin for Chinese text in a picture?</summary><p>Yes. After recognition, select Show Pinyin to add tone-marked Pinyin above each character, or Copy Pinyin to copy it as text. Polyphonic characters follow the word, for example 重要 zhòng yào and 重庆 chóng qìng, but check names and rare words.</p></details><details><summary>How can I read Chinese from a blurry photo or an old document?</summary><p>Fill the frame with the text, shoot straight on in even light, and take a screenshot of on-screen text instead of photographing the screen. For one unclear character, crop it large and recognize it alone, or draw it in the handwriting tool.</p></details><details><summary>Can I convert recognized Traditional Chinese to Simplified?</summary><p>Yes. Copy the result and paste it into the Traditional to Simplified converter, which converts by word, for example 頭髮 to 头发 and 軟體 to 软件.</p></details><details><summary>What image formats and sizes are supported?</summary><p>PNG, JPEG, WebP, HEIC and HEIF up to 24 MB. The browser trims empty borders and, when needed, scales the longer side to 1,600 pixels and compresses the image below 2 MB before upload.</p></details><details><summary>Is it free, and do I need an account?</summary><p>It is free and needs no sign-up. To prevent abuse, sending many requests in a short time shows a message asking you to try again later.</p></details></section>
+        <p class="section-kicker pinyin-related-kicker">Related Chinese tools</p><nav class="landing-links" aria-label="Related Chinese character and text tools"><a href="/en/image-redaction/" data-route="image-redaction">Image redaction tool</a><a href="/en/chinese-handwriting-recognition/" data-route="chinese-handwriting-recognition">Chinese handwriting recognition</a><a href="/en/chinese-character-lookup/" data-route="chinese-character-lookup">Chinese character lookup</a><a href="/en/chinese-stroke-order/" data-route="chinese-stroke-order">Chinese stroke order</a><a href="/en/chinese-to-pinyin/" data-route="chinese-to-pinyin">Chinese to Pinyin</a><a href="/en/han-character-worksheet/" data-route="han-character-worksheet">Chinese worksheet generator</a><a href="/en/traditional-to-simplified/" data-route="traditional-to-simplified">Traditional to Simplified Chinese</a></nav>
       </section>
 
     </main>

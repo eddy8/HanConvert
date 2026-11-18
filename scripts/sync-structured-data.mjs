@@ -2,7 +2,7 @@ import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { buildFaqSchemaNode, converterFaqForCanonical } from "./converter-faq-lib.mjs";
+import { arrangeConverterGraph, converterFaqForCanonical } from "./converter-faq-lib.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteOrigin = "https://jianfan.app";
@@ -103,9 +103,9 @@ function buildSchema(html) {
 
   // Converter pages carry an answer-first FAQ maintained by sync-converter-faq.mjs.
   const faqPage = converterFaqForCanonical(canonical);
-  if (faqPage) graph.push(buildFaqSchemaNode(canonical, faqPage.faq));
+  const finalGraph = faqPage ? arrangeConverterGraph(graph, faqPage) : graph;
 
-  const json = JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2)
+  const json = JSON.stringify({ "@context": "https://schema.org", "@graph": finalGraph }, null, 2)
     .split("\n")
     .map((line) => `      ${line}`)
     .join("\n");

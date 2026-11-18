@@ -45,7 +45,7 @@ test("keeps targeted multilingual meta descriptions within their managed length 
 
 test("preserves the primary search intent in Chinese and English descriptions", () => {
   const terms = {
-    "photo-chinese-character-recognition": ["在线拍照汉字识别", "Recognize Chinese characters from photos"],
+    "photo-chinese-character-recognition": ["拍照识字", "Chinese OCR online"],
     "file-text-converter": ["Word", "Word"],
     "japanese-chinese-kanji-converter": ["日中汉字转换", "Chinese to Japanese kanji"],
     "simplified-to-traditional": ["简体转繁体", "Simplified Chinese"],

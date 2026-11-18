@@ -6,7 +6,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { buildFaqSchemaNode, buildFaqSection, converterFaqPages, FAQ_MARKER_END, FAQ_MARKER_START } from "./converter-faq-lib.mjs";
+import { arrangeConverterGraph, buildFaqSection, converterFaqPages, FAQ_MARKER_END, FAQ_MARKER_START } from "./converter-faq-lib.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const checkOnly = process.argv.includes("--check");
@@ -20,13 +20,13 @@ function syncSection(html, section, file) {
   return html.replace(anchor, `${section}\n${anchor}`);
 }
 
-function syncSchema(html, node, file) {
+function syncSchema(html, page, file) {
   const match = html.match(schemaPattern);
   if (!match) throw new Error(`${file}: missing seo-schema block`);
   const schema = JSON.parse(match[2]);
   const graph = Array.isArray(schema["@graph"]) ? schema["@graph"] : null;
   if (!graph) throw new Error(`${file}: seo-schema block has no @graph`);
-  schema["@graph"] = [...graph.filter((entry) => entry["@type"] !== "FAQPage"), node];
+  schema["@graph"] = arrangeConverterGraph(graph, page);
   const formatted = JSON.stringify(schema, null, 2)
     .split("\n")
     .map((line) => `      ${line}`)
@@ -41,7 +41,7 @@ for (const page of converterFaqPages()) {
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
   if (canonical !== page.canonical) throw new Error(`${page.file}: canonical ${canonical} does not match ${page.canonical}`);
   if (!page.faq) throw new Error(`${page.file}: missing FAQ content for ${page.locale}`);
-  const output = syncSchema(syncSection(html, buildFaqSection(page.faq), page.file), buildFaqSchemaNode(page.canonical, page.faq), page.file);
+  const output = syncSchema(syncSection(html, buildFaqSection(page.faq), page.file), page, page.file);
   if (output === html) continue;
   if (checkOnly) stale.push(page.file);
   else await writeFile(filePath, output);

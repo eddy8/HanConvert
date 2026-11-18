@@ -164,6 +164,7 @@
   const MAX_IMAGE_DIMENSION = 1600;
   const STROKE_DATA_ORIGIN = "https://cdn.jsdelivr.net/npm/hanzi-writer-data";
   const HAN_PATTERN = /^\p{Script=Han}$/u;
+  const PINYIN_PREFERENCE_KEY = "jianfan-photo-ocr-pinyin";
   const localePaths = {
     "zh-CN": "/",
     "zh-TW": "/zh-tw/",
@@ -205,6 +206,9 @@
   const resultSummary = document.querySelector("#photoResultSummary");
   const copyTextButton = document.querySelector("#photoCopyText");
   const pinyinTextLink = document.querySelector("#photoPinyinText");
+  const pinyinToggle = document.querySelector("#photoPinyinToggle");
+  const copyPinyinButton = document.querySelector("#photoCopyPinyin");
+  const sourcePanel = document.querySelector("#photoSourcePanel");
   const characterDetail = document.querySelector("#photoCharacterDetail");
   const resultCharacter = document.querySelector("#photoResultCharacter");
   const resultPinyin = document.querySelector("#photoResultPinyin");
@@ -226,14 +230,24 @@
   let selectedCharacter = "";
   let selectionId = 0;
   let detailRequestId = 0;
+  let dragDepth = 0;
+  let showPinyin = readPinyinPreference();
 
   setupLocaleSelector();
-  input.addEventListener("change", handleFileSelection);
+  input.addEventListener("change", () => selectImageFile(input.files?.[0]));
   captureButton.addEventListener("click", openImagePicker);
   resetButton.addEventListener("click", openImagePicker);
+  sourceFrame.addEventListener("click", () => {
+    if (sourceFrame.classList.contains("is-empty")) openImagePicker();
+  });
   recognizeButton.addEventListener("click", recognizeImage);
   copyTextButton.addEventListener("click", () => copyValue(recognizedText, "copiedText"));
   copyCharacterButton.addEventListener("click", () => copyValue(selectedCharacter, "copiedCharacter"));
+  copyPinyinButton?.addEventListener("click", () => copyValue(pinyinForText(recognizedText), "copiedPinyin"));
+  pinyinToggle?.addEventListener("click", () => setPinyinVisible(!showPinyin, true));
+  document.addEventListener("paste", handlePaste);
+  setupDropTarget();
+  setPinyinVisible(showPinyin, false);
 
   function readMessages() {
     try {
@@ -267,8 +281,58 @@
     input.click();
   }
 
-  async function handleFileSelection() {
-    const file = input.files?.[0];
+  // Screenshots copied with Print Screen, Win+Shift+S, Cmd+Ctrl+Shift+4 or a chat app arrive as clipboard files.
+  function handlePaste(event) {
+    const target = event.target;
+    if (target instanceof HTMLElement && (target.isContentEditable || /^(INPUT|TEXTAREA)$/.test(target.tagName))) return;
+    const file = imageFileFromItems(event.clipboardData?.items);
+    if (!file) return;
+    event.preventDefault();
+    selectImageFile(file);
+  }
+
+  function imageFileFromItems(items) {
+    for (const item of items || []) {
+      if (item.kind === "file" && item.type.startsWith("image/")) {
+        const file = item.getAsFile();
+        if (file) return file;
+      }
+    }
+    return null;
+  }
+
+  function hasDraggedFiles(event) {
+    return [...(event.dataTransfer?.types || [])].includes("Files");
+  }
+
+  function setupDropTarget() {
+    const target = sourcePanel || sourceFrame;
+    target.addEventListener("dragenter", (event) => {
+      if (!hasDraggedFiles(event)) return;
+      event.preventDefault();
+      dragDepth += 1;
+      target.classList.add("is-dragover");
+    });
+    target.addEventListener("dragover", (event) => {
+      if (!hasDraggedFiles(event)) return;
+      event.preventDefault();
+      event.dataTransfer.dropEffect = "copy";
+    });
+    target.addEventListener("dragleave", () => {
+      dragDepth = Math.max(0, dragDepth - 1);
+      if (!dragDepth) target.classList.remove("is-dragover");
+    });
+    target.addEventListener("drop", (event) => {
+      if (!hasDraggedFiles(event)) return;
+      event.preventDefault();
+      dragDepth = 0;
+      target.classList.remove("is-dragover");
+      const file = event.dataTransfer.files?.[0];
+      if (file) selectImageFile(file);
+    });
+  }
+
+  async function selectImageFile(file) {
     if (!file) return;
 
     recognitionController?.abort();
@@ -560,7 +624,7 @@
 
     const characters = [...text];
     const hanCharacters = characters.filter((character) => HAN_PATTERN.test(character));
-    for (const character of characters) {
+    for (const [character, reading] of annotateText(text)) {
       if (!HAN_PATTERN.test(character)) {
         resultText.append(document.createTextNode(character));
         continue;
@@ -568,7 +632,15 @@
       const button = document.createElement("button");
       button.type = "button";
       button.className = "photo-ocr-text-character";
-      button.textContent = character;
+      button.dataset.character = character;
+      const ruby = document.createElement("ruby");
+      ruby.append(document.createTextNode(character));
+      if (reading) {
+        const annotation = document.createElement("rt");
+        annotation.textContent = reading;
+        ruby.append(annotation);
+      }
+      button.append(ruby);
       button.setAttribute("aria-pressed", "false");
       button.setAttribute("aria-label", message("selectCharacter", { character }));
       button.addEventListener("click", () => selectResultCharacter(character, button));
@@ -584,7 +656,7 @@
     pinyinTextLink.hidden = characters.length === 1;
 
     const firstCharacterButton = resultText.querySelector("button");
-    if (firstCharacterButton) selectResultCharacter(firstCharacterButton.textContent, firstCharacterButton);
+    if (firstCharacterButton) selectResultCharacter(firstCharacterButton.dataset.character, firstCharacterButton);
   }
 
   async function selectResultCharacter(character, button) {
@@ -615,6 +687,57 @@
       }
     } catch {
       if (requestId === detailRequestId && selectedCharacter === character) resultStrokes.textContent = "-";
+    }
+  }
+
+  // Context-aware readings for the whole result, so 长 in 头发很长 and 重 in 重要 follow the word.
+  function pinyinItems(text) {
+    try {
+      return window.pinyinPro?.pinyin(text, { type: "all", toneType: "symbol", traditional: true, nonZh: "consecutive" }) || null;
+    } catch {
+      return null;
+    }
+  }
+
+  function annotateText(text) {
+    const items = pinyinItems(text);
+    if (!items) return [...text].map((character) => [character, ""]);
+    return items.flatMap((item) => (item.isZh ? [[item.origin, item.pinyin]] : [...item.origin].map((character) => [character, ""])));
+  }
+
+  function pinyinForText(text) {
+    const items = pinyinItems(text);
+    if (!items) return "";
+    return items
+      .map((item) => (item.isZh ? ` ${item.pinyin} ` : item.origin))
+      .join("")
+      .replace(/[ \t]+/gu, " ")
+      .replace(/ ([,.;:!?，。！？；：、）】》”’])/gu, "$1")
+      .replace(/([（【《“‘]) /gu, "$1")
+      .replace(/[ \t]*\n[ \t]*/gu, "\n")
+      .trim();
+  }
+
+  function readPinyinPreference() {
+    try {
+      const saved = localStorage.getItem(PINYIN_PREFERENCE_KEY);
+      if (saved === "1" || saved === "0") return saved === "1";
+    } catch {
+      // Storage can be unavailable in private windows; fall back to the locale default.
+    }
+    return !locale.startsWith("zh");
+  }
+
+  function setPinyinVisible(visible, remember) {
+    showPinyin = visible;
+    resultText.classList.toggle("show-pinyin", visible);
+    pinyinToggle?.setAttribute("aria-pressed", String(visible));
+    if (copyPinyinButton) copyPinyinButton.hidden = !visible;
+    if (!remember) return;
+    try {
+      localStorage.setItem(PINYIN_PREFERENCE_KEY, visible ? "1" : "0");
+    } catch {
+      // The toggle still works for this visit without storage.
     }
   }
 

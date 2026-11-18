@@ -100,7 +100,7 @@ test("findContentBounds leaves a uniform image unchanged", () => {
 
 test("the page targets online photo Chinese character recognition", () => {
   assert.match(pageSource, /PHOTO \/ OCR/);
-  assert.match(pageSource, /<h1 id="pageTitle">在线拍照汉字识别<\/h1>/);
+  assert.match(pageSource, /<h1 id="pageTitle">在线拍照识字、图片识字<\/h1>/);
   assert.match(pageSource, /图片会先在浏览器中自动裁剪并压缩/);
   assert.doesNotMatch(pageSource, /noindex|Demo|EXPERIMENTAL/);
   assert.doesNotMatch(pageSource, /PHOTO TO STROKES|轨迹坐标|字迹提取强度/);
@@ -118,10 +118,10 @@ test("recognized text exposes clickable Hanzi details and the Pinyin converter",
 
 test("all five formal pages contain static localized primary headings", async () => {
   const pages = [
-    ["../photo-chinese-character-recognition/index.html", "在线拍照汉字识别"],
+    ["../photo-chinese-character-recognition/index.html", "在线拍照识字、图片识字"],
     ["../zh-tw/photo-chinese-character-recognition/index.html", "線上拍照漢字辨識"],
-    ["../en/photo-chinese-character-recognition/index.html", "Chinese Character Recognition from Photo"],
-    ["../ja/photo-chinese-character-recognition/index.html", "写真から中国語の漢字を認識"],
+    ["../en/photo-chinese-character-recognition/index.html", "Chinese OCR: Image to Text with Pinyin"],
+    ["../ja/photo-chinese-character-recognition/index.html", "中国語画像OCR：写真の漢字をテキスト化"],
     ["../ko/photo-chinese-character-recognition/index.html", "사진으로 중국 한자 인식"]
   ];
   for (const [path, heading] of pages) {
@@ -159,5 +159,39 @@ test("all localized pages ask for another image when processing cannot reach 2 M
     const source = await readFile(new URL(path, import.meta.url), "utf8");
     assert.match(source, /2 MB/);
     assert.doesNotMatch(source, /5 MB/);
+  }
+});
+
+test("screenshots can be pasted or dropped instead of picked from a file dialog", () => {
+  assert.match(browserSource, /document\.addEventListener\("paste", handlePaste\)/);
+  assert.match(browserSource, /item\.kind === "file" && item\.type\.startsWith\("image\/"\)/);
+  assert.match(browserSource, /target\.addEventListener\("drop"/);
+  assert.match(pageSource, /<section class="photo-ocr-panel" id="photoSourcePanel"/);
+  assert.match(pageSource, /<em class="photo-ocr-paste-hint">也可拖入图片或按 Ctrl\+V \/ ⌘V 粘贴截图<\/em>/);
+});
+
+test("recognized text can show and copy context-aware Pinyin", () => {
+  assert.match(browserSource, /type: "all", toneType: "symbol", traditional: true, nonZh: "consecutive"/);
+  assert.match(browserSource, /document\.createElement\("rt"\)/);
+  assert.match(pageSource, /id="photoPinyinToggle" type="button" aria-pressed="false">显示拼音<\/button>/);
+  assert.match(pageSource, /id="photoCopyPinyin" type="button" hidden>复制拼音<\/button>/);
+  assert.match(pageSource, /"copiedPinyin":"已复制拼音"/);
+});
+
+test("every locale answers paste, Pinyin, limits and accuracy questions in its FAQ", async () => {
+  const pages = [
+    ["../photo-chinese-character-recognition/index.html", ["截图可以直接粘贴识别吗？", "能把图片里的汉字直接标上拼音吗？", "24 MB", "1600"]],
+    ["../zh-tw/photo-chinese-character-recognition/index.html", ["截圖可以直接貼上辨識嗎？", "能把圖片裡的漢字直接標上拼音嗎？", "24 MB", "1600"]],
+    ["../en/photo-chinese-character-recognition/index.html", ["Can I paste a screenshot instead of saving a file?", "Can it show Pinyin for Chinese text in a picture?", "24 MB", "1,600"]],
+    ["../ja/photo-chinese-character-recognition/index.html", ["スクリーンショットを貼り付けて認識できますか？", "画像の中国語にピンインを付けられますか？", "24 MB", "1600"]],
+    ["../ko/photo-chinese-character-recognition/index.html", ["스크린샷을 바로 붙여넣어 인식할 수 있나요?", "사진 속 중국어에 병음을 달 수 있나요?", "24 MB", "1600"]]
+  ];
+  for (const [path, terms] of pages) {
+    const source = await readFile(new URL(path, import.meta.url), "utf8");
+    const faqSchema = source.slice(source.indexOf('"@type": "FAQPage"'));
+    for (const term of terms) {
+      assert.ok(source.slice(source.indexOf("<main")).includes(term), `${path} visible FAQ is missing ${term}`);
+      assert.ok(faqSchema.includes(term), `${path} FAQPage schema is missing ${term}`);
+    }
   }
 });
