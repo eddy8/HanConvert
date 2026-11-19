@@ -184,6 +184,7 @@ ${alternates}
     <link rel="stylesheet" href="/styles.min.css" />
     <script src="/theme.js"></script>
     <script defer src="/vendor/pinyin-pro.js"></script>
+    <script defer src="/traditional-pinyin.js"></script>
     <script defer src="/pinyin-tool.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">

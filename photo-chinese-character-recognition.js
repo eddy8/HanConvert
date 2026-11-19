@@ -259,6 +259,7 @@
   setupDropTarget();
   setPinyinVisible(showPinyin, false);
   setupSpeech();
+  loadTraditionalMap();
 
   function readMessages() {
     try {
@@ -703,11 +704,40 @@
 
   // Context-aware readings for the whole result, so 长 in 头发很长 and 重 in 重要 follow the word.
   function pinyinItems(text) {
+    const pinyinPro = window.pinyinPro;
+    if (!pinyinPro) return null;
+    const options = { type: "all", toneType: "symbol", traditional: true, nonZh: "consecutive" };
     try {
-      return window.pinyinPro?.pinyin(text, { type: "all", toneType: "symbol", traditional: true, nonZh: "consecutive" }) || null;
+      return window.JianfanTraditionalPinyin
+        ? window.JianfanTraditionalPinyin.pinyin(pinyinPro, text, options)
+        : pinyinPro.pinyin(text, options);
     } catch {
       return null;
     }
+  }
+
+  // Without the table, readings fall back to pinyin-pro's built-in Traditional handling.
+  function loadTraditionalMap() {
+    window.JianfanTraditionalPinyin?.load().then((map) => {
+      if (map) refreshAnnotations();
+    });
+  }
+
+  // Update readings in place if a result was rendered before the table finished loading.
+  function refreshAnnotations() {
+    if (!recognizedText) return;
+    const readings = annotateText(recognizedText).filter(([character]) => HAN_PATTERN.test(character));
+    resultText.querySelectorAll(".photo-ocr-text-character").forEach((button, index) => {
+      const reading = readings[index]?.[1];
+      const ruby = button.querySelector("ruby");
+      if (!reading || !ruby) return;
+      let annotation = ruby.querySelector("rt");
+      if (!annotation) {
+        annotation = document.createElement("rt");
+        ruby.append(annotation);
+      }
+      annotation.textContent = reading;
+    });
   }
 
   function annotateText(text) {

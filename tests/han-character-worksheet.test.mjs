@@ -147,3 +147,25 @@ test("Japanese worksheet ships localized static copy and Japanese reference data
   assert.match(japanesePage, /src="\/japanese-stroke-order\.js"/);
   assert.doesNotMatch(japanesePage, /pinyin-pro|hanzi-writer/i);
 });
+
+
+test("uses the shared Traditional table so Traditional polyphones get phrase readings", async () => {
+  const traditionalSource = await readFile(new URL("../traditional-pinyin.js", import.meta.url), "utf8");
+  const table = JSON.parse(await readFile(new URL("../vendor/pinyin-pro-traditional.json", import.meta.url), "utf8"));
+  vm.runInNewContext(traditionalSource, context);
+  const traditionalPinyin = (text, options) => context.JianfanTraditionalPinyin.pinyin(context.pinyinPro, text, options, table);
+  const readings = getContextualReadings("重慶銀行還是音樂", traditionalPinyin, context.pinyinPro.polyphonic);
+  assert.deepEqual(
+    Array.from(readings, (item) => Array.from(item)),
+    [["chóng"], ["qìng"], ["yín"], ["háng"], ["hái"], ["shì"], ["yīn"], ["yuè"]]
+  );
+});
+
+test("worksheet pages with Pinyin load the shared Traditional module, and the Japanese page does not", async () => {
+  for (const prefix of ["", "zh-tw/", "en/", "ko/"]) {
+    const html = await readFile(new URL(`../${prefix}han-character-worksheet/index.html`, import.meta.url), "utf8");
+    assert.match(html, /<script defer src="\/vendor\/pinyin-pro\.js"><\/script>\n    <script defer src="\/traditional-pinyin\.js"><\/script>/, prefix || "zh-CN");
+  }
+  assert.doesNotMatch(japanesePage, /traditional-pinyin\.js/);
+  assert.match(source, /traditionalPinyin\.pinyin\(pinyinPro, text, options\)/);
+});

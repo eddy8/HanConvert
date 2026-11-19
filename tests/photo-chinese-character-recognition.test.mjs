@@ -220,3 +220,8 @@ test("every locale discloses that online speech voices receive the text", async 
     assert.ok(privacy.includes(disclosure.replaceAll("'", "&#39;")) || privacy.includes(disclosure), `${path} privacy note is missing the speech disclosure`);
   }
 });
+
+test("the photo page loads the vendored Traditional table from the site, not a third-party CDN", () => {
+  assert.match(browserSource, /window\.JianfanTraditionalPinyin\.pinyin\(pinyinPro, text, options\)/);
+  assert.match(pageSource, /<script defer src="\/traditional-pinyin\.js"><\/script>\n    <script defer src="\/photo-chinese-character-recognition\.js"><\/script>/);
+});

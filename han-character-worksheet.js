@@ -266,6 +266,16 @@
     elements.traceOpacityValue.textContent = `${elements.traceOpacity.value}%`;
   }
 
+  // Traditional polyphones (還是, 銀行, 調皮) need the shared Traditional table for context readings.
+  function contextualPinyin() {
+    const pinyinPro = globalThis.pinyinPro;
+    if (!pinyinPro?.pinyin) return undefined;
+    const traditionalPinyin = globalThis.JianfanTraditionalPinyin;
+    return traditionalPinyin
+      ? (text, options) => traditionalPinyin.pinyin(pinyinPro, text, options)
+      : pinyinPro.pinyin;
+  }
+
   function scheduleRender(delay = 80) {
     window.clearTimeout(renderTimer);
     renderTimer = window.setTimeout(renderWorksheet, delay);
@@ -517,7 +527,7 @@
     const contextualReadings = settings.showPinyin && !useJapaneseStandard
       ? core.getContextualReadings(
           elements.input.value,
-          globalThis.pinyinPro?.pinyin,
+          contextualPinyin(),
           globalThis.pinyinPro?.polyphonic
         )
       : [];
@@ -601,4 +611,9 @@
   const requestedCharacters = searchParams.get("character");
   elements.input.value = core.extractHanCharacters(requestedCharacters || "", { dedupe: false }).join("") || body.dataset.sampleText;
   renderWorksheet();
+  if (!useJapaneseStandard) {
+    globalThis.JianfanTraditionalPinyin?.load().then((map) => {
+      if (map && elements.input.value) scheduleRender(0);
+    });
+  }
 })();

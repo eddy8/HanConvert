@@ -50,6 +50,11 @@
       updateCounts();
       convert();
     }
+    // Re-read the current text once the Traditional table arrives, so Traditional polyphones
+    // converted before it loaded (for example from a ?text= link) get their context readings.
+    window.JianfanTraditionalPinyin?.load().then((map) => {
+      if (map && input.value) convert();
+    });
   }
 
   function setupLocaleSelector() {
@@ -139,7 +144,7 @@
     setStatus("converting");
     try {
       const options = buildOptions(activeFormat);
-      output.value = applyLetterCase(normalizeSeparators(window.pinyinPro.pinyin(value, options)), activeCase);
+      output.value = applyLetterCase(normalizeSeparators(readPinyin(value, options)), activeCase);
       renderAnnotation(value, options);
       renderLookup(value);
       updateCounts();
@@ -152,6 +157,12 @@
       updateCounts();
       setStatus("error", "error");
     }
+  }
+
+  function readPinyin(text, options) {
+    return window.JianfanTraditionalPinyin
+      ? window.JianfanTraditionalPinyin.pinyin(window.pinyinPro, text, options)
+      : window.pinyinPro.pinyin(text, options);
   }
 
   function buildOptions(format) {
@@ -185,7 +196,7 @@
   function renderAnnotation(value, options) {
     annotation.replaceChildren();
     const preview = [...value].slice(0, ANNOTATION_PREVIEW_CHARACTERS).join("");
-    const items = window.pinyinPro.pinyin(preview, {
+    const items = readPinyin(preview, {
       ...options,
       type: "all",
       pattern: "pinyin",
