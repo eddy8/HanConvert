@@ -376,6 +376,7 @@ function renderPage(locale) {
     <script src="/theme.js"></script>
     <link rel="stylesheet" href="/photo-chinese-character-recognition.css" />
     <script defer src="/vendor/pinyin-pro.js"></script>
+    <script defer src="/traditional-pinyin.js"></script>
     <script defer src="/photo-chinese-character-recognition.js"></script>
     <!-- seo-schema:start --><script type="application/ld+json">${schema}</script><!-- seo-schema:end -->
   </head>
