@@ -178,6 +178,65 @@
       <template id="passwordResultTemplate"><div class="password-result"><span class="password-result-index" aria-hidden="true"></span><input type="text" readonly autocomplete="off" spellcheck="false" data-lpignore="true" data-1p-ignore /><button type="button" class="password-icon-button" title="复制密码" aria-label="复制密码"><svg class="password-icon" data-icon="copy" aria-hidden="true"><use href="/password-icons.svg#copy" /></svg></button></div></template>
       <section class="seo-band standalone-info password-info" aria-labelledby="passwordFeatureTitle"><div class="section-heading"><h2 id="passwordFeatureTitle">满足不同网站要求的随机密码生成工具</h2><p class="seo-intro">注册账号、修改登录密码或准备多组初始密码时，可以先按目标网站的规则确定长度和允许字符，再生成一批候选。默认使用 20 位混合字符；关闭特殊字符后也可生成纯字母数字密码。</p></div><div class="seo-grid"><article><h3>自定义密码字符组合</h3><p>分别选择大写字母、小写字母、数字和特殊字符。每个已选类别都会出现，避免生成后因缺少某类字符而被网站拒绝。</p></article><article><h3>精确控制可用符号</h3><p>网站只接受部分特殊字符时，直接修改符号列表；某些字符不允许使用时，填入排除栏。排除规则对所有已选类别都生效。</p></article><article><h3>批量生成与复制</h3><p>一次生成最多 100 组互不重复的密码，可逐条复制、复制全部或下载为每行一组的 TXT 文件。生成结果仅在本页暂存。</p></article></div><section class="pinyin-howto" aria-labelledby="passwordHowTitle"><h2 id="passwordHowTitle">如何生成符合要求的密码</h2><ol><li>设置密码长度和数量，勾选网站允许的字符类型。</li><li>按需要修改特殊字符、排除指定字符或开启相似字符与连续重复过滤。</li><li>点击生成，复制所需密码并保存到自己的密码管理器。</li></ol></section><section class="pinyin-faq" aria-labelledby="passwordFaqTitle"><h2 id="passwordFaqTitle">密码生成常见问题</h2><details><summary>在线生成的密码会保存或上传吗？</summary><p>生成在当前浏览器中完成，不向服务器发送密码，也不将密码写入本地存储。刷新、离开页面或清空结果后，本页不提供历史记录；复制或下载会将结果保存到你选择的剪贴板或文件中。</p></details><details><summary>是否保证包含所有勾选的字符类型？</summary><p>是，这是默认规则。例如勾选四种类型时，每组密码至少包含一个大写字母、一个小写字母、一个数字和一个符号。长度不足或某类字符被全部排除时，会提示你调整设置。</p></details><details><summary>排除相似字符和排除连续重复有什么区别？</summary><p>相似字符选项会排除 Il1O0o|，方便人工抄写。连续重复选项只禁止相邻的相同字符，例如 aa 或 11；同一字符仍可出现在不同位置，不会禁止 abc、123 这样的递增序列。</p></details><details><summary>密码越复杂就一定越安全吗？</summary><p>长度和随机性都很重要。相似字符与重复限制是为了适配输入习惯或网站规则，不会自动提高安全性。页面的组合强度参考依据有效随机组合数量，不是实际破解时间或账号安全保证。</p></details><details><summary>可以生成纯数字密码或自定义符号密码吗？</summary><p>可以，只勾选数字即可生成纯数字字符串；只勾选特殊字符可使用自己的符号集。若规则下可用组合少于批量数量，会要求增加长度、扩大字符集或减少数量。</p></details><details><summary>生成的密码应该如何使用？</summary><p>为不同账号分别生成密码，按照目标网站要求选择足够的长度，并保存到可信任的密码管理器。不要把 TXT 当作长期密码保险箱；批量生成不代表这些密码与历史批次永不重复。</p></details></section><p class="section-kicker pinyin-related-kicker">相关工具</p><nav class="landing-links" aria-label="相关工具"><a href="/text-formatter/">文本格式化</a><a href="/character-counter/">字数统计</a><a href="/image-redaction/">图片隐私打码</a><a href="/file-text-converter/">文件文本转换</a></nav></section>
     </main>
-    <footer class="site-footer"><p>JianFan.app 提供文字转换、汉字学习与浏览器实用工具。</p><nav class="footer-links" aria-label="页脚"><a href="/about/">关于我们</a><a href="/contact/">联系我们</a><a href="/privacy/">隐私声明</a></nav></footer>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="全部工具">
+        <div class="site-directory-group">
+          <p class="site-directory-title">简繁转换</p>
+          <ul>
+            <li><a href="/">简繁转换</a></li>
+            <li><a href="/simplified-to-traditional/">简体转繁体</a></li>
+            <li><a href="/traditional-to-simplified/">繁体转简体</a></li>
+            <li><a href="/taiwan-traditional/">台湾繁体转换</a></li>
+            <li><a href="/hong-kong-traditional/">香港繁体转换</a></li>
+            <li><a href="/file-text-converter/">文件简繁转换</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">中文汉字</p>
+          <ul>
+            <li><a href="/chinese-handwriting-recognition/">手写汉字识别</a></li>
+            <li><a href="/photo-chinese-character-recognition/">拍照识字</a></li>
+            <li><a href="/chinese-to-pinyin/">汉字转拼音</a></li>
+            <li><a href="/chinese-stroke-order/">汉字笔顺查询</a></li>
+            <li><a href="/chinese-character-lookup/">汉字查询与结构拆解</a></li>
+            <li><a href="/han-character-worksheet/">田字格字帖生成器</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">日文汉字</p>
+          <ul>
+            <li><a href="/japanese-handwriting-recognition/">日文手写汉字识别</a></li>
+            <li><a href="/japanese-kanji-dictionary/">日本汉字查询</a></li>
+            <li><a href="/japanese-stroke-order/">日本汉字笔顺</a></li>
+            <li><a href="/kanji-to-hiragana/">日文汉字转平假名</a></li>
+            <li><a href="/kanji-to-romaji/">日文汉字转罗马字</a></li>
+            <li><a href="/japanese-kanji-converter/">日文新旧字体转换</a></li>
+            <li><a href="/japanese-chinese-kanji-converter/">日中汉字转换</a></li>
+            <li><a href="/japanese-characters/">日文字符复制</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">韩国汉字</p>
+          <ul>
+            <li><a href="/korean-hanja-dictionary/">韩国汉字查询</a></li>
+            <li><a href="/korean-hanja-handwriting-recognition/">韩国汉字手写识别</a></li>
+            <li><a href="/hangul-hanja-converter/">韩文汉字转换</a></li>
+            <li><a href="/korean-name-hanja/">韩国人名用汉字</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">文本工具</p>
+          <ul>
+            <li><a href="/character-counter/">在线字数统计</a></li>
+            <li><a href="/word-to-txt/">Word 转 TXT</a></li>
+            <li><a href="/text-formatter/">文本格式化</a></li>
+            <li><a href="/image-redaction/">图片打码</a></li>
+            <li><a href="/password-generator/" aria-current="page">密码生成器</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.app 提供文字转换、汉字学习与浏览器实用工具。</p><nav class="footer-links" aria-label="页脚"><a href="/about/">关于我们</a><a href="/contact/">联系我们</a><a href="/privacy/">隐私声明</a></nav></footer>
   </body>
 </html>

@@ -164,7 +164,66 @@
       </section>
       <section class="seo-band standalone-info" aria-labelledby="redactionFeatureTitle"><div class="section-heading"><p class="section-kicker">写真の顔・文字・ナンバーを安全に隠す</p><h2 id="redactionFeatureTitle">手動加工、AI候補確認、メタデータ削除を一つに</h2><p class="seo-intro">画像全体をぼかすのではなく、指定範囲のピクセルだけを書き換えます。スクリーンショット、書類写真、チャット画面、SNS投稿前の確認に使えます。</p></div><div class="seo-grid"><article><h3>範囲を後から細かく調整</h3><p>複数の範囲を追加し、位置や大きさを修正してから、黒塗り・モザイク・ぼかしを個別に選べます。</p></article><article><h3>AIで顔と個人情報を候補表示</h3><p>端末内の顔検出とOCRで、電話番号、メール、ID、カード番号、URL、IP、ナンバープレートなどを探します。</p></article><article><h3>加工を画像のピクセルに固定</h3><p>Canvasで新しい画像を生成するため、外せるレイヤーではありません。元のEXIFやGPS情報も保存結果に引き継ぎません。</p></article></div><section class="redaction-use-cases" aria-labelledby="redactionCasesTitle"><h2 id="redactionCasesTitle">画像にモザイクをかける主な場面</h2><div><article><h3>スクリーンショットやチャット</h3><p>ユーザー名、アイコン、注文番号、メール、顧客情報、アクセスキーなどを隠してから共有します。</p></article><article><h3>身分証や書類の写真</h3><p>証明書番号、住所、署名、カード情報を黒塗りします。重要書類ではぼかしより黒塗りが安全です。</p></article><article><h3>写真やSNS投稿</h3><p>通行人や子どもの顔、車のナンバー、表札、背景の位置情報につながる文字を隠します。</p></article></div></section><section class="redaction-safety" aria-labelledby="redactionSafetyTitle"><h2 id="redactionSafetyTitle">AI検出後に目視確認が必要な理由</h2><p>傾き、反射、低画質、装飾文字、複雑な背景によって検出精度は変わります。自動検出は作業の補助であり、見落としがない保証ではありません。</p><p>保存前に画像全体を拡大し、四隅、反射、通知欄、背景の看板も確認してください。重要な文字は少し広めに黒塗りしてください。</p></section><section class="pinyin-howto" aria-labelledby="redactionHowTitle"><h2 id="redactionHowTitle">オンラインで画像にモザイクをかける方法</h2><ol><li>加工する画像を選択、ドロップ、または貼り付けます。</li><li>手動で範囲を囲むか、AI検出を実行して候補を確認します。</li><li>黒塗り、モザイク、ぼかしを選び、範囲と強さを調整します。</li><li>元画像と比較して見落としを確認し、新しい画像を保存します。</li></ol></section><section class="pinyin-faq" aria-labelledby="redactionFaqTitle"><h2 id="redactionFaqTitle">画像モザイク加工のよくある質問</h2><details><summary>画像はサーバーに送信されますか？</summary><p>送信されません。画像の読み込み、編集、顔検出、OCR、保存はブラウザ内で行い、通信は初回のAIモデル取得だけに使います。</p></details><details><summary>モザイクやぼかしで文字を完全に隠せますか？</summary><p>保証できません。ID番号、カード番号、パスワード、アクセスキーなどには、余白を持たせた黒塗りを使用してください。</p></details><details><summary>AIは何を検出できますか？</summary><p>顔、電話番号、メール、ID、カード番号、URL、IP、ナンバープレート、氏名・住所ラベルを含む文字行を候補として表示します。必ず確認してください。</p></details><details><summary>保存後の画像に位置情報は残りますか？</summary><p>CanvasでJPG、PNG、WebPを新しく生成するため、通常は元画像のEXIF、GPS、端末名、撮影日時をコピーしません。</p></details></section><p class="section-kicker pinyin-related-kicker">関連する画像・文字ツール</p><nav class="landing-links" aria-label="関連する画像プライバシー・漢字ツール"><a href="/ja/image-redaction/" aria-current="page">画像モザイク加工</a><a href="/ja/photo-chinese-character-recognition/">写真から中国語漢字を認識</a><a href="/ja/text-formatter/">テキスト整形</a><a href="/ja/file-text-converter/">文書の中国語変換</a><a href="/ja/japanese-kanji-dictionary/">漢字検索</a><a href="/ja/character-counter/">文字数カウント</a></nav></section>
     </main>
-    <footer class="site-footer"><p>JianFan.appはブラウザで使える中国語・日本語・韓国語・画像プライバシーツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="ツール一覧">
+        <div class="site-directory-group">
+          <p class="site-directory-title">簡体字・繁体字</p>
+          <ul>
+            <li><a href="/ja/">簡体字 繁体字 変換</a></li>
+            <li><a href="/ja/simplified-to-traditional/">簡体字から繁体字</a></li>
+            <li><a href="/ja/traditional-to-simplified/">繁体字から簡体字</a></li>
+            <li><a href="/ja/taiwan-traditional/">台湾繁体字変換</a></li>
+            <li><a href="/ja/hong-kong-traditional/">香港繁体字変換</a></li>
+            <li><a href="/ja/file-text-converter/">Word・PDF の簡繁変換</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">日本語の漢字</p>
+          <ul>
+            <li><a href="/ja/japanese-handwriting-recognition/">手書き漢字検索</a></li>
+            <li><a href="/ja/japanese-kanji-dictionary/">漢字辞典</a></li>
+            <li><a href="/ja/japanese-stroke-order/">漢字の書き順</a></li>
+            <li><a href="/ja/kanji-to-hiragana/">漢字をひらがなに変換</a></li>
+            <li><a href="/ja/kanji-to-romaji/">漢字をローマ字に変換</a></li>
+            <li><a href="/ja/japanese-kanji-converter/">旧字体 新字体 変換</a></li>
+            <li><a href="/ja/japanese-chinese-kanji-converter/">日中漢字変換</a></li>
+            <li><a href="/ja/japanese-characters/">日本語文字コピー</a></li>
+            <li><a href="/ja/han-character-worksheet/">漢字練習プリント</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">中国語の漢字</p>
+          <ul>
+            <li><a href="/ja/chinese-handwriting-recognition/">中国語の手書き検索</a></li>
+            <li><a href="/ja/photo-chinese-character-recognition/">中国語OCR</a></li>
+            <li><a href="/ja/chinese-to-pinyin/">ピンイン変換</a></li>
+            <li><a href="/ja/chinese-stroke-order/">中国語漢字の筆順</a></li>
+            <li><a href="/ja/chinese-character-lookup/">漢字の構成・部首検索</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">韓国の漢字</p>
+          <ul>
+            <li><a href="/ja/korean-hanja-dictionary/">韓国漢字検索</a></li>
+            <li><a href="/ja/korean-hanja-handwriting-recognition/">韓国漢字の手書き検索</a></li>
+            <li><a href="/ja/hangul-hanja-converter/">ハングル・漢字変換</a></li>
+            <li><a href="/ja/korean-name-hanja/">韓国の人名用漢字</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">テキストツール</p>
+          <ul>
+            <li><a href="/ja/character-counter/">文字数カウント</a></li>
+            <li><a href="/ja/word-to-txt/">Word TXT 変換</a></li>
+            <li><a href="/ja/text-formatter/">テキスト整形</a></li>
+            <li><a href="/ja/image-redaction/" aria-current="page">画像モザイク</a></li>
+            <li><a href="/ja/password-generator/">パスワード生成</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.appはブラウザで使える中国語・日本語・韓国語・画像プライバシーツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
     <dialog class="redaction-dialog" id="redactionDialog" aria-labelledby="redactionDialogTitle"><form method="dialog"><h2 id="redactionDialogTitle">処理を完了できませんでした</h2><p id="redactionDialogMessage"></p><button type="submit">閉じる</button></form></dialog>
   </body>
 </html>

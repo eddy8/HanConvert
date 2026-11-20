@@ -4,6 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { PASSWORD_CONTENT as content, PASSWORD_LOCALES as locales } from "./password-generator-content.mjs";
 import { getMetadataLengthRange, visibleMetadataLength, visibleTitleContentLength } from "./seo-metadata-rules.mjs";
+import { withSiteDirectory } from "./sync-site-tool-directory.mjs";
 
 const require = createRequire(import.meta.url);
 require("../password-generator.js");
@@ -101,6 +102,7 @@ ${alternates}
 }
 
 async function writeOrCheck(target, output) {
+  output = withSiteDirectory(output, target);
   if (check) {
     if (await readFile(target, "utf8") !== output) throw new Error(`${path.relative(root, target)} is out of sync with password generator`);
   } else {
@@ -125,7 +127,7 @@ for (const locale of Object.keys(locales)) {
   const previousPage = await readFile(pagePath, "utf8").catch(() => null);
   const pageUrl = `${origin}${localPath(locale, slug)}`;
   const previousLastmod = sitemap.match(new RegExp(`<loc>${pageUrl.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&")}</loc>\\s*<lastmod>(\\d{4}-\\d{2}-\\d{2})</lastmod>`, "u"))?.[1];
-  lastModified[locale] = previousPage === page && previousLastmod ? previousLastmod : today;
+  lastModified[locale] = previousPage === withSiteDirectory(page, pagePath) && previousLastmod ? previousLastmod : today;
   await writeOrCheck(pagePath, page);
   const homepagePath = path.join(root, locales[locale].prefix, "index.html");
   const source = await readFile(homepagePath, "utf8");

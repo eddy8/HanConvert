@@ -4,60 +4,87 @@
   else root.JapaneseHandwritingCore = api;
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
   "use strict";
-  const COMMIT = "e036ef26dc307d897653f5b8750a8cb048f042b3";
-  const PATTERN_URL = `https://cdn.jsdelivr.net/gh/barionleg/okanjirec@${COMMIT}/docs/resources/javascript/ref-patterns.js`;
-  const PATTERN_SHA256 = "e1770a3f32ce18cc1c0eff67c539e663a3e2b0437172bde66abc3336aedf06c7";
+
+  const WORKER_PATH = "/japanese-handwriting-worker.js";
+  const MAX_TEXT_LENGTH = 40;
 
   function uniqueCandidates(value, limit = 10) {
-    const candidates = Array.from(String(value || "")).filter((character) => /\p{Script=Han}/u.test(character));
+    const candidates = Array.from(Array.isArray(value) ? value.join("") : String(value || ""))
+      .filter((character) => /\p{Script=Han}/u.test(character));
     return [...new Set(candidates)].slice(0, Math.max(1, limit));
   }
 
-  function bytesToHex(bytes) {
-    return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+  function hasKanji(value) {
+    return /\p{Script=Han}/u.test(String(value || ""));
   }
 
-  return { COMMIT, PATTERN_SHA256, PATTERN_URL, bytesToHex, uniqueCandidates };
+  function appendCharacter(text, character, limit = MAX_TEXT_LENGTH) {
+    return Array.from(`${text || ""}${character || ""}`).slice(-limit).join("");
+  }
+
+  // A stroke signature changes only when the drawing changes, so pointer events that do not add a
+  // stroke (hover out, a tap outside) do not trigger another recognition pass.
+  function strokeSignature(strokes) {
+    return (strokes || []).map((stroke) => `${stroke.length}:${stroke.at?.(-1)?.join(",") || ""}`).join("|");
+  }
+
+  return { MAX_TEXT_LENGTH, WORKER_PATH, appendCharacter, hasKanji, strokeSignature, uniqueCandidates };
 });
 
 (function () {
   "use strict";
+
   if (typeof document === "undefined") return;
   const body = document.body;
   if (body.dataset.toolPage !== "japanese-handwriting-recognition") return;
 
   const CANVAS_ID = "japaneseHandwritingCanvas";
+  const RECOGNITION_DELAY = 60;
+  const READING_DELAY = 350;
   const core = globalThis.JapaneseHandwritingCore;
   const localePrefixes = { "zh-CN": "", "zh-TW": "zh-tw/", en: "en/", ja: "ja/", ko: "ko/" };
+  const $ = (id) => document.querySelector(`#${id}`);
   const elements = {
-    locale: document.querySelector("#localeSelect"),
-    canvas: document.querySelector(`#${CANVAS_ID}`),
-    status: document.querySelector("#japaneseHandwritingStatus"),
-    recognize: document.querySelector("#japaneseHandwritingRecognize"),
-    undo: document.querySelector("#japaneseHandwritingUndo"),
-    clear: document.querySelector("#japaneseHandwritingClear"),
-    progress: document.querySelector("#japaneseHandwritingProgress"),
-    progressBar: document.querySelector("#japaneseHandwritingProgressBar"),
-    progressText: document.querySelector("#japaneseHandwritingProgressText"),
-    candidates: document.querySelector("#japaneseHandwritingCandidates"),
-    candidateEmpty: document.querySelector("#japaneseHandwritingCandidateEmpty"),
-    detail: document.querySelector("#japaneseHandwritingDetail"),
-    detailEmpty: document.querySelector("#japaneseHandwritingDetailEmpty"),
-    character: document.querySelector("#japaneseHandwritingCharacter"),
-    on: document.querySelector("#japaneseHandwritingOn"),
-    kun: document.querySelector("#japaneseHandwritingKun"),
-    radical: document.querySelector("#japaneseHandwritingRadical"),
-    strokes: document.querySelector("#japaneseHandwritingStrokes"),
-    meanings: document.querySelector("#japaneseHandwritingMeanings"),
-    copy: document.querySelector("#japaneseHandwritingCopy"),
-    dictionaryLink: document.querySelector("#japaneseHandwritingDictionaryLink"),
-    strokeLink: document.querySelector("#japaneseHandwritingStrokeLink")
+    locale: $("localeSelect"),
+    canvas: $(CANVAS_ID),
+    status: $("japaneseHandwritingStatus"),
+    append: $("japaneseHandwritingAppend"),
+    undo: $("japaneseHandwritingUndo"),
+    clear: $("japaneseHandwritingClear"),
+    progress: $("japaneseHandwritingProgress"),
+    progressBar: $("japaneseHandwritingProgressBar"),
+    progressText: $("japaneseHandwritingProgressText"),
+    candidates: $("japaneseHandwritingCandidates"),
+    candidateEmpty: $("japaneseHandwritingCandidateEmpty"),
+    detail: $("japaneseHandwritingDetail"),
+    detailEmpty: $("japaneseHandwritingDetailEmpty"),
+    character: $("japaneseHandwritingCharacter"),
+    on: $("japaneseHandwritingOn"),
+    kun: $("japaneseHandwritingKun"),
+    radical: $("japaneseHandwritingRadical"),
+    strokes: $("japaneseHandwritingStrokes"),
+    meanings: $("japaneseHandwritingMeanings"),
+    copy: $("japaneseHandwritingCopy"),
+    dictionaryLink: $("japaneseHandwritingDictionaryLink"),
+    strokeLink: $("japaneseHandwritingStrokeLink"),
+    text: $("japaneseHandwritingText"),
+    textCopy: $("japaneseHandwritingTextCopy"),
+    textClear: $("japaneseHandwritingTextClear"),
+    reading: $("japaneseHandwritingReading"),
+    readingValue: $("japaneseHandwritingReadingValue")
   };
 
-  let patternPromise;
+  let worker;
+  let workerReady = false;
+  let recognitionId = 0;
+  let recognitionTimer;
+  let lastSignature = "";
   let recordMapPromise;
   let initialized = false;
   let selectedCharacter = "";
+  let readingClient;
+  let readingTimer;
+  let readingToken = 0;
 
   function message(key, values = {}) {
     const name = `message${key[0].toUpperCase()}${key.slice(1)}`;
@@ -70,97 +97,73 @@
     elements.status.lastElementChild.textContent = message(key, values);
   }
 
-  async function readResponse(response) {
-    if (!response.ok) throw new Error(`Pattern request failed: ${response.status}`);
-    const total = Number(response.headers.get("content-length")) || 0;
-    const reader = response.body?.getReader();
-    if (!reader) return new Uint8Array(await response.arrayBuffer());
-    const chunks = [];
-    let loaded = 0;
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      chunks.push(value);
-      loaded += value.byteLength;
-      const percent = total ? Math.min(99, Math.round((loaded / total) * 100)) : 0;
-      elements.progressBar.style.transform = `scaleX(${percent / 100})`;
-      elements.progressText.textContent = total
-        ? message("loadingProgress", { percent })
-        : message("loadingPatterns");
-    }
-    const output = new Uint8Array(loaded);
-    let offset = 0;
-    chunks.forEach((chunk) => {
-      output.set(chunk, offset);
-      offset += chunk.byteLength;
-    });
-    return output;
+  function strokes() {
+    return globalThis.KanjiCanvas?.[`recordedPattern_${CANVAS_ID}`] || [];
   }
 
-  function executePatternScript(bytes) {
-    return new Promise((resolve, reject) => {
-      const url = URL.createObjectURL(new Blob([bytes], { type: "text/javascript" }));
-      const script = document.createElement("script");
-      script.src = url;
-      script.onload = () => {
-        URL.revokeObjectURL(url);
-        script.remove();
-        resolve();
-      };
-      script.onerror = () => {
-        URL.revokeObjectURL(url);
-        script.remove();
-        reject(new Error("Pattern script execution failed"));
-      };
-      document.head.append(script);
-    });
-  }
-
-  function loadPatterns() {
-    if (globalThis.KanjiCanvas?.refPatterns?.length) return Promise.resolve();
-    if (patternPromise) return patternPromise;
+  function showProgress(percent) {
     elements.progress.hidden = false;
-    setStatus("loadingPatterns");
-    patternPromise = fetch(core.PATTERN_URL, { mode: "cors", cache: "force-cache" })
-      .then(readResponse)
-      .then(async (bytes) => {
-        if (!globalThis.crypto?.subtle) throw new Error("Web Crypto is unavailable");
-        const digest = new Uint8Array(await crypto.subtle.digest("SHA-256", bytes));
-        if (core.bytesToHex(digest) !== core.PATTERN_SHA256) throw new Error("Pattern integrity check failed");
-        await executePatternScript(bytes);
-        if (!globalThis.KanjiCanvas?.refPatterns?.length) throw new Error("Pattern data is empty");
+    elements.progressBar.style.transform = `scaleX(${percent >= 0 ? percent / 100 : 0.35})`;
+    elements.progressText.textContent = percent >= 0
+      ? message("loadingProgress", { percent })
+      : message("loadingPatterns");
+  }
+
+  function startWorker() {
+    if (worker) return;
+    try {
+      worker = new Worker(core.WORKER_PATH);
+    } catch (error) {
+      console.error(error);
+      setStatus("engineError", "error");
+      return;
+    }
+    worker.addEventListener("message", (event) => {
+      const data = event.data || {};
+      if (data.type === "progress") {
+        showProgress(data.percent);
+      } else if (data.type === "ready") {
+        workerReady = true;
         elements.progressBar.style.transform = "scaleX(1)";
         elements.progressText.textContent = message("patternsReady");
         window.setTimeout(() => { elements.progress.hidden = true; }, 500);
-        setStatus("drawReady", "ready");
-      })
-      .catch((error) => {
-        console.error(error);
-        patternPromise = undefined;
+        if (strokes().length) scheduleRecognition(0, true);
+        else setStatus("idle");
+      } else if (data.type === "result") {
+        if (data.id !== recognitionId) return;
+        renderCandidates(data.candidates);
+      } else if (data.type === "error") {
+        console.error(data.message);
         elements.progress.hidden = true;
-        setStatus("loadError", "error");
-        throw error;
-      });
-    return patternPromise;
+        if (data.id === undefined || data.id === recognitionId) setStatus("loadError", "error");
+      }
+    });
+    worker.addEventListener("error", (event) => {
+      console.error(event.message);
+      elements.progress.hidden = true;
+      setStatus("loadError", "error");
+    });
+    showProgress(-1);
+    worker.postMessage({ type: "load" });
   }
 
-  function initializeCanvas() {
-    if (!globalThis.KanjiCanvas) {
-      setStatus("engineError", "error");
-      elements.recognize.disabled = true;
-      elements.undo.disabled = true;
-      elements.clear.disabled = true;
-      return;
-    }
-    const size = Math.max(240, Math.round(elements.canvas.getBoundingClientRect().width));
-    elements.canvas.width = size;
-    elements.canvas.height = size;
-    globalThis.KanjiCanvas.init(CANVAS_ID);
-    initialized = true;
-  }
-
-  function strokeCount() {
-    return globalThis.KanjiCanvas?.[`recordedPattern_${CANVAS_ID}`]?.length || 0;
+  function scheduleRecognition(delay = RECOGNITION_DELAY, force = false) {
+    window.clearTimeout(recognitionTimer);
+    recognitionTimer = window.setTimeout(() => {
+      const current = strokes();
+      const signature = core.strokeSignature(current);
+      if (!force && signature === lastSignature) return;
+      lastSignature = signature;
+      if (!current.length) {
+        clearResults();
+        setStatus("idle");
+        return;
+      }
+      startWorker();
+      recognitionId += 1;
+      setStatus(workerReady ? "recognizing" : "loadingPatterns");
+      worker?.postMessage({ type: "recognize", id: recognitionId, strokes: current.map((stroke) => stroke.map(([x, y]) => [x, y])) });
+    }, delay);
   }
 
   function renderCandidates(value) {
@@ -178,7 +181,13 @@
       button.addEventListener("click", () => showCandidate(character));
       elements.candidates.append(button);
     });
-    if (candidates.length) showCandidate(candidates[0]);
+    if (candidates.length) {
+      showCandidate(candidates[0]);
+      setStatus("recognized", "ready");
+    } else {
+      clearDetail();
+      setStatus("noCandidates");
+    }
   }
 
   async function getRecordMap() {
@@ -194,6 +203,7 @@
 
   async function showCandidate(character) {
     selectedCharacter = character;
+    elements.append.disabled = false;
     elements.candidates.querySelectorAll("button").forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.character === character));
       button.classList.toggle("is-active", button.dataset.character === character);
@@ -224,71 +234,143 @@
     }
   }
 
-  async function recognize() {
-    if (!initialized || !strokeCount()) {
-      setStatus("noStrokes", "error");
-      elements.canvas.focus();
-      return;
-    }
-    try {
-      await loadPatterns();
-      setStatus("recognizing");
-      await new Promise((resolve) => requestAnimationFrame(resolve));
-      const candidates = globalThis.KanjiCanvas.recognize(CANVAS_ID);
-      renderCandidates(candidates);
-      setStatus(candidates ? "recognized" : "noCandidates", candidates ? "ready" : "idle");
-    } catch {
-      // loadPatterns reports the actionable error.
-    }
+  function clearDetail() {
+    selectedCharacter = "";
+    elements.append.disabled = true;
+    elements.detail.hidden = true;
+    elements.detailEmpty.hidden = false;
   }
 
-  async function copyCandidate() {
-    if (!selectedCharacter) return;
+  function clearResults() {
+    recognitionId += 1;
+    elements.candidates.replaceChildren();
+    elements.candidateEmpty.hidden = false;
+    clearDetail();
+  }
+
+  function clearCanvas() {
+    if (initialized) globalThis.KanjiCanvas.erase(CANVAS_ID);
+    lastSignature = "";
+    clearResults();
+  }
+
+  async function copyText(value) {
+    if (!value) return;
     try {
-      await navigator.clipboard.writeText(selectedCharacter);
-      setStatus("copied", "ready");
+      await navigator.clipboard.writeText(value);
     } catch {
       const input = document.createElement("textarea");
-      input.value = selectedCharacter;
+      input.value = value;
       input.style.position = "fixed";
       input.style.opacity = "0";
       document.body.append(input);
       input.select();
       document.execCommand("copy");
       input.remove();
-      setStatus("copied", "ready");
+    }
+    setStatus("copied", "ready");
+  }
+
+  function appendSelected() {
+    if (!selectedCharacter) return;
+    elements.text.value = core.appendCharacter(elements.text.value, selectedCharacter);
+    clearCanvas();
+    setStatus("appended", "ready", { character: elements.text.value });
+    updateTextControls();
+    scheduleReading();
+    elements.canvas.focus();
+  }
+
+  function updateTextControls() {
+    const hasText = Boolean(elements.text.value);
+    elements.textCopy.disabled = !hasText;
+    elements.textClear.disabled = !hasText;
+  }
+
+  function scheduleReading() {
+    window.clearTimeout(readingTimer);
+    const value = elements.text.value.trim();
+    if (!core.hasKanji(value)) {
+      readingToken += 1;
+      elements.reading.hidden = true;
+      return;
+    }
+    elements.reading.hidden = false;
+    elements.readingValue.textContent = readingClient ? message("readingLoading") : message("readingDictionary");
+    readingTimer = window.setTimeout(() => readText(value), READING_DELAY);
+  }
+
+  async function readText(value) {
+    const token = ++readingToken;
+    try {
+      if (!readingClient) readingClient = globalThis.JapaneseReadingClient.createClient();
+      const dictionaryPaths = [body.dataset.dictionaryPath, body.dataset.dictionaryFallbackPath].filter(Boolean);
+      const result = await readingClient.convert({ value, format: "hiragana", dictionaryPaths });
+      if (token === readingToken) elements.readingValue.textContent = result || body.dataset.emptyValue;
+    } catch (error) {
+      console.error(error);
+      if (token === readingToken) elements.readingValue.textContent = message("readingError");
     }
   }
 
-  function clearResults() {
-    elements.candidates.replaceChildren();
-    elements.candidateEmpty.hidden = false;
-    elements.detail.hidden = true;
-    elements.detailEmpty.hidden = false;
-    selectedCharacter = "";
+  function initializeCanvas() {
+    if (!globalThis.KanjiCanvas) {
+      setStatus("engineError", "error");
+      elements.undo.disabled = true;
+      elements.clear.disabled = true;
+      return;
+    }
+    const size = Math.max(240, Math.round(elements.canvas.getBoundingClientRect().width));
+    elements.canvas.width = size;
+    elements.canvas.height = size;
+    globalThis.KanjiCanvas.init(CANVAS_ID);
+    // Recognition runs in the worker; the page copy of KanjiCanvas only draws. Its Ctrl+F shortcut
+    // would otherwise call recognize() without reference patterns.
+    globalThis.KanjiCanvas.recognize = () => "";
+    initialized = true;
   }
 
-  elements.canvas.addEventListener("pointerdown", () => loadPatterns().catch(() => undefined), { once: true });
-  elements.recognize.addEventListener("click", recognize);
+  for (const type of ["mouseup", "mouseout", "touchend", "touchcancel"]) {
+    elements.canvas.addEventListener(type, () => scheduleRecognition());
+  }
+  elements.canvas.addEventListener("pointerdown", startWorker, { once: true });
   elements.undo.addEventListener("click", () => {
-    if (!initialized || !strokeCount()) return;
+    if (!initialized || !strokes().length) return;
     globalThis.KanjiCanvas.deleteLast(CANVAS_ID);
-    clearResults();
-    setStatus(strokeCount() ? "drawReady" : "idle");
+    scheduleRecognition(0);
   });
   elements.clear.addEventListener("click", () => {
-    if (initialized) globalThis.KanjiCanvas.erase(CANVAS_ID);
-    clearResults();
+    clearCanvas();
     setStatus("idle");
     elements.canvas.focus();
   });
-  elements.copy.addEventListener("click", copyCandidate);
+  elements.append.addEventListener("click", appendSelected);
+  elements.copy.addEventListener("click", () => copyText(selectedCharacter));
+  elements.textCopy.addEventListener("click", () => copyText(elements.text.value));
+  elements.textClear.addEventListener("click", () => {
+    elements.text.value = "";
+    updateTextControls();
+    scheduleReading();
+  });
+  elements.text.addEventListener("input", () => {
+    updateTextControls();
+    scheduleReading();
+  });
   elements.locale.addEventListener("change", () => {
     const locale = elements.locale.value;
-    localStorage.setItem("jianfan-locale", locale);
-    localStorage.setItem("jianfan-locale-manual", "1");
+    try {
+      localStorage.setItem("jianfan-locale", locale);
+      localStorage.setItem("jianfan-locale-manual", "1");
+    } catch {
+      // Language choice still works for this navigation.
+    }
     window.location.assign(`/${localePrefixes[locale]}japanese-handwriting-recognition/`);
   });
 
+  updateTextControls();
   requestAnimationFrame(initializeCanvas);
+  // Load the recognizer while the visitor reads the page, so the first stroke gets candidates quickly.
+  const preload = () => startWorker();
+  if ("requestIdleCallback" in window) window.requestIdleCallback(preload, { timeout: 2500 });
+  else window.setTimeout(preload, 1200);
 })();

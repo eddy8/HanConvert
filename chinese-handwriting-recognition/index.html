@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="description" content="免费在线手写查字与汉字识别工具，用鼠标、触屏或手写笔逐笔写出不会读的简繁汉字，即时查看候选字、拼音、笔画数和笔顺，默认在浏览器本地识别。" />
+    <meta name="description" content="免费在线手写查字与汉字识别工具，逐笔写出不会读的简繁汉字，即时查看候选字、拼音、部首和笔顺，还能连续手写输入整段文字，默认在浏览器本地识别。" />
     <title>手写汉字识别 - 在线手写查字与汉字输入工具 | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/chinese-handwriting-recognition/" />
     <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-handwriting-recognition/" />
@@ -36,7 +36,7 @@
               "汉字手写查询"
             ],
             "url": "https://jianfan.app/chinese-handwriting-recognition/",
-            "description": "免费在线手写查字与汉字识别工具，用鼠标、触屏或手写笔逐笔写出不会读的简繁汉字，即时查看候选字、拼音、笔画数和笔顺，默认在浏览器本地识别。",
+            "description": "免费在线手写查字与汉字识别工具，逐笔写出不会读的简繁汉字，即时查看候选字、拼音、部首和笔顺，还能连续手写输入整段文字，默认在浏览器本地识别。",
             "applicationCategory": "EducationalApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript and WebAssembly",
@@ -90,7 +90,12 @@
               {
                 "@type": "HowToStep",
                 "position": 3,
-                "text": "查看拼音和笔画数，或进入笔顺页面继续查询。"
+                "text": "查看拼音、部首和结构，或进入笔顺页面继续查询。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "要输入多个字时，点击“加入输入框”逐字拼接，最后一次复制整段文字。"
               }
             ]
           },
@@ -103,7 +108,7 @@
                 "name": "不认识的字怎么查拼音？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "手写这个字并点击最接近的候选，页面会显示拼音、总笔画数和 Unicode，还可以继续查看笔顺和字形结构。"
+                  "text": "手写这个字并点击最接近的候选，页面会显示拼音、部首、字形结构、总笔画数和 Unicode，还可以继续查看笔顺。"
                 }
               },
               {
@@ -111,7 +116,7 @@
                 "name": "可以当手写输入法用吗？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "可以逐字使用：写一个字，选中候选后点击“复制汉字”，再粘贴到需要输入的地方。本页一次识别一个字，不支持连续手写整句。"
+                  "text": "可以。每写好一个字，选中候选后点击“加入输入框”，画板会自动清空，接着写下一个字；全部写完后点击输入框旁的“复制”，一次复制整段文字。本页一次识别一个字，不识别连笔写成的整句。"
                 }
               },
               {
@@ -169,7 +174,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="zh-CN" data-message-loading="正在加载手写识别组件" data-message-ready="可以开始手写汉字" data-message-recognizing="正在匹配候选汉字" data-message-matched="已找到 {count} 个候选汉字" data-message-no-match="暂未找到候选字，请撤销或重新书写" data-message-remote-recognizing="正在进行远程识别" data-message-remote-no-match="远程识别未找到更合适的候选字" data-message-remote-error="远程识别失败，请检查网络后重试" data-message-error="手写识别组件加载失败，请检查网络后刷新" data-message-copied="已复制所选汉字" data-message-copy-failed="自动复制失败，请直接选择汉字复制" data-message-stroke-count="已写 {count} 笔" data-message-candidate-label="选择候选汉字“{character}”">
+  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="zh-CN" data-message-loading="正在加载手写识别组件" data-message-ready="可以开始手写汉字" data-message-recognizing="正在匹配候选汉字" data-message-matched="已找到 {count} 个候选汉字" data-message-no-match="暂未找到候选字，请撤销或重新书写" data-message-remote-recognizing="正在进行远程识别" data-message-remote-no-match="远程识别未找到更合适的候选字" data-message-remote-error="远程识别失败，请检查网络后重试" data-message-error="手写识别组件加载失败，请检查网络后刷新" data-message-copied="已复制所选汉字" data-message-copy-failed="自动复制失败，请直接选择汉字复制" data-message-stroke-count="已写 {count} 笔" data-message-appended="已加入输入框：{character}" data-message-copied-text="已复制输入框中的文字" data-message-candidate-label="选择候选汉字“{character}”">
     <a class="skip-nav" href="#main">跳到主要内容</a>
     <header class="site-header" aria-label="网站页眉">
       <a class="brand" href="/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">手</span><span>JianFan.app</span></a>
@@ -186,7 +191,7 @@
     </header>
     <main id="main">
       <section class="tool-hero handwriting-tool-hero" aria-labelledby="pageTitle">
-        <div><p class="section-kicker">手写识别 · 候选汉字 · 拼音笔顺</p><h1 id="pageTitle">手写汉字识别与在线查字</h1><p class="lede">不知道一个汉字怎么读、也无法输入时，照着字形在田字格中写出来。系统会即时给出相似候选字，选择后即可查看拼音、笔画数和书写顺序。</p></div>
+        <div><p class="section-kicker">手写识别 · 候选汉字 · 拼音笔顺</p><h1 id="pageTitle">手写汉字识别与在线查字</h1><p class="lede">不知道一个汉字怎么读、也无法输入时，照着字形在田字格中写出来。系统会即时给出相似候选字，选中后可查看拼音、部首、结构和笔顺；把字逐个加入输入框，还能连续手写输入一段文字。</p></div>
         <div class="handwriting-hero-signal" aria-hidden="true"><span>?</span><i></i><strong>漢</strong></div>
       </section>
 
@@ -207,9 +212,11 @@
               <div class="handwriting-loader" id="handwritingLoader"><span></span><b>正在加载手写识别组件</b></div>
             </div>
             <div class="handwriting-actions">
+              <button class="primary-action" id="handwritingAppend" type="button" disabled><span aria-hidden="true">＋</span><span>加入输入框</span></button>
               <button id="handwritingUndo" type="button" disabled><span aria-hidden="true">↶</span><span>撤销上一笔</span></button>
               <button id="handwritingClear" type="button" disabled><span aria-hidden="true">×</span><span>清空重写</span></button>
             </div>
+            <div class="handwriting-compose"><div class="handwriting-compose-head"><label for="handwritingText">已输入的文字</label><button id="handwritingTextCopy" type="button" disabled>复制</button><button id="handwritingTextClear" type="button" disabled>清空</button></div><input id="handwritingText" type="text" lang="zh-CN" autocomplete="off" spellcheck="false" maxlength="200" placeholder="选中候选后点“加入输入框”，可连续手写输入" /></div>
             <div class="handwriting-samples"><span>试用示例</span><button type="button" data-handwriting-sample="人" aria-label="试用示例 人">人</button><button type="button" data-handwriting-sample="大" aria-label="试用示例 大">大</button><button type="button" data-handwriting-sample="木" aria-label="试用示例 木">木</button><button type="button" data-handwriting-sample="中" aria-label="试用示例 中">中</button></div>
             <p class="handwriting-hint">请尽量写大、写在中央，并按常见笔顺逐笔书写。</p>
           </section>
@@ -226,6 +233,8 @@
                 <h3 id="handwritingResultTitle">查字结果</h3>
                 <dl>
                   <div><dt>拼音</dt><dd id="handwritingResultPinyin">-</dd></div>
+                  <div><dt>部首</dt><dd id="handwritingResultRadical">-</dd></div>
+                  <div><dt>结构</dt><dd id="handwritingResultStructure">-</dd></div>
                   <div><dt>笔画数</dt><dd id="handwritingResultStrokes">-</dd></div>
                   <div><dt>Unicode</dt><dd id="handwritingResultUnicode">-</dd></div>
                 </dl>
@@ -237,6 +246,7 @@
                 </div>
               </div>
             </article>
+            <script type="application/json" id="handwritingStructureLabels">{"single":"独体字","leftRight":"左右结构","topBottom":"上下结构","leftMiddleRight":"左中右结构","topMiddleBottom":"上中下结构","surround":"全包围结构","surroundFromAbove":"上三包围结构","surroundFromBelow":"下三包围结构","surroundFromLeft":"左三包围结构","surroundFromUpperLeft":"左上包围结构","surroundFromUpperRight":"右上包围结构","surroundFromLowerLeft":"左下包围结构"}</script>
           </section>
         </div>
       </section>
@@ -245,18 +255,19 @@
         <div class="section-heading"><p class="section-kicker">在线手写查字</p><h2 id="handwritingFeatureTitle">不会读也不会输入，直接手写识别汉字</h2><p class="seo-intro">手写汉字识别适合查询书籍、图片或生活中遇到的陌生字。无需先知道拼音或部首，用鼠标、触控板、触屏或手写笔描出字形即可查字。</p></div>
         <div class="seo-grid">
           <article><h3>边写边显示候选字</h3><p>每完成一笔自动更新匹配结果，最多显示 10 个相似汉字，选错时可以撤销上一笔。</p></article>
-          <article><h3>候选字信息直接可用</h3><p>选中汉字后显示全部常见拼音、笔画数和 Unicode，并可复制或继续查看动态笔顺。</p></article>
+          <article><h3>候选字信息直接可用</h3><p>选中汉字后显示全部常见拼音、部首、字形结构、笔画数和 Unicode，并可复制或继续查看动态笔顺。</p></article>
           <article><h3>浏览器本地识别</h3><p>笔画坐标不会上传到 JianFan.app 服务器，公开的 WebAssembly 识别组件在浏览器中完成匹配。</p></article>
         </div>
         <section class="word-howto" aria-labelledby="handwritingHowTitle"><h2 id="handwritingHowTitle">如何在线手写查字</h2><ol>
             <li>用鼠标、触屏或手写笔在田字格中央逐笔写下汉字。</li>
             <li>从自动更新的候选结果中选择最接近的字。</li>
-            <li>查看拼音和笔画数，或进入笔顺页面继续查询。</li>
+            <li>查看拼音、部首和结构，或进入<a href="/chinese-stroke-order/">笔顺页面</a>继续查询。</li>
+            <li>要输入多个字时，点击“加入输入框”逐字拼接，最后一次复制整段文字。</li>
           </ol></section>
         <section class="pinyin-faq" aria-labelledby="handwritingFaqTitle"><h2 id="handwritingFaqTitle">手写汉字识别常见问题</h2>
-          <details><summary>不认识的字怎么查拼音？</summary><p>手写这个字并点击最接近的候选，页面会显示拼音、总笔画数和 Unicode，还可以继续查看笔顺和字形结构。</p></details>
-          <details><summary>可以当手写输入法用吗？</summary><p>可以逐字使用：写一个字，选中候选后点击“复制汉字”，再粘贴到需要输入的地方。本页一次识别一个字，不支持连续手写整句。</p></details>
-          <details><summary>候选里没有要找的字怎么办？</summary><p>把字写大、让笔画分开后重试；仍然找不到时，可用“汉字查询与结构拆解”按偏旁部件反查。照片或截图里的印刷文字，用“在线拍照汉字识别”更省事。</p></details>
+          <details><summary>不认识的字怎么查拼音？</summary><p>手写这个字并点击最接近的候选，页面会显示拼音、部首、字形结构、总笔画数和 Unicode，还可以继续查看笔顺。</p></details>
+          <details><summary>可以当手写输入法用吗？</summary><p>可以。每写好一个字，选中候选后点击“加入输入框”，画板会自动清空，接着写下一个字；全部写完后点击输入框旁的“复制”，一次复制整段文字。本页一次识别一个字，不识别连笔写成的整句。</p></details>
+          <details><summary>候选里没有要找的字怎么办？</summary><p>把字写大、让笔画分开后重试；仍然找不到时，可用“<a href="/chinese-character-lookup/">汉字查询与结构拆解</a>”按偏旁部件反查。照片或截图里的印刷文字，用“<a href="/photo-chinese-character-recognition/">在线拍照汉字识别</a>”更省事。</p></details>
           <details><summary>手机和平板能用吗？</summary><p>可以。直接用手指或触控笔在方格中书写即可，不需要安装应用或注册。</p></details>
           <details><summary>不按正确笔顺也能识别吗？</summary><p>识别会参考笔画方向、位置和数量。少量笔顺偏差可能仍能找到候选，但按常见笔顺、把字写大并保持结构清楚通常更准确。</p></details>
           <details><summary>支持简体字和繁体字吗？</summary><p>支持 9,000 多个常见简体字与繁体字。极少数生僻字、异体字或日本特有字形可能没有结果。</p></details>
@@ -279,6 +290,65 @@
         </nav>
       </section>
     </main>
-    <footer class="site-footer"><p>JianFan.app 提供浏览器中运行的汉字识别、拼音、笔顺与中文转换工具。</p><nav class="footer-links" aria-label="页脚"><a href="/about/">关于我们</a><a href="/contact/">联系我们</a><a href="/privacy/">隐私声明</a></nav></footer>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="全部工具">
+        <div class="site-directory-group">
+          <p class="site-directory-title">简繁转换</p>
+          <ul>
+            <li><a href="/">简繁转换</a></li>
+            <li><a href="/simplified-to-traditional/">简体转繁体</a></li>
+            <li><a href="/traditional-to-simplified/">繁体转简体</a></li>
+            <li><a href="/taiwan-traditional/">台湾繁体转换</a></li>
+            <li><a href="/hong-kong-traditional/">香港繁体转换</a></li>
+            <li><a href="/file-text-converter/">文件简繁转换</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">中文汉字</p>
+          <ul>
+            <li><a href="/chinese-handwriting-recognition/" aria-current="page">手写汉字识别</a></li>
+            <li><a href="/photo-chinese-character-recognition/">拍照识字</a></li>
+            <li><a href="/chinese-to-pinyin/">汉字转拼音</a></li>
+            <li><a href="/chinese-stroke-order/">汉字笔顺查询</a></li>
+            <li><a href="/chinese-character-lookup/">汉字查询与结构拆解</a></li>
+            <li><a href="/han-character-worksheet/">田字格字帖生成器</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">日文汉字</p>
+          <ul>
+            <li><a href="/japanese-handwriting-recognition/">日文手写汉字识别</a></li>
+            <li><a href="/japanese-kanji-dictionary/">日本汉字查询</a></li>
+            <li><a href="/japanese-stroke-order/">日本汉字笔顺</a></li>
+            <li><a href="/kanji-to-hiragana/">日文汉字转平假名</a></li>
+            <li><a href="/kanji-to-romaji/">日文汉字转罗马字</a></li>
+            <li><a href="/japanese-kanji-converter/">日文新旧字体转换</a></li>
+            <li><a href="/japanese-chinese-kanji-converter/">日中汉字转换</a></li>
+            <li><a href="/japanese-characters/">日文字符复制</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">韩国汉字</p>
+          <ul>
+            <li><a href="/korean-hanja-dictionary/">韩国汉字查询</a></li>
+            <li><a href="/korean-hanja-handwriting-recognition/">韩国汉字手写识别</a></li>
+            <li><a href="/hangul-hanja-converter/">韩文汉字转换</a></li>
+            <li><a href="/korean-name-hanja/">韩国人名用汉字</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">文本工具</p>
+          <ul>
+            <li><a href="/character-counter/">在线字数统计</a></li>
+            <li><a href="/word-to-txt/">Word 转 TXT</a></li>
+            <li><a href="/text-formatter/">文本格式化</a></li>
+            <li><a href="/image-redaction/">图片打码</a></li>
+            <li><a href="/password-generator/">密码生成器</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.app 提供浏览器中运行的汉字识别、拼音、笔顺与中文转换工具。</p><nav class="footer-links" aria-label="页脚"><a href="/about/">关于我们</a><a href="/contact/">联系我们</a><a href="/privacy/">隐私声明</a></nav></footer>
   </body>
 </html>

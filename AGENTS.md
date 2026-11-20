@@ -90,6 +90,7 @@
 - Run `node scripts/sync-sitemap-lastmod.mjs` after changing any page's title, meta description, or main content. It dates only pages whose indexable content changed; `node --test` runs its `--check`.
 - For metadata-only changes, edit the source module and replace the exact old text in the affected HTML instead of rerunning full generators, because most generators and sync scripts do not reproduce the committed formatting. Only scripts that document `--check` can verify themselves.
 - Run `node scripts/audit-static-content.mjs` after adding, removing, or substantially changing static page content.
+- Every page carries the categorized tool directory from `scripts/site-tool-directory-data.mjs` (in the footer, and below the converter on the five home pages). The same script writes in-copy links from `scripts/contextual-tool-links-data.mjs`: when page copy tells the reader to use another tool, add a rule there instead of hand-editing the HTML. After adding a tool or page, add the tool to the directory data in all five locales and run `node scripts/sync-site-tool-directory.mjs`. `node --test` runs its `--check`; generators that write pages should pass their output through `withSiteDirectory`.
 - Run `git diff --check` before finishing.
 - For UI or interaction changes, test the actual page in a browser at desktop and mobile widths. Check the console, text wrapping, overflow, layout stability, and the complete primary workflow.
 - This repository has no root `package.json`; do not use `npm test` as the site test command.

@@ -178,6 +178,65 @@
       <template id="passwordResultTemplate"><div class="password-result"><span class="password-result-index" aria-hidden="true"></span><input type="text" readonly autocomplete="off" spellcheck="false" data-lpignore="true" data-1p-ignore /><button type="button" class="password-icon-button" title="複製密碼" aria-label="複製密碼"><svg class="password-icon" data-icon="copy" aria-hidden="true"><use href="/password-icons.svg#copy" /></svg></button></div></template>
       <section class="seo-band standalone-info password-info" aria-labelledby="passwordFeatureTitle"><div class="section-heading"><h2 id="passwordFeatureTitle">符合網站規則的隨機密碼產生工具</h2><p class="seo-intro">註冊帳號、變更登入密碼或準備多組初始密碼時，可先依網站規則決定長度與允許的字元，再批次產生候選密碼。預設使用 20 碼混合字元，取消符號也能產生英數密碼。</p></div><div class="seo-grid"><article><h3>自由組合密碼字元</h3><p>分別選取大寫、小寫、數字及特殊符號，每個勾選類別都會包含至少一個字元，方便符合網站的密碼要求。</p></article><article><h3>設定可用特殊符號</h3><p>網站僅接受部分符號時，可修改符號清單；不允許的字元則填入排除欄。排除規則適用於所有勾選類別。</p></article><article><h3>批次產生與匯出</h3><p>一次最多產生 100 組不重複密碼，可逐組複製、全部複製或下載為每行一組的 TXT。結果只在目前頁面暫存。</p></article></div><section class="pinyin-howto" aria-labelledby="passwordHowTitle"><h2 id="passwordHowTitle">如何產生符合要求的密碼</h2><ol><li>設定密碼長度與組數，勾選網站允許的字元類型。</li><li>依需要修改符號、排除指定字元，或開啟易混淆與連續重複字元過濾。</li><li>產生並複製所需密碼，再存入自己的密碼管理工具。</li></ol></section><section class="pinyin-faq" aria-labelledby="passwordFaqTitle"><h2 id="passwordFaqTitle">密碼產生器常見問題</h2><details><summary>產生的密碼會儲存或上傳嗎？</summary><p>密碼在目前瀏覽器產生，不會傳送到伺服器，也不寫入本機儲存空間。重新整理、離開頁面或清空後，不提供歷史紀錄；複製與下載則會將結果放入你選擇的剪貼簿或檔案。</p></details><details><summary>勾選的每種字元都會出現嗎？</summary><p>會，這是預設規則。勾選四種類型時，每組至少包含一個大寫字母、小寫字母、數字與符號。長度不足或某類字元被全部排除時，會提示調整設定。</p></details><details><summary>易混淆字元與連續重複有何不同？</summary><p>易混淆選項排除 Il1O0o|，方便人工輸入。連續重複只禁止相鄰的相同字元，如 aa、11；同一字元仍可出現在不同位置，也不會排除 abc 或 123 這類序列。</p></details><details><summary>限制越多就越安全嗎？</summary><p>不一定。這些過濾條件主要配合網站規則與抄寫需求，會縮小可用組合。組合強度參考依有效隨機組合數量計算，不代表實際破解時間或帳號安全保證。</p></details><details><summary>可以產生純數字或自訂符號密碼嗎？</summary><p>可以，只勾選數字即可產生數字密碼，只勾選符號則使用自訂符號集。若組合數少於要求的組數，請增加長度、擴大字元集或減少組數。</p></details><details><summary>產生後如何保存密碼？</summary><p>每個帳號使用不同密碼，依網站要求選擇足夠長度，再存入可信任的密碼管理工具。TXT 並未加密，不適合長期保存帳號資料；不同批次之間仍可能出現相同結果。</p></details></section><p class="section-kicker pinyin-related-kicker">相關工具</p><nav class="landing-links" aria-label="相關工具"><a href="/zh-tw/text-formatter/">文字格式化</a><a href="/zh-tw/character-counter/">字數計算</a><a href="/zh-tw/image-redaction/">圖片隱私遮蔽</a><a href="/zh-tw/file-text-converter/">文件文字轉換</a></nav></section>
     </main>
-    <footer class="site-footer"><p>JianFan.app 提供文字轉換、漢字學習與瀏覽器實用工具。</p><nav class="footer-links" aria-label="頁尾"><a href="/zh-tw/about/">關於我們</a><a href="/zh-tw/contact/">聯絡我們</a><a href="/zh-tw/privacy/">隱私聲明</a></nav></footer>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="全部工具">
+        <div class="site-directory-group">
+          <p class="site-directory-title">簡繁轉換</p>
+          <ul>
+            <li><a href="/zh-tw/">簡繁轉換</a></li>
+            <li><a href="/zh-tw/simplified-to-traditional/">簡體轉繁體</a></li>
+            <li><a href="/zh-tw/traditional-to-simplified/">繁體轉簡體</a></li>
+            <li><a href="/zh-tw/taiwan-traditional/">台灣繁體轉換</a></li>
+            <li><a href="/zh-tw/hong-kong-traditional/">香港繁體轉換</a></li>
+            <li><a href="/zh-tw/file-text-converter/">檔案簡繁轉換</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">中文漢字</p>
+          <ul>
+            <li><a href="/zh-tw/chinese-handwriting-recognition/">手寫漢字辨識</a></li>
+            <li><a href="/zh-tw/photo-chinese-character-recognition/">拍照漢字辨識</a></li>
+            <li><a href="/zh-tw/chinese-to-pinyin/">漢字轉拼音</a></li>
+            <li><a href="/zh-tw/chinese-stroke-order/">漢字筆順查詢</a></li>
+            <li><a href="/zh-tw/chinese-character-lookup/">漢字查詢與結構拆解</a></li>
+            <li><a href="/zh-tw/han-character-worksheet/">國字練習紙</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">日文漢字</p>
+          <ul>
+            <li><a href="/zh-tw/japanese-handwriting-recognition/">日文手寫漢字辨識</a></li>
+            <li><a href="/zh-tw/japanese-kanji-dictionary/">日本漢字查詢</a></li>
+            <li><a href="/zh-tw/japanese-stroke-order/">日本漢字筆順</a></li>
+            <li><a href="/zh-tw/kanji-to-hiragana/">日文漢字轉平假名</a></li>
+            <li><a href="/zh-tw/kanji-to-romaji/">日文漢字轉羅馬字</a></li>
+            <li><a href="/zh-tw/japanese-kanji-converter/">日文新舊字體轉換</a></li>
+            <li><a href="/zh-tw/japanese-chinese-kanji-converter/">日中漢字轉換</a></li>
+            <li><a href="/zh-tw/japanese-characters/">日文字元複製</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">韓國漢字</p>
+          <ul>
+            <li><a href="/zh-tw/korean-hanja-dictionary/">韓國漢字查詢</a></li>
+            <li><a href="/zh-tw/korean-hanja-handwriting-recognition/">韓國漢字手寫辨識</a></li>
+            <li><a href="/zh-tw/hangul-hanja-converter/">韓文漢字轉換</a></li>
+            <li><a href="/zh-tw/korean-name-hanja/">韓國人名用漢字</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">文字工具</p>
+          <ul>
+            <li><a href="/zh-tw/character-counter/">線上字數統計</a></li>
+            <li><a href="/zh-tw/word-to-txt/">DOCX 轉 TXT</a></li>
+            <li><a href="/zh-tw/text-formatter/">文字格式化</a></li>
+            <li><a href="/zh-tw/image-redaction/">圖片馬賽克</a></li>
+            <li><a href="/zh-tw/password-generator/" aria-current="page">密碼產生器</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.app 提供文字轉換、漢字學習與瀏覽器實用工具。</p><nav class="footer-links" aria-label="頁尾"><a href="/zh-tw/about/">關於我們</a><a href="/zh-tw/contact/">聯絡我們</a><a href="/zh-tw/privacy/">隱私聲明</a></nav></footer>
   </body>
 </html>

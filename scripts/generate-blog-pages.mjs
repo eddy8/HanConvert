@@ -16,6 +16,7 @@ import {
   visibleTitleContentLength
 } from "./seo-metadata-rules.mjs";
 import { preserveExistingLastmods } from "./sitemap-lastmod.mjs";
+import { withSiteDirectory } from "./sync-site-tool-directory.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
@@ -415,6 +416,7 @@ function buildToolGuide(target) {
 }
 
 async function writeOrCheck(filePath, output) {
+  output = withSiteDirectory(output, filePath);
   if (checkOnly) {
     const current = await readFile(filePath, "utf8");
     if (current !== output) throw new Error(`${path.relative(projectRoot, filePath)} is out of sync with the blog generator`);

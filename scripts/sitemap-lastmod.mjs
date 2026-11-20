@@ -12,6 +12,8 @@ export function indexableContentHash(html) {
     .replace(/<style[\s\S]*?<\/style>/gu, " ")
     .replace(/<template[\s\S]*?<\/template>/gu, " ")
     .replace(/<!--[\s\S]*?-->/gu, " ")
+    // Inline tags such as an in-copy link do not split words, so adding one leaves the text unchanged.
+    .replace(/<\/?(?:a|abbr|b|code|em|i|mark|small|span|strong)\b[^>]*>/gu, "")
     .replace(/<[^>]+>/gu, " ")
     .replace(/\s+/gu, " ")
     .trim();

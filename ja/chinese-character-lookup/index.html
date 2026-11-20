@@ -322,7 +322,66 @@
         </nav>
       </section>
     </main>
-    <footer class="site-footer"><p>JianFan.app はブラウザーで使える漢字構成、手書き検索、中国語ピンイン、筆順、文字変換ツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="ツール一覧">
+        <div class="site-directory-group">
+          <p class="site-directory-title">簡体字・繁体字</p>
+          <ul>
+            <li><a href="/ja/">簡体字 繁体字 変換</a></li>
+            <li><a href="/ja/simplified-to-traditional/">簡体字から繁体字</a></li>
+            <li><a href="/ja/traditional-to-simplified/">繁体字から簡体字</a></li>
+            <li><a href="/ja/taiwan-traditional/">台湾繁体字変換</a></li>
+            <li><a href="/ja/hong-kong-traditional/">香港繁体字変換</a></li>
+            <li><a href="/ja/file-text-converter/">Word・PDF の簡繁変換</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">日本語の漢字</p>
+          <ul>
+            <li><a href="/ja/japanese-handwriting-recognition/">手書き漢字検索</a></li>
+            <li><a href="/ja/japanese-kanji-dictionary/">漢字辞典</a></li>
+            <li><a href="/ja/japanese-stroke-order/">漢字の書き順</a></li>
+            <li><a href="/ja/kanji-to-hiragana/">漢字をひらがなに変換</a></li>
+            <li><a href="/ja/kanji-to-romaji/">漢字をローマ字に変換</a></li>
+            <li><a href="/ja/japanese-kanji-converter/">旧字体 新字体 変換</a></li>
+            <li><a href="/ja/japanese-chinese-kanji-converter/">日中漢字変換</a></li>
+            <li><a href="/ja/japanese-characters/">日本語文字コピー</a></li>
+            <li><a href="/ja/han-character-worksheet/">漢字練習プリント</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">中国語の漢字</p>
+          <ul>
+            <li><a href="/ja/chinese-handwriting-recognition/">中国語の手書き検索</a></li>
+            <li><a href="/ja/photo-chinese-character-recognition/">中国語OCR</a></li>
+            <li><a href="/ja/chinese-to-pinyin/">ピンイン変換</a></li>
+            <li><a href="/ja/chinese-stroke-order/">中国語漢字の筆順</a></li>
+            <li><a href="/ja/chinese-character-lookup/" aria-current="page">漢字の構成・部首検索</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">韓国の漢字</p>
+          <ul>
+            <li><a href="/ja/korean-hanja-dictionary/">韓国漢字検索</a></li>
+            <li><a href="/ja/korean-hanja-handwriting-recognition/">韓国漢字の手書き検索</a></li>
+            <li><a href="/ja/hangul-hanja-converter/">ハングル・漢字変換</a></li>
+            <li><a href="/ja/korean-name-hanja/">韓国の人名用漢字</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">テキストツール</p>
+          <ul>
+            <li><a href="/ja/character-counter/">文字数カウント</a></li>
+            <li><a href="/ja/word-to-txt/">Word TXT 変換</a></li>
+            <li><a href="/ja/text-formatter/">テキスト整形</a></li>
+            <li><a href="/ja/image-redaction/">画像モザイク</a></li>
+            <li><a href="/ja/password-generator/">パスワード生成</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.app はブラウザーで使える漢字構成、手書き検索、中国語ピンイン、筆順、文字変換ツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
     <script id="hanLookupLabels" type="application/json">{"structures":{"leftRight":"左右構成","topBottom":"上下構成","leftMiddleRight":"左中右構成","topMiddleBottom":"上中下構成","fullEnclosure":"全囲み構成","topEnclosure":"上から囲む構成","bottomEnclosure":"下から囲む構成","leftEnclosure":"左から囲む構成","upperLeftEnclosure":"左上から囲む構成","upperRightEnclosure":"右上から囲む構成","lowerLeftEnclosure":"左下から囲む構成","rightEnclosure":"右から囲む構成","lowerRightEnclosure":"右下から囲む構成","overlaid":"重ね合わせ構成","horizontalReflection":"左右反転構成","rotation":"回転構成","single":"単体またはその他"},"formations":{"ideographic":"会意文字","pictographic":"象形文字","pictophonetic":"形声文字","unknown":"その他の造字法"},"onReading":"音読み","kunReading":"訓読み","wholeCharacter":"漢字全体","component":"構成部品","componentSearch":{"modeAria":"漢字の検索方法","characterMode":"漢字から調べる","componentMode":"部品から探す","title":"構成検索（パーツ検索）","intro":"読み方が分からない漢字を、見えている一つから四つの構成部品で検索できます。同じ部品も繰り返し指定できます。","inputLabel":"漢字を構成する部品","placeholder":"例：山 石、または 車車車","submit":"漢字を検索","selectedLabel":"選択した部品","selectedEmpty":"部品が選択されていません","clear":"クリア","commonLabel":"よく使う構成部品","strokeLabel":"総画数","strokeAll":"指定なし","sortLabel":"並び順","sortCommon":"常用漢字を優先","sortStrokes":"画数が少ない順","resultsTitle":"候補の漢字","initialHint":"部品を入力するか、よく使う構成部品を選んで検索してください。","loadMore":"さらに表示","loading":"構成部品を検索中","invalid":"構成部品を一つから四つ入力してください","failed":"部品検索データを読み込めません。しばらくしてから再度お試しください","noResults":"すべての部品を含む漢字が見つかりません。部品を減らすか、総画数の指定を解除してください。","resultSummary":"「{components}」を含む漢字が {count} 字見つかりました","removeComponent":"部品「{character}」を削除","addComponent":"部品「{character}」を追加","resultLabel":"漢字「{character}」を表示、{strokes}画、中国語ピンイン {reading}","resultStroke":"{count}画","findContaining":"「{character}」を含む漢字を探す"}}</script>
   </body>
 </html>

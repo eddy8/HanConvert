@@ -21,7 +21,7 @@ Text conversion, counting, formatting, and most lookups run locally in the brows
 
 ## Chinese characters
 
-- [Chinese Handwriting Recognition - Draw and Look Up Hanzi](https://jianfan.app/en/chinese-handwriting-recognition/): Draw a Chinese character online with a mouse, finger, or pen to find matching Hanzi, Pinyin, stroke count, and stroke order with browser-based recognition.
+- [Chinese Handwriting Recognition - Draw and Look Up Hanzi](https://jianfan.app/en/chinese-handwriting-recognition/): Draw a Chinese character with a mouse, finger, or pen to find matching Hanzi with meaning, Pinyin, radical, and stroke order, or keep writing to type a phrase.
 - [Chinese OCR Online - Image to Text with Pinyin](https://jianfan.app/en/photo-chinese-character-recognition/): Free Chinese OCR online: copy Chinese text from a photo or screenshot, show Pinyin above each character, and check stroke order. Paste with Ctrl+V, no sign-up.
 - [Chinese Character Lookup & Component Search](https://jianfan.app/en/chinese-character-lookup/): Look up and decompose Chinese characters by Pinyin, radical, strokes and variants, or find an unknown Hanzi by combining components and filtering stroke count.
 - [Chinese Stroke Order - Animation and Writing Practice](https://jianfan.app/en/chinese-stroke-order/): Look up Chinese character stroke order with animations, step controls, stroke counts, Pinyin and handwriting practice for Simplified and Traditional Hanzi.
@@ -40,7 +40,7 @@ Text conversion, counting, formatting, and most lookups run locally in the brows
 
 ## Japanese
 
-- [Japanese Kanji Handwriting Recognition & Lookup](https://jianfan.app/en/japanese-handwriting-recognition/): Draw a Japanese Kanji to get handwriting recognition candidates, then check On and Kun readings, radical, stroke count, components, meaning, and stroke order.
+- [Japanese Kanji Handwriting Recognition & Lookup](https://jianfan.app/en/japanese-handwriting-recognition/): Draw a Japanese Kanji to get candidates from about 6,400 characters, then check On and Kun readings, radical and strokes, or join Kanji into a word to read it.
 - [Japanese Kanji Dictionary - Radical & Stroke Search](https://jianfan.app/en/japanese-kanji-dictionary/): Search a Japanese Kanji dictionary by character, Kana reading, English meaning, radical, stroke count, or school grade, with On and Kun readings and components.
 - [Japanese Kanji Stroke Order Animation](https://jianfan.app/en/japanese-stroke-order/): Look up Japanese Kanji stroke order with KanjiVG animations, numbered strokes, step controls, stroke counts, schoolbook glyphs, and adjustable playback speed.
 - [Kanji to Hiragana - Furigana & Ruby Generator](https://jianfan.app/en/kanji-to-hiragana/): Convert Japanese Kanji to Hiragana, automatically add Furigana or Ruby markup, and copy text or HTML with context-aware readings processed in your browser.

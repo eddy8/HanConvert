@@ -11,19 +11,65 @@ context.globalThis = context;
 vm.runInNewContext(source, context);
 const core = context.JapaneseHandwritingCore;
 
-test("pins the documented okanjirec commit and verified pattern file", () => {
-  assert.equal(core.COMMIT, "e036ef26dc307d897653f5b8750a8cb048f042b3");
-  assert.equal(core.PATTERN_SHA256, "e1770a3f32ce18cc1c0eff67c539e663a3e2b0437172bde66abc3336aedf06c7");
-  assert.match(core.PATTERN_URL, new RegExp(core.COMMIT));
-  assert.doesNotMatch(core.PATTERN_URL, /\?v=/u);
-});
+const workerSource = await readFile(new URL("../japanese-handwriting-worker.js", import.meta.url), "utf8");
+const workerContext = { console };
+workerContext.globalThis = workerContext;
+vm.runInNewContext(workerSource, workerContext);
+const worker = workerContext.JapaneseHandwritingWorker;
+const kanjiCanvasContext = { document: { getElementById() { return null; }, addEventListener() {} }, console: { log() {} } };
+kanjiCanvasContext.window = kanjiCanvasContext;
+vm.runInNewContext(await readFile(new URL("../vendor/kanji-canvas.min.js", import.meta.url), "utf8"), kanjiCanvasContext);
+const patternPayload = JSON.parse(await readFile(new URL("../data/japanese-handwriting/patterns.json", import.meta.url), "utf8"));
 
 test("deduplicates recognition candidates without splitting supplementary characters", () => {
   assert.deepEqual(Array.from(core.uniqueCandidates("永 永A学𠮷日", 4)), ["永", "学", "𠮷", "日"]);
+  assert.deepEqual(Array.from(core.uniqueCandidates(["木", "木", "本"])), ["木", "本"]);
 });
 
-test("formats digest bytes as lowercase hexadecimal", () => {
-  assert.equal(core.bytesToHex(new Uint8Array([0, 15, 255])), "000fff");
+test("builds words in the text box and detects kanji for the reading lookup", () => {
+  assert.equal(core.appendCharacter("躊", "躇"), "躊躇");
+  assert.equal(Array.from(core.appendCharacter("あ".repeat(core.MAX_TEXT_LENGTH), "漢")).length, core.MAX_TEXT_LENGTH);
+  assert.equal(core.hasKanji("ちゅうちょ"), false);
+  assert.equal(core.hasKanji("躊躇"), true);
+  assert.notEqual(core.strokeSignature([[[0, 0], [1, 1]]]), core.strokeSignature([[[0, 0], [1, 1]], [[2, 2], [3, 3]]]));
+});
+
+test("ships KanjiVG reference patterns for about 6,400 kanji, including non-Joyo and Japanese-made kanji", () => {
+  assert.match(patternPayload.source, /^KanjiVG r\d{8}$/u);
+  assert.equal(patternPayload.license, "CC BY-SA 3.0");
+  assert.ok(patternPayload.patterns.length > 6000, `${patternPayload.patterns.length} patterns`);
+  const characters = new Set(patternPayload.patterns.map(([character]) => character));
+  for (const character of "木学嘘噂苺檸檬鰻蕎麦饂飩躊躇牡蠣狼狐狸込畑峠匂鰯躾榊栃辻") assert.ok(characters.has(character), character);
+});
+
+test("decodes patterns with the stroke count each entry declares", () => {
+  const patterns = worker.decodePatterns(patternPayload);
+  const wood = patterns.find(([character]) => character === "木");
+  assert.equal(wood[1], 4);
+  assert.equal(wood[2].length, 4);
+  assert.ok(wood[2].every((stroke) => stroke.length >= 2 && stroke.every(([x, y]) => Number.isFinite(x) && Number.isFinite(y))));
+});
+
+test("recognizes the reference shape of a non-Joyo kanji as its first candidate", () => {
+  const kanjiCanvas = kanjiCanvasContext.KanjiCanvas;
+  kanjiCanvas.refPatterns = worker.decodePatterns(patternPayload);
+  for (const character of ["木", "嘘", "苺"]) {
+    const [, , strokes] = kanjiCanvas.refPatterns.find(([entry]) => entry === character);
+    assert.equal(worker.recognize(kanjiCanvas, strokes)[0], character);
+  }
+  assert.deepEqual(Array.from(worker.recognize(kanjiCanvas, [])), []);
+});
+
+test("compares only patterns within one stroke of the drawing", () => {
+  assert.equal(worker.STROKE_WINDOW, 1);
+  assert.equal(worker.PATTERN_URL, "/data/japanese-handwriting/patterns.json");
+});
+
+test("vendored Kanji Canvas keeps its MIT licence with the required backlink", async () => {
+  const licence = await readFile(new URL("../vendor/kanji-canvas-LICENSE.txt", import.meta.url), "utf8");
+  assert.match(licence, /http:\/\/github\.com\/asdfjkl\/kanjicanvas/u);
+  const notice = await readFile(new URL("../data/japanese-handwriting/NOTICE.md", import.meta.url), "utf8");
+  assert.match(notice, /Creative Commons Attribution-Share Alike 3\.0/u);
 });
 
 const pages = [
@@ -41,9 +87,12 @@ for (const [path, lang, heading] of pages) {
     assert.match(html, new RegExp(`<html lang="${lang}"`));
     assert.ok(html.includes(`>${heading}</h1>`));
     assert.ok(html.includes('id="japaneseHandwritingCanvas"'));
-    assert.ok(html.includes(`okanjirec@${core.COMMIT}`));
-    assert.ok(html.includes('integrity="sha384-'));
-    assert.ok(html.includes('href="https://github.com/barionleg/okanjirec"'));
+    assert.ok(html.includes('src="/vendor/kanji-canvas.min.js"'));
+    assert.ok(html.includes('src="/japanese-reading-client.js"'));
+    assert.ok(html.includes('id="japaneseHandwritingAppend"'));
+    assert.ok(html.includes('id="japaneseHandwritingText"'));
+    assert.ok(html.includes("KanjiVG（CC BY-SA 3.0）") || html.includes("KanjiVG (CC BY-SA 3.0)") || html.includes("KanjiVG(CC BY-SA 3.0)"));
+    assert.doesNotMatch(html, /okanjirec@|japaneseHandwritingRecognize|handwriting-source-note/u);
     assert.ok(html.includes('hreflang="x-default"'));
     assert.ok(isDescriptionLengthInRange(html, description));
     assert.doesNotMatch(html, /(?:src|href)="[^"]+\?v=/u);
