@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="description" content="Draw a Chinese character online with a mouse, finger, or pen to find matching Hanzi, Pinyin, stroke count, and stroke order with browser-based recognition." />
+    <meta name="description" content="Draw a Chinese character with a mouse, finger, or pen to find matching Hanzi with meaning, Pinyin, radical, and stroke order, or keep writing to type a phrase." />
     <title>Chinese Handwriting Recognition - Draw and Look Up Hanzi | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/en/chinese-handwriting-recognition/" />
     <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-handwriting-recognition/" />
@@ -39,7 +39,7 @@
               "Draw Hanzi Online"
             ],
             "url": "https://jianfan.app/en/chinese-handwriting-recognition/",
-            "description": "Draw a Chinese character online with a mouse, finger, or pen to find matching Hanzi, Pinyin, stroke count, and stroke order with browser-based recognition.",
+            "description": "Draw a Chinese character with a mouse, finger, or pen to find matching Hanzi with meaning, Pinyin, radical, and stroke order, or keep writing to type a phrase.",
             "applicationCategory": "EducationalApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript and WebAssembly",
@@ -93,7 +93,12 @@
               {
                 "@type": "HowToStep",
                 "position": 3,
-                "text": "Check its Pinyin and stroke count, or continue to the animated stroke-order page."
+                "text": "Check its meaning and Pinyin, or continue to the animated stroke-order page."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "To type several characters, choose Add to text after each one, then copy the whole phrase."
               }
             ]
           },
@@ -106,7 +111,15 @@
                 "name": "How do I find the Pinyin of a character I cannot read?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Draw the character and select the closest candidate. The result shows its Pinyin, total strokes, and Unicode, with links to stroke order and character structure."
+                  "text": "Draw the character and select the closest candidate. The result shows its English meaning, Pinyin, radical, structure, total strokes and Unicode, with a link to stroke order."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I see what a Chinese character means?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Select a candidate and the result shows a short English meaning from the Unicode Unihan database, together with Pinyin, radical, structure and stroke count. For example, 好 shows “good, excellent, fine; well”."
                 }
               },
               {
@@ -114,7 +127,7 @@
                 "name": "Can I use it as a handwriting input method?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "One character at a time: draw it, select the candidate, choose “Copy character”, and paste it where you need it. The page recognizes one character per drawing, not whole handwritten sentences."
+                  "text": "Yes. After each character, select the candidate and choose Add to text; the pad clears for the next character. When you finish, choose Copy next to the text box to copy the whole phrase. The page recognizes one character per drawing, not joined-up sentences."
                 }
               },
               {
@@ -188,7 +201,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="en" data-message-loading="Loading handwriting recognition" data-message-ready="Ready for Chinese handwriting input" data-message-recognizing="Finding matching Chinese characters" data-message-matched="Found {count} possible characters" data-message-no-match="No match yet. Undo a stroke or try drawing again" data-message-remote-recognizing="Checking with remote recognition" data-message-remote-no-match="Remote recognition found no better matches" data-message-remote-error="Remote recognition failed. Check your connection and try again" data-message-error="Recognition could not load. Check your connection and refresh" data-message-copied="Selected character copied" data-message-copy-failed="Automatic copy failed. Select and copy the character directly" data-message-stroke-count="{count} strokes drawn" data-message-candidate-label="Select candidate character {character}">
+  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="en" data-message-loading="Loading handwriting recognition" data-message-ready="Ready for Chinese handwriting input" data-message-recognizing="Finding matching Chinese characters" data-message-matched="Found {count} possible characters" data-message-no-match="No match yet. Undo a stroke or try drawing again" data-message-remote-recognizing="Checking with remote recognition" data-message-remote-no-match="Remote recognition found no better matches" data-message-remote-error="Remote recognition failed. Check your connection and try again" data-message-error="Recognition could not load. Check your connection and refresh" data-message-copied="Selected character copied" data-message-copy-failed="Automatic copy failed. Select and copy the character directly" data-message-stroke-count="{count} strokes drawn" data-message-appended="Added to text: {character}" data-message-copied-text="Text copied" data-message-candidate-label="Select candidate character {character}">
     <a class="skip-nav" href="#main">Skip to main content</a>
     <header class="site-header" aria-label="Site header">
       <a class="brand" href="/en/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">手</span><span>JianFan.app</span></a>
@@ -205,7 +218,7 @@
     </header>
     <main id="main">
       <section class="tool-hero handwriting-tool-hero" aria-labelledby="pageTitle">
-        <div><p class="section-kicker">DRAW HANZI · RECOGNIZE · LOOK UP</p><h1 id="pageTitle">Chinese Handwriting Recognition</h1><p class="lede">Cannot pronounce or type a Chinese character? Draw its shape in the writing grid to get likely Hanzi matches, then check its Pinyin, stroke count and stroke order.</p></div>
+        <div><p class="section-kicker">DRAW HANZI · RECOGNIZE · LOOK UP</p><h1 id="pageTitle">Chinese Handwriting Recognition</h1><p class="lede">Cannot pronounce or type a Chinese character? Draw its shape in the writing grid to get likely Hanzi matches, then check its meaning, Pinyin, radical and stroke order. Add each match to the text box to write a whole phrase.</p></div>
         <div class="handwriting-hero-signal" aria-hidden="true"><span>?</span><i></i><strong>漢</strong></div>
       </section>
 
@@ -226,9 +239,11 @@
               <div class="handwriting-loader" id="handwritingLoader"><span></span><b>Loading handwriting recognition</b></div>
             </div>
             <div class="handwriting-actions">
+              <button class="primary-action" id="handwritingAppend" type="button" disabled><span aria-hidden="true">＋</span><span>Add to text</span></button>
               <button id="handwritingUndo" type="button" disabled><span aria-hidden="true">↶</span><span>Undo last stroke</span></button>
               <button id="handwritingClear" type="button" disabled><span aria-hidden="true">×</span><span>Clear drawing</span></button>
             </div>
+            <div class="handwriting-compose"><div class="handwriting-compose-head"><label for="handwritingText">Your text</label><button id="handwritingTextCopy" type="button" disabled>Copy</button><button id="handwritingTextClear" type="button" disabled>Clear</button></div><input id="handwritingText" type="text" lang="en" autocomplete="off" spellcheck="false" maxlength="200" placeholder="Select a candidate, then Add to text to write a phrase" /></div>
             <div class="handwriting-samples"><span>Try a sample</span><button type="button" data-handwriting-sample="人" aria-label="Try a sample 人">人</button><button type="button" data-handwriting-sample="大" aria-label="Try a sample 大">大</button><button type="button" data-handwriting-sample="木" aria-label="Try a sample 木">木</button><button type="button" data-handwriting-sample="中" aria-label="Try a sample 中">中</button></div>
             <p class="handwriting-hint">Write large and near the centre. Following the usual stroke order improves recognition.</p>
           </section>
@@ -244,7 +259,10 @@
                 <p class="section-kicker">Character details</p>
                 <h3 id="handwritingResultTitle">Character details</h3>
                 <dl>
+                  <div><dt>Meaning</dt><dd id="handwritingResultMeaning">-</dd></div>
                   <div><dt>Pinyin</dt><dd id="handwritingResultPinyin">-</dd></div>
+                  <div><dt>Radical</dt><dd id="handwritingResultRadical">-</dd></div>
+                  <div><dt>Structure</dt><dd id="handwritingResultStructure">-</dd></div>
                   <div><dt>Stroke count</dt><dd id="handwritingResultStrokes">-</dd></div>
                   <div><dt>Unicode</dt><dd id="handwritingResultUnicode">-</dd></div>
                 </dl>
@@ -256,6 +274,7 @@
                 </div>
               </div>
             </article>
+            <script type="application/json" id="handwritingStructureLabels">{"single":"single component","leftRight":"left–right","topBottom":"top–bottom","leftMiddleRight":"left–middle–right","topMiddleBottom":"top–middle–bottom","surround":"full enclosure","surroundFromAbove":"enclosed from above","surroundFromBelow":"enclosed from below","surroundFromLeft":"enclosed from the left","surroundFromUpperLeft":"enclosed from the upper left","surroundFromUpperRight":"enclosed from the upper right","surroundFromLowerLeft":"enclosed from the lower left"}</script>
           </section>
         </div>
       </section>
@@ -264,18 +283,20 @@
         <div class="section-heading"><p class="section-kicker">Chinese handwriting input online</p><h2 id="handwritingFeatureTitle">Find a Chinese character by drawing it online</h2><p class="seo-intro">Use this Chinese handwriting recognition tool when you know what a Hanzi looks like but not its Pinyin or how to type it. Draw the Chinese character with a mouse, trackpad, touchscreen or pen, then choose from the closest matches.</p></div>
         <div class="seo-grid">
           <article><h3>Live character candidates</h3><p>The list refreshes after each completed stroke and shows up to ten likely Hanzi. Undo the last stroke whenever the shape goes wrong.</p></article>
-          <article><h3>Useful character details</h3><p>Choose a match to see its common Pinyin readings, stroke count and Unicode, then copy it or open the animated stroke-order lookup.</p></article>
+          <article><h3>Useful character details</h3><p>Choose a match to see its English meaning, common Pinyin readings, radical, structure, stroke count and Unicode, then copy it or open the animated stroke-order lookup.</p></article>
           <article><h3>Recognition runs in your browser</h3><p>Stroke coordinates are not uploaded to JianFan.app. A public WebAssembly component performs the matching on your device.</p></article>
         </div>
         <section class="word-howto" aria-labelledby="handwritingHowTitle"><h2 id="handwritingHowTitle">How to use Chinese handwriting input</h2><ol>
             <li>Draw one Chinese character in the centre of the grid, one stroke at a time.</li>
             <li>Choose the closest Hanzi from the automatically updated matches.</li>
-            <li>Check its Pinyin and stroke count, or continue to the animated stroke-order page.</li>
+            <li>Check its meaning and Pinyin, or continue to the animated stroke-order page.</li>
+            <li>To type several characters, choose Add to text after each one, then copy the whole phrase.</li>
           </ol></section>
         <section class="pinyin-faq" aria-labelledby="handwritingFaqTitle"><h2 id="handwritingFaqTitle">Chinese handwriting recognition questions</h2>
-          <details><summary>How do I find the Pinyin of a character I cannot read?</summary><p>Draw the character and select the closest candidate. The result shows its Pinyin, total strokes, and Unicode, with links to stroke order and character structure.</p></details>
-          <details><summary>Can I use it as a handwriting input method?</summary><p>One character at a time: draw it, select the candidate, choose “Copy character”, and paste it where you need it. The page recognizes one character per drawing, not whole handwritten sentences.</p></details>
-          <details><summary>What if the character I want is not among the candidates?</summary><p>Redraw it larger with clearly separated strokes. If it still does not appear, search by its components in Chinese character lookup. For printed text in a photo or screenshot, “Chinese character recognition from photo” is faster.</p></details>
+          <details><summary>How do I find the Pinyin of a character I cannot read?</summary><p>Draw the character and select the closest candidate. The result shows its English meaning, Pinyin, radical, structure, total strokes and Unicode, with a link to stroke order.</p></details>
+          <details><summary>Can I see what a Chinese character means?</summary><p>Yes. Select a candidate and the result shows a short English meaning from the Unicode Unihan database, together with Pinyin, radical, structure and stroke count. For example, 好 shows “good, excellent, fine; well”.</p></details>
+          <details><summary>Can I use it as a handwriting input method?</summary><p>Yes. After each character, select the candidate and choose Add to text; the pad clears for the next character. When you finish, choose Copy next to the text box to copy the whole phrase. The page recognizes one character per drawing, not joined-up sentences.</p></details>
+          <details><summary>What if the character I want is not among the candidates?</summary><p>Redraw it larger with clearly separated strokes. If it still does not appear, search by its components in <a href="/en/chinese-character-lookup/">Chinese character lookup</a>. For printed text in a photo or screenshot, “Chinese character recognition from photo” is faster.</p></details>
           <details><summary>Does it work on phones and tablets?</summary><p>Yes. Draw with your finger or a stylus directly in the square. No app installation or sign-up is needed.</p></details>
           <details><summary>How can I find a Chinese character if I do not know its Pinyin?</summary><p>Draw the character shape in the writing grid and select the closest result. You can then check its Pinyin, stroke count, Unicode and stroke order without knowing its pronunciation first.</p></details>
           <details><summary>Can I draw a Chinese character with a mouse or finger?</summary><p>Yes. The writing grid works with a mouse, trackpad, touchscreen or digital pen on desktop, tablet and mobile browsers.</p></details>
@@ -300,6 +321,65 @@
         </nav>
       </section>
     </main>
-    <footer class="site-footer"><p>JianFan.app provides browser-based Chinese handwriting, Pinyin, stroke-order and text-conversion tools.</p><nav class="footer-links" aria-label="Footer"><a href="/en/about/">About</a><a href="/en/contact/">Contact</a><a href="/en/privacy/">Privacy Statement</a></nav></footer>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="All tools">
+        <div class="site-directory-group">
+          <p class="site-directory-title">Chinese converter</p>
+          <ul>
+            <li><a href="/en/">Simplified and Traditional Chinese converter</a></li>
+            <li><a href="/en/simplified-to-traditional/">Simplified to Traditional</a></li>
+            <li><a href="/en/traditional-to-simplified/">Traditional to Simplified</a></li>
+            <li><a href="/en/taiwan-traditional/">Taiwan Traditional converter</a></li>
+            <li><a href="/en/hong-kong-traditional/">Hong Kong Traditional converter</a></li>
+            <li><a href="/en/file-text-converter/">Chinese document converter</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">Chinese characters</p>
+          <ul>
+            <li><a href="/en/chinese-handwriting-recognition/" aria-current="page">Chinese handwriting recognition</a></li>
+            <li><a href="/en/photo-chinese-character-recognition/">Chinese OCR</a></li>
+            <li><a href="/en/chinese-to-pinyin/">Chinese to Pinyin</a></li>
+            <li><a href="/en/chinese-stroke-order/">Chinese stroke order</a></li>
+            <li><a href="/en/chinese-character-lookup/">Chinese character lookup</a></li>
+            <li><a href="/en/han-character-worksheet/">Chinese practice sheets</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">Japanese kanji</p>
+          <ul>
+            <li><a href="/en/japanese-handwriting-recognition/">Japanese kanji handwriting lookup</a></li>
+            <li><a href="/en/japanese-kanji-dictionary/">Japanese kanji dictionary</a></li>
+            <li><a href="/en/japanese-stroke-order/">Kanji stroke order</a></li>
+            <li><a href="/en/kanji-to-hiragana/">Kanji to Hiragana</a></li>
+            <li><a href="/en/kanji-to-romaji/">Kanji to Romaji</a></li>
+            <li><a href="/en/japanese-kanji-converter/">Shinjitai Kyujitai converter</a></li>
+            <li><a href="/en/japanese-chinese-kanji-converter/">Chinese to Japanese kanji</a></li>
+            <li><a href="/en/japanese-characters/">Japanese character copy</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">Korean hanja</p>
+          <ul>
+            <li><a href="/en/korean-hanja-dictionary/">Korean Hanja dictionary</a></li>
+            <li><a href="/en/korean-hanja-handwriting-recognition/">Korean Hanja handwriting</a></li>
+            <li><a href="/en/hangul-hanja-converter/">Hangul Hanja converter</a></li>
+            <li><a href="/en/korean-name-hanja/">Korean name Hanja</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">Text tools</p>
+          <ul>
+            <li><a href="/en/character-counter/">Chinese character counter</a></li>
+            <li><a href="/en/word-to-txt/">Word to text</a></li>
+            <li><a href="/en/text-formatter/">Text formatter</a></li>
+            <li><a href="/en/image-redaction/">Image redaction</a></li>
+            <li><a href="/en/password-generator/">Password generator</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.app provides browser-based Chinese handwriting, Pinyin, stroke-order and text-conversion tools.</p><nav class="footer-links" aria-label="Footer"><a href="/en/about/">About</a><a href="/en/contact/">Contact</a><a href="/en/privacy/">Privacy Statement</a></nav></footer>
   </body>
 </html>

@@ -226,13 +226,72 @@
         <div class="section-heading"><p class="section-kicker">中国語画像OCR・画像テキスト化</p><h2 id="photoFeatureTitle">写真から中国語テキストを抽出し、漢字を検索</h2><p class="seo-intro">中国語画像OCRは、写真やスクリーンショットに写った中国語の漢字をコピーできるテキストに変換する機能です。このページでは撮影・アップロード・貼り付けのあと認識ボタンを押すと通常数秒で結果が返り、ピンイン表示や1文字ずつの筆順検索もできます。書籍、メニュー、看板、学習プリント、SNSのスクショなど、中国語の画像から文字起こししたいときに使えます。</p></div>
         <div class="seo-grid"><article><h3>撮影・アップロード・貼り付け</h3><p>スマートフォンではカメラや写真ライブラリを開けます。パソコンではファイル選択、プレビューへのドラッグ、Ctrl+V（Macは⌘V）でのスクショ貼り付けに対応します。</p></article><article><h3>認識結果にピンインを表示</h3><p>「ピンインを表示」をオンにすると、各漢字の上に声調付きピンインが付きます。多音字は語に合わせて判定され、重要は zhòng、重庆は chóng と表示されます。</p></article><article><h3>漢字を選んで検索</h3><p>結果の漢字を選ぶと中国語ピンイン、画数、Unicodeを表示し、筆順アニメーションや構成検索へ進めます。</p></article></div>
         <section class="pinyin-howto" aria-labelledby="photoHowTitle"><h2 id="photoHowTitle">写真から中国語漢字を認識する方法</h2><ol><li>漢字を撮影するか画像を選びます。パソコンでは画像をドラッグするか、Ctrl+V でスクショを貼り付けることもできます。</li><li>自動トリミングされたプレビューを確認し、「画像の漢字を認識」を押すと通常数秒で結果が出ます。</li><li>全文やピンインをコピーしたり読み上げを聞いたりし、漢字を選んで筆順や字形構成を調べます。</li></ol></section>
-        <section class="pinyin-faq" aria-labelledby="photoFaqTitle"><h2 id="photoFaqTitle">中国語画像OCRのよくある質問</h2><details><summary>複数の漢字を一度に認識できますか？</summary><p>はい。1文字、単語、複数行の画像に対応します。結果全体をコピーするほか、各漢字を選んで詳しく調べられます。</p></details><details><summary>簡体字と繁体字に対応していますか？</summary><p>一般的な簡体字・繁体字に対応します。ぼけ、装飾文字、反射、強い傾き、複雑な背景は認識精度を下げる場合があります。</p></details><details><summary>画像認識はブラウザー内だけで行われますか？</summary><p>いいえ。トリミングと圧縮はブラウザー内で行い、処理済み画像を JianFan.app OCR サービスへ送信して認識します。</p></details><details><summary>手書き漢字検索との違いは？</summary><p>このページは写真やスクリーンショットを読み取ります。手書き検索はマスに1画ずつ書いた筆跡から漢字候補を探します。</p></details><details><summary>中国語の画像をテキスト化できますか？</summary><p>はい。中国語画像OCRとして、写真、スクリーンショット、スキャン画像から簡体字・繁体字を抽出できます。結果全体をコピーするほか、漢字ごとの検索も可能です。</p></details><details><summary>スクリーンショットを貼り付けて認識できますか？</summary><p>はい。Windows の Win+Shift+S や Mac の Control+Shift+Command+4 でスクショを撮り、このページで Ctrl+V（Macは⌘V）を押すと読み込めます。画像ファイルをプレビューにドラッグすることもできます。</p></details><details><summary>画像の中国語にピンインを付けられますか？</summary><p>はい。認識後に「ピンインを表示」を押すと各漢字の上に声調付きピンインが表示され、「ピンインをコピー」でテキストとしてコピーできます。多音字は語に合わせて判定しますが、人名や珍しい語の読みは確認してください。</p></details><details><summary>対応する画像形式とサイズは？</summary><p>PNG、JPEG、WebP、HEIC、HEIF の24 MBまでの画像に対応します。送信前にブラウザーで余白を切り取り、必要に応じて長辺1600ピクセル以内・2 MB未満に圧縮します。</p></details><details><summary>ぼやけた写真でうまく認識できないときは？</summary><p>文字を画面いっぱいに写し、正面から均一な明るさで撮影してください。画面上の文字は撮影せずスクショにすると正確です。1文字だけ調べたい場合は大きく切り抜くか、手書き検索を使ってください。</p></details><details><summary>無料ですか？登録は必要ですか？</summary><p>無料で、登録は不要です。不正利用を防ぐため、短時間に多数のリクエストを送ると、しばらく待ってから再試行するよう表示されます。</p></details><details><summary>認識した中国語を読み上げできますか？</summary><p>はい。「読み上げ」を押すとブラウザーまたはOS標準の中国語（普通話）音声で全文を読み上げ、もう一度押すと止まります。漢字を選んで「この字を発音」を押すと1文字だけ聞けます。端末内の音声を優先し、オンライン音声しかない場合は読み上げる文字がブラウザー提供元の音声サービスへ送信されます。</p></details><details><summary>OCRとは何の略ですか？</summary><p>OCRは Optical Character Recognition（光学文字認識）の略で、画像に写った文字を読み取り、編集できるテキストに変換する技術です。このページは中国語の漢字に特化したWeb版OCRで、認識した簡体字・繁体字をコピーし、ピンインを付けて1文字ずつ調べられます。</p></details></section>
+        <section class="pinyin-faq" aria-labelledby="photoFaqTitle"><h2 id="photoFaqTitle">中国語画像OCRのよくある質問</h2><details><summary>複数の漢字を一度に認識できますか？</summary><p>はい。1文字、単語、複数行の画像に対応します。結果全体をコピーするほか、各漢字を選んで詳しく調べられます。</p></details><details><summary>簡体字と繁体字に対応していますか？</summary><p>一般的な簡体字・繁体字に対応します。ぼけ、装飾文字、反射、強い傾き、複雑な背景は認識精度を下げる場合があります。</p></details><details><summary>画像認識はブラウザー内だけで行われますか？</summary><p>いいえ。トリミングと圧縮はブラウザー内で行い、処理済み画像を JianFan.app OCR サービスへ送信して認識します。</p></details><details><summary>手書き漢字検索との違いは？</summary><p>このページは写真やスクリーンショットを読み取ります。手書き検索はマスに1画ずつ書いた筆跡から漢字候補を探します。</p></details><details><summary>中国語の画像をテキスト化できますか？</summary><p>はい。中国語画像OCRとして、写真、スクリーンショット、スキャン画像から簡体字・繁体字を抽出できます。結果全体をコピーするほか、漢字ごとの検索も可能です。</p></details><details><summary>スクリーンショットを貼り付けて認識できますか？</summary><p>はい。Windows の Win+Shift+S や Mac の Control+Shift+Command+4 でスクショを撮り、このページで Ctrl+V（Macは⌘V）を押すと読み込めます。画像ファイルをプレビューにドラッグすることもできます。</p></details><details><summary>画像の中国語にピンインを付けられますか？</summary><p>はい。認識後に「ピンインを表示」を押すと各漢字の上に声調付きピンインが表示され、「ピンインをコピー」でテキストとしてコピーできます。多音字は語に合わせて判定しますが、人名や珍しい語の読みは確認してください。</p></details><details><summary>対応する画像形式とサイズは？</summary><p>PNG、JPEG、WebP、HEIC、HEIF の24 MBまでの画像に対応します。送信前にブラウザーで余白を切り取り、必要に応じて長辺1600ピクセル以内・2 MB未満に圧縮します。</p></details><details><summary>ぼやけた写真でうまく認識できないときは？</summary><p>文字を画面いっぱいに写し、正面から均一な明るさで撮影してください。画面上の文字は撮影せずスクショにすると正確です。1文字だけ調べたい場合は大きく切り抜くか、<a href="/ja/chinese-handwriting-recognition/">手書き検索</a>を使ってください。</p></details><details><summary>無料ですか？登録は必要ですか？</summary><p>無料で、登録は不要です。不正利用を防ぐため、短時間に多数のリクエストを送ると、しばらく待ってから再試行するよう表示されます。</p></details><details><summary>認識した中国語を読み上げできますか？</summary><p>はい。「読み上げ」を押すとブラウザーまたはOS標準の中国語（普通話）音声で全文を読み上げ、もう一度押すと止まります。漢字を選んで「この字を発音」を押すと1文字だけ聞けます。端末内の音声を優先し、オンライン音声しかない場合は読み上げる文字がブラウザー提供元の音声サービスへ送信されます。</p></details><details><summary>OCRとは何の略ですか？</summary><p>OCRは Optical Character Recognition（光学文字認識）の略で、画像に写った文字を読み取り、編集できるテキストに変換する技術です。このページは中国語の漢字に特化したWeb版OCRで、認識した簡体字・繁体字をコピーし、ピンインを付けて1文字ずつ調べられます。</p></details></section>
         <p class="section-kicker pinyin-related-kicker">関連する漢字ツール</p><nav class="landing-links" aria-label="関連する中国語漢字ツール"><a href="/ja/image-redaction/" data-route="image-redaction">画像モザイク加工</a><a href="/ja/chinese-handwriting-recognition/" data-route="chinese-handwriting-recognition">中国語の手書き漢字検索</a><a href="/ja/chinese-character-lookup/" data-route="chinese-character-lookup">漢字の構成・部首検索</a><a href="/ja/chinese-stroke-order/" data-route="chinese-stroke-order">中国語漢字の筆順</a><a href="/ja/chinese-to-pinyin/" data-route="chinese-to-pinyin">中国語ピンイン変換</a><a href="/ja/han-character-worksheet/" data-route="han-character-worksheet">漢字練習プリント</a></nav>
       </section>
 
     </main>
 
-    <footer class="site-footer"><p>JianFan.app は中国語画像OCR、手書き検索、ピンイン、筆順、文字変換ツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="ツール一覧">
+        <div class="site-directory-group">
+          <p class="site-directory-title">簡体字・繁体字</p>
+          <ul>
+            <li><a href="/ja/">簡体字 繁体字 変換</a></li>
+            <li><a href="/ja/simplified-to-traditional/">簡体字から繁体字</a></li>
+            <li><a href="/ja/traditional-to-simplified/">繁体字から簡体字</a></li>
+            <li><a href="/ja/taiwan-traditional/">台湾繁体字変換</a></li>
+            <li><a href="/ja/hong-kong-traditional/">香港繁体字変換</a></li>
+            <li><a href="/ja/file-text-converter/">Word・PDF の簡繁変換</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">日本語の漢字</p>
+          <ul>
+            <li><a href="/ja/japanese-handwriting-recognition/">手書き漢字検索</a></li>
+            <li><a href="/ja/japanese-kanji-dictionary/">漢字辞典</a></li>
+            <li><a href="/ja/japanese-stroke-order/">漢字の書き順</a></li>
+            <li><a href="/ja/kanji-to-hiragana/">漢字をひらがなに変換</a></li>
+            <li><a href="/ja/kanji-to-romaji/">漢字をローマ字に変換</a></li>
+            <li><a href="/ja/japanese-kanji-converter/">旧字体 新字体 変換</a></li>
+            <li><a href="/ja/japanese-chinese-kanji-converter/">日中漢字変換</a></li>
+            <li><a href="/ja/japanese-characters/">日本語文字コピー</a></li>
+            <li><a href="/ja/han-character-worksheet/">漢字練習プリント</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">中国語の漢字</p>
+          <ul>
+            <li><a href="/ja/chinese-handwriting-recognition/">中国語の手書き検索</a></li>
+            <li><a href="/ja/photo-chinese-character-recognition/" aria-current="page">中国語OCR</a></li>
+            <li><a href="/ja/chinese-to-pinyin/">ピンイン変換</a></li>
+            <li><a href="/ja/chinese-stroke-order/">中国語漢字の筆順</a></li>
+            <li><a href="/ja/chinese-character-lookup/">漢字の構成・部首検索</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">韓国の漢字</p>
+          <ul>
+            <li><a href="/ja/korean-hanja-dictionary/">韓国漢字検索</a></li>
+            <li><a href="/ja/korean-hanja-handwriting-recognition/">韓国漢字の手書き検索</a></li>
+            <li><a href="/ja/hangul-hanja-converter/">ハングル・漢字変換</a></li>
+            <li><a href="/ja/korean-name-hanja/">韓国の人名用漢字</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">テキストツール</p>
+          <ul>
+            <li><a href="/ja/character-counter/">文字数カウント</a></li>
+            <li><a href="/ja/word-to-txt/">Word TXT 変換</a></li>
+            <li><a href="/ja/text-formatter/">テキスト整形</a></li>
+            <li><a href="/ja/image-redaction/">画像モザイク</a></li>
+            <li><a href="/ja/password-generator/">パスワード生成</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.app は中国語画像OCR、手書き検索、ピンイン、筆順、文字変換ツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
     <dialog class="photo-ocr-error-dialog" id="photoOcrErrorDialog" aria-labelledby="photoOcrErrorTitle"><form method="dialog"><h2 id="photoOcrErrorTitle">認識に失敗しました</h2><p id="photoOcrErrorMessage"></p><button type="submit">閉じる</button></form></dialog>
   </body>
 </html>

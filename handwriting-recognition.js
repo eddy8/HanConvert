@@ -32,6 +32,73 @@
     );
   }
 
+  const ZHUYIN_INITIALS = [
+    ["zh", "ㄓ"], ["ch", "ㄔ"], ["sh", "ㄕ"], ["b", "ㄅ"], ["p", "ㄆ"], ["m", "ㄇ"], ["f", "ㄈ"],
+    ["d", "ㄉ"], ["t", "ㄊ"], ["n", "ㄋ"], ["l", "ㄌ"], ["g", "ㄍ"], ["k", "ㄎ"], ["h", "ㄏ"],
+    ["j", "ㄐ"], ["q", "ㄑ"], ["x", "ㄒ"], ["r", "ㄖ"], ["z", "ㄗ"], ["c", "ㄘ"], ["s", "ㄙ"]
+  ];
+  const ZHUYIN_FINALS = {
+    a: "ㄚ", o: "ㄛ", e: "ㄜ", "ê": "ㄝ", ai: "ㄞ", ei: "ㄟ", ao: "ㄠ", ou: "ㄡ", an: "ㄢ", en: "ㄣ",
+    ang: "ㄤ", eng: "ㄥ", ong: "ㄨㄥ", er: "ㄦ", i: "ㄧ", ia: "ㄧㄚ", io: "ㄧㄛ", ie: "ㄧㄝ", iai: "ㄧㄞ",
+    iao: "ㄧㄠ", iu: "ㄧㄡ", iou: "ㄧㄡ", ian: "ㄧㄢ", in: "ㄧㄣ", iang: "ㄧㄤ", ing: "ㄧㄥ",
+    iong: "ㄩㄥ", u: "ㄨ", ua: "ㄨㄚ", uo: "ㄨㄛ", uai: "ㄨㄞ", ui: "ㄨㄟ", uei: "ㄨㄟ", uan: "ㄨㄢ",
+    un: "ㄨㄣ", uen: "ㄨㄣ", uang: "ㄨㄤ", ueng: "ㄨㄥ", "ü": "ㄩ", "üe": "ㄩㄝ", "üan": "ㄩㄢ", "ün": "ㄩㄣ"
+  };
+  const ZHUYIN_TONES = ["", "", "ˊ", "ˇ", "ˋ"];
+  const TONE_MARKS = { "̄": 1, "́": 2, "̌": 3, "̀": 4 };
+
+  // Converts one Hanyu Pinyin syllable with tone marks (xíng, lǜ, de) to Zhuyin (ㄒㄧㄥˊ, ㄌㄩˋ, ˙ㄉㄜ).
+  // Returns "" for syllables Zhuyin cannot spell (for example hm or ng).
+  function pinyinToZhuyin(syllable) {
+    let tone = 0;
+    const plain = String(syllable || "").toLowerCase().normalize("NFD").replace(/[̀́̄̌]/gu, (mark) => {
+      tone = TONE_MARKS[mark];
+      return "";
+    }).normalize("NFC").replace(/v/gu, "ü").trim();
+    if (!/^[a-zêü]+$/u.test(plain)) return "";
+    let initial = "";
+    let rest = plain;
+    if (/^(zh|ch|sh|r|z|c|s)i$/u.test(plain)) {
+      initial = ZHUYIN_INITIALS.find(([latin]) => plain.startsWith(latin))[1];
+      rest = "";
+    } else if (plain.startsWith("y")) {
+      rest = plain.slice(1);
+      if (/^u/u.test(rest)) rest = `ü${rest.slice(1)}`;
+      else if (!rest.startsWith("i")) rest = `i${rest}`;
+    } else if (plain.startsWith("w")) {
+      rest = plain.slice(1);
+      if (!rest.startsWith("u")) rest = `u${rest}`;
+    } else {
+      const match = ZHUYIN_INITIALS.find(([latin]) => plain.startsWith(latin));
+      if (match) {
+        initial = match[1];
+        rest = plain.slice(match[0].length);
+        if (["ㄐ", "ㄑ", "ㄒ"].includes(initial) && rest.startsWith("u")) rest = `ü${rest.slice(1)}`;
+      }
+    }
+    const final = rest ? ZHUYIN_FINALS[rest] : "";
+    if (rest && !final) return "";
+    if (!initial && !final) return "";
+    const body = `${initial}${final}`;
+    return tone === 0 ? `˙${body}` : `${body}${ZHUYIN_TONES[tone]}`;
+  }
+
+  const STRUCTURE_TYPES = {
+    "⿰": "leftRight", "⿱": "topBottom", "⿲": "leftMiddleRight", "⿳": "topMiddleBottom",
+    "⿴": "surround", "⿵": "surroundFromAbove", "⿶": "surroundFromBelow", "⿷": "surroundFromLeft",
+    "⿸": "surroundFromUpperLeft", "⿹": "surroundFromUpperRight", "⿺": "surroundFromLowerLeft"
+  };
+
+  // Reads the top-level layout and the visible components of an Ideographic Description Sequence.
+  // Overlaid sequences (⿻, for example 木 = ⿻十八) are single-component characters in Chinese
+  // teaching, so they are reported as "single" without parts.
+  function describeStructure(sequence) {
+    const characters = Array.from(String(sequence || ""));
+    const type = STRUCTURE_TYPES[characters[0]] || "single";
+    const parts = characters.filter((character) => HAN_PATTERN.test(character) || /[⺀-⿟㇀-㇯]/u.test(character));
+    return { type, parts: type === "single" ? [] : parts };
+  }
+
   function normalizeMatches(matches, limit = 10) {
     const result = [];
     const seen = new Set();
@@ -86,10 +153,12 @@
 
   return {
     cloneStrokes,
+    describeStructure,
     encodeRemoteStrokes,
     formatUnicode,
     normalizeMatches,
     normalizeRemoteMatches,
+    pinyinToZhuyin,
     shouldAppendPoint,
     toBoardPoint
   };
@@ -165,6 +234,18 @@
   const strokeLink = document.querySelector("#handwritingStrokeLink");
   const pinyinLink = document.querySelector("#handwritingPinyinLink");
   const structureLink = document.querySelector("#handwritingStructureLink");
+  // Optional rows and the text box exist only on the Chinese handwriting pages.
+  const resultZhuyin = document.querySelector("#handwritingResultZhuyin");
+  const resultRadical = document.querySelector("#handwritingResultRadical");
+  const resultStructure = document.querySelector("#handwritingResultStructure");
+  const resultMeaning = document.querySelector("#handwritingResultMeaning");
+  const appendButton = document.querySelector("#handwritingAppend");
+  const textInput = document.querySelector("#handwritingText");
+  const textCopyButton = document.querySelector("#handwritingTextCopy");
+  const textClearButton = document.querySelector("#handwritingTextClear");
+  const structureLabels = readJson("handwritingStructureLabels");
+  const lookupShards = new Map();
+  const MAX_TEXT_LENGTH = 200;
   const context = canvas?.getContext("2d");
 
   if (!canvas || !board || !context || !core) return;
@@ -183,9 +264,74 @@
   setupLocaleSelector();
   setupCanvas();
   setupControls();
+  setupTextBox();
   resizeCanvas();
   updateStrokeControls();
   startWorker();
+
+  function readJson(id) {
+    try {
+      return JSON.parse(document.getElementById(id)?.textContent || "{}");
+    } catch {
+      return {};
+    }
+  }
+
+  function setupTextBox() {
+    if (!appendButton || !textInput) return;
+    appendButton.addEventListener("click", () => {
+      if (!selectedCharacter) return;
+      textInput.value = Array.from(`${textInput.value}${selectedCharacter}`).slice(-MAX_TEXT_LENGTH).join("");
+      const added = selectedCharacter;
+      clearDrawing();
+      updateTextControls();
+      setStatus("appended", "ready", { character: added });
+      canvas.focus?.();
+    });
+    textInput.addEventListener("input", updateTextControls);
+    textCopyButton?.addEventListener("click", () => copyValue(textInput.value, "copiedText"));
+    textClearButton?.addEventListener("click", () => {
+      textInput.value = "";
+      updateTextControls();
+    });
+    updateTextControls();
+  }
+
+  function updateTextControls() {
+    const hasText = Boolean(textInput?.value);
+    if (textCopyButton) textCopyButton.disabled = !hasText;
+    if (textClearButton) textClearButton.disabled = !hasText;
+  }
+
+  function lookupShard(character) {
+    const codePoint = character.codePointAt(0);
+    const shard = (codePoint >> 8).toString(16).padStart(2, "0");
+    if (!lookupShards.has(shard)) {
+      lookupShards.set(shard, fetch(`/data/han-character-lookup/${shard}.json`)
+        .then((response) => (response.ok ? response.json() : {}))
+        .catch(() => {
+          lookupShards.delete(shard);
+          return {};
+        }));
+    }
+    return lookupShards.get(shard);
+  }
+
+  async function fillCharacterDetails(character) {
+    if (!resultRadical && !resultStructure && !resultMeaning) return;
+    for (const element of [resultRadical, resultStructure, resultMeaning]) if (element) element.textContent = "…";
+    const record = (await lookupShard(character))[character];
+    if (selectedCharacter !== character) return;
+    if (resultRadical) resultRadical.textContent = record?.r || "-";
+    if (resultStructure) {
+      const structure = core.describeStructure(record?.d);
+      const label = structureLabels[structure.type] || "";
+      resultStructure.textContent = record?.d
+        ? [label, structure.parts.join(" + ")].filter(Boolean).join(" · ") || "-"
+        : "-";
+    }
+    if (resultMeaning) resultMeaning.textContent = record?.g || "-";
+  }
 
   function setupLocaleSelector() {
     const selector = document.querySelector("#localeSelect");
@@ -222,7 +368,7 @@
     });
 
     clearButton.addEventListener("click", clearDrawing);
-    copyButton.addEventListener("click", copyCharacter);
+    copyButton.addEventListener("click", () => copyValue(selectedCharacter, "copied"));
     remoteButton?.addEventListener("click", () => {
       if (!strokes.length || remoteLookupController) return;
       requestRemoteLookup(lookupRequestId, core.cloneStrokes(strokes), true);
@@ -382,6 +528,7 @@
     strokes = [];
     currentStroke = undefined;
     selectedCharacter = "";
+    if (appendButton) appendButton.disabled = true;
     redrawCanvas();
     updateStrokeControls();
     candidates.replaceChildren();
@@ -534,8 +681,14 @@
       item.setAttribute("aria-selected", String(active));
     });
     result.hidden = false;
+    if (appendButton) appendButton.disabled = false;
     resultCharacter.textContent = character;
-    resultPinyin.textContent = usesKoreanReadings ? "…" : (getReadings(character) || "-");
+    const readings = usesKoreanReadings ? "" : getReadings(character);
+    resultPinyin.textContent = usesKoreanReadings ? "…" : (readings || "-");
+    if (resultZhuyin) {
+      resultZhuyin.textContent = readings.split(" / ").map(core.pinyinToZhuyin).filter(Boolean).join(" / ") || "-";
+    }
+    fillCharacterDetails(character);
     resultStrokes.textContent = "…";
     resultUnicode.textContent = core.formatUnicode(character);
     strokeLink.href = `${localePaths[locale]}${usesKoreanReadings ? "korean-hanja-dictionary" : "chinese-stroke-order"}/?character=${encodeURIComponent(character)}`;
@@ -593,14 +746,14 @@
     });
   }
 
-  async function copyCharacter() {
-    if (!selectedCharacter) return;
+  async function copyValue(value, messageKey) {
+    if (!value) return;
     try {
       if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(selectedCharacter);
+        await navigator.clipboard.writeText(value);
       } else {
         const helper = document.createElement("textarea");
-        helper.value = selectedCharacter;
+        helper.value = value;
         helper.style.position = "fixed";
         helper.style.opacity = "0";
         document.body.append(helper);
@@ -608,7 +761,7 @@
         if (!document.execCommand("copy")) throw new Error("Copy command failed");
         helper.remove();
       }
-      setStatus("copied", "ready");
+      setStatus(messageKey, "ready");
     } catch (error) {
       console.error(error);
       setStatus("copyFailed", "error");

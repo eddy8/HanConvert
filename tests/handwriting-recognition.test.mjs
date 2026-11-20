@@ -122,3 +122,34 @@ test("ships localized manual remote-recognition prompts", async () => {
     assert.ok(html.includes(action));
   }
 });
+
+test("converts Pinyin syllables with tone marks to Zhuyin", () => {
+  const { pinyinToZhuyin } = context.HandwritingRecognitionCore;
+  const cases = {
+    xíng: "ㄒㄧㄥˊ", háng: "ㄏㄤˊ", lǜ: "ㄌㄩˋ", jué: "ㄐㄩㄝˊ", yuán: "ㄩㄢˊ", yǔ: "ㄩˇ", wǒ: "ㄨㄛˇ",
+    zhī: "ㄓ", shì: "ㄕˋ", zǐ: "ㄗˇ", de: "˙ㄉㄜ", ér: "ㄦˊ", you: "˙ㄧㄡ", duì: "ㄉㄨㄟˋ", liù: "ㄌㄧㄡˋ"
+  };
+  for (const [pinyin, zhuyin] of Object.entries(cases)) assert.equal(pinyinToZhuyin(pinyin), zhuyin, pinyin);
+  assert.equal(pinyinToZhuyin("hm"), "");
+});
+
+test("reads the layout and components of an ideographic description sequence", () => {
+  const { describeStructure } = context.HandwritingRecognitionCore;
+  assert.deepEqual(JSON.parse(JSON.stringify(describeStructure("⿰女子"))), { type: "leftRight", parts: ["女", "子"] });
+  assert.deepEqual(JSON.parse(JSON.stringify(describeStructure("⿴囗或"))), { type: "surround", parts: ["囗", "或"] });
+  assert.equal(describeStructure("？").type, "single");
+  assert.deepEqual(JSON.parse(JSON.stringify(describeStructure("⿻十八"))), { type: "single", parts: [] });
+});
+
+test("Chinese handwriting pages add the text box, radical and structure rows, Zhuyin on zh-TW and meaning on English", async () => {
+  for (const prefix of ["", "zh-tw/", "en/", "ja/", "ko/"]) {
+    const html = await readFile(new URL(`../${prefix}chinese-handwriting-recognition/index.html`, import.meta.url), "utf8");
+    for (const id of ["handwritingAppend", "handwritingText", "handwritingTextCopy", "handwritingResultRadical", "handwritingResultStructure", "handwritingStructureLabels"]) {
+      assert.ok(html.includes(`id="${id}"`), `${prefix || "zh-CN"} ${id}`);
+    }
+    assert.equal(html.includes('id="handwritingResultZhuyin"'), prefix === "zh-tw/", `${prefix} zhuyin row`);
+    assert.equal(html.includes('id="handwritingResultMeaning"'), prefix === "en/", `${prefix} meaning row`);
+  }
+  const korean = await readFile(new URL("../korean-hanja-handwriting-recognition/index.html", import.meta.url), "utf8");
+  assert.doesNotMatch(korean, /id="handwritingAppend"/);
+});

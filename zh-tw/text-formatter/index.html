@@ -169,6 +169,65 @@ AI 文本也可能包含特殊空格 或不可见字符。">載入範例</butto
       </section>
       <section class="seo-band standalone-info" aria-labelledby="formatterFeatureTitle"><div class="section-heading"><p class="section-kicker">PDF 複製文字整理與隱藏字元清理</p><h2 id="formatterFeatureTitle">適合文件複製、排版與 AI 文字檢查的格式化工具</h2><p class="seo-intro">線上文字格式化不只是移除空格和換行。工具會保護 URL、小數與常見英文內容，同時依風險整理不可見 Unicode 字元，方便先偵測再決定是否清除。</p></div><div class="seo-grid"><article><h3>修復 PDF 與 CAJ 複製斷行</h3><p>合併段內硬換行時會分辨中英文邊界，也能選擇是否修復英文單字跨行產生的連字號。</p></article><article><h3>避免破壞 URL 和小數</h3><p>標點轉換與空格處理會略過網址、電子郵件、行內程式碼和小數，保留正常內容。</p></article><article><h3>分級移除 AI 文字浮水印</h3><p>預設移除零寬空格等高可信標記；連接符、異體字選擇器與同形字元需手動開啟。</p></article></div><section class="word-howto" aria-labelledby="formatterHowTitle"><h2 id="formatterHowTitle">如何在線上格式化文字</h2><ol><li>貼上文字或匯入 TXT、MD、CSV、JSON 檔案。</li><li>選擇換行、空格、標點與 Unicode 清理規則。</li><li>按下開始格式化，在前後對照中逐字查看被刪除與新增的內容，並核對字元統計及偵測明細。</li><li>確認結果後複製、下載，或送回輸入欄繼續調整。</li></ol></section><section class="pinyin-faq" aria-labelledby="formatterFaqTitle"><h2 id="formatterFaqTitle">文字格式化與 AI 浮水印常見問題</h2><details><summary>什麼是 AI 文字浮水印？</summary><p>本頁指的是可偵測的 Unicode 編碼痕跡，例如零寬字元、特殊空格、異體字選擇器和混合字母同形字元，不等同於基於詞語分布的統計型浮水印。</p></details><details><summary>為什麼不預設刪除 U+200C、U+200D 和異體字選擇器？</summary><p>這些字元可能影響 emoji、阿拉伯文、印度文字或字形顯示。預設刪除可能損壞正常文字，因此列在高風險選項。</p></details><details><summary>可以整理從 PDF 複製的多餘換行嗎？</summary><p>可以。選擇「合併段內斷行」會保留空白行分隔的段落，並依中英文邊界連接各行。</p></details><details><summary>怎麼知道格式化刪除或修改了哪些內容？</summary><p>格式化後，結果下方的前後對照會以紅色刪除線標出被刪除的字元，以綠色標出新增的字元；零寬字元、特殊空格等看不見的字元會以 U+ 碼位顯示，並依規則彙整變更次數。</p></details><details><summary>文字會上傳到伺服器嗎？</summary><p>不會。文字格式化、不可見字元偵測與 AI 文字浮水印清理都使用瀏覽器內的 JavaScript 完成。</p></details></section><p class="section-kicker pinyin-related-kicker">相關文字工具</p><nav class="landing-links" aria-label="相關文字與文件工具"><a href="/zh-tw/text-formatter/" aria-current="page">文字格式化工具</a><a href="/zh-tw/character-counter/">線上字數統計</a><a href="/zh-tw/word-to-txt/">DOCX 轉 TXT</a><a href="/zh-tw/file-text-converter/">文件文字簡繁轉換</a><a href="/zh-tw/simplified-to-traditional/">簡體轉繁體</a><a href="/zh-tw/traditional-to-simplified/">繁體轉簡體</a><a href="/zh-tw/chinese-to-pinyin/">漢字轉拼音</a><a href="/zh-tw/chinese-character-lookup/">漢字查詢與結構拆解</a></nav></section>
     </main>
-    <footer class="site-footer"><p>JianFan.app 提供在瀏覽器本機執行的中文轉換、文字整理、字數統計與文件處理工具。</p><nav class="footer-links" aria-label="頁尾"><a href="/zh-tw/about/">關於我們</a><a href="/zh-tw/contact/">聯絡我們</a><a href="/zh-tw/privacy/">隱私聲明</a></nav></footer>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="全部工具">
+        <div class="site-directory-group">
+          <p class="site-directory-title">簡繁轉換</p>
+          <ul>
+            <li><a href="/zh-tw/">簡繁轉換</a></li>
+            <li><a href="/zh-tw/simplified-to-traditional/">簡體轉繁體</a></li>
+            <li><a href="/zh-tw/traditional-to-simplified/">繁體轉簡體</a></li>
+            <li><a href="/zh-tw/taiwan-traditional/">台灣繁體轉換</a></li>
+            <li><a href="/zh-tw/hong-kong-traditional/">香港繁體轉換</a></li>
+            <li><a href="/zh-tw/file-text-converter/">檔案簡繁轉換</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">中文漢字</p>
+          <ul>
+            <li><a href="/zh-tw/chinese-handwriting-recognition/">手寫漢字辨識</a></li>
+            <li><a href="/zh-tw/photo-chinese-character-recognition/">拍照漢字辨識</a></li>
+            <li><a href="/zh-tw/chinese-to-pinyin/">漢字轉拼音</a></li>
+            <li><a href="/zh-tw/chinese-stroke-order/">漢字筆順查詢</a></li>
+            <li><a href="/zh-tw/chinese-character-lookup/">漢字查詢與結構拆解</a></li>
+            <li><a href="/zh-tw/han-character-worksheet/">國字練習紙</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">日文漢字</p>
+          <ul>
+            <li><a href="/zh-tw/japanese-handwriting-recognition/">日文手寫漢字辨識</a></li>
+            <li><a href="/zh-tw/japanese-kanji-dictionary/">日本漢字查詢</a></li>
+            <li><a href="/zh-tw/japanese-stroke-order/">日本漢字筆順</a></li>
+            <li><a href="/zh-tw/kanji-to-hiragana/">日文漢字轉平假名</a></li>
+            <li><a href="/zh-tw/kanji-to-romaji/">日文漢字轉羅馬字</a></li>
+            <li><a href="/zh-tw/japanese-kanji-converter/">日文新舊字體轉換</a></li>
+            <li><a href="/zh-tw/japanese-chinese-kanji-converter/">日中漢字轉換</a></li>
+            <li><a href="/zh-tw/japanese-characters/">日文字元複製</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">韓國漢字</p>
+          <ul>
+            <li><a href="/zh-tw/korean-hanja-dictionary/">韓國漢字查詢</a></li>
+            <li><a href="/zh-tw/korean-hanja-handwriting-recognition/">韓國漢字手寫辨識</a></li>
+            <li><a href="/zh-tw/hangul-hanja-converter/">韓文漢字轉換</a></li>
+            <li><a href="/zh-tw/korean-name-hanja/">韓國人名用漢字</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">文字工具</p>
+          <ul>
+            <li><a href="/zh-tw/character-counter/">線上字數統計</a></li>
+            <li><a href="/zh-tw/word-to-txt/">DOCX 轉 TXT</a></li>
+            <li><a href="/zh-tw/text-formatter/" aria-current="page">文字格式化</a></li>
+            <li><a href="/zh-tw/image-redaction/">圖片馬賽克</a></li>
+            <li><a href="/zh-tw/password-generator/">密碼產生器</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.app 提供在瀏覽器本機執行的中文轉換、文字整理、字數統計與文件處理工具。</p><nav class="footer-links" aria-label="頁尾"><a href="/zh-tw/about/">關於我們</a><a href="/zh-tw/contact/">聯絡我們</a><a href="/zh-tw/privacy/">隱私聲明</a></nav></footer>
   </body>
 </html>

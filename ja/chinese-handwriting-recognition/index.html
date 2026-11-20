@@ -91,6 +91,11 @@
                 "@type": "HowToStep",
                 "position": 3,
                 "text": "中国語のピンインや画数を確認し、必要に応じて筆順を開きます。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "複数の字を入力するときは、「入力欄に追加」で1字ずつつなげ、最後にまとめてコピーします。"
               }
             ]
           },
@@ -111,7 +116,7 @@
                 "name": "手書き入力の代わりに使えますか？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "1文字ずつなら使えます。書いて候補を選び、「漢字をコピー」を押して入力したい場所に貼り付けてください。1回に認識するのは1文字で、文章の連続手書きには対応していません。"
+                  "text": "使えます。1文字書くごとに候補を選んで「入力欄に追加」を押すと、手書きパッドが消えて次の字を書けます。書き終えたら入力欄の「コピー」でまとめてコピーできます。1回に認識するのは1文字で、続け字の文章は認識しません。"
                 }
               },
               {
@@ -169,7 +174,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="ja" data-message-loading="手書き認識を読み込み中" data-message-ready="漢字を手書きできます" data-message-recognizing="似ている漢字を検索中" data-message-matched="候補を {count} 文字見つけました" data-message-no-match="候補が見つかりません。1画戻すか、書き直してください" data-message-remote-recognizing="オンライン認識で検索中" data-message-remote-no-match="オンライン認識でも適切な候補が見つかりませんでした" data-message-remote-error="オンライン認識に失敗しました。通信を確認してもう一度お試しください" data-message-error="手書き認識を読み込めません。通信を確認して再読み込みしてください" data-message-copied="選択した漢字をコピーしました" data-message-copy-failed="自動コピーに失敗しました。漢字を選択してコピーしてください" data-message-stroke-count="{count}画入力" data-message-candidate-label="候補の「{character}」を選択">
+  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="ja" data-message-loading="手書き認識を読み込み中" data-message-ready="漢字を手書きできます" data-message-recognizing="似ている漢字を検索中" data-message-matched="候補を {count} 文字見つけました" data-message-no-match="候補が見つかりません。1画戻すか、書き直してください" data-message-remote-recognizing="オンライン認識で検索中" data-message-remote-no-match="オンライン認識でも適切な候補が見つかりませんでした" data-message-remote-error="オンライン認識に失敗しました。通信を確認してもう一度お試しください" data-message-error="手書き認識を読み込めません。通信を確認して再読み込みしてください" data-message-copied="選択した漢字をコピーしました" data-message-copy-failed="自動コピーに失敗しました。漢字を選択してコピーしてください" data-message-stroke-count="{count}画入力" data-message-appended="入力欄に追加しました：{character}" data-message-copied-text="入力欄の文字をコピーしました" data-message-candidate-label="候補の「{character}」を選択">
     <a class="skip-nav" href="#main">メインコンテンツへ移動</a>
     <header class="site-header" aria-label="サイトヘッダー">
       <a class="brand" href="/ja/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">手</span><span>JianFan.app</span></a>
@@ -186,7 +191,7 @@
     </header>
     <main id="main">
       <section class="tool-hero handwriting-tool-hero" aria-labelledby="pageTitle">
-        <div><p class="section-kicker">手書き入力 · 漢字候補 · 読み方と筆順</p><h1 id="pageTitle">漢字手書き検索</h1><p class="lede">読み方が分からず入力できない漢字を、見たままマスに書いて検索できます。候補から文字を選ぶと、中国語のピンイン、画数、Unicode、筆順を確認できます。</p></div>
+        <div><p class="section-kicker">手書き入力 · 漢字候補 · 読み方と筆順</p><h1 id="pageTitle">漢字手書き検索</h1><p class="lede">読み方が分からず入力できない漢字を、見たままマスに書いて検索できます。候補から文字を選ぶと、中国語のピンイン、画数、Unicode、筆順を確認できます。候補を入力欄に追加すれば、続けて手書き入力することもできます。</p></div>
         <div class="handwriting-hero-signal" aria-hidden="true"><span>?</span><i></i><strong>漢</strong></div>
       </section>
 
@@ -207,9 +212,11 @@
               <div class="handwriting-loader" id="handwritingLoader"><span></span><b>手書き認識を読み込み中</b></div>
             </div>
             <div class="handwriting-actions">
+              <button class="primary-action" id="handwritingAppend" type="button" disabled><span aria-hidden="true">＋</span><span>入力欄に追加</span></button>
               <button id="handwritingUndo" type="button" disabled><span aria-hidden="true">↶</span><span>1画戻す</span></button>
               <button id="handwritingClear" type="button" disabled><span aria-hidden="true">×</span><span>すべて消す</span></button>
             </div>
+            <div class="handwriting-compose"><div class="handwriting-compose-head"><label for="handwritingText">入力した文字</label><button id="handwritingTextCopy" type="button" disabled>コピー</button><button id="handwritingTextClear" type="button" disabled>クリア</button></div><input id="handwritingText" type="text" lang="ja" autocomplete="off" spellcheck="false" maxlength="200" placeholder="候補を選んで「入力欄に追加」で続けて入力" /></div>
             <div class="handwriting-samples"><span>サンプル</span><button type="button" data-handwriting-sample="人" aria-label="サンプル 人">人</button><button type="button" data-handwriting-sample="大" aria-label="サンプル 大">大</button><button type="button" data-handwriting-sample="木" aria-label="サンプル 木">木</button><button type="button" data-handwriting-sample="中" aria-label="サンプル 中">中</button></div>
             <p class="handwriting-hint">中央に大きく、一般的な筆順で1画ずつはっきり書くと認識しやすくなります。</p>
           </section>
@@ -226,6 +233,8 @@
                 <h3 id="handwritingResultTitle">漢字情報</h3>
                 <dl>
                   <div><dt>中国語ピンイン</dt><dd id="handwritingResultPinyin">-</dd></div>
+                  <div><dt>部首</dt><dd id="handwritingResultRadical">-</dd></div>
+                  <div><dt>構成</dt><dd id="handwritingResultStructure">-</dd></div>
                   <div><dt>画数</dt><dd id="handwritingResultStrokes">-</dd></div>
                   <div><dt>Unicode</dt><dd id="handwritingResultUnicode">-</dd></div>
                 </dl>
@@ -237,6 +246,7 @@
                 </div>
               </div>
             </article>
+            <script type="application/json" id="handwritingStructureLabels">{"single":"単体","leftRight":"左右","topBottom":"上下","leftMiddleRight":"左中右","topMiddleBottom":"上中下","surround":"囲み","surroundFromAbove":"上からの囲み","surroundFromBelow":"下からの囲み","surroundFromLeft":"左からの囲み","surroundFromUpperLeft":"左上からの囲み","surroundFromUpperRight":"右上からの囲み","surroundFromLowerLeft":"左下からの囲み"}</script>
           </section>
         </div>
       </section>
@@ -245,18 +255,19 @@
         <div class="section-heading"><p class="section-kicker">漢字を手書きで検索</p><h2 id="handwritingFeatureTitle">読めない漢字を手書き入力して調べる</h2><p class="seo-intro">漢字手書き検索は、本や画像で見つけた読み方の分からない漢字を調べるときに便利です。マウス、トラックパッド、タッチ画面、ペンで字形を書くだけで候補を表示します。</p></div>
         <div class="seo-grid">
           <article><h3>書きながら候補を更新</h3><p>1画ごとに最大10文字の候補を表示します。書き間違えた場合は直前の1画だけを戻せます。</p></article>
-          <article><h3>読み方・画数・筆順へ</h3><p>候補を選ぶと中国語のピンイン、画数、Unicodeを表示し、そのままコピーまたは筆順検索できます。</p></article>
+          <article><h3>読み方・画数・筆順へ</h3><p>候補を選ぶと中国語のピンイン、部首、構成、画数、Unicodeを表示し、そのままコピーまたは筆順検索できます。</p></article>
           <article><h3>ブラウザー内で認識</h3><p>筆画の座標は JianFan.app のサーバーへ送信されず、公開 WebAssembly コンポーネントが端末内で照合します。</p></article>
         </div>
         <section class="word-howto" aria-labelledby="handwritingHowTitle"><h2 id="handwritingHowTitle">漢字を手書きで検索する方法</h2><ol>
             <li>マウスやタッチ操作で、マスの中央に漢字を1画ずつ書きます。</li>
             <li>自動更新される候補から最も近い漢字を選びます。</li>
             <li>中国語のピンインや画数を確認し、必要に応じて筆順を開きます。</li>
+            <li>複数の字を入力するときは、「入力欄に追加」で1字ずつつなげ、最後にまとめてコピーします。</li>
           </ol></section>
         <section class="pinyin-faq" aria-labelledby="handwritingFaqTitle"><h2 id="handwritingFaqTitle">漢字手書き検索のよくある質問</h2>
           <details><summary>読めない中国語の漢字のピンインを調べるには？</summary><p>漢字を手書きして一番近い候補を選ぶと、ピンイン・総画数・Unicodeが表示され、書き順や字形構成も続けて確認できます。</p></details>
-          <details><summary>手書き入力の代わりに使えますか？</summary><p>1文字ずつなら使えます。書いて候補を選び、「漢字をコピー」を押して入力したい場所に貼り付けてください。1回に認識するのは1文字で、文章の連続手書きには対応していません。</p></details>
-          <details><summary>候補に目的の字が出てこないときは？</summary><p>大きく書き、画を離して書き直してください。それでも出ない場合は「漢字の構成・部首検索」で部品から探せます。写真やスクリーンショットの印刷文字なら「写真から中国語漢字を認識」が便利です。</p></details>
+          <details><summary>手書き入力の代わりに使えますか？</summary><p>使えます。1文字書くごとに候補を選んで「入力欄に追加」を押すと、手書きパッドが消えて次の字を書けます。書き終えたら入力欄の「コピー」でまとめてコピーできます。1回に認識するのは1文字で、続け字の文章は認識しません。</p></details>
+          <details><summary>候補に目的の字が出てこないときは？</summary><p>大きく書き、画を離して書き直してください。それでも出ない場合は「<a href="/ja/chinese-character-lookup/">漢字の構成・部首検索</a>」で部品から探せます。写真やスクリーンショットの印刷文字なら「<a href="/ja/photo-chinese-character-recognition/">写真から中国語漢字を認識</a>」が便利です。</p></details>
           <details><summary>スマホやタブレットでも使えますか？</summary><p>使えます。指やタッチペンでマスにそのまま書けます。アプリのインストールや登録は不要です。</p></details>
           <details><summary>正しい筆順で書く必要がありますか？</summary><p>筆画の方向・位置・数を照合するため、一般的な筆順で大きくはっきり書くと精度が上がります。多少の違いでも候補が出る場合があります。</p></details>
           <details><summary>日本語の漢字も検索できますか？</summary><p>中国語の簡体字・繁体字を中心に9,000字以上を収録しています。共通する漢字は検索できますが、日本独自の字体や一部の異体字は未収録の場合があります。</p></details>
@@ -279,6 +290,65 @@
         </nav>
       </section>
     </main>
-    <footer class="site-footer"><p>JianFan.app はブラウザーで使える漢字手書き検索、中国語ピンイン、筆順、文字変換ツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="ツール一覧">
+        <div class="site-directory-group">
+          <p class="site-directory-title">簡体字・繁体字</p>
+          <ul>
+            <li><a href="/ja/">簡体字 繁体字 変換</a></li>
+            <li><a href="/ja/simplified-to-traditional/">簡体字から繁体字</a></li>
+            <li><a href="/ja/traditional-to-simplified/">繁体字から簡体字</a></li>
+            <li><a href="/ja/taiwan-traditional/">台湾繁体字変換</a></li>
+            <li><a href="/ja/hong-kong-traditional/">香港繁体字変換</a></li>
+            <li><a href="/ja/file-text-converter/">Word・PDF の簡繁変換</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">日本語の漢字</p>
+          <ul>
+            <li><a href="/ja/japanese-handwriting-recognition/">手書き漢字検索</a></li>
+            <li><a href="/ja/japanese-kanji-dictionary/">漢字辞典</a></li>
+            <li><a href="/ja/japanese-stroke-order/">漢字の書き順</a></li>
+            <li><a href="/ja/kanji-to-hiragana/">漢字をひらがなに変換</a></li>
+            <li><a href="/ja/kanji-to-romaji/">漢字をローマ字に変換</a></li>
+            <li><a href="/ja/japanese-kanji-converter/">旧字体 新字体 変換</a></li>
+            <li><a href="/ja/japanese-chinese-kanji-converter/">日中漢字変換</a></li>
+            <li><a href="/ja/japanese-characters/">日本語文字コピー</a></li>
+            <li><a href="/ja/han-character-worksheet/">漢字練習プリント</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">中国語の漢字</p>
+          <ul>
+            <li><a href="/ja/chinese-handwriting-recognition/" aria-current="page">中国語の手書き検索</a></li>
+            <li><a href="/ja/photo-chinese-character-recognition/">中国語OCR</a></li>
+            <li><a href="/ja/chinese-to-pinyin/">ピンイン変換</a></li>
+            <li><a href="/ja/chinese-stroke-order/">中国語漢字の筆順</a></li>
+            <li><a href="/ja/chinese-character-lookup/">漢字の構成・部首検索</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">韓国の漢字</p>
+          <ul>
+            <li><a href="/ja/korean-hanja-dictionary/">韓国漢字検索</a></li>
+            <li><a href="/ja/korean-hanja-handwriting-recognition/">韓国漢字の手書き検索</a></li>
+            <li><a href="/ja/hangul-hanja-converter/">ハングル・漢字変換</a></li>
+            <li><a href="/ja/korean-name-hanja/">韓国の人名用漢字</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">テキストツール</p>
+          <ul>
+            <li><a href="/ja/character-counter/">文字数カウント</a></li>
+            <li><a href="/ja/word-to-txt/">Word TXT 変換</a></li>
+            <li><a href="/ja/text-formatter/">テキスト整形</a></li>
+            <li><a href="/ja/image-redaction/">画像モザイク</a></li>
+            <li><a href="/ja/password-generator/">パスワード生成</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.app はブラウザーで使える漢字手書き検索、中国語ピンイン、筆順、文字変換ツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
   </body>
 </html>

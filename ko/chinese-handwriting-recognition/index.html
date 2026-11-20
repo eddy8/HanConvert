@@ -91,6 +91,11 @@
                 "@type": "HowToStep",
                 "position": 3,
                 "text": "중국어 병음과 획수를 확인하거나 필순 페이지를 엽니다."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "여러 글자를 입력할 때는 ‘입력란에 추가’로 한 글자씩 이어 붙인 뒤 한꺼번에 복사합니다."
               }
             ]
           },
@@ -111,7 +116,7 @@
                 "name": "손글씨 입력기처럼 쓸 수 있나요?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "한 글자씩은 가능합니다. 글자를 쓰고 후보를 고른 뒤 ‘한자 복사’를 눌러 필요한 곳에 붙여 넣으세요. 한 번에 한 글자만 인식하며 문장 전체를 이어서 쓰는 기능은 없습니다."
+                  "text": "네. 글자를 쓸 때마다 후보를 고르고 ‘입력란에 추가’를 누르면 입력판이 지워져 다음 글자를 쓸 수 있습니다. 다 쓴 뒤 입력란의 ‘복사’를 누르면 한꺼번에 복사됩니다. 한 번에 한 글자씩 인식하며 이어 쓴 문장은 인식하지 않습니다."
                 }
               },
               {
@@ -169,7 +174,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="ko" data-message-loading="필기 인식 기능 불러오는 중" data-message-ready="한자 손글씨를 입력할 수 있습니다" data-message-recognizing="비슷한 한자 찾는 중" data-message-matched="후보 한자 {count}개를 찾았습니다" data-message-no-match="후보를 찾지 못했습니다. 한 획을 되돌리거나 다시 써 주세요" data-message-remote-recognizing="온라인 인식으로 찾는 중" data-message-remote-no-match="온라인 인식에서도 더 적합한 후보를 찾지 못했습니다" data-message-remote-error="온라인 인식에 실패했습니다. 네트워크를 확인한 후 다시 시도하세요" data-message-error="필기 인식 기능을 불러오지 못했습니다. 네트워크 확인 후 새로 고침하세요" data-message-copied="선택한 한자를 복사했습니다" data-message-copy-failed="자동 복사에 실패했습니다. 한자를 직접 선택해 복사하세요" data-message-stroke-count="{count}획 입력" data-message-candidate-label="후보 한자 {character} 선택">
+  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="ko" data-message-loading="필기 인식 기능 불러오는 중" data-message-ready="한자 손글씨를 입력할 수 있습니다" data-message-recognizing="비슷한 한자 찾는 중" data-message-matched="후보 한자 {count}개를 찾았습니다" data-message-no-match="후보를 찾지 못했습니다. 한 획을 되돌리거나 다시 써 주세요" data-message-remote-recognizing="온라인 인식으로 찾는 중" data-message-remote-no-match="온라인 인식에서도 더 적합한 후보를 찾지 못했습니다" data-message-remote-error="온라인 인식에 실패했습니다. 네트워크를 확인한 후 다시 시도하세요" data-message-error="필기 인식 기능을 불러오지 못했습니다. 네트워크 확인 후 새로 고침하세요" data-message-copied="선택한 한자를 복사했습니다" data-message-copy-failed="자동 복사에 실패했습니다. 한자를 직접 선택해 복사하세요" data-message-stroke-count="{count}획 입력" data-message-appended="입력란에 추가했습니다: {character}" data-message-copied-text="입력한 글자를 복사했습니다" data-message-candidate-label="후보 한자 {character} 선택">
     <a class="skip-nav" href="#main">주요 내용으로 이동</a>
     <header class="site-header" aria-label="사이트 헤더">
       <a class="brand" href="/ko/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">手</span><span>JianFan.app</span></a>
@@ -186,7 +191,7 @@
     </header>
     <main id="main">
       <section class="tool-hero handwriting-tool-hero" aria-labelledby="pageTitle">
-        <div><p class="section-kicker">손글씨 입력 · 한자 후보 · 병음과 필순</p><h1 id="pageTitle">한자 필기 인식·손글씨 한자 찾기</h1><p class="lede">읽는 법을 몰라 입력하기 어려운 한자를 보이는 모양대로 칸 안에 써 보세요. 비슷한 후보를 고르면 중국어 병음, 획수, Unicode와 필순을 확인할 수 있습니다.</p></div>
+        <div><p class="section-kicker">손글씨 입력 · 한자 후보 · 병음과 필순</p><h1 id="pageTitle">한자 필기 인식·손글씨 한자 찾기</h1><p class="lede">읽는 법을 몰라 입력하기 어려운 한자를 보이는 모양대로 칸 안에 써 보세요. 비슷한 후보를 고르면 중국어 병음, 획수, Unicode와 필순을 확인할 수 있습니다.고른 글자를 입력란에 추가하면 여러 글자를 이어서 입력할 수 있습니다.</p></div>
         <div class="handwriting-hero-signal" aria-hidden="true"><span>?</span><i></i><strong>漢</strong></div>
       </section>
 
@@ -207,9 +212,11 @@
               <div class="handwriting-loader" id="handwritingLoader"><span></span><b>필기 인식 기능 불러오는 중</b></div>
             </div>
             <div class="handwriting-actions">
+              <button class="primary-action" id="handwritingAppend" type="button" disabled><span aria-hidden="true">＋</span><span>입력란에 추가</span></button>
               <button id="handwritingUndo" type="button" disabled><span aria-hidden="true">↶</span><span>한 획 되돌리기</span></button>
               <button id="handwritingClear" type="button" disabled><span aria-hidden="true">×</span><span>모두 지우기</span></button>
             </div>
+            <div class="handwriting-compose"><div class="handwriting-compose-head"><label for="handwritingText">입력한 글자</label><button id="handwritingTextCopy" type="button" disabled>복사</button><button id="handwritingTextClear" type="button" disabled>지우기</button></div><input id="handwritingText" type="text" lang="ko" autocomplete="off" spellcheck="false" maxlength="200" placeholder="후보를 고른 뒤 ‘입력란에 추가’로 이어서 입력" /></div>
             <div class="handwriting-samples"><span>예시</span><button type="button" data-handwriting-sample="人" aria-label="예시 人">人</button><button type="button" data-handwriting-sample="大" aria-label="예시 大">大</button><button type="button" data-handwriting-sample="木" aria-label="예시 木">木</button><button type="button" data-handwriting-sample="中" aria-label="예시 中">中</button></div>
             <p class="handwriting-hint">글자를 중앙에 크게 쓰고 일반적인 필순에 따라 한 획씩 또렷하게 입력하세요.</p>
           </section>
@@ -226,6 +233,8 @@
                 <h3 id="handwritingResultTitle">한자 정보</h3>
                 <dl>
                   <div><dt>중국어 병음</dt><dd id="handwritingResultPinyin">-</dd></div>
+                  <div><dt>부수</dt><dd id="handwritingResultRadical">-</dd></div>
+                  <div><dt>구조</dt><dd id="handwritingResultStructure">-</dd></div>
                   <div><dt>총 획수</dt><dd id="handwritingResultStrokes">-</dd></div>
                   <div><dt>Unicode</dt><dd id="handwritingResultUnicode">-</dd></div>
                 </dl>
@@ -237,6 +246,7 @@
                 </div>
               </div>
             </article>
+            <script type="application/json" id="handwritingStructureLabels">{"single":"독체자","leftRight":"좌우 구조","topBottom":"상하 구조","leftMiddleRight":"좌중우 구조","topMiddleBottom":"상중하 구조","surround":"에운 구조","surroundFromAbove":"위 감싸기","surroundFromBelow":"아래 감싸기","surroundFromLeft":"왼쪽 감싸기","surroundFromUpperLeft":"왼쪽 위 감싸기","surroundFromUpperRight":"오른쪽 위 감싸기","surroundFromLowerLeft":"왼쪽 아래 감싸기"}</script>
           </section>
         </div>
       </section>
@@ -245,18 +255,19 @@
         <div class="section-heading"><p class="section-kicker">손글씨 한자 찾기</p><h2 id="handwritingFeatureTitle">읽기 어려운 한자를 직접 그려서 찾기</h2><p class="seo-intro">한자 필기 인식은 책이나 이미지에서 본 낯선 한자의 음을 모를 때 유용합니다. 마우스, 트랙패드, 터치스크린 또는 펜으로 글자 모양을 쓰면 가까운 후보를 보여 줍니다.</p></div>
         <div class="seo-grid">
           <article><h3>필획마다 후보 갱신</h3><p>한 획을 마칠 때마다 최대 10개의 비슷한 한자를 표시하며 잘못 쓴 경우 마지막 한 획만 되돌릴 수 있습니다.</p></article>
-          <article><h3>병음·획수·필순 조회</h3><p>후보를 선택하면 중국어 병음, 획수와 Unicode를 확인하고 복사하거나 필순 페이지로 이동할 수 있습니다.</p></article>
+          <article><h3>병음·획수·필순 조회</h3><p>후보를 선택하면 중국어 병음, 부수, 구조, 획수와 Unicode를 확인하고 복사하거나 필순 페이지로 이동할 수 있습니다.</p></article>
           <article><h3>브라우저에서 로컬 인식</h3><p>필획 좌표는 JianFan.app 서버로 전송되지 않으며 공개 WebAssembly 구성 요소가 기기에서 직접 비교합니다.</p></article>
         </div>
         <section class="word-howto" aria-labelledby="handwritingHowTitle"><h2 id="handwritingHowTitle">손글씨로 한자 찾는 방법</h2><ol>
             <li>마우스나 터치로 격자 중앙에 한자를 한 획씩 씁니다.</li>
             <li>자동으로 바뀌는 후보 중 가장 가까운 한자를 선택합니다.</li>
             <li>중국어 병음과 획수를 확인하거나 필순 페이지를 엽니다.</li>
+            <li>여러 글자를 입력할 때는 ‘입력란에 추가’로 한 글자씩 이어 붙인 뒤 한꺼번에 복사합니다.</li>
           </ol></section>
         <section class="pinyin-faq" aria-labelledby="handwritingFaqTitle"><h2 id="handwritingFaqTitle">한자 필기 인식 자주 묻는 질문</h2>
           <details><summary>모르는 중국 한자의 병음은 어떻게 찾나요?</summary><p>한자를 손으로 쓰고 가장 비슷한 후보를 고르면 병음, 총 획수, Unicode가 표시되고 필순과 글자 구조도 이어서 볼 수 있습니다.</p></details>
-          <details><summary>손글씨 입력기처럼 쓸 수 있나요?</summary><p>한 글자씩은 가능합니다. 글자를 쓰고 후보를 고른 뒤 ‘한자 복사’를 눌러 필요한 곳에 붙여 넣으세요. 한 번에 한 글자만 인식하며 문장 전체를 이어서 쓰는 기능은 없습니다.</p></details>
-          <details><summary>원하는 글자가 후보에 없으면 어떻게 하나요?</summary><p>글자를 크게, 획을 떼어 다시 써 보세요. 그래도 없으면 ‘한자 부수·구성요소 검색’에서 구성요소로 찾을 수 있습니다. 사진이나 스크린샷 속 인쇄 글자는 ‘사진으로 중국 한자 인식’이 더 편합니다.</p></details>
+          <details><summary>손글씨 입력기처럼 쓸 수 있나요?</summary><p>네. 글자를 쓸 때마다 후보를 고르고 ‘입력란에 추가’를 누르면 입력판이 지워져 다음 글자를 쓸 수 있습니다. 다 쓴 뒤 입력란의 ‘복사’를 누르면 한꺼번에 복사됩니다. 한 번에 한 글자씩 인식하며 이어 쓴 문장은 인식하지 않습니다.</p></details>
+          <details><summary>원하는 글자가 후보에 없으면 어떻게 하나요?</summary><p>글자를 크게, 획을 떼어 다시 써 보세요. 그래도 없으면 ‘<a href="/ko/chinese-character-lookup/">한자 부수·구성요소 검색</a>’에서 구성요소로 찾을 수 있습니다. 사진이나 스크린샷 속 인쇄 글자는 ‘<a href="/ko/photo-chinese-character-recognition/">사진으로 중국 한자 인식</a>’이 더 편합니다.</p></details>
           <details><summary>스마트폰이나 태블릿에서도 쓸 수 있나요?</summary><p>네. 손가락이나 터치펜으로 칸에 바로 쓰면 됩니다. 앱 설치나 가입은 필요 없습니다.</p></details>
           <details><summary>정확한 필순으로 써야 하나요?</summary><p>인식기는 필획 방향, 위치와 개수를 참고합니다. 조금 달라도 후보가 나올 수 있지만 일반적인 필순으로 크고 또렷하게 쓰면 더 정확합니다.</p></details>
           <details><summary>한국에서 쓰는 한자도 찾을 수 있나요?</summary><p>중국어 간체와 번체를 중심으로 9,000자 이상을 지원합니다. 공통 한자는 검색할 수 있지만 한국·일본 고유 자형이나 일부 이체자는 없을 수 있습니다.</p></details>
@@ -279,6 +290,65 @@
         </nav>
       </section>
     </main>
-    <footer class="site-footer"><p>JianFan.app는 브라우저에서 실행되는 한자 필기 인식, 중국어 병음, 필순 및 텍스트 변환 도구를 제공합니다.</p><nav class="footer-links" aria-label="바닥글"><a href="/ko/about/">소개</a><a href="/ko/contact/">문의</a><a href="/ko/privacy/">개인정보 보호 안내</a></nav></footer>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="전체 도구">
+        <div class="site-directory-group">
+          <p class="site-directory-title">간체·번체 변환</p>
+          <ul>
+            <li><a href="/ko/">간체 번체 변환기</a></li>
+            <li><a href="/ko/simplified-to-traditional/">간체를 번체로</a></li>
+            <li><a href="/ko/traditional-to-simplified/">번체를 간체로</a></li>
+            <li><a href="/ko/taiwan-traditional/">대만 번체 변환</a></li>
+            <li><a href="/ko/hong-kong-traditional/">홍콩 번체 변환</a></li>
+            <li><a href="/ko/file-text-converter/">문서 간체 번체 변환</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">한국 한자</p>
+          <ul>
+            <li><a href="/ko/korean-hanja-dictionary/">한자 찾기·옥편</a></li>
+            <li><a href="/ko/korean-hanja-handwriting-recognition/">한자 필기인식</a></li>
+            <li><a href="/ko/hangul-hanja-converter/">한자 변환기</a></li>
+            <li><a href="/ko/korean-name-hanja/">인명용 한자</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">중국어 한자</p>
+          <ul>
+            <li><a href="/ko/chinese-handwriting-recognition/" aria-current="page">중국어 한자 필기 인식</a></li>
+            <li><a href="/ko/photo-chinese-character-recognition/">중국어 이미지 OCR</a></li>
+            <li><a href="/ko/chinese-to-pinyin/">중국어 병음 변환</a></li>
+            <li><a href="/ko/chinese-stroke-order/">중국어 한자 필순</a></li>
+            <li><a href="/ko/chinese-character-lookup/">한자 부수·구성요소 검색</a></li>
+            <li><a href="/ko/han-character-worksheet/">한자 쓰기 연습장</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">일본 한자</p>
+          <ul>
+            <li><a href="/ko/japanese-handwriting-recognition/">일본 한자 손글씨 인식</a></li>
+            <li><a href="/ko/japanese-kanji-dictionary/">일본 한자 검색</a></li>
+            <li><a href="/ko/japanese-stroke-order/">일본 한자 필순</a></li>
+            <li><a href="/ko/kanji-to-hiragana/">일본어 한자 히라가나 변환</a></li>
+            <li><a href="/ko/kanji-to-romaji/">일본어 한자 로마자 변환</a></li>
+            <li><a href="/ko/japanese-kanji-converter/">일본 신자체 구자체 변환</a></li>
+            <li><a href="/ko/japanese-chinese-kanji-converter/">일본·중국 한자 변환</a></li>
+            <li><a href="/ko/japanese-characters/">일본어 문자 복사</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">텍스트 도구</p>
+          <ul>
+            <li><a href="/ko/character-counter/">글자수 세기</a></li>
+            <li><a href="/ko/word-to-txt/">DOCX TXT 변환</a></li>
+            <li><a href="/ko/text-formatter/">텍스트 정리기</a></li>
+            <li><a href="/ko/image-redaction/">사진 모자이크</a></li>
+            <li><a href="/ko/password-generator/">비밀번호 생성기</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.app는 브라우저에서 실행되는 한자 필기 인식, 중국어 병음, 필순 및 텍스트 변환 도구를 제공합니다.</p><nav class="footer-links" aria-label="바닥글"><a href="/ko/about/">소개</a><a href="/ko/contact/">문의</a><a href="/ko/privacy/">개인정보 보호 안내</a></nav></footer>
   </body>
 </html>

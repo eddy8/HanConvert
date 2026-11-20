@@ -178,6 +178,65 @@
       <template id="passwordResultTemplate"><div class="password-result"><span class="password-result-index" aria-hidden="true"></span><input type="text" readonly autocomplete="off" spellcheck="false" data-lpignore="true" data-1p-ignore /><button type="button" class="password-icon-button" title="パスワードをコピー" aria-label="パスワードをコピー"><svg class="password-icon" data-icon="copy" aria-hidden="true"><use href="/password-icons.svg#copy" /></svg></button></div></template>
       <section class="seo-band standalone-info password-info" aria-labelledby="passwordFeatureTitle"><div class="section-heading"><h2 id="passwordFeatureTitle">サイトの条件に合わせてパスワードを自動生成</h2><p class="seo-intro">新規登録、ログイン情報の変更、複数アカウントの初期パスワード作成などに利用できます。まず利用先の文字数と使用可能な記号を確認してください。初期設定は20文字で、記号を外せば英数字のみのランダム文字列も作れます。</p></div><div class="seo-grid"><article><h3>文字の種類を組み合わせる</h3><p>英大文字・英小文字・数字・記号を個別に選択できます。選んだ種類は各パスワードに必ず含まれるため、必要な種類が偶然抜けることはありません。</p></article><article><h3>使える記号だけに限定</h3><p>利用先で認められる記号を直接入力できます。使用できない文字は除外欄で指定でき、大文字・小文字を区別して全種類に適用されます。</p></article><article><h3>最大100個を一括作成</h3><p>同じ一括生成内で重複しないパスワードを最大100個作成します。個別・一括コピーと1行1件のTXT保存に対応し、結果は現在のページだけに保持します。</p></article></div><section class="pinyin-howto" aria-labelledby="passwordHowTitle"><h2 id="passwordHowTitle">パスワードの作成手順</h2><ol><li>文字数と生成数を決め、使用する文字の種類を選びます。</li><li>必要に応じて記号や除外文字を指定し、紛らわしい文字・連続重複の設定を変更します。</li><li>生成したパスワードをコピーし、自分のパスワード管理ツールに保存します。</li></ol></section><section class="pinyin-faq" aria-labelledby="passwordFaqTitle"><h2 id="passwordFaqTitle">パスワード生成のよくある質問</h2><details><summary>生成したパスワードは保存・送信されますか？</summary><p>生成処理はブラウザ内で完結し、サーバーへの送信やブラウザストレージへの保存は行いません。再読み込み・移動・消去後に履歴は残しませんが、コピーやダウンロードを行うとクリップボードや保存先のファイルに残ります。</p></details><details><summary>選んだ文字の種類は必ず含まれますか？</summary><p>はい。4種類すべてを選ぶと、大文字・小文字・数字・記号を各1文字以上含めます。文字数が足りない場合や、ある種類が除外で空になった場合は、設定の変更を案内します。</p></details><details><summary>紛らわしい文字と連続重複の違いは？</summary><p>紛らわしい文字の除外対象はIl1O0o|です。連続重複の除外はaaや11のような同じ文字の隣り合いだけを禁止します。離れた位置での再使用やabc・123のような並びは許可されます。</p></details><details><summary>条件を増やすほど安全になりますか？</summary><p>除外条件は入力のしやすさやサイトの規則に合わせるもので、使用可能な組み合わせを減らします。組み合わせの強度は有効なランダム出力の数を基にした目安で、解読時間やアカウントの安全性を保証するものではありません。</p></details><details><summary>数字だけや特定の記号だけでも作れますか？</summary><p>はい。数字だけを選べば数字のみの文字列になります。記号欄では許可される記号を指定できます。生成数より組み合わせが少ないときは、文字数・文字種類を増やすか、生成数を減らしてください。</p></details><details><summary>生成後のパスワードはどう管理しますか？</summary><p>アカウントごとに別のパスワードを使い、利用先の条件内で十分な長さにして、信頼できる管理ツールに保存してください。TXTは平文です。また、別々の一括生成の間で同じ結果が出る可能性はあります。</p></details></section><p class="section-kicker pinyin-related-kicker">関連ツール</p><nav class="landing-links" aria-label="関連ツール"><a href="/ja/text-formatter/">テキスト整形</a><a href="/ja/character-counter/">文字数カウント</a><a href="/ja/image-redaction/">画像モザイク加工</a><a href="/ja/file-text-converter/">ファイルの文字変換</a></nav></section>
     </main>
-    <footer class="site-footer"><p>JianFan.app は文字変換、漢字学習、ブラウザで使える便利なツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="ツール一覧">
+        <div class="site-directory-group">
+          <p class="site-directory-title">簡体字・繁体字</p>
+          <ul>
+            <li><a href="/ja/">簡体字 繁体字 変換</a></li>
+            <li><a href="/ja/simplified-to-traditional/">簡体字から繁体字</a></li>
+            <li><a href="/ja/traditional-to-simplified/">繁体字から簡体字</a></li>
+            <li><a href="/ja/taiwan-traditional/">台湾繁体字変換</a></li>
+            <li><a href="/ja/hong-kong-traditional/">香港繁体字変換</a></li>
+            <li><a href="/ja/file-text-converter/">Word・PDF の簡繁変換</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">日本語の漢字</p>
+          <ul>
+            <li><a href="/ja/japanese-handwriting-recognition/">手書き漢字検索</a></li>
+            <li><a href="/ja/japanese-kanji-dictionary/">漢字辞典</a></li>
+            <li><a href="/ja/japanese-stroke-order/">漢字の書き順</a></li>
+            <li><a href="/ja/kanji-to-hiragana/">漢字をひらがなに変換</a></li>
+            <li><a href="/ja/kanji-to-romaji/">漢字をローマ字に変換</a></li>
+            <li><a href="/ja/japanese-kanji-converter/">旧字体 新字体 変換</a></li>
+            <li><a href="/ja/japanese-chinese-kanji-converter/">日中漢字変換</a></li>
+            <li><a href="/ja/japanese-characters/">日本語文字コピー</a></li>
+            <li><a href="/ja/han-character-worksheet/">漢字練習プリント</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">中国語の漢字</p>
+          <ul>
+            <li><a href="/ja/chinese-handwriting-recognition/">中国語の手書き検索</a></li>
+            <li><a href="/ja/photo-chinese-character-recognition/">中国語OCR</a></li>
+            <li><a href="/ja/chinese-to-pinyin/">ピンイン変換</a></li>
+            <li><a href="/ja/chinese-stroke-order/">中国語漢字の筆順</a></li>
+            <li><a href="/ja/chinese-character-lookup/">漢字の構成・部首検索</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">韓国の漢字</p>
+          <ul>
+            <li><a href="/ja/korean-hanja-dictionary/">韓国漢字検索</a></li>
+            <li><a href="/ja/korean-hanja-handwriting-recognition/">韓国漢字の手書き検索</a></li>
+            <li><a href="/ja/hangul-hanja-converter/">ハングル・漢字変換</a></li>
+            <li><a href="/ja/korean-name-hanja/">韓国の人名用漢字</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">テキストツール</p>
+          <ul>
+            <li><a href="/ja/character-counter/">文字数カウント</a></li>
+            <li><a href="/ja/word-to-txt/">Word TXT 変換</a></li>
+            <li><a href="/ja/text-formatter/">テキスト整形</a></li>
+            <li><a href="/ja/image-redaction/">画像モザイク</a></li>
+            <li><a href="/ja/password-generator/" aria-current="page">パスワード生成</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.app は文字変換、漢字学習、ブラウザで使える便利なツールを提供します。</p><nav class="footer-links" aria-label="フッター"><a href="/ja/about/">JianFan.app について</a><a href="/ja/contact/">お問い合わせ</a><a href="/ja/privacy/">プライバシー声明</a></nav></footer>
   </body>
 </html>

@@ -6,8 +6,8 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="description" content="免費線上手寫查字與漢字辨識工具，用滑鼠、觸控螢幕或手寫筆逐畫寫出不會讀的正簡體國字，即時查看候選字、拼音、筆畫數和筆順，預設在瀏覽器本機辨識。" />
-    <title>手寫漢字辨識 - 線上手寫查字與國字輸入工具 | JianFan.app</title>
+    <meta name="description" content="免費線上手寫查字與漢字辨識工具，寫出不會讀的國字即可查看候選字、注音、拼音、部首與筆順，還能連續手寫輸入整段文字，預設在瀏覽器本機辨識。" />
+    <title>手寫漢字辨識 - 線上手寫查字、注音與國字輸入 | JianFan.app</title>
     <link rel="canonical" href="https://jianfan.app/zh-tw/chinese-handwriting-recognition/" />
     <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-handwriting-recognition/" />
     <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-handwriting-recognition/" />
@@ -29,14 +29,14 @@
           {
             "@type": "WebApplication",
             "@id": "https://jianfan.app/zh-tw/chinese-handwriting-recognition/#webapp",
-            "name": "手寫漢字辨識 - 線上手寫查字與國字輸入工具",
+            "name": "手寫漢字辨識 - 線上手寫查字、注音與國字輸入",
             "alternateName": [
               "線上手寫查字",
               "手寫國字辨識",
               "漢字手寫輸入"
             ],
             "url": "https://jianfan.app/zh-tw/chinese-handwriting-recognition/",
-            "description": "免費線上手寫查字與漢字辨識工具，用滑鼠、觸控螢幕或手寫筆逐畫寫出不會讀的正簡體國字，即時查看候選字、拼音、筆畫數和筆順，預設在瀏覽器本機辨識。",
+            "description": "免費線上手寫查字與漢字辨識工具，寫出不會讀的國字即可查看候選字、注音、拼音、部首與筆順，還能連續手寫輸入整段文字，預設在瀏覽器本機辨識。",
             "applicationCategory": "EducationalApplication",
             "operatingSystem": "Any",
             "browserRequirements": "Requires JavaScript and WebAssembly",
@@ -67,7 +67,7 @@
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "手寫漢字辨識 - 線上手寫查字與國字輸入工具",
+                "name": "手寫漢字辨識 - 線上手寫查字、注音與國字輸入",
                 "item": "https://jianfan.app/zh-tw/chinese-handwriting-recognition/"
               }
             ]
@@ -90,7 +90,12 @@
               {
                 "@type": "HowToStep",
                 "position": 3,
-                "text": "查看拼音與筆畫數，或前往筆順頁面繼續查詢。"
+                "text": "查看注音、拼音與部首，或前往筆順頁面繼續查詢。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "要輸入多個字時，點選「加入輸入框」逐字拼接，最後一次複製整段文字。"
               }
             ]
           },
@@ -100,10 +105,18 @@
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "不認識的字怎麼查拼音？",
+                "name": "不認識的字怎麼查注音和拼音？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "手寫這個字並點選最接近的候選，頁面會顯示拼音、總筆畫數和 Unicode，還能繼續查看筆順和字形結構。"
+                  "text": "手寫這個字並點選最接近的候選，頁面會顯示注音、拼音、部首、總筆畫數和 Unicode，還能繼續查看筆順和字形結構。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "手寫查字可以顯示注音嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以。選取候選字後，查字結果會同時顯示注音符號與漢語拼音，破音字會列出所有常見讀音，例如「行」顯示 ㄒㄧㄥˊ / ㄏㄤˊ。"
                 }
               },
               {
@@ -111,7 +124,7 @@
                 "name": "可以當手寫輸入法用嗎？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "可以逐字使用：寫一個字，選取候選後點選「複製漢字」，再貼到需要輸入的地方。本頁一次辨識一個字，不支援連續手寫整句。"
+                  "text": "可以。每寫好一個字，選取候選後點選「加入輸入框」，畫布會自動清除，接著寫下一個字；全部寫完後點選輸入框旁的「複製」，一次複製整段文字。本頁一次辨識一個字，不辨識連筆寫成的整句。"
                 }
               },
               {
@@ -169,7 +182,7 @@
     </script>
     <!-- seo-schema:end -->
   </head>
-  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="zh-TW" data-message-loading="正在載入手寫辨識元件" data-message-ready="可以開始手寫漢字" data-message-recognizing="正在比對候選漢字" data-message-matched="已找到 {count} 個候選漢字" data-message-no-match="暫時找不到候選字，請復原或重新書寫" data-message-remote-recognizing="正在進行遠端辨識" data-message-remote-no-match="遠端辨識未找到更合適的候選字" data-message-remote-error="遠端辨識失敗，請檢查網路後再試一次" data-message-error="手寫辨識元件載入失敗，請檢查網路後重新整理" data-message-copied="已複製所選漢字" data-message-copy-failed="自動複製失敗，請直接選取漢字複製" data-message-stroke-count="已寫 {count} 畫" data-message-candidate-label="選取候選漢字「{character}」">
+  <body data-tool-page="handwriting-recognition" data-page-slug="chinese-handwriting-recognition" data-locale="zh-TW" data-message-loading="正在載入手寫辨識元件" data-message-ready="可以開始手寫漢字" data-message-recognizing="正在比對候選漢字" data-message-matched="已找到 {count} 個候選漢字" data-message-no-match="暫時找不到候選字，請復原或重新書寫" data-message-remote-recognizing="正在進行遠端辨識" data-message-remote-no-match="遠端辨識未找到更合適的候選字" data-message-remote-error="遠端辨識失敗，請檢查網路後再試一次" data-message-error="手寫辨識元件載入失敗，請檢查網路後重新整理" data-message-copied="已複製所選漢字" data-message-copy-failed="自動複製失敗，請直接選取漢字複製" data-message-stroke-count="已寫 {count} 畫" data-message-appended="已加入輸入框：{character}" data-message-copied-text="已複製輸入框中的文字" data-message-candidate-label="選取候選漢字「{character}」">
     <a class="skip-nav" href="#main">跳到主要內容</a>
     <header class="site-header" aria-label="網站頁首">
       <a class="brand" href="/zh-tw/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">手</span><span>JianFan.app</span></a>
@@ -186,7 +199,7 @@
     </header>
     <main id="main">
       <section class="tool-hero handwriting-tool-hero" aria-labelledby="pageTitle">
-        <div><p class="section-kicker">手寫辨識 · 候選漢字 · 拼音筆順</p><h1 id="pageTitle">手寫漢字辨識與線上查字</h1><p class="lede">遇到不知道讀音、也無法輸入的國字時，直接照著字形寫在田字格中。系統會即時列出相似候選字，選取後可查看拼音、筆畫數及筆順。</p></div>
+        <div><p class="section-kicker">手寫辨識 · 候選漢字 · 拼音筆順</p><h1 id="pageTitle">手寫漢字辨識與線上查字</h1><p class="lede">遇到不知道讀音、也無法輸入的國字時，直接照著字形寫在田字格中。系統會即時列出相似候選字，選取後可查看注音、拼音、部首與筆順；把字逐一加入輸入框，還能連續手寫輸入一段文字。</p></div>
         <div class="handwriting-hero-signal" aria-hidden="true"><span>?</span><i></i><strong>漢</strong></div>
       </section>
 
@@ -207,9 +220,11 @@
               <div class="handwriting-loader" id="handwritingLoader"><span></span><b>正在載入手寫辨識元件</b></div>
             </div>
             <div class="handwriting-actions">
+              <button class="primary-action" id="handwritingAppend" type="button" disabled><span aria-hidden="true">＋</span><span>加入輸入框</span></button>
               <button id="handwritingUndo" type="button" disabled><span aria-hidden="true">↶</span><span>復原上一畫</span></button>
               <button id="handwritingClear" type="button" disabled><span aria-hidden="true">×</span><span>清除重寫</span></button>
             </div>
+            <div class="handwriting-compose"><div class="handwriting-compose-head"><label for="handwritingText">已輸入的文字</label><button id="handwritingTextCopy" type="button" disabled>複製</button><button id="handwritingTextClear" type="button" disabled>清除</button></div><input id="handwritingText" type="text" lang="zh-Hant" autocomplete="off" spellcheck="false" maxlength="200" placeholder="選取候選後點「加入輸入框」，可連續手寫輸入" /></div>
             <div class="handwriting-samples"><span>試用範例</span><button type="button" data-handwriting-sample="人" aria-label="試用範例 人">人</button><button type="button" data-handwriting-sample="大" aria-label="試用範例 大">大</button><button type="button" data-handwriting-sample="木" aria-label="試用範例 木">木</button><button type="button" data-handwriting-sample="中" aria-label="試用範例 中">中</button></div>
             <p class="handwriting-hint">請盡量寫大、置中，並依一般筆順逐畫書寫。</p>
           </section>
@@ -225,7 +240,10 @@
                 <p class="section-kicker">查字結果</p>
                 <h3 id="handwritingResultTitle">查字結果</h3>
                 <dl>
+                  <div><dt>注音</dt><dd id="handwritingResultZhuyin">-</dd></div>
                   <div><dt>漢語拼音</dt><dd id="handwritingResultPinyin">-</dd></div>
+                  <div><dt>部首</dt><dd id="handwritingResultRadical">-</dd></div>
+                  <div><dt>結構</dt><dd id="handwritingResultStructure">-</dd></div>
                   <div><dt>筆畫數</dt><dd id="handwritingResultStrokes">-</dd></div>
                   <div><dt>Unicode</dt><dd id="handwritingResultUnicode">-</dd></div>
                 </dl>
@@ -237,6 +255,7 @@
                 </div>
               </div>
             </article>
+            <script type="application/json" id="handwritingStructureLabels">{"single":"獨體字","leftRight":"左右結構","topBottom":"上下結構","leftMiddleRight":"左中右結構","topMiddleBottom":"上中下結構","surround":"全包圍結構","surroundFromAbove":"上三包圍結構","surroundFromBelow":"下三包圍結構","surroundFromLeft":"左三包圍結構","surroundFromUpperLeft":"左上包圍結構","surroundFromUpperRight":"右上包圍結構","surroundFromLowerLeft":"左下包圍結構"}</script>
           </section>
         </div>
       </section>
@@ -245,18 +264,20 @@
         <div class="section-heading"><p class="section-kicker">線上手寫查字</p><h2 id="handwritingFeatureTitle">不知道讀音也能直接手寫辨識國字</h2><p class="seo-intro">手寫漢字辨識適合查詢書籍、圖片或生活中遇到的陌生國字。不必先知道讀音或部首，用滑鼠、觸控板、觸控螢幕或手寫筆描出字形即可查字。</p></div>
         <div class="seo-grid">
           <article><h3>邊寫邊顯示候選字</h3><p>每完成一畫就自動更新結果，最多顯示 10 個相似漢字，寫錯時可復原上一畫。</p></article>
-          <article><h3>候選字資料直接查看</h3><p>選取漢字後顯示常見拼音、筆畫數和 Unicode，並可複製或繼續查看動態筆順。</p></article>
+          <article><h3>候選字資料直接查看</h3><p>選取漢字後顯示注音、拼音、部首、字形結構、筆畫數和 Unicode，並可複製或繼續查看動態筆順。</p></article>
           <article><h3>在瀏覽器本機辨識</h3><p>筆畫座標不會上傳到 JianFan.app 伺服器，公開 WebAssembly 元件會在瀏覽器中完成比對。</p></article>
         </div>
         <section class="word-howto" aria-labelledby="handwritingHowTitle"><h2 id="handwritingHowTitle">如何線上手寫查字</h2><ol>
             <li>用滑鼠、觸控螢幕或手寫筆在田字格中央逐畫寫下漢字。</li>
             <li>從自動更新的候選結果中選取最接近的字。</li>
-            <li>查看拼音與筆畫數，或前往筆順頁面繼續查詢。</li>
+            <li>查看注音、拼音與部首，或前往筆順頁面繼續查詢。</li>
+            <li>要輸入多個字時，點選「加入輸入框」逐字拼接，最後一次複製整段文字。</li>
           </ol></section>
         <section class="pinyin-faq" aria-labelledby="handwritingFaqTitle"><h2 id="handwritingFaqTitle">手寫漢字辨識常見問題</h2>
-          <details><summary>不認識的字怎麼查拼音？</summary><p>手寫這個字並點選最接近的候選，頁面會顯示拼音、總筆畫數和 Unicode，還能繼續查看筆順和字形結構。</p></details>
-          <details><summary>可以當手寫輸入法用嗎？</summary><p>可以逐字使用：寫一個字，選取候選後點選「複製漢字」，再貼到需要輸入的地方。本頁一次辨識一個字，不支援連續手寫整句。</p></details>
-          <details><summary>候選裡沒有要找的字怎麼辦？</summary><p>把字寫大、讓筆畫分開後再試；仍然找不到時，可用「漢字查詢與結構拆解」依偏旁部件反查。照片或截圖中的印刷文字，用「線上拍照漢字辨識」更方便。</p></details>
+          <details><summary>不認識的字怎麼查注音和拼音？</summary><p>手寫這個字並點選最接近的候選，頁面會顯示注音、拼音、部首、總筆畫數和 Unicode，還能繼續查看筆順和字形結構。</p></details>
+          <details><summary>手寫查字可以顯示注音嗎？</summary><p>可以。選取候選字後，查字結果會同時顯示注音符號與漢語拼音，破音字會列出所有常見讀音，例如「行」顯示 ㄒㄧㄥˊ / ㄏㄤˊ。</p></details>
+          <details><summary>可以當手寫輸入法用嗎？</summary><p>可以。每寫好一個字，選取候選後點選「加入輸入框」，畫布會自動清除，接著寫下一個字；全部寫完後點選輸入框旁的「複製」，一次複製整段文字。本頁一次辨識一個字，不辨識連筆寫成的整句。</p></details>
+          <details><summary>候選裡沒有要找的字怎麼辦？</summary><p>把字寫大、讓筆畫分開後再試；仍然找不到時，可用「<a href="/zh-tw/chinese-character-lookup/">漢字查詢與結構拆解</a>」依偏旁部件反查。照片或截圖中的印刷文字，用「<a href="/zh-tw/photo-chinese-character-recognition/">線上拍照漢字辨識</a>」更方便。</p></details>
           <details><summary>手機和平板可以用嗎？</summary><p>可以。直接用手指或觸控筆在方格中書寫即可，不需要安裝 App 或註冊。</p></details>
           <details><summary>不依正確筆順也能辨識嗎？</summary><p>辨識會參考筆畫方向、位置和數量。少量筆順差異可能仍有候選，但依一般筆順、寫大並保持結構清楚通常更準確。</p></details>
           <details><summary>支援繁體字和簡體字嗎？</summary><p>支援 9,000 多個常見繁體字與簡體字，少數罕用字、異體字或日本特有字形可能沒有結果。</p></details>
@@ -279,6 +300,65 @@
         </nav>
       </section>
     </main>
-    <footer class="site-footer"><p>JianFan.app 提供在瀏覽器中執行的漢字辨識、拼音、筆順與中文轉換工具。</p><nav class="footer-links" aria-label="頁尾"><a href="/zh-tw/about/">關於我們</a><a href="/zh-tw/contact/">聯絡我們</a><a href="/zh-tw/privacy/">隱私聲明</a></nav></footer>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="全部工具">
+        <div class="site-directory-group">
+          <p class="site-directory-title">簡繁轉換</p>
+          <ul>
+            <li><a href="/zh-tw/">簡繁轉換</a></li>
+            <li><a href="/zh-tw/simplified-to-traditional/">簡體轉繁體</a></li>
+            <li><a href="/zh-tw/traditional-to-simplified/">繁體轉簡體</a></li>
+            <li><a href="/zh-tw/taiwan-traditional/">台灣繁體轉換</a></li>
+            <li><a href="/zh-tw/hong-kong-traditional/">香港繁體轉換</a></li>
+            <li><a href="/zh-tw/file-text-converter/">檔案簡繁轉換</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">中文漢字</p>
+          <ul>
+            <li><a href="/zh-tw/chinese-handwriting-recognition/" aria-current="page">手寫漢字辨識</a></li>
+            <li><a href="/zh-tw/photo-chinese-character-recognition/">拍照漢字辨識</a></li>
+            <li><a href="/zh-tw/chinese-to-pinyin/">漢字轉拼音</a></li>
+            <li><a href="/zh-tw/chinese-stroke-order/">漢字筆順查詢</a></li>
+            <li><a href="/zh-tw/chinese-character-lookup/">漢字查詢與結構拆解</a></li>
+            <li><a href="/zh-tw/han-character-worksheet/">國字練習紙</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">日文漢字</p>
+          <ul>
+            <li><a href="/zh-tw/japanese-handwriting-recognition/">日文手寫漢字辨識</a></li>
+            <li><a href="/zh-tw/japanese-kanji-dictionary/">日本漢字查詢</a></li>
+            <li><a href="/zh-tw/japanese-stroke-order/">日本漢字筆順</a></li>
+            <li><a href="/zh-tw/kanji-to-hiragana/">日文漢字轉平假名</a></li>
+            <li><a href="/zh-tw/kanji-to-romaji/">日文漢字轉羅馬字</a></li>
+            <li><a href="/zh-tw/japanese-kanji-converter/">日文新舊字體轉換</a></li>
+            <li><a href="/zh-tw/japanese-chinese-kanji-converter/">日中漢字轉換</a></li>
+            <li><a href="/zh-tw/japanese-characters/">日文字元複製</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">韓國漢字</p>
+          <ul>
+            <li><a href="/zh-tw/korean-hanja-dictionary/">韓國漢字查詢</a></li>
+            <li><a href="/zh-tw/korean-hanja-handwriting-recognition/">韓國漢字手寫辨識</a></li>
+            <li><a href="/zh-tw/hangul-hanja-converter/">韓文漢字轉換</a></li>
+            <li><a href="/zh-tw/korean-name-hanja/">韓國人名用漢字</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">文字工具</p>
+          <ul>
+            <li><a href="/zh-tw/character-counter/">線上字數統計</a></li>
+            <li><a href="/zh-tw/word-to-txt/">DOCX 轉 TXT</a></li>
+            <li><a href="/zh-tw/text-formatter/">文字格式化</a></li>
+            <li><a href="/zh-tw/image-redaction/">圖片馬賽克</a></li>
+            <li><a href="/zh-tw/password-generator/">密碼產生器</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.app 提供在瀏覽器中執行的漢字辨識、拼音、筆順與中文轉換工具。</p><nav class="footer-links" aria-label="頁尾"><a href="/zh-tw/about/">關於我們</a><a href="/zh-tw/contact/">聯絡我們</a><a href="/zh-tw/privacy/">隱私聲明</a></nav></footer>
   </body>
 </html>

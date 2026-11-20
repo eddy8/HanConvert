@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import { withSiteDirectory } from "./sync-site-tool-directory.mjs";
 
 // Link synchronizers own supplemental navigation. Keep their additions when a
 // tool template is regenerated, while letting the template update its own links.
@@ -41,9 +42,9 @@ export function preserveSupplementalToolLinks(generated, existing) {
 
 export async function preserveToolLinks(generated, destination) {
   try {
-    return preserveSupplementalToolLinks(generated, await readFile(destination, "utf8"));
+    return withSiteDirectory(preserveSupplementalToolLinks(generated, await readFile(destination, "utf8")), destination);
   } catch (error) {
     if (error.code !== "ENOENT") throw error;
-    return generated;
+    return withSiteDirectory(generated, destination);
   }
 }

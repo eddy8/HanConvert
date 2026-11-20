@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { preserveExistingLastmods } from "./sitemap-lastmod.mjs";
+import { withSiteDirectory } from "./sync-site-tool-directory.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://jianfan.app";
@@ -257,6 +258,7 @@ function syncSitemap(source) {
 }
 
 async function writeOrCheck(filePath, expected) {
+  expected = withSiteDirectory(expected, filePath);
   if (checkOnly) {
     const actual = await readFile(filePath, "utf8");
     if (actual !== expected) throw new Error(`${path.relative(projectRoot, filePath)} is out of sync; run ${path.basename(fileURLToPath(import.meta.url))}`);
