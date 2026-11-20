@@ -59,5 +59,16 @@ export const contextualToolLinks = [
   ["ko/japanese-handwriting-recognition", "‘한자 부수·구성요소 검색’", "한자 부수·구성요소 검색", "chinese-character-lookup"],
   ["ko/japanese-handwriting-recognition", "‘한자를 히라가나·후리가나로’", "한자를 히라가나·후리가나로", "kanji-to-hiragana"],
   ["ko/korean-hanja-dictionary", "‘한자 필기인식’", "한자 필기인식", "korean-hanja-handwriting-recognition"],
-  ["ko/korean-hanja-dictionary", "대법원이 공개한 인명용 한자", "인명용 한자", "korean-name-hanja"]
+  ["ko/korean-hanja-dictionary", "대법원이 공개한 인명용 한자", "인명용 한자", "korean-name-hanja"],
+  // Korean handwriting (Hangul) and Korean Hanja handwriting point to each other
+  ["korean-hanja-handwriting-recognition", "手写韩文字母请使用“韩语手写识别”", "韩语手写识别", "korean-handwriting-recognition"],
+  ["zh-tw/korean-hanja-handwriting-recognition", "手寫韓文字母請使用「韓文手寫辨識」", "韓文手寫辨識", "korean-handwriting-recognition"],
+  ["en/korean-hanja-handwriting-recognition", "use Korean handwriting input, which", "Korean handwriting input", "korean-handwriting-recognition"],
+  ["ja/korean-hanja-handwriting-recognition", "「韓国語 手書き入力」を使うと", "韓国語 手書き入力", "korean-handwriting-recognition"],
+  ["ko/korean-hanja-handwriting-recognition", "‘한글 필기 인식’을 이용하세요", "한글 필기 인식", "korean-handwriting-recognition"],
+  ["korean-handwriting-recognition", "请使用“韩国汉字手写识别”", "韩国汉字手写识别", "korean-hanja-handwriting-recognition"],
+  ["zh-tw/korean-handwriting-recognition", "請使用「韓國漢字手寫辨識」", "韓國漢字手寫辨識", "korean-hanja-handwriting-recognition"],
+  ["en/korean-handwriting-recognition", "use Korean Hanja handwriting", "Korean Hanja handwriting", "korean-hanja-handwriting-recognition"],
+  ["ja/korean-handwriting-recognition", "「韓国漢字の手書き検索」を使って", "韓国漢字の手書き検索", "korean-hanja-handwriting-recognition"],
+  ["ko/korean-handwriting-recognition", "‘한자 필기인식’을 이용하세요", "한자 필기인식", "korean-hanja-handwriting-recognition"]
 ];

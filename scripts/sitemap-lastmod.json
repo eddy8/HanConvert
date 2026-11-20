@@ -160,7 +160,7 @@
     "lastmod": "2026-09-21"
   },
   "en/index.html": {
-    "hash": "8d914b43ce75e41c",
+    "hash": "0abcd666ed3eaca3",
     "lastmod": "2026-11-20"
   },
   "en/japanese-characters/index.html": {
@@ -203,12 +203,16 @@
     "hash": "99c340658384b85a",
     "lastmod": "2026-08-02"
   },
+  "en/korean-handwriting-recognition/index.html": {
+    "hash": "c88388fbda2059bc",
+    "lastmod": "2026-11-20"
+  },
   "en/korean-hanja-dictionary/index.html": {
     "hash": "f32050cf0a39c0b8",
     "lastmod": "2026-11-17"
   },
   "en/korean-hanja-handwriting-recognition/index.html": {
-    "hash": "f4fc231a89be6b9a",
+    "hash": "596d2e31fb57adab",
     "lastmod": "2026-11-20"
   },
   "en/korean-name-hanja/index.html": {
@@ -336,7 +340,7 @@
     "lastmod": "2026-09-21"
   },
   "index.html": {
-    "hash": "236d8ca93b0f68e5",
+    "hash": "9d67a79285bc9b54",
     "lastmod": "2026-11-20"
   },
   "ja/about/index.html": {
@@ -428,7 +432,7 @@
     "lastmod": "2026-09-21"
   },
   "ja/index.html": {
-    "hash": "67f3b2568c405d91",
+    "hash": "8f786699e85ddaa2",
     "lastmod": "2026-11-20"
   },
   "ja/japanese-characters/index.html": {
@@ -471,12 +475,16 @@
     "hash": "969c97623a928b8e",
     "lastmod": "2026-08-02"
   },
+  "ja/korean-handwriting-recognition/index.html": {
+    "hash": "e6b0152967d004ec",
+    "lastmod": "2026-11-20"
+  },
   "ja/korean-hanja-dictionary/index.html": {
     "hash": "5819320483a707b6",
     "lastmod": "2026-11-17"
   },
   "ja/korean-hanja-handwriting-recognition/index.html": {
-    "hash": "e68b0c9141597b6e",
+    "hash": "ae3e603862f22994",
     "lastmod": "2026-11-20"
   },
   "ja/korean-name-hanja/index.html": {
@@ -680,7 +688,7 @@
     "lastmod": "2026-09-21"
   },
   "ko/index.html": {
-    "hash": "93beedd83b4313e4",
+    "hash": "6e1dcb7419018d0e",
     "lastmod": "2026-11-20"
   },
   "ko/japanese-characters/index.html": {
@@ -723,12 +731,16 @@
     "hash": "85639bc67e37f860",
     "lastmod": "2026-08-02"
   },
+  "ko/korean-handwriting-recognition/index.html": {
+    "hash": "b7de0069f2bfb99b",
+    "lastmod": "2026-11-20"
+  },
   "ko/korean-hanja-dictionary/index.html": {
     "hash": "0699ab2e41eb6d82",
     "lastmod": "2026-11-17"
   },
   "ko/korean-hanja-handwriting-recognition/index.html": {
-    "hash": "42bf57bc4e2c726a",
+    "hash": "26fac169e3e2658b",
     "lastmod": "2026-11-20"
   },
   "ko/korean-name-hanja/index.html": {
@@ -803,12 +815,16 @@
     "hash": "9c7451cf6c661b0d",
     "lastmod": "2026-09-10"
   },
+  "korean-handwriting-recognition/index.html": {
+    "hash": "9176a70032695ec8",
+    "lastmod": "2026-11-20"
+  },
   "korean-hanja-dictionary/index.html": {
     "hash": "21b764b2d48fe5df",
     "lastmod": "2026-11-17"
   },
   "korean-hanja-handwriting-recognition/index.html": {
-    "hash": "ef2e6bac210596a3",
+    "hash": "80ea9f0e88202468",
     "lastmod": "2026-11-20"
   },
   "korean-name-hanja/index.html": {
@@ -976,7 +992,7 @@
     "lastmod": "2026-09-21"
   },
   "zh-tw/index.html": {
-    "hash": "6258075b65820635",
+    "hash": "5d166fb9ff2d127a",
     "lastmod": "2026-11-20"
   },
   "zh-tw/japanese-characters/index.html": {
@@ -1019,12 +1035,16 @@
     "hash": "c92d1026879607fe",
     "lastmod": "2026-08-28"
   },
+  "zh-tw/korean-handwriting-recognition/index.html": {
+    "hash": "c460624288032753",
+    "lastmod": "2026-11-20"
+  },
   "zh-tw/korean-hanja-dictionary/index.html": {
     "hash": "e6d940262fa63169",
     "lastmod": "2026-11-17"
   },
   "zh-tw/korean-hanja-handwriting-recognition/index.html": {
-    "hash": "853629fb6145a005",
+    "hash": "5319fb8c78ee01ef",
     "lastmod": "2026-11-20"
   },
   "zh-tw/korean-name-hanja/index.html": {

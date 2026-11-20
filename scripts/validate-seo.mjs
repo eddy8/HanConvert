@@ -82,7 +82,7 @@ if ([...sitemapHreflangs].sort().join("|") !== [...expectedHreflangs].sort().joi
   throw new Error(`sitemap.xml contains unexpected hreflang values: ${[...sitemapHreflangs].sort().join(", ")}`);
 }
 
-for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "text-formatter.js", "image-redaction.js", "password-generator.js", "han-character-worksheet.js", "handwriting-recognition.js", "handwriting-recognition-worker.js", "photo-chinese-character-recognition.js", "han-character-lookup-core.js", "han-character-lookup.js", "kanji-romaji-core.js", "kanji-to-romaji.js", "japanese-reading-client.js", "japanese-reading-worker.js", "kanji-to-hiragana.js", "japanese-stroke-order.js", "japanese-kanji-data.js", "japanese-kanji-dictionary.js", "japanese-handwriting-recognition.js", "korean-hanja-data.js", "korean-hanja-dictionary.js", "hangul-hanja-converter.js", "korean-name-hanja.js", "webmcp.js"]) {
+for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "text-formatter.js", "image-redaction.js", "password-generator.js", "han-character-worksheet.js", "handwriting-recognition.js", "korean-handwriting-recognition.js", "handwriting-recognition-worker.js", "photo-chinese-character-recognition.js", "han-character-lookup-core.js", "han-character-lookup.js", "kanji-romaji-core.js", "kanji-to-romaji.js", "japanese-reading-client.js", "japanese-reading-worker.js", "kanji-to-hiragana.js", "japanese-stroke-order.js", "japanese-kanji-data.js", "japanese-kanji-dictionary.js", "japanese-handwriting-recognition.js", "korean-hanja-data.js", "korean-hanja-dictionary.js", "hangul-hanja-converter.js", "korean-name-hanja.js", "webmcp.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
@@ -216,7 +216,8 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isKoreanHandwritingPage = html.includes('data-tool-page="korean-hanja-handwriting-recognition"');
   const isHangulHanjaConverterPage = html.includes('data-tool-page="hangul-hanja-converter"');
   const isKoreanNamePage = html.includes('data-tool-page="korean-name-hanja"');
-  const isKoreanToolPage = isKoreanDictionaryPage || isKoreanHandwritingPage || isHangulHanjaConverterPage || isKoreanNamePage;
+  const isKoreanHandwritingInputPage = html.includes('data-tool-page="korean-handwriting-recognition"');
+  const isKoreanToolPage = isKoreanDictionaryPage || isKoreanHandwritingPage || isHangulHanjaConverterPage || isKoreanNamePage || isKoreanHandwritingInputPage;
   const isEstablishedStandaloneToolPage = isPinyinPage || isStrokeOrderPage || isWordToTxtPage || isCharacterCounterPage || isWorksheetPage || isKanjiRomajiPage || isHandwritingPage || isHanLookupPage;
   const hasHandwritingLink = html.includes("chinese-handwriting-recognition/") || html.includes("japanese-handwriting-recognition/");
   const hasCharacterLookupLink = html.includes("chinese-character-lookup/") || html.includes("japanese-kanji-dictionary/");
@@ -778,10 +779,10 @@ if (!notFound.includes('name="robots" content="noindex, follow"')) {
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
-if (standaloneToolPages !== 110) throw new Error(`expected 110 standalone tool pages, found ${standaloneToolPages}`);
+if (standaloneToolPages !== 115) throw new Error(`expected 115 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
 if (pseoPages !== 105) throw new Error(`expected 105 controlled pSEO pages, found ${pseoPages}`);
 if (blogPages !== 9) throw new Error(`expected 9 blog pages, found ${blogPages}`);
-if (sitemapUrls.length !== 275) throw new Error(`expected 275 sitemap URLs, found ${sitemapUrls.length}`);
+if (sitemapUrls.length !== 280) throw new Error(`expected 280 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, ${pseoPages} controlled pSEO pages, ${blogPages} blog pages, and ${sitemapUrls.length} sitemap URLs.`);
