@@ -144,12 +144,31 @@ test("reads the layout and components of an ideographic description sequence", (
 test("Chinese handwriting pages add the text box, radical and structure rows, Zhuyin on zh-TW and meaning on English", async () => {
   for (const prefix of ["", "zh-tw/", "en/", "ja/", "ko/"]) {
     const html = await readFile(new URL(`../${prefix}chinese-handwriting-recognition/index.html`, import.meta.url), "utf8");
-    for (const id of ["handwritingAppend", "handwritingText", "handwritingTextCopy", "handwritingResultRadical", "handwritingResultStructure", "handwritingStructureLabels"]) {
+    assert.match(html, /<script defer src="\/vendor\/pinyin-pro\.js"><\/script>\n    <script defer src="\/traditional-pinyin\.js"><\/script>/, `${prefix || "zh-CN"} loads the Traditional reading table`);
+    for (const id of ["handwritingAppend", "handwritingText", "handwritingTextCopy", "handwritingTextReading", "handwritingResultRadical", "handwritingResultStructure", "handwritingStructureLabels"]) {
       assert.ok(html.includes(`id="${id}"`), `${prefix || "zh-CN"} ${id}`);
     }
     assert.equal(html.includes('id="handwritingResultZhuyin"'), prefix === "zh-tw/", `${prefix} zhuyin row`);
     assert.equal(html.includes('id="handwritingResultMeaning"'), prefix === "en/", `${prefix} meaning row`);
   }
-  const korean = await readFile(new URL("../korean-hanja-handwriting-recognition/index.html", import.meta.url), "utf8");
-  assert.doesNotMatch(korean, /id="handwritingAppend"/);
+});
+
+test("Korean Hanja handwriting pages add the text box, Korean meaning, radical and name-use rows", async () => {
+  for (const prefix of ["", "zh-tw/", "en/", "ja/", "ko/"]) {
+    const html = await readFile(new URL(`../${prefix}korean-hanja-handwriting-recognition/index.html`, import.meta.url), "utf8");
+    for (const id of ["handwritingAppend", "handwritingText", "handwritingTextReading", "handwritingResultGloss", "handwritingResultRadical", "handwritingResultNameUse"]) {
+      assert.ok(html.includes(`id="${id}"`), `${prefix || "zh-CN"} ${id}`);
+    }
+    assert.match(html, /data-reading-source="korean"/);
+    assert.match(html, /data-message-name-allowed="/);
+    assert.equal(html.includes('id="handwritingResultMeaning"'), prefix === "en/", `${prefix} English meaning row`);
+    assert.doesNotMatch(html, /id="handwritingResultZhuyin"/);
+  }
+  assert.match(source, /convertHanjaToHangul\(value, koreanReverseWords\)/);
+});
+
+test("adding a character keeps its details visible and reads the whole text with word context", () => {
+  assert.match(source, /clearDrawing\(\{ keepResult: true \}\)/);
+  assert.match(source, /if \(!keepResult\) result\.hidden = true;/);
+  assert.match(source, /JianfanTraditionalPinyin\.pinyin\(pinyinPro, value, options\)/);
 });

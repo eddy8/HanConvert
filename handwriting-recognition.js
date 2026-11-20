@@ -239,13 +239,21 @@
   const resultRadical = document.querySelector("#handwritingResultRadical");
   const resultStructure = document.querySelector("#handwritingResultStructure");
   const resultMeaning = document.querySelector("#handwritingResultMeaning");
+  const resultGloss = document.querySelector("#handwritingResultGloss");
+  const resultNameUse = document.querySelector("#handwritingResultNameUse");
   const appendButton = document.querySelector("#handwritingAppend");
   const textInput = document.querySelector("#handwritingText");
   const textCopyButton = document.querySelector("#handwritingTextCopy");
   const textClearButton = document.querySelector("#handwritingTextClear");
+  const textReading = document.querySelector("#handwritingTextReading");
+  const textReadingValue = document.querySelector("#handwritingTextReadingValue");
   const structureLabels = readJson("handwritingStructureLabels");
   const lookupShards = new Map();
   const MAX_TEXT_LENGTH = 200;
+  let traditionalTableRequested = false;
+  let koreanReverseWords;
+  let koreanReverseWordsPromise;
+  let koreanReadingToken = 0;
   const context = canvas?.getContext("2d");
 
   if (!canvas || !board || !context || !core) return;
@@ -283,12 +291,17 @@
       if (!selectedCharacter) return;
       textInput.value = Array.from(`${textInput.value}${selectedCharacter}`).slice(-MAX_TEXT_LENGTH).join("");
       const added = selectedCharacter;
-      clearDrawing();
+      // Keep the added character's details on screen; only the pad and candidates reset.
+      clearDrawing({ keepResult: true });
       updateTextControls();
+      textInput.classList.remove("is-updated");
+      void textInput.offsetWidth;
+      textInput.classList.add("is-updated");
       setStatus("appended", "ready", { character: added });
       canvas.focus?.();
     });
     textInput.addEventListener("input", updateTextControls);
+    textInput.addEventListener("animationend", () => textInput.classList.remove("is-updated"));
     textCopyButton?.addEventListener("click", () => copyValue(textInput.value, "copiedText"));
     textClearButton?.addEventListener("click", () => {
       textInput.value = "";
@@ -297,7 +310,71 @@
     updateTextControls();
   }
 
+  // Reads the whole text with word context (银行 → yín háng). zh-TW pages also show Zhuyin.
+  function updateTextReading() {
+    if (!textReading || !textReadingValue) return;
+    const value = textInput.value;
+    if (usesKoreanReadings) {
+      updateKoreanReading(value);
+      return;
+    }
+    const pinyinPro = window.pinyinPro;
+    if (!pinyinPro || !/\p{Script=Han}/u.test(value)) {
+      textReading.hidden = true;
+      return;
+    }
+    const options = { toneType: "symbol", type: "array", traditional: true, nonZh: "removed" };
+    let syllables = [];
+    try {
+      syllables = window.JianfanTraditionalPinyin
+        ? window.JianfanTraditionalPinyin.pinyin(pinyinPro, value, options)
+        : pinyinPro.pinyin(value, options);
+    } catch {
+      syllables = [];
+    }
+    const pinyin = syllables.filter(Boolean).join(" ");
+    const zhuyin = resultZhuyin ? syllables.map(core.pinyinToZhuyin).filter(Boolean).join(" ") : "";
+    textReadingValue.textContent = [zhuyin, pinyin].filter(Boolean).join(" · ");
+    textReading.hidden = !pinyin;
+    if (!traditionalTableRequested && window.JianfanTraditionalPinyin) {
+      traditionalTableRequested = true;
+      window.JianfanTraditionalPinyin.load().then((table) => {
+        if (table) updateTextReading();
+      });
+    }
+  }
+
+  // Korean Hanja pages read the whole word in Hangul (大韓民國 → 대한민국) with the converter's
+  // word list, which loads the first time the text box holds Hanja.
+  async function updateKoreanReading(value) {
+    const token = ++koreanReadingToken;
+    if (!/\p{Script=Han}/u.test(value) || !window.KoreanHanjaData) {
+      textReading.hidden = true;
+      return;
+    }
+    textReading.hidden = false;
+    if (!koreanReverseWords) {
+      textReadingValue.dataset.state = "loading";
+      textReadingValue.textContent = formatMessage("readingLoading");
+      koreanReverseWordsPromise ||= window.KoreanHanjaData.loadReverseWords().then((payload) => {
+        koreanReverseWords = payload?.words || {};
+        return koreanReverseWords;
+      });
+      try {
+        await koreanReverseWordsPromise;
+      } catch {
+        koreanReverseWordsPromise = undefined;
+        if (token === koreanReadingToken) textReadingValue.textContent = formatMessage("readingError");
+        return;
+      }
+    }
+    if (token !== koreanReadingToken) return;
+    delete textReadingValue.dataset.state;
+    textReadingValue.textContent = window.KoreanHanjaData.convertHanjaToHangul(value, koreanReverseWords).output;
+  }
+
   function updateTextControls() {
+    updateTextReading();
     const hasText = Boolean(textInput?.value);
     if (textCopyButton) textCopyButton.disabled = !hasText;
     if (textClearButton) textClearButton.disabled = !hasText;
@@ -318,6 +395,8 @@
   }
 
   async function fillCharacterDetails(character) {
+    // Korean Hanja pages fill these rows from the Korean Hanja record in selectCandidate.
+    if (usesKoreanReadings) return;
     if (!resultRadical && !resultStructure && !resultMeaning) return;
     for (const element of [resultRadical, resultStructure, resultMeaning]) if (element) element.textContent = "…";
     const record = (await lookupShard(character))[character];
@@ -521,19 +600,21 @@
     clearButton.disabled = count === 0;
   }
 
-  function clearDrawing() {
+  function clearDrawing({ keepResult = false } = {}) {
     window.clearTimeout(lookupTimer);
     remoteLookupController?.abort();
     remoteLookupController = undefined;
     strokes = [];
     currentStroke = undefined;
-    selectedCharacter = "";
+    // After adding a character its details stay visible, so Copy and the lookup links keep working;
+    // only the add button waits for the next drawing.
+    if (!keepResult) selectedCharacter = "";
     if (appendButton) appendButton.disabled = true;
     redrawCanvas();
     updateStrokeControls();
     candidates.replaceChildren();
     candidateEmpty.hidden = false;
-    result.hidden = true;
+    if (!keepResult) result.hidden = true;
     setRemoteActionVisible(false);
     if (workerReady) setStatus("ready", "ready");
   }
@@ -696,15 +777,24 @@
     structureLink.href = `${localePaths[locale]}chinese-character-lookup/?character=${encodeURIComponent(character)}`;
 
     if (usesKoreanReadings) {
+      const koreanRows = [resultGloss, resultMeaning, resultRadical, resultNameUse].filter(Boolean);
+      for (const element of koreanRows) element.textContent = "…";
       try {
         const payload = await window.KoreanHanjaData.loadCharacters();
         const record = payload.records.find((item) => item.character === character);
         if (selectedCharacter === character) {
           resultPinyin.textContent = record?.readings?.join(" / ") || "-";
           if (record?.strokes) resultStrokes.textContent = record.strokes.toLocaleString(locale);
+          if (resultGloss) resultGloss.textContent = record?.glosses?.join(" / ") || "-";
+          if (resultMeaning) resultMeaning.textContent = record?.definition || "-";
+          if (resultRadical) resultRadical.textContent = record?.radical || "-";
+          if (resultNameUse) resultNameUse.textContent = record ? formatMessage(record.nameUse ? "nameAllowed" : "nameNotConfirmed") : "-";
         }
       } catch {
-        if (selectedCharacter === character) resultPinyin.textContent = "-";
+        if (selectedCharacter === character) {
+          resultPinyin.textContent = "-";
+          for (const element of koreanRows) element.textContent = "-";
+        }
       }
     }
 

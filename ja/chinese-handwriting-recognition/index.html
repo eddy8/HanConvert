@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/styles.min.css" />
     <script src="/theme.js"></script>
     <script defer src="/vendor/pinyin-pro.js"></script>
+    <script defer src="/traditional-pinyin.js"></script>
     <script defer src="/handwriting-recognition.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -116,7 +117,7 @@
                 "name": "手書き入力の代わりに使えますか？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "使えます。1文字書くごとに候補を選んで「入力欄に追加」を押すと、手書きパッドが消えて次の字を書けます。書き終えたら入力欄の「コピー」でまとめてコピーできます。1回に認識するのは1文字で、続け字の文章は認識しません。"
+                  "text": "使えます。1文字書くごとに候補を選んで「入力欄に追加」を押すと、手書きパッドが消えて次の字を書けます。書き終えたら入力欄の「コピー」でまとめてコピーできます。入力欄の下には全体のピンインが単語単位で表示されます（例：银行は yín háng）。1回に認識するのは1文字で、続け字の文章は認識しません。"
                 }
               },
               {
@@ -216,7 +217,7 @@
               <button id="handwritingUndo" type="button" disabled><span aria-hidden="true">↶</span><span>1画戻す</span></button>
               <button id="handwritingClear" type="button" disabled><span aria-hidden="true">×</span><span>すべて消す</span></button>
             </div>
-            <div class="handwriting-compose"><div class="handwriting-compose-head"><label for="handwritingText">入力した文字</label><button id="handwritingTextCopy" type="button" disabled>コピー</button><button id="handwritingTextClear" type="button" disabled>クリア</button></div><input id="handwritingText" type="text" lang="ja" autocomplete="off" spellcheck="false" maxlength="200" placeholder="候補を選んで「入力欄に追加」で続けて入力" /></div>
+            <div class="handwriting-compose"><div class="handwriting-compose-head"><label for="handwritingText">入力した文字</label><button id="handwritingTextCopy" type="button" disabled>コピー</button><button id="handwritingTextClear" type="button" disabled>クリア</button></div><input id="handwritingText" type="text" lang="ja" autocomplete="off" spellcheck="false" maxlength="200" placeholder="候補を選んで「入力欄に追加」で続けて入力" /><p class="handwriting-compose-reading" id="handwritingTextReading" hidden><span>ピンイン</span><strong id="handwritingTextReadingValue"></strong></p></div>
             <div class="handwriting-samples"><span>サンプル</span><button type="button" data-handwriting-sample="人" aria-label="サンプル 人">人</button><button type="button" data-handwriting-sample="大" aria-label="サンプル 大">大</button><button type="button" data-handwriting-sample="木" aria-label="サンプル 木">木</button><button type="button" data-handwriting-sample="中" aria-label="サンプル 中">中</button></div>
             <p class="handwriting-hint">中央に大きく、一般的な筆順で1画ずつはっきり書くと認識しやすくなります。</p>
           </section>
@@ -266,7 +267,7 @@
           </ol></section>
         <section class="pinyin-faq" aria-labelledby="handwritingFaqTitle"><h2 id="handwritingFaqTitle">漢字手書き検索のよくある質問</h2>
           <details><summary>読めない中国語の漢字のピンインを調べるには？</summary><p>漢字を手書きして一番近い候補を選ぶと、ピンイン・総画数・Unicodeが表示され、書き順や字形構成も続けて確認できます。</p></details>
-          <details><summary>手書き入力の代わりに使えますか？</summary><p>使えます。1文字書くごとに候補を選んで「入力欄に追加」を押すと、手書きパッドが消えて次の字を書けます。書き終えたら入力欄の「コピー」でまとめてコピーできます。1回に認識するのは1文字で、続け字の文章は認識しません。</p></details>
+          <details><summary>手書き入力の代わりに使えますか？</summary><p>使えます。1文字書くごとに候補を選んで「入力欄に追加」を押すと、手書きパッドが消えて次の字を書けます。書き終えたら入力欄の「コピー」でまとめてコピーできます。入力欄の下には全体のピンインが単語単位で表示されます（例：银行は yín háng）。1回に認識するのは1文字で、続け字の文章は認識しません。</p></details>
           <details><summary>候補に目的の字が出てこないときは？</summary><p>大きく書き、画を離して書き直してください。それでも出ない場合は「<a href="/ja/chinese-character-lookup/">漢字の構成・部首検索</a>」で部品から探せます。写真やスクリーンショットの印刷文字なら「<a href="/ja/photo-chinese-character-recognition/">写真から中国語漢字を認識</a>」が便利です。</p></details>
           <details><summary>スマホやタブレットでも使えますか？</summary><p>使えます。指やタッチペンでマスにそのまま書けます。アプリのインストールや登録は不要です。</p></details>
           <details><summary>正しい筆順で書く必要がありますか？</summary><p>筆画の方向・位置・数を照合するため、一般的な筆順で大きくはっきり書くと精度が上がります。多少の違いでも候補が出る場合があります。</p></details>

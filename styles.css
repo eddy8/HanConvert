@@ -10727,7 +10727,42 @@ main :is(p, li) > a:not([class]):hover {
 }
 
 #handwritingResultMeaning,
-#handwritingResultStructure {
+#handwritingResultStructure,
+#handwritingResultGloss,
+#handwritingResultNameUse {
   font-family: var(--font-ui);
   font-weight: 600;
+}
+
+.handwriting-compose > input.is-updated {
+  animation: handwriting-text-added 900ms var(--ease);
+}
+
+@keyframes handwriting-text-added {
+  0% {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(var(--ac), 0.28);
+  }
+
+  100% {
+    border-color: var(--line);
+    box-shadow: 0 0 0 0 rgba(var(--ac), 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .handwriting-compose > input.is-updated {
+    animation: none;
+  }
+}
+
+/* The empty-state message already fills this spot before the first stroke. */
+.handwriting-candidates:empty {
+  display: none;
+}
+
+.handwriting-compose-reading strong[data-state="loading"] {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 400;
 }
