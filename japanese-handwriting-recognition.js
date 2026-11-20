@@ -273,9 +273,19 @@
 
   function appendSelected() {
     if (!selectedCharacter) return;
-    elements.text.value = core.appendCharacter(elements.text.value, selectedCharacter);
-    clearCanvas();
-    setStatus("appended", "ready", { character: elements.text.value });
+    const added = selectedCharacter;
+    elements.text.value = core.appendCharacter(elements.text.value, added);
+    // Clear the square and candidates but keep the added kanji's readings on screen.
+    if (initialized) globalThis.KanjiCanvas.erase(CANVAS_ID);
+    lastSignature = "";
+    recognitionId += 1;
+    elements.candidates.replaceChildren();
+    elements.candidateEmpty.hidden = false;
+    elements.append.disabled = true;
+    elements.text.classList.remove("is-updated");
+    void elements.text.offsetWidth;
+    elements.text.classList.add("is-updated");
+    setStatus("appended", "ready", { character: added });
     updateTextControls();
     scheduleReading();
     elements.canvas.focus();
@@ -296,6 +306,7 @@
       return;
     }
     elements.reading.hidden = false;
+    elements.readingValue.dataset.state = "loading";
     elements.readingValue.textContent = readingClient ? message("readingLoading") : message("readingDictionary");
     readingTimer = window.setTimeout(() => readText(value), READING_DELAY);
   }
@@ -306,10 +317,16 @@
       if (!readingClient) readingClient = globalThis.JapaneseReadingClient.createClient();
       const dictionaryPaths = [body.dataset.dictionaryPath, body.dataset.dictionaryFallbackPath].filter(Boolean);
       const result = await readingClient.convert({ value, format: "hiragana", dictionaryPaths });
-      if (token === readingToken) elements.readingValue.textContent = result || body.dataset.emptyValue;
+      if (token === readingToken) {
+        delete elements.readingValue.dataset.state;
+        elements.readingValue.textContent = result || body.dataset.emptyValue;
+      }
     } catch (error) {
       console.error(error);
-      if (token === readingToken) elements.readingValue.textContent = message("readingError");
+      if (token === readingToken) {
+        elements.readingValue.dataset.state = "loading";
+        elements.readingValue.textContent = message("readingError");
+      }
     }
   }
 
@@ -327,6 +344,9 @@
     // Recognition runs in the worker; the page copy of KanjiCanvas only draws. Its Ctrl+F shortcut
     // would otherwise call recognize() without reference patterns.
     globalThis.KanjiCanvas.recognize = () => "";
+    // Kanji Canvas draws in #333, which disappears on the dark theme; use the page's ink colour.
+    const draw = globalThis.KanjiCanvas.draw;
+    globalThis.KanjiCanvas.draw = (id, color) => draw(id, color || getComputedStyle(document.documentElement).getPropertyValue("--ink").trim() || "#333");
     initialized = true;
   }
 
@@ -352,6 +372,7 @@
     updateTextControls();
     scheduleReading();
   });
+  elements.text.addEventListener("animationend", () => elements.text.classList.remove("is-updated"));
   elements.text.addEventListener("input", () => {
     updateTextControls();
     scheduleReading();

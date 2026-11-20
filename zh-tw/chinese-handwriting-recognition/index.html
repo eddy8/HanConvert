@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/styles.min.css" />
     <script src="/theme.js"></script>
     <script defer src="/vendor/pinyin-pro.js"></script>
+    <script defer src="/traditional-pinyin.js"></script>
     <script defer src="/handwriting-recognition.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -95,7 +96,7 @@
               {
                 "@type": "HowToStep",
                 "position": 4,
-                "text": "要輸入多個字時，點選「加入輸入框」逐字拼接，最後一次複製整段文字。"
+                "text": "要輸入多個字時，點選「加入輸入框」逐字拼接，輸入框下方會顯示整段注音與拼音，最後一次複製整段文字。"
               }
             ]
           },
@@ -124,7 +125,7 @@
                 "name": "可以當手寫輸入法用嗎？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "可以。每寫好一個字，選取候選後點選「加入輸入框」，畫布會自動清除，接著寫下一個字；全部寫完後點選輸入框旁的「複製」，一次複製整段文字。本頁一次辨識一個字，不辨識連筆寫成的整句。"
+                  "text": "可以。每寫好一個字，選取候選後點選「加入輸入框」，畫布會自動清除，接著寫下一個字；全部寫完後點選輸入框旁的「複製」，一次複製整段文字。輸入框下方會依詞語顯示整段注音與拼音，例如「銀行」顯示 ㄧㄣˊ ㄏㄤˊ。本頁一次辨識一個字，不辨識連筆寫成的整句。"
                 }
               },
               {
@@ -224,7 +225,7 @@
               <button id="handwritingUndo" type="button" disabled><span aria-hidden="true">↶</span><span>復原上一畫</span></button>
               <button id="handwritingClear" type="button" disabled><span aria-hidden="true">×</span><span>清除重寫</span></button>
             </div>
-            <div class="handwriting-compose"><div class="handwriting-compose-head"><label for="handwritingText">已輸入的文字</label><button id="handwritingTextCopy" type="button" disabled>複製</button><button id="handwritingTextClear" type="button" disabled>清除</button></div><input id="handwritingText" type="text" lang="zh-Hant" autocomplete="off" spellcheck="false" maxlength="200" placeholder="選取候選後點「加入輸入框」，可連續手寫輸入" /></div>
+            <div class="handwriting-compose"><div class="handwriting-compose-head"><label for="handwritingText">已輸入的文字</label><button id="handwritingTextCopy" type="button" disabled>複製</button><button id="handwritingTextClear" type="button" disabled>清除</button></div><input id="handwritingText" type="text" lang="zh-Hant" autocomplete="off" spellcheck="false" maxlength="200" placeholder="選取候選後點「加入輸入框」，可連續手寫輸入" /><p class="handwriting-compose-reading" id="handwritingTextReading" hidden><span>注音／拼音</span><strong id="handwritingTextReadingValue"></strong></p></div>
             <div class="handwriting-samples"><span>試用範例</span><button type="button" data-handwriting-sample="人" aria-label="試用範例 人">人</button><button type="button" data-handwriting-sample="大" aria-label="試用範例 大">大</button><button type="button" data-handwriting-sample="木" aria-label="試用範例 木">木</button><button type="button" data-handwriting-sample="中" aria-label="試用範例 中">中</button></div>
             <p class="handwriting-hint">請盡量寫大、置中，並依一般筆順逐畫書寫。</p>
           </section>
@@ -271,12 +272,12 @@
             <li>用滑鼠、觸控螢幕或手寫筆在田字格中央逐畫寫下漢字。</li>
             <li>從自動更新的候選結果中選取最接近的字。</li>
             <li>查看注音、拼音與部首，或前往筆順頁面繼續查詢。</li>
-            <li>要輸入多個字時，點選「加入輸入框」逐字拼接，最後一次複製整段文字。</li>
+            <li>要輸入多個字時，點選「加入輸入框」逐字拼接，輸入框下方會顯示整段注音與拼音，最後一次複製整段文字。</li>
           </ol></section>
         <section class="pinyin-faq" aria-labelledby="handwritingFaqTitle"><h2 id="handwritingFaqTitle">手寫漢字辨識常見問題</h2>
           <details><summary>不認識的字怎麼查注音和拼音？</summary><p>手寫這個字並點選最接近的候選，頁面會顯示注音、拼音、部首、總筆畫數和 Unicode，還能繼續查看筆順和字形結構。</p></details>
           <details><summary>手寫查字可以顯示注音嗎？</summary><p>可以。選取候選字後，查字結果會同時顯示注音符號與漢語拼音，破音字會列出所有常見讀音，例如「行」顯示 ㄒㄧㄥˊ / ㄏㄤˊ。</p></details>
-          <details><summary>可以當手寫輸入法用嗎？</summary><p>可以。每寫好一個字，選取候選後點選「加入輸入框」，畫布會自動清除，接著寫下一個字；全部寫完後點選輸入框旁的「複製」，一次複製整段文字。本頁一次辨識一個字，不辨識連筆寫成的整句。</p></details>
+          <details><summary>可以當手寫輸入法用嗎？</summary><p>可以。每寫好一個字，選取候選後點選「加入輸入框」，畫布會自動清除，接著寫下一個字；全部寫完後點選輸入框旁的「複製」，一次複製整段文字。輸入框下方會依詞語顯示整段注音與拼音，例如「銀行」顯示 ㄧㄣˊ ㄏㄤˊ。本頁一次辨識一個字，不辨識連筆寫成的整句。</p></details>
           <details><summary>候選裡沒有要找的字怎麼辦？</summary><p>把字寫大、讓筆畫分開後再試；仍然找不到時，可用「<a href="/zh-tw/chinese-character-lookup/">漢字查詢與結構拆解</a>」依偏旁部件反查。照片或截圖中的印刷文字，用「<a href="/zh-tw/photo-chinese-character-recognition/">線上拍照漢字辨識</a>」更方便。</p></details>
           <details><summary>手機和平板可以用嗎？</summary><p>可以。直接用手指或觸控筆在方格中書寫即可，不需要安裝 App 或註冊。</p></details>
           <details><summary>不依正確筆順也能辨識嗎？</summary><p>辨識會參考筆畫方向、位置和數量。少量筆順差異可能仍有候選，但依一般筆順、寫大並保持結構清楚通常更準確。</p></details>

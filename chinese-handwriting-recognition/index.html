@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/styles.min.css" />
     <script src="/theme.js"></script>
     <script defer src="/vendor/pinyin-pro.js"></script>
+    <script defer src="/traditional-pinyin.js"></script>
     <script defer src="/handwriting-recognition.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -95,7 +96,7 @@
               {
                 "@type": "HowToStep",
                 "position": 4,
-                "text": "要输入多个字时，点击“加入输入框”逐字拼接，最后一次复制整段文字。"
+                "text": "要输入多个字时，点击“加入输入框”逐字拼接，输入框下方会显示整段拼音，最后一次复制整段文字。"
               }
             ]
           },
@@ -116,7 +117,7 @@
                 "name": "可以当手写输入法用吗？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "可以。每写好一个字，选中候选后点击“加入输入框”，画板会自动清空，接着写下一个字；全部写完后点击输入框旁的“复制”，一次复制整段文字。本页一次识别一个字，不识别连笔写成的整句。"
+                  "text": "可以。每写好一个字，选中候选后点击“加入输入框”，画板会自动清空，接着写下一个字；全部写完后点击输入框旁的“复制”，一次复制整段文字。输入框下方会按词语显示整段拼音，例如“银行”读作 yín háng。本页一次识别一个字，不识别连笔写成的整句。"
                 }
               },
               {
@@ -216,7 +217,7 @@
               <button id="handwritingUndo" type="button" disabled><span aria-hidden="true">↶</span><span>撤销上一笔</span></button>
               <button id="handwritingClear" type="button" disabled><span aria-hidden="true">×</span><span>清空重写</span></button>
             </div>
-            <div class="handwriting-compose"><div class="handwriting-compose-head"><label for="handwritingText">已输入的文字</label><button id="handwritingTextCopy" type="button" disabled>复制</button><button id="handwritingTextClear" type="button" disabled>清空</button></div><input id="handwritingText" type="text" lang="zh-CN" autocomplete="off" spellcheck="false" maxlength="200" placeholder="选中候选后点“加入输入框”，可连续手写输入" /></div>
+            <div class="handwriting-compose"><div class="handwriting-compose-head"><label for="handwritingText">已输入的文字</label><button id="handwritingTextCopy" type="button" disabled>复制</button><button id="handwritingTextClear" type="button" disabled>清空</button></div><input id="handwritingText" type="text" lang="zh-CN" autocomplete="off" spellcheck="false" maxlength="200" placeholder="选中候选后点“加入输入框”，可连续手写输入" /><p class="handwriting-compose-reading" id="handwritingTextReading" hidden><span>拼音</span><strong id="handwritingTextReadingValue"></strong></p></div>
             <div class="handwriting-samples"><span>试用示例</span><button type="button" data-handwriting-sample="人" aria-label="试用示例 人">人</button><button type="button" data-handwriting-sample="大" aria-label="试用示例 大">大</button><button type="button" data-handwriting-sample="木" aria-label="试用示例 木">木</button><button type="button" data-handwriting-sample="中" aria-label="试用示例 中">中</button></div>
             <p class="handwriting-hint">请尽量写大、写在中央，并按常见笔顺逐笔书写。</p>
           </section>
@@ -262,11 +263,11 @@
             <li>用鼠标、触屏或手写笔在田字格中央逐笔写下汉字。</li>
             <li>从自动更新的候选结果中选择最接近的字。</li>
             <li>查看拼音、部首和结构，或进入<a href="/chinese-stroke-order/">笔顺页面</a>继续查询。</li>
-            <li>要输入多个字时，点击“加入输入框”逐字拼接，最后一次复制整段文字。</li>
+            <li>要输入多个字时，点击“加入输入框”逐字拼接，输入框下方会显示整段拼音，最后一次复制整段文字。</li>
           </ol></section>
         <section class="pinyin-faq" aria-labelledby="handwritingFaqTitle"><h2 id="handwritingFaqTitle">手写汉字识别常见问题</h2>
           <details><summary>不认识的字怎么查拼音？</summary><p>手写这个字并点击最接近的候选，页面会显示拼音、部首、字形结构、总笔画数和 Unicode，还可以继续查看笔顺。</p></details>
-          <details><summary>可以当手写输入法用吗？</summary><p>可以。每写好一个字，选中候选后点击“加入输入框”，画板会自动清空，接着写下一个字；全部写完后点击输入框旁的“复制”，一次复制整段文字。本页一次识别一个字，不识别连笔写成的整句。</p></details>
+          <details><summary>可以当手写输入法用吗？</summary><p>可以。每写好一个字，选中候选后点击“加入输入框”，画板会自动清空，接着写下一个字；全部写完后点击输入框旁的“复制”，一次复制整段文字。输入框下方会按词语显示整段拼音，例如“银行”读作 yín háng。本页一次识别一个字，不识别连笔写成的整句。</p></details>
           <details><summary>候选里没有要找的字怎么办？</summary><p>把字写大、让笔画分开后重试；仍然找不到时，可用“<a href="/chinese-character-lookup/">汉字查询与结构拆解</a>”按偏旁部件反查。照片或截图里的印刷文字，用“<a href="/photo-chinese-character-recognition/">在线拍照汉字识别</a>”更省事。</p></details>
           <details><summary>手机和平板能用吗？</summary><p>可以。直接用手指或触控笔在方格中书写即可，不需要安装应用或注册。</p></details>
           <details><summary>不按正确笔顺也能识别吗？</summary><p>识别会参考笔画方向、位置和数量。少量笔顺偏差可能仍能找到候选，但按常见笔顺、把字写大并保持结构清楚通常更准确。</p></details>

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/styles.min.css" />
     <script src="/theme.js"></script>
     <script defer src="/vendor/pinyin-pro.js"></script>
+    <script defer src="/traditional-pinyin.js"></script>
     <script defer src="/handwriting-recognition.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -116,7 +117,7 @@
                 "name": "손글씨 입력기처럼 쓸 수 있나요?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "네. 글자를 쓸 때마다 후보를 고르고 ‘입력란에 추가’를 누르면 입력판이 지워져 다음 글자를 쓸 수 있습니다. 다 쓴 뒤 입력란의 ‘복사’를 누르면 한꺼번에 복사됩니다. 한 번에 한 글자씩 인식하며 이어 쓴 문장은 인식하지 않습니다."
+                  "text": "네. 글자를 쓸 때마다 후보를 고르고 ‘입력란에 추가’를 누르면 입력판이 지워져 다음 글자를 쓸 수 있습니다. 다 쓴 뒤 입력란의 ‘복사’를 누르면 한꺼번에 복사됩니다. 입력란 아래에는 전체 병음이 단어 단위로 표시됩니다(예: 银行은 yín háng). 한 번에 한 글자씩 인식하며 이어 쓴 문장은 인식하지 않습니다."
                 }
               },
               {
@@ -216,7 +217,7 @@
               <button id="handwritingUndo" type="button" disabled><span aria-hidden="true">↶</span><span>한 획 되돌리기</span></button>
               <button id="handwritingClear" type="button" disabled><span aria-hidden="true">×</span><span>모두 지우기</span></button>
             </div>
-            <div class="handwriting-compose"><div class="handwriting-compose-head"><label for="handwritingText">입력한 글자</label><button id="handwritingTextCopy" type="button" disabled>복사</button><button id="handwritingTextClear" type="button" disabled>지우기</button></div><input id="handwritingText" type="text" lang="ko" autocomplete="off" spellcheck="false" maxlength="200" placeholder="후보를 고른 뒤 ‘입력란에 추가’로 이어서 입력" /></div>
+            <div class="handwriting-compose"><div class="handwriting-compose-head"><label for="handwritingText">입력한 글자</label><button id="handwritingTextCopy" type="button" disabled>복사</button><button id="handwritingTextClear" type="button" disabled>지우기</button></div><input id="handwritingText" type="text" lang="ko" autocomplete="off" spellcheck="false" maxlength="200" placeholder="후보를 고른 뒤 ‘입력란에 추가’로 이어서 입력" /><p class="handwriting-compose-reading" id="handwritingTextReading" hidden><span>병음</span><strong id="handwritingTextReadingValue"></strong></p></div>
             <div class="handwriting-samples"><span>예시</span><button type="button" data-handwriting-sample="人" aria-label="예시 人">人</button><button type="button" data-handwriting-sample="大" aria-label="예시 大">大</button><button type="button" data-handwriting-sample="木" aria-label="예시 木">木</button><button type="button" data-handwriting-sample="中" aria-label="예시 中">中</button></div>
             <p class="handwriting-hint">글자를 중앙에 크게 쓰고 일반적인 필순에 따라 한 획씩 또렷하게 입력하세요.</p>
           </section>
@@ -266,7 +267,7 @@
           </ol></section>
         <section class="pinyin-faq" aria-labelledby="handwritingFaqTitle"><h2 id="handwritingFaqTitle">한자 필기 인식 자주 묻는 질문</h2>
           <details><summary>모르는 중국 한자의 병음은 어떻게 찾나요?</summary><p>한자를 손으로 쓰고 가장 비슷한 후보를 고르면 병음, 총 획수, Unicode가 표시되고 필순과 글자 구조도 이어서 볼 수 있습니다.</p></details>
-          <details><summary>손글씨 입력기처럼 쓸 수 있나요?</summary><p>네. 글자를 쓸 때마다 후보를 고르고 ‘입력란에 추가’를 누르면 입력판이 지워져 다음 글자를 쓸 수 있습니다. 다 쓴 뒤 입력란의 ‘복사’를 누르면 한꺼번에 복사됩니다. 한 번에 한 글자씩 인식하며 이어 쓴 문장은 인식하지 않습니다.</p></details>
+          <details><summary>손글씨 입력기처럼 쓸 수 있나요?</summary><p>네. 글자를 쓸 때마다 후보를 고르고 ‘입력란에 추가’를 누르면 입력판이 지워져 다음 글자를 쓸 수 있습니다. 다 쓴 뒤 입력란의 ‘복사’를 누르면 한꺼번에 복사됩니다. 입력란 아래에는 전체 병음이 단어 단위로 표시됩니다(예: 银行은 yín háng). 한 번에 한 글자씩 인식하며 이어 쓴 문장은 인식하지 않습니다.</p></details>
           <details><summary>원하는 글자가 후보에 없으면 어떻게 하나요?</summary><p>글자를 크게, 획을 떼어 다시 써 보세요. 그래도 없으면 ‘<a href="/ko/chinese-character-lookup/">한자 부수·구성요소 검색</a>’에서 구성요소로 찾을 수 있습니다. 사진이나 스크린샷 속 인쇄 글자는 ‘<a href="/ko/photo-chinese-character-recognition/">사진으로 중국 한자 인식</a>’이 더 편합니다.</p></details>
           <details><summary>스마트폰이나 태블릿에서도 쓸 수 있나요?</summary><p>네. 손가락이나 터치펜으로 칸에 바로 쓰면 됩니다. 앱 설치나 가입은 필요 없습니다.</p></details>
           <details><summary>정확한 필순으로 써야 하나요?</summary><p>인식기는 필획 방향, 위치와 개수를 참고합니다. 조금 달라도 후보가 나올 수 있지만 일반적인 필순으로 크고 또렷하게 쓰면 더 정확합니다.</p></details>

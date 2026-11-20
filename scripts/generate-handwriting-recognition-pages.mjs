@@ -46,6 +46,7 @@ const content = {
     composePlaceholder: "选中候选后点“加入输入框”，可连续手写输入",
     textCopy: "复制",
     textClear: "清空",
+    textReading: "拼音",
     radical: "部首",
     structure: "结构",
     structureLabels: {"single": "独体字", "leftRight": "左右结构", "topBottom": "上下结构", "leftMiddleRight": "左中右结构", "topMiddleBottom": "上中下结构", "surround": "全包围结构", "surroundFromAbove": "上三包围结构", "surroundFromBelow": "下三包围结构", "surroundFromLeft": "左三包围结构", "surroundFromUpperLeft": "左上包围结构", "surroundFromUpperRight": "右上包围结构", "surroundFromLowerLeft": "左下包围结构"},
@@ -78,11 +79,11 @@ const content = {
       ["浏览器本地识别", "笔画坐标不会上传到 JianFan.app 服务器，公开的 WebAssembly 识别组件在浏览器中完成匹配。"]
     ],
     howTitle: "如何在线手写查字",
-    steps: ["用鼠标、触屏或手写笔在田字格中央逐笔写下汉字。", "从自动更新的候选结果中选择最接近的字。", "查看拼音、部首和结构，或进入笔顺页面继续查询。", "要输入多个字时，点击“加入输入框”逐字拼接，最后一次复制整段文字。"],
+    steps: ["用鼠标、触屏或手写笔在田字格中央逐笔写下汉字。", "从自动更新的候选结果中选择最接近的字。", "查看拼音、部首和结构，或进入笔顺页面继续查询。", "要输入多个字时，点击“加入输入框”逐字拼接，输入框下方会显示整段拼音，最后一次复制整段文字。"],
     faqTitle: "手写汉字识别常见问题",
     faqs: [
       ["不认识的字怎么查拼音？", "手写这个字并点击最接近的候选，页面会显示拼音、部首、字形结构、总笔画数和 Unicode，还可以继续查看笔顺。"],
-      ["可以当手写输入法用吗？", "可以。每写好一个字，选中候选后点击“加入输入框”，画板会自动清空，接着写下一个字；全部写完后点击输入框旁的“复制”，一次复制整段文字。本页一次识别一个字，不识别连笔写成的整句。"],
+      ["可以当手写输入法用吗？", "可以。每写好一个字，选中候选后点击“加入输入框”，画板会自动清空，接着写下一个字；全部写完后点击输入框旁的“复制”，一次复制整段文字。输入框下方会按词语显示整段拼音，例如“银行”读作 yín háng。本页一次识别一个字，不识别连笔写成的整句。"],
       ["候选里没有要找的字怎么办？", "把字写大、让笔画分开后重试；仍然找不到时，可用“汉字查询与结构拆解”按偏旁部件反查。照片或截图里的印刷文字，用“在线拍照汉字识别”更省事。"],
       ["手机和平板能用吗？", "可以。直接用手指或触控笔在方格中书写即可，不需要安装应用或注册。"],
       ["不按正确笔顺也能识别吗？", "识别会参考笔画方向、位置和数量。少量笔顺偏差可能仍能找到候选，但按常见笔顺、把字写大并保持结构清楚通常更准确。"],
@@ -123,6 +124,7 @@ const content = {
     composePlaceholder: "選取候選後點「加入輸入框」，可連續手寫輸入",
     textCopy: "複製",
     textClear: "清除",
+    textReading: "注音／拼音",
     zhuyin: "注音",
     radical: "部首",
     structure: "結構",
@@ -156,12 +158,12 @@ const content = {
       ["在瀏覽器本機辨識", "筆畫座標不會上傳到 JianFan.app 伺服器，公開 WebAssembly 元件會在瀏覽器中完成比對。"]
     ],
     howTitle: "如何線上手寫查字",
-    steps: ["用滑鼠、觸控螢幕或手寫筆在田字格中央逐畫寫下漢字。", "從自動更新的候選結果中選取最接近的字。", "查看注音、拼音與部首，或前往筆順頁面繼續查詢。", "要輸入多個字時，點選「加入輸入框」逐字拼接，最後一次複製整段文字。"],
+    steps: ["用滑鼠、觸控螢幕或手寫筆在田字格中央逐畫寫下漢字。", "從自動更新的候選結果中選取最接近的字。", "查看注音、拼音與部首，或前往筆順頁面繼續查詢。", "要輸入多個字時，點選「加入輸入框」逐字拼接，輸入框下方會顯示整段注音與拼音，最後一次複製整段文字。"],
     faqTitle: "手寫漢字辨識常見問題",
     faqs: [
       ["不認識的字怎麼查注音和拼音？", "手寫這個字並點選最接近的候選，頁面會顯示注音、拼音、部首、總筆畫數和 Unicode，還能繼續查看筆順和字形結構。"],
       ["手寫查字可以顯示注音嗎？", "可以。選取候選字後，查字結果會同時顯示注音符號與漢語拼音，破音字會列出所有常見讀音，例如「行」顯示 ㄒㄧㄥˊ / ㄏㄤˊ。"],
-      ["可以當手寫輸入法用嗎？", "可以。每寫好一個字，選取候選後點選「加入輸入框」，畫布會自動清除，接著寫下一個字；全部寫完後點選輸入框旁的「複製」，一次複製整段文字。本頁一次辨識一個字，不辨識連筆寫成的整句。"],
+      ["可以當手寫輸入法用嗎？", "可以。每寫好一個字，選取候選後點選「加入輸入框」，畫布會自動清除，接著寫下一個字；全部寫完後點選輸入框旁的「複製」，一次複製整段文字。輸入框下方會依詞語顯示整段注音與拼音，例如「銀行」顯示 ㄧㄣˊ ㄏㄤˊ。本頁一次辨識一個字，不辨識連筆寫成的整句。"],
       ["候選裡沒有要找的字怎麼辦？", "把字寫大、讓筆畫分開後再試；仍然找不到時，可用「漢字查詢與結構拆解」依偏旁部件反查。照片或截圖中的印刷文字，用「線上拍照漢字辨識」更方便。"],
       ["手機和平板可以用嗎？", "可以。直接用手指或觸控筆在方格中書寫即可，不需要安裝 App 或註冊。"],
       ["不依正確筆順也能辨識嗎？", "辨識會參考筆畫方向、位置和數量。少量筆順差異可能仍有候選，但依一般筆順、寫大並保持結構清楚通常更準確。"],
@@ -202,6 +204,7 @@ const content = {
     composePlaceholder: "Select a candidate, then Add to text to write a phrase",
     textCopy: "Copy",
     textClear: "Clear",
+    textReading: "Pinyin",
     meaning: "Meaning",
     radical: "Radical",
     structure: "Structure",
@@ -235,12 +238,12 @@ const content = {
       ["Recognition runs in your browser", "Stroke coordinates are not uploaded to JianFan.app. A public WebAssembly component performs the matching on your device."]
     ],
     howTitle: "How to use Chinese handwriting input",
-    steps: ["Draw one Chinese character in the centre of the grid, one stroke at a time.", "Choose the closest Hanzi from the automatically updated matches.", "Check its meaning and Pinyin, or continue to the animated stroke-order page.", "To type several characters, choose Add to text after each one, then copy the whole phrase."],
+    steps: ["Draw one Chinese character in the centre of the grid, one stroke at a time.", "Choose the closest Hanzi from the automatically updated matches.", "Check its meaning and Pinyin, or continue to the animated stroke-order page.", "To type several characters, choose Add to text after each one; the Pinyin of the phrase appears below the text box, and you can copy it all at once."],
     faqTitle: "Chinese handwriting recognition questions",
     faqs: [
       ["How do I find the Pinyin of a character I cannot read?", "Draw the character and select the closest candidate. The result shows its English meaning, Pinyin, radical, structure, total strokes and Unicode, with a link to stroke order."],
       ["Can I see what a Chinese character means?", "Yes. Select a candidate and the result shows a short English meaning from the Unicode Unihan database, together with Pinyin, radical, structure and stroke count. For example, 好 shows “good, excellent, fine; well”."],
-      ["Can I use it as a handwriting input method?", "Yes. After each character, select the candidate and choose Add to text; the pad clears for the next character. When you finish, choose Copy next to the text box to copy the whole phrase. The page recognizes one character per drawing, not joined-up sentences."],
+      ["Can I use it as a handwriting input method?", "Yes. After each character, select the candidate and choose Add to text; the pad clears for the next character. When you finish, choose Copy next to the text box to copy the whole phrase. The Pinyin of the whole phrase, read word by word, appears below the text box, for example 银行 reads yín háng. The page recognizes one character per drawing, not joined-up sentences."],
       ["What if the character I want is not among the candidates?", "Redraw it larger with clearly separated strokes. If it still does not appear, search by its components in Chinese character lookup. For printed text in a photo or screenshot, “Chinese character recognition from photo” is faster."],
       ["Does it work on phones and tablets?", "Yes. Draw with your finger or a stylus directly in the square. No app installation or sign-up is needed."],
       ["How can I find a Chinese character if I do not know its Pinyin?", "Draw the character shape in the writing grid and select the closest result. You can then check its Pinyin, stroke count, Unicode and stroke order without knowing its pronunciation first."],
@@ -283,6 +286,7 @@ const content = {
     composePlaceholder: "候補を選んで「入力欄に追加」で続けて入力",
     textCopy: "コピー",
     textClear: "クリア",
+    textReading: "ピンイン",
     radical: "部首",
     structure: "構成",
     structureLabels: {"single": "単体", "leftRight": "左右", "topBottom": "上下", "leftMiddleRight": "左中右", "topMiddleBottom": "上中下", "surround": "囲み", "surroundFromAbove": "上からの囲み", "surroundFromBelow": "下からの囲み", "surroundFromLeft": "左からの囲み", "surroundFromUpperLeft": "左上からの囲み", "surroundFromUpperRight": "右上からの囲み", "surroundFromLowerLeft": "左下からの囲み"},
@@ -319,7 +323,7 @@ const content = {
     faqTitle: "漢字手書き検索のよくある質問",
     faqs: [
       ["読めない中国語の漢字のピンインを調べるには？", "漢字を手書きして一番近い候補を選ぶと、ピンイン・総画数・Unicodeが表示され、書き順や字形構成も続けて確認できます。"],
-      ["手書き入力の代わりに使えますか？", "使えます。1文字書くごとに候補を選んで「入力欄に追加」を押すと、手書きパッドが消えて次の字を書けます。書き終えたら入力欄の「コピー」でまとめてコピーできます。1回に認識するのは1文字で、続け字の文章は認識しません。"],
+      ["手書き入力の代わりに使えますか？", "使えます。1文字書くごとに候補を選んで「入力欄に追加」を押すと、手書きパッドが消えて次の字を書けます。書き終えたら入力欄の「コピー」でまとめてコピーできます。入力欄の下には全体のピンインが単語単位で表示されます（例：银行は yín háng）。1回に認識するのは1文字で、続け字の文章は認識しません。"],
       ["候補に目的の字が出てこないときは？", "大きく書き、画を離して書き直してください。それでも出ない場合は「漢字の構成・部首検索」で部品から探せます。写真やスクリーンショットの印刷文字なら「写真から中国語漢字を認識」が便利です。"],
       ["スマホやタブレットでも使えますか？", "使えます。指やタッチペンでマスにそのまま書けます。アプリのインストールや登録は不要です。"],
       ["正しい筆順で書く必要がありますか？", "筆画の方向・位置・数を照合するため、一般的な筆順で大きくはっきり書くと精度が上がります。多少の違いでも候補が出る場合があります。"],
@@ -360,6 +364,7 @@ const content = {
     composePlaceholder: "후보를 고른 뒤 ‘입력란에 추가’로 이어서 입력",
     textCopy: "복사",
     textClear: "지우기",
+    textReading: "병음",
     radical: "부수",
     structure: "구조",
     structureLabels: {"single": "독체자", "leftRight": "좌우 구조", "topBottom": "상하 구조", "leftMiddleRight": "좌중우 구조", "topMiddleBottom": "상중하 구조", "surround": "에운 구조", "surroundFromAbove": "위 감싸기", "surroundFromBelow": "아래 감싸기", "surroundFromLeft": "왼쪽 감싸기", "surroundFromUpperLeft": "왼쪽 위 감싸기", "surroundFromUpperRight": "오른쪽 위 감싸기", "surroundFromLowerLeft": "왼쪽 아래 감싸기"},
@@ -396,7 +401,7 @@ const content = {
     faqTitle: "한자 필기 인식 자주 묻는 질문",
     faqs: [
       ["모르는 중국 한자의 병음은 어떻게 찾나요?", "한자를 손으로 쓰고 가장 비슷한 후보를 고르면 병음, 총 획수, Unicode가 표시되고 필순과 글자 구조도 이어서 볼 수 있습니다."],
-      ["손글씨 입력기처럼 쓸 수 있나요?", "네. 글자를 쓸 때마다 후보를 고르고 ‘입력란에 추가’를 누르면 입력판이 지워져 다음 글자를 쓸 수 있습니다. 다 쓴 뒤 입력란의 ‘복사’를 누르면 한꺼번에 복사됩니다. 한 번에 한 글자씩 인식하며 이어 쓴 문장은 인식하지 않습니다."],
+      ["손글씨 입력기처럼 쓸 수 있나요?", "네. 글자를 쓸 때마다 후보를 고르고 ‘입력란에 추가’를 누르면 입력판이 지워져 다음 글자를 쓸 수 있습니다. 다 쓴 뒤 입력란의 ‘복사’를 누르면 한꺼번에 복사됩니다. 입력란 아래에는 전체 병음이 단어 단위로 표시됩니다(예: 银行은 yín háng). 한 번에 한 글자씩 인식하며 이어 쓴 문장은 인식하지 않습니다."],
       ["원하는 글자가 후보에 없으면 어떻게 하나요?", "글자를 크게, 획을 떼어 다시 써 보세요. 그래도 없으면 ‘한자 부수·구성요소 검색’에서 구성요소로 찾을 수 있습니다. 사진이나 스크린샷 속 인쇄 글자는 ‘사진으로 중국 한자 인식’이 더 편합니다."],
       ["스마트폰이나 태블릿에서도 쓸 수 있나요?", "네. 손가락이나 터치펜으로 칸에 바로 쓰면 됩니다. 앱 설치나 가입은 필요 없습니다."],
       ["정확한 필순으로 써야 하나요?", "인식기는 필획 방향, 위치와 개수를 참고합니다. 조금 달라도 후보가 나올 수 있지만 일반적인 필순으로 크고 또렷하게 쓰면 더 정확합니다."],
@@ -494,6 +499,7 @@ ${alternates}
     <link rel="stylesheet" href="/styles.min.css" />
     <script src="/theme.js"></script>
     <script defer src="/vendor/pinyin-pro.js"></script>
+    <script defer src="/traditional-pinyin.js"></script>
     <script defer src="/handwriting-recognition.js"></script>
     <!-- seo-schema:start -->
     <script type="application/ld+json">
@@ -558,7 +564,7 @@ ${localeOptions}
               <button id="handwritingUndo" type="button" disabled><span aria-hidden="true">↶</span><span>${page.undo}</span></button>
               <button id="handwritingClear" type="button" disabled><span aria-hidden="true">×</span><span>${page.clear}</span></button>
             </div>
-            <div class="handwriting-compose"><div class="handwriting-compose-head"><label for="handwritingText">${page.composeLabel}</label><button id="handwritingTextCopy" type="button" disabled>${page.textCopy}</button><button id="handwritingTextClear" type="button" disabled>${page.textClear}</button></div><input id="handwritingText" type="text" lang="${meta.lang}" autocomplete="off" spellcheck="false" maxlength="200" placeholder="${escapeHtml(page.composePlaceholder)}" /></div>
+            <div class="handwriting-compose"><div class="handwriting-compose-head"><label for="handwritingText">${page.composeLabel}</label><button id="handwritingTextCopy" type="button" disabled>${page.textCopy}</button><button id="handwritingTextClear" type="button" disabled>${page.textClear}</button></div><input id="handwritingText" type="text" lang="${meta.lang}" autocomplete="off" spellcheck="false" maxlength="200" placeholder="${escapeHtml(page.composePlaceholder)}" /><p class="handwriting-compose-reading" id="handwritingTextReading" hidden><span>${page.textReading}</span><strong id="handwritingTextReadingValue"></strong></p></div>
             <div class="handwriting-samples"><span>${page.samples}</span>${sampleCharacters.map((character) => `<button type="button" data-handwriting-sample="${character}" aria-label="${escapeHtml(`${page.samples} ${character}`)}">${character}</button>`).join("")}</div>
             <p class="handwriting-hint">${page.drawHint}</p>
           </section>
