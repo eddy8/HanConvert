@@ -56,6 +56,7 @@ Text conversion, counting, formatting, and most lookups run locally in the brows
 
 ## Korean
 
+- [Korean Handwriting Input - Draw Hangul to Text](https://jianfan.app/en/korean-handwriting-recognition/): Write Korean by hand online: draw a Hangul syllable to get candidates, add each one to a text box and copy the whole phrase, with jamo and romanization shown.
 - [Hangul Hanja Converter - Korean Text Conversion](https://jianfan.app/en/hangul-hanja-converter/): Convert Korean text between Hangul and Hanja with phrase-first matching. Choose ambiguous Hanja, add parenthetical readings, and keep text in your browser.
 - [Korean Hanja Dictionary - Radical & Stroke Search](https://jianfan.app/en/korean-hanja-dictionary/): Search Korean Hanja by character, Hangul reading, meaning, radical or total strokes. Filter personal-name Hanja and view readings, definitions and Unicode.
 - [Korean Hanja Handwriting - Draw and Find](https://jianfan.app/en/korean-hanja-handwriting-recognition/): Draw a Korean Hanja to find matches without knowing the reading. See its Hangul reading, Korean meaning, radical and name-use status, or read Hanja words.

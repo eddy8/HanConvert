@@ -9,6 +9,7 @@ const origin = "https://jianfan.app";
 const markerStart = "  <!-- korean-hanja-tools:start -->";
 const markerEnd = "  <!-- korean-hanja-tools:end -->";
 const slugs = [
+  "korean-handwriting-recognition",
   "korean-hanja-dictionary",
   "korean-hanja-handwriting-recognition",
   "hangul-hanja-converter",
@@ -47,4 +48,4 @@ const updated = source.includes(markerStart)
   : source.replace("</urlset>", `${section}\n</urlset>`);
 
 await writeFile(sitemapPath, preserveExistingLastmods(source, updated));
-console.log("Added 20 Korean Hanja tool URLs to sitemap.xml.");
+console.log(`Added ${slugs.length * locales.length} Korean tool URLs to sitemap.xml.`);

@@ -1,6 +1,7 @@
-// Recognizes Japanese handwriting off the main thread with KanjiCanvas and the KanjiVG-derived
-// reference patterns in /data/japanese-handwriting/patterns.json (about 6,400 kanji).
-// Matching takes about a second for the larger pattern set, so it must not block drawing.
+// Recognizes handwriting off the main thread with KanjiCanvas. The Japanese page loads the
+// KanjiVG-derived kanji patterns (/data/japanese-handwriting/patterns.json, about 6,400 kanji); the
+// Korean page passes /data/korean-handwriting/patterns.json (Hangul syllables) in its load message.
+// Matching takes up to a second for the larger pattern set, so it must not block drawing.
 "use strict";
 
 (function (root) {
@@ -30,9 +31,18 @@
     return (payload?.patterns || []).map(([character, strokeCount, strokes]) => [character, strokeCount, decodeStrokes(strokes)]);
   }
 
-  function parseCandidates(value, limit = CANDIDATE_LIMIT) {
-    const characters = Array.from(String(value || "")).filter((character) => /\p{Script=Han}/u.test(character));
+  // Keeps only characters that have a reference pattern (or Han characters when none are known).
+  function parseCandidates(value, limit = CANDIDATE_LIMIT, known) {
+    const characters = Array.from(String(value || "")).filter((character) =>
+      known ? known.has(character) : /\p{Script=Han}/u.test(character)
+    );
     return [...new Set(characters)].slice(0, limit);
+  }
+
+  const knownCharacters = new WeakMap();
+  function patternCharacters(patterns) {
+    if (!knownCharacters.has(patterns)) knownCharacters.set(patterns, new Set(patterns.map(([character]) => character)));
+    return knownCharacters.get(patterns);
   }
 
   // Same scoring as KanjiCanvas.coarseClassification, limited to patterns within ±STROKE_WINDOW strokes.
@@ -59,7 +69,11 @@
     if (!usable.length || !kanjiCanvas.refPatterns.length) return [];
     kanjiCanvas.recordedPattern_worker = usable;
     const features = kanjiCanvas.extractFeatures(kanjiCanvas.momentNormalize("worker"), 20);
-    return parseCandidates(kanjiCanvas.fineClassification(features, coarseClassification(kanjiCanvas, features)));
+    return parseCandidates(
+      kanjiCanvas.fineClassification(features, coarseClassification(kanjiCanvas, features)),
+      CANDIDATE_LIMIT,
+      patternCharacters(kanjiCanvas.refPatterns)
+    );
   }
 
   const api = { PATTERN_URL, STROKE_WINDOW, coarseClassification, decodePatterns, decodeStrokes, parseCandidates, recognize };
@@ -105,9 +119,9 @@
     return bytes;
   }
 
-  function load() {
+  function load(url = PATTERN_URL) {
     if (!loading) {
-      loading = fetch(PATTERN_URL)
+      loading = fetch(url)
         .then(readWithProgress)
         .then((bytes) => {
           root.KanjiCanvas.refPatterns = decodePatterns(JSON.parse(new TextDecoder().decode(bytes)));
@@ -126,7 +140,7 @@
     const message = event.data || {};
     try {
       if (message.type === "load") {
-        const count = await load();
+        const count = await load(message.url);
         root.postMessage({ type: "ready", count });
       } else if (message.type === "recognize") {
         await load();

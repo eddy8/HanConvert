@@ -4711,7 +4711,8 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 #handwritingCanvas,
-#japaneseHandwritingCanvas {
+#japaneseHandwritingCanvas,
+#koreanHandwritingCanvas {
   position: absolute;
   z-index: 1;
   inset: 0;
@@ -10690,13 +10691,16 @@ main :is(p, li) > a:not([class]):hover {
   #handwritingCandidates,
   #handwritingCandidateEmpty,
   #japaneseHandwritingCandidates,
-  #japaneseHandwritingCandidateEmpty { order: 3; width: min(100%, 390px); margin: 0 auto; }
+  #japaneseHandwritingCandidateEmpty,
+  #koreanHandwritingCandidates,
+  #koreanHandwritingCandidateEmpty { order: 3; width: min(100%, 390px); margin: 0 auto; }
   .handwriting-remote-action { order: 4; }
   .handwriting-actions { order: 5; margin-top: 0; }
   .handwriting-compose { order: 6; margin-top: 0; }
   .japanese-handwriting-progress { order: 6; }
   .handwriting-result { order: 7; margin-top: 4px; }
-  #japaneseHandwritingDetailEmpty { display: none; }
+  #japaneseHandwritingDetailEmpty,
+  #koreanHandwritingDetailEmpty { display: none; }
   .handwriting-samples { order: 8; }
   .handwriting-hint { order: 9; }
 

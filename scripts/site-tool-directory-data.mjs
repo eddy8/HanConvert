@@ -37,7 +37,8 @@ export const directoryLocales = {
         ["japanese-chinese-kanji-converter", "日中汉字转换"],
         ["japanese-characters", "日文字符复制"]
       ]],
-      ["韩国汉字", [
+      ["韩文与韩国汉字", [
+        ["korean-handwriting-recognition", "韩语手写识别"],
         ["korean-hanja-dictionary", "韩国汉字查询"],
         ["korean-hanja-handwriting-recognition", "韩国汉字手写识别"],
         ["hangul-hanja-converter", "韩文汉字转换"],
@@ -83,7 +84,8 @@ export const directoryLocales = {
         ["japanese-chinese-kanji-converter", "日中漢字轉換"],
         ["japanese-characters", "日文字元複製"]
       ]],
-      ["韓國漢字", [
+      ["韓文與韓國漢字", [
+        ["korean-handwriting-recognition", "韓文手寫辨識"],
         ["korean-hanja-dictionary", "韓國漢字查詢"],
         ["korean-hanja-handwriting-recognition", "韓國漢字手寫辨識"],
         ["hangul-hanja-converter", "韓文漢字轉換"],
@@ -129,7 +131,8 @@ export const directoryLocales = {
         ["japanese-chinese-kanji-converter", "Chinese to Japanese kanji"],
         ["japanese-characters", "Japanese character copy"]
       ]],
-      ["Korean hanja", [
+      ["Korean", [
+        ["korean-handwriting-recognition", "Korean handwriting input"],
         ["korean-hanja-dictionary", "Korean Hanja dictionary"],
         ["korean-hanja-handwriting-recognition", "Korean Hanja handwriting"],
         ["hangul-hanja-converter", "Hangul Hanja converter"],
@@ -175,7 +178,8 @@ export const directoryLocales = {
         ["chinese-stroke-order", "中国語漢字の筆順"],
         ["chinese-character-lookup", "漢字の構成・部首検索"]
       ]],
-      ["韓国の漢字", [
+      ["韓国語・韓国漢字", [
+        ["korean-handwriting-recognition", "韓国語 手書き入力"],
         ["korean-hanja-dictionary", "韓国漢字検索"],
         ["korean-hanja-handwriting-recognition", "韓国漢字の手書き検索"],
         ["hangul-hanja-converter", "ハングル・漢字変換"],
@@ -203,7 +207,8 @@ export const directoryLocales = {
         ["hong-kong-traditional", "홍콩 번체 변환"],
         ["file-text-converter", "문서 간체 번체 변환"]
       ]],
-      ["한국 한자", [
+      ["한글·한자", [
+        ["korean-handwriting-recognition", "한글 필기 인식"],
         ["korean-hanja-dictionary", "한자 찾기·옥편"],
         ["korean-hanja-handwriting-recognition", "한자 필기인식"],
         ["hangul-hanja-converter", "한자 변환기"],
