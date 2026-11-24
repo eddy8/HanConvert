@@ -223,7 +223,25 @@
     return { width: Math.max(1, Math.floor(width * scale)), height: Math.max(1, Math.floor(height * scale)), scale };
   }
 
+  // StackBlur's radius is an integer up to 254 (its lookup tables have 255 entries). A CSS-style
+  // blur radius maps to about twice that StackBlur radius for a similar look.
+  function stackBlurRadius(radius) {
+    return Math.min(254, Math.max(2, Math.round(Number(radius) * 2) || 2));
+  }
+
+  // Bounding box of a brush stroke (normalized points), padded by half the brush width.
+  function strokeBounds(points, sizeX, sizeY) {
+    if (!points?.length) return null;
+    const xs = points.map(([x]) => x);
+    const ys = points.map(([, y]) => y);
+    const left = Math.min(...xs) - sizeX / 2;
+    const top = Math.min(...ys) - sizeY / 2;
+    return normalizeRect(left, top, Math.max(...xs) + sizeX / 2 - left, Math.max(...ys) + sizeY / 2 - top);
+  }
+
   return {
+    strokeBounds,
+    stackBlurRadius,
     MAX_FILE_SIZE_BYTES,
     MAX_IMAGE_EDGE,
     MAX_IMAGE_PIXELS,
@@ -261,8 +279,11 @@
     aiProgressText: document.querySelector("#redactionAiProgressText"), suggestions: document.querySelector("#redactionSuggestions"), suggestionsEmpty: document.querySelector("#redactionSuggestionsEmpty"),
     applySuggestions: document.querySelector("#redactionApplySuggestions"), clearSuggestions: document.querySelector("#redactionClearSuggestions"),
     exportFormat: document.querySelector("#redactionExportFormat"), exportQuality: document.querySelector("#redactionExportQuality"), exportQualityRow: document.querySelector("#redactionExportQualityRow"),
-    exportQualityValue: document.querySelector("#redactionExportQualityValue"), download: document.querySelector("#redactionDownload"), reset: document.querySelector("#redactionReset"),
-    dialog: document.querySelector("#redactionDialog"), dialogMessage: document.querySelector("#redactionDialogMessage")
+    exportQualityValue: document.querySelector("#redactionExportQualityValue"), download: document.querySelector("#redactionDownload"), copy: document.querySelector("#redactionCopy"), reset: document.querySelector("#redactionReset"),
+    dialog: document.querySelector("#redactionDialog"), dialogMessage: document.querySelector("#redactionDialogMessage"),
+    toolButtons: document.querySelectorAll("[data-redaction-tool]"), brushSize: document.querySelector("#redactionBrushSize"),
+    brushSizeRow: document.querySelector("#redactionBrushSizeRow"), brushSizeValue: document.querySelector("#redactionBrushSizeValue"),
+    drawHint: document.querySelector("#redactionDrawHint")
   };
   if (!elements.canvas) return;
 
@@ -271,7 +292,7 @@
     source: document.createElement("canvas"), previewSource: document.createElement("canvas"), regions: [], suggestions: [], history: [], future: [],
     selectedId: null, effect: "solid", color: "#07120f", strength: 52, showOriginal: false, zoom: 1, fitScale: 1,
     fileName: "image", interaction: null, draft: null, nextId: 1, aiBusy: false, faceDetector: null, ocrWorker: null, ocrWorkerLanguage: "",
-    sliderSnapshot: null
+    sliderSnapshot: null, tool: "rect", brushSize: 5
   };
 
   function text(template, values = {}) {
@@ -290,7 +311,36 @@
   }
 
   function cloneRegions(regions = state.regions) {
-    return regions.map((region) => ({ ...region, rect: { ...region.rect } }));
+    return regions.map((region) => ({ ...region, rect: { ...region.rect }, ...(region.points ? { points: region.points.map((point) => [...point]) } : {}) }));
+  }
+
+  // Brush width in normalized units: `size` is a percentage of the image's shorter edge.
+  function brushExtent(size, width, height) {
+    const pixels = (Math.min(width, height) * size) / 100;
+    return { x: pixels / width, y: pixels / height, pixels };
+  }
+
+  function strokePath(ctx, points, width, height, offsetX = 0, offsetY = 0) {
+    ctx.beginPath();
+    points.forEach(([x, y], index) => {
+      const px = x * width - offsetX;
+      const py = y * height - offsetY;
+      if (index === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    });
+    if (points.length === 1) ctx.lineTo(points[0][0] * width - offsetX + 0.01, points[0][1] * height - offsetY);
+  }
+
+  function setTool(tool) {
+    state.tool = tool === "brush" ? "brush" : "rect";
+    elements.toolButtons.forEach((button) => {
+      const active = button.dataset.redactionTool === state.tool;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-checked", String(active));
+    });
+    if (elements.brushSizeRow) elements.brushSizeRow.hidden = state.tool !== "brush";
+    if (elements.drawHint) elements.drawHint.textContent = state.tool === "brush" ? messages.brushHint : messages.rectHint;
+    elements.canvas.classList.toggle("is-brush", state.tool === "brush");
   }
 
   function updateHistoryButtons() {
@@ -386,26 +436,70 @@
     return snapshot;
   }
 
+  // Brush strokes: solid colour is stroked directly; pixelate and blur are computed for the stroke's
+  // bounding box on a copy, then kept only where the stroke mask covers it.
+  function applyBrushRegion(ctx, region, width, height) {
+    const extent = brushExtent(region.size, width, height);
+    if (region.effect === "solid") {
+      ctx.save();
+      ctx.strokeStyle = region.color || "#07120f";
+      ctx.lineWidth = extent.pixels;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      strokePath(ctx, region.points, width, height);
+      ctx.stroke();
+      ctx.restore();
+      return;
+    }
+    const x = Math.max(0, Math.floor(region.rect.x * width));
+    const y = Math.max(0, Math.floor(region.rect.y * height));
+    const w = Math.max(1, Math.min(width - x, Math.ceil(region.rect.width * width) + 1));
+    const h = Math.max(1, Math.min(height - y, Math.ceil(region.rect.height * height) + 1));
+    const patch = captureRegion(ctx, x, y, w, h);
+    const patchContext = patch.getContext("2d");
+    applyEffect(patchContext, region, 0, 0, w, h, width, height);
+    const mask = document.createElement("canvas");
+    mask.width = w;
+    mask.height = h;
+    const maskContext = mask.getContext("2d");
+    maskContext.strokeStyle = "#000";
+    maskContext.lineWidth = extent.pixels;
+    maskContext.lineCap = "round";
+    maskContext.lineJoin = "round";
+    strokePath(maskContext, region.points, width, height, x, y);
+    maskContext.stroke();
+    patchContext.globalCompositeOperation = "destination-in";
+    patchContext.drawImage(mask, 0, 0);
+    ctx.drawImage(patch, x, y);
+  }
+
   function applyRegion(ctx, region, width, height) {
+    if (region.kind === "brush") {
+      applyBrushRegion(ctx, region, width, height);
+      return;
+    }
     const x = Math.round(region.rect.x * width);
     const y = Math.round(region.rect.y * height);
     const w = Math.max(1, Math.round(region.rect.width * width));
     const h = Math.max(1, Math.round(region.rect.height * height));
+    applyEffect(ctx, region, x, y, w, h, width, height);
+  }
+
+  // Applies a region's effect to the x/y/w/h rectangle of ctx; strength scales with the full image.
+  function applyEffect(ctx, region, x, y, w, h, width, height) {
     if (region.effect === "solid") {
       ctx.fillStyle = region.color || "#07120f";
       ctx.fillRect(x, y, w, h);
       return;
     }
-    if (region.effect === "blur") {
-      const radius = effectStrength(region, width, height);
-      const snapshot = captureRegion(ctx, x, y, w, h);
-      ctx.save();
-      ctx.beginPath();
-      ctx.rect(x, y, w, h);
-      ctx.clip();
-      ctx.filter = `blur(${radius}px)`;
-      ctx.drawImage(snapshot, x, y, w, h);
-      ctx.restore();
+    // Blur uses StackBlur on the pixels instead of CanvasRenderingContext2D.filter: Safari does not
+    // reliably apply canvas filters (and ignores them on canvases outside the document, such as the
+    // export canvas), which would leave a "blurred" area readable. Without StackBlur, fall back to
+    // pixelation rather than exporting the area untouched.
+    if (region.effect === "blur" && globalThis.StackBlur?.imageDataRGBA) {
+      const pixels = ctx.getImageData(x, y, w, h);
+      globalThis.StackBlur.imageDataRGBA(pixels, 0, 0, w, h, core.stackBlurRadius(effectStrength(region, width, height)));
+      ctx.putImageData(pixels, x, y);
       return;
     }
     const blockSize = effectStrength(region, width, height);
@@ -432,7 +526,8 @@
     ctx.lineWidth = selected ? 3 : 1.5;
     ctx.setLineDash(selected ? [] : [7, 5]);
     ctx.strokeRect(x, y, w, h);
-    if (selected) {
+    // Brush strokes can be moved or deleted but not resized, so they get no corner handles.
+    if (selected && region.kind !== "brush") {
       ctx.fillStyle = "#ffcc66";
       for (const [hx, hy] of [[x, y], [x + w, y], [x, y + h], [x + w, y + h]]) {
         ctx.fillRect(hx - 5, hy - 5, 10, 10);
@@ -468,6 +563,16 @@
       ctx.restore();
     }
     if (state.draft) drawRegionOutline(ctx, { rect: state.draft }, width, height, true);
+    if (state.brushDraft?.length) {
+      ctx.save();
+      ctx.strokeStyle = "rgba(255, 204, 102, 0.55)";
+      ctx.lineWidth = brushExtent(state.brushSize, width, height).pixels;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      strokePath(ctx, state.brushDraft, width, height);
+      ctx.stroke();
+      ctx.restore();
+    }
   }
 
   function render() {
@@ -505,8 +610,16 @@
     event.preventDefault();
     elements.canvas.setPointerCapture(event.pointerId);
     const point = pointFromEvent(event);
+    if (state.tool === "brush") {
+      state.selectedId = null;
+      state.interaction = { type: "brush" };
+      state.brushDraft = [[point.x, point.y]];
+      updateHistoryButtons();
+      render();
+      return;
+    }
     const selected = selectedRegion();
-    const handle = selected ? hitHandle(point, selected) : "";
+    const handle = selected && selected.kind !== "brush" ? hitHandle(point, selected) : "";
     if (handle) {
       state.interaction = { type: "resize", handle, start: point, before: cloneRegions(), original: { ...selected.rect } };
       return;
@@ -516,7 +629,7 @@
       state.selectedId = hit.id;
       syncControlsFromSelection();
       updateHistoryButtons();
-      state.interaction = { type: "move", start: point, before: cloneRegions(), original: { ...hit.rect } };
+      state.interaction = { type: "move", start: point, before: cloneRegions(), original: { ...hit.rect }, originalPoints: hit.points?.map((item) => [...item]) };
       render();
       return;
     }
@@ -531,6 +644,16 @@
     if (!state.interaction) return;
     const point = pointFromEvent(event);
     const action = state.interaction;
+    if (action.type === "brush") {
+      const last = state.brushDraft.at(-1);
+      const bounds = elements.canvas.getBoundingClientRect();
+      // Skip points closer than about 2 screen pixels to keep strokes light.
+      if (Math.hypot((point.x - last[0]) * bounds.width, (point.y - last[1]) * bounds.height) >= 2) {
+        state.brushDraft.push([point.x, point.y]);
+        render();
+      }
+      return;
+    }
     if (action.type === "draw") {
       state.draft = core.normalizeRect(action.start.x, action.start.y, point.x - action.start.x, point.y - action.start.y);
       render();
@@ -541,6 +664,11 @@
     if (action.type === "move") {
       region.rect.x = Math.min(1 - action.original.width, Math.max(0, action.original.x + point.x - action.start.x));
       region.rect.y = Math.min(1 - action.original.height, Math.max(0, action.original.y + point.y - action.start.y));
+      if (action.originalPoints) {
+        const dx = region.rect.x - action.original.x;
+        const dy = region.rect.y - action.original.y;
+        region.points = action.originalPoints.map(([x, y]) => [x + dx, y + dy]);
+      }
     } else {
       const original = action.original;
       const anchors = {
@@ -557,7 +685,17 @@
     if (!state.interaction) return;
     const action = state.interaction;
     if (elements.canvas.hasPointerCapture(event.pointerId)) elements.canvas.releasePointerCapture(event.pointerId);
-    if (action.type === "draw") {
+    if (action.type === "brush") {
+      const points = state.brushDraft;
+      state.brushDraft = null;
+      const extent = brushExtent(state.brushSize, elements.canvas.width, elements.canvas.height);
+      const rect = core.strokeBounds(points, extent.x, extent.y);
+      if (rect) {
+        commitRegions(() => {
+          state.regions.push({ id: `region-${state.nextId++}`, kind: "brush", points, size: state.brushSize, rect, effect: state.effect, strength: state.strength, color: state.color, source: "manual" });
+        });
+      }
+    } else if (action.type === "draw") {
       const draft = state.draft;
       state.draft = null;
       if (draft && draft.width >= 0.008 && draft.height >= 0.008) {
@@ -740,7 +878,9 @@
     if (state.faceDetector) return state.faceDetector;
     const moduleUrl = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/+esm";
     const wasmUrl = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/wasm";
-    const modelUrl = "https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite";
+    // Self-hosted copy of the MediaPipe model (see vendor/mediapipe/NOTICE.md): storage.googleapis.com
+    // is unreachable for many visitors in mainland China.
+    const modelUrl = "/vendor/mediapipe/blaze_face_short_range.tflite";
     const { FaceDetector, FilesetResolver } = await import(moduleUrl);
     const fileset = await FilesetResolver.forVisionTasks(wasmUrl);
     state.faceDetector = await FaceDetector.createFromOptions(fileset, {
@@ -861,13 +1001,41 @@
     render();
   }
 
-  function exportImage() {
-    if (!state.source.width) return;
-    const format = elements.exportFormat.value;
+  // Full-resolution redacted pixels. Re-encoding from a canvas also drops EXIF and GPS metadata.
+  function renderExportCanvas(background = "") {
     const canvas = document.createElement("canvas");
     canvas.width = state.source.width;
     canvas.height = state.source.height;
-    renderToCanvas(canvas, state.source, state.regions, false, format === "image/jpeg" ? "#ffffff" : "");
+    renderToCanvas(canvas, state.source, state.regions, false, background);
+    return canvas;
+  }
+
+  let copyFeedbackTimer;
+
+  // Copies the redacted image as PNG, so a screenshot can go straight back into a chat.
+  async function copyImage() {
+    if (!state.source.width) return;
+    try {
+      const canvas = renderExportCanvas();
+      const blob = new Promise((resolve, reject) => canvas.toBlob((value) => (value ? resolve(value) : reject(new Error("toBlob"))), "image/png"));
+      // Safari needs the ClipboardItem created inside the click, with the blob still pending.
+      await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+      setStatus(messages.copiedImage, "ready");
+      if (elements.copy) {
+        elements.copy.classList.add("is-done");
+        window.clearTimeout(copyFeedbackTimer);
+        copyFeedbackTimer = window.setTimeout(() => elements.copy.classList.remove("is-done"), 1600);
+      }
+    } catch (error) {
+      console.error(error);
+      showError(messages.copyImageError);
+    }
+  }
+
+  function exportImage() {
+    if (!state.source.width) return;
+    const format = elements.exportFormat.value;
+    const canvas = renderExportCanvas(format === "image/jpeg" ? "#ffffff" : "");
     const quality = Number(elements.exportQuality.value) / 100;
     canvas.toBlob((blob) => {
       if (!blob) {
@@ -926,6 +1094,12 @@
     elements.intensityValue.textContent = elements.intensity.value;
     if (selectedRegion()) { selectedRegion().strength = state.strength; render(); }
   });
+  elements.toolButtons.forEach((button) => button.addEventListener("click", () => setTool(button.dataset.redactionTool)));
+  elements.brushSize?.addEventListener("input", () => {
+    state.brushSize = Number(elements.brushSize.value);
+    elements.brushSizeValue.textContent = `${elements.brushSize.value}%`;
+  });
+  setTool(state.tool);
   elements.intensity.addEventListener("change", () => {
     if (selectedRegion() && state.sliderSnapshot && JSON.stringify(state.sliderSnapshot) !== JSON.stringify(state.regions)) {
       state.history.push(state.sliderSnapshot);
@@ -946,6 +1120,26 @@
   elements.exportFormat.addEventListener("change", () => { elements.exportQualityRow.hidden = elements.exportFormat.value === "image/png"; });
   elements.exportQuality.addEventListener("input", () => { elements.exportQualityValue.textContent = `${elements.exportQuality.value}%`; });
   elements.download.addEventListener("click", exportImage);
+  // Phone action bar: the same actions as the side panel, always within thumb reach.
+  document.querySelectorAll("[data-redaction-mobile]").forEach((button) => {
+    const action = button.dataset.redactionMobile;
+    if (action === "copy" && !(navigator.clipboard?.write && typeof globalThis.ClipboardItem === "function")) {
+      button.hidden = true;
+      return;
+    }
+    button.addEventListener("click", () => {
+      if (action === "download") exportImage();
+      else if (action === "copy") copyImage();
+      else {
+        elements.aiRun.closest("section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (!elements.aiRun.disabled) elements.aiRun.click();
+      }
+    });
+  });
+  if (elements.copy) {
+    if (navigator.clipboard?.write && typeof globalThis.ClipboardItem === "function") elements.copy.addEventListener("click", copyImage);
+    else elements.copy.hidden = true;
+  }
   elements.reset.addEventListener("click", resetTool);
   elements.locale.addEventListener("change", changeLocale);
   window.addEventListener("resize", updateCanvasSize);

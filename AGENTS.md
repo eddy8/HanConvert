@@ -67,6 +67,7 @@
 
 - Do not append version query parameters such as `?v=` or `?version=` to static asset URLs.
 - CDN dependencies are allowed. Do not replace a valid CDN integration merely because a local development browser blocks it.
+- When a third-party JavaScript library has a CDN build, load that build from a pinned version with Subresource Integrity instead of copying it into the repository. Self-host only assets that have no CDN copy reachable by the site's audience (for example models served only from Google Cloud Storage, which mainland China blocks), and keep build-time copies under `scripts/vendor/`.
 - Before using an external library, read its current official documentation and verify that the required API and exports actually exist. Do not implement from memory or assumptions.
 - Browser entry modules must use hosting-portable MIME types and file extensions. Do not import local `.mjs` files from public browser entry points.
 - Prefer mature open-source libraries for established parsing, conversion, handwriting, typography, and document-processing behavior.

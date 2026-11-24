@@ -87,7 +87,8 @@
   root.document = { getElementById() { return null; }, addEventListener() {} };
   // fineClassification logs debug output for one character.
   console.log = () => {};
-  importScripts("/vendor/kanji-canvas.min.js");
+  // Same pinned Kanji Canvas build the pages load (immutable jsDelivr URL for a fixed commit).
+  importScripts("https://cdn.jsdelivr.net/gh/barionleg/okanjirec@e036ef26dc307d897653f5b8750a8cb048f042b3/docs/resources/javascript/kanji-canvas.min.js");
 
   let loading;
 

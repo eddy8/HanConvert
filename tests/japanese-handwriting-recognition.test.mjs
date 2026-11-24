@@ -18,7 +18,7 @@ vm.runInNewContext(workerSource, workerContext);
 const worker = workerContext.JapaneseHandwritingWorker;
 const kanjiCanvasContext = { document: { getElementById() { return null; }, addEventListener() {} }, console: { log() {} } };
 kanjiCanvasContext.window = kanjiCanvasContext;
-vm.runInNewContext(await readFile(new URL("../vendor/kanji-canvas.min.js", import.meta.url), "utf8"), kanjiCanvasContext);
+vm.runInNewContext(await readFile(new URL("../scripts/vendor/kanji-canvas.min.js", import.meta.url), "utf8"), kanjiCanvasContext);
 const patternPayload = JSON.parse(await readFile(new URL("../data/japanese-handwriting/patterns.json", import.meta.url), "utf8"));
 
 test("deduplicates recognition candidates without splitting supplementary characters", () => {
@@ -66,7 +66,7 @@ test("compares only patterns within one stroke of the drawing", () => {
 });
 
 test("vendored Kanji Canvas keeps its MIT licence with the required backlink", async () => {
-  const licence = await readFile(new URL("../vendor/kanji-canvas-LICENSE.txt", import.meta.url), "utf8");
+  const licence = await readFile(new URL("../scripts/vendor/kanji-canvas-LICENSE.txt", import.meta.url), "utf8");
   assert.match(licence, /http:\/\/github\.com\/asdfjkl\/kanjicanvas/u);
   const notice = await readFile(new URL("../data/japanese-handwriting/NOTICE.md", import.meta.url), "utf8");
   assert.match(notice, /Creative Commons Attribution-Share Alike 3\.0/u);
@@ -87,12 +87,12 @@ for (const [path, lang, heading] of pages) {
     assert.match(html, new RegExp(`<html lang="${lang}"`));
     assert.ok(html.includes(`>${heading}</h1>`));
     assert.ok(html.includes('id="japaneseHandwritingCanvas"'));
-    assert.ok(html.includes('src="/vendor/kanji-canvas.min.js"'));
+    assert.ok(html.includes('src="https://cdn.jsdelivr.net/gh/barionleg/okanjirec@e036ef26dc307d897653f5b8750a8cb048f042b3/docs/resources/javascript/kanji-canvas.min.js" integrity="sha384-'));
     assert.ok(html.includes('src="/japanese-reading-client.js"'));
     assert.ok(html.includes('id="japaneseHandwritingAppend"'));
     assert.ok(html.includes('id="japaneseHandwritingText"'));
     assert.ok(html.includes("KanjiVG（CC BY-SA 3.0）") || html.includes("KanjiVG (CC BY-SA 3.0)") || html.includes("KanjiVG(CC BY-SA 3.0)"));
-    assert.doesNotMatch(html, /okanjirec@|japaneseHandwritingRecognize|handwriting-source-note/u);
+    assert.doesNotMatch(html, /japaneseHandwritingRecognize|handwriting-source-note|ref-patterns/u);
     assert.ok(html.includes('hreflang="x-default"'));
     assert.ok(isDescriptionLengthInRange(html, description));
     assert.doesNotMatch(html, /(?:src|href)="[^"]+\?v=/u);

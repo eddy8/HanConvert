@@ -3,7 +3,7 @@
 // KanjiCanvas ships about 2,200 hand-drawn reference patterns, mostly Joyo kanji, so many kanji
 // people actually look up (嘘, 苺, 檸檬, 鰻, 牡蠣, 込, 畑 ...) can never be recognized. KanjiVG has
 // Japanese-form stroke paths for about 6,400 kanji. This script samples each stroke path and runs the
-// same moment normalization and feature extraction as KanjiCanvas (vendor/kanji-canvas.min.js), so
+// same moment normalization and feature extraction as KanjiCanvas (scripts/vendor/kanji-canvas.min.js, the same build the pages load from jsDelivr), so
 // the output can replace the hand-drawn set. Mixing both sets lowers accuracy (clean synthetic
 // patterns outrank hand-drawn ones), so every pattern comes from KanjiVG.
 //
@@ -113,7 +113,7 @@ export async function loadKanjiCanvas() {
   const context = { document: { getElementById() { return null; }, addEventListener() {} }, console: { log() {} } };
   context.window = context;
   vm.createContext(context);
-  vm.runInContext(await readFile(path.join(root, "vendor", "kanji-canvas.min.js"), "utf8"), context);
+  vm.runInContext(await readFile(path.join(root, "scripts", "vendor", "kanji-canvas.min.js"), "utf8"), context);
   return context.KanjiCanvas;
 }
 

@@ -66,7 +66,7 @@ Text conversion, counting, formatting, and most lookups run locally in the brows
 
 - [Online Text Formatter - Clean PDF Text and AI Watermarks](https://jianfan.app/en/text-formatter/): Free text formatter to clean copied PDF text, spaces, line breaks and punctuation. Detect zero-width characters, Unicode marks and AI text watermarks locally.
 - [Word to Text Converter - DOCX to TXT Online](https://jianfan.app/en/word-to-txt/): Convert Word to text online. Extract plain text from DOCX files locally in your browser, then preview, edit, copy, or batch-download UTF-8 TXT files.
-- [Image Redaction Tool - Blur Faces and Sensitive Data Online](https://jianfan.app/en/image-redaction/): Redact images online with black boxes, pixelation or blur. Local AI finds faces and sensitive text; photos stay in the browser and export without EXIF.
+- [Blur Face Online - Free Image Redaction & Pixelate Tool](https://jianfan.app/en/image-redaction/): Blur faces, pixelate or black out text in photos and screenshots for free. Local AI finds faces, phone numbers and IDs; copy or download with no upload.
 - [Password Generator - Random Passwords with Custom Symbols](https://jianfan.app/en/password-generator/): Generate random passwords with custom length, letters, numbers and symbols. Exclude lookalikes or repeats, then copy or download a batch. Runs in your browser.
 
 ## Guides (Simplified Chinese)
