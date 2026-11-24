@@ -10948,3 +10948,43 @@ main :is(p, li) > a:not([class]):hover {
 .redaction-canvas-frame canvas.is-brush {
   cursor: cell;
 }
+
+.redaction-canvas-frame canvas.is-pan {
+  cursor: grab;
+}
+
+.redaction-canvas-frame canvas.is-panning {
+  cursor: grabbing;
+}
+
+.redaction-zoom button.redaction-pan-button {
+  display: inline-flex;
+  width: auto;
+  align-items: center;
+  gap: 6px;
+  margin-right: 8px;
+  padding: 0 12px 0 10px;
+  white-space: nowrap;
+}
+
+.redaction-pan-button svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.redaction-zoom button.redaction-pan-button.is-active {
+  border-color: rgba(var(--ac), 0.45);
+  background: rgba(var(--ac), 0.14);
+  color: var(--accent-ink);
+}
+
+.redaction-zoom button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}

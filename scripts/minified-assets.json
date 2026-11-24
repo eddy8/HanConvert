@@ -4,10 +4,10 @@
     {
       "source": "styles.css",
       "output": "styles.min.css",
-      "sourceBytes": 208753,
-      "outputBytes": 171648,
-      "sourceSha256": "2f8caaab7f04a6f407ec76e1c54e4f24d66f30f8f07d2c2b869d459d6ad3cd71",
-      "outputSha256": "c2eecaa37c123d14998b078dde6b100143a9d42fa25610f7fe240547ff342161"
+      "sourceBytes": 209494,
+      "outputBytes": 172266,
+      "sourceSha256": "6602aba0cb751e6157b23607e82a9589e891f659b745af7171d7c48ddc94573a",
+      "outputSha256": "c88f37a5b7f299fed045600eedbbb65bcdc14047e1a66bf25604ca4032d58220"
     }
   ]
 }
