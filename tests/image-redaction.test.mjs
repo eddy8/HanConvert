@@ -114,3 +114,17 @@ test("brush strokes get padded bounds and the pages offer a box/brush tool switc
     assert.match(html, /"brushHint":"/u);
   }
 });
+
+test("zoomed images can be panned without fighting the box and brush tools", async () => {
+  const source = await readFile(path.join(projectRoot, "image-redaction.js"), "utf8");
+  // Hand tool, Space and middle-button drag pan; a second finger turns any touch gesture into pan and pinch zoom.
+  assert.match(source, /event\.button === 1 \|\| \(event\.button === 0 && \(state\.panMode \|\| state\.spaceDown\)\)/u);
+  assert.match(source, /if \(touches\.size >= 2\) \{[\s\S]*?cancelInteraction\(\);[\s\S]*?startPinch\(\);/u);
+  assert.match(source, /event\.code !== "KeyH"/u);
+  assert.match(source, /zoomOut\.addEventListener\("click", \(\) => zoomTo\(/u);
+  for (const prefix of ["", "zh-tw/", "en/", "ja/", "ko/"]) {
+    const html = await readFile(path.join(projectRoot, prefix, "image-redaction", "index.html"), "utf8");
+    assert.match(html, /<div class="redaction-zoom"><button class="redaction-pan-button" id="redactionPan" type="button" aria-pressed="false"/u, prefix || "zh-CN");
+    assert.match(html, /"panHint":"[^"]*H[^"]*"/u, prefix || "zh-CN");
+  }
+});

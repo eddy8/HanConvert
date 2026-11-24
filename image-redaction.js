@@ -283,7 +283,7 @@
     dialog: document.querySelector("#redactionDialog"), dialogMessage: document.querySelector("#redactionDialogMessage"),
     toolButtons: document.querySelectorAll("[data-redaction-tool]"), brushSize: document.querySelector("#redactionBrushSize"),
     brushSizeRow: document.querySelector("#redactionBrushSizeRow"), brushSizeValue: document.querySelector("#redactionBrushSizeValue"),
-    drawHint: document.querySelector("#redactionDrawHint")
+    drawHint: document.querySelector("#redactionDrawHint"), pan: document.querySelector("#redactionPan")
   };
   if (!elements.canvas) return;
 
@@ -292,8 +292,12 @@
     source: document.createElement("canvas"), previewSource: document.createElement("canvas"), regions: [], suggestions: [], history: [], future: [],
     selectedId: null, effect: "solid", color: "#07120f", strength: 52, showOriginal: false, zoom: 1, fitScale: 1,
     fileName: "image", interaction: null, draft: null, nextId: 1, aiBusy: false, faceDetector: null, ocrWorker: null, ocrWorkerLanguage: "",
-    sliderSnapshot: null, tool: "rect", brushSize: 5
+    sliderSnapshot: null, tool: "rect", brushSize: 5, panMode: false, spaceDown: false, canvasHover: false
   };
+  const MIN_ZOOM = 0.5;
+  const MAX_ZOOM = 4;
+  // Active touch points, so a second finger can turn any gesture into pan and pinch zoom.
+  const touches = new Map();
 
   function text(template, values = {}) {
     return Object.entries(values).reduce((output, [key, value]) => output.replaceAll(`{${key}}`, String(value)), template || "");
@@ -339,8 +343,21 @@
       button.setAttribute("aria-checked", String(active));
     });
     if (elements.brushSizeRow) elements.brushSizeRow.hidden = state.tool !== "brush";
-    if (elements.drawHint) elements.drawHint.textContent = state.tool === "brush" ? messages.brushHint : messages.rectHint;
     elements.canvas.classList.toggle("is-brush", state.tool === "brush");
+    setPanMode(false);
+  }
+
+  function setPanMode(active) {
+    state.panMode = Boolean(active);
+    elements.pan?.classList.toggle("is-active", state.panMode);
+    elements.pan?.setAttribute("aria-pressed", String(state.panMode));
+    if (elements.drawHint) elements.drawHint.textContent = state.panMode ? messages.panHint : state.tool === "brush" ? messages.brushHint : messages.rectHint;
+    updatePanCursor();
+  }
+
+  function updatePanCursor() {
+    elements.canvas.classList.toggle("is-pan", state.panMode || state.spaceDown);
+    elements.canvas.classList.toggle("is-panning", state.interaction?.type === "pan");
   }
 
   function updateHistoryButtons() {
@@ -420,6 +437,37 @@
     elements.canvas.style.width = `${Math.round(elements.canvas.width * state.fitScale * state.zoom)}px`;
     elements.canvas.style.height = `${Math.round(elements.canvas.height * state.fitScale * state.zoom)}px`;
     elements.zoomValue.textContent = `${Math.round(state.zoom * 100)}%`;
+    elements.zoomOut.disabled = state.zoom <= MIN_ZOOM;
+    elements.zoomIn.disabled = state.zoom >= MAX_ZOOM;
+  }
+
+  // Image position (0-1) under a screen point, used to keep that spot still while zooming.
+  function anchorAt(clientX, clientY) {
+    const bounds = elements.canvas.getBoundingClientRect();
+    return {
+      x: Math.min(1, Math.max(0, (clientX - bounds.left) / bounds.width)),
+      y: Math.min(1, Math.max(0, (clientY - bounds.top) / bounds.height))
+    };
+  }
+
+  function placeAnchor(anchor, clientX, clientY) {
+    const bounds = elements.canvas.getBoundingClientRect();
+    elements.canvasFrame.scrollLeft += bounds.left + anchor.x * bounds.width - clientX;
+    elements.canvasFrame.scrollTop += bounds.top + anchor.y * bounds.height - clientY;
+  }
+
+  function frameCenter() {
+    const frame = elements.canvasFrame.getBoundingClientRect();
+    return { x: frame.left + elements.canvasFrame.clientWidth / 2, y: frame.top + elements.canvasFrame.clientHeight / 2 };
+  }
+
+  function zoomTo(zoom, clientX, clientY) {
+    if (!elements.canvas.width) return;
+    const point = clientX === undefined ? frameCenter() : { x: clientX, y: clientY };
+    const anchor = anchorAt(point.x, point.y);
+    state.zoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, zoom));
+    updateCanvasSize();
+    placeAnchor(anchor, point.x, point.y);
   }
 
   function effectStrength(region, width, height) {
@@ -605,8 +653,52 @@
     return [...state.regions].reverse().find((region) => point.x >= region.rect.x && point.x <= region.rect.x + region.rect.width && point.y >= region.rect.y && point.y <= region.rect.y + region.rect.height) || null;
   }
 
+  function touchCenter() {
+    const points = [...touches.values()].slice(0, 2);
+    return {
+      x: (points[0].x + points[1].x) / 2,
+      y: (points[0].y + points[1].y) / 2,
+      distance: Math.max(1, Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y))
+    };
+  }
+
+  // Drops an unfinished draw, stroke, move or resize when the gesture turns into panning.
+  function cancelInteraction() {
+    const action = state.interaction;
+    if (!action) return;
+    if (action.type === "brush") state.brushDraft = null;
+    if (action.type === "draw") state.draft = null;
+    if ((action.type === "move" || action.type === "resize") && action.before) state.regions = action.before;
+    state.interaction = null;
+    render();
+  }
+
+  function startPan(event) {
+    state.interaction = { type: "pan", pointerId: event.pointerId, x: event.clientX, y: event.clientY, left: elements.canvasFrame.scrollLeft, top: elements.canvasFrame.scrollTop };
+    updatePanCursor();
+  }
+
+  function startPinch() {
+    const center = touchCenter();
+    state.interaction = { type: "pinch", distance: center.distance, zoom: state.zoom, anchor: anchorAt(center.x, center.y) };
+  }
+
   function pointerDown(event) {
-    if (!state.previewSource.width || event.button > 0) return;
+    if (!state.previewSource.width) return;
+    if (event.pointerType === "touch") touches.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (touches.size >= 2) {
+      event.preventDefault();
+      cancelInteraction();
+      startPinch();
+      return;
+    }
+    if (event.button === 1 || (event.button === 0 && (state.panMode || state.spaceDown))) {
+      event.preventDefault();
+      elements.canvas.setPointerCapture(event.pointerId);
+      startPan(event);
+      return;
+    }
+    if (event.button > 0) return;
     event.preventDefault();
     elements.canvas.setPointerCapture(event.pointerId);
     const point = pointFromEvent(event);
@@ -641,9 +733,24 @@
   }
 
   function pointerMove(event) {
+    if (touches.has(event.pointerId)) touches.set(event.pointerId, { x: event.clientX, y: event.clientY });
     if (!state.interaction) return;
-    const point = pointFromEvent(event);
     const action = state.interaction;
+    if (action.type === "pinch") {
+      if (touches.size < 2) return;
+      const center = touchCenter();
+      state.zoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, action.zoom * center.distance / action.distance));
+      updateCanvasSize();
+      placeAnchor(action.anchor, center.x, center.y);
+      return;
+    }
+    if (action.type === "pan") {
+      if (event.pointerId !== action.pointerId) return;
+      elements.canvasFrame.scrollLeft = action.left - (event.clientX - action.x);
+      elements.canvasFrame.scrollTop = action.top - (event.clientY - action.y);
+      return;
+    }
+    const point = pointFromEvent(event);
     if (action.type === "brush") {
       const last = state.brushDraft.at(-1);
       const bounds = elements.canvas.getBoundingClientRect();
@@ -682,9 +789,17 @@
   }
 
   function pointerUp(event) {
+    touches.delete(event.pointerId);
     if (!state.interaction) return;
     const action = state.interaction;
     if (elements.canvas.hasPointerCapture(event.pointerId)) elements.canvas.releasePointerCapture(event.pointerId);
+    if (action.type === "pinch" || action.type === "pan") {
+      // Lifting one finger of a pinch ends the gesture; the other finger must not start drawing.
+      if (action.type === "pan" && event.pointerId !== action.pointerId) return;
+      state.interaction = null;
+      updatePanCursor();
+      return;
+    }
     if (action.type === "brush") {
       const points = state.brushDraft;
       state.brushDraft = null;
@@ -1112,8 +1227,41 @@
   elements.redo.addEventListener("click", redo);
   elements.remove.addEventListener("click", removeSelected);
   elements.compare.addEventListener("click", () => { state.showOriginal = !state.showOriginal; render(); });
-  elements.zoomOut.addEventListener("click", () => { state.zoom = Math.max(0.5, state.zoom - 0.25); updateCanvasSize(); });
-  elements.zoomIn.addEventListener("click", () => { state.zoom = Math.min(2.5, state.zoom + 0.25); updateCanvasSize(); });
+  elements.zoomOut.addEventListener("click", () => zoomTo(state.zoom - 0.25));
+  elements.zoomIn.addEventListener("click", () => zoomTo(state.zoom + 0.25));
+  elements.pan?.addEventListener("click", () => setPanMode(!state.panMode));
+  // Ctrl/⌘ + wheel and trackpad pinch zoom around the pointer; a plain wheel keeps scrolling the image.
+  elements.canvasFrame.addEventListener("wheel", (event) => {
+    if (!event.ctrlKey && !event.metaKey) return;
+    event.preventDefault();
+    zoomTo(state.zoom * Math.exp(-event.deltaY * 0.0025), event.clientX, event.clientY);
+  }, { passive: false });
+  // Hold Space to pan while the pointer is over the image, as in common image editors.
+  const isTextField = (target) => target instanceof Element && Boolean(target.closest("input, textarea, select, [contenteditable]"));
+  // Space also presses a focused button, so leave it alone there.
+  const isTypingTarget = (target) => isTextField(target) || (target instanceof Element && Boolean(target.closest("button")));
+  document.addEventListener("keydown", (event) => {
+    if (event.code !== "Space" || event.repeat || elements.workspace.hidden || isTypingTarget(event.target)) return;
+    if (!state.canvasHover && document.activeElement !== elements.canvas) return;
+    event.preventDefault();
+    state.spaceDown = true;
+    updatePanCursor();
+  });
+  // H toggles the hand tool, the shortcut used by Photoshop and Figma.
+  document.addEventListener("keydown", (event) => {
+    if (event.code !== "KeyH" || event.ctrlKey || event.metaKey || event.altKey || elements.workspace.hidden || isTextField(event.target)) return;
+    setPanMode(!state.panMode);
+  });
+  document.addEventListener("keyup", (event) => {
+    if (event.code !== "Space" || !state.spaceDown) return;
+    state.spaceDown = false;
+    updatePanCursor();
+  });
+  window.addEventListener("blur", () => { state.spaceDown = false; updatePanCursor(); });
+  elements.canvas.addEventListener("pointerenter", () => { state.canvasHover = true; });
+  elements.canvas.addEventListener("pointerleave", () => { state.canvasHover = false; });
+  // Stop the middle-button autoscroll so middle-drag can pan instead.
+  elements.canvas.addEventListener("mousedown", (event) => { if (event.button === 1) event.preventDefault(); });
   elements.aiRun.addEventListener("click", runAiScan);
   elements.applySuggestions.addEventListener("click", applySuggestions);
   elements.clearSuggestions.addEventListener("click", clearSuggestions);
