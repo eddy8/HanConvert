@@ -87,7 +87,7 @@ for (const [path, lang, heading] of pages) {
     assert.match(html, new RegExp(`<html lang="${lang}"`));
     assert.ok(html.includes(`>${heading}</h1>`));
     assert.ok(html.includes('id="japaneseHandwritingCanvas"'));
-    assert.ok(html.includes('src="https://cdn.jsdelivr.net/gh/barionleg/okanjirec@e036ef26dc307d897653f5b8750a8cb048f042b3/docs/resources/javascript/kanji-canvas.min.js" integrity="sha384-'));
+    assert.ok(html.includes('src="https://cdn.jsdmirror.cn/gh/barionleg/okanjirec@e036ef26dc307d897653f5b8750a8cb048f042b3/docs/resources/javascript/kanji-canvas.min.js" integrity="sha384-'));
     assert.ok(html.includes('src="/japanese-reading-client.js"'));
     assert.ok(html.includes('id="japaneseHandwritingAppend"'));
     assert.ok(html.includes('id="japaneseHandwritingText"'));

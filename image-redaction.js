@@ -876,8 +876,8 @@
 
   async function loadFaceDetector() {
     if (state.faceDetector) return state.faceDetector;
-    const moduleUrl = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/+esm";
-    const wasmUrl = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/wasm";
+    const moduleUrl = "https://cdn.jsdmirror.cn/npm/@mediapipe/tasks-vision@1.0.1/+esm";
+    const wasmUrl = "https://cdn.jsdmirror.cn/npm/@mediapipe/tasks-vision@1.0.1/wasm";
     // Self-hosted copy of the MediaPipe model (see vendor/mediapipe/NOTICE.md): storage.googleapis.com
     // is unreachable for many visitors in mainland China.
     const modelUrl = "/vendor/mediapipe/blaze_face_short_range.tflite";
@@ -921,7 +921,7 @@
   async function getOcrWorker(language) {
     if (state.ocrWorker && state.ocrWorkerLanguage === language) return state.ocrWorker;
     if (state.ocrWorker) await state.ocrWorker.terminate();
-    await loadExternalScript("https://cdn.jsdelivr.net/npm/tesseract.js@7.0.0/dist/tesseract.min.js");
+    await loadExternalScript("https://cdn.jsdmirror.cn/npm/tesseract.js@7.0.0/dist/tesseract.min.js");
     state.ocrWorkerLanguage = language;
     state.ocrWorker = await globalThis.Tesseract.createWorker(language, 1, {
       logger: (event) => {

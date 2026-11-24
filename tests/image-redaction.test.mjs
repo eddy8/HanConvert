@@ -94,7 +94,7 @@ test("loads StackBlur from a pinned CDN build and the face model from this site"
   assert.doesNotMatch(source, /modelUrl = "https:\/\/storage\.googleapis\.com/u);
   for (const prefix of ["", "zh-tw/", "en/", "ja/", "ko/"]) {
     const html = await readFile(path.join(projectRoot, prefix, "image-redaction", "index.html"), "utf8");
-    assert.match(html, /<script defer src="https:\/\/cdn\.jsdelivr\.net\/npm\/stackblur-canvas@3\.0\.1\/dist\/stackblur\.min\.js" integrity="sha384-[^"]+" crossorigin="anonymous"><\/script>\n    <script defer src="\/image-redaction\.js">/u, prefix || "zh-CN");
+    assert.match(html, /<script defer src="https:\/\/cdn\.jsdmirror\.cn\/npm\/stackblur-canvas@3\.0\.1\/dist\/stackblur\.min\.js" integrity="sha384-[^"]+" crossorigin="anonymous"><\/script>\n    <script defer src="\/image-redaction\.js">/u, prefix || "zh-CN");
     assert.match(html, /id="redactionCopy"/u);
     assert.match(html, /class="redaction-mobile-bar"/u);
     const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/u)[1]);
