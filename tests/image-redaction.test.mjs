@@ -78,3 +78,39 @@ test("ships five localized static pages with editor, AI review, schema and sitem
     assert.match(photoOcr, /data-route="image-redaction"/u);
   }
 });
+
+test("blurs with StackBlur instead of canvas filters, which Safari does not reliably apply", async () => {
+  const source = await readFile(path.join(projectRoot, "image-redaction.js"), "utf8");
+  assert.doesNotMatch(source, /\.filter\s*=\s*`?blur/u);
+  assert.match(source, /StackBlur\.imageDataRGBA\(pixels, 0, 0, w, h,/u);
+  assert.equal(core.stackBlurRadius(8.3), 17);
+  assert.equal(core.stackBlurRadius(500), 254);
+  assert.equal(core.stackBlurRadius(0), 2);
+});
+
+test("loads StackBlur from a pinned CDN build and the face model from this site", async () => {
+  const source = await readFile(path.join(projectRoot, "image-redaction.js"), "utf8");
+  assert.match(source, /const modelUrl = "\/vendor\/mediapipe\/blaze_face_short_range\.tflite";/u);
+  assert.doesNotMatch(source, /modelUrl = "https:\/\/storage\.googleapis\.com/u);
+  for (const prefix of ["", "zh-tw/", "en/", "ja/", "ko/"]) {
+    const html = await readFile(path.join(projectRoot, prefix, "image-redaction", "index.html"), "utf8");
+    assert.match(html, /<script defer src="https:\/\/cdn\.jsdelivr\.net\/npm\/stackblur-canvas@3\.0\.1\/dist\/stackblur\.min\.js" integrity="sha384-[^"]+" crossorigin="anonymous"><\/script>\n    <script defer src="\/image-redaction\.js">/u, prefix || "zh-CN");
+    assert.match(html, /id="redactionCopy"/u);
+    assert.match(html, /class="redaction-mobile-bar"/u);
+    const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/u)[1]);
+    assert.equal(schema["@graph"].find((item) => item["@type"] === "FAQPage").mainEntity.length, 9, prefix || "zh-CN");
+  }
+});
+
+test("brush strokes get padded bounds and the pages offer a box/brush tool switch", async () => {
+  const rect = core.strokeBounds([[0.2, 0.3], [0.4, 0.35]], 0.1, 0.16);
+  assert.ok(Math.abs(rect.x - 0.15) < 1e-9 && Math.abs(rect.y - 0.22) < 1e-9);
+  assert.ok(Math.abs(rect.width - 0.3) < 1e-9 && Math.abs(rect.height - 0.21) < 1e-9);
+  assert.equal(core.strokeBounds([], 0.1, 0.1), null);
+  for (const prefix of ["", "zh-tw/", "en/", "ja/", "ko/"]) {
+    const html = await readFile(path.join(projectRoot, prefix, "image-redaction", "index.html"), "utf8");
+    assert.match(html, /data-redaction-tool="rect"[\s\S]*data-redaction-tool="brush"/u, prefix || "zh-CN");
+    assert.match(html, /id="redactionBrushSize" type="range"/u);
+    assert.match(html, /"brushHint":"/u);
+  }
+});

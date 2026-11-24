@@ -14,7 +14,7 @@ const core = context.KoreanHandwritingCore;
 
 const engine = { document: { getElementById() { return null; }, addEventListener() {} }, console: { log() {} } };
 engine.window = engine;
-vm.runInNewContext(await readFile(new URL("../vendor/kanji-canvas.min.js", import.meta.url), "utf8"), engine);
+vm.runInNewContext(await readFile(new URL("../scripts/vendor/kanji-canvas.min.js", import.meta.url), "utf8"), engine);
 vm.runInNewContext(await readFile(new URL("../japanese-handwriting-worker.js", import.meta.url), "utf8"), engine);
 const worker = engine.JapaneseHandwritingWorker;
 const payload = JSON.parse(await readFile(new URL("../data/korean-handwriting/patterns.json", import.meta.url), "utf8"));
@@ -80,7 +80,7 @@ for (const [path, lang, heading] of pages) {
     for (const id of ["koreanHandwritingCanvas", "koreanHandwritingAppend", "koreanHandwritingText", "koreanHandwritingRemote"]) {
       assert.ok(html.includes(`id="${id}"`), id);
     }
-    assert.ok(html.includes('src="/vendor/kanji-canvas.min.js"'));
+    assert.ok(html.includes('src="https://cdn.jsdelivr.net/gh/barionleg/okanjirec@e036ef26dc307d897653f5b8750a8cb048f042b3/docs/resources/javascript/kanji-canvas.min.js" integrity="sha384-'));
     assert.ok(html.includes('src="/korean-handwriting-recognition.js"'));
     assert.ok(html.includes('"@type":"FAQPage"') && html.includes('"@type":"HowTo"'));
     assert.match(html, /class="handwriting-hint">[^<]*(远程|遠端|online|オンライン|온라인)/u);
