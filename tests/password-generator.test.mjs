@@ -144,7 +144,7 @@ test("memorable passphrases use whole words, the chosen separator and the exact 
 });
 
 test("loads the EFF wordlist from a pinned CDN build with SRI", async () => {
-  assert.equal(core.WORDLIST.url, "https://cdn.jsdelivr.net/npm/@wordlist/english-eff@1.0.1/dist/data/long.json");
+  assert.equal(core.WORDLIST.url, "https://cdn.jsdmirror.cn/npm/@wordlist/english-eff@1.0.1/dist/data/long.json");
   assert.match(core.WORDLIST.integrity, /^sha384-[A-Za-z0-9+/]{64}$/u);
   const source = await readFile(new URL("../password-generator.js", import.meta.url), "utf8");
   assert.match(source, /fetch\(core\.WORDLIST\.url, \{ integrity: core\.WORDLIST\.integrity/u);

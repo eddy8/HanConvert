@@ -129,7 +129,7 @@
 
   // Memorable passwords: words drawn from the EFF long wordlist (7,776 words, about 12.9 bits each).
   const WORDLIST = Object.freeze({
-    url: "https://cdn.jsdelivr.net/npm/@wordlist/english-eff@1.0.1/dist/data/long.json",
+    url: "https://cdn.jsdmirror.cn/npm/@wordlist/english-eff@1.0.1/dist/data/long.json",
     integrity: "sha384-uLayHskc1q0oZVhv8+6Aei1qad3/sxnDVB4BGXE7csvQI4R/ZeEfOBXsx3o19bNM",
     size: 7776
   });
