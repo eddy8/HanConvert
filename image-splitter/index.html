@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="免费在线图片分割工具：把图片切成九宫格、四宫格或横向轮播，长图按 A4 智能分页，大图分割成多张 A4 打印海报，导出 ZIP 或 PDF，图片不上传。" />
+    <title>图片分割 - 在线九宫格切图、长图切割与分割打印 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/image-splitter/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/image-splitter/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/image-splitter/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/image-splitter/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/image-splitter/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/image-splitter/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/image-splitter/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.min.css" />
+    <link rel="stylesheet" href="/image-splitter.css" />
+    <script src="/theme.js"></script>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <script defer src="/image-splitter.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/image-splitter/#webapp",
+            "name": "图片分割 - 在线九宫格切图、长图切割与分割打印",
+            "url": "https://jianfan.app/image-splitter/",
+            "description": "免费在线图片分割工具：把图片切成九宫格、四宫格或横向轮播，长图按 A4 智能分页，大图分割成多张 A4 打印海报，导出 ZIP 或 PDF，图片不上传。",
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript and browser image processing support",
+            "inLanguage": "zh-CN",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/image-splitter/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "网站首页",
+                "item": "https://jianfan.app/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "图片分割 - 在线九宫格切图、长图切割与分割打印",
+                "item": "https://jianfan.app/image-splitter/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/image-splitter/#howto",
+            "name": "如何在线分割图片",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "选择、拖入或粘贴要切割的图片。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "选择网格切图、长图分段或分割打印，再挑选预设或调整行列、比例、纸张。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "在预览中检查切线、编号和成品尺寸，点击预览中的某一块可单独下载。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "下载全部切图的 ZIP 或 PDF；手机上可用“分享 / 存到相册”一次保存全部图片。"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/image-splitter/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "图片会上传到服务器吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不会。读取、切割、预览、打包 ZIP 和生成 PDF 都在当前浏览器中完成。首次下载 ZIP 或 PDF 时会联网加载开源的压缩与 PDF 组件，图片本身不会发送出去。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "怎么把一张图片切成九宫格发朋友圈？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "选择“九宫格 3×3”预设（默认 1:1 正方形并居中裁切），在预览中确认保留范围，点击“下载全部（ZIP）”。手机上可点“分享 / 存到相册”。发朋友圈时按文件名 01 到 09 的顺序选图，就能拼回完整画面。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Instagram 拼图为什么要倒着发？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Instagram 主页把最新的帖子放在左上角，所以要从右下角最后一张开始发。把“文件编号”设为“Instagram 发帖顺序”，按 post01、post02… 依次发布即可；每次发满整行（3 的倍数）才不会错位。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "切出来的每张图为什么相差 1 像素？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "当宽度或高度不能被行数、列数整除时，工具会把多出的像素平均分给各行各列，所以相邻两张最多相差 1 像素。所有小图拼回去正好是原图，不缺也不重复任何像素。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "怎么把长图、长截图切成 A4 并转成 PDF？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "切换到“长图分段”，每段长度选“按 A4 纸比例”，保持“智能避开文字”开启，再点“下载 PDF”。每段占一页 A4，切线会尽量落在文字之间的空白行，不会把一行字切成上下两半。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "怎么把一张图片分割成多张 A4 打印成海报？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "切换到“分割打印”，选择纸张和方向，设置横向页数（例如 3 页），工具会自动算出需要几行，并显示成品尺寸和 dpi。下载 PDF 后用 100%（实际大小）打印，沿裁切线修边，按 A1、A2… 页码对齐重叠区粘贴。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "打印出来模糊怎么办？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "看结果区的 dpi 数值，建议不低于 150 dpi，低于 100 dpi 近看会明显模糊。可以减少横向页数、把 A3 改为 A4，或换一张分辨率更高的原图；放大打印不会凭空增加细节。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "免费吗？有水印和数量限制吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "完全免费，无需注册，导出的图片不加水印。为保证浏览器稳定，一次最多切 100 张、海报最多 64 页，单张图片不超过 50 MB 或 6400 万像素。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "支持哪些格式？手机上能用吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "支持 JPG、PNG、WebP、AVIF、BMP、GIF（取第一帧）等浏览器能打开的图片，可导出 PNG、JPG、ZIP 或 PDF。手机浏览器同样可用；支持系统分享的手机会显示“分享 / 存到相册”，可一次把全部切图存进相册。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="image-splitter" data-page-slug="image-splitter" data-locale="zh-CN">
+    <script type="application/json" id="imageSplitterMessages">{"waiting":"请选择图片开始切割","loading":"正在打开图片…","ready":"图片已就绪，请选择切割方式","sampleReady":"示例图片已载入","invalidFile":"无法读取这张图片，请选择 JPG、PNG 或 WebP 等常见格式。","fileTooLarge":"图片超过 50 MB，请压缩后再试。","tooManyPixels":"图片超过 6400 万像素，请先缩小尺寸再切割。","libraryError":"导出组件加载失败，请检查网络后重试。","exportError":"浏览器无法生成文件，请重试。","rendering":"正在生成 {current}/{total}…","zipDone":"已下载 {count} 张切图（ZIP）","pdfDone":"已下载 {count} 页 PDF","singleDone":"已下载 {name}","gridSummary":"共 {count} 张 · 每张 {size} px","longSummary":"共 {count} 段 · 每段最高 {height} px","posterSummary":"共 {count} 页（{cols} 列 × {rows} 行）· 成品约 {width} × {height} cm · 约 {dpi} dpi","smallTiles":"每张小于 320 像素，发布到社交平台可能不清晰。","tooManyParts":"超过 {max} 段，请调大每段长度或减少段数。","tooManyPages":"超过 {max} 页，请减少横向页数或改用更大的纸张。","lowDpi":"打印分辨率偏低，可能模糊；建议减少横向页数或使用更清晰的原图。","clickHint":"点击预览中的任意一块，可单独下载这一张。","posterHint":"黄色区域是相邻两页的重叠部分，拼贴时对齐即可。","segmentPixels":"每段高度（px）","segmentCount":"段数","share":"分享 / 存到相册","shareReady":"再点一次分享","shared":"已打开系统分享","shareTapAgain":"图片已准备好，请再点一次“分享”。","shareError":"当前浏览器无法分享图片，请改用下载 ZIP。"}</script>
+    <a class="skip-nav" href="#main">跳到主要内容</a>
+    <header class="site-header" aria-label="网站页眉"><a class="brand" href="/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">分</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="主要导航"><a class="nav-link" href="/">网站首页</a><label class="language-picker"><span>界面语言</span><select id="localeSelect" aria-label="界面语言"><option value="zh-CN" selected>简体中文</option><option value="zh-TW">繁體中文</option><option value="en">English</option><option value="ja">日本語</option><option value="ko">한국어</option></select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
+    <main id="main">
+      <section class="tool-hero splitter-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">图片分割 · 九宫格切图 · 分割打印</p><h1 id="pageTitle">在线图片分割：九宫格切图、长图切割、分割打印</h1><p class="lede">把一张图片按行列切成九宫格、四宫格或横向全景轮播，把长截图按 A4 分页，或把大图分割到多张 A4 纸上打印成海报。全部在浏览器本地完成，切图可打包 ZIP 或导出 PDF。</p></div><div class="splitter-hero-signal" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></section>
+      <section class="standalone-tool image-splitter-tool" aria-labelledby="splitterToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">SPLIT / PREVIEW / EXPORT</p><h2 id="splitterToolTitle">上传图片并选择切割方式</h2></div><div class="status-pill" id="splitterStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>请选择图片开始切割</span></div></div>
+        <input class="visually-hidden" id="splitterFileInput" type="file" accept="image/*" />
+        <div class="splitter-drop-zone" id="splitterDropZone"><div class="splitter-drop-visual" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div><h3>拖入、粘贴或选择一张图片</h3><p>支持 JPG、PNG、WebP、AVIF 等浏览器可读取的图片，单张不超过 50 MB。图片只在本机处理，不会上传。</p><div class="splitter-drop-actions"><label class="primary-action" for="splitterFileInput">选择图片</label><button class="text-button" id="splitterSample" type="button">加载示例</button></div><small>也可以直接按 Ctrl / Cmd + V 粘贴截图</small></div>
+        <div class="splitter-workspace" id="splitterWorkspace" hidden>
+          <section class="splitter-preview-panel" aria-labelledby="splitterPreviewTitle"><div class="splitter-file-row"><div><span>当前图片</span><strong id="splitterFileName">image</strong><small id="splitterFileMeta"></small></div><label for="splitterFileInput">更换图片</label></div><h3 class="visually-hidden" id="splitterPreviewTitle">切割预览</h3><p class="splitter-hint" id="splitterHint">点击预览中的任意一块，可单独下载这一张。</p><div class="splitter-preview-frame" id="splitterPreviewFrame"><canvas id="splitterCanvas" role="img" aria-label="切割预览"></canvas></div></section>
+          <aside class="splitter-side-panel" aria-label="切割设置">
+            <div class="splitter-modes" role="radiogroup" aria-label="切割方式"><button class="is-active" type="button" role="radio" aria-checked="true" data-splitter-mode="grid">网格切图</button><button type="button" role="radio" aria-checked="false" data-splitter-mode="long">长图分段</button><button type="button" role="radio" aria-checked="false" data-splitter-mode="poster">分割打印</button></div>
+            <div class="splitter-options" data-splitter-panel="grid"><h3>按行列切图</h3><div class="splitter-presets"><button class="is-active" type="button" data-grid-preset="3x3" data-grid-ratio="1:1" aria-pressed="true">九宫格 3×3</button><button type="button" data-grid-preset="2x2" data-grid-ratio="1:1" aria-pressed="false">四宫格 2×2</button><button type="button" data-grid-preset="1x3" data-grid-ratio="4:5" aria-pressed="false">横向轮播 3 张</button><button type="button" data-grid-preset="1x2" data-grid-ratio="original" aria-pressed="false">左右 2 等分</button><button type="button" data-grid-preset="4x1" data-grid-ratio="original" aria-pressed="false">竖向 4 条</button></div><div class="splitter-field-row"><label>行数<input id="splitterRows" type="number" min="1" max="10" value="3" inputmode="numeric" /></label><label>列数<input id="splitterCols" type="number" min="1" max="10" value="3" inputmode="numeric" /></label></div><div class="splitter-field-row"><label>单张比例<select id="splitterRatio"><option value="original">保持原图比例</option><option value="1:1" selected>1:1 正方形</option><option value="4:5">4:5 竖图</option><option value="3:4">3:4 竖图</option><option value="9:16">9:16 全屏</option></select></label><label>文件编号<select id="splitterOrder"><option value="reading" selected>从左上到右下</option><option value="instagram">Instagram 发帖顺序（倒序）</option></select></label></div><div class="splitter-field-row" id="splitterFitRow"><label>比例不符时<select id="splitterFit"><option value="crop" selected>居中裁切</option><option value="pad">补边不裁切</option></select></label><label>补边颜色<select id="splitterPadColor"><option value="#ffffff" selected>白色</option><option value="#000000">黑色</option></select></label></div><p class="splitter-note">暗色区域会被裁掉。行列不能整除时，相邻两张最多相差 1 像素。</p></div>
+            <div class="splitter-options" data-splitter-panel="long" hidden><h3>把长图切成多段</h3><label>每段长度<select id="splitterSegmentMode"><option value="a4" selected>按 A4 纸比例</option><option value="screen">按手机屏幕 9:16</option><option value="pixels">固定像素高度</option><option value="count">平均分成几段</option></select></label><label id="splitterSegmentValueRow" hidden><span id="splitterSegmentValueLabel">每段高度（px）</span><input id="splitterSegmentValue" type="number" min="64" max="100000" value="1600" inputmode="numeric" /></label><label class="splitter-check"><input id="splitterSmartCut" type="checkbox" checked /> <span>智能避开文字：切线落在空白行，不把一行字切成两半</span></label><p class="splitter-note">适合长截图、聊天记录、网页长图打印或转 PDF；“下载 A4 PDF”每段占一页。</p></div>
+            <div class="splitter-options" data-splitter-panel="poster" hidden><h3>把大图分割到多张纸打印</h3><div class="splitter-field-row"><label>纸张<select id="splitterPaper"><option value="a4" selected>A4</option><option value="a3">A3</option><option value="letter">Letter</option></select></label><label>方向<select id="splitterOrientation"><option value="portrait" selected>纵向</option><option value="landscape">横向</option></select></label></div><div class="splitter-field-row"><label>横向页数<input id="splitterPosterCols" type="number" min="1" max="10" value="2" inputmode="numeric" /></label><label>页边距（mm）<input id="splitterMargin" type="number" min="0" max="20" value="6" inputmode="numeric" /></label></div><div class="splitter-field-row"><label>拼接重叠（mm）<input id="splitterOverlap" type="number" min="0" max="30" value="8" inputmode="numeric" /></label></div><label class="splitter-check"><input id="splitterMarks" type="checkbox" checked /> <span>打印裁切线和页码（A1、A2…）</span></label><p class="splitter-note">按 100% 实际大小打印。重叠区用于对齐粘贴，虚线是上一张纸覆盖到的位置。</p></div>
+            <div class="splitter-result" aria-live="polite"><p id="splitterSummary"></p><p class="splitter-warning" id="splitterWarning" hidden></p></div>
+            <div class="splitter-export"><label id="splitterFormatRow">图片格式<select id="splitterFormat"><option value="image/png">PNG</option><option value="image/jpeg">JPG</option></select></label><div class="splitter-export-actions"><button class="primary-action" id="splitterZip" type="button"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4v11" /><path d="m7 10 5 5 5-5" /><path d="M5 20h14" /></svg><span>下载全部（ZIP）</span></button><button id="splitterPdf" type="button" hidden><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" /><path d="M14 3v6h6" /><path d="M9 15h6" /></svg><span>下载 PDF</span></button><button id="splitterShare" type="button" hidden><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 15V3" /><path d="m7 8 5-5 5 5" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7" /></svg><span>分享 / 存到相册</span></button></div></div>
+          </aside>
+          <div class="splitter-footer"><p>图片在浏览器本地切割；首次下载 ZIP 或 PDF 时会联网加载开源导出组件，图片本身不会发送到任何服务器。</p><button class="splitter-reset" id="splitterReset" type="button">重新开始</button></div>
+        </div>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="splitterFeatureTitle"><div class="section-heading"><p class="section-kicker">图片切割、九宫格、长图分页、海报打印</p><h2 id="splitterFeatureTitle">一张图，三种常见切法</h2><p class="seo-intro">图片分割就是把一张图片按网格、按高度或按纸张切成多张小图。本工具在切割前实时预览每条切线和编号，导出原始分辨率，不压缩、不加水印。</p></div><div class="seo-grid"><article><h3>网格切图与九宫格</h3><p>1–10 行 × 1–10 列任意组合，内置九宫格、四宫格、横向轮播等预设，可按 1:1、4:5、3:4 自动居中裁切或补边。</p></article><article><h3>长截图智能分页</h3><p>按 A4、手机屏幕、固定像素或段数切分，智能切线会在切割点附近寻找空白行，导出图片或一页一段的 A4 PDF。</p></article><article><h3>大图分割打印成海报</h3><p>选择 A4、A3 或 Letter 纸和横向页数，自动算出总页数、成品尺寸和打印 dpi，生成带裁切线、重叠区和页码的 PDF。</p></article></div><section class="redaction-use-cases" aria-labelledby="splitterCasesTitle"><h2 id="splitterCasesTitle">常见图片分割场景</h2><div><article><h3>朋友圈、微博九宫格</h3><p>把一张照片切成 9 张正方形，按 01–09 顺序选图，发出后在动态里拼回完整画面。</p></article><article><h3>Instagram / Threads 拼图和全景轮播</h3><p>主页拼图按倒序编号发布；横向全景图切成 4:5 的多张，左右滑动时画面无缝衔接。</p></article><article><h3>长图打印与海报</h3><p>把聊天记录、网页长截图分成 A4 页打印；把孩子的画、地图或海报放大到 4 张、9 张 A4 上拼贴。</p></article></div></section><section class="splitter-sizes" aria-labelledby="splitterSizesTitle"><h2 id="splitterSizesTitle">常用切图尺寸速查</h2><p>以下是常见用途的推荐设置，切换方式或预设后可在预览中直接核对。</p><div class="splitter-table-wrap"><table class="splitter-size-table"><thead><tr><th scope="col">用途</th><th scope="col">推荐设置</th><th scope="col">说明</th></tr></thead><tbody><tr><td>朋友圈 / 微博九宫格</td><td>3×3，1:1</td><td>每张正方形；原图不小于 3240×3240 px 时，每张可达 1080×1080 px。</td></tr><tr><td>Instagram 主页拼图</td><td>3 列 × N 行，3:4 或 4:5</td><td>主页网格以 3:4 显示缩略图，重要内容放在中间；编号选“Instagram 发帖顺序”。</td></tr><tr><td>横向全景轮播</td><td>1×2 至 1×10，4:5 或 1:1</td><td>竖图帖子常用 1080×1350 px（4:5），切线两侧画面连续。</td></tr><tr><td>长截图打印 / 转 PDF</td><td>长图分段，按 A4 纸比例</td><td>A4 纸为 210×297 mm；开启智能避开文字，避免把一行字切断。</td></tr><tr><td>A4 拼接海报</td><td>分割打印，横向 2–4 页</td><td>300 dpi 打印一整张 A4 约需 2480×3508 px；建议不低于 150 dpi。</td></tr></tbody></table></div></section><section class="pinyin-howto" aria-labelledby="splitterHowTitle"><h2 id="splitterHowTitle">如何在线分割图片</h2><ol><li>选择、拖入或粘贴要切割的图片。</li><li>选择网格切图、长图分段或分割打印，再挑选预设或调整行列、比例、纸张。</li><li>在预览中检查切线、编号和成品尺寸，点击预览中的某一块可单独下载。</li><li>下载全部切图的 ZIP 或 PDF；手机上可用“分享 / 存到相册”一次保存全部图片。</li></ol></section><section class="pinyin-faq" aria-labelledby="splitterFaqTitle"><h2 id="splitterFaqTitle">图片分割常见问题</h2><details><summary>图片会上传到服务器吗？</summary><p>不会。读取、切割、预览、打包 ZIP 和生成 PDF 都在当前浏览器中完成。首次下载 ZIP 或 PDF 时会联网加载开源的压缩与 PDF 组件，图片本身不会发送出去。</p></details><details><summary>怎么把一张图片切成九宫格发朋友圈？</summary><p>选择“九宫格 3×3”预设（默认 1:1 正方形并居中裁切），在预览中确认保留范围，点击“下载全部（ZIP）”。手机上可点“分享 / 存到相册”。发朋友圈时按文件名 01 到 09 的顺序选图，就能拼回完整画面。</p></details><details><summary>Instagram 拼图为什么要倒着发？</summary><p>Instagram 主页把最新的帖子放在左上角，所以要从右下角最后一张开始发。把“文件编号”设为“Instagram 发帖顺序”，按 post01、post02… 依次发布即可；每次发满整行（3 的倍数）才不会错位。</p></details><details><summary>切出来的每张图为什么相差 1 像素？</summary><p>当宽度或高度不能被行数、列数整除时，工具会把多出的像素平均分给各行各列，所以相邻两张最多相差 1 像素。所有小图拼回去正好是原图，不缺也不重复任何像素。</p></details><details><summary>怎么把长图、长截图切成 A4 并转成 PDF？</summary><p>切换到“长图分段”，每段长度选“按 A4 纸比例”，保持“智能避开文字”开启，再点“下载 PDF”。每段占一页 A4，切线会尽量落在文字之间的空白行，不会把一行字切成上下两半。</p></details><details><summary>怎么把一张图片分割成多张 A4 打印成海报？</summary><p>切换到“分割打印”，选择纸张和方向，设置横向页数（例如 3 页），工具会自动算出需要几行，并显示成品尺寸和 dpi。下载 PDF 后用 100%（实际大小）打印，沿裁切线修边，按 A1、A2… 页码对齐重叠区粘贴。</p></details><details><summary>打印出来模糊怎么办？</summary><p>看结果区的 dpi 数值，建议不低于 150 dpi，低于 100 dpi 近看会明显模糊。可以减少横向页数、把 A3 改为 A4，或换一张分辨率更高的原图；放大打印不会凭空增加细节。</p></details><details><summary>免费吗？有水印和数量限制吗？</summary><p>完全免费，无需注册，导出的图片不加水印。为保证浏览器稳定，一次最多切 100 张、海报最多 64 页，单张图片不超过 50 MB 或 6400 万像素。</p></details><details><summary>支持哪些格式？手机上能用吗？</summary><p>支持 JPG、PNG、WebP、AVIF、BMP、GIF（取第一帧）等浏览器能打开的图片，可导出 PNG、JPG、ZIP 或 PDF。手机浏览器同样可用；支持系统分享的手机会显示“分享 / 存到相册”，可一次把全部切图存进相册。</p></details></section><p class="section-kicker pinyin-related-kicker">相关图片与文字工具</p><nav class="landing-links" aria-label="相关图片与汉字工具"><a href="/image-splitter/" aria-current="page">在线图片分割</a><a href="/image-redaction/">图片打码</a><a href="/photo-chinese-character-recognition/">拍照识字</a><a href="/han-character-worksheet/">田字格字帖生成器</a><a href="/text-formatter/">文本格式化</a><a href="/character-counter/">字数统计</a></nav></section>
+    </main>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="全部工具">
+        <div class="site-directory-group">
+          <p class="site-directory-title">简繁转换</p>
+          <ul>
+            <li><a href="/">简繁转换</a></li>
+            <li><a href="/simplified-to-traditional/">简体转繁体</a></li>
+            <li><a href="/traditional-to-simplified/">繁体转简体</a></li>
+            <li><a href="/taiwan-traditional/">台湾繁体转换</a></li>
+            <li><a href="/hong-kong-traditional/">香港繁体转换</a></li>
+            <li><a href="/file-text-converter/">文件简繁转换</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">中文汉字</p>
+          <ul>
+            <li><a href="/chinese-handwriting-recognition/">手写汉字识别</a></li>
+            <li><a href="/photo-chinese-character-recognition/">拍照识字</a></li>
+            <li><a href="/chinese-to-pinyin/">汉字转拼音</a></li>
+            <li><a href="/chinese-stroke-order/">汉字笔顺查询</a></li>
+            <li><a href="/chinese-character-lookup/">汉字查询与结构拆解</a></li>
+            <li><a href="/han-character-worksheet/">田字格字帖生成器</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">日文汉字</p>
+          <ul>
+            <li><a href="/japanese-handwriting-recognition/">日文手写汉字识别</a></li>
+            <li><a href="/japanese-kanji-dictionary/">日本汉字查询</a></li>
+            <li><a href="/japanese-stroke-order/">日本汉字笔顺</a></li>
+            <li><a href="/kanji-to-hiragana/">日文汉字转平假名</a></li>
+            <li><a href="/kanji-to-romaji/">日文汉字转罗马字</a></li>
+            <li><a href="/japanese-kanji-converter/">日文新旧字体转换</a></li>
+            <li><a href="/japanese-chinese-kanji-converter/">日中汉字转换</a></li>
+            <li><a href="/japanese-characters/">日文字符复制</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">韩文与韩国汉字</p>
+          <ul>
+            <li><a href="/korean-handwriting-recognition/">韩语手写识别</a></li>
+            <li><a href="/korean-hanja-dictionary/">韩国汉字查询</a></li>
+            <li><a href="/korean-hanja-handwriting-recognition/">韩国汉字手写识别</a></li>
+            <li><a href="/hangul-hanja-converter/">韩文汉字转换</a></li>
+            <li><a href="/korean-name-hanja/">韩国人名用汉字</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">文本工具</p>
+          <ul>
+            <li><a href="/character-counter/">在线字数统计</a></li>
+            <li><a href="/word-to-txt/">Word 转 TXT</a></li>
+            <li><a href="/text-formatter/">文本格式化</a></li>
+            <li><a href="/image-redaction/">图片打码</a></li>
+            <li><a href="/image-splitter/" aria-current="page">图片分割</a></li>
+            <li><a href="/password-generator/">密码生成器</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.app 提供浏览器本地运行的中文、日文、韩文文字工具和图片处理工具。</p><nav class="footer-links" aria-label="页脚"><a href="/about/">关于我们</a><a href="/contact/">联系我们</a><a href="/privacy/">隐私声明</a></nav></footer>
+    <dialog class="splitter-dialog" id="splitterDialog" aria-labelledby="splitterDialogTitle"><form method="dialog"><h2 id="splitterDialogTitle">无法完成操作</h2><p id="splitterDialogMessage"></p><button type="submit">关闭</button></form></dialog>
+  </body>
+</html>

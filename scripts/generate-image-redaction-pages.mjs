@@ -128,11 +128,11 @@ const content = {
 };
 
 const relatedLinks = {
-  "zh-CN": [[slug, "在线图片打码"], ["photo-chinese-character-recognition", "拍照识字"], ["text-formatter", "文本格式化"], ["file-text-converter", "文件文本转换"], ["chinese-character-lookup", "汉字查询"], ["character-counter", "字数统计"]],
-  "zh-TW": [[slug, "線上圖片打馬賽克"], ["photo-chinese-character-recognition", "拍照辨識漢字"], ["text-formatter", "文字格式化"], ["file-text-converter", "文件文字轉換"], ["chinese-character-lookup", "漢字查詢"], ["character-counter", "字數統計"]],
-  en: [[slug, "Image redaction tool"], ["photo-chinese-character-recognition", "Chinese OCR from photo"], ["text-formatter", "Text formatter"], ["file-text-converter", "Document Chinese converter"], ["chinese-character-lookup", "Chinese character lookup"], ["character-counter", "Character counter"]],
-  ja: [[slug, "画像モザイク加工"], ["photo-chinese-character-recognition", "写真から中国語漢字を認識"], ["text-formatter", "テキスト整形"], ["file-text-converter", "文書の中国語変換"], ["japanese-kanji-dictionary", "漢字検索"], ["character-counter", "文字数カウント"]],
-  ko: [[slug, "사진 모자이크"], ["photo-chinese-character-recognition", "사진 속 중국 한자 인식"], ["text-formatter", "텍스트 정리"], ["file-text-converter", "문서 중국어 변환"], ["korean-hanja-dictionary", "한자 찾기"], ["character-counter", "글자수 세기"]]
+  "zh-CN": [[slug, "在线图片打码"], ["image-splitter", "图片分割"], ["photo-chinese-character-recognition", "拍照识字"], ["text-formatter", "文本格式化"], ["file-text-converter", "文件文本转换"], ["chinese-character-lookup", "汉字查询"], ["character-counter", "字数统计"]],
+  "zh-TW": [[slug, "線上圖片打馬賽克"], ["image-splitter", "圖片分割器"], ["photo-chinese-character-recognition", "拍照辨識漢字"], ["text-formatter", "文字格式化"], ["file-text-converter", "文件文字轉換"], ["chinese-character-lookup", "漢字查詢"], ["character-counter", "字數統計"]],
+  en: [[slug, "Image redaction tool"], ["image-splitter", "Image splitter"], ["photo-chinese-character-recognition", "Chinese OCR from photo"], ["text-formatter", "Text formatter"], ["file-text-converter", "Document Chinese converter"], ["chinese-character-lookup", "Chinese character lookup"], ["character-counter", "Character counter"]],
+  ja: [[slug, "画像モザイク加工"], ["image-splitter", "画像分割"], ["photo-chinese-character-recognition", "写真から中国語漢字を認識"], ["text-formatter", "テキスト整形"], ["file-text-converter", "文書の中国語変換"], ["japanese-kanji-dictionary", "漢字検索"], ["character-counter", "文字数カウント"]],
+  ko: [[slug, "사진 모자이크"], ["image-splitter", "이미지 분할"], ["photo-chinese-character-recognition", "사진 속 중국 한자 인식"], ["text-formatter", "텍스트 정리"], ["file-text-converter", "문서 중국어 변환"], ["korean-hanja-dictionary", "한자 찾기"], ["character-counter", "글자수 세기"]]
 };
 
 function escapeHtml(value) {

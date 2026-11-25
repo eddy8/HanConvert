@@ -18,7 +18,7 @@ const sections = [
   ["Printable worksheets", ["han-character-worksheet", "tian-zi-ge-worksheet", "mi-zi-ge-worksheet", "hanzi-tracing-worksheet", "pinyin-hanzi-worksheet", "stroke-order-worksheet"]],
   ["Japanese", ["japanese-handwriting-recognition", "japanese-kanji-dictionary", "japanese-stroke-order", "kanji-to-hiragana", "kanji-to-romaji", "japanese-chinese-kanji-converter", "chinese-japanese-kanji-comparison", "japanese-kanji-converter", "simplified-chinese-to-japanese-kanji", "traditional-chinese-to-japanese-kanji", "japanese-kanji-to-simplified-chinese", "japanese-kanji-to-traditional-chinese", "japanese-characters"]],
   ["Korean", ["korean-handwriting-recognition", "hangul-hanja-converter", "korean-hanja-dictionary", "korean-hanja-handwriting-recognition", "korean-name-hanja"]],
-  ["Text and privacy utilities", ["text-formatter", "word-to-txt", "image-redaction", "password-generator"]]
+  ["Text and privacy utilities", ["text-formatter", "word-to-txt", "image-redaction", "image-splitter", "password-generator"]]
 ];
 
 async function pageMeta(relativeFile) {

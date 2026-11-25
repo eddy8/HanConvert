@@ -14,6 +14,7 @@ const managedSlugs = [
   "taiwan-traditional",
   "text-formatter",
   "image-redaction",
+  "image-splitter",
   "password-generator"
 ];
 

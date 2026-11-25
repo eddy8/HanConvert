@@ -156,11 +156,15 @@
     "lastmod": "2026-11-17"
   },
   "en/image-redaction/index.html": {
-    "hash": "bdd0a07a1cd9f10e",
-    "lastmod": "2026-11-24"
+    "hash": "7fb1c337758b0893",
+    "lastmod": "2026-11-25"
+  },
+  "en/image-splitter/index.html": {
+    "hash": "eddbb1fa731fe7b1",
+    "lastmod": "2026-11-25"
   },
   "en/index.html": {
-    "hash": "48646ba64a6f47b7",
+    "hash": "8742e141fc080fe7",
     "lastmod": "2026-11-25"
   },
   "en/japanese-characters/index.html": {
@@ -336,11 +340,15 @@
     "lastmod": "2026-11-17"
   },
   "image-redaction/index.html": {
-    "hash": "8068be4a4d248aed",
-    "lastmod": "2026-11-24"
+    "hash": "a0be7ef1675a173c",
+    "lastmod": "2026-11-25"
+  },
+  "image-splitter/index.html": {
+    "hash": "1f916d6629ca0490",
+    "lastmod": "2026-11-25"
   },
   "index.html": {
-    "hash": "804bdc8304a0e1de",
+    "hash": "776ceff1a67f568e",
     "lastmod": "2026-11-25"
   },
   "ja/about/index.html": {
@@ -428,12 +436,16 @@
     "lastmod": "2026-11-17"
   },
   "ja/image-redaction/index.html": {
-    "hash": "c87431f53ab2b8db",
-    "lastmod": "2026-11-24"
+    "hash": "e672ba57cfeac34e",
+    "lastmod": "2026-11-25"
+  },
+  "ja/image-splitter/index.html": {
+    "hash": "e062a0820c68a30f",
+    "lastmod": "2026-11-25"
   },
   "ja/index.html": {
-    "hash": "8f786699e85ddaa2",
-    "lastmod": "2026-11-20"
+    "hash": "7e4810ce1abe5abc",
+    "lastmod": "2026-11-25"
   },
   "ja/japanese-characters/index.html": {
     "hash": "f014b9b99b9f7aa0",
@@ -684,12 +696,16 @@
     "lastmod": "2026-11-17"
   },
   "ko/image-redaction/index.html": {
-    "hash": "97d80fdbf05dac30",
-    "lastmod": "2026-11-24"
+    "hash": "4aab8b907e9443e8",
+    "lastmod": "2026-11-25"
+  },
+  "ko/image-splitter/index.html": {
+    "hash": "746c6e2940dc9754",
+    "lastmod": "2026-11-25"
   },
   "ko/index.html": {
-    "hash": "6e1dcb7419018d0e",
-    "lastmod": "2026-11-20"
+    "hash": "3fb03dc81dc974f0",
+    "lastmod": "2026-11-25"
   },
   "ko/japanese-characters/index.html": {
     "hash": "178aabec8b26dd09",
@@ -988,11 +1004,15 @@
     "lastmod": "2026-11-17"
   },
   "zh-tw/image-redaction/index.html": {
-    "hash": "2654f7cd6dc3e3c0",
-    "lastmod": "2026-11-24"
+    "hash": "38d7c04a66c08d0a",
+    "lastmod": "2026-11-25"
+  },
+  "zh-tw/image-splitter/index.html": {
+    "hash": "0d5078ee83e5d882",
+    "lastmod": "2026-11-25"
   },
   "zh-tw/index.html": {
-    "hash": "47a3cb03d0dd7e72",
+    "hash": "c09fc1a7f94813ab",
     "lastmod": "2026-11-25"
   },
   "zh-tw/japanese-characters/index.html": {

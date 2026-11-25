@@ -49,6 +49,7 @@ export const directoryLocales = {
         ["word-to-txt", "Word 转 TXT"],
         ["text-formatter", "文本格式化"],
         ["image-redaction", "图片打码"],
+        ["image-splitter", "图片分割"],
         ["password-generator", "密码生成器"]
       ]]
     ]
@@ -96,6 +97,7 @@ export const directoryLocales = {
         ["word-to-txt", "DOCX 轉 TXT"],
         ["text-formatter", "文字格式化"],
         ["image-redaction", "圖片馬賽克"],
+        ["image-splitter", "圖片分割器"],
         ["password-generator", "密碼產生器"]
       ]]
     ]
@@ -143,6 +145,7 @@ export const directoryLocales = {
         ["word-to-txt", "Word to text"],
         ["text-formatter", "Text formatter"],
         ["image-redaction", "Image redaction"],
+        ["image-splitter", "Image splitter"],
         ["password-generator", "Password generator"]
       ]]
     ]
@@ -190,6 +193,7 @@ export const directoryLocales = {
         ["word-to-txt", "Word TXT 変換"],
         ["text-formatter", "テキスト整形"],
         ["image-redaction", "画像モザイク"],
+        ["image-splitter", "画像分割"],
         ["password-generator", "パスワード生成"]
       ]]
     ]
@@ -237,6 +241,7 @@ export const directoryLocales = {
         ["word-to-txt", "DOCX TXT 변환"],
         ["text-formatter", "텍스트 정리기"],
         ["image-redaction", "사진 모자이크"],
+        ["image-splitter", "이미지 분할"],
         ["password-generator", "비밀번호 생성기"]
       ]]
     ]
