@@ -6,8 +6,8 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <title>パスワード生成 - 記号指定・文字除外でランダムに一括作成 | JianFan.app</title>
-    <meta name="description" content="パスワード生成ツールで桁数、大文字・小文字・数字・記号を自由に指定。使う記号の編集、紛らわしい文字や連続重複の除外、一括作成とコピーに対応。ブラウザ内で生成し、送信しません。" />
+    <title>パスワード生成 - ランダム・覚えやすいパスワードを無料作成 | JianFan.app</title>
+    <meta name="description" content="無料のパスワード生成ツール。強力なランダムパスワードや覚えやすい英単語パスワードを作成。サイトの条件を貼り付けると桁数と文字種を自動設定し、記号指定や一括作成にも対応します。" />
     <link rel="canonical" href="https://jianfan.app/ja/password-generator/" />
     <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/password-generator/" />
     <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/password-generator/" />
@@ -27,9 +27,9 @@
     {
       "@type": "WebApplication",
       "@id": "https://jianfan.app/ja/password-generator/#webapp",
-      "name": "パスワード生成 - 記号指定・文字除外でランダムに一括作成",
+      "name": "パスワード生成 - ランダム・覚えやすいパスワードを無料作成",
       "url": "https://jianfan.app/ja/password-generator/",
-      "description": "パスワード生成ツールで桁数、大文字・小文字・数字・記号を自由に指定。使う記号の編集、紛らわしい文字や連続重複の除外、一括作成とコピーに対応。ブラウザ内で生成し、送信しません。",
+      "description": "無料のパスワード生成ツール。強力なランダムパスワードや覚えやすい英単語パスワードを作成。サイトの条件を貼り付けると桁数と文字種を自動設定し、記号指定や一括作成にも対応します。",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Any",
       "browserRequirements": "Requires JavaScript and Web Crypto",
@@ -60,7 +60,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "パスワード生成 - 記号指定・文字除外でランダムに一括作成",
+          "name": "パスワード生成 - ランダム・覚えやすいパスワードを無料作成",
           "item": "https://jianfan.app/ja/password-generator/"
         }
       ]
@@ -73,7 +73,7 @@
         {
           "@type": "HowToStep",
           "position": 1,
-          "text": "文字数と生成数を決め、使用する文字の種類を選びます。"
+          "text": "サイトのパスワード条件を貼り付けるか、文字数・生成数・文字の種類を手動で設定します。覚えやすいパスワードが必要なら「英単語」に切り替えます。"
         },
         {
           "@type": "HowToStep",
@@ -138,6 +138,38 @@
             "@type": "Answer",
             "text": "アカウントごとに別のパスワードを使い、利用先の条件内で十分な長さにして、信頼できる管理ツールに保存してください。TXTは平文です。また、別々の一括生成の間で同じ結果が出る可能性はあります。"
           }
+        },
+        {
+          "@type": "Question",
+          "name": "パスワードは何文字あれば安全ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "普段のアカウントには16文字以上のランダムなパスワードがおすすめです。米国 NIST SP 800-63B-4 は、パスワードだけで認証する場合は15文字以上、多要素認証と組み合わせる場合は8文字以上を求め、最大64文字以上を受け付けるよう推奨しています。英大文字・英小文字・数字と初期設定の記号23種を使う16文字なら、組み合わせは約6.3×10³⁰通り（約102ビット）です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "英単語のパスワード（パスフレーズ）は安全ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kiln-Capped6-Cornmeal-Stifling-Cycle のように、ランダムな英単語を並べたパスワードです。EFF の7,776語リストから均等に選ぶため1語あたり約12.9ビットあり、5語と数字1つで約70ビット、6語で約77ビットになります。スマホでも入力しやすく、手入力が必要なマスターパスワードや Wi-Fi のパスワードに向いています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "サイトの条件に合うパスワードを作るには？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "登録画面に表示された条件を「サイトのパスワード条件を貼り付け」に入力します。例えば「半角英数字8文字以上16文字以内」なら、8〜16文字・英字・数字を読み取り、16文字の英数字パスワードに設定します。使用できる記号が列挙されていれば記号欄にも反映します。読み取った条件は入力欄の下に表示されるので、必要に応じて調整してください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "数字だけの暗証番号（6桁など）を作るには？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "クイック設定の「数字6桁」を押すか、「数字」だけを選んで文字数を6にします。数字6桁の組み合わせは100万通りしかないため、入力回数に制限がある暗証番号（キャッシュカードやスマートロックなど）だけに使い、Webサイトのパスワードには使わないでください。"
+          }
         }
       ]
     }
@@ -146,21 +178,23 @@
     <!-- seo-schema:end -->
   </head>
   <body data-tool-page="password-generator" data-page-slug="password-generator" data-locale="ja">
-    <script type="application/json" id="passwordMessages">{"generated":"{count}個のパスワードを生成しました","failed":"生成条件を確認してください","cleared":"結果を消去しました","noResults":"まだ生成されていません","summary":"{count}個 · 各{length}文字 · 使用可能な文字{pool}種類","resultLabel":"パスワード{index}","copyOne":"パスワード{index}をコピー","copiedOne":"パスワード{index}をコピーしました","copiedAll":"すべてコピーしました","copyFailed":"自動コピーできません。文字を選択してコピーしてください。","copyAllFailed":"すべてのパスワードを自動コピーできません。「TXTを保存」を使うか、1件ずつコピーしてください。","downloaded":"TXTを保存しました","hide":"パスワードを隠す","show":"パスワードを表示","strengthLabel":"組み合わせの強度：{level}","strength":["低い","中程度","高い","非常に高い"],"errors":{"invalidLength":"文字数は1〜128の整数で入力してください。","invalidCount":"生成数は1〜100の整数で入力してください。","invalidSymbols":"空白・英数字・結合文字を除く、表示可能な記号を256種類以内で入力してください。","noGroups":"文字の種類を1つ以上選んでください。","emptyGroup":"「{group}」に使える文字がありません。記号や除外条件を見直してください。","tooShort":"選んだ種類を含めるには{minimum}文字以上が必要です。","impossibleRepeat":"この文字集合では連続重複を避けられません。文字を増やすか設定を解除してください。","notEnoughCombinations":"有効な組み合わせは{available}通りです。生成数を減らすか、文字数や種類を増やしてください。","cryptoUnavailable":"安全な乱数を利用できません。新しいブラウザでお試しください。","randomFailed":"安全な乱数の生成に失敗しました。もう一度お試しください。","unexpected":"生成できませんでした。条件を確認して再度お試しください。"},"groups":{"uppercase":"英大文字","lowercase":"英小文字","numbers":"数字","symbols":"記号"}}</script>
+    <script type="application/json" id="passwordMessages">{"generated":"{count}個のパスワードを生成しました","failed":"生成条件を確認してください","cleared":"結果を消去しました","noResults":"まだ生成されていません","summary":"{count}個 · 各{length}文字 · 使用可能な文字{pool}種類","resultLabel":"パスワード{index}","copyOne":"パスワード{index}をコピー","copiedOne":"パスワード{index}をコピーしました","copiedAll":"すべてコピーしました","copyFailed":"自動コピーできません。文字を選択してコピーしてください。","copyAllFailed":"すべてのパスワードを自動コピーできません。「TXTを保存」を使うか、1件ずつコピーしてください。","downloaded":"TXTを保存しました","hide":"パスワードを隠す","show":"パスワードを表示","strengthLabel":"組み合わせの強度：{level}","strength":["低い","中程度","高い","非常に高い"],"wordlistLoading":"単語リストを読み込み中…","wordsSummary":"{count}個 · 各{words}語 · 単語リスト{pool}語","rulesHint":"貼り付けると桁数と文字種を自動で読み取ります。必要に応じて下で調整してください。","rulesNotFound":"桁数や文字種の条件を読み取れませんでした。下の設定を手動で調整してください。","rulesApplied":"条件を反映しました：{rules}","rulesLength":"{length}文字","rulesLengthRange":"{length}文字（条件 {min}〜{max}文字）","listSeparator":"・","partSeparator":"、","errors":{"invalidLength":"文字数は1〜128の整数で入力してください。","invalidCount":"生成数は1〜100の整数で入力してください。","invalidSymbols":"空白・英数字・結合文字を除く、表示可能な記号を256種類以内で入力してください。","noGroups":"文字の種類を1つ以上選んでください。","emptyGroup":"「{group}」に使える文字がありません。記号や除外条件を見直してください。","tooShort":"選んだ種類を含めるには{minimum}文字以上が必要です。","impossibleRepeat":"この文字集合では連続重複を避けられません。文字を増やすか設定を解除してください。","notEnoughCombinations":"有効な組み合わせは{available}通りです。生成数を減らすか、文字数や種類を増やしてください。","cryptoUnavailable":"安全な乱数を利用できません。新しいブラウザでお試しください。","randomFailed":"安全な乱数の生成に失敗しました。もう一度お試しください。","invalidWords":"単語数は3〜12の整数で入力してください。","invalidSeparator":"一覧から区切り文字を選んでください。","wordlistFailed":"単語リストを読み込めませんでした。通信環境を確認して再試行するか、ランダム文字をご利用ください。","unexpected":"生成できませんでした。条件を確認して再度お試しください。"},"groups":{"uppercase":"英大文字","lowercase":"英小文字","numbers":"数字","symbols":"記号"}}</script>
     <a class="skip-nav" href="#main">メインコンテンツへ移動</a>
     <header class="site-header"><a class="brand" href="/ja/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true"><svg class="password-icon" data-icon="key" aria-hidden="true"><use href="/password-icons.svg#key" /></svg></span><span>JianFan.app</span></a><nav class="top-actions" aria-label="メインナビゲーション"><a class="nav-link" href="/ja/">ホーム</a><label class="language-picker"><span>表示言語</span><select id="localeSelect" aria-label="表示言語"><option value="zh-CN">简体中文</option><option value="zh-TW">繁體中文</option><option value="en">English</option><option value="ja" selected>日本語</option><option value="ko">한국어</option></select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
     <main id="main" class="password-main">
-      <section class="password-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">ランダム生成 · 記号を指定 · ブラウザ内処理</p><h1 id="pageTitle">パスワード生成ツール</h1><p class="lede">サイトの条件に合わせてランダムなパスワードを作成。文字の種類や記号、除外する文字を指定し、まとめて生成できます。</p></div><span class="password-local"><svg class="password-icon" data-icon="shield" aria-hidden="true"><use href="/password-icons.svg#shield" /></svg>このブラウザ内で生成</span></section>
+      <section class="password-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">ランダム生成 · 覚えやすいパスワード · ブラウザ内処理</p><h1 id="pageTitle">パスワード生成ツール</h1><p class="lede">強力なランダムパスワードや覚えやすい英単語のパスワードを作成。サイトの条件を貼り付けて自動設定するほか、文字の種類や記号を指定してまとめて生成できます。</p></div><span class="password-local"><svg class="password-icon" data-icon="shield" aria-hidden="true"><use href="/password-icons.svg#shield" /></svg>このブラウザ内で生成</span></section>
       <div class="password-workspace">
         <form id="passwordForm" class="password-settings" novalidate autocomplete="off" aria-labelledby="passwordSettingsTitle">
-          <div class="password-section-head"><h2 id="passwordSettingsTitle">生成条件</h2><span class="password-step" aria-hidden="true">01</span></div>
-          <div class="password-numbers"><div><label for="passwordLength">文字数</label><input id="passwordLength" name="length" type="number" min="1" max="128" value="20" inputmode="numeric" aria-describedby="passwordLengthHint" /><small id="passwordLengthHint">1〜128文字</small></div><div><label for="passwordCount">生成数</label><input id="passwordCount" name="count" type="number" min="1" max="100" value="3" inputmode="numeric" aria-describedby="passwordCountHint" /><small id="passwordCountHint">1〜100個。同じ一括生成内で重複なし</small></div></div>
-          <input id="passwordLengthRange" type="range" min="1" max="128" value="20" aria-label="パスワードの文字数を調整" />
-          <div class="password-presets" role="group" aria-label="かんたん設定"><button type="button" data-password-preset="standard">標準20文字</button><button type="button" data-password-preset="long">長めの32文字</button><button type="button" data-password-preset="readable">書き写しやすい</button></div>
-          <fieldset class="password-types"><legend>使用する文字</legend><div><label class="password-check"><input type="checkbox" name="uppercase" checked /><span>英大文字</span><code>A–Z</code></label><label class="password-check"><input type="checkbox" name="lowercase" checked /><span>英小文字</span><code>a–z</code></label><label class="password-check"><input type="checkbox" name="numbers" checked /><span>数字</span><code>0–9</code></label><label class="password-check"><input type="checkbox" name="symbols" checked /><span>記号</span><code>!@#$</code></label></div><p>選んだ文字の種類を必ず1文字以上含めます。</p></fieldset>
-          <div class="password-custom-fields"><div class="password-field"><div class="password-field-label"><label for="passwordSymbols">使用する記号</label><button id="passwordDefaultSymbols" class="password-icon-button" type="button" title="記号を初期値に戻す" aria-label="記号を初期値に戻す"><svg class="password-icon" data-icon="refresh" aria-hidden="true"><use href="/password-icons.svg#refresh" /></svg></button></div><input id="passwordSymbols" name="specialCharacters" type="text" value="!@#$%^&amp;*()-_=+[]{};:,.?" maxlength="512" spellcheck="false" autocapitalize="off" aria-describedby="passwordSymbolsHint" /><small id="passwordSymbolsHint">空白・英数字を除く記号を入力してください。同じ記号は1種類として扱います。</small></div>
+          <div class="password-section-head"><h2 id="passwordSettingsTitle">生成条件</h2><div class="password-mode" role="radiogroup" aria-label="パスワードの種類"><button type="button" role="radio" data-password-mode="characters" aria-checked="true" class="is-active">ランダム文字</button><button type="button" role="radio" data-password-mode="words" aria-checked="false">英単語</button></div></div>
+          <div class="password-rules" data-password-panel="characters"><label for="passwordRules">サイトのパスワード条件を貼り付け</label><div><input id="passwordRules" type="text" placeholder="例：半角英数字8文字以上16文字以内" maxlength="2000" spellcheck="false" autocapitalize="off" aria-describedby="passwordRulesResult" /><button id="passwordRulesApply" type="button">反映</button></div><small id="passwordRulesResult" aria-live="polite">貼り付けると桁数と文字種を自動で読み取ります。必要に応じて下で調整してください。</small></div>
+          <div class="password-numbers"><div data-password-panel="characters"><label for="passwordLength">文字数</label><input id="passwordLength" name="length" type="number" min="1" max="128" value="20" inputmode="numeric" aria-describedby="passwordLengthHint" /><small id="passwordLengthHint">1〜128文字</small></div><div data-password-panel="words" hidden><label for="passwordWords">単語数</label><input id="passwordWords" name="words" type="number" min="3" max="12" value="5" inputmode="numeric" aria-describedby="passwordWordsHint" /><small id="passwordWordsHint">3〜12語。5語以上がおすすめ</small></div><div><label for="passwordCount">生成数</label><input id="passwordCount" name="count" type="number" min="1" max="100" value="3" inputmode="numeric" aria-describedby="passwordCountHint" /><small id="passwordCountHint">1〜100個。同じ一括生成内で重複なし</small></div></div>
+          <input id="passwordLengthRange" data-password-panel="characters" type="range" min="1" max="128" value="20" aria-label="パスワードの文字数を調整" />
+          <div class="password-presets" data-password-panel="characters" role="group" aria-label="かんたん設定"><button type="button" data-password-preset="standard">標準20文字</button><button type="button" data-password-preset="long">長めの32文字</button><button type="button" data-password-preset="readable">書き写しやすい</button><button type="button" data-password-preset="pin">数字6桁</button></div>
+          <fieldset class="password-types" data-password-panel="characters"><legend>使用する文字</legend><div><label class="password-check"><input type="checkbox" name="uppercase" checked /><span>英大文字</span><code>A–Z</code></label><label class="password-check"><input type="checkbox" name="lowercase" checked /><span>英小文字</span><code>a–z</code></label><label class="password-check"><input type="checkbox" name="numbers" checked /><span>数字</span><code>0–9</code></label><label class="password-check"><input type="checkbox" name="symbols" checked /><span>記号</span><code>!@#$</code></label></div><p>選んだ文字の種類を必ず1文字以上含めます。</p></fieldset>
+          <div class="password-custom-fields" data-password-panel="characters"><div class="password-field"><div class="password-field-label"><label for="passwordSymbols">使用する記号</label><button id="passwordDefaultSymbols" class="password-icon-button" type="button" title="記号を初期値に戻す" aria-label="記号を初期値に戻す"><svg class="password-icon" data-icon="refresh" aria-hidden="true"><use href="/password-icons.svg#refresh" /></svg></button></div><input id="passwordSymbols" name="specialCharacters" type="text" value="!@#$%^&amp;*()-_=+[]{};:,.?" maxlength="512" spellcheck="false" autocapitalize="off" aria-describedby="passwordSymbolsHint" /><small id="passwordSymbolsHint">空白・英数字を除く記号を入力してください。同じ記号は1種類として扱います。</small></div>
           <div class="password-field"><label for="passwordExcluded">除外する文字</label><input id="passwordExcluded" name="excludedCharacters" type="text" placeholder="例：{}[]/\" maxlength="512" spellcheck="false" autocapitalize="off" aria-describedby="passwordExcludedHint" /><small id="passwordExcludedHint">大文字・小文字を区別します。区切り文字は不要です。</small></div></div>
-          <div class="password-filters"><label><input type="checkbox" name="excludeSimilar" /><span>紛らわしい文字を除外<small><code>Il1O0o|</code></small></span></label><label><input type="checkbox" name="noAdjacentRepeat" /><span>同じ文字の連続を除外<small>aa・11を除外。a…aは使用可</small></span></label></div>
+          <div class="password-filters" data-password-panel="characters"><label><input type="checkbox" name="excludeSimilar" /><span>紛らわしい文字を除外<small><code>Il1O0o|</code></small></span></label><label><input type="checkbox" name="noAdjacentRepeat" /><span>同じ文字の連続を除外<small>aa・11を除外。a…aは使用可</small></span></label></div>
+          <div class="password-word-options" data-password-panel="words" hidden><div class="password-field"><label for="passwordSeparator">区切り文字</label><select id="passwordSeparator" name="separator"><option value="-" selected>ハイフン -</option><option value=".">ピリオド .</option><option value="_">アンダースコア _</option><option value=" ">スペース</option></select></div><label class="password-check"><input type="checkbox" name="capitalize" checked /><span>先頭を大文字</span><code>Word</code></label><label class="password-check"><input type="checkbox" name="includeNumber" checked /><span>数字を1つ追加</span><code>word7</code></label><p>単語は EFF の英単語リスト（7,776語）から選びます。初回のみ CDN からリストを読み込み、パスワードはこの端末内で生成します。</p></div>
           <p id="passwordError" class="password-error" role="alert" hidden></p>
           <button class="password-generate" type="submit"><svg class="password-icon" data-icon="refresh" aria-hidden="true"><use href="/password-icons.svg#refresh" /></svg><span>パスワードを生成</span></button>
         </form>
@@ -176,7 +210,7 @@
         </section>
       </div>
       <template id="passwordResultTemplate"><div class="password-result"><span class="password-result-index" aria-hidden="true"></span><input type="text" readonly autocomplete="off" spellcheck="false" data-lpignore="true" data-1p-ignore /><button type="button" class="password-icon-button" title="パスワードをコピー" aria-label="パスワードをコピー"><svg class="password-icon" data-icon="copy" aria-hidden="true"><use href="/password-icons.svg#copy" /></svg></button></div></template>
-      <section class="seo-band standalone-info password-info" aria-labelledby="passwordFeatureTitle"><div class="section-heading"><h2 id="passwordFeatureTitle">サイトの条件に合わせてパスワードを自動生成</h2><p class="seo-intro">新規登録、ログイン情報の変更、複数アカウントの初期パスワード作成などに利用できます。まず利用先の文字数と使用可能な記号を確認してください。初期設定は20文字で、記号を外せば英数字のみのランダム文字列も作れます。</p></div><div class="seo-grid"><article><h3>文字の種類を組み合わせる</h3><p>英大文字・英小文字・数字・記号を個別に選択できます。選んだ種類は各パスワードに必ず含まれるため、必要な種類が偶然抜けることはありません。</p></article><article><h3>使える記号だけに限定</h3><p>利用先で認められる記号を直接入力できます。使用できない文字は除外欄で指定でき、大文字・小文字を区別して全種類に適用されます。</p></article><article><h3>最大100個を一括作成</h3><p>同じ一括生成内で重複しないパスワードを最大100個作成します。個別・一括コピーと1行1件のTXT保存に対応し、結果は現在のページだけに保持します。</p></article></div><section class="pinyin-howto" aria-labelledby="passwordHowTitle"><h2 id="passwordHowTitle">パスワードの作成手順</h2><ol><li>文字数と生成数を決め、使用する文字の種類を選びます。</li><li>必要に応じて記号や除外文字を指定し、紛らわしい文字・連続重複の設定を変更します。</li><li>生成したパスワードをコピーし、自分のパスワード管理ツールに保存します。</li></ol></section><section class="pinyin-faq" aria-labelledby="passwordFaqTitle"><h2 id="passwordFaqTitle">パスワード生成のよくある質問</h2><details><summary>生成したパスワードは保存・送信されますか？</summary><p>生成処理はブラウザ内で完結し、サーバーへの送信やブラウザストレージへの保存は行いません。再読み込み・移動・消去後に履歴は残しませんが、コピーやダウンロードを行うとクリップボードや保存先のファイルに残ります。</p></details><details><summary>選んだ文字の種類は必ず含まれますか？</summary><p>はい。4種類すべてを選ぶと、大文字・小文字・数字・記号を各1文字以上含めます。文字数が足りない場合や、ある種類が除外で空になった場合は、設定の変更を案内します。</p></details><details><summary>紛らわしい文字と連続重複の違いは？</summary><p>紛らわしい文字の除外対象はIl1O0o|です。連続重複の除外はaaや11のような同じ文字の隣り合いだけを禁止します。離れた位置での再使用やabc・123のような並びは許可されます。</p></details><details><summary>条件を増やすほど安全になりますか？</summary><p>除外条件は入力のしやすさやサイトの規則に合わせるもので、使用可能な組み合わせを減らします。組み合わせの強度は有効なランダム出力の数を基にした目安で、解読時間やアカウントの安全性を保証するものではありません。</p></details><details><summary>数字だけや特定の記号だけでも作れますか？</summary><p>はい。数字だけを選べば数字のみの文字列になります。記号欄では許可される記号を指定できます。生成数より組み合わせが少ないときは、文字数・文字種類を増やすか、生成数を減らしてください。</p></details><details><summary>生成後のパスワードはどう管理しますか？</summary><p>アカウントごとに別のパスワードを使い、利用先の条件内で十分な長さにして、信頼できる管理ツールに保存してください。TXTは平文です。また、別々の一括生成の間で同じ結果が出る可能性はあります。</p></details></section><p class="section-kicker pinyin-related-kicker">関連ツール</p><nav class="landing-links" aria-label="関連ツール"><a href="/ja/text-formatter/">テキスト整形</a><a href="/ja/character-counter/">文字数カウント</a><a href="/ja/image-redaction/">画像モザイク加工</a><a href="/ja/file-text-converter/">ファイルの文字変換</a></nav></section>
+      <section class="seo-band standalone-info password-info" aria-labelledby="passwordFeatureTitle"><div class="section-heading"><h2 id="passwordFeatureTitle">サイトの条件に合わせてパスワードを自動生成</h2><p class="seo-intro">このパスワード生成ツールは、ブラウザーの暗号論的に安全な乱数（Web Crypto）で、条件を満たすすべての組み合わせから均等にパスワードを選びます。普段使うアカウントには16文字以上のランダムなパスワードか、5語以上の英単語パスワードがおすすめです。米国 NIST SP 800-63B-4 は、パスワードだけでログインする場合は15文字以上を求めています。サイトの条件を貼り付ければ桁数と文字種を自動で設定できます。初期設定は20文字で、記号を外せば英数字のみのランダム文字列も作れます。</p></div><div class="seo-grid"><article><h3>文字の種類を組み合わせる</h3><p>英大文字・英小文字・数字・記号を個別に選択できます。選んだ種類は各パスワードに必ず含まれるため、必要な種類が偶然抜けることはありません。</p></article><article><h3>使える記号だけに限定</h3><p>利用先で認められる記号を直接入力できます。使用できない文字は除外欄で指定でき、大文字・小文字を区別して全種類に適用されます。</p></article><article><h3>最大100個を一括作成</h3><p>同じ一括生成内で重複しないパスワードを最大100個作成します。個別・一括コピーと1行1件のTXT保存に対応し、結果は現在のページだけに保持します。</p></article><article><h3>覚えやすい英単語パスワード</h3><p>EFF の7,776語リストから単語をランダムに選び、区切り文字でつなぎます。先頭の大文字化や数字の追加も選べます。5語と数字1つで約70ビットのエントロピーがあり、ランダム文字より入力しやすくなります。</p></article><article><h3>パスワード条件の貼り付け</h3><p>登録画面の「半角英数字8文字以上16文字以内」などの説明を貼り付けると、上限内の文字数と必要な文字種を自動で選びます。使用できる記号の一覧があれば記号欄にも反映します。</p></article></div><section class="pinyin-howto" aria-labelledby="passwordHowTitle"><h2 id="passwordHowTitle">パスワードの作成手順</h2><ol><li>サイトのパスワード条件を貼り付けるか、文字数・生成数・文字の種類を手動で設定します。覚えやすいパスワードが必要なら「英単語」に切り替えます。</li><li>必要に応じて記号や除外文字を指定し、紛らわしい文字・連続重複の設定を変更します。</li><li>生成したパスワードをコピーし、自分のパスワード管理ツールに保存します。</li></ol></section><section class="pinyin-faq" aria-labelledby="passwordFaqTitle"><h2 id="passwordFaqTitle">パスワード生成のよくある質問</h2><details><summary>生成したパスワードは保存・送信されますか？</summary><p>生成処理はブラウザ内で完結し、サーバーへの送信やブラウザストレージへの保存は行いません。再読み込み・移動・消去後に履歴は残しませんが、コピーやダウンロードを行うとクリップボードや保存先のファイルに残ります。</p></details><details><summary>選んだ文字の種類は必ず含まれますか？</summary><p>はい。4種類すべてを選ぶと、大文字・小文字・数字・記号を各1文字以上含めます。文字数が足りない場合や、ある種類が除外で空になった場合は、設定の変更を案内します。</p></details><details><summary>紛らわしい文字と連続重複の違いは？</summary><p>紛らわしい文字の除外対象はIl1O0o|です。連続重複の除外はaaや11のような同じ文字の隣り合いだけを禁止します。離れた位置での再使用やabc・123のような並びは許可されます。</p></details><details><summary>条件を増やすほど安全になりますか？</summary><p>除外条件は入力のしやすさやサイトの規則に合わせるもので、使用可能な組み合わせを減らします。組み合わせの強度は有効なランダム出力の数を基にした目安で、解読時間やアカウントの安全性を保証するものではありません。</p></details><details><summary>数字だけや特定の記号だけでも作れますか？</summary><p>はい。数字だけを選べば数字のみの文字列になります。記号欄では許可される記号を指定できます。生成数より組み合わせが少ないときは、文字数・文字種類を増やすか、生成数を減らしてください。</p></details><details><summary>生成後のパスワードはどう管理しますか？</summary><p>アカウントごとに別のパスワードを使い、利用先の条件内で十分な長さにして、信頼できる管理ツールに保存してください。TXTは平文です。また、別々の一括生成の間で同じ結果が出る可能性はあります。</p></details><details><summary>パスワードは何文字あれば安全ですか？</summary><p>普段のアカウントには16文字以上のランダムなパスワードがおすすめです。米国 NIST SP 800-63B-4 は、パスワードだけで認証する場合は15文字以上、多要素認証と組み合わせる場合は8文字以上を求め、最大64文字以上を受け付けるよう推奨しています。英大文字・英小文字・数字と初期設定の記号23種を使う16文字なら、組み合わせは約6.3×10³⁰通り（約102ビット）です。</p></details><details><summary>英単語のパスワード（パスフレーズ）は安全ですか？</summary><p>Kiln-Capped6-Cornmeal-Stifling-Cycle のように、ランダムな英単語を並べたパスワードです。EFF の7,776語リストから均等に選ぶため1語あたり約12.9ビットあり、5語と数字1つで約70ビット、6語で約77ビットになります。スマホでも入力しやすく、手入力が必要なマスターパスワードや Wi-Fi のパスワードに向いています。</p></details><details><summary>サイトの条件に合うパスワードを作るには？</summary><p>登録画面に表示された条件を「サイトのパスワード条件を貼り付け」に入力します。例えば「半角英数字8文字以上16文字以内」なら、8〜16文字・英字・数字を読み取り、16文字の英数字パスワードに設定します。使用できる記号が列挙されていれば記号欄にも反映します。読み取った条件は入力欄の下に表示されるので、必要に応じて調整してください。</p></details><details><summary>数字だけの暗証番号（6桁など）を作るには？</summary><p>クイック設定の「数字6桁」を押すか、「数字」だけを選んで文字数を6にします。数字6桁の組み合わせは100万通りしかないため、入力回数に制限がある暗証番号（キャッシュカードやスマートロックなど）だけに使い、Webサイトのパスワードには使わないでください。</p></details></section><p class="section-kicker pinyin-related-kicker">関連ツール</p><nav class="landing-links" aria-label="関連ツール"><a href="/ja/text-formatter/">テキスト整形</a><a href="/ja/character-counter/">文字数カウント</a><a href="/ja/image-redaction/">画像モザイク加工</a><a href="/ja/file-text-converter/">ファイルの文字変換</a></nav></section>
     </main>
     <footer class="site-footer">
       <!-- site-tool-directory:start -->
