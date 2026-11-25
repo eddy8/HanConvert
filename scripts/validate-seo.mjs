@@ -82,7 +82,7 @@ if ([...sitemapHreflangs].sort().join("|") !== [...expectedHreflangs].sort().joi
   throw new Error(`sitemap.xml contains unexpected hreflang values: ${[...sitemapHreflangs].sort().join(", ")}`);
 }
 
-for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "text-formatter.js", "image-redaction.js", "image-splitter.js", "password-generator.js", "han-character-worksheet.js", "handwriting-recognition.js", "korean-handwriting-recognition.js", "handwriting-recognition-worker.js", "photo-chinese-character-recognition.js", "han-character-lookup-core.js", "han-character-lookup.js", "kanji-romaji-core.js", "kanji-to-romaji.js", "japanese-reading-client.js", "japanese-reading-worker.js", "kanji-to-hiragana.js", "japanese-stroke-order.js", "japanese-kanji-data.js", "japanese-kanji-dictionary.js", "japanese-handwriting-recognition.js", "korean-hanja-data.js", "korean-hanja-dictionary.js", "hangul-hanja-converter.js", "korean-name-hanja.js", "webmcp.js"]) {
+for (const entryFile of ["app.js", "app-download.js", "japanese-tools.js", "pinyin-tool.js", "stroke-order-tool.js", "word-to-txt-tool.js", "character-counter.js", "text-formatter.js", "image-redaction.js", "image-splitter.js", "chinese-to-zhuyin.js", "zhuyin-core.js", "password-generator.js", "han-character-worksheet.js", "handwriting-recognition.js", "korean-handwriting-recognition.js", "handwriting-recognition-worker.js", "photo-chinese-character-recognition.js", "han-character-lookup-core.js", "han-character-lookup.js", "kanji-romaji-core.js", "kanji-to-romaji.js", "japanese-reading-client.js", "japanese-reading-worker.js", "kanji-to-hiragana.js", "japanese-stroke-order.js", "japanese-kanji-data.js", "japanese-kanji-dictionary.js", "japanese-handwriting-recognition.js", "korean-hanja-data.js", "korean-hanja-dictionary.js", "hangul-hanja-converter.js", "korean-name-hanja.js", "webmcp.js"]) {
   const source = await readFile(path.join(projectRoot, entryFile), "utf8");
   if (/from\s+["']\/[^"']+\.mjs["']/.test(source)) {
     throw new Error(`${entryFile}: local .mjs modules are not portable across hosting providers`);
@@ -207,6 +207,7 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   const isTextFormatterPage = html.includes('data-tool-page="text-formatter"');
   const isImageRedactionPage = html.includes('data-tool-page="image-redaction"');
   const isImageSplitterPage = html.includes('data-tool-page="image-splitter"');
+  const isZhuyinPage = html.includes('data-tool-page="chinese-to-zhuyin"');
   const isPasswordGeneratorPage = html.includes('data-tool-page="password-generator"');
   const isWorksheetPage = html.includes('data-tool-page="han-character-worksheet"');
   const isKanjiRomajiPage = html.includes('data-tool-page="kanji-to-romaji"');
@@ -235,6 +236,9 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   }
   if (localizedHomePages.has(relativePath) && !html.includes('data-route="image-redaction"')) {
     throw new Error(`${relativePath}: missing image-redaction link`);
+  }
+  if (localizedHomePages.has(relativePath) && !html.includes('data-route="chinese-to-zhuyin"')) {
+    throw new Error(`${relativePath}: missing chinese-to-zhuyin link`);
   }
   if (localizedHomePages.has(relativePath) && !html.includes('data-route="image-splitter"')) {
     throw new Error(`${relativePath}: missing image-splitter link`);
@@ -505,6 +509,11 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
   if (isImageSplitterPage) {
     for (const asset of ['src="/image-splitter.js"', 'href="/image-splitter.css"', 'id="splitterCanvas"', 'id="splitterZip"', 'id="splitterPdf"']) {
       if (!html.includes(asset)) throw new Error(`${relativePath}: missing image-splitter asset ${asset}`);
+    }
+  }
+  if (isZhuyinPage) {
+    for (const asset of ['src="/chinese-to-zhuyin.js"', 'href="/chinese-to-zhuyin.css"', 'src="/zhuyin-core.js"', 'id="zhuyinInput"', 'id="zhuyinPreview"', 'integrity="sha384-']) {
+      if (!html.includes(asset)) throw new Error(`${relativePath}: missing chinese-to-zhuyin asset ${asset}`);
     }
   }
   if (isPasswordGeneratorPage) {
@@ -788,10 +797,10 @@ if (!notFound.includes('name="robots" content="noindex, follow"')) {
 }
 
 if (converterPages !== 35) throw new Error(`expected 35 converter pages, found ${converterPages}`);
-if (standaloneToolPages !== 120) throw new Error(`expected 120 standalone tool pages, found ${standaloneToolPages}`);
+if (standaloneToolPages !== 125) throw new Error(`expected 125 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
 if (pseoPages !== 105) throw new Error(`expected 105 controlled pSEO pages, found ${pseoPages}`);
 if (blogPages !== 9) throw new Error(`expected 9 blog pages, found ${blogPages}`);
-if (sitemapUrls.length !== 285) throw new Error(`expected 285 sitemap URLs, found ${sitemapUrls.length}`);
+if (sitemapUrls.length !== 290) throw new Error(`expected 290 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, ${pseoPages} controlled pSEO pages, ${blogPages} blog pages, and ${sitemapUrls.length} sitemap URLs.`);

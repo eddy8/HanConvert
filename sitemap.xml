@@ -3338,6 +3338,68 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/image-splitter/" />
   </url>
   <!-- image-splitter-tool:end -->
+  <!-- chinese-to-zhuyin-tool:start -->
+  <url>
+    <loc>https://jianfan.app/chinese-to-zhuyin/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-to-zhuyin/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/zh-tw/chinese-to-zhuyin/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-to-zhuyin/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/en/chinese-to-zhuyin/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-to-zhuyin/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ja/chinese-to-zhuyin/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-to-zhuyin/" />
+  </url>
+  <url>
+    <loc>https://jianfan.app/ko/chinese-to-zhuyin/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-to-zhuyin/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-to-zhuyin/" />
+  </url>
+  <!-- chinese-to-zhuyin-tool:end -->
   <!-- blog:start -->
   <url>
     <loc>https://jianfan.app/blog/</loc>

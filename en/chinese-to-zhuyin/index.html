@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="Convert Chinese characters to Zhuyin (Bopomofo) free online. Pick Taiwan or Mainland readings, fix polyphones, convert Pinyin, and print or save the result." />
+    <title>Chinese to Zhuyin Converter - Bopomofo with Tones | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/en/chinese-to-zhuyin/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-to-zhuyin/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-to-zhuyin/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-to-zhuyin/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-to-zhuyin/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-to-zhuyin/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-to-zhuyin/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.min.css" />
+    <link rel="stylesheet" href="/chinese-to-zhuyin.css" />
+    <script src="/theme.js"></script>
+    <script type="importmap">{"imports":{"pinyin-to-zhuyin":"https://cdn.jsdelivr.net/npm/pinyin-to-zhuyin@1.1.0/dist/pinyin-to-zhuyin.esm.js"},"integrity":{"https://cdn.jsdelivr.net/npm/pinyin-to-zhuyin@1.1.0/dist/pinyin-to-zhuyin.esm.js":"sha384-JuGtdlwGQ98FCJsO16TSFzx4SKJMhBhsZXeYODXf6Ua6FazxwnTSfOFVablwvxiM"}}</script>
+    <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/pinyin-to-zhuyin@1.1.0/dist/pinyin-to-zhuyin.esm.js" integrity="sha384-JuGtdlwGQ98FCJsO16TSFzx4SKJMhBhsZXeYODXf6Ua6FazxwnTSfOFVablwvxiM" crossorigin="anonymous" />
+    <script defer src="/vendor/pinyin-pro.js"></script>
+    <script defer src="/traditional-pinyin.js"></script>
+    <script defer src="/zhuyin-core.js"></script>
+    <script type="module" src="/chinese-to-zhuyin.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/en/chinese-to-zhuyin/#webapp",
+            "name": "Chinese to Zhuyin Converter - Bopomofo with Tones",
+            "url": "https://jianfan.app/en/chinese-to-zhuyin/",
+            "description": "Convert Chinese characters to Zhuyin (Bopomofo) free online. Pick Taiwan or Mainland readings, fix polyphones, convert Pinyin, and print or save the result.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "en",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/en/chinese-to-zhuyin/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://jianfan.app/en/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Chinese to Zhuyin Converter - Bopomofo with Tones",
+                "item": "https://jianfan.app/en/chinese-to-zhuyin/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/en/chinese-to-zhuyin/#howto",
+            "name": "How to convert Chinese to Zhuyin",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "Paste Traditional or Simplified Chinese, or Pinyin with tones."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "Choose Taiwan Mandarin or Mainland Mandarin readings."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "Choose plain Zhuyin, characters with Zhuyin, or Pinyin output."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "Click any wrong character in the preview to fix it, then copy, print, or download."
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/en/chinese-to-zhuyin/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How do you convert Chinese to Zhuyin?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Paste Chinese text above. The tool picks each character's Mandarin reading and writes it in Zhuyin (Bopomofo), the 37-symbol phonetic system taught in Taiwan. Tone 1 has no mark, tones 2-4 use ˊ ˇ ˋ, and the neutral tone puts ˙ in front. For example, 注音 becomes ㄓㄨˋ ㄧㄣ (zhù yīn)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the difference between Zhuyin and Pinyin?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Both write Mandarin pronunciation. Pinyin uses Latin letters and is standard in Mainland China. Zhuyin, also called Bopomofo, uses 37 symbols such as ㄅㄆㄇㄈ and is used in Taiwan. 注音 is zhù yīn in Pinyin and ㄓㄨˋ ㄧㄣ in Zhuyin."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does the converter handle polyphonic characters?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Readings follow word context, so 銀行 (bank) gets ㄏㄤˊ and 行走 (walk) gets ㄒㄧㄥˊ. If a reading is still wrong, click that character in the preview, choose another reading, and the text result updates too."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why does Taiwan Zhuyin differ from Mainland Pinyin for some words?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Taiwan's Ministry of Education standard reads some characters differently. 星期 is ㄒㄧㄥ ㄑㄧˊ (Mainland xīngqī), 垃圾 is ㄌㄜˋ ㄙㄜˋ (Mainland lājī), and 危險 is ㄨㄟˊ ㄒㄧㄢˇ. Switch to Mainland Mandarin if you need Putonghua readings."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I convert Pinyin to Zhuyin?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Enter Pinyin without Chinese characters, such as zhù yīn or zhu4 yin1, and it converts directly to ㄓㄨˋ ㄧㄣ. Both tone marks and tone numbers work."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Should 一 and 不 show their tone changes?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "By default they keep their dictionary tones, so 一個 is ㄧ ㄍㄜˋ and 不對 is ㄅㄨˋ ㄉㄨㄟˋ. Turn on the tone-change option to show the spoken tones ㄧˊ ㄍㄜˋ and ㄅㄨˊ ㄉㄨㄟˋ."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I put Zhuyin into Word or a worksheet?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Copy the Hanzi(Zhuyin) text, print the side-by-side layout, or download a white PNG image. The image keeps any readings you corrected in the preview."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is my text uploaded?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Readings and Zhuyin are produced in your browser. The page only loads the converter code from a public CDN and never sends the text you enter."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="chinese-to-zhuyin" data-page-slug="chinese-to-zhuyin" data-locale="en">
+    <script type="application/json" id="zhuyinMessages">{"idle":"Waiting for Chinese or Pinyin","ready":"Zhuyin ready","readyAdjusted":"Zhuyin ready; {count} characters use Taiwan readings","pinyinReady":"Pinyin converted to Zhuyin","copied":"Result copied","copyFailed":"Automatic copy failed. Please copy manually.","error":"The Zhuyin component failed to load. Refresh the page.","tooLong":"Text is limited to {limit} characters","downloaded":"Zhuyin image downloaded","previewEmpty":"Enter Chinese to preview Zhuyin beside each character.","pinyinPreview":"You entered Pinyin, so only the Zhuyin text is shown. Enter Chinese characters to see the layout preview.","mainlandTag":"Mainland"}</script>
+    <a class="skip-nav" href="#main">Skip to main content</a>
+    <header class="site-header" aria-label="Site header"><a class="brand" href="/en/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">注</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="Primary navigation"><a class="nav-link" href="/en/">Home</a><label class="language-picker"><span>Language</span><select id="localeSelect" aria-label="Language"><option value="zh-CN">简体中文</option><option value="zh-TW">繁體中文</option><option value="en" selected>English</option><option value="ja">日本語</option><option value="ko">한국어</option></select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
+    <main id="main">
+      <section class="tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">Zhuyin · Bopomofo · Taiwan Mandarin</p><h1 id="pageTitle">Chinese to Zhuyin (Bopomofo) Converter</h1><p class="lede">Paste Chinese characters, words, or whole paragraphs to get Zhuyin with tone marks, shown in the Taiwan textbook layout with Bopomofo beside each character. Switch between Taiwan and Mainland readings and click any character to change its pronunciation.</p></div><div class="tool-hero-glyphs zhuyin-hero-glyphs" aria-hidden="true"><span>ㄅ</span><span>ㄆ</span><span>ㄇ</span></div></section>
+      <section class="standalone-tool pinyin-tool zhuyin-tool" aria-labelledby="zhuyinToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">ZHUYIN / BOPOMOFO</p><h2 id="zhuyinToolTitle">Enter Chinese and get Zhuyin</h2></div><div class="status-pill" id="zhuyinStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>Waiting for Chinese or Pinyin</span></div></div>
+        <div class="pinyin-options zhuyin-options">
+          <fieldset><legend>Pronunciation</legend><div class="pinyin-format-control zhuyin-choice" role="radiogroup" aria-label="Pronunciation"><button type="button" data-zhuyin-standard="taiwan" role="radio" aria-checked="true" class="is-active"><span>Taiwan Mandarin</span><small>Ministry of Education</small></button><button type="button" data-zhuyin-standard="mainland" role="radio" aria-checked="false"><span>Mainland Mandarin</span><small>Putonghua</small></button></div></fieldset>
+          <fieldset><legend>Output format</legend><div class="pinyin-format-control zhuyin-choice" role="radiogroup" aria-label="Output format"><button type="button" data-zhuyin-format="zhuyin" role="radio" aria-checked="true" class="is-active"><span>Zhuyin</span><small>ㄓㄨˋ ㄧㄣ</small></button><button type="button" data-zhuyin-format="inline" role="radio" aria-checked="false"><span>Hanzi(Zhuyin)</span><small>注(ㄓㄨˋ)音(ㄧㄣ)</small></button><button type="button" data-zhuyin-format="pinyin" role="radio" aria-checked="false"><span>Pinyin</span><small>zhù yīn</small></button></div></fieldset>
+          <div class="pinyin-switches"><label><input id="zhuyinSandhi" type="checkbox" /><span>Mark tone changes of 一 and 不</span></label><label><input id="zhuyinPreserve" type="checkbox" checked /><span>Keep punctuation and letters</span></label></div>
+        </div>
+        <div class="pinyin-converter-grid">
+          <section class="pinyin-text-panel input-variant" aria-labelledby="zhuyinInputTitle"><div class="panel-topline"><h3 id="zhuyinInputTitle">Chinese or Pinyin</h3><span id="zhuyinInputCount">0</span></div><textarea id="zhuyinInput" aria-labelledby="zhuyinInputTitle" spellcheck="false" placeholder="Type or paste Traditional or Simplified Chinese, or Pinyin such as zhù yīn or zhu4 yin1..."></textarea><div class="panel-actions"><button class="text-button" id="zhuyinSample" type="button" data-sample="星期天我們去圖書館研究注音符號，銀行旁邊的垃圾要分類，過馬路注意危險。">Sample</button><button class="text-button" id="zhuyinClear" type="button">Clear</button><button class="primary-action" id="zhuyinConvert" type="button">Convert to Zhuyin</button></div></section>
+          <section class="pinyin-text-panel output-variant" aria-labelledby="zhuyinOutputTitle"><div class="panel-topline"><h3 id="zhuyinOutputTitle">Zhuyin result</h3><span id="zhuyinOutputCount">0</span></div><textarea id="zhuyinOutput" aria-labelledby="zhuyinOutputTitle" readonly spellcheck="false" placeholder="Zhuyin appears here"></textarea><div class="panel-actions"><button class="text-button" id="zhuyinCopy" type="button">Copy result</button></div></section>
+        </div>
+        <div class="zhuyin-detail-grid">
+          <section class="zhuyin-preview-panel" aria-labelledby="zhuyinPreviewTitle"><div class="zhuyin-preview-head"><div><p class="section-kicker">PREVIEW</p><h3 id="zhuyinPreviewTitle">Zhuyin layout preview</h3></div><div class="zhuyin-preview-toolbar"><div class="zhuyin-size-control" role="radiogroup" aria-label="Size"><button type="button" data-zhuyin-size="s" role="radio" aria-checked="false">S</button><button type="button" data-zhuyin-size="m" role="radio" aria-checked="true" class="is-active">M</button><button type="button" data-zhuyin-size="l" role="radio" aria-checked="false">L</button></div><button class="text-button" id="zhuyinPrint" type="button" disabled>Print</button><button class="primary-action" id="zhuyinDownload" type="button" disabled>Download image</button></div></div><p class="zhuyin-preview-hint">Click a character to change its reading. Highlighted characters are read differently in Taiwan and Mainland China.</p><p id="zhuyinPreviewEmpty" class="pinyin-empty">Enter Chinese to preview Zhuyin beside each character.</p><div id="zhuyinPreview" class="zhuyin-preview" lang="zh-Hant" hidden></div><p id="zhuyinPreviewNote" class="pinyin-preview-note" hidden>The preview, printout, and image include the first 1,500 characters. The Zhuyin text result is complete.</p></section>
+          <section class="zhuyin-reading-panel" aria-labelledby="zhuyinReadingTitle"><div><p class="section-kicker">READINGS</p><h3 id="zhuyinReadingTitle">Choose a reading</h3></div><p id="zhuyinReadingEmpty" class="pinyin-empty">Click a character in the preview to list all of its readings.</p><strong id="zhuyinReadingCharacter" hidden></strong><div id="zhuyinReadingList" class="zhuyin-reading-list"></div><button class="text-button" id="zhuyinReadingReset" type="button" hidden>Use automatic reading</button></section>
+        </div>
+        <p class="tool-disclaimer">Readings are chosen from common words and context. Names, places, and rare characters can have other readings, so check each character before publishing or teaching.</p>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="zhuyinFeatureTitle"><div class="section-heading"><p class="section-kicker">Zhuyin converter online</p><h2 id="zhuyinFeatureTitle">Chinese to Zhuyin, Pinyin to Zhuyin, and printable Bopomofo</h2><p class="seo-intro">Useful for learning Taiwan Mandarin, preparing graded readers and worksheets, or turning Pinyin study notes into Zhuyin. Everything is converted in your browser.</p></div><section class="zhuyin-answer" aria-labelledby="zhuyinAnswerTitle"><h2 id="zhuyinAnswerTitle">How do you convert Chinese to Zhuyin?</h2><p>Paste Chinese text above. The tool picks each character's Mandarin reading and writes it in Zhuyin (Bopomofo), the 37-symbol phonetic system taught in Taiwan. Tone 1 has no mark, tones 2-4 use ˊ ˇ ˋ, and the neutral tone puts ˙ in front. For example, 注音 becomes ㄓㄨˋ ㄧㄣ (zhù yīn).</p></section><div class="seo-grid"><article><h3>Taiwan readings</h3><p>In Taiwan mode, words read differently across the strait, such as 星期, 危險, and 垃圾, follow Taiwan's Ministry of Education and are highlighted in the preview.</p></article><article><h3>Fix polyphonic characters</h3><p>Readings follow word context, so the 行 in 銀行 is ㄏㄤˊ. If a reading is wrong, click the character and pick another one.</p></article><article><h3>Print or save an image</h3><p>The preview puts Zhuyin to the right of each character, like Taiwan textbooks. Print it or download a white PNG for Word, Google Docs, or slides.</p></article></div><section class="zhuyin-chart" aria-labelledby="zhuyinChartTitle"><h2 id="zhuyinChartTitle">Zhuyin to Pinyin chart</h2><p>Zhuyin has 37 symbols: 21 initials, 3 medials, and 13 finals, plus 4 tone marks and the neutral-tone dot. The chart lists the Pinyin equivalent of each symbol.</p><div class="zhuyin-chart-grid"><div class="zhuyin-chart-group"><h3>Initials (21)</h3><table><thead><tr><th scope="col">Zhuyin</th><th scope="col">Pinyin</th></tr></thead><tbody><tr><td lang="zh-Hant">ㄅ</td><td>b</td></tr><tr><td lang="zh-Hant">ㄆ</td><td>p</td></tr><tr><td lang="zh-Hant">ㄇ</td><td>m</td></tr><tr><td lang="zh-Hant">ㄈ</td><td>f</td></tr><tr><td lang="zh-Hant">ㄉ</td><td>d</td></tr><tr><td lang="zh-Hant">ㄊ</td><td>t</td></tr><tr><td lang="zh-Hant">ㄋ</td><td>n</td></tr><tr><td lang="zh-Hant">ㄌ</td><td>l</td></tr><tr><td lang="zh-Hant">ㄍ</td><td>g</td></tr><tr><td lang="zh-Hant">ㄎ</td><td>k</td></tr><tr><td lang="zh-Hant">ㄏ</td><td>h</td></tr><tr><td lang="zh-Hant">ㄐ</td><td>j</td></tr><tr><td lang="zh-Hant">ㄑ</td><td>q</td></tr><tr><td lang="zh-Hant">ㄒ</td><td>x</td></tr><tr><td lang="zh-Hant">ㄓ</td><td>zh</td></tr><tr><td lang="zh-Hant">ㄔ</td><td>ch</td></tr><tr><td lang="zh-Hant">ㄕ</td><td>sh</td></tr><tr><td lang="zh-Hant">ㄖ</td><td>r</td></tr><tr><td lang="zh-Hant">ㄗ</td><td>z</td></tr><tr><td lang="zh-Hant">ㄘ</td><td>c</td></tr><tr><td lang="zh-Hant">ㄙ</td><td>s</td></tr></tbody></table></div><div class="zhuyin-chart-group"><h3>Medials (3)</h3><table><thead><tr><th scope="col">Zhuyin</th><th scope="col">Pinyin</th></tr></thead><tbody><tr><td lang="zh-Hant">ㄧ</td><td>i / yi</td></tr><tr><td lang="zh-Hant">ㄨ</td><td>u / wu</td></tr><tr><td lang="zh-Hant">ㄩ</td><td>ü / yu</td></tr></tbody></table></div><div class="zhuyin-chart-group"><h3>Finals (13)</h3><table><thead><tr><th scope="col">Zhuyin</th><th scope="col">Pinyin</th></tr></thead><tbody><tr><td lang="zh-Hant">ㄚ</td><td>a</td></tr><tr><td lang="zh-Hant">ㄛ</td><td>o</td></tr><tr><td lang="zh-Hant">ㄜ</td><td>e</td></tr><tr><td lang="zh-Hant">ㄝ</td><td>ê</td></tr><tr><td lang="zh-Hant">ㄞ</td><td>ai</td></tr><tr><td lang="zh-Hant">ㄟ</td><td>ei</td></tr><tr><td lang="zh-Hant">ㄠ</td><td>ao</td></tr><tr><td lang="zh-Hant">ㄡ</td><td>ou</td></tr><tr><td lang="zh-Hant">ㄢ</td><td>an</td></tr><tr><td lang="zh-Hant">ㄣ</td><td>en</td></tr><tr><td lang="zh-Hant">ㄤ</td><td>ang</td></tr><tr><td lang="zh-Hant">ㄥ</td><td>eng</td></tr><tr><td lang="zh-Hant">ㄦ</td><td>er</td></tr></tbody></table></div><div class="zhuyin-chart-group zhuyin-tone-group"><h3>Zhuyin tone marks</h3><table><thead><tr><th scope="col">Tone</th><th scope="col">Zhuyin mark</th><th scope="col">Pinyin</th><th scope="col">Example</th></tr></thead><tbody><tr><td>Tone 1</td><td>none</td><td>mā</td><td lang="zh-Hant">ㄇㄚ</td></tr><tr><td>Tone 2</td><td>ˊ</td><td>má</td><td lang="zh-Hant">ㄇㄚˊ</td></tr><tr><td>Tone 3</td><td>ˇ</td><td>mǎ</td><td lang="zh-Hant">ㄇㄚˇ</td></tr><tr><td>Tone 4</td><td>ˋ</td><td>mà</td><td lang="zh-Hant">ㄇㄚˋ</td></tr><tr><td>Neutral</td><td>˙</td><td>ma</td><td lang="zh-Hant">˙ㄇㄚ</td></tr></tbody></table></div></div></section><section class="zhuyin-differences" aria-labelledby="zhuyinDiffTitle"><h2 id="zhuyinDiffTitle">Common words read differently in Taiwan</h2><p>In Taiwan mode these words switch to the Ministry of Education reading. Mainland mode keeps the Putonghua reading.</p><div class="zhuyin-table-scroll"><table><thead><tr><th scope="col">Word</th><th scope="col">Mainland</th><th scope="col">Taiwan</th><th scope="col">Zhuyin</th></tr></thead><tbody><tr><th scope="row">星期</th><td>xīng qī</td><td>xīng qí</td><td lang="zh-Hant">ㄒㄧㄥ ㄑㄧˊ</td></tr><tr><th scope="row">危險</th><td>wēi xiǎn</td><td>wéi xiǎn</td><td lang="zh-Hant">ㄨㄟˊ ㄒㄧㄢˇ</td></tr><tr><th scope="row">垃圾</th><td>lā jī</td><td>lè sè</td><td lang="zh-Hant">ㄌㄜˋ ㄙㄜˋ</td></tr><tr><th scope="row">研究</th><td>yán jiū</td><td>yán jiù</td><td lang="zh-Hant">ㄧㄢˊ ㄐㄧㄡˋ</td></tr><tr><th scope="row">企業</th><td>qǐ yè</td><td>qì yè</td><td lang="zh-Hant">ㄑㄧˋ ㄧㄝˋ</td></tr><tr><th scope="row">品質</th><td>pǐn zhì</td><td>pǐn zhí</td><td lang="zh-Hant">ㄆㄧㄣˇ ㄓˊ</td></tr><tr><th scope="row">休息</th><td>xiū xi</td><td>xiū xí</td><td lang="zh-Hant">ㄒㄧㄡ ㄒㄧˊ</td></tr><tr><th scope="row">攻擊</th><td>gōng jī</td><td>gōng jí</td><td lang="zh-Hant">ㄍㄨㄥ ㄐㄧˊ</td></tr></tbody></table></div></section><section class="zhuyin-howto" aria-labelledby="zhuyinHowTitle"><h2 id="zhuyinHowTitle">How to convert Chinese to Zhuyin</h2><ol><li>Paste Traditional or Simplified Chinese, or Pinyin with tones.</li><li>Choose Taiwan Mandarin or Mainland Mandarin readings.</li><li>Choose plain Zhuyin, characters with Zhuyin, or Pinyin output.</li><li>Click any wrong character in the preview to fix it, then copy, print, or download.</li></ol></section><section class="pinyin-faq" aria-labelledby="zhuyinFaqTitle"><h2 id="zhuyinFaqTitle">Chinese to Zhuyin FAQ</h2><details><summary>What is the difference between Zhuyin and Pinyin?</summary><p>Both write Mandarin pronunciation. Pinyin uses Latin letters and is standard in Mainland China. Zhuyin, also called Bopomofo, uses 37 symbols such as ㄅㄆㄇㄈ and is used in Taiwan. 注音 is zhù yīn in Pinyin and ㄓㄨˋ ㄧㄣ in Zhuyin.</p></details><details><summary>Does the converter handle polyphonic characters?</summary><p>Yes. Readings follow word context, so 銀行 (bank) gets ㄏㄤˊ and 行走 (walk) gets ㄒㄧㄥˊ. If a reading is still wrong, click that character in the preview, choose another reading, and the text result updates too.</p></details><details><summary>Why does Taiwan Zhuyin differ from Mainland Pinyin for some words?</summary><p>Taiwan's Ministry of Education standard reads some characters differently. 星期 is ㄒㄧㄥ ㄑㄧˊ (Mainland xīngqī), 垃圾 is ㄌㄜˋ ㄙㄜˋ (Mainland lājī), and 危險 is ㄨㄟˊ ㄒㄧㄢˇ. Switch to Mainland Mandarin if you need Putonghua readings.</p></details><details><summary>Can I convert Pinyin to Zhuyin?</summary><p>Yes. Enter Pinyin without Chinese characters, such as zhù yīn or zhu4 yin1, and it converts directly to ㄓㄨˋ ㄧㄣ. Both tone marks and tone numbers work.</p></details><details><summary>Should 一 and 不 show their tone changes?</summary><p>By default they keep their dictionary tones, so 一個 is ㄧ ㄍㄜˋ and 不對 is ㄅㄨˋ ㄉㄨㄟˋ. Turn on the tone-change option to show the spoken tones ㄧˊ ㄍㄜˋ and ㄅㄨˊ ㄉㄨㄟˋ.</p></details><details><summary>How do I put Zhuyin into Word or a worksheet?</summary><p>Copy the Hanzi(Zhuyin) text, print the side-by-side layout, or download a white PNG image. The image keeps any readings you corrected in the preview.</p></details><details><summary>Is my text uploaded?</summary><p>No. Readings and Zhuyin are produced in your browser. The page only loads the converter code from a public CDN and never sends the text you enter.</p></details></section><p class="section-kicker pinyin-related-kicker">Related tools</p><nav class="landing-links" aria-label="Related Chinese character tools"><a href="/en/chinese-to-pinyin/">Chinese to Pinyin</a><a href="/en/chinese-handwriting-recognition/">Chinese handwriting recognition</a><a href="/en/photo-chinese-character-recognition/">Chinese OCR</a><a href="/en/chinese-stroke-order/">Chinese stroke order</a><a href="/en/chinese-character-lookup/">Chinese character lookup</a><a href="/en/taiwan-traditional/">Taiwan Traditional Chinese converter</a><a href="/en/han-character-worksheet/">Chinese character worksheet</a></nav></section>
+    </main>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="All tools">
+        <div class="site-directory-group">
+          <p class="site-directory-title">Chinese converter</p>
+          <ul>
+            <li><a href="/en/">Simplified and Traditional Chinese converter</a></li>
+            <li><a href="/en/simplified-to-traditional/">Simplified to Traditional</a></li>
+            <li><a href="/en/traditional-to-simplified/">Traditional to Simplified</a></li>
+            <li><a href="/en/taiwan-traditional/">Taiwan Traditional converter</a></li>
+            <li><a href="/en/hong-kong-traditional/">Hong Kong Traditional converter</a></li>
+            <li><a href="/en/file-text-converter/">Chinese document converter</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">Chinese characters</p>
+          <ul>
+            <li><a href="/en/chinese-handwriting-recognition/">Chinese handwriting recognition</a></li>
+            <li><a href="/en/photo-chinese-character-recognition/">Chinese OCR</a></li>
+            <li><a href="/en/chinese-to-pinyin/">Chinese to Pinyin</a></li>
+            <li><a href="/en/chinese-to-zhuyin/" aria-current="page">Chinese to Zhuyin</a></li>
+            <li><a href="/en/chinese-stroke-order/">Chinese stroke order</a></li>
+            <li><a href="/en/chinese-character-lookup/">Chinese character lookup</a></li>
+            <li><a href="/en/han-character-worksheet/">Chinese practice sheets</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">Japanese kanji</p>
+          <ul>
+            <li><a href="/en/japanese-handwriting-recognition/">Japanese kanji handwriting lookup</a></li>
+            <li><a href="/en/japanese-kanji-dictionary/">Japanese kanji dictionary</a></li>
+            <li><a href="/en/japanese-stroke-order/">Kanji stroke order</a></li>
+            <li><a href="/en/kanji-to-hiragana/">Kanji to Hiragana</a></li>
+            <li><a href="/en/kanji-to-romaji/">Kanji to Romaji</a></li>
+            <li><a href="/en/japanese-kanji-converter/">Shinjitai Kyujitai converter</a></li>
+            <li><a href="/en/japanese-chinese-kanji-converter/">Chinese to Japanese kanji</a></li>
+            <li><a href="/en/japanese-characters/">Japanese character copy</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">Korean</p>
+          <ul>
+            <li><a href="/en/korean-handwriting-recognition/">Korean handwriting input</a></li>
+            <li><a href="/en/korean-hanja-dictionary/">Korean Hanja dictionary</a></li>
+            <li><a href="/en/korean-hanja-handwriting-recognition/">Korean Hanja handwriting</a></li>
+            <li><a href="/en/hangul-hanja-converter/">Hangul Hanja converter</a></li>
+            <li><a href="/en/korean-name-hanja/">Korean name Hanja</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">Text tools</p>
+          <ul>
+            <li><a href="/en/character-counter/">Chinese character counter</a></li>
+            <li><a href="/en/word-to-txt/">Word to text</a></li>
+            <li><a href="/en/text-formatter/">Text formatter</a></li>
+            <li><a href="/en/image-redaction/">Image redaction</a></li>
+            <li><a href="/en/image-splitter/">Image splitter</a></li>
+            <li><a href="/en/password-generator/">Password generator</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.app provides browser-based Chinese character, Zhuyin, and Pinyin tools.</p><nav class="footer-links" aria-label="Footer"><a href="/en/about/">About</a><a href="/en/contact/">Contact</a><a href="/en/privacy/">Privacy Statement</a></nav></footer>
+  </body>
+</html>

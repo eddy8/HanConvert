@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="免費國字注音產生器，貼上中文即可把漢字轉成注音符號，依教育部國語讀音標注星期、垃圾等兩岸異讀，可點字修改破音字，並列印或下載國字注音圖片。" />
+    <title>國字注音產生器 - 漢字轉注音符號、拼音轉注音 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/zh-tw/chinese-to-zhuyin/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/chinese-to-zhuyin/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/chinese-to-zhuyin/" />
+    <link rel="alternate" hreflang="en" href="https://jianfan.app/en/chinese-to-zhuyin/" />
+    <link rel="alternate" hreflang="ja" href="https://jianfan.app/ja/chinese-to-zhuyin/" />
+    <link rel="alternate" hreflang="ko" href="https://jianfan.app/ko/chinese-to-zhuyin/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/chinese-to-zhuyin/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.min.css" />
+    <link rel="stylesheet" href="/chinese-to-zhuyin.css" />
+    <script src="/theme.js"></script>
+    <script type="importmap">{"imports":{"pinyin-to-zhuyin":"https://cdn.jsdelivr.net/npm/pinyin-to-zhuyin@1.1.0/dist/pinyin-to-zhuyin.esm.js"},"integrity":{"https://cdn.jsdelivr.net/npm/pinyin-to-zhuyin@1.1.0/dist/pinyin-to-zhuyin.esm.js":"sha384-JuGtdlwGQ98FCJsO16TSFzx4SKJMhBhsZXeYODXf6Ua6FazxwnTSfOFVablwvxiM"}}</script>
+    <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/pinyin-to-zhuyin@1.1.0/dist/pinyin-to-zhuyin.esm.js" integrity="sha384-JuGtdlwGQ98FCJsO16TSFzx4SKJMhBhsZXeYODXf6Ua6FazxwnTSfOFVablwvxiM" crossorigin="anonymous" />
+    <script defer src="/vendor/pinyin-pro.js"></script>
+    <script defer src="/traditional-pinyin.js"></script>
+    <script defer src="/zhuyin-core.js"></script>
+    <script type="module" src="/chinese-to-zhuyin.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://jianfan.app/zh-tw/chinese-to-zhuyin/#webapp",
+            "name": "國字注音產生器 - 漢字轉注音符號、拼音轉注音",
+            "url": "https://jianfan.app/zh-tw/chinese-to-zhuyin/",
+            "description": "免費國字注音產生器，貼上中文即可把漢字轉成注音符號，依教育部國語讀音標注星期、垃圾等兩岸異讀，可點字修改破音字，並列印或下載國字注音圖片。",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "zh-Hant",
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/zh-tw/chinese-to-zhuyin/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "網站首頁",
+                "item": "https://jianfan.app/zh-tw/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "國字注音產生器 - 漢字轉注音符號、拼音轉注音",
+                "item": "https://jianfan.app/zh-tw/chinese-to-zhuyin/"
+              }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://jianfan.app/zh-tw/chinese-to-zhuyin/#howto",
+            "name": "國字轉注音步驟",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "text": "把繁體或簡體中文貼進輸入框，也可以輸入帶聲調的拼音。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "text": "選擇讀音標準：臺灣國語或大陸普通話。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "text": "選擇輸出格式：純注音、國字加注音或拼音。"
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "text": "在預覽中點讀錯的字改選讀音，再複製結果、列印或下載圖片。"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/zh-tw/chinese-to-zhuyin/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "國字怎麼轉注音？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "把中文貼進上方輸入框，工具會先判斷每個字的讀音，再轉成注音符號與聲調：一聲不標，二聲標ˊ，三聲標ˇ，四聲標ˋ，輕聲把˙寫在最前面。例如「注音符號」會轉成「ㄓㄨˋ ㄧㄣ ㄈㄨˊ ㄏㄠˋ」。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "國字注音產生器可以處理破音字嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以。工具會依詞語上下文選音，例如銀行的「行」標ㄏㄤˊ，行走的「行」標ㄒㄧㄥˊ。如果仍然不對，在預覽中點那個字，右側會列出所有讀音，點選後注音結果會同步更新。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "為什麼「星期」「垃圾」的注音和大陸拼音不一樣？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "教育部審定的國語讀音與大陸普通話有部分不同，例如星期標ㄒㄧㄥ ㄑㄧˊ（大陸 xīngqī），垃圾標ㄌㄜˋ ㄙㄜˋ（大陸 lājī），危險標ㄨㄟˊ ㄒㄧㄢˇ。需要大陸讀音時切換到「大陸普通話」即可。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "「一」和「不」要標本調還是變調？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "預設標本調，與字典一致：「一個」標ㄧ ㄍㄜˋ，「不對」標ㄅㄨˋ ㄉㄨㄟˋ。勾選「『一』『不』標變調」後，改為實際讀音ㄧˊ ㄍㄜˋ、ㄅㄨˊ ㄉㄨㄟˋ。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "怎麼把國字注音放進 Word 或學習單？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以複製「國字(注音)」格式的文字，或按「列印」直接印出注音在字右側的排版，也可以「下載圖片」取得白底 PNG。Word 內建的注音標示遇到破音字要逐字修改，用圖片則會保留你在預覽中改好的讀音。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "可以把拼音轉成注音嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以。輸入不含漢字的拼音，例如 zhù yīn 或 zhu4 yin1，會直接轉成ㄓㄨˋ ㄧㄣ，聲調符號與數字聲調都支援。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "簡體字也可以轉注音嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "可以。簡體與繁體都能直接輸入，不必先做簡繁轉換；如果需要繁體文字，可先用臺灣繁體轉換工具處理。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "輸入的文字會上傳嗎？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不會。讀音判斷與注音轉換都在目前的瀏覽器中完成，頁面只從公共 CDN 載入轉換程式，不會傳送你輸入的文字。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-tool-page="chinese-to-zhuyin" data-page-slug="chinese-to-zhuyin" data-locale="zh-TW">
+    <script type="application/json" id="zhuyinMessages">{"idle":"等待輸入國字或拼音","ready":"注音轉換完成","readyAdjusted":"注音轉換完成，{count} 個字已依臺灣讀音標注","pinyinReady":"已把拼音轉成注音","copied":"已複製結果","copyFailed":"無法自動複製，請手動複製","error":"注音元件載入失敗，請重新整理頁面","tooLong":"文字不能超過 {limit} 個字元","downloaded":"注音圖片已下載","previewEmpty":"輸入國字後，這裡會顯示注音在字右側的排版。","pinyinPreview":"輸入的是拼音，已在右側輸出注音文字；輸入國字才會顯示排版預覽。","mainlandTag":"大陸讀音"}</script>
+    <a class="skip-nav" href="#main">跳到主要內容</a>
+    <header class="site-header" aria-label="網站頁首"><a class="brand" href="/zh-tw/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">注</span><span>JianFan.app</span></a><nav class="top-actions" aria-label="主要導覽"><a class="nav-link" href="/zh-tw/">網站首頁</a><label class="language-picker"><span>介面語言</span><select id="localeSelect" aria-label="介面語言"><option value="zh-CN">简体中文</option><option value="zh-TW" selected>繁體中文</option><option value="en">English</option><option value="ja">日本語</option><option value="ko">한국어</option></select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
+    <main id="main">
+      <section class="tool-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">國字注音 · 教育部國語讀音 · 破音字</p><h1 id="pageTitle">國字注音產生器：漢字轉注音符號</h1><p class="lede">貼上國字、詞語或整篇文章，即時產生注音符號，並以課本常見的「注音在字右側」排版預覽。可切換臺灣國語或大陸普通話讀音，點選任一字修改破音字。</p></div><div class="tool-hero-glyphs zhuyin-hero-glyphs" aria-hidden="true"><span>ㄅ</span><span>ㄆ</span><span>ㄇ</span></div></section>
+      <section class="standalone-tool pinyin-tool zhuyin-tool" aria-labelledby="zhuyinToolTitle">
+        <div class="standalone-tool-head"><div><p class="section-kicker">ZHUYIN / BOPOMOFO</p><h2 id="zhuyinToolTitle">輸入國字，產生注音</h2></div><div class="status-pill" id="zhuyinStatus" role="status" aria-live="polite"><span class="status-dot"></span><span>等待輸入國字或拼音</span></div></div>
+        <div class="pinyin-options zhuyin-options">
+          <fieldset><legend>讀音標準</legend><div class="pinyin-format-control zhuyin-choice" role="radiogroup" aria-label="讀音標準"><button type="button" data-zhuyin-standard="taiwan" role="radio" aria-checked="true" class="is-active"><span>臺灣國語</span><small>教育部讀音</small></button><button type="button" data-zhuyin-standard="mainland" role="radio" aria-checked="false"><span>大陸普通話</span><small>普通話讀音</small></button></div></fieldset>
+          <fieldset><legend>輸出格式</legend><div class="pinyin-format-control zhuyin-choice" role="radiogroup" aria-label="輸出格式"><button type="button" data-zhuyin-format="zhuyin" role="radio" aria-checked="true" class="is-active"><span>注音</span><small>ㄓㄨˋ ㄧㄣ</small></button><button type="button" data-zhuyin-format="inline" role="radio" aria-checked="false"><span>國字(注音)</span><small>注(ㄓㄨˋ)音(ㄧㄣ)</small></button><button type="button" data-zhuyin-format="pinyin" role="radio" aria-checked="false"><span>拼音</span><small>zhù yīn</small></button></div></fieldset>
+          <div class="pinyin-switches"><label><input id="zhuyinSandhi" type="checkbox" /><span>「一」「不」標變調</span></label><label><input id="zhuyinPreserve" type="checkbox" checked /><span>保留標點與字母</span></label></div>
+        </div>
+        <div class="pinyin-converter-grid">
+          <section class="pinyin-text-panel input-variant" aria-labelledby="zhuyinInputTitle"><div class="panel-topline"><h3 id="zhuyinInputTitle">國字或拼音</h3><span id="zhuyinInputCount">0</span></div><textarea id="zhuyinInput" aria-labelledby="zhuyinInputTitle" spellcheck="false" placeholder="輸入或貼上繁體、簡體中文，也可以輸入 zhù yīn 或 zhu4 yin1 這類拼音..."></textarea><div class="panel-actions"><button class="text-button" id="zhuyinSample" type="button" data-sample="星期天我們去圖書館研究注音符號，銀行旁邊的垃圾要分類，過馬路注意危險。">範例</button><button class="text-button" id="zhuyinClear" type="button">清空</button><button class="primary-action" id="zhuyinConvert" type="button">轉換注音</button></div></section>
+          <section class="pinyin-text-panel output-variant" aria-labelledby="zhuyinOutputTitle"><div class="panel-topline"><h3 id="zhuyinOutputTitle">注音結果</h3><span id="zhuyinOutputCount">0</span></div><textarea id="zhuyinOutput" aria-labelledby="zhuyinOutputTitle" readonly spellcheck="false" placeholder="轉換後的注音會顯示在這裡"></textarea><div class="panel-actions"><button class="text-button" id="zhuyinCopy" type="button">複製結果</button></div></section>
+        </div>
+        <div class="zhuyin-detail-grid">
+          <section class="zhuyin-preview-panel" aria-labelledby="zhuyinPreviewTitle"><div class="zhuyin-preview-head"><div><p class="section-kicker">PREVIEW</p><h3 id="zhuyinPreviewTitle">國字注音預覽</h3></div><div class="zhuyin-preview-toolbar"><div class="zhuyin-size-control" role="radiogroup" aria-label="字級"><button type="button" data-zhuyin-size="s" role="radio" aria-checked="false">小</button><button type="button" data-zhuyin-size="m" role="radio" aria-checked="true" class="is-active">中</button><button type="button" data-zhuyin-size="l" role="radio" aria-checked="false">大</button></div><button class="text-button" id="zhuyinPrint" type="button" disabled>列印</button><button class="primary-action" id="zhuyinDownload" type="button" disabled>下載圖片</button></div></div><p class="zhuyin-preview-hint">點任一個字可修改讀音；有底色的是臺灣與大陸讀音不同的字。</p><p id="zhuyinPreviewEmpty" class="pinyin-empty">輸入國字後，這裡會顯示注音在字右側的排版。</p><div id="zhuyinPreview" class="zhuyin-preview" lang="zh-Hant" hidden></div><p id="zhuyinPreviewNote" class="pinyin-preview-note" hidden>預覽、列印與圖片只包含前 1,500 個字元，注音文字結果不受影響。</p></section>
+          <section class="zhuyin-reading-panel" aria-labelledby="zhuyinReadingTitle"><div><p class="section-kicker">READINGS</p><h3 id="zhuyinReadingTitle">選擇讀音</h3></div><p id="zhuyinReadingEmpty" class="pinyin-empty">在預覽中點一個字，這裡會列出它的所有讀音。</p><strong id="zhuyinReadingCharacter" hidden></strong><div id="zhuyinReadingList" class="zhuyin-reading-list"></div><button class="text-button" id="zhuyinReadingReset" type="button" hidden>恢復自動讀音</button></section>
+        </div>
+        <p class="tool-disclaimer">自動轉換會依常見詞語判斷破音字，人名、地名與罕用字仍可能有其他讀音，用於作業或出版前請逐字核對。</p>
+      </section>
+      <section class="seo-band standalone-info" aria-labelledby="zhuyinFeatureTitle"><div class="section-heading"><p class="section-kicker">國字注音線上轉換</p><h2 id="zhuyinFeatureTitle">國字轉注音、拼音轉注音與注音排版</h2><p class="seo-intro">適合準備國語作業、親子共讀的注音讀物、華語教材，或把拼音資料改成注音。所有文字只在目前的瀏覽器中轉換。</p></div><section class="zhuyin-answer" aria-labelledby="zhuyinAnswerTitle"><h2 id="zhuyinAnswerTitle">國字怎麼轉注音？</h2><p>把中文貼進上方輸入框，工具會先判斷每個字的讀音，再轉成注音符號與聲調：一聲不標，二聲標ˊ，三聲標ˇ，四聲標ˋ，輕聲把˙寫在最前面。例如「注音符號」會轉成「ㄓㄨˋ ㄧㄣ ㄈㄨˊ ㄏㄠˋ」。</p></section><div class="seo-grid"><article><h3>教育部國語讀音</h3><p>選「臺灣國語」時，會依教育部讀音標注星期、危險、垃圾等兩岸讀音不同的詞，並在預覽中以底色標出。</p></article><article><h3>破音字逐字修改</h3><p>自動依詞語上下文選音，例如銀行的「行」讀ㄏㄤˊ。判斷不準時點一下那個字，就能從所有讀音中改選。</p></article><article><h3>列印與下載圖片</h3><p>預覽採用注音在字右側的排版，可直接列印，或下載白底 PNG 圖片貼進 Word、學習單與簡報。</p></article></div><section class="zhuyin-chart" aria-labelledby="zhuyinChartTitle"><h2 id="zhuyinChartTitle">注音符號與拼音對照表</h2><p>注音符號共 37 個：21 個聲母、3 個介音與 13 個韻母，另有 4 個聲調符號與輕聲點。下表列出每個符號對應的漢語拼音。</p><div class="zhuyin-chart-grid"><div class="zhuyin-chart-group"><h3>聲母（21）</h3><table><thead><tr><th scope="col">注音</th><th scope="col">拼音</th></tr></thead><tbody><tr><td lang="zh-Hant">ㄅ</td><td>b</td></tr><tr><td lang="zh-Hant">ㄆ</td><td>p</td></tr><tr><td lang="zh-Hant">ㄇ</td><td>m</td></tr><tr><td lang="zh-Hant">ㄈ</td><td>f</td></tr><tr><td lang="zh-Hant">ㄉ</td><td>d</td></tr><tr><td lang="zh-Hant">ㄊ</td><td>t</td></tr><tr><td lang="zh-Hant">ㄋ</td><td>n</td></tr><tr><td lang="zh-Hant">ㄌ</td><td>l</td></tr><tr><td lang="zh-Hant">ㄍ</td><td>g</td></tr><tr><td lang="zh-Hant">ㄎ</td><td>k</td></tr><tr><td lang="zh-Hant">ㄏ</td><td>h</td></tr><tr><td lang="zh-Hant">ㄐ</td><td>j</td></tr><tr><td lang="zh-Hant">ㄑ</td><td>q</td></tr><tr><td lang="zh-Hant">ㄒ</td><td>x</td></tr><tr><td lang="zh-Hant">ㄓ</td><td>zh</td></tr><tr><td lang="zh-Hant">ㄔ</td><td>ch</td></tr><tr><td lang="zh-Hant">ㄕ</td><td>sh</td></tr><tr><td lang="zh-Hant">ㄖ</td><td>r</td></tr><tr><td lang="zh-Hant">ㄗ</td><td>z</td></tr><tr><td lang="zh-Hant">ㄘ</td><td>c</td></tr><tr><td lang="zh-Hant">ㄙ</td><td>s</td></tr></tbody></table></div><div class="zhuyin-chart-group"><h3>介音（3）</h3><table><thead><tr><th scope="col">注音</th><th scope="col">拼音</th></tr></thead><tbody><tr><td lang="zh-Hant">ㄧ</td><td>i / yi</td></tr><tr><td lang="zh-Hant">ㄨ</td><td>u / wu</td></tr><tr><td lang="zh-Hant">ㄩ</td><td>ü / yu</td></tr></tbody></table></div><div class="zhuyin-chart-group"><h3>韻母（13）</h3><table><thead><tr><th scope="col">注音</th><th scope="col">拼音</th></tr></thead><tbody><tr><td lang="zh-Hant">ㄚ</td><td>a</td></tr><tr><td lang="zh-Hant">ㄛ</td><td>o</td></tr><tr><td lang="zh-Hant">ㄜ</td><td>e</td></tr><tr><td lang="zh-Hant">ㄝ</td><td>ê</td></tr><tr><td lang="zh-Hant">ㄞ</td><td>ai</td></tr><tr><td lang="zh-Hant">ㄟ</td><td>ei</td></tr><tr><td lang="zh-Hant">ㄠ</td><td>ao</td></tr><tr><td lang="zh-Hant">ㄡ</td><td>ou</td></tr><tr><td lang="zh-Hant">ㄢ</td><td>an</td></tr><tr><td lang="zh-Hant">ㄣ</td><td>en</td></tr><tr><td lang="zh-Hant">ㄤ</td><td>ang</td></tr><tr><td lang="zh-Hant">ㄥ</td><td>eng</td></tr><tr><td lang="zh-Hant">ㄦ</td><td>er</td></tr></tbody></table></div><div class="zhuyin-chart-group zhuyin-tone-group"><h3>聲調標法</h3><table><thead><tr><th scope="col">聲調</th><th scope="col">注音標法</th><th scope="col">拼音</th><th scope="col">範例</th></tr></thead><tbody><tr><td>一聲</td><td>不標</td><td>mā</td><td lang="zh-Hant">ㄇㄚ</td></tr><tr><td>二聲</td><td>ˊ</td><td>má</td><td lang="zh-Hant">ㄇㄚˊ</td></tr><tr><td>三聲</td><td>ˇ</td><td>mǎ</td><td lang="zh-Hant">ㄇㄚˇ</td></tr><tr><td>四聲</td><td>ˋ</td><td>mà</td><td lang="zh-Hant">ㄇㄚˋ</td></tr><tr><td>輕聲</td><td>˙</td><td>ma</td><td lang="zh-Hant">˙ㄇㄚ</td></tr></tbody></table></div></div></section><section class="zhuyin-differences" aria-labelledby="zhuyinDiffTitle"><h2 id="zhuyinDiffTitle">臺灣與大陸讀音不同的常見詞</h2><p>以下詞語在「臺灣國語」模式會自動改用教育部讀音，切換到「大陸普通話」則保留大陸讀音。</p><div class="zhuyin-table-scroll"><table><thead><tr><th scope="col">詞語</th><th scope="col">大陸普通話</th><th scope="col">臺灣國語</th><th scope="col">注音</th></tr></thead><tbody><tr><th scope="row">星期</th><td>xīng qī</td><td>xīng qí</td><td lang="zh-Hant">ㄒㄧㄥ ㄑㄧˊ</td></tr><tr><th scope="row">危險</th><td>wēi xiǎn</td><td>wéi xiǎn</td><td lang="zh-Hant">ㄨㄟˊ ㄒㄧㄢˇ</td></tr><tr><th scope="row">垃圾</th><td>lā jī</td><td>lè sè</td><td lang="zh-Hant">ㄌㄜˋ ㄙㄜˋ</td></tr><tr><th scope="row">研究</th><td>yán jiū</td><td>yán jiù</td><td lang="zh-Hant">ㄧㄢˊ ㄐㄧㄡˋ</td></tr><tr><th scope="row">企業</th><td>qǐ yè</td><td>qì yè</td><td lang="zh-Hant">ㄑㄧˋ ㄧㄝˋ</td></tr><tr><th scope="row">品質</th><td>pǐn zhì</td><td>pǐn zhí</td><td lang="zh-Hant">ㄆㄧㄣˇ ㄓˊ</td></tr><tr><th scope="row">休息</th><td>xiū xi</td><td>xiū xí</td><td lang="zh-Hant">ㄒㄧㄡ ㄒㄧˊ</td></tr><tr><th scope="row">攻擊</th><td>gōng jī</td><td>gōng jí</td><td lang="zh-Hant">ㄍㄨㄥ ㄐㄧˊ</td></tr></tbody></table></div></section><section class="zhuyin-howto" aria-labelledby="zhuyinHowTitle"><h2 id="zhuyinHowTitle">國字轉注音步驟</h2><ol><li>把繁體或簡體中文貼進輸入框，也可以輸入帶聲調的拼音。</li><li>選擇讀音標準：臺灣國語或大陸普通話。</li><li>選擇輸出格式：純注音、國字加注音或拼音。</li><li>在預覽中點讀錯的字改選讀音，再複製結果、列印或下載圖片。</li></ol></section><section class="pinyin-faq" aria-labelledby="zhuyinFaqTitle"><h2 id="zhuyinFaqTitle">國字注音常見問題</h2><details><summary>國字注音產生器可以處理破音字嗎？</summary><p>可以。工具會依詞語上下文選音，例如銀行的「行」標ㄏㄤˊ，行走的「行」標ㄒㄧㄥˊ。如果仍然不對，在預覽中點那個字，右側會列出所有讀音，點選後注音結果會同步更新。</p></details><details><summary>為什麼「星期」「垃圾」的注音和大陸拼音不一樣？</summary><p>教育部審定的國語讀音與大陸普通話有部分不同，例如星期標ㄒㄧㄥ ㄑㄧˊ（大陸 xīngqī），垃圾標ㄌㄜˋ ㄙㄜˋ（大陸 lājī），危險標ㄨㄟˊ ㄒㄧㄢˇ。需要大陸讀音時切換到「大陸普通話」即可。</p></details><details><summary>「一」和「不」要標本調還是變調？</summary><p>預設標本調，與字典一致：「一個」標ㄧ ㄍㄜˋ，「不對」標ㄅㄨˋ ㄉㄨㄟˋ。勾選「『一』『不』標變調」後，改為實際讀音ㄧˊ ㄍㄜˋ、ㄅㄨˊ ㄉㄨㄟˋ。</p></details><details><summary>怎麼把國字注音放進 Word 或學習單？</summary><p>可以複製「國字(注音)」格式的文字，或按「列印」直接印出注音在字右側的排版，也可以「下載圖片」取得白底 PNG。Word 內建的注音標示遇到破音字要逐字修改，用圖片則會保留你在預覽中改好的讀音。</p></details><details><summary>可以把拼音轉成注音嗎？</summary><p>可以。輸入不含漢字的拼音，例如 zhù yīn 或 zhu4 yin1，會直接轉成ㄓㄨˋ ㄧㄣ，聲調符號與數字聲調都支援。</p></details><details><summary>簡體字也可以轉注音嗎？</summary><p>可以。簡體與繁體都能直接輸入，不必先做簡繁轉換；如果需要繁體文字，可先用臺灣繁體轉換工具處理。</p></details><details><summary>輸入的文字會上傳嗎？</summary><p>不會。讀音判斷與注音轉換都在目前的瀏覽器中完成，頁面只從公共 CDN 載入轉換程式，不會傳送你輸入的文字。</p></details></section><p class="section-kicker pinyin-related-kicker">相關工具</p><nav class="landing-links" aria-label="相關漢字工具"><a href="/zh-tw/chinese-to-pinyin/">漢字轉拼音</a><a href="/zh-tw/chinese-handwriting-recognition/">手寫輸入查注音</a><a href="/zh-tw/photo-chinese-character-recognition/">拍照識字</a><a href="/zh-tw/chinese-stroke-order/">國字筆順查詢</a><a href="/zh-tw/chinese-character-lookup/">漢字查詢與結構拆解</a><a href="/zh-tw/taiwan-traditional/">臺灣繁體轉換</a><a href="/zh-tw/han-character-worksheet/">國字練習簿產生器</a></nav></section>
+    </main>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="全部工具">
+        <div class="site-directory-group">
+          <p class="site-directory-title">簡繁轉換</p>
+          <ul>
+            <li><a href="/zh-tw/">簡繁轉換</a></li>
+            <li><a href="/zh-tw/simplified-to-traditional/">簡體轉繁體</a></li>
+            <li><a href="/zh-tw/traditional-to-simplified/">繁體轉簡體</a></li>
+            <li><a href="/zh-tw/taiwan-traditional/">台灣繁體轉換</a></li>
+            <li><a href="/zh-tw/hong-kong-traditional/">香港繁體轉換</a></li>
+            <li><a href="/zh-tw/file-text-converter/">檔案簡繁轉換</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">中文漢字</p>
+          <ul>
+            <li><a href="/zh-tw/chinese-handwriting-recognition/">手寫漢字辨識</a></li>
+            <li><a href="/zh-tw/photo-chinese-character-recognition/">拍照漢字辨識</a></li>
+            <li><a href="/zh-tw/chinese-to-pinyin/">漢字轉拼音</a></li>
+            <li><a href="/zh-tw/chinese-to-zhuyin/" aria-current="page">國字注音產生器</a></li>
+            <li><a href="/zh-tw/chinese-stroke-order/">漢字筆順查詢</a></li>
+            <li><a href="/zh-tw/chinese-character-lookup/">漢字查詢與結構拆解</a></li>
+            <li><a href="/zh-tw/han-character-worksheet/">國字練習紙</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">日文漢字</p>
+          <ul>
+            <li><a href="/zh-tw/japanese-handwriting-recognition/">日文手寫漢字辨識</a></li>
+            <li><a href="/zh-tw/japanese-kanji-dictionary/">日本漢字查詢</a></li>
+            <li><a href="/zh-tw/japanese-stroke-order/">日本漢字筆順</a></li>
+            <li><a href="/zh-tw/kanji-to-hiragana/">日文漢字轉平假名</a></li>
+            <li><a href="/zh-tw/kanji-to-romaji/">日文漢字轉羅馬字</a></li>
+            <li><a href="/zh-tw/japanese-kanji-converter/">日文新舊字體轉換</a></li>
+            <li><a href="/zh-tw/japanese-chinese-kanji-converter/">日中漢字轉換</a></li>
+            <li><a href="/zh-tw/japanese-characters/">日文字元複製</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">韓文與韓國漢字</p>
+          <ul>
+            <li><a href="/zh-tw/korean-handwriting-recognition/">韓文手寫辨識</a></li>
+            <li><a href="/zh-tw/korean-hanja-dictionary/">韓國漢字查詢</a></li>
+            <li><a href="/zh-tw/korean-hanja-handwriting-recognition/">韓國漢字手寫辨識</a></li>
+            <li><a href="/zh-tw/hangul-hanja-converter/">韓文漢字轉換</a></li>
+            <li><a href="/zh-tw/korean-name-hanja/">韓國人名用漢字</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">文字工具</p>
+          <ul>
+            <li><a href="/zh-tw/character-counter/">線上字數統計</a></li>
+            <li><a href="/zh-tw/word-to-txt/">DOCX 轉 TXT</a></li>
+            <li><a href="/zh-tw/text-formatter/">文字格式化</a></li>
+            <li><a href="/zh-tw/image-redaction/">圖片馬賽克</a></li>
+            <li><a href="/zh-tw/image-splitter/">圖片分割器</a></li>
+            <li><a href="/zh-tw/password-generator/">密碼產生器</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.app 提供在瀏覽器本機運行的漢字、注音與拼音工具。</p><nav class="footer-links" aria-label="頁尾"><a href="/zh-tw/about/">關於我們</a><a href="/zh-tw/contact/">聯絡我們</a><a href="/zh-tw/privacy/">隱私聲明</a></nav></footer>
+  </body>
+</html>

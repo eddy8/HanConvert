@@ -1,0 +1,437 @@
+/* Chinese → Zhuyin: Taiwan textbook layout with Bopomofo to the right of each character. */
+.zhuyin-hero-glyphs span {
+  font-family: var(--font-print-tc);
+}
+
+.zhuyin-options {
+  grid-template-columns: minmax(240px, 0.75fr) minmax(360px, 1.25fr) auto;
+}
+
+.zhuyin-options .zhuyin-choice {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.zhuyin-options .zhuyin-choice:has([data-zhuyin-format]) {
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr) minmax(0, 0.8fr);
+}
+
+.zhuyin-options .zhuyin-choice button small {
+  max-width: 100%;
+  overflow: hidden;
+  font-family: var(--font-print-tc);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 1180px) {
+  .zhuyin-options {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  }
+
+  .zhuyin-options .pinyin-switches {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .zhuyin-options {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.zhuyin-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(240px, 0.66fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.zhuyin-preview-panel,
+.zhuyin-reading-panel {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(var(--w), 0.025);
+}
+
+.zhuyin-preview-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.zhuyin-preview-head h3,
+.zhuyin-reading-panel h3 {
+  margin: 0;
+  font-size: 0.96rem;
+}
+
+.zhuyin-preview-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.zhuyin-size-control {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.zhuyin-size-control button {
+  min-width: 36px;
+  min-height: 34px;
+  padding: 0 10px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.zhuyin-size-control button + button {
+  border-left: 1px solid var(--line);
+}
+
+.zhuyin-size-control button.is-active {
+  background: rgba(var(--ac), 0.16);
+  color: var(--ink);
+}
+
+.zhuyin-preview-hint {
+  margin: 6px 0 8px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.zhuyin-preview {
+  --zhuyin-size: 40px;
+  max-height: 420px;
+  padding: 12px 14px;
+  overflow: auto;
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  color: var(--paper-ink);
+  font-family: var(--font-print-tc);
+  font-size: calc(var(--zhuyin-size) * var(--zhuyin-scale, 1));
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.zhuyin-cell {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0.04em;
+  padding: 0 0.02em;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1.2;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.zhuyin-cell:hover,
+.zhuyin-cell:focus-visible {
+  background: rgba(13, 127, 96, 0.1);
+  outline: none;
+}
+
+.zhuyin-cell.is-adjusted {
+  background: rgba(245, 180, 0, 0.18);
+}
+
+.zhuyin-cell.is-manual {
+  background: rgba(121, 182, 255, 0.24);
+}
+
+.zhuyin-cell.is-selected {
+  box-shadow: inset 0 0 0 2px var(--paper-accent);
+}
+
+.zhuyin-char {
+  font-size: 1em;
+}
+
+.zhuyin-mark {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.06em;
+  font-size: 0.4em;
+  line-height: 1;
+}
+
+.zhuyin-symbols {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Side-annotation zhuyin writes ㄧ as a vertical stroke, as in Taiwan textbooks. */
+.zhuyin-yi {
+  display: inline-block;
+  transform: rotate(90deg);
+}
+
+.zhuyin-neutral {
+  line-height: 0.7;
+}
+
+.zhuyin-tone {
+  display: inline-block;
+  min-width: 0.6em;
+  margin-left: 0.04em;
+  transform: translateY(-0.25em);
+}
+
+.zhuyin-group {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.zhuyin-plain {
+  vertical-align: middle;
+}
+
+.zhuyin-reading-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#zhuyinReadingCharacter {
+  font-family: var(--font-print-tc);
+  font-size: 2.6rem;
+  line-height: 1.1;
+}
+
+.zhuyin-reading-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.zhuyin-reading-list button {
+  display: inline-flex;
+  min-height: 44px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+
+.zhuyin-reading-list button strong {
+  font-family: var(--font-print-tc);
+  font-size: 1.05rem;
+}
+
+.zhuyin-reading-list button small {
+  color: var(--muted);
+}
+
+.zhuyin-reading-list button em {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-style: normal;
+}
+
+.zhuyin-reading-list button.is-active {
+  border-color: var(--accent);
+  background: rgba(var(--ac), 0.14);
+}
+
+.zhuyin-answer {
+  margin: 0 0 14px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: rgba(var(--w), 0.03);
+}
+
+.zhuyin-answer h2,
+.zhuyin-chart h2,
+.zhuyin-differences h2,
+.zhuyin-howto h2 {
+  margin: 0 0 8px;
+  font-size: 1.12rem;
+}
+
+.zhuyin-answer p {
+  margin: 0;
+}
+
+.zhuyin-chart,
+.zhuyin-differences,
+.zhuyin-howto {
+  margin-top: 18px;
+}
+
+.zhuyin-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  align-items: start;
+}
+
+.zhuyin-tone-group {
+  grid-column: span 2;
+}
+
+.zhuyin-tone-group th,
+.zhuyin-tone-group td {
+  white-space: nowrap;
+}
+
+@media (max-width: 420px) {
+  .zhuyin-tone-group {
+    grid-column: auto;
+  }
+}
+
+.zhuyin-chart-group h3 {
+  margin: 0 0 6px;
+  font-size: 0.92rem;
+}
+
+.zhuyin-chart table,
+.zhuyin-differences table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.zhuyin-chart th,
+.zhuyin-chart td,
+.zhuyin-differences th,
+.zhuyin-differences td {
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.zhuyin-chart td[lang],
+.zhuyin-differences td[lang] {
+  font-family: var(--font-print-tc);
+  font-size: 1.02rem;
+}
+
+.zhuyin-chart-group:not(.zhuyin-tone-group) tbody {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 10px;
+}
+
+.zhuyin-chart-group:not(.zhuyin-tone-group) thead {
+  display: none;
+}
+
+.zhuyin-chart-group:not(.zhuyin-tone-group) tr {
+  display: grid;
+  grid-template-columns: 2.2em 1fr;
+}
+
+.zhuyin-table-scroll {
+  overflow-x: auto;
+}
+
+.zhuyin-howto ol {
+  margin: 0;
+  padding-left: 1.4em;
+}
+
+.zhuyin-howto li + li {
+  margin-top: 4px;
+}
+
+@media (max-width: 860px) {
+  .zhuyin-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .zhuyin-reading-list button {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 620px) {
+  .zhuyin-preview {
+    --zhuyin-scale: 0.7;
+    max-height: 360px;
+    padding: 10px;
+  }
+
+  .zhuyin-preview-toolbar {
+    width: 100%;
+  }
+
+  .zhuyin-preview-toolbar .primary-action {
+    margin-left: auto;
+  }
+}
+
+html[lang="ko"] body[data-tool-page="chinese-to-zhuyin"] :is(h1, h2, h3, p, li, summary) {
+  word-break: keep-all;
+}
+
+@media print {
+  .site-header,
+  .site-footer,
+  .skip-nav,
+  .tool-hero,
+  .seo-band,
+  .zhuyin-tool > :not(.zhuyin-detail-grid),
+  .zhuyin-reading-panel,
+  .zhuyin-preview-head,
+  .zhuyin-preview-hint,
+  .pinyin-empty,
+  .pinyin-preview-note {
+    display: none !important;
+  }
+
+  body,
+  main,
+  .zhuyin-tool,
+  .zhuyin-detail-grid,
+  .zhuyin-preview-panel {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+  }
+
+  body::before {
+    display: none !important;
+  }
+
+  .zhuyin-preview {
+    max-height: none;
+    overflow: visible;
+    padding: 0;
+    color: #000;
+  }
+
+  .zhuyin-cell,
+  .zhuyin-cell.is-adjusted,
+  .zhuyin-cell.is-manual,
+  .zhuyin-cell.is-selected {
+    background: none;
+    box-shadow: none;
+  }
+}

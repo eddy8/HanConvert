@@ -15,6 +15,7 @@ for (const script of [
   "scripts/generate-text-formatter-pages.mjs",
   "scripts/generate-image-redaction-pages.mjs",
   "scripts/generate-image-splitter-pages.mjs",
+  "scripts/generate-chinese-to-zhuyin-pages.mjs",
   "scripts/generate-password-generator-pages.mjs",
   "scripts/generate-blog-pages.mjs",
   "scripts/sync-standalone-page-semantics.mjs",

@@ -23,6 +23,7 @@ export const directoryLocales = {
         ["chinese-handwriting-recognition", "手写汉字识别"],
         ["photo-chinese-character-recognition", "拍照识字"],
         ["chinese-to-pinyin", "汉字转拼音"],
+        ["chinese-to-zhuyin", "汉字转注音"],
         ["chinese-stroke-order", "汉字笔顺查询"],
         ["chinese-character-lookup", "汉字查询与结构拆解"],
         ["han-character-worksheet", "田字格字帖生成器"]
@@ -71,6 +72,7 @@ export const directoryLocales = {
         ["chinese-handwriting-recognition", "手寫漢字辨識"],
         ["photo-chinese-character-recognition", "拍照漢字辨識"],
         ["chinese-to-pinyin", "漢字轉拼音"],
+        ["chinese-to-zhuyin", "國字注音產生器"],
         ["chinese-stroke-order", "漢字筆順查詢"],
         ["chinese-character-lookup", "漢字查詢與結構拆解"],
         ["han-character-worksheet", "國字練習紙"]
@@ -119,6 +121,7 @@ export const directoryLocales = {
         ["chinese-handwriting-recognition", "Chinese handwriting recognition"],
         ["photo-chinese-character-recognition", "Chinese OCR"],
         ["chinese-to-pinyin", "Chinese to Pinyin"],
+        ["chinese-to-zhuyin", "Chinese to Zhuyin"],
         ["chinese-stroke-order", "Chinese stroke order"],
         ["chinese-character-lookup", "Chinese character lookup"],
         ["han-character-worksheet", "Chinese practice sheets"]
@@ -178,6 +181,7 @@ export const directoryLocales = {
         ["chinese-handwriting-recognition", "中国語の手書き検索"],
         ["photo-chinese-character-recognition", "中国語OCR"],
         ["chinese-to-pinyin", "ピンイン変換"],
+        ["chinese-to-zhuyin", "注音符号変換"],
         ["chinese-stroke-order", "中国語漢字の筆順"],
         ["chinese-character-lookup", "漢字の構成・部首検索"]
       ]],
@@ -222,6 +226,7 @@ export const directoryLocales = {
         ["chinese-handwriting-recognition", "중국어 한자 필기 인식"],
         ["photo-chinese-character-recognition", "중국어 이미지 OCR"],
         ["chinese-to-pinyin", "중국어 병음 변환"],
+        ["chinese-to-zhuyin", "주음부호 변환기"],
         ["chinese-stroke-order", "중국어 한자 필순"],
         ["chinese-character-lookup", "한자 부수·구성요소 검색"],
         ["han-character-worksheet", "한자 쓰기 연습장"]

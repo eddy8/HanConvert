@@ -15,6 +15,7 @@ const managedSlugs = [
   "text-formatter",
   "image-redaction",
   "image-splitter",
+  "chinese-to-zhuyin",
   "password-generator"
 ];
 

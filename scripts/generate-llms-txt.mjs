@@ -14,7 +14,7 @@ const checkOnly = process.argv.includes("--check");
 
 const sections = [
   ["Chinese conversion", ["simplified-to-traditional", "traditional-to-simplified", "taiwan-traditional", "hong-kong-traditional", "file-text-converter", "word-chinese-converter", "pdf-chinese-converter", "excel-chinese-converter", "csv-chinese-converter", "txt-chinese-converter"]],
-  ["Chinese characters", ["chinese-handwriting-recognition", "photo-chinese-character-recognition", "chinese-character-lookup", "chinese-stroke-order", "chinese-to-pinyin", "character-counter", "hanzi"]],
+  ["Chinese characters", ["chinese-handwriting-recognition", "photo-chinese-character-recognition", "chinese-character-lookup", "chinese-stroke-order", "chinese-to-pinyin", "chinese-to-zhuyin", "character-counter", "hanzi"]],
   ["Printable worksheets", ["han-character-worksheet", "tian-zi-ge-worksheet", "mi-zi-ge-worksheet", "hanzi-tracing-worksheet", "pinyin-hanzi-worksheet", "stroke-order-worksheet"]],
   ["Japanese", ["japanese-handwriting-recognition", "japanese-kanji-dictionary", "japanese-stroke-order", "kanji-to-hiragana", "kanji-to-romaji", "japanese-chinese-kanji-converter", "chinese-japanese-kanji-comparison", "japanese-kanji-converter", "simplified-chinese-to-japanese-kanji", "traditional-chinese-to-japanese-kanji", "japanese-kanji-to-simplified-chinese", "japanese-kanji-to-traditional-chinese", "japanese-characters"]],
   ["Korean", ["korean-handwriting-recognition", "hangul-hanja-converter", "korean-hanja-dictionary", "korean-hanja-handwriting-recognition", "korean-name-hanja"]],
