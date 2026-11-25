@@ -6,8 +6,8 @@
     <meta name="theme-color" content="#07120f" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <title>密碼產生器 - 線上隨機密碼、自訂字元與批次產生 | JianFan.app</title>
-    <meta name="description" content="免費線上密碼產生器，自訂密碼長度及大小寫字母、數字、特殊符號組合，支援排除指定與易混淆字元、禁止連續重複。密碼在瀏覽器本機產生，可批次複製或下載文字檔。" />
+    <title>隨機密碼產生器 - 線上產生高強度密碼、好記密碼 | JianFan.app</title>
+    <meta name="description" content="免費隨機密碼產生器，線上產生高強度密碼或好記的單字密碼。貼上網站密碼規則即可自動設定長度與字元類型，支援自訂符號、排除易混淆字元與批次產生，全程在瀏覽器本機完成。" />
     <link rel="canonical" href="https://jianfan.app/zh-tw/password-generator/" />
     <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/password-generator/" />
     <link rel="alternate" hreflang="zh-Hant" href="https://jianfan.app/zh-tw/password-generator/" />
@@ -27,9 +27,9 @@
     {
       "@type": "WebApplication",
       "@id": "https://jianfan.app/zh-tw/password-generator/#webapp",
-      "name": "密碼產生器 - 線上隨機密碼、自訂字元與批次產生",
+      "name": "隨機密碼產生器 - 線上產生高強度密碼、好記密碼",
       "url": "https://jianfan.app/zh-tw/password-generator/",
-      "description": "免費線上密碼產生器，自訂密碼長度及大小寫字母、數字、特殊符號組合，支援排除指定與易混淆字元、禁止連續重複。密碼在瀏覽器本機產生，可批次複製或下載文字檔。",
+      "description": "免費隨機密碼產生器，線上產生高強度密碼或好記的單字密碼。貼上網站密碼規則即可自動設定長度與字元類型，支援自訂符號、排除易混淆字元與批次產生，全程在瀏覽器本機完成。",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Any",
       "browserRequirements": "Requires JavaScript and Web Crypto",
@@ -60,7 +60,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "密碼產生器 - 線上隨機密碼、自訂字元與批次產生",
+          "name": "隨機密碼產生器 - 線上產生高強度密碼、好記密碼",
           "item": "https://jianfan.app/zh-tw/password-generator/"
         }
       ]
@@ -73,7 +73,7 @@
         {
           "@type": "HowToStep",
           "position": 1,
-          "text": "設定密碼長度與組數，勾選網站允許的字元類型。"
+          "text": "貼上網站的密碼規則，或手動設定長度、組數與字元類型；需要好記的密碼時切換到「好記單字」。"
         },
         {
           "@type": "HowToStep",
@@ -138,6 +138,38 @@
             "@type": "Answer",
             "text": "每個帳號使用不同密碼，依網站要求選擇足夠長度，再存入可信任的密碼管理工具。TXT 並未加密，不適合長期保存帳號資料；不同批次之間仍可能出現相同結果。"
           }
+        },
+        {
+          "@type": "Question",
+          "name": "密碼要幾碼才安全？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "一般帳號建議至少 16 碼隨機字元。美國 NIST SP 800-63B-4 規定：僅以密碼登入時，密碼至少 15 碼；搭配多因素驗證時至少 8 碼，並建議網站允許至少 64 碼。由大小寫字母、數字與 23 個預設符號組成的 16 碼隨機密碼約有 6.3×10³⁰ 種組合，約 102 位元熵。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "什麼是好記的單字密碼？安全嗎？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "好記密碼由幾個隨機英文單字組成，例如 Kiln-Capped6-Cornmeal-Stifling-Cycle。本工具從 EFF 的 7,776 字單字表中等機率抽字，每個單字約 12.9 位元熵：5 個單字加一個數字約 70 位元，6 個單字約 77 位元。它比隨機字元更容易在手機上輸入，適合需要手動輸入的主密碼或 Wi-Fi 密碼。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "如何依網站規則產生密碼？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "把註冊頁顯示的密碼規則貼到「貼上網站的密碼規則」，例如「8-16碼，須包含英文字母與數字」。工具會辨識出 8–16 碼、英文字母與數字，自動設為 16 碼並只使用這些字元；規則列出允許的特殊符號時，也會替換符號清單。辨識結果顯示在輸入框下方，可再手動調整。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "如何產生 6 碼數字密碼？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "點選快速設定的「6 碼數字」，或只勾選「數字」並將長度設為 6。6 碼數字只有 100 萬種組合，只適合提款卡、電子鎖等限制錯誤次數的 PIN 碼，不要當作網站登入密碼。"
+          }
         }
       ]
     }
@@ -146,21 +178,23 @@
     <!-- seo-schema:end -->
   </head>
   <body data-tool-page="password-generator" data-page-slug="password-generator" data-locale="zh-TW">
-    <script type="application/json" id="passwordMessages">{"generated":"已產生 {count} 組密碼","failed":"請調整產生規則","cleared":"已清空本頁結果","noResults":"尚未產生密碼","summary":"{count} 組 · 每組 {length} 字元 · {pool} 個可用字元","resultLabel":"第 {index} 組密碼","copyOne":"複製第 {index} 組密碼","copiedOne":"已複製第 {index} 組密碼","copiedAll":"已複製全部密碼","copyFailed":"無法自動複製，請選取文字手動複製。","copyAllFailed":"無法自動複製全部密碼，請使用「下載 TXT」或逐組複製。","downloaded":"已下載 TXT 檔案","hide":"隱藏密碼","show":"顯示密碼","strengthLabel":"組合強度參考：{level}","strength":["較低","中等","高","很高"],"errors":{"invalidLength":"密碼長度請輸入 1–128 之間的整數。","invalidCount":"組數請輸入 1–100 之間的整數。","invalidSymbols":"僅支援可見符號，不含空白、字母、數字或組合標記，最多 256 種。","noGroups":"請至少選擇一種字元類型。","emptyGroup":"「{group}」沒有可用字元，請調整字元集或排除規則。","tooShort":"包含所有勾選類型至少需要 {minimum} 個字元。","impossibleRepeat":"目前字元集無法避免連續重複，請增加字元或關閉此選項。","notEnoughCombinations":"目前只有 {available} 種組合，請減少組數、增加長度或擴大字元集。","cryptoUnavailable":"瀏覽器無法提供安全亂數，請改用新版瀏覽器。","randomFailed":"安全亂數產生失敗，請再試一次。","unexpected":"無法產生密碼，請檢查設定後再試。"},"groups":{"uppercase":"大寫字母","lowercase":"小寫字母","numbers":"數字","symbols":"特殊符號"}}</script>
+    <script type="application/json" id="passwordMessages">{"generated":"已產生 {count} 組密碼","failed":"請調整產生規則","cleared":"已清空本頁結果","noResults":"尚未產生密碼","summary":"{count} 組 · 每組 {length} 字元 · {pool} 個可用字元","resultLabel":"第 {index} 組密碼","copyOne":"複製第 {index} 組密碼","copiedOne":"已複製第 {index} 組密碼","copiedAll":"已複製全部密碼","copyFailed":"無法自動複製，請選取文字手動複製。","copyAllFailed":"無法自動複製全部密碼，請使用「下載 TXT」或逐組複製。","downloaded":"已下載 TXT 檔案","hide":"隱藏密碼","show":"顯示密碼","strengthLabel":"組合強度參考：{level}","strength":["較低","中等","高","很高"],"wordlistLoading":"正在載入單字表…","wordsSummary":"{count} 組 · 每組 {words} 個單字 · 單字表 {pool} 個","rulesHint":"貼上後自動辨識長度與字元類型，再依需要微調。","rulesNotFound":"沒有辨識到長度或字元要求，請手動調整下方設定。","rulesApplied":"已依規則設定：{rules}","rulesLength":"{length} 碼","rulesLengthRange":"{length} 碼（規則 {min}–{max} 碼）","listSeparator":"、","partSeparator":"，","errors":{"invalidLength":"密碼長度請輸入 1–128 之間的整數。","invalidCount":"組數請輸入 1–100 之間的整數。","invalidSymbols":"僅支援可見符號，不含空白、字母、數字或組合標記，最多 256 種。","noGroups":"請至少選擇一種字元類型。","emptyGroup":"「{group}」沒有可用字元，請調整字元集或排除規則。","tooShort":"包含所有勾選類型至少需要 {minimum} 個字元。","impossibleRepeat":"目前字元集無法避免連續重複，請增加字元或關閉此選項。","notEnoughCombinations":"目前只有 {available} 種組合，請減少組數、增加長度或擴大字元集。","cryptoUnavailable":"瀏覽器無法提供安全亂數，請改用新版瀏覽器。","randomFailed":"安全亂數產生失敗，請再試一次。","invalidWords":"單字數量請輸入 3–12 的整數。","invalidSeparator":"請選擇清單中的分隔符號。","wordlistFailed":"單字表下載失敗，請檢查網路後重試，或改用隨機字元密碼。","unexpected":"無法產生密碼，請檢查設定後再試。"},"groups":{"uppercase":"大寫字母","lowercase":"小寫字母","numbers":"數字","symbols":"特殊符號"}}</script>
     <a class="skip-nav" href="#main">跳到主要內容</a>
     <header class="site-header"><a class="brand" href="/zh-tw/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true"><svg class="password-icon" data-icon="key" aria-hidden="true"><use href="/password-icons.svg#key" /></svg></span><span>JianFan.app</span></a><nav class="top-actions" aria-label="主要導覽"><a class="nav-link" href="/zh-tw/">網站首頁</a><label class="language-picker"><span>介面語言</span><select id="localeSelect" aria-label="介面語言"><option value="zh-CN">简体中文</option><option value="zh-TW" selected>繁體中文</option><option value="en">English</option><option value="ja">日本語</option><option value="ko">한국어</option></select></label><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav></header>
     <main id="main" class="password-main">
-      <section class="password-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">隨機密碼 · 自訂字元 · 本機產生</p><h1 id="pageTitle">密碼產生器</h1><p class="lede">依網站要求產生隨機密碼，自由組合大小寫字母、數字與符號，支援排除字元和批次產生。</p></div><span class="password-local"><svg class="password-icon" data-icon="shield" aria-hidden="true"><use href="/password-icons.svg#shield" /></svg>僅在目前瀏覽器產生</span></section>
+      <section class="password-hero" aria-labelledby="pageTitle"><div><p class="section-kicker">隨機密碼 · 好記密碼 · 本機產生</p><h1 id="pageTitle">隨機密碼產生器</h1><p class="lede">一鍵產生高強度密碼或好記的單字密碼。貼上網站的密碼規則即可自動設定，也能自由組合字母、數字與符號並批次產生。</p></div><span class="password-local"><svg class="password-icon" data-icon="shield" aria-hidden="true"><use href="/password-icons.svg#shield" /></svg>僅在目前瀏覽器產生</span></section>
       <div class="password-workspace">
         <form id="passwordForm" class="password-settings" novalidate autocomplete="off" aria-labelledby="passwordSettingsTitle">
-          <div class="password-section-head"><h2 id="passwordSettingsTitle">產生規則</h2><span class="password-step" aria-hidden="true">01</span></div>
-          <div class="password-numbers"><div><label for="passwordLength">密碼長度</label><input id="passwordLength" name="length" type="number" min="1" max="128" value="20" inputmode="numeric" aria-describedby="passwordLengthHint" /><small id="passwordLengthHint">1–128 個字元</small></div><div><label for="passwordCount">產生組數</label><input id="passwordCount" name="count" type="number" min="1" max="100" value="3" inputmode="numeric" aria-describedby="passwordCountHint" /><small id="passwordCountHint">1–100 組，同批結果不重複</small></div></div>
-          <input id="passwordLengthRange" type="range" min="1" max="128" value="20" aria-label="調整密碼長度" />
-          <div class="password-presets" role="group" aria-label="快速設定"><button type="button" data-password-preset="standard">常用 20 碼</button><button type="button" data-password-preset="long">加長 32 碼</button><button type="button" data-password-preset="readable">方便抄寫</button></div>
-          <fieldset class="password-types"><legend>包含字元</legend><div><label class="password-check"><input type="checkbox" name="uppercase" checked /><span>大寫字母</span><code>A–Z</code></label><label class="password-check"><input type="checkbox" name="lowercase" checked /><span>小寫字母</span><code>a–z</code></label><label class="password-check"><input type="checkbox" name="numbers" checked /><span>數字</span><code>0–9</code></label><label class="password-check"><input type="checkbox" name="symbols" checked /><span>特殊符號</span><code>!@#$</code></label></div><p>每種勾選的字元至少包含一個。</p></fieldset>
-          <div class="password-custom-fields"><div class="password-field"><div class="password-field-label"><label for="passwordSymbols">自訂特殊符號</label><button id="passwordDefaultSymbols" class="password-icon-button" type="button" title="還原預設符號" aria-label="還原預設符號"><svg class="password-icon" data-icon="refresh" aria-hidden="true"><use href="/password-icons.svg#refresh" /></svg></button></div><input id="passwordSymbols" name="specialCharacters" type="text" value="!@#$%^&amp;*()-_=+[]{};:,.?" maxlength="512" spellcheck="false" autocapitalize="off" aria-describedby="passwordSymbolsHint" /><small id="passwordSymbolsHint">僅輸入允許的符號，不含空白、字母或數字；重複符號只計一次。</small></div>
+          <div class="password-section-head"><h2 id="passwordSettingsTitle">產生規則</h2><div class="password-mode" role="radiogroup" aria-label="密碼類型"><button type="button" role="radio" data-password-mode="characters" aria-checked="true" class="is-active">隨機字元</button><button type="button" role="radio" data-password-mode="words" aria-checked="false">好記單字</button></div></div>
+          <div class="password-rules" data-password-panel="characters"><label for="passwordRules">貼上網站的密碼規則</label><div><input id="passwordRules" type="text" placeholder="例如：8-16碼，須包含英文字母與數字" maxlength="2000" spellcheck="false" autocapitalize="off" aria-describedby="passwordRulesResult" /><button id="passwordRulesApply" type="button">辨識</button></div><small id="passwordRulesResult" aria-live="polite">貼上後自動辨識長度與字元類型，再依需要微調。</small></div>
+          <div class="password-numbers"><div data-password-panel="characters"><label for="passwordLength">密碼長度</label><input id="passwordLength" name="length" type="number" min="1" max="128" value="20" inputmode="numeric" aria-describedby="passwordLengthHint" /><small id="passwordLengthHint">1–128 個字元</small></div><div data-password-panel="words" hidden><label for="passwordWords">單字數量</label><input id="passwordWords" name="words" type="number" min="3" max="12" value="5" inputmode="numeric" aria-describedby="passwordWordsHint" /><small id="passwordWordsHint">3–12 個，建議 5 個以上</small></div><div><label for="passwordCount">產生組數</label><input id="passwordCount" name="count" type="number" min="1" max="100" value="3" inputmode="numeric" aria-describedby="passwordCountHint" /><small id="passwordCountHint">1–100 組，同批結果不重複</small></div></div>
+          <input id="passwordLengthRange" data-password-panel="characters" type="range" min="1" max="128" value="20" aria-label="調整密碼長度" />
+          <div class="password-presets" data-password-panel="characters" role="group" aria-label="快速設定"><button type="button" data-password-preset="standard">常用 20 碼</button><button type="button" data-password-preset="long">加長 32 碼</button><button type="button" data-password-preset="readable">方便抄寫</button><button type="button" data-password-preset="pin">6 碼數字</button></div>
+          <fieldset class="password-types" data-password-panel="characters"><legend>包含字元</legend><div><label class="password-check"><input type="checkbox" name="uppercase" checked /><span>大寫字母</span><code>A–Z</code></label><label class="password-check"><input type="checkbox" name="lowercase" checked /><span>小寫字母</span><code>a–z</code></label><label class="password-check"><input type="checkbox" name="numbers" checked /><span>數字</span><code>0–9</code></label><label class="password-check"><input type="checkbox" name="symbols" checked /><span>特殊符號</span><code>!@#$</code></label></div><p>每種勾選的字元至少包含一個。</p></fieldset>
+          <div class="password-custom-fields" data-password-panel="characters"><div class="password-field"><div class="password-field-label"><label for="passwordSymbols">自訂特殊符號</label><button id="passwordDefaultSymbols" class="password-icon-button" type="button" title="還原預設符號" aria-label="還原預設符號"><svg class="password-icon" data-icon="refresh" aria-hidden="true"><use href="/password-icons.svg#refresh" /></svg></button></div><input id="passwordSymbols" name="specialCharacters" type="text" value="!@#$%^&amp;*()-_=+[]{};:,.?" maxlength="512" spellcheck="false" autocapitalize="off" aria-describedby="passwordSymbolsHint" /><small id="passwordSymbolsHint">僅輸入允許的符號，不含空白、字母或數字；重複符號只計一次。</small></div>
           <div class="password-field"><label for="passwordExcluded">排除指定字元</label><input id="passwordExcluded" name="excludedCharacters" type="text" placeholder="例如：{}[]/\" maxlength="512" spellcheck="false" autocapitalize="off" aria-describedby="passwordExcludedHint" /><small id="passwordExcludedHint">逐字元排除，區分大小寫，不必用逗號分隔。</small></div></div>
-          <div class="password-filters"><label><input type="checkbox" name="excludeSimilar" /><span>排除易混淆字元<small><code>Il1O0o|</code></small></span></label><label><input type="checkbox" name="noAdjacentRepeat" /><span>排除連續重複字元<small>排除 aa、11，允許 a…a</small></span></label></div>
+          <div class="password-filters" data-password-panel="characters"><label><input type="checkbox" name="excludeSimilar" /><span>排除易混淆字元<small><code>Il1O0o|</code></small></span></label><label><input type="checkbox" name="noAdjacentRepeat" /><span>排除連續重複字元<small>排除 aa、11，允許 a…a</small></span></label></div>
+          <div class="password-word-options" data-password-panel="words" hidden><div class="password-field"><label for="passwordSeparator">分隔符號</label><select id="passwordSeparator" name="separator"><option value="-" selected>連字號 -</option><option value=".">句點 .</option><option value="_">底線 _</option><option value=" ">空格</option></select></div><label class="password-check"><input type="checkbox" name="capitalize" checked /><span>字首大寫</span><code>Word</code></label><label class="password-check"><input type="checkbox" name="includeNumber" checked /><span>加入一個數字</span><code>word7</code></label><p>單字取自 EFF 英文單字表（7,776 個常用字），首次使用時從 CDN 下載，密碼仍在本機產生。</p></div>
           <p id="passwordError" class="password-error" role="alert" hidden></p>
           <button class="password-generate" type="submit"><svg class="password-icon" data-icon="refresh" aria-hidden="true"><use href="/password-icons.svg#refresh" /></svg><span>產生密碼</span></button>
         </form>
@@ -176,7 +210,7 @@
         </section>
       </div>
       <template id="passwordResultTemplate"><div class="password-result"><span class="password-result-index" aria-hidden="true"></span><input type="text" readonly autocomplete="off" spellcheck="false" data-lpignore="true" data-1p-ignore /><button type="button" class="password-icon-button" title="複製密碼" aria-label="複製密碼"><svg class="password-icon" data-icon="copy" aria-hidden="true"><use href="/password-icons.svg#copy" /></svg></button></div></template>
-      <section class="seo-band standalone-info password-info" aria-labelledby="passwordFeatureTitle"><div class="section-heading"><h2 id="passwordFeatureTitle">符合網站規則的隨機密碼產生工具</h2><p class="seo-intro">註冊帳號、變更登入密碼或準備多組初始密碼時，可先依網站規則決定長度與允許的字元，再批次產生候選密碼。預設使用 20 碼混合字元，取消符號也能產生英數密碼。</p></div><div class="seo-grid"><article><h3>自由組合密碼字元</h3><p>分別選取大寫、小寫、數字及特殊符號，每個勾選類別都會包含至少一個字元，方便符合網站的密碼要求。</p></article><article><h3>設定可用特殊符號</h3><p>網站僅接受部分符號時，可修改符號清單；不允許的字元則填入排除欄。排除規則適用於所有勾選類別。</p></article><article><h3>批次產生與匯出</h3><p>一次最多產生 100 組不重複密碼，可逐組複製、全部複製或下載為每行一組的 TXT。結果只在目前頁面暫存。</p></article></div><section class="pinyin-howto" aria-labelledby="passwordHowTitle"><h2 id="passwordHowTitle">如何產生符合要求的密碼</h2><ol><li>設定密碼長度與組數，勾選網站允許的字元類型。</li><li>依需要修改符號、排除指定字元，或開啟易混淆與連續重複字元過濾。</li><li>產生並複製所需密碼，再存入自己的密碼管理工具。</li></ol></section><section class="pinyin-faq" aria-labelledby="passwordFaqTitle"><h2 id="passwordFaqTitle">密碼產生器常見問題</h2><details><summary>產生的密碼會儲存或上傳嗎？</summary><p>密碼在目前瀏覽器產生，不會傳送到伺服器，也不寫入本機儲存空間。重新整理、離開頁面或清空後，不提供歷史紀錄；複製與下載則會將結果放入你選擇的剪貼簿或檔案。</p></details><details><summary>勾選的每種字元都會出現嗎？</summary><p>會，這是預設規則。勾選四種類型時，每組至少包含一個大寫字母、小寫字母、數字與符號。長度不足或某類字元被全部排除時，會提示調整設定。</p></details><details><summary>易混淆字元與連續重複有何不同？</summary><p>易混淆選項排除 Il1O0o|，方便人工輸入。連續重複只禁止相鄰的相同字元，如 aa、11；同一字元仍可出現在不同位置，也不會排除 abc 或 123 這類序列。</p></details><details><summary>限制越多就越安全嗎？</summary><p>不一定。這些過濾條件主要配合網站規則與抄寫需求，會縮小可用組合。組合強度參考依有效隨機組合數量計算，不代表實際破解時間或帳號安全保證。</p></details><details><summary>可以產生純數字或自訂符號密碼嗎？</summary><p>可以，只勾選數字即可產生數字密碼，只勾選符號則使用自訂符號集。若組合數少於要求的組數，請增加長度、擴大字元集或減少組數。</p></details><details><summary>產生後如何保存密碼？</summary><p>每個帳號使用不同密碼，依網站要求選擇足夠長度，再存入可信任的密碼管理工具。TXT 並未加密，不適合長期保存帳號資料；不同批次之間仍可能出現相同結果。</p></details></section><p class="section-kicker pinyin-related-kicker">相關工具</p><nav class="landing-links" aria-label="相關工具"><a href="/zh-tw/text-formatter/">文字格式化</a><a href="/zh-tw/character-counter/">字數計算</a><a href="/zh-tw/image-redaction/">圖片隱私遮蔽</a><a href="/zh-tw/file-text-converter/">文件文字轉換</a></nav></section>
+      <section class="seo-band standalone-info password-info" aria-labelledby="passwordFeatureTitle"><div class="section-heading"><h2 id="passwordFeatureTitle">符合網站規則的隨機密碼產生工具</h2><p class="seo-intro">隨機密碼產生器使用瀏覽器的加密安全亂數（Web Crypto），在所有符合規則的組合中等機率抽出密碼。一般帳號建議使用 16 碼以上的隨機字元，或 5 個以上單字的好記密碼；美國 NIST SP 800-63B-4 要求僅以密碼登入時密碼至少 15 碼。貼上網站的密碼規則即可自動設定長度與字元類型；預設為 20 碼混合字元，取消符號也能產生英數密碼。</p></div><div class="seo-grid"><article><h3>自由組合密碼字元</h3><p>分別選取大寫、小寫、數字及特殊符號，每個勾選類別都會包含至少一個字元，方便符合網站的密碼要求。</p></article><article><h3>設定可用特殊符號</h3><p>網站僅接受部分符號時，可修改符號清單；不允許的字元則填入排除欄。排除規則適用於所有勾選類別。</p></article><article><h3>批次產生與匯出</h3><p>一次最多產生 100 組不重複密碼，可逐組複製、全部複製或下載為每行一組的 TXT。結果只在目前頁面暫存。</p></article><article><h3>好記的單字密碼</h3><p>從 EFF 的 7,776 字單字表隨機抽出單字並以分隔符號連接，可選字首大寫與加入數字。5 個單字加一個數字約有 70 位元熵，比同強度的隨機字元更好輸入、好記。</p></article><article><h3>貼上密碼規則自動設定</h3><p>把註冊頁上「8-16碼，須包含英文字母與數字」之類的提示貼上，自動在長度上限內選擇碼數與需要的字元類型，也能辨識允許使用的特殊符號清單。</p></article></div><section class="pinyin-howto" aria-labelledby="passwordHowTitle"><h2 id="passwordHowTitle">如何產生符合要求的密碼</h2><ol><li>貼上網站的密碼規則，或手動設定長度、組數與字元類型；需要好記的密碼時切換到「好記單字」。</li><li>依需要修改符號、排除指定字元，或開啟易混淆與連續重複字元過濾。</li><li>產生並複製所需密碼，再存入自己的密碼管理工具。</li></ol></section><section class="pinyin-faq" aria-labelledby="passwordFaqTitle"><h2 id="passwordFaqTitle">密碼產生器常見問題</h2><details><summary>產生的密碼會儲存或上傳嗎？</summary><p>密碼在目前瀏覽器產生，不會傳送到伺服器，也不寫入本機儲存空間。重新整理、離開頁面或清空後，不提供歷史紀錄；複製與下載則會將結果放入你選擇的剪貼簿或檔案。</p></details><details><summary>勾選的每種字元都會出現嗎？</summary><p>會，這是預設規則。勾選四種類型時，每組至少包含一個大寫字母、小寫字母、數字與符號。長度不足或某類字元被全部排除時，會提示調整設定。</p></details><details><summary>易混淆字元與連續重複有何不同？</summary><p>易混淆選項排除 Il1O0o|，方便人工輸入。連續重複只禁止相鄰的相同字元，如 aa、11；同一字元仍可出現在不同位置，也不會排除 abc 或 123 這類序列。</p></details><details><summary>限制越多就越安全嗎？</summary><p>不一定。這些過濾條件主要配合網站規則與抄寫需求，會縮小可用組合。組合強度參考依有效隨機組合數量計算，不代表實際破解時間或帳號安全保證。</p></details><details><summary>可以產生純數字或自訂符號密碼嗎？</summary><p>可以，只勾選數字即可產生數字密碼，只勾選符號則使用自訂符號集。若組合數少於要求的組數，請增加長度、擴大字元集或減少組數。</p></details><details><summary>產生後如何保存密碼？</summary><p>每個帳號使用不同密碼，依網站要求選擇足夠長度，再存入可信任的密碼管理工具。TXT 並未加密，不適合長期保存帳號資料；不同批次之間仍可能出現相同結果。</p></details><details><summary>密碼要幾碼才安全？</summary><p>一般帳號建議至少 16 碼隨機字元。美國 NIST SP 800-63B-4 規定：僅以密碼登入時，密碼至少 15 碼；搭配多因素驗證時至少 8 碼，並建議網站允許至少 64 碼。由大小寫字母、數字與 23 個預設符號組成的 16 碼隨機密碼約有 6.3×10³⁰ 種組合，約 102 位元熵。</p></details><details><summary>什麼是好記的單字密碼？安全嗎？</summary><p>好記密碼由幾個隨機英文單字組成，例如 Kiln-Capped6-Cornmeal-Stifling-Cycle。本工具從 EFF 的 7,776 字單字表中等機率抽字，每個單字約 12.9 位元熵：5 個單字加一個數字約 70 位元，6 個單字約 77 位元。它比隨機字元更容易在手機上輸入，適合需要手動輸入的主密碼或 Wi-Fi 密碼。</p></details><details><summary>如何依網站規則產生密碼？</summary><p>把註冊頁顯示的密碼規則貼到「貼上網站的密碼規則」，例如「8-16碼，須包含英文字母與數字」。工具會辨識出 8–16 碼、英文字母與數字，自動設為 16 碼並只使用這些字元；規則列出允許的特殊符號時，也會替換符號清單。辨識結果顯示在輸入框下方，可再手動調整。</p></details><details><summary>如何產生 6 碼數字密碼？</summary><p>點選快速設定的「6 碼數字」，或只勾選「數字」並將長度設為 6。6 碼數字只有 100 萬種組合，只適合提款卡、電子鎖等限制錯誤次數的 PIN 碼，不要當作網站登入密碼。</p></details></section><p class="section-kicker pinyin-related-kicker">相關工具</p><nav class="landing-links" aria-label="相關工具"><a href="/zh-tw/text-formatter/">文字格式化</a><a href="/zh-tw/character-counter/">字數計算</a><a href="/zh-tw/image-redaction/">圖片隱私遮蔽</a><a href="/zh-tw/file-text-converter/">文件文字轉換</a></nav></section>
     </main>
     <footer class="site-footer">
       <!-- site-tool-directory:start -->

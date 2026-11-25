@@ -108,7 +108,7 @@ test("static locale pages and schemas describe mandatory class coverage", async 
     const app = schema["@graph"].find((item) => item["@type"] === "WebApplication");
     assert.equal(canonical, `https://jianfan.app/${prefix}password-generator/`);
     assert.equal(app.url, canonical);
-    assert.equal(schema["@graph"].find((item) => item["@type"] === "FAQPage").mainEntity.length, 6);
+    assert.equal(schema["@graph"].find((item) => item["@type"] === "FAQPage").mainEntity.length, 10);
     assert.equal(schema["@graph"].find((item) => item["@type"] === "HowTo").step.length, 3);
     assert.equal(html.match(/hreflang=/gu).length, 6);
     assert.match(html, /src="\/password-generator\.js"/u);
@@ -119,5 +119,71 @@ test("static locale pages and schemas describe mandatory class coverage", async 
     assert.ok(homepage.includes(`href="/${prefix}password-generator/"`));
     const sitemap = await readFile(new URL("../sitemap.xml", import.meta.url), "utf8");
     assert.ok(sitemap.includes(`<loc>${canonical}</loc>`));
+  }
+});
+
+const testWordlist = Array.from({ length: 7776 }, (_, index) => `w${index.toString(26).replace(/[0-9]/gu, (digit) => "abcdefghij"[digit])}`);
+
+test("memorable passphrases use whole words, the chosen separator and the exact entropy", () => {
+  const generator = core.createPassphraseGenerator({ words: 5, count: 20, separator: "-", capitalize: true, includeNumber: true }, testWordlist);
+  assert.ok(Math.abs(generator.entropy - (5 * Math.log2(7776) + Math.log2(50))) < 1e-9);
+  const passphrases = generator.generate(webcrypto);
+  assert.equal(new Set(passphrases).size, 20);
+  for (const passphrase of passphrases) {
+    const words = passphrase.split("-");
+    assert.equal(words.length, 5);
+    assert.equal(words.filter((word) => /\d$/u.test(word)).length, 1);
+    for (const word of words) assert.match(word, /^[A-Z][a-z]+\d?$/u);
+  }
+  const plain = core.createPassphraseGenerator({ words: 6, count: 1, separator: " ", capitalize: false, includeNumber: false }, testWordlist);
+  assert.ok(Math.abs(plain.entropy - 6 * Math.log2(7776)) < 1e-9);
+  assert.match(plain.generate(webcrypto)[0], /^[a-z]+(?: [a-z]+){5}$/u);
+  assert.throws(() => core.createPassphraseGenerator({ words: 2 }, testWordlist), { code: "invalidWords" });
+  assert.throws(() => core.createPassphraseGenerator({ separator: "/" }, testWordlist), { code: "invalidSeparator" });
+  assert.throws(() => core.createPassphraseGenerator({}, ["a", "b"]), { code: "wordlistFailed" });
+});
+
+test("loads the EFF wordlist from a pinned CDN build with SRI", async () => {
+  assert.equal(core.WORDLIST.url, "https://cdn.jsdelivr.net/npm/@wordlist/english-eff@1.0.1/dist/data/long.json");
+  assert.match(core.WORDLIST.integrity, /^sha384-[A-Za-z0-9+/]{64}$/u);
+  const source = await readFile(new URL("../password-generator.js", import.meta.url), "utf8");
+  assert.match(source, /fetch\(core\.WORDLIST\.url, \{ integrity: core\.WORDLIST\.integrity/u);
+});
+
+test("reads pasted site password rules in all five interface languages", () => {
+  const cases = [
+    ["新密码:6-16位的小写字母+数字组合", { length: 16, uppercase: false, lowercase: true, numbers: true, symbols: false }],
+    ["密码长度8~20位，须包含大小写字母、数字和特殊字符", { length: 20, uppercase: true, lowercase: true, numbers: true, symbols: true }],
+    ["密码为6位纯数字", { length: 6, uppercase: false, lowercase: false, numbers: true, symbols: false }],
+    ["至少8位，不能包含特殊字符", { length: 20, symbols: false }],
+    ["8-16碼，須包含英文字母與數字", { length: 16, uppercase: true, lowercase: true, numbers: true, symbols: false }],
+    ["Password must be 8-64 characters and include at least one uppercase letter, one lowercase letter, one number and one special character (!@#$%^&*)", { length: 20, uppercase: true, lowercase: true, numbers: true, symbols: true, specialCharacters: "!@#$%^&*" }],
+    ["At least 12 characters, no symbols", { length: 20, symbols: false }],
+    ["半角英数字8文字以上16文字以内", { length: 16, uppercase: true, lowercase: true, numbers: true, symbols: false }],
+    ["パスワードは数字のみ4桁", { length: 4, uppercase: false, lowercase: false, numbers: true, symbols: false }],
+    ["영문, 숫자, 특수문자 조합 8~16자", { length: 16, uppercase: true, lowercase: true, numbers: true, symbols: true }],
+    ["特殊字符仅限 ~!@#$%^&*，长度10-20位，需包含大写字母、小写字母、数字", { length: 20, specialCharacters: "~!@#$%^&*" }],
+    ["允许的符号：!@#$%^&*()_+", { symbols: true, specialCharacters: "!@#$%^&*()_+" }]
+  ];
+  for (const [text, expected] of cases) {
+    const parsed = core.parseRequirements(text);
+    for (const [key, value] of Object.entries(expected)) assert.equal(parsed[key], value, `${text} → ${key}`);
+  }
+  assert.equal(core.parseRequirements("允许的符号：!@#$%^&*()_+").uppercase, undefined);
+  assert.equal(core.parseRequirements("hello world"), null);
+});
+
+test("pages offer the memorable-word mode, pasted rules and the PIN preset in every locale", async () => {
+  for (const prefix of ["", "zh-tw/", "en/", "ja/", "ko/"]) {
+    const html = await readFile(new URL(`../${prefix}password-generator/index.html`, import.meta.url), "utf8");
+    assert.match(html, /data-password-mode="characters"[\s\S]*data-password-mode="words"/u, prefix || "zh-CN");
+    assert.match(html, /id="passwordRules" type="text"/u);
+    assert.match(html, /data-password-preset="pin"/u);
+    assert.match(html, /id="passwordWords" name="words" type="number" min="3" max="12" value="5"/u);
+    assert.match(html, /<select id="passwordSeparator" name="separator">/u);
+    assert.match(html, /NIST SP 800-63B-4/u);
+    const messages = JSON.parse(html.match(/<script type="application\/json" id="passwordMessages">([\s\S]*?)<\/script>/u)[1]);
+    for (const key of ["wordlistLoading", "wordsSummary", "rulesApplied", "rulesNotFound"]) assert.ok(messages[key], `${prefix} ${key}`);
+    for (const key of ["invalidWords", "invalidSeparator", "wordlistFailed"]) assert.ok(messages.errors[key], `${prefix} ${key}`);
   }
 });
