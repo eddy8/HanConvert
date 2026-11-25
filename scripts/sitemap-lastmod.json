@@ -63,6 +63,10 @@
     "hash": "c91e9a8078a79425",
     "lastmod": "2026-10-25"
   },
+  "chinese-to-zhuyin/index.html": {
+    "hash": "e288d318d6755a5b",
+    "lastmod": "2026-11-25"
+  },
   "contact/index.html": {
     "hash": "f9d713c0a382504c",
     "lastmod": "2026-07-21"
@@ -98,6 +102,10 @@
   "en/chinese-to-pinyin/index.html": {
     "hash": "b121852d6d6f0c89",
     "lastmod": "2026-11-17"
+  },
+  "en/chinese-to-zhuyin/index.html": {
+    "hash": "0eb47d91194bc1ae",
+    "lastmod": "2026-11-25"
   },
   "en/contact/index.html": {
     "hash": "ecb2ae18336cdc93",
@@ -164,7 +172,7 @@
     "lastmod": "2026-11-25"
   },
   "en/index.html": {
-    "hash": "8742e141fc080fe7",
+    "hash": "c563c835a7c905ff",
     "lastmod": "2026-11-25"
   },
   "en/japanese-characters/index.html": {
@@ -348,7 +356,7 @@
     "lastmod": "2026-11-25"
   },
   "index.html": {
-    "hash": "776ceff1a67f568e",
+    "hash": "511a46621f34e5eb",
     "lastmod": "2026-11-25"
   },
   "ja/about/index.html": {
@@ -378,6 +386,10 @@
   "ja/chinese-to-pinyin/index.html": {
     "hash": "3032953c9078cb2b",
     "lastmod": "2026-10-25"
+  },
+  "ja/chinese-to-zhuyin/index.html": {
+    "hash": "13ef314b5dc1a7a8",
+    "lastmod": "2026-11-25"
   },
   "ja/contact/index.html": {
     "hash": "dfa2fecb38bd1a93",
@@ -444,7 +456,7 @@
     "lastmod": "2026-11-25"
   },
   "ja/index.html": {
-    "hash": "7e4810ce1abe5abc",
+    "hash": "3dbcd7bdedfb705f",
     "lastmod": "2026-11-25"
   },
   "ja/japanese-characters/index.html": {
@@ -639,6 +651,10 @@
     "hash": "f50b5082987b8de6",
     "lastmod": "2026-10-25"
   },
+  "ko/chinese-to-zhuyin/index.html": {
+    "hash": "752b58daf6c8b5f0",
+    "lastmod": "2026-11-25"
+  },
   "ko/contact/index.html": {
     "hash": "8a27acdbd19b493a",
     "lastmod": "2026-07-21"
@@ -704,7 +720,7 @@
     "lastmod": "2026-11-25"
   },
   "ko/index.html": {
-    "hash": "3fb03dc81dc974f0",
+    "hash": "141be3372e6714e1",
     "lastmod": "2026-11-25"
   },
   "ko/japanese-characters/index.html": {
@@ -947,6 +963,10 @@
     "hash": "1fcc7bbb3181bdf1",
     "lastmod": "2026-10-25"
   },
+  "zh-tw/chinese-to-zhuyin/index.html": {
+    "hash": "22867e2d7f043efe",
+    "lastmod": "2026-11-25"
+  },
   "zh-tw/contact/index.html": {
     "hash": "d16e615a198712e6",
     "lastmod": "2026-08-28"
@@ -1012,7 +1032,7 @@
     "lastmod": "2026-11-25"
   },
   "zh-tw/index.html": {
-    "hash": "c09fc1a7f94813ab",
+    "hash": "1ab993486250778f",
     "lastmod": "2026-11-25"
   },
   "zh-tw/japanese-characters/index.html": {
