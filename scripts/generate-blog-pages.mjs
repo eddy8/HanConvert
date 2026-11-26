@@ -27,6 +27,17 @@ const sitemapMarkerStart = "  <!-- blog:start -->";
 const sitemapMarkerEnd = "  <!-- blog:end -->";
 const guideMarkerPattern = /\s*<!-- blog-guide-links:start -->[\s\S]*?<!-- blog-guide-links:end -->\s*/u;
 const homeMarkerPattern = /\s*<!-- blog-home-link:start -->[\s\S]*?<!-- blog-home-link:end -->\s*/u;
+const defaultSourcesLead = "本文结合本站工具的实际处理流程撰写，涉及的主要开源资料如下。";
+
+// Articles published after the initial batch carry their own date; the rest share BLOG_PUBLISHED_DATE.
+function articleDate(article) {
+  return article.published ?? BLOG_PUBLISHED_DATE;
+}
+
+function displayDate(date) {
+  const [year, month, day] = date.split("-").map(Number);
+  return `${year} 年 ${month} 月 ${day} 日`;
+}
 
 const guideTargets = Object.freeze([
   Object.freeze({
@@ -177,8 +188,8 @@ function articleSchema(article) {
     mainEntityOfPage: { "@id": `${url}#webpage` },
     headline: article.heading,
     description: article.description,
-    datePublished: BLOG_PUBLISHED_DATE,
-    dateModified: BLOG_PUBLISHED_DATE,
+    datePublished: articleDate(article),
+    dateModified: articleDate(article),
     inLanguage: "zh-CN",
     author: { "@type": "Organization", name: "JianFan.app 编辑", url: `${origin}/about/` },
     publisher: { "@type": "Organization", "@id": `${origin}/#organization`, name: "JianFan.app", url: `${origin}/`, logo: { "@type": "ImageObject", url: `${origin}/apple-touch-icon.png` } },
@@ -354,7 +365,7 @@ function renderArticlePage(article) {
   const schema = formatSchema(articleSchema(article));
   const relatedArticles = article.related.map((slug) => BLOG_ARTICLE_MAP.get(slug)).filter(Boolean);
   const sources = article.sources.length
-    ? `      <section class="blog-sources" aria-labelledby="sourcesTitle"><h2 id="sourcesTitle">相关资料</h2><p>本文结合本站工具的实际处理流程撰写，涉及的主要开源资料如下。</p><ul>${article.sources.map((source) => `<li><a href="${source.href}" rel="noopener noreferrer">${escapeHtml(source.label)}</a><span>${escapeHtml(source.note)}</span></li>`).join("")}</ul></section>`
+    ? `      <section class="blog-sources" aria-labelledby="sourcesTitle"><h2 id="sourcesTitle">相关资料</h2><p>${escapeHtml(article.sourcesLead ?? defaultSourcesLead)}</p><ul>${article.sources.map((source) => `<li><a href="${source.href}" rel="noopener noreferrer">${escapeHtml(source.label)}</a><span>${escapeHtml(source.note)}</span></li>`).join("")}</ul></section>`
     : "";
 
   return `<!doctype html>
@@ -384,7 +395,7 @@ ${renderHeader()}
       <nav class="blog-breadcrumb" aria-label="面包屑"><a href="/">网站首页</a><span aria-hidden="true">/</span><a href="/blog/">使用指南</a><span aria-hidden="true">/</span><span aria-current="page">${escapeHtml(category.label)}</span></nav>
       <article class="blog-article">
         <header class="blog-article-hero">
-          <div><p class="eyebrow">${escapeHtml(article.eyebrow)}</p><h1 id="pageTitle">${escapeHtml(article.heading)}</h1><p class="lede">${escapeHtml(article.summary)}</p><div class="blog-article-meta"><span>JianFan.app 编辑</span><time datetime="${BLOG_PUBLISHED_DATE}">2026 年 8 月 29 日</time><span>${escapeHtml(article.readingTime)}</span></div></div>
+          <div><p class="eyebrow">${escapeHtml(article.eyebrow)}</p><h1 id="pageTitle">${escapeHtml(article.heading)}</h1><p class="lede">${escapeHtml(article.summary)}</p><div class="blog-article-meta"><span>JianFan.app 编辑</span><time datetime="${articleDate(article)}">${displayDate(articleDate(article))}</time><span>${escapeHtml(article.readingTime)}</span></div></div>
           ${renderSignal(article.signal, "blog-article-signal")}
         </header>
         <div class="blog-article-layout">
@@ -451,9 +462,10 @@ async function syncHomeLink() {
 
 function sitemapBlock(slug = "") {
   const url = canonicalUrl(slug);
+  const lastmod = slug ? articleDate(BLOG_ARTICLE_MAP.get(slug)) : BLOG_PUBLISHED_DATE;
   return `  <url>
     <loc>${url}</loc>
-    <lastmod>${BLOG_PUBLISHED_DATE}</lastmod>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>${slug ? "0.7" : "0.8"}</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="${url}" />

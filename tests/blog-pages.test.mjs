@@ -29,7 +29,7 @@ function articlePath(slug) {
   return path.join(projectRoot, "blog", slug, "index.html");
 }
 
-test("generates a crawlable blog index with eight editorial guides", async () => {
+test("generates a crawlable blog index with nine editorial guides", async () => {
   const html = await readFile(path.join(projectRoot, "blog", "index.html"), "utf8");
   const graph = schemaFromHtml(html)["@graph"];
   const collectionPage = graph.find((item) => item["@type"] === "CollectionPage");
@@ -69,7 +69,7 @@ test("keeps every article metadata, visible copy and structured data aligned", a
     assert.equal(description, article.description);
     assert.ok(visibleMetadataLength(description) >= descriptionMin && visibleMetadataLength(description) <= descriptionMax);
     assert.ok(html.includes(`<h1 id="pageTitle">${article.heading}</h1>`));
-    assert.ok(html.includes(`<time datetime="${BLOG_PUBLISHED_DATE}">`));
+    assert.ok(html.includes(`<time datetime="${article.published ?? BLOG_PUBLISHED_DATE}">`));
     assert.equal((html.match(/rel="alternate" hreflang=/gu) || []).length, 2);
     assert.ok(html.includes(`<link rel="alternate" hreflang="zh-Hans" href="${canonical}" />`));
     assert.ok(html.includes(`<link rel="alternate" hreflang="x-default" href="${canonical}" />`));
@@ -81,8 +81,8 @@ test("keeps every article metadata, visible copy and structured data aligned", a
     assert.equal(webPage?.description, article.description);
     assert.equal(blogPosting?.url, canonical);
     assert.equal(blogPosting?.headline, article.heading);
-    assert.equal(blogPosting?.datePublished, BLOG_PUBLISHED_DATE);
-    assert.equal(blogPosting?.dateModified, BLOG_PUBLISHED_DATE);
+    assert.equal(blogPosting?.datePublished, article.published ?? BLOG_PUBLISHED_DATE);
+    assert.equal(blogPosting?.dateModified, article.published ?? BLOG_PUBLISHED_DATE);
     assert.equal(faqPage?.mainEntity.length, article.faqs.length);
     assert.equal(breadcrumb?.itemListElement.at(-1)?.name, article.heading);
 
@@ -98,8 +98,10 @@ test("adds bidirectional tool links without duplicating generated markers", asyn
   for (const article of BLOG_ARTICLES) {
     const primaryToolPath = article.tools[0].href.replace(/^\//u, "");
     const html = await readFile(path.join(projectRoot, primaryToolPath, "index.html"), "utf8");
-    assert.equal((html.match(/<!-- blog-guide-links:start -->/gu) || []).length, 1, primaryToolPath);
-    assert.equal((html.match(/<!-- blog-guide-links:end -->/gu) || []).length, 1, primaryToolPath);
+    // The home page links to its article from the converter FAQ instead of a guide strip.
+    const guideStrips = primaryToolPath ? 1 : 0;
+    assert.equal((html.match(/<!-- blog-guide-links:start -->/gu) || []).length, guideStrips, primaryToolPath);
+    assert.equal((html.match(/<!-- blog-guide-links:end -->/gu) || []).length, guideStrips, primaryToolPath);
     assert.ok(html.includes(`href="/blog/${article.slug}/"`), `${primaryToolPath} guide link`);
   }
 
@@ -108,14 +110,14 @@ test("adds bidirectional tool links without duplicating generated markers", asyn
   assert.ok(home.includes('href="/blog/"'));
 });
 
-test("adds exactly nine unique blog URLs to the sitemap", async () => {
+test("adds exactly ten unique blog URLs to the sitemap", async () => {
   const sitemap = await readFile(path.join(projectRoot, "sitemap.xml"), "utf8");
   const section = capture(sitemap, /<!-- blog:start -->([\s\S]*?)<!-- blog:end -->/u, "blog sitemap section");
   const locations = [...section.matchAll(/<loc>([^<]+)<\/loc>/gu)].map((match) => match[1]);
   const expected = [`${origin}/blog/`, ...BLOG_ARTICLES.map((article) => `${origin}/blog/${article.slug}/`)];
 
   assert.deepEqual(locations, expected);
-  assert.equal(new Set(locations).size, 9);
-  assert.equal((section.match(/hreflang="zh-Hans"/gu) || []).length, 9);
-  assert.equal((section.match(/hreflang="x-default"/gu) || []).length, 9);
+  assert.equal(new Set(locations).size, 10);
+  assert.equal((section.match(/hreflang="zh-Hans"/gu) || []).length, 10);
+  assert.equal((section.match(/hreflang="x-default"/gu) || []).length, 10);
 });

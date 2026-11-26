@@ -75,6 +75,7 @@ Text conversion, counting, formatting, and most lookups run locally in the brows
 
 - [简体字和繁体字有什么区别 - 台湾与香港转换指南](https://jianfan.app/blog/simplified-traditional-chinese-differences/): 说明简体字、通用繁体、台湾正体和香港繁体在字形与地区用词上的区别，并用软件、出租车、方便面等例子介绍如何选择正确的简繁转换模式及校对方法。
 - [Word、PDF、Excel和TXT文件简繁转换完整指南](https://jianfan.app/blog/convert-word-pdf-excel-txt-chinese/): 介绍如何在浏览器中提取 Word、PDF、Excel、TXT 文件文字并转换简繁体，比较不同格式的处理方式、下载结果、文件限制以及转换后校对重点。
+- [简繁转换工具哪个好 - 繁化姬与OpenCC对比](https://jianfan.app/blog/simplified-traditional-converter-comparison/): 简繁转换工具哪个好？对比 JianFan.app、繁化姬和 OpenCC 的转换规则、地区模式、文字是否上传、文件与字幕支持、自定义词库和使用门槛，按需求选工具。
 - [不认识的汉字怎么查 - 部首、手写与拍照查字方法](https://jianfan.app/blog/find-chinese-character-methods/): 遇到不会读、不能输入的汉字时，可按部首和部件查询，也可手写或拍照识别。本文比较三种查字方法、适用场景、操作步骤、常见失败原因与核对技巧。
 - [拍照识字和手写汉字识别有什么区别 - 选择指南](https://jianfan.app/blog/photo-vs-handwriting-chinese-recognition/): 比较拍照识字与手写汉字识别的输入方式、识别范围、隐私处理和使用限制，帮助你根据纸面文字、截图或未知单字选择合适的在线识字工具并提高成功率。
 - [汉字笔顺怎么查 - 简体、繁体与日本汉字书写区别](https://jianfan.app/blog/chinese-japanese-stroke-order-differences/): 介绍在线查询汉字笔顺的方法，说明简体、繁体和日本汉字在字形、笔画与书写顺序上可能存在的差别，并给出选择笔顺数据、核对标准和练习方式的建议。

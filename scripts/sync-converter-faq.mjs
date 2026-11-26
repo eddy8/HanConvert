@@ -7,6 +7,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { arrangeConverterGraph, buildFaqSection, converterFaqPages, FAQ_MARKER_END, FAQ_MARKER_START } from "./converter-faq-lib.mjs";
+import { withSiteDirectory } from "./sync-site-tool-directory.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const checkOnly = process.argv.includes("--check");
@@ -41,7 +42,8 @@ for (const page of converterFaqPages()) {
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
   if (canonical !== page.canonical) throw new Error(`${page.file}: canonical ${canonical} does not match ${page.canonical}`);
   if (!page.faq) throw new Error(`${page.file}: missing FAQ content for ${page.locale}`);
-  const output = syncSchema(syncSection(html, buildFaqSection(page.faq), page.file), page, page.file);
+  // Re-apply in-copy links (scripts/contextual-tool-links-data.mjs) that point out of the FAQ text.
+  const output = withSiteDirectory(syncSchema(syncSection(html, buildFaqSection(page.faq), page.file), page, page.file), filePath);
   if (output === html) continue;
   if (checkOnly) stale.push(page.file);
   else await writeFile(filePath, output);

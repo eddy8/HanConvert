@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07120f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="description" content="简繁转换工具哪个好？对比 JianFan.app、繁化姬和 OpenCC 的转换规则、地区模式、文字是否上传、文件与字幕支持、自定义词库和使用门槛，按需求选工具。" />
+    <title>简繁转换工具哪个好 - 繁化姬与OpenCC对比 | JianFan.app</title>
+    <link rel="canonical" href="https://jianfan.app/blog/simplified-traditional-converter-comparison/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://jianfan.app/blog/simplified-traditional-converter-comparison/" />
+    <link rel="alternate" hreflang="x-default" href="https://jianfan.app/blog/simplified-traditional-converter-comparison/" />
+    <script src="/locale-redirect.js"></script>
+    <link rel="stylesheet" href="/styles.min.css" />
+    <script src="/theme.js"></script>
+    <!-- seo-schema:start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://jianfan.app/blog/simplified-traditional-converter-comparison/#webpage",
+            "url": "https://jianfan.app/blog/simplified-traditional-converter-comparison/",
+            "name": "简繁转换工具哪个好？JianFan.app、繁化姬与 OpenCC 对比",
+            "description": "简繁转换工具哪个好？对比 JianFan.app、繁化姬和 OpenCC 的转换规则、地区模式、文字是否上传、文件与字幕支持、自定义词库和使用门槛，按需求选工具。",
+            "inLanguage": "zh-CN",
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://jianfan.app/#website",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/"
+            },
+            "mainEntity": {
+              "@id": "https://jianfan.app/blog/simplified-traditional-converter-comparison/#article"
+            }
+          },
+          {
+            "@type": "BlogPosting",
+            "@id": "https://jianfan.app/blog/simplified-traditional-converter-comparison/#article",
+            "url": "https://jianfan.app/blog/simplified-traditional-converter-comparison/",
+            "mainEntityOfPage": {
+              "@id": "https://jianfan.app/blog/simplified-traditional-converter-comparison/#webpage"
+            },
+            "headline": "简繁转换工具哪个好？JianFan.app、繁化姬与 OpenCC 对比",
+            "description": "简繁转换工具哪个好？对比 JianFan.app、繁化姬和 OpenCC 的转换规则、地区模式、文字是否上传、文件与字幕支持、自定义词库和使用门槛，按需求选工具。",
+            "datePublished": "2026-11-26",
+            "dateModified": "2026-11-26",
+            "inLanguage": "zh-CN",
+            "author": {
+              "@type": "Organization",
+              "name": "JianFan.app 编辑",
+              "url": "https://jianfan.app/about/"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://jianfan.app/#organization",
+              "name": "JianFan.app",
+              "url": "https://jianfan.app/",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://jianfan.app/apple-touch-icon.png"
+              }
+            },
+            "isPartOf": {
+              "@id": "https://jianfan.app/blog/#webpage"
+            },
+            "keywords": "简繁转换 · 工具对比, 打开简繁转换工具, 转换为台湾正体, 导入文件转换简繁"
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://jianfan.app/blog/simplified-traditional-converter-comparison/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "繁化姬和 OpenCC 哪个更准确？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "没有统一答案。OpenCC 严格区分一简对多繁，规则确定、结果可预期；繁化姬文档称其目标是最大化一般情况下的正确率。两者都不能保证全部正确，正式文本都需要校对。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "JianFan.app 的转换结果和 OpenCC 一样吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "简繁模式使用 OpenCC 的对应配置，例如“简体 → 台湾正体（含用词）”对应 s2twp，因此遵循同样的规则。你在自定义词库中添加的词条会优先于默认结果。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "简繁转换工具能把普通话翻译成粤语吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "不能。OpenCC 的 README 说明其词库以官话为基准，不做官话与粤语等语言之间的翻译；繁化姬文档也把古文列为不适合的文本。简繁转换只改变字形和部分地区用词。"
+                }
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://jianfan.app/blog/simplified-traditional-converter-comparison/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "网站首页",
+                "item": "https://jianfan.app/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "文字工具使用指南",
+                "item": "https://jianfan.app/blog/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "简繁转换工具哪个好？JianFan.app、繁化姬与 OpenCC 对比",
+                "item": "https://jianfan.app/blog/simplified-traditional-converter-comparison/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <!-- seo-schema:end -->
+  </head>
+  <body data-blog-page="article" data-article-slug="simplified-traditional-converter-comparison">
+    <a class="skip-nav" href="#main">跳到主要内容</a>
+    <header class="site-header" aria-label="网站页眉">
+      <a class="brand" href="/" aria-label="JianFan.app"><span class="brand-mark" aria-hidden="true">字</span><span class="brand-text">JianFan.app</span></a>
+      <nav class="top-actions" aria-label="主要导航">
+        <a class="nav-link" href="/">网站首页</a>
+        <a class="nav-link" href="/blog/" aria-current="page">使用指南</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false"></button></nav>
+    </header>
+    <main id="main" class="blog-main blog-article-main">
+      <nav class="blog-breadcrumb" aria-label="面包屑"><a href="/">网站首页</a><span aria-hidden="true">/</span><a href="/blog/">使用指南</a><span aria-hidden="true">/</span><span aria-current="page">简繁转换</span></nav>
+      <article class="blog-article">
+        <header class="blog-article-hero">
+          <div><p class="eyebrow">简繁转换 · 工具对比</p><h1 id="pageTitle">简繁转换工具哪个好？JianFan.app、繁化姬与 OpenCC 对比</h1><p class="lede">想打开网页就转、文字不离开浏览器，用 JianFan.app；要处理字幕或使用拼音化、火星化等特色模式，用繁化姬；要写进程序或批量处理，用 OpenCC。</p><div class="blog-article-meta"><span>JianFan.app 编辑</span><time datetime="2026-11-26">2026 年 11 月 26 日</time><span>约 6 分钟</span></div></div>
+          <div class="blog-article-signal" aria-hidden="true"><span>简</span><span>繁</span><span>比</span><span>选</span></div>
+        </header>
+        <div class="blog-article-layout">
+          <aside class="blog-toc"><p class="section-kicker">本文目录</p><nav aria-label="本文目录"><a href="#overview">三款简繁转换工具一览</a><a href="#rules">转换规则：OpenCC 和繁化姬的思路不同</a><a href="#privacy">文字会不会离开你的设备</a><a href="#subtitles-api">字幕、API 与商业使用</a><a href="#choose">按需求选择简繁转换工具</a><a href="#faq">常见问题</a></nav></aside>
+          <div class="blog-article-body">
+      <p class="blog-intro">挑选简繁转换工具时，界面差别不大，真正影响结果的是四件事：转换规则怎样处理一简对多繁、能否按台湾或香港习惯替换用词、文字会不会离开你的设备，以及是否需要安装或写代码。本文从这四点比较三个常见选择：开源项目 OpenCC、在线网站繁化姬，以及本站 JianFan.app。</p>
+      <p class="blog-intro">JianFan.app 是本站的工具。繁化姬和 OpenCC 的信息全部来自其官网、官方文档和项目说明，核对日期为 2026 年 11 月 26 日；官方资料没有写明的内容不纳入比较。各工具都会更新，使用前请以对方官网为准。</p>
+      <section id="overview">
+        <h2>三款简繁转换工具一览</h2>
+        <p>OpenCC 是一套开源的简繁转换词库和程序库，采用 Apache-2.0 许可，提供命令行工具以及 Node.js、Python、C++、C 等调用方式；其 README 另列出 opencc.js.org 在线转换入口。繁化姬是一个在线转换网站，作者在字幕组做繁化工作时开始开发，现在也提供 API。JianFan.app 的简繁模式直接使用 OpenCC 的转换配置，在浏览器中运行。</p>
+        <div class="blog-table-wrap"><table><caption>JianFan.app、繁化姬与 OpenCC 功能对比（2026 年 11 月核对）</caption><thead><tr><th scope="col">比较项</th><th scope="col">JianFan.app</th><th scope="col">繁化姬</th><th scope="col">OpenCC</th></tr></thead><tbody><tr><td>形式</td><td>网页工具</td><td>网页工具，另有 API</td><td>开源词库与程序库</td></tr><tr><td>转换规则</td><td>OpenCC 配置</td><td>自有转换词库，可开关词语模组</td><td>OpenCC 词库</td></tr><tr><td>地区模式</td><td>通用繁体、台湾正体、香港繁体，可选含用词</td><td>繁体化、台湾化、香港化、中国化等</td><td>s2t、s2tw、s2twp、s2hk 等预设配置</td></tr><tr><td>其他模式</td><td>日文新旧字体</td><td>拼音化、注音化、火星化、维基简繁化</td><td>日文新旧字体、小篆（实验性）</td></tr><tr><td>文字处理位置</td><td>当前浏览器，不上传</td><td>网页转换时发送到其服务器接口</td><td>在你安装它的设备或服务器上</td></tr><tr><td>使用门槛</td><td>打开网页即可</td><td>打开网页即可</td><td>需要安装命令行工具或编写代码</td></tr><tr><td>自定义词语</td><td>自定义词库</td><td>自订取代、保护字词</td><td>配置文件中加入自定义词条</td></tr><tr><td>文件与字幕</td><td>导入 10 MB 内的 TXT、DOCX、PDF、Excel、CSV</td><td>可拖入文件，自动保护字幕字体与样式名</td><td>命令行读写文本文件</td></tr></tbody></table></div>
+
+
+      </section>
+      <section id="rules">
+        <h2>转换规则：OpenCC 和繁化姬的思路不同</h2>
+        <p>OpenCC 的 README 说明，它是基于词库的确定性转换，结果稳定可预期；它严格区分简繁对应和异体字对应，一简对多繁的词条经过审校，用字原则是“能分则不合”。繁化姬的说明文档则写明，它的目标是最大化一般情况下的正确率，这与 OpenCC 严格区分一简对多繁的原则不同。</p>
+        <p>JianFan.app 使用 OpenCC 的配置，所以同一模式下遵循 OpenCC 的规则。例如“简体 → 台湾正体（含用词）”对应 OpenCC 的 s2twp 配置：理发→理髮、出发→出發、干杯→乾杯、干活→幹活，软件→軟體、出租车→計程車。</p>
+
+
+        <aside class="blog-note"><strong>没有哪款工具能保证 100% 正确</strong><p>繁化姬服务条款写明不保证所有转换都正确；OpenCC 和本站同样无法从字形判断所有人名、新词和孤立单字。正式文本转换后都应人工校对。</p></aside>
+      </section>
+      <section id="privacy">
+        <h2>文字会不会离开你的设备</h2>
+        <p>JianFan.app 的简繁转换在当前浏览器中分段完成，单次最多 300 万字符，文字和导入的文件不会上传到本站服务器。首次使用时页面需要联网加载转换组件。</p>
+        <p>在繁化姬网页上转换时，文字会发送到它的服务器接口 api.zhconvert.org 处理后返回结果（2026 年 11 月 26 日在其官网实际转换时观察到的请求）。OpenCC 在你自己安装的电脑或服务器上运行，数据去向由你的部署方式决定。处理合同、病历或未公开稿件时，优先选择不上传文字的方式。</p>
+
+
+
+      </section>
+      <section id="subtitles-api">
+        <h2>字幕、API 与商业使用</h2>
+        <p>繁化姬针对字幕做了专门处理：会自动保护字幕中的字体名和样式名，并可统一说话人连字号。它的服务条款写明会在字幕结果中加入不影响观看的推广内容，例如 SRT 中一条“Processed by 繁化姬”的空字幕，免费使用时不允许去除。</p>
+        <p>繁化姬 API 支持 GET 或 POST 调用 /convert，只接受 UTF-8 文本。其新手文档要求依赖该 API 发布的程序注明使用了繁化姬 API、告知用户“繁化姬商用必须付费”并附上官网链接；商业使用页面则写明目前尚无收款计划。需要在自家产品中集成且不依赖第三方接口时，可以直接部署 Apache-2.0 许可的 OpenCC。</p>
+
+
+
+      </section>
+      <section id="choose">
+        <h2>按需求选择简繁转换工具</h2>
+        <p>三款工具定位不同，没有绝对的“最好用”。先确定文字是否敏感、是否需要地区用词、是否要写进程序，再按下表选择。</p>
+        <div class="blog-table-wrap"><table><caption>常见需求与推荐工具</caption><thead><tr><th scope="col">你的需求</th><th scope="col">推荐</th><th scope="col">原因</th></tr></thead><tbody><tr><td>临时转换一段文字或一份文档</td><td>JianFan.app</td><td>打开网页即可，文字不上传</td></tr><tr><td>给台湾或香港读者发布内容</td><td>JianFan.app 或繁化姬</td><td>都有台湾、香港模式，并按当地用词修正</td></tr><tr><td>转换字幕文件</td><td>繁化姬</td><td>保护字幕样式名，但免费使用会保留推广字幕</td></tr><tr><td>需要拼音化、注音化或火星文</td><td>繁化姬</td><td>提供对应转换模式</td></tr><tr><td>在程序、服务器或批处理中集成</td><td>OpenCC</td><td>开源可自行部署，结果稳定可预期</td></tr></tbody></table></div>
+
+
+      </section>
+      <section id="faq" class="blog-faq"><h2>常见问题</h2><details><summary>繁化姬和 OpenCC 哪个更准确？</summary><p>没有统一答案。OpenCC 严格区分一简对多繁，规则确定、结果可预期；繁化姬文档称其目标是最大化一般情况下的正确率。两者都不能保证全部正确，正式文本都需要校对。</p></details><details><summary>JianFan.app 的转换结果和 OpenCC 一样吗？</summary><p>简繁模式使用 OpenCC 的对应配置，例如“简体 → 台湾正体（含用词）”对应 s2twp，因此遵循同样的规则。你在自定义词库中添加的词条会优先于默认结果。</p></details><details><summary>简繁转换工具能把普通话翻译成粤语吗？</summary><p>不能。OpenCC 的 README 说明其词库以官话为基准，不做官话与粤语等语言之间的翻译；繁化姬文档也把古文列为不适合的文本。简繁转换只改变字形和部分地区用词。</p></details></section>
+      <section class="blog-sources" aria-labelledby="sourcesTitle"><h2 id="sourcesTitle">相关资料</h2><p>本文的竞品信息来自以下官方资料，核对日期为 2026 年 11 月 26 日。</p><ul><li><a href="https://github.com/BYVoid/OpenCC" rel="noopener noreferrer">OpenCC 项目说明（README）</a><span>许可证、预设配置、转换原则与调用方式</span></li><li><a href="https://docs.zhconvert.org/" rel="noopener noreferrer">繁化姬说明文档</a><span>转换目标、与 OpenCC 的差异、不适合的文本</span></li><li><a href="https://docs.zhconvert.org/license/" rel="noopener noreferrer">繁化姬服务条款</a><span>字幕推广内容与正确性说明</span></li><li><a href="https://docs.zhconvert.org/api/0-getting-started/" rel="noopener noreferrer">繁化姬 API 新手上路</a><span>API 调用方式与商用注意事项</span></li></ul></section>
+          </div>
+      <aside class="blog-tool-rail" aria-labelledby="articleToolsTitle">
+        <p class="section-kicker">对应工具</p>
+        <h2 id="articleToolsTitle">边看边操作</h2>
+        <p>浏览器本地转换，无需注册或安装</p>
+        <nav aria-label="本文对应工具">
+          <a href="/" class="is-primary"><strong>打开简繁转换工具</strong><span>浏览器本地转换，无需注册或安装</span></a>
+          <a href="/taiwan-traditional/"><strong>转换为台湾正体</strong><span>同时替换台湾常用词</span></a>
+          <a href="/file-text-converter/"><strong>导入文件转换简繁</strong><span>TXT、Word、PDF、Excel 提取文字后转换</span></a>
+        </nav>
+      </aside>
+        </div>
+      </article>
+      <section class="blog-related" aria-labelledby="relatedTitle"><div class="blog-section-heading"><div><p class="section-kicker">继续阅读</p><h2 id="relatedTitle">相关使用指南</h2></div><a href="/blog/">查看全部文章</a></div><div class="blog-grid">          <article class="blog-card">
+            <div class="blog-card-meta"><span>简繁转换</span><span>约 7 分钟</span></div>
+            <h3><a href="/blog/simplified-traditional-chinese-differences/">简体字和繁体字有什么区别？台湾、香港转换怎么选</a></h3>
+            <p>简体转繁体并不只是把“汉”换成“漢”。面向台湾或香港读者时，还要判断是否需要转换当地常用词。</p>
+            <a class="blog-card-link" href="/blog/simplified-traditional-chinese-differences/" aria-label="阅读：简体字和繁体字有什么区别？台湾、香港转换怎么选">阅读指南 <span aria-hidden="true">→</span></a>
+          </article>          <article class="blog-card">
+            <div class="blog-card-meta"><span>简繁转换</span><span>约 8 分钟</span></div>
+            <h3><a href="/blog/convert-word-pdf-excel-txt-chinese/">Word、PDF、Excel 和 TXT 文件如何转换简繁体</a></h3>
+            <p>文件转换页会先在浏览器中提取文字，再执行简繁转换并导出 TXT；它不会直接重建原文件的复杂排版。</p>
+            <a class="blog-card-link" href="/blog/convert-word-pdf-excel-txt-chinese/" aria-label="阅读：Word、PDF、Excel 和 TXT 文件如何转换简繁体">阅读指南 <span aria-hidden="true">→</span></a>
+          </article></div></section>
+    </main>
+    <footer class="site-footer">
+      <!-- site-tool-directory:start -->
+      <nav class="site-directory" aria-label="全部工具">
+        <div class="site-directory-group">
+          <p class="site-directory-title">简繁转换</p>
+          <ul>
+            <li><a href="/">简繁转换</a></li>
+            <li><a href="/simplified-to-traditional/">简体转繁体</a></li>
+            <li><a href="/traditional-to-simplified/">繁体转简体</a></li>
+            <li><a href="/taiwan-traditional/">台湾繁体转换</a></li>
+            <li><a href="/hong-kong-traditional/">香港繁体转换</a></li>
+            <li><a href="/file-text-converter/">文件简繁转换</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">中文汉字</p>
+          <ul>
+            <li><a href="/chinese-handwriting-recognition/">手写汉字识别</a></li>
+            <li><a href="/photo-chinese-character-recognition/">拍照识字</a></li>
+            <li><a href="/chinese-to-pinyin/">汉字转拼音</a></li>
+            <li><a href="/chinese-to-zhuyin/">汉字转注音</a></li>
+            <li><a href="/chinese-stroke-order/">汉字笔顺查询</a></li>
+            <li><a href="/chinese-character-lookup/">汉字查询与结构拆解</a></li>
+            <li><a href="/han-character-worksheet/">田字格字帖生成器</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">日文汉字</p>
+          <ul>
+            <li><a href="/japanese-handwriting-recognition/">日文手写汉字识别</a></li>
+            <li><a href="/japanese-kanji-dictionary/">日本汉字查询</a></li>
+            <li><a href="/japanese-stroke-order/">日本汉字笔顺</a></li>
+            <li><a href="/kanji-to-hiragana/">日文汉字转平假名</a></li>
+            <li><a href="/kanji-to-romaji/">日文汉字转罗马字</a></li>
+            <li><a href="/japanese-kanji-converter/">日文新旧字体转换</a></li>
+            <li><a href="/japanese-chinese-kanji-converter/">日中汉字转换</a></li>
+            <li><a href="/japanese-characters/">日文字符复制</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">韩文与韩国汉字</p>
+          <ul>
+            <li><a href="/korean-handwriting-recognition/">韩语手写识别</a></li>
+            <li><a href="/korean-hanja-dictionary/">韩国汉字查询</a></li>
+            <li><a href="/korean-hanja-handwriting-recognition/">韩国汉字手写识别</a></li>
+            <li><a href="/hangul-hanja-converter/">韩文汉字转换</a></li>
+            <li><a href="/korean-name-hanja/">韩国人名用汉字</a></li>
+          </ul>
+        </div>
+        <div class="site-directory-group">
+          <p class="site-directory-title">文本工具</p>
+          <ul>
+            <li><a href="/character-counter/">在线字数统计</a></li>
+            <li><a href="/word-to-txt/">Word 转 TXT</a></li>
+            <li><a href="/text-formatter/">文本格式化</a></li>
+            <li><a href="/image-redaction/">图片打码</a></li>
+            <li><a href="/image-splitter/">图片分割</a></li>
+            <li><a href="/password-generator/">密码生成器</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- site-tool-directory:end -->
+      <p>JianFan.app 提供中文、日文和韩文的在线文字工具，并通过使用指南说明适用场景、处理方式和功能边界。</p>
+      <nav class="footer-links" aria-label="页脚">
+        <a href="/blog/">使用指南</a>
+        <a href="/about/">关于我们</a>
+        <a href="/contact/">联系我们</a>
+        <a href="/privacy/">隐私声明</a>
+      </nav>
+    </footer>
+  </body>
+</html>

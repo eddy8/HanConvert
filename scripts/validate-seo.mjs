@@ -3,6 +3,7 @@ import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { BLOG_ARTICLES } from "./blog-data.mjs";
 import { SEO_DESCRIPTIONS, TARGET_META_DESCRIPTION_LENGTH } from "./seo-descriptions.mjs";
 import {
   decodeHtmlText,
@@ -356,8 +357,8 @@ for (const htmlPath of await findHtmlFiles(projectRoot)) {
         collectionPage.url !== canonical ||
         collectionPage.name !== h1 ||
         collectionPage.description !== description ||
-        itemList?.numberOfItems !== 8 ||
-        itemList.itemListElement?.length !== 8 ||
+        itemList?.numberOfItems !== BLOG_ARTICLES.length ||
+        itemList.itemListElement?.length !== BLOG_ARTICLES.length ||
         finalCrumb?.name !== h1
       ) {
         throw new Error(`${relativePath}: invalid blog index, ItemList or breadcrumb schema`);
@@ -800,7 +801,7 @@ if (converterPages !== 35) throw new Error(`expected 35 converter pages, found $
 if (standaloneToolPages !== 125) throw new Error(`expected 125 standalone tool pages, found ${standaloneToolPages}`);
 if (infoPages !== 10) throw new Error(`expected 10 information pages, found ${infoPages}`);
 if (pseoPages !== 105) throw new Error(`expected 105 controlled pSEO pages, found ${pseoPages}`);
-if (blogPages !== 9) throw new Error(`expected 9 blog pages, found ${blogPages}`);
-if (sitemapUrls.length !== 290) throw new Error(`expected 290 sitemap URLs, found ${sitemapUrls.length}`);
+if (blogPages !== 10) throw new Error(`expected 10 blog pages, found ${blogPages}`);
+if (sitemapUrls.length !== 291) throw new Error(`expected 291 sitemap URLs, found ${sitemapUrls.length}`);
 
 console.log(`Validated ${converterPages} converter pages, ${standaloneToolPages} standalone tools, ${infoPages} information pages, ${pseoPages} controlled pSEO pages, ${blogPages} blog pages, and ${sitemapUrls.length} sitemap URLs.`);

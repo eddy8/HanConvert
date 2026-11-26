@@ -21,61 +21,90 @@ const customTerms = {
   ko: ["브랜드명이나 고유명사가 잘못 변환되면 어떻게 하나요?", "사용자 사전에 변환 전과 변환 후 표기를 입력하면 결과를 고정할 수 있습니다. 양쪽에 같은 표기를 넣으면 브랜드명이 그대로 유지됩니다. 항목은 현재 브라우저에만 저장됩니다."]
 };
 
+// Home-page FAQ answers about the site itself. Competitor facts were checked on 2026-11-26 against the OpenCC
+// README (github.com/BYVoid/OpenCC), the Fanhuaji docs (docs.zhconvert.org), and the live zhconvert.org page,
+// which sends the text to api.zhconvert.org/convert when converting.
+const homeFree = {
+  "zh-CN": ["简繁转换免费吗？需要注册或安装吗？", "免费，不需要注册账号，也不用安装软件或浏览器扩展。在电脑或手机浏览器打开网页即可转换，首次使用时会联网加载转换组件；文字在本地处理，不会上传。"],
+  "zh-TW": ["簡繁轉換免費嗎？需要註冊或安裝嗎？", "免費，不需要註冊帳號，也不用安裝軟體或瀏覽器擴充功能。在電腦或手機瀏覽器開啟網頁即可轉換，首次使用時會連網載入轉換元件；文字在本機處理，不會上傳。"],
+  en: ["Is it free? Do I need to sign up or install anything?", "It is free, with no account, software, or browser extension required. Open the page in a desktop or mobile browser and convert; the conversion component loads over the network on first use, and your text is processed locally, not uploaded."],
+  ja: ["無料ですか？登録やインストールは必要ですか？", "無料で、アカウント登録もソフトやブラウザー拡張機能のインストールも不要です。パソコンやスマートフォンのブラウザーでページを開けばすぐ変換できます。初回は変換コンポーネントをネットワークから読み込み、文章は端末内で処理されアップロードされません。"],
+  ko: ["무료인가요? 가입이나 설치가 필요한가요?", "무료이며 계정 가입이나 프로그램, 브라우저 확장 프로그램 설치가 필요 없습니다. PC나 휴대폰 브라우저에서 페이지를 열면 바로 변환할 수 있습니다. 처음 사용할 때 변환 구성 요소를 네트워크에서 불러오며, 텍스트는 기기 안에서 처리되어 업로드되지 않습니다."]
+};
+
+const homeCompare = {
+  "zh-CN": ["JianFan.app 和繁化姬、OpenCC 有什么区别？", "OpenCC 是 Apache-2.0 开源的简繁转换词库和程序库，主要通过命令行或 Python、Node.js 等代码调用；本站的简繁模式直接使用 OpenCC 的转换规则，并提供无需编程的网页、文件导入和自定义词库。繁化姬是另一款在线转换网站，除台湾化、香港化外还有拼音化、注音化、火星化和字幕处理，网页转换时文字会发送到它的服务器；本站在浏览器本地转换，文字不上传。逐项比较见简繁转换工具对比。"],
+  "zh-TW": ["JianFan.app 和繁化姬、OpenCC 有什麼不同？", "OpenCC 是 Apache-2.0 開源的簡繁轉換詞庫和程式庫，主要透過命令列或 Python、Node.js 等程式呼叫；本站的簡繁模式直接採用 OpenCC 的轉換規則，並提供免寫程式的網頁、檔案匯入和自訂詞庫。繁化姬是另一個線上轉換網站，除了台灣化、香港化，還有拼音化、注音化、火星化和字幕處理，網頁轉換時文字會傳送到它的伺服器；本站在瀏覽器本機轉換，文字不會上傳。"],
+  en: ["How is JianFan.app different from Fanhuaji (繁化姬) and OpenCC?", "OpenCC is an Apache-2.0 open-source conversion dictionary and library, used mainly from the command line or from code such as Python and Node.js. This site's conversion modes use OpenCC rules directly and add a no-code web page, file import, and a custom dictionary. Fanhuaji is another online converter with Taiwan, Hong Kong, Pinyin, Zhuyin, and Martian-script modes plus subtitle handling; its web page sends your text to its server. This site converts locally in your browser and does not upload text."],
+  ja: ["JianFan.appと繁化姬（Fanhuaji）、OpenCCの違いは？", "OpenCCはApache-2.0のオープンソース変換辞書・ライブラリで、主にコマンドラインやPython、Node.jsなどのコードから使います。このサイトの変換モードはOpenCCの規則をそのまま使い、プログラム不要のWebページ、ファイル読み込み、カスタム辞書を加えています。繁化姬は別のオンライン変換サイトで、台湾化・香港化のほか拼音化・注音化・火星化の各モードや字幕処理があり、Webページで変換すると文章が同サイトのサーバーに送信されます。このサイトはブラウザー内で変換し、文章をアップロードしません。"],
+  ko: ["JianFan.app은 판화지(繁化姬), OpenCC와 무엇이 다른가요?", "OpenCC는 Apache-2.0 오픈소스 변환 사전이자 라이브러리로, 주로 명령줄이나 Python, Node.js 같은 코드에서 사용합니다. 이 사이트의 변환 모드는 OpenCC 규칙을 그대로 쓰고, 코딩 없이 쓰는 웹 페이지와 파일 불러오기, 사용자 사전을 더했습니다. 판화지는 대만화·홍콩화 외에 병음·주음·화성문 모드와 자막 처리를 제공하는 다른 온라인 변환 사이트이며, 웹 페이지에서 변환하면 텍스트가 해당 서버로 전송됩니다. 이 사이트는 브라우저 안에서 변환하며 텍스트를 업로드하지 않습니다."]
+};
+
 export const CONVERTER_FAQ = {
   "": {
     "zh-CN": {
       title: "简繁转换常见问题",
-      lead: "简繁转换是在中国大陆使用的简体字与台湾、香港、澳门使用的繁体字之间互相转换。因为一个简体字可能对应多个繁体字，可靠的转换要按词语判断，而不是逐字替换。",
+      lead: "JianFan.app 是免费的在线简繁转换工具，基于开源的 OpenCC 词库，在浏览器本地把简体字转换为通用繁体、台湾正体或香港繁体，也能繁体转简体，无需注册或安装。简繁转换是在中国大陆使用的简体字与台湾、香港、澳门使用的繁体字之间互相转换。因为一个简体字可能对应多个繁体字，可靠的转换要按词语判断，而不是逐字替换。",
       items: [
         ["简体字和繁体字有什么区别？", "简体字是中国大陆推行的规范汉字，现行标准是 2013 年发布的《通用规范汉字表》，收字 8105 个；繁体字通行于台湾、香港和澳门。两者读音和语法相同，主要区别是字形，部分常用词在各地的说法也不同。"],
         ["简繁转换为什么不能逐字替换？", "部分简体字由多个繁体字合并而来。本工具基于 OpenCC，先匹配词组再转单字：理发→理髮、出发→出發、然后→然後、皇后→皇后、干杯→乾杯、干活→幹活、树干→樹幹、台风→颱風。人名、新词和孤立单字仍可能出错，正式文本请校对。"],
         ["应该选通用繁体、台湾正体还是香港繁体？", "读者在台湾选台湾正体，在香港选香港繁体，不确定时用通用繁体。三者字形不同：「里面、着急、为什么、床」在通用繁体中为「裏面、着急、爲什麼、牀」，台湾正体为「裡面、著急、為什麼、床」，香港繁体为「裏面、着急、為什麼、牀」。"],
         ["能同时转换地区用词吗？", "可以。选择「简体 → 台湾正体（含用词）」会把软件→軟體、鼠标→滑鼠、出租车→計程車、视频→影片、内存→記憶體；「台湾正体 → 简体（含用词）」可以把这些台湾用语换回大陆常用词。只转字形的模式会保留原有词汇。"],
-        privacy["zh-CN"]
+        privacy["zh-CN"],
+        homeFree["zh-CN"],
+        homeCompare["zh-CN"]
       ]
     },
     "zh-TW": {
       title: "簡繁轉換常見問題",
-      lead: "簡繁轉換是在中國大陸使用的簡體字與台灣、香港、澳門使用的繁體字之間互相轉換。由於一個簡體字可能對應多個繁體字，可靠的轉換要依詞語判斷，而不是逐字替換。",
+      lead: "JianFan.app 是免費的線上簡繁轉換工具，以開源的 OpenCC 詞庫為基礎，在瀏覽器本機把簡體字轉成通用繁體、台灣正體或香港繁體，也能繁體轉簡體，不需註冊或安裝。簡繁轉換是在中國大陸使用的簡體字與台灣、香港、澳門使用的繁體字之間互相轉換。由於一個簡體字可能對應多個繁體字，可靠的轉換要依詞語判斷，而不是逐字替換。",
       items: [
         ["簡體字和繁體字有什麼不同？", "簡體字是中國大陸推行的規範漢字，現行標準是 2013 年公布的《通用規範漢字表》，收字 8105 個；繁體字通行於台灣、香港和澳門。兩者讀音與文法相同，主要差在字形，部分常用詞在各地的說法也不同。"],
         ["簡繁轉換為什麼不能逐字替換？", "部分簡體字是由多個繁體字合併而來。本工具以 OpenCC 為基礎，先比對詞組再轉單字：理发→理髮、出发→出發、然后→然後、皇后→皇后、干杯→乾杯、干活→幹活、树干→樹幹、台风→颱風。人名、新詞和單獨的字仍可能出錯，正式文件請再校對。"],
         ["該選通用繁體、台灣正體還是香港繁體？", "讀者在台灣請選台灣正體，在香港請選香港繁體，不確定時用通用繁體。三者字形不同：「里面、着急、为什么、床」在通用繁體為「裏面、着急、爲什麼、牀」，台灣正體為「裡面、著急、為什麼、床」，香港繁體為「裏面、着急、為什麼、牀」。"],
         ["可以同時轉換地區用詞嗎？", "可以。選擇「簡體 → 台灣正體（含用詞）」會把软件→軟體、鼠标→滑鼠、出租车→計程車、视频→影片、内存→記憶體；「台灣正體 → 簡體（含用詞）」則能把這些台灣用語換回中國大陸常用詞。只轉字形的模式會保留原本的詞彙。"],
-        privacy["zh-TW"]
+        privacy["zh-TW"],
+        homeFree["zh-TW"],
+        homeCompare["zh-TW"]
       ]
     },
     en: {
       title: "Chinese converter FAQ",
-      lead: "Chinese conversion switches text between Simplified Chinese, used in mainland China, and Traditional Chinese, used in Taiwan, Hong Kong, and Macau. One Simplified character can map to several Traditional characters, so reliable conversion works on whole words rather than single characters.",
+      lead: "JianFan.app is a free online Chinese converter built on the open-source OpenCC dictionaries. It converts Simplified Chinese to standard, Taiwan, or Hong Kong Traditional Chinese, and back, locally in your browser with no sign-up or install. Chinese conversion switches text between Simplified Chinese, used in mainland China, and Traditional Chinese, used in Taiwan, Hong Kong, and Macau. One Simplified character can map to several Traditional characters, so reliable conversion works on whole words rather than single characters.",
       items: [
         ["What is the difference between Simplified and Traditional Chinese?", "Simplified characters are the standard in mainland China, defined today by the 2013 Table of General Standard Chinese Characters (8,105 characters). Traditional characters are used in Taiwan, Hong Kong, and Macau. Pronunciation and grammar are the same; the main differences are character forms and some regional vocabulary."],
         ["Why can't Chinese be converted character by character?", "Some Simplified characters merged several Traditional ones. This tool uses OpenCC, which matches whole words before single characters: 理发→理髮 (haircut), 出发→出發 (depart), 然后→然後, 皇后→皇后, 干杯→乾杯, 干活→幹活, 树干→樹幹, 台风→颱風. Names, new words, and isolated characters can still be wrong, so proofread important text."],
         ["Should I choose standard Traditional, Taiwan, or Hong Kong?", "Choose Taiwan for readers in Taiwan, Hong Kong for readers in Hong Kong, and standard Traditional when the audience is unknown. Their character forms differ: 里面, 着急, 为什么, and 床 become 裏面, 着急, 爲什麼, 牀 in standard Traditional; 裡面, 著急, 為什麼, 床 in Taiwan; and 裏面, 着急, 為什麼, 牀 in Hong Kong."],
         ["Can it convert regional vocabulary too?", "Yes. “Simplified → Taiwan phrases” turns 软件 into 軟體, 鼠标 into 滑鼠, 出租车 into 計程車, 视频 into 影片, and 内存 into 記憶體. “Taiwan → Simplified phrases” converts those Taiwan terms back to mainland usage. Modes without phrases change only character forms."],
-        privacy.en
+        privacy.en,
+        homeFree.en,
+        homeCompare.en
       ]
     },
     ja: {
       title: "簡体字・繁体字変換のよくある質問",
-      lead: "簡体字・繁体字変換は、中国大陸で使われる簡体字と、台湾・香港・マカオで使われる繁体字を相互に変換することです。1つの簡体字が複数の繁体字に対応する場合があるため、正確な変換には1文字ずつではなく単語単位の判断が必要です。",
+      lead: "JianFan.appは、オープンソースのOpenCC辞書をもとにした無料のオンライン簡体字・繁体字変換ツールです。登録やインストールは不要で、ブラウザー内で簡体字を一般的な繁体字・台湾繁体字・香港繁体字に変換し、繁体字から簡体字にも戻せます。簡体字・繁体字変換は、中国大陸で使われる簡体字と、台湾・香港・マカオで使われる繁体字を相互に変換することです。1つの簡体字が複数の繁体字に対応する場合があるため、正確な変換には1文字ずつではなく単語単位の判断が必要です。",
       items: [
         ["簡体字と繁体字は何が違いますか？", "簡体字は中国大陸の標準字体で、現在の規範は2013年公布の「通用規範漢字表」（8105字）です。繁体字は台湾・香港・マカオで使われています。読み方や文法は同じで、主な違いは字形と一部の地域ごとの語彙です。"],
         ["なぜ1文字ずつ置き換えるだけではだめなのですか？", "複数の繁体字が1つの簡体字に統合された例があるためです。このツールはOpenCCを基に、単語を先に照合してから1文字ずつ変換します。例：理发→理髮、出发→出發、然后→然後、皇后→皇后、干杯→乾杯、干活→幹活、树干→樹幹、台风→颱風。人名や新語、単独の文字は誤ることがあるので、重要な文書は確認してください。"],
         ["一般的な繁体字・台湾繁体字・香港繁体字のどれを選べばよいですか？", "台湾向けなら台湾繁体字、香港向けなら香港繁体字、読者が決まっていなければ一般的な繁体字を選びます。字形も異なり、「里面、着急、为什么、床」は一般的な繁体字で「裏面、着急、爲什麼、牀」、台湾繁体字で「裡面、著急、為什麼、床」、香港繁体字で「裏面、着急、為什麼、牀」になります。"],
         ["地域ごとの用語も変換できますか？", "できます。「簡体字 → 台湾用語込み」では软件→軟體、鼠标→滑鼠、出租车→計程車、视频→影片、内存→記憶體のように台湾の言い方に置き換えます。「台湾繁体字 → 簡体字（用語込み）」なら台湾の用語を中国大陸の言い方に戻せます。用語なしのモードは字形だけを変換します。"],
-        privacy.ja
+        privacy.ja,
+        homeFree.ja,
+        homeCompare.ja
       ]
     },
     ko: {
       title: "간체·번체 변환 자주 묻는 질문",
-      lead: "간체·번체 변환은 중국 대륙에서 쓰는 간체자와 대만·홍콩·마카오에서 쓰는 번체자를 서로 바꾸는 작업입니다. 간체자 하나가 여러 번체자에 대응하기도 하므로, 정확한 변환은 한 글자씩이 아니라 단어 단위로 판단해야 합니다.",
+      lead: "JianFan.app은 오픈소스 OpenCC 사전을 바탕으로 한 무료 온라인 간체·번체 변환기입니다. 가입이나 설치 없이 브라우저에서 간체자를 일반 번체, 대만 정체, 홍콩 번체로 바꾸고 번체를 간체로도 되돌립니다. 간체·번체 변환은 중국 대륙에서 쓰는 간체자와 대만·홍콩·마카오에서 쓰는 번체자를 서로 바꾸는 작업입니다. 간체자 하나가 여러 번체자에 대응하기도 하므로, 정확한 변환은 한 글자씩이 아니라 단어 단위로 판단해야 합니다.",
       items: [
         ["간체자와 번체자는 무엇이 다른가요?", "간체자는 중국 대륙의 표준 한자로, 현재 기준은 2013년 발표된 ‘통용규범한자표’(8,105자)입니다. 번체자는 대만, 홍콩, 마카오에서 씁니다. 발음과 문법은 같고, 주된 차이는 글자 모양과 일부 지역별 어휘입니다."],
         ["왜 한 글자씩 바꾸면 안 되나요?", "여러 번체자가 하나의 간체자로 합쳐진 경우가 있기 때문입니다. 이 도구는 OpenCC를 바탕으로 단어를 먼저 맞춘 뒤 글자를 변환합니다. 예: 理发→理髮, 出发→出發, 然后→然後, 皇后→皇后, 干杯→乾杯, 干活→幹活, 树干→樹幹, 台风→颱風. 인명, 신조어, 단독 글자는 틀릴 수 있으니 중요한 글은 검토하세요."],
         ["일반 번체, 대만 정체, 홍콩 번체 중 무엇을 골라야 하나요?", "대만 독자에게는 대만 정체, 홍콩 독자에게는 홍콩 번체, 독자가 정해지지 않았다면 일반 번체를 고르세요. 글자 모양도 달라서 ‘里面, 着急, 为什么, 床’은 일반 번체에서 ‘裏面, 着急, 爲什麼, 牀’, 대만 정체에서 ‘裡面, 著急, 為什麼, 床’, 홍콩 번체에서 ‘裏面, 着急, 為什麼, 牀’이 됩니다."],
         ["지역별 어휘도 바꿀 수 있나요?", "네. ‘간체 → 대만 용어 포함’을 고르면 软件→軟體, 鼠标→滑鼠, 出租车→計程車, 视频→影片, 内存→記憶體처럼 대만식 표현으로 바뀝니다. ‘대만 정체 → 간체 용어 포함’은 대만 용어를 중국 대륙 표현으로 되돌립니다. 용어 미포함 모드는 글자 모양만 바꿉니다."],
-        privacy.ko
+        privacy.ko,
+        homeFree.ko,
+        homeCompare.ko
       ]
     }
   },
