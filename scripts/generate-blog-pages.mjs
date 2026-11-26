@@ -352,7 +352,6 @@ function renderToolRail(article) {
   return `      <aside class="blog-tool-rail" aria-labelledby="articleToolsTitle">
         <p class="section-kicker">对应工具</p>
         <h2 id="articleToolsTitle">边看边操作</h2>
-        <p>${escapeHtml(article.tools[0].note)}</p>
         <nav aria-label="本文对应工具">
 ${article.tools.map((tool, index) => `          <a href="${tool.href}"${index === 0 ? ' class="is-primary"' : ""}><strong>${escapeHtml(tool.label)}</strong><span>${escapeHtml(tool.note)}</span></a>`).join("\n")}
         </nav>

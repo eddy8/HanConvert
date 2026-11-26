@@ -8006,8 +8006,8 @@ html[lang="ko"] .worksheet-sheet {
 
 .blog-hero h1,
 .blog-article-hero h1 {
-  max-width: 20ch;
-  font-size: 4.65rem;
+  /* Scales with the hero's text column, which shares the row with the signal grid. */
+  font-size: clamp(3.2rem, 5.2vw, 4.65rem);
   line-height: 1.06;
   text-wrap: balance;
 }
@@ -8223,8 +8223,7 @@ html[lang="ko"] .worksheet-sheet {
 }
 
 .blog-article-hero h1 {
-  max-width: 18ch;
-  font-size: 4.15rem;
+  font-size: clamp(3rem, 4.6vw, 4.15rem);
 }
 
 .blog-article-meta {
@@ -8297,8 +8296,9 @@ html[lang="ko"] .worksheet-sheet {
   scroll-margin-top: 24px;
 }
 
+/* No ch-based max-width: ch is the width of "0", so 28ch held only about 18 CJK characters and wrapped
+   headings that fit the column. text-wrap: balance evens out the lines when a heading does wrap. */
 .blog-article-body h2 {
-  max-width: 28ch;
   margin-bottom: 18px;
   font-size: 1.8rem;
   line-height: 1.25;
@@ -8341,6 +8341,14 @@ html[lang="ko"] .worksheet-sheet {
 
 .blog-table-wrap td {
   color: var(--muted);
+}
+
+/* The first column labels each row; keep short labels such as 使用门槛 on one line. */
+.blog-table-wrap td:first-child {
+  color: var(--ink);
+  font-weight: 700;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .blog-steps {
@@ -8454,12 +8462,6 @@ html[lang="ko"] .worksheet-sheet {
 .blog-tool-rail h2 {
   margin-bottom: 8px;
   font-size: 1.18rem;
-}
-
-.blog-tool-rail > p:not(.section-kicker) {
-  color: var(--muted);
-  font-size: 0.86rem;
-  line-height: 1.55;
 }
 
 .blog-tool-rail a {
@@ -9104,7 +9106,6 @@ html[lang="ko"] .worksheet-sheet {
 
   .blog-hero h1,
   .blog-article-hero h1 {
-    max-width: 24ch;
     font-size: 3.2rem;
   }
 
@@ -9218,7 +9219,7 @@ html[lang="ko"] .worksheet-sheet {
 
   .blog-hero h1,
   .blog-article-hero h1 {
-    font-size: 2.68rem;
+    font-size: clamp(1.9rem, 8.6vw, 2.68rem);
   }
 
   .blog-section-heading h2,
@@ -9235,6 +9236,16 @@ html[lang="ko"] .worksheet-sheet {
   .blog-signal span,
   .blog-article-signal span {
     min-height: 70px;
+  }
+
+  /* Article signals are single characters: one row keeps the decoration from pushing the article down. */
+  .blog-article-signal {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .blog-article-signal span {
+    min-height: 56px;
+    font-size: 1.15rem;
   }
 
   .blog-category-nav,
