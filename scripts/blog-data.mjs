@@ -174,6 +174,109 @@ export const BLOG_ARTICLES = Object.freeze([
     ],
     related: ["simplified-traditional-chinese-differences", "photo-vs-handwriting-chinese-recognition"]
   }),
+  // Competitor facts below were checked on 2026-11-26 against the OpenCC README, the Fanhuaji docs
+  // (docs.zhconvert.org: home, usage, license, API getting started and /convert), and the live zhconvert.org page.
+  // Anything those official sources did not state is left out.
+  Object.freeze({
+    slug: "simplified-traditional-converter-comparison",
+    published: "2026-11-26",
+    category: "conversion",
+    title: "简繁转换工具哪个好 - 繁化姬与OpenCC对比 | JianFan.app",
+    heading: "简繁转换工具哪个好？JianFan.app、繁化姬与 OpenCC 对比",
+    description: "简繁转换工具哪个好？对比 JianFan.app、繁化姬和 OpenCC 的转换规则、地区模式、文字是否上传、文件与字幕支持、自定义词库和使用门槛，按需求选工具。",
+    eyebrow: "简繁转换 · 工具对比",
+    summary: "想打开网页就转、文字不离开浏览器，用 JianFan.app；要处理字幕或使用拼音化、火星化等特色模式，用繁化姬；要写进程序或批量处理，用 OpenCC。",
+    readingTime: "约 6 分钟",
+    signal: ["简", "繁", "比", "选"],
+    tools: [
+      { href: "/", label: "打开简繁转换工具", note: "浏览器本地转换，无需注册或安装" },
+      { href: "/taiwan-traditional/", label: "转换为台湾正体", note: "同时替换台湾常用词" },
+      { href: "/file-text-converter/", label: "导入文件转换简繁", note: "TXT、Word、PDF、Excel 提取文字后转换" }
+    ],
+    intro: [
+      "挑选简繁转换工具时，界面差别不大，真正影响结果的是四件事：转换规则怎样处理一简对多繁、能否按台湾或香港习惯替换用词、文字会不会离开你的设备，以及是否需要安装或写代码。本文从这四点比较三个常见选择：开源项目 OpenCC、在线网站繁化姬，以及本站 JianFan.app。",
+      "JianFan.app 是本站的工具。繁化姬和 OpenCC 的信息全部来自其官网、官方文档和项目说明，核对日期为 2026 年 11 月 26 日；官方资料没有写明的内容不纳入比较。各工具都会更新，使用前请以对方官网为准。"
+    ],
+    sections: [
+      {
+        id: "overview",
+        title: "三款简繁转换工具一览",
+        paragraphs: [
+          "OpenCC 是一套开源的简繁转换词库和程序库，采用 Apache-2.0 许可，提供命令行工具以及 Node.js、Python、C++、C 等调用方式；其 README 另列出 opencc.js.org 在线转换入口。繁化姬是一个在线转换网站，作者在字幕组做繁化工作时开始开发，现在也提供 API。JianFan.app 的简繁模式直接使用 OpenCC 的转换配置，在浏览器中运行。"
+        ],
+        table: {
+          caption: "JianFan.app、繁化姬与 OpenCC 功能对比（2026 年 11 月核对）",
+          headers: ["比较项", "JianFan.app", "繁化姬", "OpenCC"],
+          rows: [
+            ["形式", "网页工具", "网页工具，另有 API", "开源词库与程序库"],
+            ["转换规则", "OpenCC 配置", "自有转换词库，可开关词语模组", "OpenCC 词库"],
+            ["地区模式", "通用繁体、台湾正体、香港繁体，可选含用词", "繁体化、台湾化、香港化、中国化等", "s2t、s2tw、s2twp、s2hk 等预设配置"],
+            ["其他模式", "日文新旧字体", "拼音化、注音化、火星化、维基简繁化", "日文新旧字体、小篆（实验性）"],
+            ["文字处理位置", "当前浏览器，不上传", "网页转换时发送到其服务器接口", "在你安装它的设备或服务器上"],
+            ["使用门槛", "打开网页即可", "打开网页即可", "需要安装命令行工具或编写代码"],
+            ["自定义词语", "自定义词库", "自订取代、保护字词", "配置文件中加入自定义词条"],
+            ["文件与字幕", "导入 10 MB 内的 TXT、DOCX、PDF、Excel、CSV", "可拖入文件，自动保护字幕字体与样式名", "命令行读写文本文件"]
+          ]
+        }
+      },
+      {
+        id: "rules",
+        title: "转换规则：OpenCC 和繁化姬的思路不同",
+        paragraphs: [
+          "OpenCC 的 README 说明，它是基于词库的确定性转换，结果稳定可预期；它严格区分简繁对应和异体字对应，一简对多繁的词条经过审校，用字原则是“能分则不合”。繁化姬的说明文档则写明，它的目标是最大化一般情况下的正确率，这与 OpenCC 严格区分一简对多繁的原则不同。",
+          "JianFan.app 使用 OpenCC 的配置，所以同一模式下遵循 OpenCC 的规则。例如“简体 → 台湾正体（含用词）”对应 OpenCC 的 s2twp 配置：理发→理髮、出发→出發、干杯→乾杯、干活→幹活，软件→軟體、出租车→計程車。"
+        ],
+        note: { title: "没有哪款工具能保证 100% 正确", body: "繁化姬服务条款写明不保证所有转换都正确；OpenCC 和本站同样无法从字形判断所有人名、新词和孤立单字。正式文本转换后都应人工校对。" }
+      },
+      {
+        id: "privacy",
+        title: "文字会不会离开你的设备",
+        paragraphs: [
+          "JianFan.app 的简繁转换在当前浏览器中分段完成，单次最多 300 万字符，文字和导入的文件不会上传到本站服务器。首次使用时页面需要联网加载转换组件。",
+          "在繁化姬网页上转换时，文字会发送到它的服务器接口 api.zhconvert.org 处理后返回结果（2026 年 11 月 26 日在其官网实际转换时观察到的请求）。OpenCC 在你自己安装的电脑或服务器上运行，数据去向由你的部署方式决定。处理合同、病历或未公开稿件时，优先选择不上传文字的方式。"
+        ]
+      },
+      {
+        id: "subtitles-api",
+        title: "字幕、API 与商业使用",
+        paragraphs: [
+          "繁化姬针对字幕做了专门处理：会自动保护字幕中的字体名和样式名，并可统一说话人连字号。它的服务条款写明会在字幕结果中加入不影响观看的推广内容，例如 SRT 中一条“Processed by 繁化姬”的空字幕，免费使用时不允许去除。",
+          "繁化姬 API 支持 GET 或 POST 调用 /convert，只接受 UTF-8 文本。其新手文档要求依赖该 API 发布的程序注明使用了繁化姬 API、告知用户“繁化姬商用必须付费”并附上官网链接；商业使用页面则写明目前尚无收款计划。需要在自家产品中集成且不依赖第三方接口时，可以直接部署 Apache-2.0 许可的 OpenCC。"
+        ]
+      },
+      {
+        id: "choose",
+        title: "按需求选择简繁转换工具",
+        paragraphs: [
+          "三款工具定位不同，没有绝对的“最好用”。先确定文字是否敏感、是否需要地区用词、是否要写进程序，再按下表选择。"
+        ],
+        table: {
+          caption: "常见需求与推荐工具",
+          headers: ["你的需求", "推荐", "原因"],
+          rows: [
+            ["临时转换一段文字或一份文档", "JianFan.app", "打开网页即可，文字不上传"],
+            ["给台湾或香港读者发布内容", "JianFan.app 或繁化姬", "都有台湾、香港模式，并按当地用词修正"],
+            ["转换字幕文件", "繁化姬", "保护字幕样式名，但免费使用会保留推广字幕"],
+            ["需要拼音化、注音化或火星文", "繁化姬", "提供对应转换模式"],
+            ["在程序、服务器或批处理中集成", "OpenCC", "开源可自行部署，结果稳定可预期"]
+          ]
+        }
+      }
+    ],
+    faqs: [
+      ["繁化姬和 OpenCC 哪个更准确？", "没有统一答案。OpenCC 严格区分一简对多繁，规则确定、结果可预期；繁化姬文档称其目标是最大化一般情况下的正确率。两者都不能保证全部正确，正式文本都需要校对。"],
+      ["JianFan.app 的转换结果和 OpenCC 一样吗？", "简繁模式使用 OpenCC 的对应配置，例如“简体 → 台湾正体（含用词）”对应 s2twp，因此遵循同样的规则。你在自定义词库中添加的词条会优先于默认结果。"],
+      ["简繁转换工具能把普通话翻译成粤语吗？", "不能。OpenCC 的 README 说明其词库以官话为基准，不做官话与粤语等语言之间的翻译；繁化姬文档也把古文列为不适合的文本。简繁转换只改变字形和部分地区用词。"]
+    ],
+    sourcesLead: "本文的竞品信息来自以下官方资料，核对日期为 2026 年 11 月 26 日。",
+    sources: [
+      { href: "https://github.com/BYVoid/OpenCC", label: "OpenCC 项目说明（README）", note: "许可证、预设配置、转换原则与调用方式" },
+      { href: "https://docs.zhconvert.org/", label: "繁化姬说明文档", note: "转换目标、与 OpenCC 的差异、不适合的文本" },
+      { href: "https://docs.zhconvert.org/license/", label: "繁化姬服务条款", note: "字幕推广内容与正确性说明" },
+      { href: "https://docs.zhconvert.org/api/0-getting-started/", label: "繁化姬 API 新手上路", note: "API 调用方式与商用注意事项" }
+    ],
+    related: ["simplified-traditional-chinese-differences", "convert-word-pdf-excel-txt-chinese"]
+  }),
   Object.freeze({
     slug: "find-chinese-character-methods",
     category: "lookup",

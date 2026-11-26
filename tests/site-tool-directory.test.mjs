@@ -64,7 +64,7 @@ test("in-copy tool mentions link to the tool they name", async () => {
   for (const [page, , words, target] of contextualToolLinks) {
     const prefix = page.match(/^(zh-tw|en|ja|ko)\//)?.[0] ?? "";
     await access(new URL(`${prefix}${target}/index.html`, root));
-    const html = await readFile(new URL(`${page}/index.html`, root), "utf8");
+    const html = await readFile(new URL(`${page ? `${page}/` : ""}index.html`, root), "utf8");
     assert.ok(html.includes(`<a href="/${prefix}${target}/">${words}</a>`), `${page} → ${target}`);
   }
 });

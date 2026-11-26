@@ -24,8 +24,8 @@
     "lastmod": "2026-08-29"
   },
   "blog/index.html": {
-    "hash": "8dec20fc9cc422ba",
-    "lastmod": "2026-08-29"
+    "hash": "6d11a78c50325e71",
+    "lastmod": "2026-11-26"
   },
   "blog/kanji-reading-hiragana-romaji-furigana/index.html": {
     "hash": "c74d885fa04e4e6e",
@@ -38,6 +38,10 @@
   "blog/simplified-traditional-chinese-differences/index.html": {
     "hash": "4b448ceb34dfbbf8",
     "lastmod": "2026-08-29"
+  },
+  "blog/simplified-traditional-converter-comparison/index.html": {
+    "hash": "046da7c910085234",
+    "lastmod": "2026-11-26"
   },
   "character-counter/index.html": {
     "hash": "c5367c06cc71dcd2",
@@ -172,8 +176,8 @@
     "lastmod": "2026-11-25"
   },
   "en/index.html": {
-    "hash": "c563c835a7c905ff",
-    "lastmod": "2026-11-25"
+    "hash": "9277dcc5c21dc7a3",
+    "lastmod": "2026-11-26"
   },
   "en/japanese-characters/index.html": {
     "hash": "4ff55ba3a3ee5210",
@@ -356,8 +360,8 @@
     "lastmod": "2026-11-25"
   },
   "index.html": {
-    "hash": "511a46621f34e5eb",
-    "lastmod": "2026-11-25"
+    "hash": "3ce1b62074ca9714",
+    "lastmod": "2026-11-26"
   },
   "ja/about/index.html": {
     "hash": "cf75709dc5ee7d3b",
@@ -456,8 +460,8 @@
     "lastmod": "2026-11-25"
   },
   "ja/index.html": {
-    "hash": "3dbcd7bdedfb705f",
-    "lastmod": "2026-11-25"
+    "hash": "5b0a3b72c96ef2e5",
+    "lastmod": "2026-11-26"
   },
   "ja/japanese-characters/index.html": {
     "hash": "f014b9b99b9f7aa0",
@@ -720,8 +724,8 @@
     "lastmod": "2026-11-25"
   },
   "ko/index.html": {
-    "hash": "141be3372e6714e1",
-    "lastmod": "2026-11-25"
+    "hash": "144faddacc04a891",
+    "lastmod": "2026-11-26"
   },
   "ko/japanese-characters/index.html": {
     "hash": "178aabec8b26dd09",
@@ -1032,8 +1036,8 @@
     "lastmod": "2026-11-25"
   },
   "zh-tw/index.html": {
-    "hash": "1ab993486250778f",
-    "lastmod": "2026-11-25"
+    "hash": "71d084a9d5fd0eb5",
+    "lastmod": "2026-11-26"
   },
   "zh-tw/japanese-characters/index.html": {
     "hash": "0db04edc5e871c7c",

@@ -1,10 +1,12 @@
 // In-copy links from one tool page to another, written by scripts/sync-site-tool-directory.mjs.
-// Each rule is [page, sentence fragment, words to link, target slug in the same locale]. The fragment
+// Each rule is [page ("" for a home page), sentence fragment, words to link, target slug in the same locale]. The fragment
 // must appear in the page's <main> copy; its first occurrence is linked, once per page.
 // Only link a fragment that actually sends the reader to another tool ("search it in X", "paste it
 // into X"), not every occurrence of a common word such as 笔顺 or Pinyin.
 export const contextualToolLinks = [
   // Simplified Chinese
+  // Home FAQ answer comparing JianFan.app, Fanhuaji and OpenCC points to the full comparison article (zh-CN only).
+  ["", "逐项比较见简繁转换工具对比", "简繁转换工具对比", "blog/simplified-traditional-converter-comparison"],
   ["chinese-handwriting-recognition", "可用“汉字查询与结构拆解”按偏旁部件反查", "汉字查询与结构拆解", "chinese-character-lookup"],
   ["chinese-handwriting-recognition", "用“在线拍照汉字识别”", "在线拍照汉字识别", "photo-chinese-character-recognition"],
   ["chinese-handwriting-recognition", "或进入笔顺页面继续查询", "笔顺页面", "chinese-stroke-order"],
