@@ -114,8 +114,8 @@ test("ships five localized pages with the tool, schema, sitemap and homepage lin
 
 test("loads ZIP and PDF libraries lazily from pinned jsDelivr builds with SRI", async () => {
   const source = await readFile(path.join(projectRoot, "image-splitter.js"), "utf8");
-  assert.match(source, /url: "https:\/\/cdn\.jsdelivr\.net\/npm\/fflate@0\.8\.2\/umd\/index\.js", integrity: "sha384-[A-Za-z0-9+/=]+"/u);
-  assert.match(source, /url: "https:\/\/cdn\.jsdelivr\.net\/npm\/jspdf@4\.2\.1\/dist\/jspdf\.umd\.min\.js", integrity: "sha384-[A-Za-z0-9+/=]+"/u);
+  assert.match(source, /url: "https:\/\/cdn\.jsdmirror\.cn\/npm\/fflate@0\.8\.2\/umd\/index\.js", integrity: "sha384-[A-Za-z0-9+/=]+"/u);
+  assert.match(source, /url: "https:\/\/cdn\.jsdmirror\.cn\/npm\/jspdf@4\.2\.1\/dist\/jspdf\.umd\.min\.js", integrity: "sha384-[A-Za-z0-9+/=]+"/u);
   assert.match(source, /script\.integrity = library\.integrity;/u);
   assert.match(source, /script\.crossOrigin = "anonymous";/u);
   assert.doesNotMatch(source, /fetch\(|XMLHttpRequest|sendBeacon/u);

@@ -78,8 +78,8 @@ test("detects romanised Pinyin input but not English or Chinese", () => {
 test("localized pages load the pinned zhuyin library with SRI and match their FAQ schema", async () => {
   for (const prefix of ["", "zh-tw/", "en/", "ja/", "ko/"]) {
     const html = await readFile(new URL(`${prefix}chinese-to-zhuyin/index.html`, root), "utf8");
-    assert.match(html, /"pinyin-to-zhuyin":"https:\/\/cdn\.jsdelivr\.net\/npm\/pinyin-to-zhuyin@1\.1\.0\/dist\/pinyin-to-zhuyin\.esm\.js"/u);
-    assert.match(html, /<link rel="modulepreload" href="https:\/\/cdn\.jsdelivr\.net\/npm\/pinyin-to-zhuyin@1\.1\.0\/[^"]+" integrity="sha384-[^"]+" crossorigin="anonymous" \/>/u);
+    assert.match(html, /"pinyin-to-zhuyin":"https:\/\/cdn\.jsdmirror\.cn\/npm\/pinyin-to-zhuyin@1\.1\.0\/dist\/pinyin-to-zhuyin\.esm\.js"/u);
+    assert.match(html, /<link rel="modulepreload" href="https:\/\/cdn\.jsdmirror\.cn\/npm\/pinyin-to-zhuyin@1\.1\.0\/[^"]+" integrity="sha384-[^"]+" crossorigin="anonymous" \/>/u);
     assert.match(html, /<script type="module" src="\/chinese-to-zhuyin\.js"><\/script>/u);
     const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/u)[1]);
     const faq = schema["@graph"].find((entry) => entry["@type"] === "FAQPage");

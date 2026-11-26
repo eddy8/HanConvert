@@ -185,8 +185,8 @@
   if (!core || document.body?.dataset.toolPage !== "image-splitter") return;
 
   const LIBRARIES = {
-    zip: { url: "https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.js", integrity: "sha384-DT0Ls0mO7JmjTnT+oBuMhEJzYJO1zUqzuuMXNdnOmOQRIpN2BgSjvBV/j50NngIT", global: "fflate" },
-    pdf: { url: "https://cdn.jsdelivr.net/npm/jspdf@4.2.1/dist/jspdf.umd.min.js", integrity: "sha384-qovJwSBbRDPP5cEjCp8S0UP66wrvnjaa60XMOGzTNanrThcrGfXfnZkvgY8N1KT3", global: "jspdf" }
+    zip: { url: "https://cdn.jsdmirror.cn/npm/fflate@0.8.2/umd/index.js", integrity: "sha384-DT0Ls0mO7JmjTnT+oBuMhEJzYJO1zUqzuuMXNdnOmOQRIpN2BgSjvBV/j50NngIT", global: "fflate" },
+    pdf: { url: "https://cdn.jsdmirror.cn/npm/jspdf@4.2.1/dist/jspdf.umd.min.js", integrity: "sha384-qovJwSBbRDPP5cEjCp8S0UP66wrvnjaa60XMOGzTNanrThcrGfXfnZkvgY8N1KT3", global: "jspdf" }
   };
   const PDF_MARGIN_MM = 5;
   const PRINT_DPI = 300;

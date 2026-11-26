@@ -9,7 +9,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 const origin = "https://jianfan.app";
 const slug = "chinese-to-zhuyin";
 const checkOnly = process.argv.includes("--check");
-const zhuyinLibrary = "https://cdn.jsdelivr.net/npm/pinyin-to-zhuyin@1.1.0/dist/pinyin-to-zhuyin.esm.js";
+const zhuyinLibrary = "https://cdn.jsdmirror.cn/npm/pinyin-to-zhuyin@1.1.0/dist/pinyin-to-zhuyin.esm.js";
 const zhuyinIntegrity = "sha384-JuGtdlwGQ98FCJsO16TSFzx4SKJMhBhsZXeYODXf6Ua6FazxwnTSfOFVablwvxiM";
 
 const pinyinContext = {};
